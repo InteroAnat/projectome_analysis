@@ -1,0 +1,73 @@
+#%% import necessary libraries
+
+import sys,copy,os,inspect
+
+neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
+sys.path.append(neurovis_path)
+
+import IONData 
+iondata = IONData.IONData()
+
+from collections import defaultdict
+
+
+from pathlib import Path
+import matplotlib
+
+import matplotlib.pyplot as plt
+
+
+import numpy as np
+import nibabel as nib  # parse the NII data
+from collections import deque
+import pandas as pd
+from typing import Tuple
+from io import StringIO
+
+import seaborn as sns
+from sklearn.cluster import AgglomerativeClustering
+import matplotlib.cm as cm
+
+from scipy.cluster.hierarchy import dendrogram, linkage
+
+import requests
+from bs4 import BeautifulSoup
+#%%
+
+neuronlist=iondata.getNeuronListBySampleID('251637')
+
+neurontable = pd.DataFrame(neuronlist)
+
+neurontable = neurontable.iloc[:,0:3]# %%
+
+# %%
+print(neurontable)
+# %%
+neurontable['region'].value_counts(dropna=False)
+# %%
+import matplotlib.pyplot as plt
+import matplotlib.font_manager as fm
+matplotlib.use('TkAgg')  # Use TkAgg backend
+neurontable['region'] = neurontable['region'].replace('\r', '')
+# Replace empty strings with 'unknown'
+neurontable['region'] = neurontable['region'].replace('', 'unknown', regex=False)
+
+
+# Get the distribution
+region_distribution = neurontable['region'].value_counts(dropna=False)
+
+# Plot the distribution
+plt.figure(figsize=(10, 6))
+bars=region_distribution.plot(kind='bar', rot=45)
+for bar in bars.patches:
+    y_value = bar.get_height()
+    x_value = bar.get_x() + bar.get_width() / 2
+    # Annotate the bar with its value
+    plt.text(x_value, y_value, f'{y_value}', ha='center', va='bottom', fontsize=10)
+plt.title('Distribution of Neuron Regions for Monkey 936')
+plt.xlabel('Region')
+plt.ylabel('Count')
+plt.tight_layout()
+plt.show()
+
+# %%
