@@ -48,7 +48,7 @@ neurontable['region'].value_counts(dropna=False)
 import matplotlib.pyplot as plt
 import matplotlib.font_manager as fm
 matplotlib.use('TkAgg')  # Use TkAgg backend
-neurontable['region'] = neurontable['region'].replace('\r', '')
+neurontable['region'] = neurontable['region'].str.replace('\r', '',regex=False)
 # Replace empty strings with 'unknown'
 neurontable['region'] = neurontable['region'].replace('', 'unknown', regex=False)
 
@@ -68,6 +68,41 @@ plt.title('Distribution of Neuron Regions for Monkey 936')
 plt.xlabel('Region')
 plt.ylabel('Count')
 plt.tight_layout()
+plt.savefig('../figures/neuron_region_distribution_936.png', dpi=300)
+
 plt.show()
+
+# %%
+import difflib
+import os
+
+# Path to the files
+original_file_path = '../resource/swc_raw/251637/002.swc '
+modified_file_path = '../resource/swc_raw/251637/002r.swc '
+
+# Check if the files exist
+if not os.path.exists(original_file_path):
+    print(f"File not found: {original_file_path}")
+    exit()
+
+if not os.path.exists(modified_file_path):
+    print(f"File not found: {modified_file_path}")
+    exit()
+
+# Read the contents of the files
+with open(original_file_path, 'r') as f1, open(modified_file_path, 'r') as f2:
+    original_lines = f1.readlines()
+    modified_lines = f2.readlines()
+
+# Generate unified diff
+diff = difflib.unified_diff(original_lines, modified_lines, fromfile='original_file.txt', tofile='modified_file.txt', lineterm='')
+
+# Print the differences
+for line in diff:
+    print(line, end='')
+
+# Print the current working directory to verify
+print("\nCurrent Working Directory:", os.getcwd())
+
 
 # %%
