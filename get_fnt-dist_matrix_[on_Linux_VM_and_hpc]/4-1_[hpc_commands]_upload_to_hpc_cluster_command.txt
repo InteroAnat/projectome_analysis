@@ -1,0 +1,48 @@
+1. 集群登录，然后进入fnt-dist的目录：
+ssh [username]@172.20.10.250 -p 20007
+
+cd /path/to/fnt_dist/
+ls
+
+
+
+2. 【可选】删除之前的fnt-dist文件：
+rm *.txt
+rm fnt_decimate_join.fnt
+ls
+
+
+3. 拷贝fnt_decimate_join.fnt文件到集群的目录：【以下为从本地Linux系统拷贝到集群上的命令（在集群上运行以下命令）；在Windows系统上，可以通过WinSCP上传到集群】
+scp -r admin@10.10.42.8:/path/to/fnt_decimate_join.fnt /path/to/fnt_dist/
+
+
+4. 查看fnt-dist的slurm脚本：
+vim sbatch_dist.slurm
+
+
+5. 【可选】查看集群上可用的节点
+sinfo
+
+
+6. 把fnt-dist的计算任务的slurm脚本提交到集群上：
+sbatch sbatch_dist.slurm
+
+
+7. 查看任务进度：（也可以在集群的网页上查看）
+squeue -u [username]
+（例如用户名为wangyz，则查看任务进度的命令为：squeue -u wangyz)
+
+
+8. 将计算完成的fnt-dist结果拷贝回本地：【以下为从集群上拷贝回本地Linux系统的命令（在集群上运行以下命令）；在Windows系统上，可以通过WinSCP拷贝回本地】
+scp -r /path/to/fnt_dist/fnt_decimate_join.fnt admin@10.10.42.8:/path/to/fnt_dist/
+
+scp -r /path/to/fnt_dist/dist.txt admin@10.10.42.8:/path/to/fnt_dist/
+
+scp -r /path/to/fnt_dist/error.txt admin@10.10.42.8:/path/to/fnt_dist/
+
+scp -r /path/to/fnt_dist/output.txt admin@10.10.42.8:/path/to/fnt_dist/
+
+其中：
+fnt_decimate_join.fnt、dist.txt可用于后续的分析流程中；
+error.txt、output.txt是跑fnt-dist程序的日志记录。
+

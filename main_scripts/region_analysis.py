@@ -1,10 +1,7 @@
-# %%
-import region_analysis_per_neuron 
-from cube_analysis_per_neuron_terminal import cube_analysis_per_neuron_terminal
-
+#%%
 import neuro_tracer as nt
 
-import sys,os
+import sys,copy,os,inspect
 
 neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
 sys.path.append(neurovis_path)
@@ -16,11 +13,15 @@ from collections import defaultdict
 
 
 from pathlib import Path
+import matplotlib
+
+
 import matplotlib.pyplot as plt
 
 
 import numpy as np
 import nibabel as nib  # parse the NII data
+from collections import deque
 import pandas as pd
 from typing import Tuple
 from io import StringIO
@@ -28,308 +29,192 @@ from io import StringIO
 import seaborn as sns
 from sklearn.cluster import AgglomerativeClustering
 import matplotlib.cm as cm
-from scipy.cluster import hierarchy
+
 from scipy.cluster.hierarchy import dendrogram, linkage
 
-import csv
+import requests
+from bs4 import BeautifulSoup
+neuronlist=iondata.getNeuronListBySampleID('251637')
+import nrrd
+def plot_projection_by_soma(df, stat='median'):
+    unique_regions = df['Soma_Region'].unique()
+    data = [df[df['Soma_Region'] == region]['Projection_length'] for region in unique_regions]
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bplot = ax.boxplot(data, labels=unique_regions)
+    ax.set_title('Box Plot of Projection Length by Soma Region')
+    ax.set_xlabel('Soma Regions')
+    ax.set_ylabel('Projection Length')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
 
-import gc
-# %%
-# step 1: load the data:
-# Strategy: go to digitalbrain webpage to parse all the experiment names and download with IONdata
-filename = '../resources/SubtypeInfo.txt'
-neuron_list = {}
+    # Add exact values (medians or means) above boxes
+    if stat == 'median':
+        values = [np.median(d) for d in data]
+    elif stat == 'mean':
+        values = [np.mean(d) for d in data]
+    else:
+        raise ValueError("stat must be 'median' or 'mean'")
+    
+    for i, val in enumerate(values):
+        ax.text(i + 1, val, f"{val:.2f}", ha='center', va='bottom')
 
-columns = ['expid', 'neuronid', 'subtype']
+    plt.show()
 
-pfc_neuron_list=pd.read_csv(filename, sep=' ',names=columns,header=None,dtype={'expid':str,'neuronid':str,'subtype':int})
-ct_ids = list(range(45,53))
-ct_neuron_list = pfc_neuron_list[pfc_neuron_list['subtype'].isin(ct_ids)]
+def plot_soma_distribution(df):
+    soma_counts = df['Soma_Region'].value_counts()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    soma_counts.plot(kind='bar', ax=ax)
+    ax.set_title('Summary of Soma Distribution by Region')
+    ax.set_xlabel('Soma Regions')
+    ax.set_ylabel('Number of Neurons')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
 
-ct_neuron_list.reset_index(inplace=True,drop=True)
+    # Add exact counts above bars
+    for i, height in enumerate(soma_counts):
+        ax.text(i, height, str(height), ha='center', va='bottom')
 
-# %%
-# load cff atlas and its labels
-atlas_base_path = Path(r'D:\Monkey_projectome_training\resources\atlas\mouse')
-cff_atlas_path = atlas_base_path / r"annotation_10.nii.gz"
-cff_atlas= nib.load(cff_atlas_path)
-cff_labels = pd.read_csv(os.path.join(atlas_base_path, 'parcellation_term.csv'),sep=',',header=0,usecols=[0,1,2])
-cff_labels['label'] = cff_labels['label'].str.split('-').str[-1]
-cff_index  = pd.read_csv(os.path.join(atlas_base_path, 'parcellation.csv'),sep=',',header=0,usecols=[0,1])
-cff_index['label']=cff_index['label'].str.split('-').str[-1]
-cff_table = pd.merge(cff_index,cff_labels,left_on='label',right_on='label')
-cff_voxels = cff_atlas.get_fdata()
-print(cff_voxels.shape)
+    plt.show()
 
-print(f'the parameter for swc to nii is shape {cff_voxels.shape},reso {cff_atlas.header.get_zooms()}')
-# %%
-target_region = 'Mediodorsal'
-region_output_path = atlas_base_path / rf"extracted_{target_region}_volume.nii.gz"
 
-if region_output_path.exists():
-    pass
-else:
-    
-    region_index = cff_table[cff_table['name'].str.contains(rf'\b{target_region}',case=False)]['parcellation_index'].tolist()
+class region_analysis_per_neuron:
+    def __init__(self, neuron_tracer_obj, atlas, atlas_table):
+        self.neuron = neuron_tracer_obj
+        self.exp_name = neuron_tracer_obj.exp_no
+        self.atlas = atlas
+        self.atlas_table = atlas_table
+        self.brain_region_map = {index: row['Abbreviation'] for index, row in self.atlas_table.iterrows()}
+       
+    def region_analysis(self):
 
-    region_mask=np.isin(cff_voxels,region_index)
-    region_voxels = np.where(region_mask, cff_voxels, 0)
+        self.mapped_brain_region_lengths, self.neuron_total_length = self._calculate_neuronal_branch_length()
+        self.soma_region, self.terminal_regions = self._soma_and_terminal_region()
+    def _distance(self,p1, p2,space='nii'):
 
-    region_img = nib.Nifti1Image(region_voxels, cff_atlas.affine, cff_atlas.header)
-
-    nib.save(region_img, region_output_path)
+        if space == 'nii':
+            return np.sqrt((p1.x_nii - p2.x_nii)**2 + (p1.y_nii - p2.y_nii)**2 + (p1.z_nii - p2.z_nii)**2)        
+        elif space == 'native':
+            return np.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2 + (p1.z - p2.z)**2)
+        else:
+            raise ValueError(f"Invalid space: {space}")
     
-    del cff_voxels, region_voxels, region_mask
-gc.collect()
-#%%
-def subdivide_volume_into_cubes(nifti_path, cube_size_mm=0.1,save=True):
-    """
-    Subdivide a NIfTI volume into cubes of specified physical size and identify those intersecting the region of interest.
     
-    Parameters:
-    - nifti_path (str): Path to the NIfTI file (e.g., thalamus mask).
-    - cube_size_mm (float): Desired cube size in millimeters (default: 0.1 mm, i.e., 100 μm).
-    
-    Returns:
-    - list: List of dictionaries with 'start' and 'end' coordinates (in voxel space) for cubes intersecting the volume.
-    - tuple: Voxel size in mm (x, y, z) from the NIfTI header.
-    - int: Cube size in voxels (assuming isotropic voxels for simplicity).
-    """
-    
-    # Load the NIfTI file
-    img = nib.load(nifti_path)
-    data = img.get_fdata()  # 3D array of voxel values
-    
-    # Get voxel size in mm from the header
-    voxel_size = img.header.get_zooms()  # (x, y, z) in mm
-    if not np.allclose(voxel_size[0], voxel_size[1:], rtol=1e-5):
-        print("Warning: Voxel sizes are anisotropic. Using x-dimension size for cube calculation.")
-    voxel_size_mm = voxel_size[0]  # Assume isotropic for cube size calculation
-    
-    # Calculate cube size in voxels
-    cube_voxels = int(cube_size_mm / voxel_size_mm)
-    if cube_voxels == 0:
-        raise ValueError(f"Cube size ({cube_size_mm} mm) is smaller than voxel size ({voxel_size_mm} mm).")
-    print(f"Cube size in voxels: {cube_voxels} (based on {cube_size_mm} mm / {voxel_size_mm} mm voxel size)")
-    
-    # Find the bounding box of the region of interest (non-zero voxels)
-    indices = np.nonzero(data)
-    if len(indices[0]) == 0:
-        raise ValueError("No non-zero voxels found in the volume.")
-    
-    x_min, x_max = np.min(indices[0]), np.max(indices[0])
-    y_min, y_max = np.min(indices[1]), np.max(indices[1])
-    z_min, z_max = np.min(indices[2]), np.max(indices[2])
-    
-    # Adjust bounding box to align with cube boundaries
-    x_min = (x_min // cube_voxels) * cube_voxels
-    x_max = ((x_max // cube_voxels) + 1) * cube_voxels
-    y_min = (y_min // cube_voxels) * cube_voxels
-    y_max = ((y_max // cube_voxels) + 1) * cube_voxels
-    z_min = (z_min // cube_voxels) * cube_voxels
-    z_max = ((z_max // cube_voxels) + 1) * cube_voxels
-    
-    # Generate starting positions for cubes within the bounding box
-    x_starts = np.arange(x_min, x_max, cube_voxels)
-    y_starts = np.arange(y_min, y_max, cube_voxels)
-    z_starts = np.arange(z_min, z_max, cube_voxels)
-    
-    # List to store cubes that intersect with the region
-    intersecting_cubes = []
-    
-    # Iterate over all possible cube positions
-    for x_start in x_starts:
-        for y_start in y_starts:
-            for z_start in z_starts:
-                # Define cube boundaries, ensuring not to exceed volume dimensions
-                x_end = min(x_start + cube_voxels, data.shape[0])
-                y_end = min(y_start + cube_voxels, data.shape[1])
-                z_end = min(z_start + cube_voxels, data.shape[2])
+    def _calculate_neuronal_branch_length(self):
+            
+            brain_region_lengths = defaultdict(float)
+            neuron_total_length = 0
+            
+            for branch in self.neuron.branches:
+                branch_length = 0
+                current_node = branch[0]
                 
-                # Extract the cube from the volume
-                cube = data[x_start:x_end, y_start:y_end, z_start:z_end]
-                
-                # Check if the cube intersects with the region (contains non-zero voxels)
-                if np.any(cube > 0):
-                    intersecting_cubes.append({
-                        'start': (x_start, y_start, z_start),
-                        'end': (x_end, y_end, z_end)
-                    })
-    
-    
-    if save:
-        np.save(f'temp/thalamus_cubes_{cube_size_mm}.npy',intersecting_cubes)
-    return intersecting_cubes, voxel_size, cube_voxels
-def calculate_volume_edges(thalamus_cubes):
-    """
-    Calculate the edges of the volume defined by the provided thalamus cubes.
-
-    :param thalamus_cubes: A list of dictionaries, where each dictionary contains 
-                           'start' and 'end' points of a cube.
-    :return: A dictionary containing the ranges (min and max) for x, y, and z.
-    """
-    all_points = []
-    
-    # Collect all start and end points
-    for cube in thalamus_cubes:
-        all_points.append(cube['start'])
-        all_points.append(cube['end'])
-    
-    # Convert to numpy array for processing
-    all_points = np.array(all_points)
-    
-    # Compute the minimum and maximum boundaries
-    min_x, min_y, min_z = np.min(all_points, axis=0)
-    max_x, max_y, max_z = np.max(all_points, axis=0)
-    
-    # Represent the edges of the volume
-    edges = {
-        'x-range': (min_x, max_x),
-        'y-range': (min_y, max_y),
-        'z-range': (min_z, max_z),
-    }
-    
-    return edges
-
-
-
-
-cube_size = 0.1 # in mm
-if  os.path.exists(f"temp/thalamus_cubes_{cube_size}.npy"):
-    thalamus_cubes=np.load("temp/thalamus_cubes.npy",allow_pickle=True)
-else:
-    thalamus_cubes,_,_ , =subdivide_volume_into_cubes(output_path,cube_size_mm=cube_size,save=True)
-
-edges = calculate_volume_edges(thalamus_cubes)
-
-print(f"Number of  cubes: {len(thalamus_cubes)}\n\
-    Edges of the cubes: {edges}")
-
-gc.collect()
-# %%
-#generate neuron tracer objects 
-
-# %%
-# generate a reader that parse the swc files generated from above cycle (for neurons in the ct_neuron_list)
-   # and extract the thalamus region data for each neuron
-   
-   
-# generate a matrix of projection length for each cube of the thalamus generated above
-# ideally an ndarrary to store such data
-
-
-# for ct_neuron in ct_neuron_data [0:3]:
-#    ct_neuron_ra = cube_analysis_per_neuron(ct_neuron,thalamus_cubes)
-#    ct_neuron_ra._calculate_neuronal_branch_length_in_cubes()
-
+                node_index = 0
+                while node_index < len(branch) - 1:
+                    current_node = branch[node_index]
+                    child_id = node_index + 1
+                    child_node = branch[child_id]
+                    edge_length = round(self._distance(current_node, child_node),3)
+                    aa = tuple(np.round(np.array([current_node.x_nii, current_node.y_nii, current_node.z_nii])).astype(int).flatten())
+                    branch_length += edge_length
 
         
-def generate_cubed_region_projection_matrix (neuron_list:pd.DataFrame, brain_cubes):
-    num_neurons = len(neuron_list)
-    num_cubes = len(brain_cubes)
-    projection_matrix = np.zeros(( num_cubes,num_neurons))
-    terminal_arbors= 0
-    total_terminals_in_region = 0
-    for neuron_idx, row in ct_neuron_list.iterrows():
-        neuron = nt.neuro_tracer()
-        neuron.process(row['expid'],row['neuronid']+'.swc',output_dir="../resources/neuron_data/")
-        terminal_arbors += len(neuron.terminal_nodes)
-        neuron_ra=cube_analysis_per_neuron_terminal(neuron,thalamus_cubes)
-        # QC
-        cube_lengths,neuron_terminals_in_region= neuron_ra._calculate_neuronal_branch_length_in_cubes()
-        total_terminals_in_region += neuron_terminals_in_region
+                    
+                    if (0 <= aa[0] < self.atlas.shape[0] and
+                        0 <= aa[1] < self.atlas.shape[1] and
+                        0 <= aa[2] < self.atlas.shape[2]):
+
+                        brain_region_id = int(self.atlas[aa])
+                        brain_region_lengths[brain_region_id] += edge_length
+                    else:
+                        print(f"Warning: Point {aa},{[current_node.x_nii, current_node.y_nii, current_node.z_nii]} {self.neuron.swc_filename} node{current_node.id} is out of bounds of the atlas.")
+                    node_index += 1
+                neuron_total_length += branch_length
+         
+            mapped_brain_region_lengths ={}
+
+            for index, length in brain_region_lengths.items():
+               
+                region = self.brain_region_map.get(index, 'Unknown')
+                
+                mapped_brain_region_lengths [region] = length
+                
+            return mapped_brain_region_lengths, neuron_total_length
+    def _soma_and_terminal_region(self):
+        soma=self.neuron.root
+        soma_pos=tuple(np.round(np.array([soma.x_nii, soma.y_nii, soma.z_nii])).astype(int).flatten())
+        soma_region = self.brain_region_map.get(int(self.atlas[soma_pos]), 'Unknown')
         
-        for cube_idx, length in cube_lengths.items():
-                projection_matrix[cube_idx, neuron_idx] = length
-    return projection_matrix, terminal_arbors, total_terminals_in_region
-projection_matrix, terminal_arbors, total_terminals_in_region = generate_cubed_region_projection_matrix(ct_neuron_list, thalamus_cubes)
-print(f'QC info:\n \
-    Projection_matrix shape: {projection_matrix.shape}\n \
-    Terminals in the region: {total_terminals_in_region}\n \
-    Percentage of total neuron terminals: {total_terminals_in_region/terminal_arbors:.2%}\n    ')
-# generate a cube * neuron projection matrix
+        terminal_regions = {}
+        for node in self.neuron.terminal_nodes:
+            node_pos=tuple(np.round(np.array([node.x_nii, node.y_nii, node.z_nii])).astype(int).flatten())
+            node_region = int(self.atlas[node_pos])
+            node_region = self.brain_region_map.get(node_region, 'Unknown')
+            
+            terminal_regions [node_region] = node_pos
+        return soma_region, terminal_regions   
+
+class PopulationRegionAnalysis:
+    def __init__(self, sample_id, atlas, atlas_table, nii_space='monkey'):
+        self.sample_id = sample_id
+        self.atlas = atlas
+        self.atlas_table = atlas_table
+        self.nii_space = nii_space
+        self.neuron_list = iondata.getNeuronListBySampleID(sample_id)
+        self.neurons = {}
+        self.soma_regions = []
+        self.projection_lengths = []
+        self.region_projection_lengths = []
+        self.terminal_regions = []
+        self.neuron_ids = []
+        self.plot_dataframe=[]
+    def process(self, limit=None):
+        if limit is None:
+            neurons_to_process = self.neuron_list
+        else:
+            neurons_to_process = self.neuron_list[:limit]
+
+        for target_neuron in neurons_to_process:
+            neuron = nt.neuro_tracer()
+            neuron.process(target_neuron['sampleid'], target_neuron['name'], nii_space=self.nii_space)
+            self.neurons[int(target_neuron['name'].split('.')[0])] = neuron
+
+            analysis = region_analysis_per_neuron(neuron, self.atlas, self.atlas_table)
+            analysis.region_analysis()
+
+            self.soma_regions.append(analysis.soma_region)
+            self.projection_lengths.append(analysis.neuron_total_length)
+            self.region_projection_lengths.append(analysis.mapped_brain_region_lengths)
+            self.terminal_regions.append(list(analysis.terminal_regions.keys()))
+            self.sample_id = neuron.exp_no
+            self.neuron_ids.append(neuron.swc_filename)
+        self.__get_figure_data()
+    def __get_figure_data(self):
+        dataframe= pd.DataFrame({
+            'SampleID':self.sample_id,
+            'NeuronID': self.neuron_ids,
+            'Soma_Region': self.soma_regions,
+            'Projection_length': self.projection_lengths,
+            'Region_projection_length': self.region_projection_lengths
+        })
+        self.plot_dataframe=dataframe
+
+    def plot_projection_by_soma(self, stat='median'):
+        df = self.plot_dataframe
+        plot_projection_by_soma(df, stat)
+
+    def plot_soma_distribution(self):
+        df=self.plot_dataframe
+        plot_soma_distribution(df)
+    
+if __name__ == '__main__':
+    atlas,atlas_header=nrrd.read(r'D:\projectome_analysis\atlas\nmt_structure.nrrd')
+    global_id_df = pd.read_csv(r'D:\projectome_analysis\atlas\NMT\tables_CHARM\CHARM_key_all.txt',delimiter='\t')
+
+    pop = PopulationRegionAnalysis('251637', atlas, global_id_df)
+    pop.process(limit=3)
+    pop.plot_projection_by_soma(stat='median')  # or 'mean'
+    pop.plot_soma_distribution()
+    
 #%%
-from datetime import datetime
-current_time = datetime.now().strftime("%H_%M")
 
-np.save(f'outputs/projection_matrix_{current_time}.npy',projection_matrix)
-
-
-
-
-
-# %%
-from scipy.spatial.distance import squareform
-from scipy.cluster.hierarchy import fcluster
-from scipy.stats import spearmanr
-
-# Step 2: Identify cubes with zero variance or NaN values
-std_dev = np.std(projection_matrix, axis=1)
-has_nan = np.any(np.isnan(projection_matrix), axis=1)
-valid_rows = (std_dev > 1e-5) & (~has_nan)
-degenerate_rows = ~valid_rows  # Cubes to be handled separately
-valid_indices = np.where(valid_rows)[0]
-degenerate_indices = np.where(degenerate_rows)[0]
-filtered_proj_matrix = projection_matrix[valid_indices, :]
-print(f"Number of cubes dropped: {len(degenerate_indices)} ({len(degenerate_indices)/len(thalamus_cubes):.2%})")
-
-corr_matrix, _ = spearmanr(filtered_proj_matrix, axis=1)
-corr_matrix = np.nan_to_num(corr_matrix, nan=0.0)  # Handle potential NaN from ties
-corr_matrix = (corr_matrix + corr_matrix.T) / 2
-distance_matrix = 1 - corr_matrix
-np.fill_diagonal(distance_matrix, 0)  # Ensure self-distance is 0
-condensed_distances = squareform(distance_matrix, checks=True)
-Z = linkage(condensed_distances, method='ward',optimal_ordering=True,metric='precomputed')
-
-
-# %%
-
-
-# Reorder the correlation matrix based on the clusters
-from scipy.cluster.hierarchy import leaves_list
-order = leaves_list(Z)
-reordered_corr_matrix = corr_matrix[order, :][:, order]
-# Plot the reordered correlation matrix as a clustermap
-g = sns.clustermap(
-    corr_matrix,
-    row_linkage=Z,
-    col_linkage=Z,
-    cmap='coolwarm',
-    center=0,
-    vmin=-0.02, vmax=0.02,
-    dendrogram_ratio=0.16,
-    cbar_pos=(0, 0.5, 0.05, 0.18),
-    cbar_kws={'label': "Spearman's rank correlation coefficient"},
-    xticklabels=False,
-    yticklabels=False,
-)
-
-g.ax_heatmap.set_xlabel("")
-g.ax_heatmap.set_ylabel("")
-g.ax_row_dendrogram.remove()
-
-clusters = fcluster(Z, t=4, criterion='maxclust')
-
-# Display the plot
-plt.savefig('outputs/clustermap.jpg')
-plt.show()
-
-
-# %%
-thalamus_cubes_df = pd.DataFrame.from_records(thalamus_cubes[valid_indices])
-thalamus_cubes_df['cluster'] = clusters
-region_img = nib.load(region_output_path)
-region_voxels = region_img.get_fdata()
-cluster_voxels = region_voxels.copy()
-cmap = plt.get_cmap('tab20')
-# write on the region_img the clusters of the MD cubes
-for cube_idx, cluster in enumerate(clusters):
-    x_start, y_start, z_start = thalamus_cubes[valid_indices[cube_idx]]['start']
-    x_end, y_end, z_end = thalamus_cubes[valid_indices[cube_idx]]['end']
-    rgb = np.array(cmap(cluster)[:3]) * 255
-    rgb = rgb.astype(np.uint8)    
-    cluster_voxels[x_start:x_end, y_start:y_end, z_start:z_end] = np.sum(rgb)
-
-thalamus_img = nib.Nifti1Image(cluster_voxels, region_img.affine, region_img.header)
-nib.save(thalamus_img, 'outputs/thalamus_clusters.nii.gz')
 # %%

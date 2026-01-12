@@ -255,10 +255,10 @@ class neuro_tracer:
 
     
         build_branch(self.root,0)
-        print (f"\nFinished with {len(self.branches)} branches,can check with self.branches_in_id")
+        print (f"\nFinished with {len(self.branches)} branches")
         self.branches_in_id = construct_id_branches(self)
-        print ('\n-----------------\n')
-        print(self.branches_in_id[:3])
+        # print ('\n-----------------\n')
+        # print(self.branches_in_id[:3])
         
     def _export_file(self, output_dir):
         """Export neuron data to CSV using pandas with round()"""
@@ -347,7 +347,7 @@ class neuro_tracer:
         ax.set_xlabel('X')
         ax.set_ylabel('Y')
         ax.set_zlabel('Z')
-        ax.set_title('3D Single Neuron Plot')
+        ax.set_title(f'3D Single Neuron Plot - {self.swc_filename}')
         ax.legend()
 
         # Display the plot
@@ -395,7 +395,7 @@ class neuro_tracer:
 
 if __name__ == '__main__':
     test_neuron = neuro_tracer()
-    test_neuron.process('251637','157.swc',nii_space='monkey')
+    test_neuron.process('251637','002.swc',nii_space='monkey')
     print(test_neuron.nodes[1].x_nii,test_neuron.nodes[1].x)
     print(test_neuron.nodes[1].y_nii,test_neuron.nodes[1].y)
     print(test_neuron.nodes[1].z_nii,test_neuron.nodes[1].z)
