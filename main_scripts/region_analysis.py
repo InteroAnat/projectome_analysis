@@ -76,6 +76,47 @@ def plot_soma_distribution(df):
 
     plt.show()
 
+def plot_terminal_distribution(df):
+    df_exploded = df.explode('Terminal_Regions')
+    term_counts = df_exploded['Terminal_Regions'].value_counts()
+    fig, ax = plt.subplots(figsize=(10, 6))
+    term_counts.plot(kind='bar', ax=ax)
+    ax.set_title('Summary of Terminal Distribution by Region')
+    ax.set_xlabel('Terminal Regions')
+    ax.set_ylabel('Number of Terminals')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    # Add exact counts above bars
+    for i, height in enumerate(term_counts):
+        ax.text(i, height, str(height), ha='center', va='bottom')
+
+    plt.show()
+
+def plot_projection_by_terminal(df, stat='median'):
+    df_exploded = df.explode('Terminal_Regions')
+    unique_regions = df_exploded['Terminal_Regions'].unique()
+    data = [df_exploded[df_exploded['Terminal_Regions'] == region]['Projection_length'] for region in unique_regions]
+    fig, ax = plt.subplots(figsize=(10, 6))
+    bplot = ax.boxplot(data, labels=unique_regions)
+    ax.set_title('Box Plot of Projection Length by Terminal Region')
+    ax.set_xlabel('Terminal Regions')
+    ax.set_ylabel('Projection Length')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+
+    # Add exact values (medians or means) above boxes
+    if stat == 'median':
+        values = [np.median(d) for d in data]
+    elif stat == 'mean':
+        values = [np.mean(d) for d in data]
+    else:
+        raise ValueError("stat must be 'median' or 'mean'")
+    
+    for i, val in enumerate(values):
+        ax.text(i + 1, val, f"{val:.2f}", ha='center', va='bottom')
+
+    plt.show()
 
 class region_analysis_per_neuron:
     def __init__(self, neuron_tracer_obj, atlas, atlas_table):
@@ -167,7 +208,12 @@ class PopulationRegionAnalysis:
         self.terminal_regions = []
         self.neuron_ids = []
         self.plot_dataframe=[]
-    def process(self, limit=None):
+        
+    def process(self, limit=None,level=4):
+        
+        self.level=level
+        self.atlas = self.atlas[:,:,:,0,self.level]
+            
         if limit is None:
             neurons_to_process = self.neuron_list
         else:
@@ -194,7 +240,8 @@ class PopulationRegionAnalysis:
             'NeuronID': self.neuron_ids,
             'Soma_Region': self.soma_regions,
             'Projection_length': self.projection_lengths,
-            'Region_projection_length': self.region_projection_lengths
+            'Region_projection_length': self.region_projection_lengths,
+            'Terminal_Regions': self.terminal_regions
         })
         self.plot_dataframe=dataframe
 
@@ -205,15 +252,27 @@ class PopulationRegionAnalysis:
     def plot_soma_distribution(self):
         df=self.plot_dataframe
         plot_soma_distribution(df)
+
+    def plot_terminal_distribution(self):
+        df=self.plot_dataframe
+        plot_terminal_distribution(df)
+
+    def plot_projection_by_terminal(self, stat='median'):
+        df = self.plot_dataframe
+        plot_projection_by_terminal(df, stat)
     
 if __name__ == '__main__':
-    atlas,atlas_header=nrrd.read(r'D:\projectome_analysis\atlas\nmt_structure.nrrd')
-    global_id_df = pd.read_csv(r'D:\projectome_analysis\atlas\NMT\tables_CHARM\CHARM_key_all.txt',delimiter='\t')
+    combined_atlas_nii=nib.load(r'D:\projectome_analysis\atlas\nmt_structure_with_hiearchy.nii.gz')
+    atlas=combined_atlas_nii.get_fdata()
+    # atlas,atlas_header=nrrd.read(r'D:\projectome_analysis\atlas\nmt_structure.nrrd')
+    global_id_df = pd.read_csv(r'D:\projectome_analysis\atlas\nmt_structures_labels.txt',delimiter='\t')
 
     pop = PopulationRegionAnalysis('251637', atlas, global_id_df)
     pop.process(limit=3)
     pop.plot_projection_by_soma(stat='median')  # or 'mean'
     pop.plot_soma_distribution()
+    pop.plot_terminal_distribution()
+    pop.plot_projection_by_terminal(stat='median')
     
 #%%
 
