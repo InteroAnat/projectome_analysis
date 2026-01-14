@@ -26,8 +26,9 @@ from io import StringIO
 
 import seaborn as sns
 from sklearn.cluster import AgglomerativeClustering
+import matplotlib.pyplot as plt
 import matplotlib.cm as cm
-
+matplotlib.use('TkAgg') 
 from scipy.cluster.hierarchy import dendrogram, linkage
 
 import requests
@@ -38,16 +39,8 @@ neuronlist=iondata.getNeuronListBySampleID('251637')
 
 neurontable = pd.DataFrame(neuronlist)
 
-neurontable = neurontable.iloc[:,0:3]# %%
 
-# %%
-print(neurontable)
-# %%
 neurontable['region'].value_counts(dropna=False)
-# %%
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-matplotlib.use('TkAgg')  # Use TkAgg backend
 neurontable['region'] = neurontable['region'].str.replace('\r', '',regex=False)
 # Replace empty strings with 'unknown'
 neurontable['region'] = neurontable['region'].replace('', 'unknown', regex=False)
@@ -55,7 +48,7 @@ neurontable['region'] = neurontable['region'].replace('', 'unknown', regex=False
 
 # Get the distribution
 region_distribution = neurontable['region'].value_counts(dropna=False)
-
+print(region_distribution)
 # Plot the distribution
 plt.figure(figsize=(10, 6))
 bars=region_distribution.plot(kind='bar', rot=45)
@@ -71,6 +64,8 @@ plt.tight_layout()
 plt.savefig('../figures/neuron_region_distribution_936.png', dpi=300)
 
 plt.show()
+#%%
+neuronRaw = iondata.getRawNeuronTreeBySampleID('251637')
 
 # %%
 import difflib

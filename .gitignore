@@ -3,4 +3,13 @@ neuron-vis/resource
 resource/
 main_scripts/resources
 main_scripts/processed_neurons/
+literature/
+*.tif
 
+
+*.tif
+# Ignore specific file types in the main folder
+*.tif
+*.msi
+*.fnt
+*.nrrd
