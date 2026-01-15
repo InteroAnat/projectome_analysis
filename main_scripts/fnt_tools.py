@@ -3,11 +3,12 @@ import shutil
 import subprocess
 import neuro_tracer as nt
 import sys
+import os
+
 neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
 if neurovis_path not in sys.path:
     sys.path.append(neurovis_path)
 import IONData
-
 
 #%%
 def execute_command(command):
@@ -60,39 +61,10 @@ def swc_fnt_tracer(sample_id,neuron_id):
 #%%
 swc2fnt('../resource/swc_raw/251637/157.swc')
     
-# %%
-with open('../resource/swc_raw/251637/157.swc', 'r') as file:
-    # Read the content of the file
-    content = file.read()
-    content.
-    # Process the content as needed
-    print(content)
-# %%
-def read_specific_lines(file_path, line_numbers):
-    with open(file_path, 'r') as file:
-        lines = file.readlines()
-    
-    # Extract specific lines
-    selected_lines = [lines[i-1] for i in line_numbers if i-1 < len(lines)]
-    
-    return selected_lines
 
-read_specific_lines("../resource/swc_raw/251637/157.swc.fnt",[0])
-# %%
-sample_id=251637
-catalog_address = f"10.10.48.110/monkey_data/{sample_id}/catalog"
-print(catalog_address)
+
+
 # %%
 swc_fnt_tracer("251637",'001.swc')
 
-# %%   
-iondata=IONData.IONData() 
-iondata.getannotation()
-
-
 # %%
-sample_id='22'
-catalog_address = f"10.10.48.110/monkey_data/{sample_id}/catalog"
-
-# %%
-catalog_address
