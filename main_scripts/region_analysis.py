@@ -22,7 +22,7 @@ Key Logic:
     - Handles 5D NIfTI files (X, Y, Z, Unused, Hierarchy Level).
     - Correctly maps Atlas Pixel IDs to Region Names using the 'Index' column.
 
-Author: [Your Name/Lab]
+Author: 
 """
 
 import sys
@@ -33,7 +33,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 import nibabel as nib
 from collections import defaultdict
-
+#%%
 # --- Custom Imports Setup ---
 # Ensures the neuronVis library is accessible
 neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
@@ -237,39 +237,34 @@ class PopulationRegionAnalysis:
         self.plot_dataframe = pd.DataFrame() 
 
     def process(self, limit=None, level=6, neuron_id=None):
-        """
-        Main runner function.
-        
-        Args:
-            limit (int): Max number of neurons to process (for testing).
-            level (int): Atlas Hierarchy Level (1=Coarse, 6=Detailed).
-                         Note: Level 6 is recommended to distinguish nuclei like EGP vs AA.
-            neuron_id (str): Optional. Run specific neuron ID (e.g. '001') for debugging.
-        """
-        # 5D Slicing: [X, Y, Z, Unused, Level]
-        # Level index is 0-based (Level 6 = index 5)
+    # 5D Slicing logic
         if self.full_atlas.ndim == 5:
             current_atlas = self.full_atlas[:, :, :, 0, level-1]
         else:
             current_atlas = self.full_atlas
             
-        # Filter Logic (Single vs Batch)
+        # --- FIX: EXACT ID MATCHING ---
         if neuron_id:
-            target_id = str(neuron_id).replace('.swc', '')
-            neurons_to_process = [n for n in self.neuron_list if str(n['name']).split('.')[0] == target_id]
+            # We assume neuron_id is like '001.swc'
+            # We look for an exact string match in the database list
+            target_list = [n for n in self.neuron_list if n['name'] == neuron_id]
+            
+            if not target_list:
+                print(f"Error: Neuron '{neuron_id}' not found in sample {self.sample_id}.")
+                print(f"Available (first 5): {[n['name'] for n in self.neuron_list[:5]]}")
+                return
         elif limit:
-            neurons_to_process = self.neuron_list[:limit]
+            target_list = self.neuron_list[:limit]
         else:
-            neurons_to_process = self.neuron_list
+            target_list = self.neuron_list
 
-        print(f"Processing {len(neurons_to_process)} neurons at Level {level}...")
+        print(f"Processing {len(target_list)} neurons at Level {level}...")
 
         data = []
 
-        for target_neuron in neurons_to_process:
+        for target_neuron in target_list:
             print(f"  -> {target_neuron['name']}")
             
-            # Load SWC via Tracer Library
             neuron = nt.neuro_tracer()
             try:
                 neuron.process(target_neuron['sampleid'], target_neuron['name'], nii_space=self.nii_space)
@@ -277,15 +272,12 @@ class PopulationRegionAnalysis:
                 print("     Load failed.")
                 continue
 
-            # Run Math Analysis
             analysis = region_analysis_per_neuron(neuron, current_atlas, self.atlas_table)
             analysis.region_analysis()
 
-            # Run Classifier
             term_list = list(analysis.terminal_regions.keys())
             n_type = self.classifier.classify_single_neuron(term_list)
 
-            # Store Result Row
             row = {
                 'SampleID': self.sample_id,
                 'NeuronID': neuron.swc_filename,
@@ -293,14 +285,13 @@ class PopulationRegionAnalysis:
                 'Soma_Region': analysis.soma_region,
                 'Total_Length': analysis.neuron_total_length,
                 'Terminal_Count': len(term_list),
-                'Terminal_List': term_list,
-                # Retains the full dictionary of {Region: Length} for detailed stats
+                # --- FIX: Standardized Column Name ---
+                'Terminal_Regions': term_list, 
                 'Region_projection_length': analysis.mapped_brain_region_lengths 
             }
             data.append(row)
 
         self.plot_dataframe = pd.DataFrame(data)
-
     def get_region_matrix(self):
         """
         Transforms the 'Region_projection_length' column into a dense matrix.
@@ -346,14 +337,73 @@ class PopulationRegionAnalysis:
 
     def plot_terminal_distribution(self):
         if self.plot_dataframe.empty: return
-        exploded = self.plot_dataframe.explode('Terminal_List')
-        counts = exploded['Terminal_List'].value_counts().head(20)
+        exploded = self.plot_dataframe.explode('Terminal_Regions')
+        counts = exploded['Terminal_Regions'].value_counts().head(20)
         
         plt.figure(figsize=(12, 6))
         counts.plot(kind='bar')
         plt.title("Top 20 Terminal Regions")
         plt.show()
+        # ==========================================================================
+    # NEW: SINGLE NEURON INSPECTOR
+    # ==========================================================================
+    def inspect_neuron(self, target_filename):
+        """
+        Args:
+            target_filename (str): Exact filename, e.g. '001.swc'
+        """
+        if self.plot_dataframe.empty:
+            print("Error: No data processed. Run process() first.")
+            return
 
+        # 1. Find the row (Exact match preferred)
+        mask = self.plot_dataframe['NeuronID'] == target_filename
+        
+        if not mask.any():
+            print(f"Error: '{target_filename}' not found in results.")
+            return
+        
+        row = self.plot_dataframe[mask].iloc[0]
+        
+        # 2. Print Report
+        print(f"\n{'='*40}")
+        print(f"  REPORT: {row['NeuronID']}")
+        print(f"{'='*40}")
+        print(f"  • Type:      {row['Neuron_Type']}")
+        print(f"  • Soma:      {row['Soma_Region']}")
+        print(f"  • Length:    {row['Total_Length']:.3f}")
+        # --- FIX: Accessing the correct column name 'Terminal_Regions' ---
+        print(f"  • Targets:   {row['Terminal_Regions']}") 
+        print("-" * 40)
+        
+        # 3. Plotting Logic (Same as before)
+        region_dict = row['Region_projection_length']
+        if not region_dict or sum(region_dict.values()) == 0: return
+
+        stats = pd.Series(region_dict).sort_values(ascending=False)
+        # Filter noise
+        stats = stats[stats > 0]
+
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        
+        # Bar Plot
+        top_n = stats.head(10)
+        sns.barplot(x=top_n.values, y=top_n.index, ax=axes[0], palette='viridis')
+        axes[0].set_title(f"Top Projections ({row['NeuronID']})")
+        
+        # Pie Plot
+        if len(stats) > 6:
+            main = stats.head(6)
+            other = pd.Series({'Others': stats.iloc[6:].sum()})
+            pie_data = pd.concat([main, other])
+        else:
+            pie_data = stats
+            
+        axes[1].pie(pie_data, labels=pie_data.index, autopct='%1.1f%%')
+        axes[1].set_title("Distribution")
+        
+        plt.tight_layout()
+        plt.show()
 # ==============================================================================
 # MAIN EXECUTION
 # ==============================================================================
@@ -371,7 +421,7 @@ if __name__ == '__main__':
     pop = PopulationRegionAnalysis('251637', atlas_data, global_id_df)
     
     # RUN Analysis (Batch of 10 neurons, Level 6 detail)
-    pop.process( level=3)
+    pop.process(limit=10,level=3)
     
     # Generate Plots
     pop.plot_projection_by_soma()
@@ -383,6 +433,9 @@ if __name__ == '__main__':
     print("\n--- Detailed Regional Length Matrix (First 5 Rows) ---")
     print(detailed_matrix.head())
     
-    # Export
-    pop.plot_dataframe.to_csv("Summary_Results.csv", index=False)
-    detailed_matrix.to_csv("Detailed_Region_Lengths.csv", index=False)
+    pop.inspect_neuron('001.swc')
+
+    # # Export
+    # pop.plot_dataframe.to_csv("Summary_Results.csv", index=False)
+    # detailed_matrix.to_csv("Detailed_Region_Lengths.csv", index=False)
+# %%
