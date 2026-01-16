@@ -9,8 +9,7 @@ based on the structure key table used by ION, I found the indices are formatted 
 
 Key notes:
  1. selectively increase ID of SARM-exist voxels
- 2. check the max ID to make sure it's 618
- 3. check the 
+ 2. combined atlas indices
 
 
 
