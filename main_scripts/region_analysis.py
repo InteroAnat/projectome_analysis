@@ -1,30 +1,17 @@
 """
-Monkey Projectome Analysis Module
+Monkey Projectome Region Ana
 =================================
-
-Purpose:
-    This script quantifies the projection patterns of reconstructed monkey neurons (SWC format)
-    mapped onto the NMT v2.0 Atlas (CHARM + SARM composite). 
-
-    It performs three main tasks:
-    1. Geometry Mapping: Calculates how much axon length falls into each specific brain region.
-    2. Classification: Categorizes neurons into IT (Intratelencephalic), PT (Pyramidal Tract), 
-       or CT (Corticothalamic) based on projection targets.
-    3. Population Statistics: Aggregates results for batch analysis and visualization.
-
-Dependencies:
-    - nibabel: For loading NIfTI (.nii.gz) atlas files.
-    - pandas: For data handling and table lookups.
-    - IONData & neuro_tracer: Custom labs libraries for SWC loading.
-
-Key Logic:
-    - Uses NMT Atlas ID ranges to determine broad anatomical groups (Brainstem vs Thalamus vs Cortex).
-    - Handles 5D NIfTI files (X, Y, Z, Unused, Hierarchy Level).
-    - Correctly maps Atlas Pixel IDs to Region Names using the 'Index' column.
-
-Author: 
 """
+"""
+Key module for analysis of the projectome in the NMT space for region information.
 
+update log:
+
+v- 0.11: 19/01/2026: 
+    some bug fixes for outlier plot, 
+    now outlier plot can be controlled by a separate function but the outlier count will noted.
+    
+"""
 import sys
 import os
 import numpy as np
@@ -32,10 +19,13 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 import nibabel as nib
+import nibabel.affines
 from collections import defaultdict
-#%%
+
+# --- VISUALIZATION IMPORTS ---
+from nilearn import plotting
+
 # --- Custom Imports Setup ---
-# Ensures the neuronVis library is accessible
 neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
 if neurovis_path not in sys.path:
     sys.path.append(neurovis_path)
@@ -47,69 +37,70 @@ import neuro_tracer as nt
 iondata = IONData.IONData()
 
 # ==============================================================================
-# 1. NEURON CLASSIFIER (Logic Engine)
+# HELPER: OUTLIER INSPECTOR (Visual Debugger)
+# ==============================================================================
+def save_debug_snapshot(voxel_coords, neuron_name, template_img, point_type, folder="../resource/debug_outliers"):
+    """
+    Saves a snapshot to the resource folder in the parent directory.
+    """
+    if template_img is None: return
+    
+    # Create directory if it doesn't exist
+    if not os.path.exists(folder): 
+        try:
+            os.makedirs(folder)
+        except Exception as e:
+            print(f"     [WARN] Could not create folder {folder}: {e}")
+            return
+    
+    world_coords = nib.affines.apply_affine(template_img.affine, voxel_coords)
+    
+    try:
+        display = plotting.plot_anat(
+            template_img, 
+            cut_coords=world_coords, 
+            draw_cross=True, 
+            title=f"Outlier {point_type}: {neuron_name} -> {voxel_coords}"
+        )
+        
+        fname = f"{neuron_name}_{point_type}_ID0_{int(voxel_coords[0])}_{int(voxel_coords[1])}_{int(voxel_coords[2])}.png"
+        full_path = os.path.join(folder, fname)
+        
+        display.savefig(full_path)
+        display.close()
+        print(f"     [DEBUG] Snapshot saved: {full_path}")
+        
+    except Exception as e:
+        print(f"     [DEBUG] Failed to plot snapshot: {e}")
+
+# ==============================================================================
+# 1. NEURON CLASSIFIER
 # ==============================================================================
 class NeuronClassifier:
-    """
-    Logic engine that categorizes neurons based on their terminal fields.
-    
-    It relies on the Integer ID ranges defined in the NMT Atlas structure:
-    - Brainstem: IDs 461-618
-    - Thalamus:  IDs 405-452
-    - Telencephalon: IDs 1-373
-    """
     def __init__(self, atlas_table):
-        """
-        Args:
-            atlas_table (pd.DataFrame): The NMT lookup table containing 'Index', 
-                                        'Abbreviation', and 'Full_Name'.
-        """
-        # Data Cleaning: Ensure 'Index' column is treated as Integers, not Strings.
         try:
             ids = pd.to_numeric(atlas_table['Index'], errors='coerce')
         except KeyError:
-            # Fallback if the column is unnamed (usually 1st column)
             ids = pd.to_numeric(atlas_table.iloc[:, 0], errors='coerce')
 
-        # Build Dictionary: {Abbreviation: ID} (e.g., {'VPL': 356})
         self.name_to_id = dict(zip(atlas_table['Abbreviation'], ids))
-        
-        # Build Dictionary: {Full_Name: ID} (e.g., {'Ventral Posterior': 356})
         if 'Full_Name' in atlas_table.columns:
              self.name_to_id.update(dict(zip(atlas_table['Full_Name'], ids)))
 
     def _get_broad_region(self, region_identifier):
-        """
-        Maps a specific region name (e.g., "VPL") to a broad parent group 
-        (e.g., "Thalamus") using numerical ID ranges.
-        """
-        # 1. Convert Name -> ID
         rid = self.name_to_id.get(region_identifier)
-        
-        # 2. Safety Check: If lookup failed, maybe the input was already an ID number?
         if rid is None:
             try: rid = int(region_identifier)
             except: return 'Other'
-        
-        # 3. Force Integer Type for comparison
         try: rid = int(rid)
         except: return 'Other'
 
-        # 4. Range Logic (Specific to NMT v2)
         if 461 <= rid <= 618: return 'Brainstem'
         if 405 <= rid <= 452: return 'Thalamus'
         if 1 <= rid <= 373: return 'Telencephalon'
         return 'Other'
 
     def classify_single_neuron(self, terminal_list):
-        """
-        Determines neuron class based on the hierarchy of projection targets.
-        
-        Priority Rule:
-        1. PT (Pyramidal Tract): Projects to Brainstem (even if it also projects elsewhere).
-        2. CT (Corticothalamic): Projects to Thalamus (but NOT Brainstem).
-        3. IT (Intratelencephalic): Projects ONLY within Cortex/Striatum.
-        """
         targets = set()
         for t_name in terminal_list:
             targets.add(self._get_broad_region(t_name))
@@ -120,43 +111,24 @@ class NeuronClassifier:
         return 'Unclassified'
 
 # ==============================================================================
-# 2. PER NEURON ANALYSIS (Math Engine)
+# 2. PER NEURON ANALYSIS
 # ==============================================================================
 class region_analysis_per_neuron:
-    """
-    Performs geometric analysis on a single neuron trace (SWC).
-    Calculates total axon length and length per brain region.
-    """
     def __init__(self, neuron_tracer_obj, atlas_volume, atlas_table):
-        """
-        Args:
-            neuron_tracer_obj: The loaded SWC object.
-            atlas_volume (np.array): The 3D integer array of the brain (sliced to specific level).
-            atlas_table (pd.DataFrame): The lookup table.
-        """
         self.neuron = neuron_tracer_obj
         self.atlas = atlas_volume
         self.atlas_table = atlas_table
-        
-        # Critical Map: ID -> Name
-        # We map row['Index'] (The Pixel Value) to row['Abbreviation'] (The Name)
+        # Fix: Use 'Index' column for keys
         self.brain_region_map = {row['Index']: row['Abbreviation'] for _, row in self.atlas_table.iterrows()}
        
     def region_analysis(self):
-        """Executes the calculation pipeline."""
         self.mapped_brain_region_lengths, self.neuron_total_length = self._calculate_neuronal_branch_length()
         self.soma_region, self.terminal_regions = self._soma_and_terminal_region()
 
     def _distance(self, p1, p2):
-        """Euclidean distance between two SWC nodes."""
         return np.sqrt((p1.x_nii - p2.x_nii)**2 + (p1.y_nii - p2.y_nii)**2 + (p1.z_nii - p2.z_nii)**2)
     
     def _calculate_neuronal_branch_length(self):
-        """
-        Iterates through every segment of the neuron.
-        Checks which Atlas Region ID the segment lies within.
-        Sums length per ID.
-        """
         brain_region_lengths = defaultdict(float)
         neuron_total_length = 0
         
@@ -166,20 +138,17 @@ class region_analysis_per_neuron:
                 child_node = branch[i+1]
                 edge_length = round(self._distance(current_node, child_node), 3)
                 
-                # Get coordinate in Atlas Space
                 aa = tuple(np.round(np.array([current_node.x_nii, current_node.y_nii, current_node.z_nii])).astype(int).flatten())
                 neuron_total_length += edge_length
 
-                # Boundary Check
                 if (0 <= aa[0] < self.atlas.shape[0] and
                     0 <= aa[1] < self.atlas.shape[1] and
                     0 <= aa[2] < self.atlas.shape[2]):
 
                     brain_region_id = int(self.atlas[aa])
-                    if brain_region_id > 0: # Ignore background (0)
+                    if brain_region_id > 0: 
                         brain_region_lengths[brain_region_id] += edge_length
         
-        # Convert Dictionary Keys from IDs (356) to Names (EGP)
         mapped = {}
         for index, length in brain_region_lengths.items():
             region_name = self.brain_region_map.get(index, f'Unknown_{index}')
@@ -188,11 +157,9 @@ class region_analysis_per_neuron:
         return mapped, neuron_total_length
 
     def _soma_and_terminal_region(self):
-        """Identifies the specific region containing the Soma and Tips."""
         soma = self.neuron.root
         soma_pos = tuple(np.round(np.array([soma.x_nii, soma.y_nii, soma.z_nii])).astype(int).flatten())
         
-        # Soma Lookup
         if (0 <= soma_pos[0] < self.atlas.shape[0] and 
             0 <= soma_pos[1] < self.atlas.shape[1] and 
             0 <= soma_pos[2] < self.atlas.shape[2]):
@@ -201,8 +168,7 @@ class region_analysis_per_neuron:
         else:
             soma_region = "Out_of_Bounds"
         
-        # Terminal Lookup
-        terminal_regions = {}
+        terminal_regions = []
         for node in self.neuron.terminal_nodes:
             node_pos = tuple(np.round(np.array([node.x_nii, node.y_nii, node.z_nii])).astype(int).flatten())
             if (0 <= node_pos[0] < self.atlas.shape[0] and 
@@ -210,48 +176,37 @@ class region_analysis_per_neuron:
                 0 <= node_pos[2] < self.atlas.shape[2]):
                 t_id = int(self.atlas[node_pos])
                 t_name = self.brain_region_map.get(t_id, f'Unknown_{t_id}')
-                terminal_regions[t_name] = node_pos
+                
+                terminal_regions.append({'region': t_name, 'coords': node_pos})
             
         return soma_region, terminal_regions   
 
 # ==============================================================================
-# 3. POPULATION MANAGER (Orchestrator)
+# 3. POPULATION MANAGER
 # ==============================================================================
 class PopulationRegionAnalysis:
-    """
-    Manages the batch processing of multiple neurons.
-    - Slices the 5D atlas.
-    - Runs analysis per neuron.
-    - Aggregates data into a master DataFrame.
-    - Provides visualization methods.
-    """
-    def __init__(self, sample_id, atlas, atlas_table, nii_space='monkey'):
+    def __init__(self, sample_id, atlas, atlas_table, template_img=None, nii_space='monkey'):
         self.sample_id = sample_id
-        self.full_atlas = atlas # The raw NIfTI data (likely 5D)
+        self.full_atlas = atlas 
         self.atlas_table = atlas_table
+        self.template_img = template_img 
         self.nii_space = nii_space
         self.neuron_list = iondata.getNeuronListBySampleID(sample_id)
         self.classifier = NeuronClassifier(atlas_table)
-        
-        # Main results storage
         self.plot_dataframe = pd.DataFrame() 
+        self.neurons = {} 
 
     def process(self, limit=None, level=6, neuron_id=None):
-    # 5D Slicing logic
+        # 5D Slicing
         if self.full_atlas.ndim == 5:
             current_atlas = self.full_atlas[:, :, :, 0, level-1]
         else:
             current_atlas = self.full_atlas
             
-        # --- FIX: EXACT ID MATCHING ---
         if neuron_id:
-            # We assume neuron_id is like '001.swc'
-            # We look for an exact string match in the database list
             target_list = [n for n in self.neuron_list if n['name'] == neuron_id]
-            
             if not target_list:
-                print(f"Error: Neuron '{neuron_id}' not found in sample {self.sample_id}.")
-                print(f"Available (first 5): {[n['name'] for n in self.neuron_list[:5]]}")
+                print(f"Error: Neuron '{neuron_id}' not found.")
                 return
         elif limit:
             target_list = self.neuron_list[:limit]
@@ -274,9 +229,29 @@ class PopulationRegionAnalysis:
 
             analysis = region_analysis_per_neuron(neuron, current_atlas, self.atlas_table)
             analysis.region_analysis()
+            
+            # --- OUTLIER DATA COLLECTION (No Plotting Here) ---
+            neuron.outliers = []
 
-            term_list = list(analysis.terminal_regions.keys())
-            n_type = self.classifier.classify_single_neuron(term_list)
+            # 1. Check Soma
+            if "Unknown" in analysis.soma_region:
+                root = neuron.root
+                coords = (int(root.x_nii), int(root.y_nii), int(root.z_nii))
+                neuron.outliers.append({'type': 'Soma', 'region': analysis.soma_region, 'coords': coords})
+            
+            # 2. Check Terminals
+            for item in analysis.terminal_regions:
+                t_name = item['region']
+                coords = item['coords']
+                if "Unknown" in t_name:
+                    neuron.outliers.append({'type': 'Terminal', 'region': t_name, 'coords': coords})
+
+            # Store Neuron Object
+            self.neurons[neuron.swc_filename] = neuron
+
+            # --- CLASSIFICATION & STORAGE ---
+            term_name_list = [item['region'] for item in analysis.terminal_regions]
+            n_type = self.classifier.classify_single_neuron(term_name_list)
 
             row = {
                 'SampleID': self.sample_id,
@@ -284,49 +259,104 @@ class PopulationRegionAnalysis:
                 'Neuron_Type': n_type,
                 'Soma_Region': analysis.soma_region,
                 'Total_Length': analysis.neuron_total_length,
-                'Terminal_Count': len(term_list),
-                # --- FIX: Standardized Column Name ---
-                'Terminal_Regions': term_list, 
-                'Region_projection_length': analysis.mapped_brain_region_lengths 
+                'Terminal_Count': len(term_name_list),
+                'Terminal_Regions': term_name_list, 
+                'Region_projection_length': analysis.mapped_brain_region_lengths,
+                'Outlier_Count': len(neuron.outliers),
+                'Outlier_Details': neuron.outliers
             }
             data.append(row)
 
         self.plot_dataframe = pd.DataFrame(data)
-    def get_region_matrix(self):
+
+    def export_outlier_snapshots(self, neuron_id, max_snapshots=3):
         """
-        Transforms the 'Region_projection_length' column into a dense matrix.
-        Rows: Neurons
-        Cols: Brain Regions (Values = Axon Length)
-        Useful for Heatmaps and Clustering.
+        Generates images for outliers stored in a specific neuron object.
+        Args:
+            max_snapshots (int): Maximum number of images to generate per neuron (default 3).
         """
-        if self.plot_dataframe.empty: return pd.DataFrame()
+        if neuron_id not in self.neurons:
+            print(f"Neuron {neuron_id} not loaded.")
+            return
+            
+        neuron = self.neurons[neuron_id]
         
+        if not neuron.outliers:
+            print(f"No outliers found for {neuron_id}.")
+            return
+            
+        print(f"Exporting outliers for {neuron_id} (Limit: {max_snapshots})...")
+        
+        count = 0
+        for error in neuron.outliers:
+            # --- SAFETY CHECK ---
+            if count >= max_snapshots:
+                print(f"     [INFO] Max snapshots ({max_snapshots}) reached. Stopping.")
+                break
+            
+            save_debug_snapshot(
+                voxel_coords=error['coords'],
+                neuron_name=neuron.swc_filename,
+                template_img=self.template_img,
+                point_type=error['type']
+            )
+            count += 1
+
+    def get_region_matrix(self):
+        if self.plot_dataframe.empty: return pd.DataFrame()
         dict_list = self.plot_dataframe['Region_projection_length'].tolist()
         matrix = pd.DataFrame(dict_list)
-        matrix.fillna(0, inplace=True) # Zero length for non-projected regions
-        
-        # Add identifiers back
+        matrix.fillna(0, inplace=True)
         matrix.insert(0, 'NeuronID', self.plot_dataframe['NeuronID'])
         matrix.insert(1, 'Neuron_Type', self.plot_dataframe['Neuron_Type'])
-        
         return matrix
 
-    # --- VISUALIZATION METHODS ---
+    def inspect_neuron(self, target_filename):
+        if self.plot_dataframe.empty:
+            print("Error: No data. Run process() first.")
+            return
+        mask = self.plot_dataframe['NeuronID'] == target_filename
+        if not mask.any():
+            print(f"Error: '{target_filename}' not found.")
+            return
+        row = self.plot_dataframe[mask].iloc[0]
+        
+        print(f"\nREPORT: {row['NeuronID']}")
+        print(f"  Type: {row['Neuron_Type']} | Soma: {row['Soma_Region']}")
+        print(f"  Length: {row['Total_Length']:.3f}")
+        print(f"  Targets: {row['Terminal_Regions']}") 
+        
+        region_dict = row['Region_projection_length']
+        if not region_dict or sum(region_dict.values()) == 0: return
+
+        stats = pd.Series(region_dict).sort_values(ascending=False)
+        stats = stats[stats > 0]
+
+        fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+        top_n = stats.head(10)
+        sns.barplot(x=top_n.values, y=top_n.index, ax=axes[0], palette='viridis')
+        axes[0].set_title(f"Top Projections ({row['NeuronID']})")
+        
+        if len(stats) > 6:
+            main = stats.head(6)
+            other = pd.Series({'Others': stats.iloc[6:].sum()})
+            pie_data = pd.concat([main, other])
+        else:
+            pie_data = stats
+        axes[1].pie(pie_data, labels=pie_data.index, autopct='%1.1f%%')
+        axes[1].set_title("Distribution")
+        plt.tight_layout()
+        plt.show()
 
     def plot_projection_by_soma(self, stat='median'):
         if self.plot_dataframe.empty: return
         df = self.plot_dataframe
         regions = df['Soma_Region'].unique()
         data = [df[df['Soma_Region'] == r]['Total_Length'] for r in regions]
-        
         fig, ax = plt.subplots(figsize=(10, 6))
         ax.boxplot(data, labels=regions)
         ax.set_title(f'Projection Length by Soma Region ({stat})')
         plt.xticks(rotation=45)
-        
-        vals = [np.median(d) if stat=='median' else np.mean(d) for d in data]
-        for i, val in enumerate(vals):
-            ax.text(i+1, val, f"{val:.1f}", ha='center', va='bottom')
         plt.show()
 
     def plot_type_distribution(self):
@@ -339,103 +369,42 @@ class PopulationRegionAnalysis:
         if self.plot_dataframe.empty: return
         exploded = self.plot_dataframe.explode('Terminal_Regions')
         counts = exploded['Terminal_Regions'].value_counts().head(20)
-        
         plt.figure(figsize=(12, 6))
         counts.plot(kind='bar')
         plt.title("Top 20 Terminal Regions")
         plt.show()
-        # ==========================================================================
-    # NEW: SINGLE NEURON INSPECTOR
-    # ==========================================================================
-    def inspect_neuron(self, target_filename):
-        """
-        Args:
-            target_filename (str): Exact filename, e.g. '001.swc'
-        """
-        if self.plot_dataframe.empty:
-            print("Error: No data processed. Run process() first.")
-            return
 
-        # 1. Find the row (Exact match preferred)
-        mask = self.plot_dataframe['NeuronID'] == target_filename
-        
-        if not mask.any():
-            print(f"Error: '{target_filename}' not found in results.")
-            return
-        
-        row = self.plot_dataframe[mask].iloc[0]
-        
-        # 2. Print Report
-        print(f"\n{'='*40}")
-        print(f"  REPORT: {row['NeuronID']}")
-        print(f"{'='*40}")
-        print(f"  • Type:      {row['Neuron_Type']}")
-        print(f"  • Soma:      {row['Soma_Region']}")
-        print(f"  • Length:    {row['Total_Length']:.3f}")
-        # --- FIX: Accessing the correct column name 'Terminal_Regions' ---
-        print(f"  • Targets:   {row['Terminal_Regions']}") 
-        print("-" * 40)
-        
-        # 3. Plotting Logic (Same as before)
-        region_dict = row['Region_projection_length']
-        if not region_dict or sum(region_dict.values()) == 0: return
 
-        stats = pd.Series(region_dict).sort_values(ascending=False)
-        # Filter noise
-        stats = stats[stats > 0]
 
-        fig, axes = plt.subplots(1, 2, figsize=(12, 5))
-        
-        # Bar Plot
-        top_n = stats.head(10)
-        sns.barplot(x=top_n.values, y=top_n.index, ax=axes[0], palette='viridis')
-        axes[0].set_title(f"Top Projections ({row['NeuronID']})")
-        
-        # Pie Plot
-        if len(stats) > 6:
-            main = stats.head(6)
-            other = pd.Series({'Others': stats.iloc[6:].sum()})
-            pie_data = pd.concat([main, other])
-        else:
-            pie_data = stats
-            
-        axes[1].pie(pie_data, labels=pie_data.index, autopct='%1.1f%%')
-        axes[1].set_title("Distribution")
-        
-        plt.tight_layout()
-        plt.show()
 # ==============================================================================
 # MAIN EXECUTION
 # ==============================================================================
 if __name__ == '__main__':
-    # PATHS (Update to your combined SARM+CHARM atlas)
+    # 1. PATHS
     atlas_path = r'D:\projectome_analysis\atlas\nmt_structure_with_hiearchy.nii.gz'
     table_path = r'D:\projectome_analysis\atlas\nmt_structures_labels.txt'
+    template_path = r'D:\projectome_analysis\atlas\NMT_v2.0_sym\NMT_v2.0_sym\NMT_v2.0_sym_SS.nii'
     
-    # Load Files
+    # 2. LOAD
     combined_atlas_nii = nib.load(atlas_path)
     atlas_data = combined_atlas_nii.get_fdata()
     global_id_df = pd.read_csv(table_path, delimiter='\t')
+    template_nii = nib.load(template_path)
 
-    # Initialize
-    pop = PopulationRegionAnalysis('251637', atlas_data, global_id_df)
+    # 3. INIT
+    pop = PopulationRegionAnalysis('251637', atlas_data, global_id_df, template_img=template_nii)
     
-    # RUN Analysis (Batch of 10 neurons, Level 6 detail)
-    pop.process(limit=10,level=3)
+    # 4. RUN SINGLE NEURON TEST
+    target_file = '001.swc'
+    pop.process(neuron_id=target_file, level=6)
     
-    # Generate Plots
-    pop.plot_projection_by_soma()
-    pop.plot_type_distribution()
-    pop.plot_terminal_distribution()
-    
-    # Extract & Print Detailed Data
-    detailed_matrix = pop.get_region_matrix()
-    print("\n--- Detailed Regional Length Matrix (First 5 Rows) ---")
-    print(detailed_matrix.head())
-    
-    pop.inspect_neuron('001.swc')
+    # 5. CHECK OUTLIERS (On Demand)
+    pop.export_outlier_snapshots(target_file)
+    pop.inspect_neuron(target_file)
 
-    # # Export
-    # pop.plot_dataframe.to_csv("Summary_Results.csv", index=False)
-    # detailed_matrix.to_csv("Detailed_Region_Lengths.csv", index=False)
-# %%
+    # 6. BATCH EXAMPLE
+    # pop.process(limit=50, level=6)
+    # bad_somas = pop.plot_dataframe[pop.plot_dataframe['Outlier_Count'] > 0]
+    # if not bad_somas.empty:
+    #     pop.export_outlier_snapshots(bad_somas.iloc[0]['NeuronID'])
+    

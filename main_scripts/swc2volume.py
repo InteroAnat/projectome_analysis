@@ -25,15 +25,20 @@ def swc2volume(sampleid, name):
     for p in tree.nodes.values():
 
         readdata[int(p.x_nii),int(p.y_nii),int(p.z_nii)] = 400
-    nrrd_folder = '../resource/nrrd/'+sampleid+name
-    nrrd_file_path = os.path.join(nrrd_folder, name.replace('.swc', '') + '.nrrd')
     
-    if not os.path.exists(nrrd_folder):
-        os.makedirs(nrrd_folder)
-        print(f"Created directory: {nrrd_folder}")
+    
+    project_root = os.path.dirname(os.getcwd())
+    save_folder = os.path.join(project_root, 'resource','nrrd', sampleid)
+    nrrd_file_path = os.path.join(save_folder, name.replace('.swc', '') + '.nrrd')
+    
+    if not os.path.exists(save_folder):
+        os.makedirs(save_folder)
+        print(f"Created directory: {save_folder}")
 
     nrrd.write(nrrd_file_path, readdata)
     print(f"Wrote file: {nrrd_file_path}")
 
 if __name__ == "__main__":
     swc2volume('251637', '157.swc')
+    
+    
