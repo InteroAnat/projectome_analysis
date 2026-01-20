@@ -11,6 +11,10 @@ v- 0.11: 19/01/2026:
     some bug fixes for outlier plot, 
     now outlier plot can be controlled by a separate function but the outlier count will noted.
     
+v - 0.12:
+    1. potential updates: plot soma function
+    2. move plotting functions to be static so that they can be applied externally.
+    3. flat map display
 """
 import sys
 import os
@@ -372,6 +376,21 @@ class PopulationRegionAnalysis:
         plt.figure(figsize=(12, 6))
         counts.plot(kind='bar')
         plt.title("Top 20 Terminal Regions")
+        plt.show()
+        
+    def plot_soma_distribution(self):
+        df = self.plot_dataframe
+        if df.empty: return
+        soma_counts = df['Soma_Region'].value_counts()
+        fig, ax = plt.subplots(figsize=(10, 6))
+        soma_counts.plot(kind='bar', ax=ax)
+        ax.set_title('Summary of Soma Distribution by Region')
+        ax.set_ylabel('Number of Neurons')
+        plt.xticks(rotation=45)
+        plt.tight_layout()
+        
+        for i, height in enumerate(soma_counts):
+            ax.text(i, height, str(height), ha='center', va='bottom')
         plt.show()
 
 
