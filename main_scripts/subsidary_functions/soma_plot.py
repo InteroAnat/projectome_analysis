@@ -40,9 +40,9 @@ def visualize_soma_on_atlas(neuron_obj, atlas_img, title="Soma Location"):
         )
     
     fig.show()
-    folder =r'../resource/soma_locations'
-    if not os.path.exists(folder): os.makedirs(folder)
-    fig_name = f"{save_folder}/{neuron_obj.swc_filename.split('.')[0]} + '_soma_location.png'"
+    # folder =r'../resource/soma_locations'
+    # if not os.path.exists(folder): os.makedirs(folder)
+    # fig_name = f"{save_folder}/{neuron_obj.swc_filename.split('.')[0]} + '_soma_location.png'"
     fig.savefig(fig_name)
     fig.close()
 # --- USAGE EXAMPLE ---
