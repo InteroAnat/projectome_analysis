@@ -6,8 +6,9 @@ import tifffile
 import nrrd
 import nibabel as nib
 import matplotlib
-import matplotlib.pyplot as plt
 matplotlib.use('TkAgg')
+
+import matplotlib.pyplot as plt
 
 # --- PATHS ---
 neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
@@ -22,7 +23,7 @@ DATA_PATH = 'monkeydata'
 BLOCK_SIZE = [360, 360, 90]    # [X, Y, Z]
 RESOLUTION = [0.65, 0.65, 3.0] # [X, Y, Z] microns
 
-class FNTCubeToolkit:
+class FNTCubeVis:
     def __init__(self, sample_id):
         self.sample_id = sample_id
         parent_dir = os.path.dirname(os.getcwd())
@@ -176,46 +177,67 @@ class FNTCubeToolkit:
     def plot_check(self, data_3d, origin_um, soma_um, neuron_id, title_prefix="Check"):
         print("Generating Plot...")
         
-        # 1. SLICE SELECTION
-        # If 3D, take MIDDLE slice (to see soma context)
-        # If 2D, take as is
-        if data_3d.ndim == 3:
-            mid_z = data_3d.shape[0] // 2
-            img = data_3d[mid_z, :, :]
-            slice_info = f"Slice {mid_z}/{data_3d.shape[0]}"
-        else:
-            img = data_3d
-            slice_info = "MIP/2D"
-            
+        # 1. Flatten to MIP
+        img = np.max(data_3d, axis=0) if data_3d.ndim == 3 else data_3d
         h_px, w_px = img.shape
+        z_slices = data_3d.shape[0] if data_3d.ndim == 3 else 1
         
-        # 2. Local Soma Position
+        # 2. Calculate Local Soma Position
+        # Local = (Global_Soma - Global_Origin) / Res
         sx = (soma_um[0] - origin_um[0]) / RESOLUTION[0]
         sy = (soma_um[1] - origin_um[1]) / RESOLUTION[1]
         
-        # 3. Robust Contrast
+        # 3. Robust Contrast (Fixes contrast issues between Vol/Mosaic)
         p_low = np.percentile(img, 1)
         p_high = np.percentile(img, 99.5)
         
-        plt.figure(figsize=(10, 10))
-        plt.imshow(img, cmap='gray', vmin=p_low, vmax=p_high)
-        plt.scatter(sx, sy, c='red', marker='+', s=150, linewidth=2, label=f'Soma')
+        # 4. Plot Setup
+        fig, ax = plt.subplots(figsize=(10, 10))
         
-        # 4. Scale Bar (500 um)
-        bar_px = 500 / RESOLUTION[0]
-        bx, by = w_px - bar_px - 50, h_px - 50
-        plt.plot([bx, bx + bar_px], [by, by], color='white', linewidth=4)
-        plt.text(bx + bar_px/2, by - 20, "500 µm", color='white', ha='center', fontweight='bold')
+        # Show Image
+        # origin='upper' means index (0,0) is Top-Left
+        ax.imshow(img, cmap='gray', vmin=p_low, vmax=p_high, origin='upper')
+        
+        # Plot Soma
+        # Scatter takes (X, Y). With origin='upper', Y counts down from top.
+        ax.scatter(sx, sy, c='red', marker='+', s=200, linewidth=2, label='Soma')
+        
+        # --- CRITICAL FIX: LOCK AXES ---
+        # Force the view to exactly the image size
+        ax.set_xlim(0, w_px)
+        ax.set_ylim(h_px, 0) # Flip 0 to Top
+        
+        # 5. Scale Bar (500 um)
+        bar_um = 500
+        bar_px = bar_um / RESOLUTION[0]
+        
+        # Position: Bottom-Right (Coordinates are High-X, High-Y)
+        bx_start = w_px - bar_px - 50
+        by_fixed = h_px - 50
+        
+        ax.plot([bx_start, bx_start + bar_px], [by_fixed, by_fixed], color='white', linewidth=4)
+        ax.text(bx_start + bar_px/2, by_fixed - 20, f"{bar_um} µm", color='white', ha='center', fontweight='bold')
 
-        title_str = f"{self.sample_id} | {neuron_id} | {title_prefix}\n{slice_info}"
-        plt.title(title_str, fontsize=12, fontweight='bold')
-        plt.axis('off')
-        plt.legend(loc='upper right')
+        # Titles
+        w_um = w_px * RESOLUTION[0]
+        h_um = h_px * RESOLUTION[1]
+        z_um = z_slices * RESOLUTION[2]
         
-        # 5. Save Plot
-        plot_name = f"{self.sample_id}_{neuron_id}_{title_prefix}_Plot.png"
+        title_str = (
+            f"Sample {self.sample_id} | {neuron_id} | {title_prefix}\n"
+            f"FOV: {w_um:.0f} x {h_um:.0f} µm | Depth: {z_um:.0f} µm"
+        )
+        
+        ax.set_title(title_str, fontsize=12, fontweight='bold')
+        ax.axis('off')
+        ax.legend(loc='upper left') # Moved legend to not block scale bar
+        
+        # Save
+        plot_name = f"{self.sample_id}_{neuron_id}_{title_prefix.replace(' ', '')}_Plot.png"
         save_path = os.path.join(self.output_dir, plot_name)
-        plt.savefig(save_path)
+        
+        plt.tight_layout()
+        plt.savefig(save_path, bbox_inches='tight', pad_inches=0.1)
         print(f"Plot saved: {save_path}")
         plt.show()
 
@@ -223,7 +245,7 @@ class FNTCubeToolkit:
 # MAIN EXECUTION
 # ==========================================
 if __name__ == '__main__':
-    toolkit = FNTCubeToolkit('251637')
+    cube = FNTCubeVis('251637')
     ion = IT.IONData()
     
     target_neuron = '003.swc'
@@ -233,17 +255,17 @@ if __name__ == '__main__':
     print(f"Processing {target_neuron} at {xyz}...")
     
     # 1. VOLUME (Grid) -> Saves NIfTI
-    vol, org = toolkit.get_data(xyz, radius=1)
-    toolkit.export_data(vol, org, xyz, target_neuron, suffix="GridVol")
-    toolkit.plot_check(vol, org, xyz, target_neuron, "GridVol")
+    vol, org = cube.get_data(xyz, radius=1)
+    cube.export_data(vol, org, xyz, target_neuron, suffix="GridVol")
+    cube.plot_check(vol, org, xyz, target_neuron, "GridVol")
     
     # 2. WIDE FIELD (Mosaic) -> Saves NIfTI (if depth>1) or TIFF (if depth=1)
-    slab, org_s = toolkit.get_data(xyz, width_um=1000, height_um=1000, depth_um=60)
+    slab, org_s = cube.get_data(xyz, width_um=1000, height_um=1000, depth_um=60)
     
     # Force 2D Flatten for Tiff export? Or keep 3D Slab?
     # Let's save the 3D Slab as NIfTI
-    toolkit.export_data(slab, org_s, xyz, target_neuron, suffix="WideSlab")
+    cube.export_data(slab, org_s, xyz, target_neuron, suffix="WideSlab")
     
-    toolkit.plot_check(slab, org_s, xyz, target_neuron, "WideSlab")
+    cube.plot_check(slab, org_s, xyz, target_neuron, "WideSlab")
     
     
