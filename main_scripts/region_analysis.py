@@ -418,7 +418,7 @@ if __name__ == '__main__':
     pop.process(neuron_id=target_file, level=6)
     
     # 5. CHECK OUTLIERS (On Demand)
-    pop.export_outlier_snapshots(target_file)
+    # pop.export_outlier_snapshots(target_file)
     pop.inspect_neuron(target_file)
 
     # 6. BATCH EXAMPLE

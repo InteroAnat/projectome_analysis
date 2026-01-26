@@ -166,7 +166,7 @@ class neuro_tracer:
             raise ValueError("No root node found")
 
     
-    def _acquire_nii_nodes(self,nii_space='mouse'):
+    def _acquire_nii_nodes(self,nii_space='monkey'):
         if nii_space =='mouse':
             self.reso =10
             self.nii_shape = (1320, 800, 1140)

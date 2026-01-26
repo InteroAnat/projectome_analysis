@@ -7,6 +7,7 @@ import matplotlib.pyplot as plt
 import paramiko
 from matplotlib.colors import LinearSegmentedColormap
 
+import nrrd
 # --- PATHS ---
 neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
 if neurovis_path not in sys.path:
@@ -60,36 +61,52 @@ class SSHResampledLoader:
             return local_path
         except: return None
 
-    def get_crop_stack(self, center_um, crop_size_um=20000, z_thickness=10):
-        print(f"--- Processing Crop (Size: {crop_size_um/1000} cm) ---")
+    def get_resampled_crop(self, center_um, width_um=20000, height_um=20000, depth_um=60):
+        """
+        Acquires a 3D crop defined by physical dimensions (Microns).
+        """
+        print(f"--- Processing Crop ({width_um}x{height_um}x{depth_um} um) ---")
         
+        # 1. Map Coordinates (Microns -> Pixels)
+        # Z-Res = 3.0um, XY-Res = 5.0um
         z_idx = int(center_um[2] / RES_RESAMPLED[2])
         cx_px = int(center_um[0] / RES_RESAMPLED[0])
         cy_px = int(center_um[1] / RES_RESAMPLED[1])
         
-        rad_px = int((crop_size_um / RES_RESAMPLED[0]) / 2)
-        min_x = max(0, cx_px - rad_px); max_x = cx_px + rad_px
-        min_y = max(0, cy_px - rad_px); max_y = cy_px + rad_px
+        # 2. Calculate Boundaries (Pixels)
+        rad_x = int((width_um / RES_RESAMPLED[0]) / 2)
+        rad_y = int((height_um / RES_RESAMPLED[1]) / 2)
         
-        # Store Crop Origin (Global Pixels) for SWC mapping later
-        self.crop_origin_px = [min_x, min_y] 
-        self.crop_z_range = [0, 0] # Will set below
-
-        z_start = max(1, z_idx - z_thickness//2)
-        z_end = z_idx + z_thickness//2
-        self.crop_z_range = [z_start, z_end]
+        # Calculate Z-Slices needed
+        z_slices_needed = int(round(depth_um / RES_RESAMPLED[2]))
+        z_slices_needed = max(1, z_slices_needed) # Safety
+        rad_z = z_slices_needed // 2
         
+        # X/Y Bounds
+        min_x = max(0, cx_px - rad_x); max_x = cx_px + rad_x
+        min_y = max(0, cy_px - rad_y); max_y = cy_px + rad_y
+        
+        # Z Bounds
+        z_start = max(1, z_idx - rad_z)
+        z_end = z_idx + rad_z
+        
+        print(f"  > Target X: {min_x}-{max_x} ({max_x-min_x} px)")
+        print(f"  > Target Y: {min_y}-{max_y} ({max_y-min_y} px)")
+        print(f"  > Target Z: {z_start}-{z_end} ({z_end-z_start+1} slices)")
+        
+        # 3. Download Loop
         stack = []
-        print(f"Acquiring Z={z_start} to {z_end}...")
-        
         for z in range(z_start, z_end + 1):
             f_path = self._download_slice(z)
             if f_path:
                 img = tifffile.imread(f_path)
                 h, w = img.shape
-                my = min(max_y, h); mx = min(max_x, w)
-                crop = img[min_y:my, min_x:mx]
                 
+                # Dynamic Cropping (Handles image boundaries)
+                curr_my = min(max_y, h); curr_mx = min(max_x, w)
+                crop = img[min_y:curr_my, min_x:curr_mx]
+                
+                # Padding (if crop hits edge)
                 th, tw = max_y - min_y, max_x - min_x
                 if crop.shape != (th, tw):
                     crop = np.pad(crop, ((0, th-crop.shape[0]), (0, tw-crop.shape[1])), mode='constant')
@@ -98,6 +115,8 @@ class SSHResampledLoader:
                 stack.append(np.zeros((max_y-min_y, max_x-min_x), dtype=np.uint16))
 
         vol = np.array(stack)
+        
+        # Metadata
         org_x = min_x * RES_RESAMPLED[0]
         org_y = min_y * RES_RESAMPLED[1]
         org_z = z_start * RES_RESAMPLED[2]
@@ -106,19 +125,51 @@ class SSHResampledLoader:
         
         return vol, [org_x, org_y, org_z], (rel_x, rel_y)
 
-    def export_volume(self, vol, origin, neuron_id, suffix="Resampled"):
-        filename = f"{self.sample_id}_{neuron_id}_{suffix}.nii.gz"
-        out_path = os.path.join(self.out_dir, filename)
-        vol_xyz = np.transpose(vol, (2, 1, 0)) 
+    def export_volume(self, vol, origin, neuron_id, suffix="Resampled", format="nifti"):
+        """
+        Export volume as NIfTI (.nii.gz) or NRRD (.nrrd).
         
-        affine = np.eye(4)
-        affine[0,0] = RES_RESAMPLED[0]
-        affine[1,1] = RES_RESAMPLED[1]
-        affine[2,2] = RES_RESAMPLED[2]
-        affine[:3,3] = origin
+        Parameters
+        ----------
+        format : str, optional
+            "nifti" (default) or "nrrd"
+        """
+        format = format.lower()
+        if format not in ["nifti","nii", "nrrd"]:
+            raise ValueError("format must be 'nifti' or 'nrrd'")
         
-        nib.save(nib.Nifti1Image(vol_xyz, affine), out_path)
-        print(f"Saved NIfTI: {out_path}")
+        base_name = f"{self.sample_id}_{neuron_id}_{suffix}"
+        out_path = os.path.join(self.out_dir, f"{base_name}.{'nii.gz' if format in ['nifti', 'nii'] else 'nrrd'}")
+        
+        # Prepare volume: most tools expect X Y Z order (C-contiguous)
+        vol_xyz = np.transpose(vol, (2, 1, 0))  # from Z Y X → X Y Z
+        
+        if format == "nifti":
+            affine = np.eye(4)
+            affine[0, 0] = RES_RESAMPLED[0] / 1000  # X voxel size in mm
+            affine[1, 1] = -RES_RESAMPLED[1] / 1000  # Y
+            affine[2, 2] = RES_RESAMPLED[2] / 1000  # Z
+            affine[:3, 3] = [o / 1000 for o in origin]  # origin in mm
+            
+            img = nib.Nifti1Image(vol_xyz, affine)
+            nib.save(img, out_path)
+            print(f"Saved NIfTI: {out_path}")
+        
+        else:  # nrrd
+            header = {
+            'dimension': 3,
+            'sizes': list(vol_xyz.shape),           # [X, Y, Z]
+            'space directions': [                   # columns = directions × voxel sizes (mm)
+                [RES_RESAMPLED[0]/1000, 0, 0],      # along X (first axis)
+                [0, RES_RESAMPLED[1]/1000, 0],      # along Y
+                [0, 0, RES_RESAMPLED[2]/1000]       # along Z
+            ],
+            'encoding': 'gzip',
+            'endian': 'little'
+            }
+            
+            nrrd.write(out_path, vol_xyz, header=header)
+            print(f"Saved NRRD: {out_path}")
 
     def plot_enhanced(self, vol, soma_pos, neuron_id, manual_threshold=100, bg_intensity=0.4, swc_tree=None):
         print(f"Generating Composite Plot (Thresh > {manual_threshold})...")
@@ -185,13 +236,13 @@ class SSHResampledLoader:
                 
                 if visible:
                     # Plot Red Trace
-                    ax.plot(path_x, path_y, color='red', linewidth=1.0, alpha=0.7)
+                    ax.plot(path_x, path_y, color='red', linewidth=0.5, alpha=0.5)
 
                 # --- 4. SOMA MARKER (Refined) ---
         sx, sy = soma_pos
         
         # Cyan Cross (Thinner, Smaller)
-        ax.scatter(sx, sy, c='cyan',facecolor='none', marker='s', s=300, linewidth=0.5, label='Soma', zorder=10)
+        ax.scatter(sx, sy, s=300, marker='s', facecolors='none', edgecolors='white', linewidth=0.8, label='Soma')        
         ax.text(sx + 100, sy + 100, 'soma', color='white', ha='center', fontweight='bold', fontsize=8, zorder=11)
         # Scale Bar
         bar_px = 2000 / RES_RESAMPLED[0]
@@ -204,7 +255,7 @@ class SSHResampledLoader:
         
         # Save High Res
         plot_path = os.path.join(self.out_dir, f"{self.sample_id}_{neuron_id}_Composite.png")
-        plt.savefig(plot_path, bbox_inches='tight', facecolor='black', dpi=300)
+        plt.savefig(plot_path, bbox_inches='tight', facecolor='black', dpi=600)
         print(f"High-Res Plot saved: {plot_path}")
         try: plt.show()
         except: pass
@@ -228,16 +279,19 @@ if __name__ == "__main__":
         except: soma_um = tree.root.xyz
         
         # 2. Get Data
-        vol, origin, soma_rel = loader.get_crop_stack(soma_um, crop_size_um=8000, z_thickness=10)
+        vol, origin, soma_rel = loader.get_resampled_crop(soma_um, width_um=8000, height_um=8000, depth_um=90)
         
         if vol is not None:
-            loader.export_volume(vol, origin, NEURON)
-            
+            loader.export_volume(vol, origin, NEURON, suffix="Resampled", format="nifti")            
             # 3. Plot with SWC Overlay
             # bg_intensity=0.3 (Dimmer background)
             # swc_tree=tree (Pass the object)
-            loader.plot_enhanced(vol, soma_rel, NEURON, bg_intensity=1.2, swc_tree=tree)
-            
+            loader.plot_enhanced(vol, soma_rel, NEURON, bg_intensity=2, swc_tree=tree)
+
         loader.close()
     else:
         print("Error: Neuron not found.")
+        
+        
+        
+     
