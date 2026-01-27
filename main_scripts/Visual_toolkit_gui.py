@@ -22,7 +22,7 @@ import os
 
 # Import the core toolkit
 try:
-    import main_scripts.Visual_toolkit as Visual_toolkit 
+    import Visual_toolkit 
     import IONData as IT
 except ImportError as e:
     print(f"ERROR: Could not import required modules: {e}")
