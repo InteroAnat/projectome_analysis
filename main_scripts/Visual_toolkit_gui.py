@@ -22,7 +22,7 @@ import os
 
 # Import the core toolkit
 try:
-    from main_scripts.Visual_toolkit import Visual_toolkit as HybridToolkit 
+    import main_scripts.Visual_toolkit as Visual_toolkit 
     import IONData as IT
 except ImportError as e:
     print(f"ERROR: Could not import required modules: {e}")
@@ -199,7 +199,7 @@ class NeuroVisGUI:
         def load():
             try:
                 self.update_status("🗂️ Loading neuron data...")
-                self.toolkit = HybridToolkit(self.sample_id.get())
+                self.toolkit = Visual_toolkit(self.sample_id.get())
                 self.ion = IT.IONData()
                 
                 tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
@@ -222,7 +222,7 @@ class NeuroVisGUI:
         def fill():
             try:
                 self.update_status("📍 Extracting soma coordinates...")
-                self.toolkit = HybridToolkit(self.sample_id.get())
+                self.toolkit = Visual_toolkit(self.sample_id.get())
                 self.ion = IT.IONData()
                 
                 tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
@@ -262,7 +262,7 @@ class NeuroVisGUI:
                 self.progress.start()
                 
                 self.update_status("🔧 Initializing toolkit...")
-                self.toolkit = HybridToolkit(self.sample_id.get())
+                self.toolkit = Visual_toolkit(self.sample_id.get())
                 
                 soma_xyz = [float(self.x_coord.get()), float(self.y_coord.get()), float(self.z_coord.get())]
                 
@@ -304,7 +304,7 @@ class NeuroVisGUI:
                 self.progress.start()
                 
                 self.update_status("🔧 Initializing toolkit...")
-                self.toolkit = HybridToolkit(self.sample_id.get())
+                self.toolkit = Visual_toolkit(self.sample_id.get())
                 self.ion = IT.IONData()
                 
                 # Load neuron tree for overlay
@@ -363,7 +363,7 @@ class NeuroVisGUI:
                     soma_xyz = [float(self.x_coord.get()), float(self.y_coord.get()), float(self.z_coord.get())]
                     
                     # Phase 1: High-res
-                    self.toolkit = HybridToolkit(self.sample_id.get())
+                    self.toolkit = Visual_toolkit(self.sample_id.get())
                     self.ion = IT.IONData()
                     
                     self.update_status("📥 Phase 1/2: High-res blocks...")
@@ -379,7 +379,7 @@ class NeuroVisGUI:
                     
                     # Phase 2: Low-res
                     tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
-                    self.toolkit = HybridToolkit(self.sample_id.get())
+                    self.toolkit = Visual_toolkit(self.sample_id.get())
                     
                     self.update_status("📥 Phase 2/2: Low-res slices...")
                     low_res_volume, low_res_origin, low_res_resolution = self.toolkit.get_low_res_widefield(
