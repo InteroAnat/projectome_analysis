@@ -163,7 +163,7 @@ class FNTCubeVis:
             vol_xyz = np.transpose(data, (2, 1, 0))
             
             affine = np.eye(4)
-            affine[0,0]=RESOLUTION[0]; affine[1,1]=RESOLUTION[1]; affine[2,2]=RESOLUTION[2]
+            affine[0,0]=RESOLUTION[0]; affine[1,1]=-RESOLUTION[1]; affine[2,2]=RESOLUTION[2]
             affine[:3,3] = origin
             nib.save(nib.Nifti1Image(vol_xyz, affine), full_path)
 
@@ -208,7 +208,7 @@ class FNTCubeVis:
         ax.set_ylim(h_px, 0) # Flip 0 to Top
         
         # 5. Scale Bar (500 um)
-        bar_um = 500
+        bar_um = 100
         bar_px = bar_um / RESOLUTION[0]
         
         # Position: Bottom-Right (Coordinates are High-X, High-Y)
@@ -216,7 +216,7 @@ class FNTCubeVis:
         by_fixed = h_px - 50
         
         ax.plot([bx_start, bx_start + bar_px], [by_fixed, by_fixed], color='white', linewidth=4)
-        ax.text(bx_start + bar_px/2, by_fixed - 20, f"{bar_um} µm", color='white', ha='center', fontweight='bold')
+        ax.text(bx_start + bar_px/2, by_fixed - 20, f"{bar_um} µm", color='cyan', ha='center', fontweight='bold')
 
         # Titles
         w_um = w_px * RESOLUTION[0]
