@@ -1,3 +1,18 @@
+"""
+Visual_toolkit.py - Macaque Brain Hybrid-Resolution Visualization Toolkit
+
+Version: 1.0.0 (2026-01-27)
+Author: [Your Name]
+
+Features:
+- High-resolution (0.65µm) block acquisition via HTTP
+- Low-resolution (5.0µm) widefield via SSH
+- SWC overlay support
+- NIfTI/TIFF export
+
+See CHANGELOG.md for detailed version history.
+"""
+
 import os
 import sys
 import numpy as np

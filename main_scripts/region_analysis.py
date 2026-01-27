@@ -1,18 +1,24 @@
 """
-Monkey Projectome Region Ana
-=================================
-"""
-"""
+region_analysis.py - Monkey Projectome Region Analysis
+
+Version: 3.2.0 (2026-01-27)
+Author: [Your Name]
+
 Key module for analysis of the projectome in the NMT space for region information.
 
-update log:
+Features:
+- Hierarchical atlas support (5D CHARM+SARM)
+- Outlier plot control and tracking
+- Direct FNT file opening
+- Soma plotting functions
 
-v- 0.11: 19/01/2026: 
-    some bug fixes for outlier plot, 
-    now outlier plot can be controlled by a separate function but the outlier count will noted.
-    
-v - 0.12:
-    1. potential updates: plot soma function
+Update Log:
+v3.0 (2026-01-19): Bug fixes for outlier plot, separate outlier control function
+v2.0 (2026-01-14): Best working region analysis, optimized for macaque
+v1.1 (2026-01-13): Hierarchical atlas support, NII format, combined 5D CHARM+SARM
+
+See CHANGELOG.md for detailed version history.
+"""
     2. move plotting functions to be static so that they can be applied externally.
     3. flat map display
 """

@@ -1,6 +1,17 @@
 """
-gui.py - Complete GUI for NeuroVis Hybrid Toolkit
-Launch with: python gui.py
+Visual_toolkit_gui.py - GUI for NeuroVis Hybrid Toolkit
+
+Version: 1.0.0 (2026-01-27)
+Author: [Your Name]
+
+Launch with: python Visual_toolkit_gui.py
+
+Features:
+- Auto-fill soma coordinates from neuron trees
+- Interactive high/low-resolution processing
+- Threaded execution with progress indicators
+
+See CHANGELOG.md for detailed version history.
 """
 
 import tkinter as tk

@@ -1,3 +1,17 @@
+"""
+fnt_dist_clustering.py - FNT Distance-Based Clustering Analysis
+
+Version: 1.2.0 (2026-01-27)
+Author: [Your Name]
+
+Features:
+- Hierarchical clustering of neurons based on FNT distances
+- Cluster visualization and export
+- Support for multiple clustering algorithms
+
+See CHANGELOG.md for detailed version history.
+"""
+
 #%%
 import numpy as np
 import pandas as pd

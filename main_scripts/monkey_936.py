@@ -1,3 +1,17 @@
+"""
+monkey_936.py - Macaque 936-Region Atlas Analysis
+
+Version: 1.1.0 (2026-01-27)
+Author: [Your Name]
+
+Features:
+- Specialized analysis for 936-region macaque atlas
+- Region-based neuron classification
+- Integration with IONData
+
+See CHANGELOG.md for detailed version history.
+"""
+
 #%% import necessary libraries
 
 import sys,copy,os,inspect

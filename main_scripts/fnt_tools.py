@@ -1,3 +1,17 @@
+"""
+fnt_tools.py - FNT (Functional Neuroanatomy Toolbox) Utilities
+
+Version: 2.1.0 (2026-01-27)
+Author: [Your Name]
+
+Features:
+- SWC to FNT conversion helpers
+- Direct FNT file opening with neuron/sample IDs
+- FNT tool integration
+
+See CHANGELOG.md for detailed version history.
+"""
+
 #%%
 import shutil
 import subprocess
