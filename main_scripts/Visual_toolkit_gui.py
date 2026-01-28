@@ -1,17 +1,7 @@
 """
-Visual_toolkit_gui.py - GUI for NeuroVis Hybrid Toolkit
+_toolkit_gui.py - GUI for NeuroVis Visual Toolkit
 
-Version: 1.0.0 (2026-01-27)
-Author: [Your Name]
-
-Launch with: python Visual_toolkit_gui.py
-
-Features:
-- Auto-fill soma coordinates from neuron trees
-- Interactive high/low-resolution processing
-- Threaded execution with progress indicators
-
-See CHANGELOG.md for detailed version history.
+Version: 1.1.0 (Integrated Loading)
 """
 
 import tkinter as tk
@@ -22,21 +12,20 @@ import os
 
 # Import the core toolkit
 try:
-    import Visual_toolkit 
+    from Visual_toolkit import Visual_toolkit
     import IONData as IT
 except ImportError as e:
-    print(f"ERROR: Could not import required modules: {e}")
-    print("Make sure hybrid_toolkit.py is in the same directory and neurovis_path is configured correctly.")
-    sys.exit(1)
-
+    # Fallback for UI testing if modules aren't present
+    print(f"WARNING: Could not import required modules: {e}") 
+    # sys.exit(1) # Commented out to allow GUI preview
 
 class NeuroVisGUI:
-    """Complete GUI for NeuroVis Hybrid Toolkit with auto soma loading and action buttons."""
+    """Complete GUI for NeuroVis Visual Toolkit with integrated loading."""
     
     def __init__(self, root):
         """Initialize GUI window and widgets."""
         self.root = root
-        self.root.title("NeuroVis Hybrid Toolkit v1.0")
+        self.root.title("NeuroVis Visual Toolkit v1.1")
         self.root.geometry("700x750")
         self.root.configure(bg='#f0f0f0')
         self.root.resizable(False, False)
@@ -62,7 +51,7 @@ class NeuroVisGUI:
     def build_full_gui(self):
         """Construct all GUI elements including action buttons."""
         # Title
-        title = tk.Label(self.root, text="🧠 NeuroVis Hybrid Toolkit", 
+        title = tk.Label(self.root, text="🧠 NeuroVis Visual Toolkit", 
                         font=('Helvetica', 18, 'bold'), bg='#f0f0f0', fg='#2c3e50')
         title.pack(pady=15)
         
@@ -70,21 +59,27 @@ class NeuroVisGUI:
         main_frame = ttk.Frame(self.root, padding="15")
         main_frame.pack(fill=tk.BOTH, expand=True)
         
-        # === Sample Configuration Section ===
+        # === Sample Configuration Section (UPDATED) ===
         sample_group = ttk.LabelFrame(main_frame, text="📁 Sample Configuration", padding="10")
         sample_group.pack(fill=tk.X, pady=8)
         
+        # Column 0 & 1: Inputs
         ttk.Label(sample_group, text="Sample ID:").grid(row=0, column=0, sticky=tk.W, padx=5, pady=5)
         sid_entry = ttk.Entry(sample_group, textvariable=self.sample_id, width=20, font=('Arial', 10))
         sid_entry.grid(row=0, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Button(sample_group, text="Load Neuron", command=self.load_neuron, width=20).grid(
-            row=0, column=2, sticky=tk.W, padx=5, pady=5)   
         
         ttk.Label(sample_group, text="Neuron ID:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
         nid_entry = ttk.Entry(sample_group, textvariable=self.neuron_id, width=20, font=('Arial', 10))
         nid_entry.grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Button(sample_group, text="Auto-Fill Soma", command=self.auto_fill_soma, width=20).grid(
-            row=1, column=2, sticky=tk.W, padx=5, pady=5)
+
+        # Column 2: Integrated Button (Spans 2 rows)
+        # We create a specific style for this action button to make it distinct
+        action_btn_style = ttk.Style()
+        action_btn_style.configure('Action.TButton', font=('Arial', 10, 'bold'))
+        
+        load_btn = ttk.Button(sample_group, text="Load & Auto-Fill 📍", 
+                             command=self.load_and_autofill, style='Action.TButton', width=20)
+        load_btn.grid(row=0, column=2, rowspan=2, sticky=tk.NS, padx=15, pady=5)
         
         # === Soma Coordinates Section ===
         coord_group = ttk.LabelFrame(main_frame, text="📍 Soma Coordinates (µm)", padding="10")
@@ -140,19 +135,18 @@ class NeuroVisGUI:
             row=1, column=1, sticky=tk.W, padx=5, pady=5)
         ttk.Label(lowres_group, text="µm (Z-thickness)").grid(row=1, column=2, columnspan=4, sticky=tk.W, padx=5, pady=5)
         
-      # === ACTION BUTTONS SECTION ===
+        # === ACTION BUTTONS SECTION ===
         button_frame = ttk.Frame(main_frame)
-        button_frame.pack(fill=tk.X, pady=20)  # Increased padding
+        button_frame.pack(fill=tk.X, pady=20)
 
         # Create extra-large button style
         style = ttk.Style()
         style.configure('XLarge.TButton', 
-                        font=('Arial', 11, 'bold'),    # Larger font
-                        padding=(15, 15),              # Much more vertical padding
-                        foreground='#2c3e50',          # Dark blue text
-                        background='#e0e0e0')          # Light gray background
+                        font=('Arial', 11, 'bold'),
+                        padding=(15, 15),
+                        foreground='#2c3e50',
+                        background='#e0e0e0')
 
-        # Apply to all buttons with increased width
         ttk.Button(button_frame, text="Soma Plot", command=self.run_highres,
                 style='XLarge.TButton', width=20).pack(side=tk.LEFT, padx=5)
 
@@ -193,64 +187,57 @@ class NeuroVisGUI:
         """Thread-safe status bar update."""
         self.status_text.set(message)
         self.root.update_idletasks()
-    
-    def load_neuron(self):
-        """Load neuron tree in background."""
-        def load():
+
+    # === NEW INTEGRATED METHOD ===
+    def load_and_autofill(self):
+        """Loads the neuron and automatically fills soma coordinates in one action."""
+        def worker():
             try:
-                self.update_status("🗂️ Loading neuron data...")
+                self.progress.pack(pady=5)
+                self.progress.start()
+                
+                # Step 1: Initialize
+                self.update_status("🗂️ Connecting to database...")
                 self.toolkit = Visual_toolkit(self.sample_id.get())
                 self.ion = IT.IONData()
                 
+                # Step 2: Load Tree
+                self.update_status(f"🌲 Loading neuron {self.neuron_id.get()}...")
                 tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
-                if tree:
-                    self.update_status("✅ Neuron loaded successfully. Click 'Auto-Fill Soma' to populate coordinates.")
-                else:
-                    self.update_status("⚠️ Could not load neuron. Check IDs and try again.")
-                    messagebox.showwarning("Warning", "Could not load neuron tree. Please verify sample ID and neuron ID.")
+                
+                if not tree:
+                    self.update_status("❌ Failed to find neuron.")
+                    messagebox.showwarning("Not Found", "Could not load neuron tree.\nPlease verify Sample ID and Neuron ID.")
+                    return
+
+                # Step 3: Extract Coordinates
+                self.update_status("📍 Extracting soma data...")
+                try:
+                    soma_xyz = [tree.root.x, tree.root.y, tree.root.z]
+                    
+                    # Step 4: Update GUI
+                    self.x_coord.set(str(int(soma_xyz[0])))
+                    self.y_coord.set(str(int(soma_xyz[1])))
+                    self.z_coord.set(str(int(soma_xyz[2])))
+                    
+                    self.update_status(f"✅ Loaded & Filled: X={int(soma_xyz[0])}, Y={int(soma_xyz[1])}, Z={int(soma_xyz[2])}")
+                    messagebox.showinfo("Success", f"Neuron Loaded Successfully!\n\nSoma Coordinates Auto-filled:\nX: {soma_xyz[0]:.1f}\nY: {soma_xyz[1]:.1f}\nZ: {soma_xyz[2]:.1f}")
+                
+                except AttributeError:
+                    self.update_status("⚠️ Neuron loaded, but soma root not found.")
+                    messagebox.showwarning("Structure Error", "Neuron tree loaded but root coordinates could not be extracted.")
+
             except Exception as e:
-                messagebox.showerror("Error", f"Failed to load neuron: {e}")
+                messagebox.showerror("Error", f"An error occurred: {e}")
                 self.update_status(f"❌ Error: {e}")
             finally:
                 if self.toolkit:
                     self.toolkit.close()
+                self.progress.stop()
+                self.progress.pack_forget()
         
-        threading.Thread(target=load, daemon=True).start()
-    
-    def auto_fill_soma(self):
-        """Extract and fill soma coordinates from loaded neuron."""
-        def fill():
-            try:
-                self.update_status("📍 Extracting soma coordinates...")
-                self.toolkit = Visual_toolkit(self.sample_id.get())
-                self.ion = IT.IONData()
-                
-                tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
-                if tree:
-                    try:
-                        # Extract soma coordinates from tree
-                        soma_xyz = [tree.root.x, tree.root.y, tree.root.z]
-                        # Update GUI fields
-                        self.x_coord.set(str(int(soma_xyz[0])))
-                        self.y_coord.set(str(int(soma_xyz[1])))
-                        self.z_coord.set(str(int(soma_xyz[2])))
-                        self.update_status(f"✅ Soma coordinates auto-filled: {soma_xyz}")
-                        messagebox.showinfo("Success", f"Soma coordinates extracted and filled:\n\nX: {soma_xyz[0]:.1f}\nY: {soma_xyz[1]:.1f}\nZ: {soma_xyz[2]:.1f}")
-                    except AttributeError:
-                        self.update_status("⚠️ Could not extract soma coordinates from neuron tree.")
-                        messagebox.showwarning("Warning", "Neuron tree loaded but soma coordinates not found in expected format.")
-                else:
-                    self.update_status("❌ No neuron tree loaded. Click 'Load Neuron' first.")
-                    messagebox.showwarning("Warning", "Please load a neuron first using 'Load Neuron' button.")
-            except Exception as e:
-                messagebox.showerror("Error", f"Failed to auto-fill soma: {e}")
-                self.update_status(f"❌ Error: {e}")
-            finally:
-                if self.toolkit:
-                    self.toolkit.close()
-        
-        threading.Thread(target=fill, daemon=True).start()
-    
+        threading.Thread(target=worker, daemon=True).start()
+
     def run_highres(self):
         """Execute high-resolution processing."""
         if not self.validate_inputs():
@@ -409,12 +396,11 @@ class NeuroVisGUI:
             
             threading.Thread(target=process, daemon=True).start()
 
-
 # ==================== MAIN LAUNCHER ====================
 def main():
     """Launch the GUI application."""
     print("=" * 50)
-    print("NeuroVis Hybrid Toolkit - GUI Mode")
+    print("NeuroVis Visual Toolkit - GUI Mode")
     print("=" * 50)
     print("Initializing GUI...")
     
@@ -425,15 +411,12 @@ def main():
     print("-" * 50)
     print("Instructions:")
     print("1. Enter Sample ID and Neuron ID")
-    print("2. Click 'Load Neuron' to verify")
-    print("3. Click 'Auto-Fill Soma' to populate coordinates")
-    print("4. Adjust parameters if needed")
-    print("5. Click any 'Process' button to run")
+    print("2. Click 'Load & Auto-Fill' to populate soma coordinates")
+    print("3. Adjust grid/resolution parameters if needed")
+    print("4. Click any Plot button to run")
     print("-" * 50)
-    print("Ready for user input...\n")
     
     root.mainloop()
-
 
 if __name__ == "__main__":
     main()
