@@ -1,7 +1,7 @@
 """
 Visual_toolkit.py - Macaque Brain Hybrid-Resolution Visualization Toolkit
 
-Version: 1.1.0 (Custom Output Directory Support)
+Version: 1.2.0 (Adaptive Scale Bars)
 
 DESCRIPTION:
     A unified tool for retrieving and visualizing Macaque brain data from mixed sources.
@@ -16,6 +16,8 @@ KEY FEATURES:
     - Export Formats: NIfTI (.nii.gz) for 3D, TIFF (.tif) for 2D MIP
     - Caching: Automatic local caching of downloaded blocks/slices
     - Flexible Output: Configurable output directories
+    - Adaptive Scale Bars: 30 µm for high-res (soma zoom), 500 µm for low-res (wide field)
+    - Adaptive Marker Sizes: ~20 µm for high-res, ~200 µm for low-res
 
 USAGE NOTES:
     1. Basic High-Res Soma Block:
@@ -42,6 +44,13 @@ CONFIGURATION:
     - SSH_* variables: Server credentials for low-res data (update as needed)
     - neurovis_path: Path to neuronVis folder containing IONData module
     - Output paths are constructed as: project_root/resource/segmented_cubes/sample_id
+
+UPDATE NOTES (v1.2.0):
+    - Added adaptive scale bars: 30 µm for high-res plots, 500 µm for low-res plots
+    - Added adaptive marker sizes: ~20 µm for high-res, ~200 µm for low-res
+    - Added scale_bar_um parameter to _save_plot() and _finalize_plot() methods
+    - High-res soma plots use 30 µm scale bar with ~20 µm marker (zoomed in view)
+    - Low-res widefield plots use 500 µm scale bar with ~200 µm marker (zoomed out view)
 
 UPDATE NOTES (v1.1.0):
     - Added custom output directory support
@@ -336,6 +345,9 @@ class Visual_toolkit:
         """
         Plots Grayscale Anatomy (High Res).
         Accepts optional 'output_dir' override.
+        
+        Scale Bar: 30 µm (appropriate for zoomed-in soma view)
+        Marker Size: ~20 µm (adaptive based on resolution)
         """
         print(f"  > Generating Grayscale Plot ({suffix})...")
         
@@ -353,7 +365,7 @@ class Visual_toolkit:
         img_final = np.power(img_norm, 0.5)
         
         self._save_plot(img_final, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], 
-                       cmap='gray', marker_color='cyan', output_dir=output_dir)
+                       cmap='gray', marker_color='cyan', output_dir=output_dir, scale_bar_um=30)
 
     def plot_widefield_context(self, volume_3d, origin, resolution, soma_coords, neuron_id, 
                              suffix="WideField", manual_threshold=100, bg_intensity=0.4, 
@@ -361,6 +373,9 @@ class Visual_toolkit:
         """
         Plots Green Intensity on Dark Background + SWC Overlay.
         Accepts optional 'output_dir' override.
+        
+        Scale Bar: 500 µm (appropriate for zoomed-out wide field view)
+        Marker Size: ~200 µm (adaptive based on resolution)
         """
         print(f"  > Generating Composite Plot ({suffix})...")
         
@@ -399,7 +414,7 @@ class Visual_toolkit:
         sy = (soma_coords[1] - origin[1]) / resolution[1]
         
         self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], 
-                           marker_color='white', output_dir=output_dir)
+                           marker_color='white', output_dir=output_dir, scale_bar_um=500)
 
     def _overlay_swc(self, ax, swc_tree, origin, resolution, h, w):
         if swc_tree:
@@ -421,14 +436,18 @@ class Visual_toolkit:
             if path_x and path_y:
                 ax.plot(path_x, path_y, color='red', linewidth=0.5, alpha=0.5)
 
-    def _save_plot(self, img_data, sx, sy, resolution, neuron_id, suffix, z_slices, cmap, marker_color, output_dir=None):
+    def _save_plot(self, img_data, sx, sy, resolution, neuron_id, suffix, z_slices, cmap, marker_color, output_dir=None, scale_bar_um=30):
         """Helper to create simple grayscale plots (Soma Block)."""
         fig, ax = plt.subplots(figsize=(12, 12), facecolor='black')
         ax.imshow(img_data, cmap=cmap, origin='upper')
-        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir)
+        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir, scale_bar_um)
 
-    def _finalize_plot(self, fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir=None):
-        """Shared annotation and saving logic."""
+    def _finalize_plot(self, fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir=None, scale_bar_um=30):
+        """Shared annotation and saving logic.
+        
+        Args:
+            scale_bar_um: Length of scale bar in microns (default: 30 for high-res, 500 for low-res)
+        """
         h, w = ax.images[0].get_size()
         
         # Determine target directory
@@ -436,15 +455,27 @@ class Visual_toolkit:
         if not os.path.exists(target_dir):
             os.makedirs(target_dir, exist_ok=True)
         
-        # Marker: Hollow Square
-        ax.scatter(sx, sy, s=300, marker='s', facecolors='none', edgecolors=marker_color, linewidth=1.0, label='Soma', zorder=10)
-        ax.text(sx + 80, sy + 80, 'Soma', color=marker_color, fontsize=8, fontweight='bold')
+        # Marker: Hollow Square (adaptive size based on resolution)
+        # High-res (0.65um): smaller marker (~20um), Low-res (5um): larger marker (~200um)
+        marker_size_um = 20 if resolution[0] < 1.0 else 200
+        marker_size_px = marker_size_um / resolution[0]
+        # Convert pixel size to scatter marker size (s parameter is in points^2)
+        # Approximate: 1 pixel at 600 DPI = ~0.042 inches, squared and scaled
+        marker_s = (marker_size_px * 0.8) ** 2
+        
+        ax.scatter(sx, sy, s=marker_s, marker='s', facecolors='none', edgecolors=marker_color, 
+                   linewidth=0.75, label='Soma', zorder=10)
+        
+        # Soma label offset (adaptive)
+        label_offset_px = marker_size_px 
+        ax.text(sx + label_offset_px, sy + label_offset_px, 'Target Soma', 
+                color=marker_color, fontsize=9, fontweight='bold')
 
-        # Scale Bar (500um)
-        bar_px = 500 / resolution[0]
+        # Scale Bar (configurable size)
+        bar_px = scale_bar_um / resolution[0]
         bx = w - bar_px - 50; by = h - 50
         ax.plot([bx, bx+bar_px], [by, by], color='white', linewidth=3)
-        ax.text(bx+bar_px/2, by-20, "500 µm", color='white', ha='center', fontweight='bold')
+        ax.text(bx+bar_px/2, by-20, f"{scale_bar_um} µm", color='white', ha='center', fontweight='bold')
         
         # Title
         title = f"{self.sample_id} | {neuron_id} | {suffix}\nFOV: {w*resolution[0]:.0f}x{h*resolution[1]:.0f} µm | Depth: {z_slices*resolution[2]:.0f} µm"
@@ -476,7 +507,16 @@ if __name__ == "__main__":
         try: soma_xyz = [tree.root.x, tree.root.y, tree.root.z]
         except: soma_xyz = tree.root.xyz
         print(f"Target Soma: {soma_xyz}")
+        high_res_volume, high_res_origin, high_res_resolution = toolkit.get_high_res_block(soma_xyz, grid_radius=1)
         
+        toolkit.export_data(high_res_volume, high_res_origin, high_res_resolution, NEURON, suffix="SomaBlock")
+        toolkit.plot_soma_block(high_res_volume, high_res_origin, high_res_resolution, soma_xyz, NEURON)
+        
+        # # Example usage:
+        # low_res_volume, low_res_origin, low_res_resolution = toolkit.get_low_res_widefield(soma_xyz, width_um=8000, height_um=8000, depth_um=30)
+        
+        # Exporting to default directory
+        # toolkit.export_data(low_res_volume, low_res_origin, low_res_resolution, NEURON, suffix="WideField")
         # Example usage:
         low_res_volume, low_res_origin, low_res_resolution = toolkit.get_low_res_widefield(soma_xyz, width_um=8000, height_um=8000, depth_um=30)
         

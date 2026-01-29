@@ -1,7 +1,7 @@
 """
 Visual_toolkit_gui.py - GUI for NeuroVis Visual Toolkit
 
-Version: 1.4.0 (Synced Output Directory Logic)
+Version: 1.5.0 (Auto-Load Default Neuron)
 
 DESCRIPTION:
     A complete Tkinter-based GUI for the Visual_toolkit. Provides an intuitive
@@ -10,6 +10,7 @@ DESCRIPTION:
     threaded processing, and progress indicators.
 
 KEY FEATURES:
+    - Auto-Load on Startup: Automatically loads default neuron (003.swc) when GUI opens
     - Auto-Fill Soma: Automatically extract soma coordinates from neuron SWC files
     - Interactive Parameters: Adjust grid radius, FOV dimensions via GUI
     - Threaded Processing: Non-blocking downloads with progress indicators
@@ -20,28 +21,40 @@ USAGE NOTES:
     1. Launch the GUI:
         python Visual_toolkit_gui.py
 
-    2. Basic Workflow:
-        - Enter Sample ID (e.g., '251637') and Neuron ID (e.g., '003.swc')
-        - Click 'Load Neuron' to verify and load the neuron tree
-        - Click 'Auto-Fill Soma' to populate X/Y/Z coordinates from SWC
+    2. Auto-Load Feature:
+        - The GUI automatically loads the default neuron (003.swc) on startup
+        - Soma coordinates are auto-filled after ~0.5 seconds
+        - Status bar shows loading progress
+        - No popup on successful auto-load (silent operation)
+
+    3. Basic Workflow:
+        - Sample ID (e.g., '251637') and Neuron ID (e.g., '003.swc') are pre-filled
+        - If auto-load succeeded, coordinates are already populated
+        - Click 'Load & Auto-Fill Soma' to manually reload or load different neuron
         - Adjust parameters if needed (Grid Radius, Width/Height/Depth)
         - Click action button: 'Soma Plot', 'Wide-field Plot', or 'Plot Both'
 
-    3. Output Directory:
+    4. Output Directory:
         - Default: project_root/resource/segmented_cubes/sample_id
         - Use 'Browse' to select custom directory
         - Note: Changing Sample ID auto-updates path unless manually set
 
-    4. Processing:
+    5. Processing:
         - High-res: Downloads 3D blocks around soma, generates middle slice plot
         - Low-res: Downloads wide field slices, generates MIP with SWC overlay
         - Both: Sequential processing, closes/reopens connection between phases
 
 CONFIGURATION:
     - Window size: 700x700 pixels, non-resizable
-    - Default values: Sample='251637', Grid Radius=1, FOV=8000x8000x30 µm
+    - Default values: Sample='251637', Neuron='003.swc', Grid Radius=1, FOV=8000x8000x30 µm
     - Progress bar shows during active processing
     - Status bar provides step-by-step feedback
+
+UPDATE NOTES (v1.5.0):
+    - Added auto-load feature: default neuron loads automatically on startup
+    - Added auto_load_default_neuron() method for startup initialization
+    - Modified load_and_autofill() with silent_success parameter for auto-load
+    - Auto-load runs after 500ms delay to ensure GUI is fully rendered
 
 UPDATE NOTES (v1.4.0):
     - Synchronized output directory logic with Visual_toolkit.py
@@ -112,6 +125,9 @@ class NeuroVisGUI:
         self.ion = None
         
         self.build_full_gui()
+        
+        # Auto-load the default neuron after GUI is fully initialized
+        self.root.after(500, self.auto_load_default_neuron)
     
     def _generate_default_path(self, sample_id):
         """Generates the default path string based on Sample ID."""
@@ -267,8 +283,21 @@ class NeuroVisGUI:
                 return None
         return path
 
-    def load_and_autofill(self):
-        """Loads the neuron and automatically fills soma coordinates."""
+    def auto_load_default_neuron(self):
+        """Automatically loads the default neuron (003.swc) on GUI startup.
+        
+        Called via root.after() to ensure GUI is fully rendered before
+        starting the potentially slow network operation.
+        """
+        self.update_status("🔄 Auto-loading default neuron...")
+        self.load_and_autofill(silent_success=True)
+    
+    def load_and_autofill(self, silent_success=False):
+        """Loads the neuron and automatically fills soma coordinates.
+        
+        Args:
+            silent_success: If True, don't show success messagebox (for auto-load)
+        """
         def worker():
             try:
                 self.progress.pack(pady=5)
@@ -290,10 +319,14 @@ class NeuroVisGUI:
                 self.z_coord.set(str(int(soma_xyz[2])))
                 
                 self.update_status(f"✅ Loaded: {int(soma_xyz[0])}, {int(soma_xyz[1])}, {int(soma_xyz[2])}")
-                messagebox.showinfo("Success", "Neuron Loaded & Coordinates Auto-filled!")
+                if not silent_success:
+                    messagebox.showinfo("Success", "Neuron Loaded & Coordinates Auto-filled!")
                 
             except Exception as e:
-                messagebox.showerror("Error", f"An error occurred: {e}")
+                if silent_success:
+                    self.update_status(f"⚠️ Auto-load failed: {e}")
+                else:
+                    messagebox.showerror("Error", f"An error occurred: {e}")
             finally:
                 if self.toolkit: self.toolkit.close()
                 self.progress.stop()
