@@ -32,6 +32,10 @@ This repository contains tools for processing and analyzing fMOST (fluorescence 
    pip install paramiko nibabel tifffile matplotlib numpy
    ```
 
+4. Ensure `neuron-vis` module is available:
+   The code depends on `IONData` from the `neuron-vis/neuronVis` package.
+   Make sure this directory exists and is in the Python path.
+
 ## Main Components
 
 ### 1. Visual Toolkit (`main_scripts/Visual_toolkit.py`)
@@ -46,7 +50,12 @@ A unified tool for retrieving and visualizing Macaque brain data from mixed sour
 
 **Usage:**
 ```python
-from main_scripts.Visual_toolkit import Visual_toolkit
+# Run from project root directory:
+# cd /path/to/projectome_analysis
+# python -c "
+import sys
+sys.path.insert(0, 'main_scripts')
+from Visual_toolkit import Visual_toolkit
 
 toolkit = Visual_toolkit('251637')
 
@@ -64,6 +73,15 @@ volume, origin, resolution = toolkit.get_low_res_widefield(
     depth_um=30
 )
 
+toolkit.close()
+# "
+```
+
+Or directly inside main_scripts/:
+```python
+from Visual_toolkit import Visual_toolkit
+toolkit = Visual_toolkit('251637')
+# ... use toolkit ...
 toolkit.close()
 ```
 
@@ -88,10 +106,10 @@ Tools for converting SWC files to FNT format and calculating distance matrices.
 
 | Tool | Description |
 |------|-------------|
-| `convert_swc_to_fnt_decimate.py` | Convert SWC to FNT with decimation |
-| `join_fnt_decimate_files.py` | Join multiple FNT files |
-| `fnt_distance_workflow.py` | Complete workflow from SWC to distance matrix |
-| `fnt_tools_adapter.py` | Adapter for FNT tool integration |
+| `convert_swc_to_fnt_decimate.py` | Convert SWC to FNT with decimation (in root dir) |
+| `join_fnt_decimate_files.py` | Join multiple FNT files (in root dir) |
+| `fnt_distance_workflow.py` | Complete workflow from SWC to distance matrix (in root dir) |
+| `fnt_tools_adapter.py` | Adapter for FNT tool integration (in root dir) |
 
 **Complete Workflow:**
 ```bash
@@ -101,6 +119,8 @@ python fnt_distance_workflow.py \
     --decimate_distance 5000 \
     --decimate_angle 5000
 ```
+
+Note: Run from project root directory where the script is located.
 
 ### 4. Clustering Analysis (`main_scripts/fnt_dist_clustering.py`)
 
@@ -162,7 +182,12 @@ HTTP_PATH = 'monkeydata'
 ### 1. Visualize a Single Neuron
 
 ```python
-from main_scripts.Visual_toolkit import Visual_toolkit
+# Add paths and import (run from project root)
+import sys
+sys.path.insert(0, 'main_scripts')
+sys.path.insert(0, 'neuron-vis/neuronVis')
+
+from Visual_toolkit import Visual_toolkit
 import IONData as IT
 
 toolkit = Visual_toolkit('251637')
@@ -202,7 +227,9 @@ sbatch fnt_dist_on_cluster/fnt_dist.slurm
 ### 3. Run Clustering Analysis
 
 ```python
-from main_scripts.fnt_dist_clustering import run_clustering
+import sys
+sys.path.insert(0, 'main_scripts')
+from fnt_dist_clustering import run_clustering
 
 run_clustering(
     distance_matrix_file='dist.txt',
@@ -210,6 +237,8 @@ run_clustering(
     output_dir='clustering_results/'
 )
 ```
+
+Note: The `run_clustering` function may need to be called from within the script or imported depending on the current implementation. Check `fnt_dist_clustering.py` for the latest API.
 
 ## Output Files
 
