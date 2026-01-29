@@ -1,26 +1,27 @@
 """
 region_analysis.py - Monkey Projectome Region Analysis
 
-Version: 3.2.0 (2026-01-27)
+Version: 3.3.0 (2026-01-29)
 Author: [Your Name]
 
 Key module for analysis of the projectome in the NMT space for region information.
 
 Features:
-- Hierarchical atlas support (5D CHARM+SARM)
+- ARM atlas support with cortical laterality (CL/CR/SL/SR)
+- Hierarchical atlas support (5D)
 - Outlier plot control and tracking
 - Direct FNT file opening
 - Soma plotting functions
 
 Update Log:
+v3.3 (2026-01-29): Updated default atlas to NMT_v2.1_sym with ARM (Anatomical Regional Mapping)
+                   - Now uses ARM_in_NMT_v2.1_sym.nii.gz for cortical laterality identification
+                   - Supports CL (Cortical Left), CR (Cortical Right), SL (Subcortical Left), SR (Subcortical Right)
 v3.0 (2026-01-19): Bug fixes for outlier plot, separate outlier control function
 v2.0 (2026-01-14): Best working region analysis, optimized for macaque
 v1.1 (2026-01-13): Hierarchical atlas support, NII format, combined 5D CHARM+SARM
 
 See CHANGELOG.md for detailed version history.
-"""
-    2. move plotting functions to be static so that they can be applied externally.
-    3. flat map display
 """
 import sys
 import os
@@ -406,16 +407,16 @@ class PopulationRegionAnalysis:
 # ==============================================================================
 if __name__ == '__main__':
     # 1. PATHS
-    atlas_path = r'D:\projectome_analysis\atlas\nmt_structure_with_hiearchy.nii.gz'
-    table_path = r'D:\projectome_analysis\atlas\nmt_structures_labels.txt'
-    template_path = r'D:\projectome_analysis\atlas\NMT_v2.0_sym\NMT_v2.0_sym\NMT_v2.0_sym_SS.nii'
-    
-    # 2. LOAD
-    combined_atlas_nii = nib.load(atlas_path)
-    atlas_data = combined_atlas_nii.get_fdata()
-    global_id_df = pd.read_csv(table_path, delimiter='\t')
-    template_nii = nib.load(template_path)
+    atlas_path = r'D:\projectome_analysis\atlas\ARM_in_NMT_v2.1_sym.nii.gz'
+    table_path = r'D:\projectome_analysis\atlas\ARM_key_all.txt'
+    template_path = r"D:\projectome_analysis\atlas\NMT_v2.1_sym\NMT_v2.1_sym\NMT_v2.1_sym_SS.nii.gz"
 
+    atlas_nii = nib.load(atlas_path)
+    atlas_data = atlas_nii.get_fdata()
+    global_id_df = pd.read_csv(table_path, delimiter='\t')
+
+    template_nii = nib.load(template_path)
+   
     # 3. INIT
     pop = PopulationRegionAnalysis('251637', atlas_data, global_id_df, template_img=template_nii)
     
