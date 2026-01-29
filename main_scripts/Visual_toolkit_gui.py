@@ -1,11 +1,66 @@
 """
-_toolkit_gui.py - GUI for NeuroVis Visual Toolkit
+Visual_toolkit_gui.py - GUI for NeuroVis Visual Toolkit
 
-Version: 1.1.0 (Integrated Loading)
+Version: 1.4.0 (Synced Output Directory Logic)
+
+DESCRIPTION:
+    A complete Tkinter-based GUI for the Visual_toolkit. Provides an intuitive
+    interface for acquiring and visualizing macaque brain data at both high 
+    (0.65µm) and low (5.0µm) resolutions. Features auto soma coordinate loading,
+    threaded processing, and progress indicators.
+
+KEY FEATURES:
+    - Auto-Fill Soma: Automatically extract soma coordinates from neuron SWC files
+    - Interactive Parameters: Adjust grid radius, FOV dimensions via GUI
+    - Threaded Processing: Non-blocking downloads with progress indicators
+    - Flexible Output: Default path matches Visual_toolkit, or choose custom directory
+    - Three Actions: Soma Plot (high-res), Wide-field Plot (low-res), or Both
+
+USAGE NOTES:
+    1. Launch the GUI:
+        python Visual_toolkit_gui.py
+
+    2. Basic Workflow:
+        - Enter Sample ID (e.g., '251637') and Neuron ID (e.g., '003.swc')
+        - Click 'Load Neuron' to verify and load the neuron tree
+        - Click 'Auto-Fill Soma' to populate X/Y/Z coordinates from SWC
+        - Adjust parameters if needed (Grid Radius, Width/Height/Depth)
+        - Click action button: 'Soma Plot', 'Wide-field Plot', or 'Plot Both'
+
+    3. Output Directory:
+        - Default: project_root/resource/segmented_cubes/sample_id
+        - Use 'Browse' to select custom directory
+        - Note: Changing Sample ID auto-updates path unless manually set
+
+    4. Processing:
+        - High-res: Downloads 3D blocks around soma, generates middle slice plot
+        - Low-res: Downloads wide field slices, generates MIP with SWC overlay
+        - Both: Sequential processing, closes/reopens connection between phases
+
+CONFIGURATION:
+    - Window size: 700x700 pixels, non-resizable
+    - Default values: Sample='251637', Grid Radius=1, FOV=8000x8000x30 µm
+    - Progress bar shows during active processing
+    - Status bar provides step-by-step feedback
+
+UPDATE NOTES (v1.4.0):
+    - Synchronized output directory logic with Visual_toolkit.py
+    - Added default path generation matching core toolkit behavior
+    - Added 'Browse' button for custom output directory selection
+    - Manual path changes persist across Sample ID updates
+    - Improved import error handling with warning instead of exit
+    - Thread-safe status updates and progress bar management
+
+DEPENDENCIES:
+    - Visual_toolkit module (sibling import)
+    - IONData module from neuron-vis package
+    - tkinter, threading, standard library
+
+See CHANGELOG.md for detailed version history.
 """
 
 import tkinter as tk
-from tkinter import ttk, messagebox
+from tkinter import ttk, messagebox, filedialog
 import threading
 import sys
 import os
@@ -15,32 +70,42 @@ try:
     from Visual_toolkit import Visual_toolkit
     import IONData as IT
 except ImportError as e:
-    # Fallback for UI testing if modules aren't present
     print(f"WARNING: Could not import required modules: {e}") 
-    # sys.exit(1) # Commented out to allow GUI preview
 
 class NeuroVisGUI:
-    """Complete GUI for NeuroVis Visual Toolkit with integrated loading."""
+    """Complete GUI for NeuroVis Visual Toolkit."""
     
     def __init__(self, root):
         """Initialize GUI window and widgets."""
         self.root = root
-        self.root.title("NeuroVis Visual Toolkit v1.1")
-        self.root.geometry("700x750")
+        self.root.title(" Visual_Toolkit_gui v1.4")
+        self.root.geometry("700x700")
         self.root.configure(bg='#f0f0f0')
         self.root.resizable(False, False)
         
-        # Processing variables
+        # === 1. Processing Variables ===
         self.sample_id = tk.StringVar(value="251637")
         self.neuron_id = tk.StringVar(value="003.swc")
-        self.x_coord = tk.StringVar(value="18000")
-        self.y_coord = tk.StringVar(value="18000")
-        self.z_coord = tk.StringVar(value="1000")
-        self.grid_radius = tk.IntVar(value=2)
+        self.x_coord = tk.StringVar(value="0")
+        self.y_coord = tk.StringVar(value="0")
+        self.z_coord = tk.StringVar(value="0")
+        self.grid_radius = tk.IntVar(value=1)
         self.width_um = tk.StringVar(value="8000")
         self.height_um = tk.StringVar(value="8000")
         self.depth_um = tk.StringVar(value="30")
-        self.status_text = tk.StringVar(value="Ready - Load neuron to auto-fill soma coordinates")
+        self.status_text = tk.StringVar(value="Ready")
+        
+        # === 2. Default Output Directory Logic ===
+        # Matches Visual_toolkit.py: project_root/resource/segmented_cubes/sample_id
+        self.project_root = os.path.dirname(os.getcwd()) 
+        default_path = self._generate_default_path(self.sample_id.get())
+        self.output_dir = tk.StringVar(value=default_path)
+
+        # Flag to track if user manually changed the path
+        self.manual_path_set = False
+
+        # Add listener: Update output path when Sample ID changes (if not manually set)
+        self.sample_id.trace_add("write", self._on_sample_id_change)
         
         # Toolkit instances
         self.toolkit = None
@@ -48,8 +113,18 @@ class NeuroVisGUI:
         
         self.build_full_gui()
     
+    def _generate_default_path(self, sample_id):
+        """Generates the default path string based on Sample ID."""
+        return os.path.join(self.project_root, 'resource', 'segmented_cubes', sample_id)
+
+    def _on_sample_id_change(self, *args):
+        """Updates output directory automatically when Sample ID changes."""
+        if not self.manual_path_set:
+            new_path = self._generate_default_path(self.sample_id.get())
+            self.output_dir.set(new_path)
+
     def build_full_gui(self):
-        """Construct all GUI elements including action buttons."""
+        """Construct all GUI elements."""
         # Title
         title = tk.Label(self.root, text="🧠 NeuroVis Visual Toolkit", 
                         font=('Helvetica', 18, 'bold'), bg='#f0f0f0', fg='#2c3e50')
@@ -59,118 +134,98 @@ class NeuroVisGUI:
         main_frame = ttk.Frame(self.root, padding="15")
         main_frame.pack(fill=tk.BOTH, expand=True)
         
-        # === Sample Configuration Section (UPDATED) ===
+        # === Sample Configuration ===
         sample_group = ttk.LabelFrame(main_frame, text="📁 Sample Configuration", padding="10")
-        sample_group.pack(fill=tk.X, pady=8)
+        sample_group.pack(fill=tk.X, pady=5)
         
-        # Column 0 & 1: Inputs
         ttk.Label(sample_group, text="Sample ID:").grid(row=0, column=0, sticky=tk.W, padx=5, pady=5)
-        sid_entry = ttk.Entry(sample_group, textvariable=self.sample_id, width=20, font=('Arial', 10))
-        sid_entry.grid(row=0, column=1, sticky=tk.W, padx=5, pady=5)
+        ttk.Entry(sample_group, textvariable=self.sample_id, width=20).grid(row=0, column=1, sticky=tk.W, padx=5, pady=5)
         
         ttk.Label(sample_group, text="Neuron ID:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
-        nid_entry = ttk.Entry(sample_group, textvariable=self.neuron_id, width=20, font=('Arial', 10))
-        nid_entry.grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)
+        ttk.Entry(sample_group, textvariable=self.neuron_id, width=20).grid(row=1, column=1, sticky=tk.W, padx=5, pady=5)
 
-        # Column 2: Integrated Button (Spans 2 rows)
-        # We create a specific style for this action button to make it distinct
+        # Integrated Button
         action_btn_style = ttk.Style()
         action_btn_style.configure('Action.TButton', font=('Arial', 10, 'bold'))
         
-        load_btn = ttk.Button(sample_group, text="Load & Auto-Fill 📍", 
-                             command=self.load_and_autofill, style='Action.TButton', width=20)
-        load_btn.grid(row=0, column=2, rowspan=2, sticky=tk.NS, padx=15, pady=5)
+        ttk.Button(sample_group, text="Load & Auto-Fill Soma", 
+                  command=self.load_and_autofill, style='Action.TButton', width=25).grid(
+                      row=0, column=2, rowspan=2, sticky=tk.NS, padx=15, pady=5)
         
-        # === Soma Coordinates Section ===
+        # === Soma Coordinates ===
         coord_group = ttk.LabelFrame(main_frame, text="📍 Soma Coordinates (µm)", padding="10")
-        coord_group.pack(fill=tk.X, pady=8)
+        coord_group.pack(fill=tk.X, pady=5)
         
-        # X coordinate
-        ttk.Label(coord_group, text="X:").grid(row=0, column=0, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(coord_group, textvariable=self.x_coord, width=15, font=('Arial', 10)).grid(
-            row=0, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(coord_group, text="(horizontal)").grid(row=0, column=2, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(coord_group, text="X:").grid(row=0, column=0, sticky=tk.W, padx=5)
+        ttk.Entry(coord_group, textvariable=self.x_coord, width=15).grid(row=0, column=1, sticky=tk.W, padx=5)
+        ttk.Label(coord_group, text="(horizontal)").grid(row=0, column=2, sticky=tk.W, padx=5)
         
-        # Y coordinate
-        ttk.Label(coord_group, text="Y:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(coord_group, textvariable=self.y_coord, width=15, font=('Arial', 10)).grid(
-            row=1, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(coord_group, text="(vertical)").grid(row=1, column=2, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(coord_group, text="Y:").grid(row=1, column=0, sticky=tk.W, padx=5)
+        ttk.Entry(coord_group, textvariable=self.y_coord, width=15).grid(row=1, column=1, sticky=tk.W, padx=5)
+        ttk.Label(coord_group, text="(vertical)").grid(row=1, column=2, sticky=tk.W, padx=5)
         
-        # Z coordinate
-        ttk.Label(coord_group, text="Z:").grid(row=2, column=0, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(coord_group, textvariable=self.z_coord, width=15, font=('Arial', 10)).grid(
-            row=2, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(coord_group, text="(depth)").grid(row=2, column=2, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(coord_group, text="Z:").grid(row=2, column=0, sticky=tk.W, padx=5)
+        ttk.Entry(coord_group, textvariable=self.z_coord, width=15).grid(row=2, column=1, sticky=tk.W, padx=5)
+        ttk.Label(coord_group, text="(depth)").grid(row=2, column=2, sticky=tk.W, padx=5)
         
-        # === High-Resolution Parameters ===
-        highres_group = ttk.LabelFrame(main_frame, text="🔍 High-Res Soma Block (0.65 µm/pixel)", padding="10")
-        highres_group.pack(fill=tk.X, pady=8)
+        # === High-Resolution ===
+        highres_group = ttk.LabelFrame(main_frame, text="🔍 High-Res Soma Block", padding="10")
+        highres_group.pack(fill=tk.X, pady=5)
         
-        ttk.Label(highres_group, text="Grid Radius:").grid(row=0, column=0, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(highres_group, text="Grid Radius:").grid(row=0, column=0, sticky=tk.W, padx=5)
         ttk.Combobox(highres_group, textvariable=self.grid_radius, values=[1, 2, 3], 
-                    state="readonly", width=10).grid(row=0, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(highres_group, text="  blocks (1=single, 2=3x3x3, 3=5x5x5)").grid(
-            row=0, column=2, sticky=tk.W, padx=5, pady=5)
+                    state="readonly", width=10).grid(row=0, column=1, sticky=tk.W, padx=5)
         
-        # === Low-Resolution Parameters ===
-        lowres_group = ttk.LabelFrame(main_frame, text="🌐 Low-Res Wide Field (5.0 µm/pixel)", padding="10")
-        lowres_group.pack(fill=tk.X, pady=8)
+        # === Low-Resolution ===
+        lowres_group = ttk.LabelFrame(main_frame, text="🌐 Low-Res Wide Field", padding="10")
+        lowres_group.pack(fill=tk.X, pady=5)
         
-        # Width
-        ttk.Label(lowres_group, text="Width:").grid(row=0, column=0, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(lowres_group, textvariable=self.width_um, width=12, font=('Arial', 10)).grid(
-            row=0, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(lowres_group, text="µm").grid(row=0, column=2, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(lowres_group, text="Width (µm):").grid(row=0, column=0, sticky=tk.W, padx=5)
+        ttk.Entry(lowres_group, textvariable=self.width_um, width=10).grid(row=0, column=1, sticky=tk.W, padx=5)
         
-        # Height
-        ttk.Label(lowres_group, text="Height:").grid(row=0, column=3, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(lowres_group, textvariable=self.height_um, width=12, font=('Arial', 10)).grid(
-            row=0, column=4, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(lowres_group, text="µm").grid(row=0, column=5, sticky=tk.W, padx=5, pady=5)
+        ttk.Label(lowres_group, text="Height (µm):").grid(row=0, column=2, sticky=tk.W, padx=5)
+        ttk.Entry(lowres_group, textvariable=self.height_um, width=10).grid(row=0, column=3, sticky=tk.W, padx=5)
         
-        # Depth
-        ttk.Label(lowres_group, text="Depth:").grid(row=1, column=0, sticky=tk.W, padx=5, pady=5)
-        ttk.Entry(lowres_group, textvariable=self.depth_um, width=12, font=('Arial', 10)).grid(
-            row=1, column=1, sticky=tk.W, padx=5, pady=5)
-        ttk.Label(lowres_group, text="µm (Z-thickness)").grid(row=1, column=2, columnspan=4, sticky=tk.W, padx=5, pady=5)
-        
-        # === ACTION BUTTONS SECTION ===
-        button_frame = ttk.Frame(main_frame)
-        button_frame.pack(fill=tk.X, pady=20)
+        ttk.Label(lowres_group, text="Depth (µm) (3µm per slice):").grid(row=0, column=4, sticky=tk.W, padx=5)
+        ttk.Entry(lowres_group, textvariable=self.depth_um, width=10).grid(row=0, column=5, sticky=tk.W, padx=5)
 
-        # Create extra-large button style
+        # === Output Configuration ===
+        output_group = ttk.LabelFrame(main_frame, text="💾 Output Configuration", padding="10")
+        output_group.pack(fill=tk.X, pady=5)
+
+        ttk.Label(output_group, text="Save to:").pack(side=tk.LEFT, padx=5)
+        
+        # Bind key press to detect manual edit
+        out_entry = ttk.Entry(output_group, textvariable=self.output_dir, font=('Arial', 9))
+        out_entry.pack(side=tk.LEFT, fill=tk.X, expand=True, padx=5)
+        out_entry.bind("<Key>", lambda e: setattr(self, 'manual_path_set', True))
+        
+        ttk.Button(output_group, text="Browse...", command=self.browse_folder).pack(side=tk.LEFT, padx=5)
+        
+        # === Action Buttons ===
+        button_frame = ttk.Frame(main_frame)
+        button_frame.pack(fill=tk.X, pady=15)
+
         style = ttk.Style()
-        style.configure('XLarge.TButton', 
-                        font=('Arial', 11, 'bold'),
-                        padding=(15, 15),
-                        foreground='#2c3e50',
-                        background='#e0e0e0')
+        style.configure('XLarge.TButton', font=('Arial', 11, 'bold'), padding=(15, 15))
 
         ttk.Button(button_frame, text="Soma Plot", command=self.run_highres,
-                style='XLarge.TButton', width=20).pack(side=tk.LEFT, padx=5)
+                style='XLarge.TButton', width=18).pack(side=tk.LEFT, padx=5)
 
         ttk.Button(button_frame, text="Wide-field Plot", command=self.run_lowres,
-                style='XLarge.TButton', width=20).pack(side=tk.LEFT, padx=5)
+                style='XLarge.TButton', width=18).pack(side=tk.LEFT, padx=5)
 
         ttk.Button(button_frame, text="Plot Both", command=self.run_both,
-                style='XLarge.TButton', width=20).pack(side=tk.LEFT, padx=5)
+                style='XLarge.TButton', width=18).pack(side=tk.LEFT, padx=5)
 
-        # === STATUS BAR ===
+        # === Status ===
         status_frame = ttk.Frame(self.root, relief=tk.SUNKEN)
         status_frame.pack(side=tk.BOTTOM, fill=tk.X)
-        
-        status_label = tk.Label(status_frame, textvariable=self.status_text, font=('Helvetica', 10), fg='#2c3e50')
-        status_label.pack(pady=5)
-        
+        tk.Label(status_frame, textvariable=self.status_text, font=('Helvetica', 10), fg='#2c3e50').pack(pady=5)
         self.progress = ttk.Progressbar(status_frame, mode='indeterminate', length=400)
-        
-        info_label = tk.Label(status_frame, text="Ready - Enter data and click process to begin", 
-                             font=('Helvetica', 8), fg='gray')
-        info_label.pack(pady=2)
     
     def validate_inputs(self):
-        """Validate all user inputs before processing."""
+        """Validate numeric inputs."""
         try:
             float(self.x_coord.get())
             float(self.y_coord.get())
@@ -182,66 +237,74 @@ class NeuroVisGUI:
         except ValueError as e:
             messagebox.showerror("Input Error", f"Invalid numeric value: {e}")
             return False
+
+    def browse_folder(self):
+        """Open folder selection dialog."""
+        selected_dir = filedialog.askdirectory(initialdir=self.output_dir.get(), title="Select Output Folder")
+        if selected_dir:
+            self.output_dir.set(selected_dir)
+            self.manual_path_set = True
     
     def update_status(self, message):
-        """Thread-safe status bar update."""
         self.status_text.set(message)
         self.root.update_idletasks()
 
-    # === NEW INTEGRATED METHOD ===
+    def prepare_output_dir(self):
+        """Ensure output directory exists and return it."""
+        path = self.output_dir.get().strip()
+        
+        # If empty, fallback to the calculated default
+        if not path:
+            path = self._generate_default_path(self.sample_id.get())
+            self.output_dir.set(path)
+        
+        if not os.path.exists(path):
+            try:
+                os.makedirs(path)
+                self.update_status(f"📁 Created output directory: {path}")
+            except OSError as e:
+                messagebox.showerror("Error", f"Could not create output directory:\n{e}")
+                return None
+        return path
+
     def load_and_autofill(self):
-        """Loads the neuron and automatically fills soma coordinates in one action."""
+        """Loads the neuron and automatically fills soma coordinates."""
         def worker():
             try:
                 self.progress.pack(pady=5)
                 self.progress.start()
-                
-                # Step 1: Initialize
                 self.update_status("🗂️ Connecting to database...")
                 self.toolkit = Visual_toolkit(self.sample_id.get())
                 self.ion = IT.IONData()
                 
-                # Step 2: Load Tree
                 self.update_status(f"🌲 Loading neuron {self.neuron_id.get()}...")
                 tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
                 
                 if not tree:
-                    self.update_status("❌ Failed to find neuron.")
-                    messagebox.showwarning("Not Found", "Could not load neuron tree.\nPlease verify Sample ID and Neuron ID.")
+                    messagebox.showwarning("Not Found", "Could not load neuron tree.")
                     return
 
-                # Step 3: Extract Coordinates
-                self.update_status("📍 Extracting soma data...")
-                try:
-                    soma_xyz = [tree.root.x, tree.root.y, tree.root.z]
-                    
-                    # Step 4: Update GUI
-                    self.x_coord.set(str(int(soma_xyz[0])))
-                    self.y_coord.set(str(int(soma_xyz[1])))
-                    self.z_coord.set(str(int(soma_xyz[2])))
-                    
-                    self.update_status(f"✅ Loaded & Filled: X={int(soma_xyz[0])}, Y={int(soma_xyz[1])}, Z={int(soma_xyz[2])}")
-                    messagebox.showinfo("Success", f"Neuron Loaded Successfully!\n\nSoma Coordinates Auto-filled:\nX: {soma_xyz[0]:.1f}\nY: {soma_xyz[1]:.1f}\nZ: {soma_xyz[2]:.1f}")
+                soma_xyz = [tree.root.x, tree.root.y, tree.root.z]
+                self.x_coord.set(str(int(soma_xyz[0])))
+                self.y_coord.set(str(int(soma_xyz[1])))
+                self.z_coord.set(str(int(soma_xyz[2])))
                 
-                except AttributeError:
-                    self.update_status("⚠️ Neuron loaded, but soma root not found.")
-                    messagebox.showwarning("Structure Error", "Neuron tree loaded but root coordinates could not be extracted.")
-
+                self.update_status(f"✅ Loaded: {int(soma_xyz[0])}, {int(soma_xyz[1])}, {int(soma_xyz[2])}")
+                messagebox.showinfo("Success", "Neuron Loaded & Coordinates Auto-filled!")
+                
             except Exception as e:
                 messagebox.showerror("Error", f"An error occurred: {e}")
-                self.update_status(f"❌ Error: {e}")
             finally:
-                if self.toolkit:
-                    self.toolkit.close()
+                if self.toolkit: self.toolkit.close()
                 self.progress.stop()
                 self.progress.pack_forget()
         
         threading.Thread(target=worker, daemon=True).start()
 
     def run_highres(self):
-        """Execute high-resolution processing."""
-        if not self.validate_inputs():
-            return
+        if not self.validate_inputs(): return
+        out_path = self.prepare_output_dir()
+        if not out_path: return
         
         def process():
             try:
@@ -250,40 +313,37 @@ class NeuroVisGUI:
                 
                 self.update_status("🔧 Initializing toolkit...")
                 self.toolkit = Visual_toolkit(self.sample_id.get())
-                
                 soma_xyz = [float(self.x_coord.get()), float(self.y_coord.get()), float(self.z_coord.get())]
                 
                 self.update_status("📥 Downloading high-res blocks...")
-                high_res_volume, high_res_origin, high_res_resolution = self.toolkit.get_high_res_block(
+                vol, origin, res = self.toolkit.get_high_res_block(
                     soma_xyz, grid_radius=self.grid_radius.get()
                 )
                 
                 self.update_status("💾 Exporting high-res data...")
-                self.toolkit.export_data(high_res_volume, high_res_origin, high_res_resolution,
-                                        self.neuron_id.get(), suffix="SomaBlock")
+                self.toolkit.export_data(vol, origin, res, self.neuron_id.get(), 
+                                       suffix="SomaBlock", output_dir=out_path)
                 
                 self.update_status("📊 Generating plot...")
-                self.toolkit.plot_soma_block(high_res_volume, high_res_origin, high_res_resolution,
-                                            soma_xyz, self.neuron_id.get())
+                self.toolkit.plot_soma_block(vol, origin, res, soma_xyz, 
+                                           self.neuron_id.get(), output_dir=out_path)
                 
                 self.update_status("✅ High-res processing complete!")
-                messagebox.showinfo("Success", "High-resolution processing completed!\n\nResults saved to output directory.")
+                messagebox.showinfo("Success", f"Files saved to:\n{out_path}")
             
             except Exception as e:
                 messagebox.showerror("Processing Error", f"Error: {str(e)}")
-                self.update_status(f"❌ Error: {str(e)}")
             finally:
                 self.progress.stop()
                 self.progress.pack_forget()
-                if self.toolkit:
-                    self.toolkit.close()
+                if self.toolkit: self.toolkit.close()
         
         threading.Thread(target=process, daemon=True).start()
     
     def run_lowres(self):
-        """Execute low-resolution processing."""
-        if not self.validate_inputs():
-            return
+        if not self.validate_inputs(): return
+        out_path = self.prepare_output_dir()
+        if not out_path: return
         
         def process():
             try:
@@ -293,17 +353,12 @@ class NeuroVisGUI:
                 self.update_status("🔧 Initializing toolkit...")
                 self.toolkit = Visual_toolkit(self.sample_id.get())
                 self.ion = IT.IONData()
-                
-                # Load neuron tree for overlay
-                self.update_status("🗂️ Loading neuron tree...")
                 tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
-                if not tree:
-                    raise ValueError("Could not load neuron tree")
                 
                 soma_xyz = [float(self.x_coord.get()), float(self.y_coord.get()), float(self.z_coord.get())]
                 
                 self.update_status("📥 Downloading low-res slices...")
-                low_res_volume, low_res_origin, low_res_resolution = self.toolkit.get_low_res_widefield(
+                vol, origin, res = self.toolkit.get_low_res_widefield(
                     soma_xyz,
                     width_um=int(self.width_um.get()),
                     height_um=int(self.height_um.get()),
@@ -311,111 +366,87 @@ class NeuroVisGUI:
                 )
                 
                 self.update_status("💾 Exporting low-res data...")
-                self.toolkit.export_data(low_res_volume, low_res_origin, low_res_resolution,
-                                        self.neuron_id.get(), suffix="WideField")
+                self.toolkit.export_data(vol, origin, res, self.neuron_id.get(), 
+                                       suffix="WideField", output_dir=out_path)
                 
-                self.update_status("📊 Generating composite plot...")
+                self.update_status("📊 Generating plot...")
                 self.toolkit.plot_widefield_context(
-                    low_res_volume, low_res_origin, low_res_resolution,
-                    soma_xyz, self.neuron_id.get(), bg_intensity=2.0, swc_tree=tree
+                    vol, origin, res, soma_xyz, self.neuron_id.get(), 
+                    bg_intensity=2.0, swc_tree=tree, output_dir=out_path
                 )
                 
                 self.update_status("✅ Low-res processing complete!")
-                messagebox.showinfo("Success", "Low-resolution processing completed!\n\nResults saved to output directory.")
+                messagebox.showinfo("Success", f"Files saved to:\n{out_path}")
             
             except Exception as e:
                 messagebox.showerror("Processing Error", f"Error: {str(e)}")
-                self.update_status(f"❌ Error: {str(e)}")
             finally:
                 self.progress.stop()
                 self.progress.pack_forget()
-                if self.toolkit:
-                    self.toolkit.close()
+                if self.toolkit: self.toolkit.close()
         
         threading.Thread(target=process, daemon=True).start()
     
     def run_both(self):
-        """Execute both high-res and low-res processing sequentially."""
-        if not self.validate_inputs():
-            return
+        if not self.validate_inputs(): return
+        out_path = self.prepare_output_dir()
+        if not out_path: return
         
-        if messagebox.askyesno("Confirm", "Process both high and low resolution?\n\nThis may take several minutes."):
+        if messagebox.askyesno("Confirm", "Process both resolutions?"):
             def process():
                 try:
                     self.progress.pack(pady=5)
                     self.progress.start()
                     
-                    self.update_status("🔄 Starting both processes...")
-                    
                     soma_xyz = [float(self.x_coord.get()), float(self.y_coord.get()), float(self.z_coord.get())]
                     
                     # Phase 1: High-res
+                    self.update_status("Processing High-res...")
                     self.toolkit = Visual_toolkit(self.sample_id.get())
-                    self.ion = IT.IONData()
-                    
-                    self.update_status("📥 Phase 1/2: High-res blocks...")
-                    high_res_volume, high_res_origin, high_res_resolution = self.toolkit.get_high_res_block(
+                    vol_h, origin_h, res_h = self.toolkit.get_high_res_block(
                         soma_xyz, grid_radius=self.grid_radius.get()
                     )
-                    self.toolkit.export_data(high_res_volume, high_res_origin, high_res_resolution,
-                                            self.neuron_id.get(), suffix="SomaBlock")
-                    self.toolkit.plot_soma_block(high_res_volume, high_res_origin, high_res_resolution,
-                                                soma_xyz, self.neuron_id.get())
-                    
+                    self.toolkit.export_data(vol_h, origin_h, res_h, self.neuron_id.get(), 
+                                           suffix="SomaBlock", output_dir=out_path)
+                    self.toolkit.plot_soma_block(vol_h, origin_h, res_h, soma_xyz, 
+                                               self.neuron_id.get(), output_dir=out_path)
                     self.toolkit.close()
                     
                     # Phase 2: Low-res
+                    self.update_status("Processing Low-res...")
+                    self.ion = IT.IONData()
                     tree = self.ion.getRawNeuronTreeByID(self.sample_id.get(), self.neuron_id.get())
                     self.toolkit = Visual_toolkit(self.sample_id.get())
                     
-                    self.update_status("📥 Phase 2/2: Low-res slices...")
-                    low_res_volume, low_res_origin, low_res_resolution = self.toolkit.get_low_res_widefield(
+                    vol_l, origin_l, res_l = self.toolkit.get_low_res_widefield(
                         soma_xyz,
                         width_um=int(self.width_um.get()),
                         height_um=int(self.height_um.get()),
                         depth_um=int(self.depth_um.get())
                     )
-                    self.toolkit.export_data(low_res_volume, low_res_origin, low_res_resolution,
-                                            self.neuron_id.get(), suffix="WideField")
+                    self.toolkit.export_data(vol_l, origin_l, res_l, self.neuron_id.get(), 
+                                           suffix="WideField", output_dir=out_path)
                     self.toolkit.plot_widefield_context(
-                        low_res_volume, low_res_origin, low_res_resolution,
-                        soma_xyz, self.neuron_id.get(), bg_intensity=2.0, swc_tree=tree
+                        vol_l, origin_l, res_l, soma_xyz, self.neuron_id.get(), 
+                        bg_intensity=2.0, swc_tree=tree, output_dir=out_path
                     )
                     
                     self.update_status("✅ All processing complete!")
-                    messagebox.showinfo("Success", "All processing completed!\n\nBoth high-res and low-res results saved.")
+                    messagebox.showinfo("Success", f"All results saved to:\n{out_path}")
                 
                 except Exception as e:
                     messagebox.showerror("Processing Error", f"Error: {str(e)}")
-                    self.update_status(f"❌ Error: {str(e)}")
                 finally:
                     self.progress.stop()
                     self.progress.pack_forget()
-                    if self.toolkit:
-                        self.toolkit.close()
+                    if self.toolkit: self.toolkit.close()
             
             threading.Thread(target=process, daemon=True).start()
 
 # ==================== MAIN LAUNCHER ====================
 def main():
-    """Launch the GUI application."""
-    print("=" * 50)
-    print("NeuroVis Visual Toolkit - GUI Mode")
-    print("=" * 50)
-    print("Initializing GUI...")
-    
     root = tk.Tk()
     app = NeuroVisGUI(root)
-    
-    print("GUI loaded successfully!")
-    print("-" * 50)
-    print("Instructions:")
-    print("1. Enter Sample ID and Neuron ID")
-    print("2. Click 'Load & Auto-Fill' to populate soma coordinates")
-    print("3. Adjust grid/resolution parameters if needed")
-    print("4. Click any Plot button to run")
-    print("-" * 50)
-    
     root.mainloop()
 
 if __name__ == "__main__":

@@ -1,14 +1,59 @@
 """
 Visual_toolkit.py - Macaque Brain Hybrid-Resolution Visualization Toolkit
 
-Version: 1.0.0 (2026-01-27)
-Author: [Your Name]
+Version: 1.1.0 (Custom Output Directory Support)
 
-Features:
-- High-resolution (0.65µm) block acquisition via HTTP
-- Low-resolution (5.0µm) widefield via SSH
-- SWC overlay support
-- NIfTI/TIFF export
+DESCRIPTION:
+    A unified tool for retrieving and visualizing Macaque brain data from mixed sources.
+    Supports high-resolution block-based acquisition via HTTP (0.65µm) and low-resolution
+    slice-based acquisition via SSH (5.0µm resampled). Includes SWC neuron overlay,
+    NIfTI/TIFF export, and publication-quality plotting.
+
+KEY FEATURES:
+    - High Resolution (0.65µm): Grid-based block download via HTTP
+    - Low Resolution (5.0µm): Slice-based download via SSH from resampled data
+    - SWC Overlay: Plot neuron traces on anatomical context
+    - Export Formats: NIfTI (.nii.gz) for 3D, TIFF (.tif) for 2D MIP
+    - Caching: Automatic local caching of downloaded blocks/slices
+    - Flexible Output: Configurable output directories
+
+USAGE NOTES:
+    1. Basic High-Res Soma Block:
+        toolkit = Visual_toolkit('251637')
+        volume, origin, resolution = toolkit.get_high_res_block(
+            center_um=[18000, 18000, 1000], grid_radius=2
+        )
+        toolkit.export_data(volume, origin, resolution, '003.swc', suffix='SomaBlock')
+        toolkit.close()
+
+    2. Basic Low-Res Wide Field:
+        toolkit = Visual_toolkit('251637')
+        volume, origin, resolution = toolkit.get_low_res_widefield(
+            center_um=[18000, 18000, 1000], width_um=8000, height_um=8000, depth_um=30
+        )
+        toolkit.plot_widefield_context(volume, origin, resolution, 
+                                       soma_coords, '003.swc', swc_tree=tree)
+        toolkit.close()
+
+    3. Always call toolkit.close() when done to close SSH connections.
+
+CONFIGURATION:
+    - HTTP_HOST: Server for high-res data (default: bap.cebsit.ac.cn)
+    - SSH_* variables: Server credentials for low-res data (update as needed)
+    - neurovis_path: Path to neuronVis folder containing IONData module
+    - Output paths are constructed as: project_root/resource/segmented_cubes/sample_id
+
+UPDATE NOTES (v1.1.0):
+    - Added custom output directory support
+    - Fixed grid_radius logic for proper neighbor block calculation
+    - Improved SSH connection handling with lazy initialization
+    - Enhanced error handling for HTTP downloads
+    - Added optional manual_threshold parameter for widefield plotting
+
+DEPENDENCIES:
+    - numpy, tifffile, nibabel, matplotlib, paramiko
+    - IONData module from neuron-vis package
+    - Network access to HTTP server and/or SSH server
 
 See CHANGELOG.md for detailed version history.
 """
@@ -66,7 +111,7 @@ class Visual_toolkit:
         # Define Project Root (One level up from script)
         project_root = os.path.dirname(os.getcwd())
         
-        # 1. Output Directory (Where results go)
+        # 1. Default Output Directory (Where results go if no custom dir is provided)
         self.output_dir = os.path.join(project_root, 'resource', 'segmented_cubes', sample_id)
         
         # 2. Cache Directories (Where downloads are stored)
@@ -77,7 +122,7 @@ class Visual_toolkit:
         for folder in [self.output_dir, self.cache_http_dir, self.cache_ssh_dir]:
             if not os.path.exists(folder):
                 os.makedirs(folder)
-                print(f"[INFO] Created directory: {folder}")
+                # print(f"[INFO] Created directory: {folder}")
 
         # SSH Client (Lazy Load)
         self.ssh_client = None
@@ -128,11 +173,6 @@ class Visual_toolkit:
     def get_high_res_block(self, center_um, grid_radius=2):
         """
         Acquires 0.65um resolution Volume using Grid Logic.
-        Args:
-            center_um: [x, y, z] coordinates.
-            grid_radius: 1=Center block only, 2=3x3x3 grid.
-        Returns: 
-            volume (numpy 3d), origin (list), resolution (list)
         """
         print(f"\n[ACTION] Acquiring High-Res Soma Block (Radius {grid_radius})")
         
@@ -258,15 +298,21 @@ class Visual_toolkit:
         return volume, [origin_x, origin_y, origin_z], RESOLUTION_LOW
 
     # ==========================================
-    # EXPORT & VISUALIZATION
+    # EXPORT & VISUALIZATION (UPDATED)
     # ==========================================
-    def export_data(self, volume, origin, resolution, neuron_id, suffix="Volume"):
+    def export_data(self, volume, origin, resolution, neuron_id, suffix="Volume", output_dir=None):
         """
         Saves data as NIfTI (3D) or TIFF (2D).
+        Accepts optional 'output_dir' override.
         """
+        # Determine target directory
+        target_dir = output_dir if output_dir else self.output_dir
+        if not os.path.exists(target_dir):
+            os.makedirs(target_dir, exist_ok=True)
+
         filename = f"{self.sample_id}_{neuron_id}_{suffix}"
         ext = ".nii.gz" if volume.ndim == 3 else ".tif"
-        full_path = os.path.join(self.output_dir, filename + ext)
+        full_path = os.path.join(target_dir, filename + ext)
         
         print(f"  > Exporting: {full_path}")
 
@@ -286,9 +332,10 @@ class Visual_toolkit:
             if volume.ndim == 3: volume = np.max(volume, axis=0) 
             tifffile.imwrite(full_path, volume)
 
-    def plot_soma_block(self, volume_3d, origin, resolution, soma_coords, neuron_id, suffix="SomaBlock"):
+    def plot_soma_block(self, volume_3d, origin, resolution, soma_coords, neuron_id, suffix="SomaBlock", output_dir=None):
         """
-        Plots Grayscale Anatomy (High Res). Shows Middle Slice.
+        Plots Grayscale Anatomy (High Res).
+        Accepts optional 'output_dir' override.
         """
         print(f"  > Generating Grayscale Plot ({suffix})...")
         
@@ -305,11 +352,15 @@ class Visual_toolkit:
         img_norm = np.clip((img - p1)/(p99-p1), 0, 1)
         img_final = np.power(img_norm, 0.5)
         
-        self._save_plot(img_final, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], cmap='gray', marker_color='cyan')
+        self._save_plot(img_final, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], 
+                       cmap='gray', marker_color='cyan', output_dir=output_dir)
 
-    def plot_widefield_context(self, volume_3d, origin, resolution, soma_coords, neuron_id, suffix="WideField", manual_threshold=100, bg_intensity=0.4, swc_tree=None):
+    def plot_widefield_context(self, volume_3d, origin, resolution, soma_coords, neuron_id, 
+                             suffix="WideField", manual_threshold=100, bg_intensity=0.4, 
+                             swc_tree=None, output_dir=None):
         """
-        Plots Green Intensity on Dark Background + SWC Overlay. Uses MIP.
+        Plots Green Intensity on Dark Background + SWC Overlay.
+        Accepts optional 'output_dir' override.
         """
         print(f"  > Generating Composite Plot ({suffix})...")
         
@@ -347,11 +398,10 @@ class Visual_toolkit:
         sx = (soma_coords[0] - origin[0]) / resolution[0]
         sy = (soma_coords[1] - origin[1]) / resolution[1]
         
-      
-        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], marker_color='white')
+        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], 
+                           marker_color='white', output_dir=output_dir)
 
     def _overlay_swc(self, ax, swc_tree, origin, resolution, h, w):
-        
         if swc_tree:
             print("Overlaying SWC Edges...")
         for edge in swc_tree.edges:
@@ -362,33 +412,29 @@ class Visual_toolkit:
                 lx = (p.x - origin[0]) / resolution[0]
                 ly = (p.y - origin[1]) / resolution[1]
                 
-                # Print transformed coordinates for debugging
-                # print(f"Transformed Coordinates: ({lx}, {ly})")
-                
                 # Check if the point is within the image bounds
                 if 0 <= lx < w and 0 <= ly < h:
                     path_x.append(lx)
                     path_y.append(ly)
-                else:
-                    print(f"Point ({lx}, {ly}) is out of bounds")
             
             # Plot the edge if there are any visible points
             if path_x and path_y:
                 ax.plot(path_x, path_y, color='red', linewidth=0.5, alpha=0.5)
-            else:
-                print("Edge not visible")
-        # else:
-        #     print("No SWC tree or edges found")
 
-    def _save_plot(self, img_data, sx, sy, resolution, neuron_id, suffix, z_slices, cmap, marker_color):
+    def _save_plot(self, img_data, sx, sy, resolution, neuron_id, suffix, z_slices, cmap, marker_color, output_dir=None):
         """Helper to create simple grayscale plots (Soma Block)."""
         fig, ax = plt.subplots(figsize=(12, 12), facecolor='black')
         ax.imshow(img_data, cmap=cmap, origin='upper')
-        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color)
+        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir)
 
-    def _finalize_plot(self, fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color):
+    def _finalize_plot(self, fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir=None):
         """Shared annotation and saving logic."""
         h, w = ax.images[0].get_size()
+        
+        # Determine target directory
+        target_dir = output_dir if output_dir else self.output_dir
+        if not os.path.exists(target_dir):
+            os.makedirs(target_dir, exist_ok=True)
         
         # Marker: Hollow Square
         ax.scatter(sx, sy, s=300, marker='s', facecolors='none', edgecolors=marker_color, linewidth=1.0, label='Soma', zorder=10)
@@ -407,7 +453,8 @@ class Visual_toolkit:
         
         # Save
         plot_name = f"{self.sample_id}_{neuron_id}_{suffix}_Plot.png"
-        save_path = os.path.join(self.output_dir, plot_name)
+        save_path = os.path.join(target_dir, plot_name)
+        
         plt.savefig(save_path, bbox_inches='tight', pad_inches=0.1, facecolor='black', dpi=600)
         print(f"  > Plot saved: {save_path}")
         plt.close(fig)
@@ -430,18 +477,13 @@ if __name__ == "__main__":
         except: soma_xyz = tree.root.xyz
         print(f"Target Soma: {soma_xyz}")
         
-        # --- 1. HIGH RES SOMA BLOCK (Radius 2) ---
-        # Gets 3D Cube. Saves as .nii.gz
-        # high_res_volume, high_res_origin, high_res_resolution = toolkit.get_high_res_block(soma_xyz, grid_radius=2)
-        
-        # toolkit.export_data(high_res_volume, high_res_origin, high_res_resolution, NEURON, suffix="SomaBlock")
-        # toolkit.plot_soma_block(high_res_volume, high_res_origin, high_res_resolution, soma_xyz, NEURON)
-        
-        # --- 2. LOW RES WIDE FIELD (1cm x 1cm) ---
-        # Gets Wide Slab. Saves as .nii.gz (Volume) + Plot (Image)
+        # Example usage:
         low_res_volume, low_res_origin, low_res_resolution = toolkit.get_low_res_widefield(soma_xyz, width_um=8000, height_um=8000, depth_um=30)
         
-        toolkit.export_data(low_res_volume, low_res_origin, low_res_resolution, NEURON, suffix="WideField")
-        toolkit.plot_widefield_context(low_res_volume, low_res_origin, low_res_resolution, soma_xyz, NEURON, bg_intensity=2.0, swc_tree=tree)
+        # Exporting to default directory
+        # toolkit.export_data(low_res_volume, low_res_origin, low_res_resolution, NEURON, suffix="WideField")
+        
+        # Exporting to Custom Directory (Example)
+        toolkit.export_data(low_res_volume, low_res_origin, low_res_resolution, NEURON, suffix="WideField", output_dir="D:/Custom_Output")
         
     toolkit.close()
