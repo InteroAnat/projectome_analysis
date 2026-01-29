@@ -91,7 +91,7 @@ class NeuroVisGUI:
     def __init__(self, root):
         """Initialize GUI window and widgets."""
         self.root = root
-        self.root.title(" Visual_Toolkit_gui v1.4")
+        self.root.title(" Visual_Toolkit_gui v1.5.0")
         self.root.geometry("700x700")
         self.root.configure(bg='#f0f0f0')
         self.root.resizable(False, False)
