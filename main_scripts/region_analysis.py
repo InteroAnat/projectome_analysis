@@ -87,6 +87,9 @@ def save_debug_snapshot(voxel_coords, neuron_name, template_img, point_type, fol
 # ==============================================================================
 # 1. NEURON CLASSIFIER
 # ==============================================================================
+# ==============================================================================
+# 1. NEURON CLASSIFIER (Updated for NMT v2.1 ARM Table)
+# ==============================================================================
 class NeuronClassifier:
     def __init__(self, atlas_table):
         try:
@@ -98,29 +101,85 @@ class NeuronClassifier:
         if 'Full_Name' in atlas_table.columns:
              self.name_to_id.update(dict(zip(atlas_table['Full_Name'], ids)))
 
-    def _get_broad_region(self, region_identifier):
+    def _get_detailed_category(self, region_identifier):
         rid = self.name_to_id.get(region_identifier)
-        if rid is None:
-            try: rid = int(region_identifier)
-            except: return 'Other'
-        try: rid = int(rid)
-        except: return 'Other'
+        if rid is None: return 'Other'
+        rid = int(rid)
 
-        if 461 <= rid <= 618: return 'Brainstem'
-        if 405 <= rid <= 452: return 'Thalamus'
-        if 1 <= rid <= 373: return 'Telencephalon'
+        # --- PT TARGETS (Brainstem + Hypothalamus) ---
+        # 1. Brainstem (Midbrain, Pons, Medulla, Cerebellum)
+        #    Left: 1169-1325, Right: 1669-1825
+        if (1169 <= rid <= 1325) or (1669 <= rid <= 1825):
+            return 'PT_Target'
+        
+        # 2. Hypothalamus (Specific Diencephalon subset)
+        #    Based on ARM table: 1083-1107 (Left), 1583-1607 (Right)
+        if (1083 <= rid <= 1107) or (1583 <= rid <= 1607):
+            return 'PT_Target'
+
+        # --- CT TARGETS (Thalamus Only) ---
+        #    Thalamus, Epithalamus (Excluding Hypothalamus)
+        #    Left: 1111-1168, Right: 1611-1668
+        if (1111 <= rid <= 1168) or (1611 <= rid <= 1668):
+            return 'Thalamus'
+
+        # --- STRIATUM (ITs Targets) ---
+        #    Left: 1051-1061, Right: 1551-1561
+        if (1051 <= rid <= 1061) or (1551 <= rid <= 1561):
+            return 'Striatum'
+
+        # --- CORTEX ---
+        if 1 <= rid <= 500: return 'Cortex_L'
+        if 501 <= rid <= 1000: return 'Cortex_R'
+
         return 'Other'
 
-    def classify_single_neuron(self, terminal_list):
-        targets = set()
-        for t_name in terminal_list:
-            targets.add(self._get_broad_region(t_name))
-            
-        if 'Brainstem' in targets: return 'PT'
-        if 'Thalamus' in targets: return 'CT'
-        if 'Telencephalon' in targets and 'Thalamus' not in targets: return 'IT'
-        return 'Unclassified'
+    def classify_single_neuron(self, terminal_list, soma_region):
+        # 1. Determine Soma Side
+        soma_side = 'Unknown'
+        if 'CL_' in soma_region or 'SL_' in soma_region: soma_side = 'L'
+        elif 'CR_' in soma_region or 'SR_' in soma_region: soma_side = 'R'
 
+        # 2. Analyze Targets
+        is_PT = False
+        is_CT = False
+        has_striatum = False
+        has_contra_cortex = False
+        has_ipsi_cortex = False
+
+        for t_name in terminal_list:
+            cat = self._get_detailed_category(t_name)
+            
+            if cat == 'PT_Target': is_PT = True
+            elif cat == 'Thalamus': is_CT = True
+            elif cat == 'Striatum': has_striatum = True
+            elif cat == 'Cortex_L':
+                if soma_side == 'L': has_ipsi_cortex = True
+                elif soma_side == 'R': has_contra_cortex = True
+            elif cat == 'Cortex_R':
+                if soma_side == 'R': has_ipsi_cortex = True
+                elif soma_side == 'L': has_contra_cortex = True
+
+        # 3. Apply Paper Hierarchy
+        
+        # Rule 1: PT (Midbrain, Hypothalamus, Pons, Medulla)
+        if is_PT: return 'PT'
+        
+        # Rule 2: CT (Thalamus, but NOT PT targets)
+        if is_CT: return 'CT'
+
+        # Rule 3: ITs (Striatum)
+        # Paper: "If both striatal and contralateral... we classified as ITs"
+        # This implies ITs has priority over ITc
+        if has_striatum: return 'ITs'
+
+        # Rule 4: ITc (Contralateral Cortex)
+        if has_contra_cortex: return 'ITc'
+
+        # Rule 5: ITi (Ipsilateral Exclusive)
+        if has_ipsi_cortex: return 'ITi'
+
+        return 'Unclassified'
 # ==============================================================================
 # 2. PER NEURON ANALYSIS
 # ==============================================================================
@@ -262,7 +321,7 @@ class PopulationRegionAnalysis:
 
             # --- CLASSIFICATION & STORAGE ---
             term_name_list = [item['region'] for item in analysis.terminal_regions]
-            n_type = self.classifier.classify_single_neuron(term_name_list)
+            n_type = self.classifier.classify_single_neuron(term_name_list,analysis.soma_region)
 
             row = {
                 'SampleID': self.sample_id,
@@ -371,11 +430,49 @@ class PopulationRegionAnalysis:
         plt.show()
 
     def plot_type_distribution(self):
+        """
+        Plots a Pie Chart of neuron types (PT, CT, ITc, ITs, ITi).
+        """
         if self.plot_dataframe.empty: return
-        self.plot_dataframe['Neuron_Type'].value_counts().plot(kind='bar', color='teal')
-        plt.title("Neuron Types Distribution")
-        plt.show()
+        
+        # count types
+        counts = self.plot_dataframe['Neuron_Type'].value_counts()
+        
+        # Define colors consistent with typical papers
+        # PT=Red, CT=Green/Blue, IT=Shades of Purple/Pink
+        type_colors = {
+            'PT': '#d62728',  # Red
+            'CT': '#2ca02c',  # Green
+            'ITc': '#9467bd', # Purple
+            'ITs': '#e377c2', # Pink
+            'ITi': '#17becf', # Cyan/Teal
+            'Unclassified': '#7f7f7f' # Grey
+        }
+        
+        # Map colors to the data present
+        colors = [type_colors.get(x, '#333333') for x in counts.index]
+        
+        plt.figure(figsize=(8, 8))
+        
+        # Pie Plot
+        wedges, texts, autotexts = plt.pie(
+            counts, 
+            labels=counts.index, 
+            autopct= lambda pct: f'{pct:.1f}%\n({int(pct/100.*counts.sum())})',  # Shows % and count
+            startangle=140, 
+            colors=colors,
+            pctdistance=0.85, # Distance of percentage text
+            explode=[0.02]*len(counts) # Slight separation
+        )
+        
+        # Make it a Donut Chart (Optional, looks modern)
+        centre_circle = plt.Circle((0,0),0.70,fc='white')
+        fig = plt.gcf()
+        fig.gca().add_artist(centre_circle)
 
+        plt.title(f"Neuron Type Distribution (N={len(self.plot_dataframe)})", fontsize=14)
+        plt.tight_layout()
+        plt.show()
     def plot_terminal_distribution(self):
         if self.plot_dataframe.empty: return
         exploded = self.plot_dataframe.explode('Terminal_Regions')

@@ -24,7 +24,7 @@ print("--- STARTING ATLAS BUILDER ---")
 base_dir = r'D:\projectome_analysis\atlas\NMT_v2.0_sym\NMT_v2.0_sym'
 charm_path = os.path.join(base_dir, 'CHARM_in_NMT_v2.0_sym.nii.gz')
 sarm_path  = os.path.join(base_dir, 'SARM_in_NMT_v2.0_sym.nii.gz')
-output_path = r'D:\projectome_analysis\atlas\nmt_structure_with_hiearchyy.nii.gz'
+output_path = r'D:\projectome_analysis\atlas\nmt_structure_with_hiearchy.nii.gz'
 
 # 2. LOAD DATA
 # =================
