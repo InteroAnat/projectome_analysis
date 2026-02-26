@@ -44,7 +44,7 @@ RESOLUTION_HIGH   = [0.65, 0.65, 3.0] # [X, Y, Z] microns
 SSH_HOST = "172.20.10.250"
 SSH_PORT = 20007
 SSH_USER = "binbin"
-SSH_PASS = "q2DBX4yThL6CVVZ"
+SSH_PASS = "IONconnect2026"
 SSH_REMOTE_BASE = "/home/binbin/share/251637CH1_projection/251637-CH1_resample/resample_5um"
 RESOLUTION_LOW  = [5.0, 5.0, 3.0]     # [X, Y, Z] microns
 

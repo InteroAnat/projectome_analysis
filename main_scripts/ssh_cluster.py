@@ -20,7 +20,7 @@ import neuro_tracer as nt
 HOST = "172.20.10.250"
 PORT = 20007
 USER = "binbin"
-PASS = "q2DBX4yThL6CVVZ"
+PASS = "IONconnect2026"
 REMOTE_BASE = "/home/binbin/share/251637CH1_projection/251637-CH1_resample/resample_5um"
 
 RES_RESAMPLED = [5.0, 5.0, 3.0] # [X, Y, Z] microns
