@@ -286,9 +286,10 @@ def join_fnt_files(group_name, group_output_dir):
     # Create joined file
     joined_file = os.path.join(group_output_dir, f"{group_name.lower()}_joined.fnt")
     
-    # Build command - pass files individually (wildcard may not work with Windows exe)
-    files_str = ' '.join([f'"{f}"' for f in decimate_files])
-    command = f'fnt-join.exe {files_str} -o "{joined_file}"'
+    # Build command using bash -c to handle wildcard expansion
+    # This avoids "command line too long" error on Windows
+    file_pattern = os.path.join(group_output_dir, "*.decimate.fnt")
+    command = f'bash -c \'fnt-join.exe "{file_pattern}" -o "{joined_file}"\''
     
     if execute_command(command):
         print(f"  ✓ Joined FNT created: {joined_file}")
