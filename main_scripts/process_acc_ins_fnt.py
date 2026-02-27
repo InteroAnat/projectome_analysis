@@ -288,8 +288,9 @@ def join_fnt_files(group_name, group_output_dir):
     
     # Build command using bash -c to handle wildcard expansion
     # This avoids "command line too long" error on Windows
+    # Note: No quotes around wildcard pattern to allow bash expansion
     file_pattern = os.path.join(group_output_dir, "*.decimate.fnt")
-    command = f'bash -c \'fnt-join.exe "{file_pattern}" -o "{joined_file}"\''
+    command = f"bash -c 'fnt-join.exe {file_pattern} -o \"{joined_file}\"'"
     
     if execute_command(command):
         print(f"  ✓ Joined FNT created: {joined_file}")
