@@ -243,7 +243,7 @@ def process_neuron_group(group_name, neuron_ids, swc_dir, output_dir):
     print("="*70)
     
     # Create output subdirectory for this group
-    group_output_dir = os.path.join(output_dir, group_name.lower())
+    group_output_dir = output_dir + '/'+ group_name.lower()
     os.makedirs(group_output_dir, exist_ok=True)
     
     success_count = 0
@@ -284,13 +284,13 @@ def join_fnt_files(group_name, group_output_dir):
     print(f"  Found {len(decimate_files)} decimate.fnt files")
     
     # Create joined file
-    joined_file = os.path.join(group_output_dir, f"{group_name.lower()}_joined.fnt")
+    joined_file = group_output_dir + '/' +f"{group_name.lower()}_joined.fnt"
     
     # Build command using bash -c to handle wildcard expansion
     # This avoids "command line too long" error on Windows
     # Note: No quotes around wildcard pattern to allow bash expansion
-    file_pattern = os.path.join(group_output_dir, "*.decimate.fnt")
-    command = f"bash -c 'fnt-join.exe {file_pattern} -o \"{joined_file}\"'"
+    file_pattern = group_output_dir + "/*.decimate.fnt"
+    command = f"bash -c 'fnt-join.exe {file_pattern} -o {joined_file}'"
     
     if execute_command(command):
         print(f"  ✓ Joined FNT created: {joined_file}")
@@ -300,27 +300,32 @@ def join_fnt_files(group_name, group_output_dir):
         return None
 
 
-def compute_fnt_distances(group_name, group_output_dir):
-    """Compute FNT distance matrix for a group."""
+def compute_fnt_distances(group_name, group_output_dir, joined_file=None):
+    """Compute FNT distance matrix for a group.
+    
+    Note: fnt-dist requires a single joined FNT file, not multiple individual files.
+    If joined_file is not provided, it will look for {group_name}_joined.fnt
+    """
     print("\n" + "-"*70)
     print(f"COMPUTING {group_name} FNT DISTANCES")
     print("-"*70)
     
-    # Find all decimate.fnt files
-    decimate_files = sorted(glob.glob(os.path.join(group_output_dir, "*.decimate.fnt")))
+    # Find the joined FNT file
+    if joined_file is None:
+        joined_file = os.path.join(group_output_dir, f"{group_name.lower()}_joined.fnt")
     
-    if len(decimate_files) < 2:
-        print(f"  ✗ Need at least 2 neurons for distance computation, found {len(decimate_files)}")
+    if not os.path.exists(joined_file):
+        print(f"  ✗ Joined FNT file not found: {joined_file}")
+        print(f"     Please run join_fnt_files first.")
         return None
-    
-    print(f"  Computing distances for {len(decimate_files)} neurons...")
     
     # Output distance file
     dist_file = os.path.join(group_output_dir, f"{group_name.lower()}_dist.txt")
     
-    # Build command
-    file_pattern = os.path.join(group_output_dir, "*.decimate.fnt")
-    command = f'fnt-dist {file_pattern} > "{dist_file}"'
+    print(f"  Computing distances from joined file...")
+    
+    # Build command - fnt-dist takes a single joined FNT file
+    command = f'fnt-dist.exe "{joined_file}" > "{dist_file}"'
     
     if execute_command(command):
         print(f"  ✓ Distance matrix saved: {dist_file}")
@@ -382,8 +387,8 @@ for group_name, data in neuron_data.items():
     # Join FNT files
     joined_file = join_fnt_files(group_name, group_output_dir)
     
-    # Compute distances
-    # dist_file = compute_fnt_distances(group_name, group_output_dir)
+    # Compute distances (requires joined file)
+    # dist_file = compute_fnt_distances(group_name, group_output_dir, joined_file)
     
     # results[group_name] = {
     #     'total': len(neuron_ids),
