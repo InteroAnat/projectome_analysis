@@ -2,7 +2,9 @@ atlas/
 neuron-vis/resource
 resource/
 main_scripts/resources
-main_scripts/processed_neurons/
+main_scripts/processed_neurons
+main_scripts/debug_outliers
+main_scripts/.ipynb_checkpoints
 literature/
 *.tif
 
@@ -13,3 +15,9 @@ literature/
 *.msi
 *.fnt
 *.nrrd
+*.gz
+*.zip
+*.tar
+*.tar.gz
+*.nifti
+*.nii

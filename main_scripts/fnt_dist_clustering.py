@@ -1,411 +1,436 @@
 """
-fnt_dist_clustering.py - FNT Distance-Based Clustering Analysis
-
-Version: 1.2.0 (2026-01-27)
-Author: [Your Name]
+fnt_dist_clustering.py - Hybrid Morphological Clustering
 
 Features:
-- Hierarchical clustering of neurons based on FNT distances
-- Cluster visualization and export
-- Support for multiple clustering algorithms
-
-See CHANGELOG.md for detailed version history.
+1. Natural Sorting & Robust Matrix Symmetrization.
+2. Toggle between Spearman (Rank) and Log1p (Magnitude).
+3. **SUPERVISED PENALTY:** Artificially increases distance between different biological types.
+4. C-index Optimization for K.
+5. Publication-ready Plotting with cluster size annotations on dendrogram.
 """
 
-#%%
+import pandas as pd
 import numpy as np
-import pandas as pd
-from scipy.cluster.hierarchy import linkage, fcluster
-from scipy.spatial.distance import squareform
-import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-import numpy as np
-import os
-
-# Load data
-df = pd.read_csv('dist.txt', sep='\t', header=0,
-                 names=['i', 'j', 'score', 'match', 'nomatch'])
-#%%
-# 2. Pivot
-print("Pivoting data...")
-
-# Ensure numeric types
-df['i'] = pd.to_numeric(df['i'], errors='coerce')
-df['j'] = pd.to_numeric(df['j'], errors='coerce')
-df['score'] = pd.to_numeric(df['score'], errors='coerce')
-
-# Pivot using lowercase names
-matrix = df.pivot(index='i', columns='j', values='score')
-
-print(f"Matrix Shape: {matrix.shape}")
-print(matrix.iloc[:10, :10])
-#%%
-# 1. Load Raw Data
-# df was loaded earlier from 'dist.txt'
-# df has columns: ['i', 'j', 'score']
-
-# 2. Get Unique IDs
-# We check both 'i' (Source) and 'j' (Target) to be safe
-all_ids = pd.concat([df['i'], df['j']]).unique()
-
-# 3. Determine Count
-expected_count = len(all_ids)
-min_id = all_ids.min()
-max_id = all_ids.max()
-
-print(f"--- DATA INTEGRITY CHECK ---")
-print(f"Total Unique Neurons in Input File: {expected_count}")
-print(f"ID Range: {min_id} to {max_id}")
-
-# 4. Check for 'Ghost 0' immediately
-if min_id == 0:
-    print("Warning: ID 0 detected. This is likely a Ghost.")
-    expected_count_real = expected_count - 1 # We plan to drop one
-else:
-    expected_count_real = expected_count
-
-print(f"Real Expected Count (excluding ghosts): {expected_count_real}")
-#%%
-# 3. Fill Gaps
-print("Symmetrizing...")
-
-# Combine matrix with its Transpose to fill missing pairs
-matrix = matrix.combine_first(matrix.T)
-
-# Fill self-distance (Diagonal) with 0
-np.fill_diagonal(matrix.values, 0)
-
-# Check for remaining empty spots (NaN)
-if matrix.isnull().values.any():
-    print("Warning: Some pairs are missing. Filling with Max Value.")
-    matrix = matrix.fillna(matrix.max().max())
-
-print("Matrix ready.")
-# %%
-# 4. Plot
-from scipy.spatial.distance import squareform
-from scipy.cluster.hierarchy import linkage
-
-print("Generating Heatmap...")
-
-# A. Log Transform (Essential for FNT scale)
-plot_data = np.log1p(matrix)
-# plot_data = matrix
-
-# B. Calculate Linkage Manually
-# squareform converts the Matrix into the Vector format expected by 'linkage'
-# This ensures it treats your data as Distances, not Coordinates.
-condensed_dist = squareform(plot_data)
-linkage_matrix = linkage(condensed_dist, method='ward')
-
-# C. Plot
-plt.figure(figsize=(10, 10))
-
-sns.clustermap(plot_data, 
-               row_linkage=linkage_matrix, # <--- PASS MANUAL LINKAGE
-               col_linkage=linkage_matrix, # <--- PASS MANUAL LINKAGE
-               cmap='viridis_r',           # Reversed: Dark=Similar
-               xticklabels=True, 
-               yticklabels=True)
-
-plt.title("Neuron Clustering (FNT Distance)")
-plt.show()
-# %%
-
+import matplotlib.patches as mpatches
 from scipy.cluster.hierarchy import linkage, fcluster
+from scipy.spatial.distance import squareform
+from natsort import natsorted
+from collections import Counter
+import os
+import sys
 
-def extract_clusters(matrix, k=3):
-    """
-    Cuts the tree to get exactly 'k' clusters.
-    Returns a Dictionary {NeuronID: ClusterID}
-    """
-    # 1. Prepare Data (Log transform)
-    data = np.log1p(matrix)
-    
-    # 2. Calculate Linkage (Same math as clustermap)
-    # 'ward' minimizes variance within clusters
-    Z = linkage(data, method='ward', metric='euclidean')
-    
-    # 3. Cut the Tree
-    # criterion='maxclust' means "Give me exactly k groups"
-    labels = fcluster(Z, t=k, criterion='maxclust')
-    
-    # 4. Create Result Table
-    results = pd.DataFrame({
-        'NeuronID': matrix.index,
-        'Cluster': labels
-    })
-    
-    # Sort by Cluster for readability
-    return results.sort_values('Cluster')
+# ==========================================
+# 1. CONFIGURATION
+# ==========================================
+DIST_FILE = r'D:\projectome_analysis\main_scripts\processed_neurons\251637\fnt_processed\ins\ins_dist.txt'
+TYPE_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\INS_df_v3.xlsx'
+FNT_FOLDER = r'D:\projectome_analysis\main_scripts\processed_neurons\251637\fnt_processed\ins'
 
-# --- RUN IT ---
-# Try k=2 (PT vs IT) or k=3 (PT vs IT_A vs IT_B)
-clusters = extract_clusters(matrix, k=3)
+USE_SPEARMAN = True
+USE_PENALTY = True
+PENALTY_STRENGTH = 1.5
 
-print(clusters)
 
-# Save to CSV
-clusters.to_csv("fnt_cluster_labels.csv", index=False)
+# ==========================================
+# 2. LOAD & PREPARE
+# ==========================================
+def load_data(dist_file, type_file, fnt_folder):
+    """Load distance matrix and type annotations, return symmetric matrix and type map."""
+    print("--- Loading Data ---")
 
-# %%
-from sklearn.metrics import silhouette_score
-from scipy.cluster.hierarchy import fcluster
+    if not os.path.exists(dist_file):
+        sys.exit(f"Error: File not found {dist_file}")
 
-def suggest_clusters(matrix, max_k=10):
-    """
-    Analyzes the matrix to suggest the best number of clusters (k).
-    """
-    print(f"Analyzing Cluster Quality (k=2 to {max_k})...")
-    
-    # 1. Prepare Data (Log Scale)
-    data = np.log1p(matrix)
-    
-    # 2. Calculate Linkage (Ward)
-    condensed = squareform(data)
-    Z = linkage(condensed, method='ward')
-    
-    # Storage
-    scores = []
-    ks = range(2, max_k + 1)
-    
-    # 3. Test every k
-    for k in ks:
-        # Cut tree to get k clusters
-        labels = fcluster(Z, t=k, criterion='maxclust')
-        
-        # Calculate Silhouette Score (-1 to +1)
-        # +1 = Perfect clusters, 0 = Overlapping, -1 = Wrong
-        # We pass the DISTANCE matrix (data) as the metric precomputed
-        score = silhouette_score(data, labels, metric='precomputed')
-        scores.append(score)
-        print(f"  k={k}: Silhouette = {score:.4f}")
+    df_raw = pd.read_csv(dist_file, sep='\t', header=None)
 
-    # 4. Plot The Result (The Elbow)
-    plt.figure(figsize=(10, 4))
-    plt.plot(ks, scores, 'bo-', linewidth=2)
-    plt.axvline(x=ks[np.argmax(scores)], color='r', linestyle='--', label='Best Math Score')
-    
-    plt.title("Silhouette Analysis (Higher is Better)")
-    plt.xlabel("Number of Clusters (k)")
-    plt.ylabel("Silhouette Score")
-    plt.legend()
-    plt.grid(True)
+    try:
+        pd.to_numeric(df_raw.iloc[0, 2])
+        df_raw.columns = ['i', 'j', 'score', 'm', 'nm'][:len(df_raw.columns)]
+    except ValueError:
+        print("    Header detected in text file.")
+        df_raw = pd.read_csv(dist_file, sep='\t', header=0,
+                             names=['i', 'j', 'score', 'm', 'nm'])
+
+    print("    Constructing Square Matrix...")
+    all_ids = np.union1d(df_raw['i'].unique(), df_raw['j'].unique())
+    matrix = df_raw.pivot(index='i', columns='j', values='score')
+    matrix = matrix.reindex(index=all_ids, columns=all_ids)
+
+    m_values = np.nan_to_num(matrix.values.astype(float), nan=0.0)
+    m_values = np.maximum(m_values, m_values.T)
+    matrix = pd.DataFrame(m_values, index=all_ids, columns=all_ids)
+
+    if os.path.exists(fnt_folder):
+        file_list = natsorted(
+            [f for f in os.listdir(fnt_folder) if f.endswith('.decimate.fnt')]
+        )
+        if len(file_list) != len(all_ids):
+            print(f"WARNING: ID Mismatch. Matrix: {len(all_ids)}, Files: {len(file_list)}")
+            limit = min(len(file_list), len(all_ids))
+            file_list = file_list[:limit]
+            matrix = matrix.iloc[:limit, :limit]
+
+        id_to_name = {i: f.replace('.decimate.fnt', '') for i, f in enumerate(file_list)}
+        matrix.index = matrix.index.map(id_to_name)
+        matrix.columns = matrix.columns.map(id_to_name)
+
+    if type_file.endswith('.xlsx'):
+        bio_df = pd.read_excel(type_file)
+    else:
+        bio_df = pd.read_csv(type_file)
+
+    type_map = dict(zip(bio_df['NeuronID'], bio_df['Neuron_Type']))
+
+    common = sorted(set(matrix.index) & set(type_map.keys()))
+    matrix = matrix.loc[common, common]
+    np.fill_diagonal(matrix.values, 0)
+
+    print(f"    Final Neurons: {len(matrix)}")
+    return matrix, type_map
+
+
+# ==========================================
+# 3. TRANSFORMATIONS & PENALTY
+# ==========================================
+def process_matrix(raw_matrix, type_map, use_spearman=True,
+                   use_penalty=True, penalty_strength=1.5):
+    """Transform raw distance matrix and optionally apply supervised penalty."""
+
+    if use_spearman:
+        print("--- Mode: Spearman Correlation ---")
+        corr = raw_matrix.T.corr(method='spearman').fillna(0)
+        dist_matrix = (1 - corr).clip(lower=0)
+    else:
+        print("--- Mode: Log1p Magnitude ---")
+        dist_matrix = np.log1p(raw_matrix)
+
+    clean_vals = np.nan_to_num(dist_matrix.values, nan=0.0, posinf=None, neginf=None)
+    dist_matrix = pd.DataFrame(clean_vals, index=dist_matrix.index, columns=dist_matrix.columns)
+    np.fill_diagonal(dist_matrix.values, 0)
+
+    if use_penalty:
+        print(f"--- Applying Penalty ({penalty_strength}x) ---")
+        max_val = dist_matrix.max().max()
+        if max_val == 0:
+            max_val = 1
+        penalty_val = max_val * penalty_strength
+
+        ordered_types = [type_map.get(n, 'Unknown') for n in dist_matrix.index]
+        type_codes = pd.Categorical(ordered_types).codes
+        diff_mask = type_codes[:, None] != type_codes[None, :]
+
+        values = dist_matrix.values.copy()
+        values[diff_mask] += penalty_val
+        dist_matrix = pd.DataFrame(values, index=dist_matrix.index, columns=dist_matrix.columns)
+        print("    Penalty applied.")
+
+    return dist_matrix
+
+
+# ==========================================
+# 4. LINKAGE
+# ==========================================
+def compute_linkage(dist_matrix, method='ward'):
+    """Compute hierarchical linkage from a symmetric distance matrix."""
+    print("Computing Linkage...")
+    mat_vals = dist_matrix.values.copy()
+    mat_vals = (mat_vals + mat_vals.T) / 2
+    np.fill_diagonal(mat_vals, 0)
+    condensed = squareform(mat_vals, checks=False)
+    return linkage(condensed, method=method)
+
+
+# ==========================================
+# 5. C-INDEX OPTIMIZATION
+# ==========================================
+def calculate_c_index(dist_matrix, linkage_matrix, max_k=65):
+    """Find optimal K by minimising the C-index; returns best_k."""
+    print(f"\n--- Calculating C-index (Max K={max_k}) ---")
+
+    dists_sorted = np.sort(squareform(dist_matrix.values, checks=False))
+    k_range = range(2, max_k + 1)
+    c_indices = []
+
+    for k in k_range:
+        labels = fcluster(linkage_matrix, t=k, criterion='maxclust')
+
+        S, N_intra = 0.0, 0
+        for cid in range(1, k + 1):
+            idx = np.where(labels == cid)[0]
+            n_mem = len(idx)
+            if n_mem > 1:
+                sub = dist_matrix.values[np.ix_(idx, idx)]
+                S += np.sum(sub[np.triu_indices(n_mem, 1)])
+                N_intra += (n_mem * (n_mem - 1)) // 2
+
+        if N_intra == 0:
+            c_indices.append(1.0)
+            continue
+
+        S_min = np.sum(dists_sorted[:N_intra])
+        S_max = np.sum(dists_sorted[-N_intra:])
+        c = 0.0 if (S_max - S_min) == 0 else (S - S_min) / (S_max - S_min)
+        c_indices.append(c)
+        sys.stdout.write(f"\r    k={k} | C={c:.4f}")
+
+    print()
+
+    best_k = list(k_range)[int(np.argmin(c_indices))]
+
+    fig, ax = plt.subplots(figsize=(8, 4))
+    ax.plot(list(k_range), c_indices, 'o-', color='teal', lw=1.5, markersize=3)
+    ax.axvline(best_k, color='red', ls='--', label=f"Best k={best_k}")
+    ax.set_title("C-index Optimization", fontsize=14, fontweight='bold')
+    ax.set_xlabel("Number of Clusters (k)", fontsize=12)
+    ax.set_ylabel("C-index (Lower is Better)", fontsize=12)
+    ax.legend(fontsize=11)
+    ax.grid(True, alpha=0.3)
+    fig.tight_layout()
     plt.show()
-    
-    best_k = ks[np.argmax(scores)]
-    print(f"\n>> Mathematical Recommendation: k = {best_k}")
+
     return best_k
 
-# --- RUN IT ---
-best_k = suggest_clusters(matrix)
-# %%
-from scipy.cluster.hierarchy import dendrogram, linkage
-from scipy.spatial.distance import squareform
-import matplotlib.pyplot as plt
-import numpy as np
 
-def plot_tree(matrix, cut_threshold=None):
-    # 1. Prepare Data
-    data_log = np.log1p(matrix)
-    Z = linkage(squareform(data_log), method='ward')
+# ==========================================
+# 6. CLUSTER & SAVE
+# ==========================================
+def assign_clusters_and_save(dist_matrix, linkage_matrix, type_map,
+                             k, use_penalty=True):
+    """Assign cluster labels, build results DataFrame, save to Excel, print summary."""
+    labels = fcluster(linkage_matrix, t=k, criterion='maxclust')
 
-    # 2. Plot
-    plt.figure(figsize=(12, 6))
-    
-    # Dendrogram
-    ddata = dendrogram(Z, 
-                       labels=matrix.index, 
-                       color_threshold=cut_threshold if cut_threshold else 0) # Colors the clusters
-    
-    plt.title("Neuron Family Tree (Dendrogram)")
-    plt.xlabel("Neuron ID")
-    plt.ylabel("Distance (Dissimilarity)")
-    
-    # 3. Add a Cut Line (Optional visual aid)
-    if cut_threshold:
-        plt.axhline(y=cut_threshold, c='r', ls='--', label=f'Cut at {cut_threshold}')
-        plt.legend()
-        
-    plt.tight_layout()
+    results = pd.DataFrame({
+        'NeuronID': dist_matrix.index,
+        'Bio_Type': [type_map.get(n, 'Unknown') for n in dist_matrix.index],
+        'Subtype_Cluster': labels
+    })
+
+    # Console summary
+    print(f"\n{'=' * 55}")
+    print(f"  CLUSTER SUMMARY  (k = {k},  N = {len(results)})")
+    print(f"{'=' * 55}")
+
+    cluster_counts = results['Subtype_Cluster'].value_counts().sort_index()
+    for cid, count in cluster_counts.items():
+        subset = results[results['Subtype_Cluster'] == cid]
+        type_breakdown = subset['Bio_Type'].value_counts()
+        comp_str = ", ".join(f"{t}: {n}" for t, n in type_breakdown.items())
+        print(f"  Cluster {cid:>3d}  |  n = {count:>4d}  |  {comp_str}")
+
+    print(f"{'=' * 55}\n")
+
+    fname = f"fnt_dist_Results_Penalty{'_On' if use_penalty else '_Off'}_k{k}.xlsx"
+    results.to_excel(fname, index=False)
+    print(f"Saved: {fname}")
+
+    return results
+
+
+# ==========================================
+# 7. VISUALIZATION
+# ==========================================
+def _annotate_dendrogram_clusters(g, results, Z):
+    """
+    Annotate cluster sizes (n=XX) on the row dendrogram.
+    Draws a bracket + label at the vertical span of each cluster's leaves.
+    """
+    ax_dendro = g.ax_row_dendrogram
+    reordered_idx = g.dendrogram_row.reordered_ind
+
+    # Map reordered positions to cluster labels
+    ordered_labels = results['Subtype_Cluster'].values[reordered_idx]
+
+    # Find contiguous runs of each cluster in dendrogram order
+    cluster_runs = []
+    current_label = ordered_labels[0]
+    start = 0
+    for i in range(1, len(ordered_labels)):
+        if ordered_labels[i] != current_label:
+            cluster_runs.append((current_label, start, i - 1))
+            current_label = ordered_labels[i]
+            start = i
+    cluster_runs.append((current_label, start, len(ordered_labels) - 1))
+
+    # Dendrogram x-axis runs right-to-left (tree root on right, leaves on left)
+    xlim = ax_dendro.get_xlim()
+    x_pos = xlim[0] + (xlim[1] - xlim[0]) * 0.03
+
+    # Scale font to neuron count so it stays readable
+    n_total = len(ordered_labels)
+    base_font = max(5, min(7, 350 // max(n_total, 1)))
+
+    for cid, row_start, row_end in cluster_runs:
+        n_neurons = row_end - row_start + 1
+        # seaborn clustermap spaces leaves at 10-unit intervals
+        y_bot = row_start * 10 + 5
+        y_top = row_end * 10 + 5
+        y_mid = (y_bot + y_top) / 2.0
+
+        # Small bracket line
+        bracket_x = x_pos + (xlim[1] - xlim[0]) * 0.01
+        ax_dendro.plot([bracket_x, bracket_x], [y_bot, y_top],
+                       color='black', lw=0.6, clip_on=False)
+        ax_dendro.plot([bracket_x, bracket_x + (xlim[1] - xlim[0]) * 0.015],
+                       [y_bot, y_bot], color='black', lw=0.6, clip_on=False)
+        ax_dendro.plot([bracket_x, bracket_x + (xlim[1] - xlim[0]) * 0.015],
+                       [y_top, y_top], color='black', lw=0.6, clip_on=False)
+
+        # Label
+        ax_dendro.text(
+            x_pos, y_mid,
+            f"C{cid} n={n_neurons}",
+            fontsize=base_font, fontweight='bold',
+            color='black',
+            ha='left', va='center',
+            clip_on=False,
+            bbox=dict(boxstyle='round,pad=0.1', facecolor='white',
+                      edgecolor='none', alpha=0.8)
+        )
+
+
+def plot_heatmap(dist_matrix, Z, results, type_map,
+                 use_spearman=True, use_penalty=True):
+    """Publication-ready clustermap with cluster-size annotations on dendrogram."""
+    print("Generating Heatmap...")
+
+    neuron_labels = dist_matrix.index
+    bio_types = [type_map.get(n, 'Unknown') for n in neuron_labels]
+    unique_types = sorted(set(bio_types))
+
+    lut = dict(zip(unique_types, sns.color_palette("tab20", len(unique_types))))
+    row_colors = pd.Series(bio_types, index=neuron_labels).map(lut)
+
+    mode_str = "Spearman Dist" if use_spearman else "Log1p FNT Dist"
+    pen_str = "+ Penalty" if use_penalty else ""
+    cbar_label = ("Dissimilarity (1 − Correlation)" if use_spearman
+                  else "Dissimilarity (Log Distance)")
+
+    n_clusters = results['Subtype_Cluster'].nunique()
+    n_neurons = len(results)
+
+    # --- Clustermap (original settings) ---
+    g = sns.clustermap(
+        dist_matrix,
+        row_linkage=Z, col_linkage=Z,
+        row_colors=row_colors,
+        cmap='mako' if use_spearman else 'viridis_r',
+        xticklabels=False, yticklabels=False,
+        dendrogram_ratio=(0.15, 0.15),
+        cbar_kws={'label': cbar_label, 'orientation': 'vertical'},
+        figsize=(13, 13),
+        rasterized=True
+    )
+
+    # Axis labels
+    g.ax_heatmap.set_xlabel("Neurons", fontsize=12, labelpad=10)
+    g.ax_heatmap.set_ylabel("Neurons", fontsize=12, labelpad=10)
+    g.ax_heatmap.tick_params(axis='both', which='both', length=0, labelsize=0)
+
+    # Title
+    g.fig.suptitle(
+        f"{mode_str} {pen_str} | Clusters: {n_clusters}",
+        y=0.98, fontsize=16, fontweight='bold'
+    )
+
+    # --- Annotate cluster sizes on dendrogram ---
+    _annotate_dendrogram_clusters(g, results, Z)
+
+    # --- Legend: compact, right side ---
+    handles = [mpatches.Patch(color=lut[t], label=t) for t in unique_types]
+
+    g.fig.legend(
+        handles=handles, title="Biological Type",
+        loc="center right", bbox_to_anchor=(0.98, 0.8),
+        borderaxespad=0., frameon=True,
+        fontsize=8, title_fontsize=9,
+        handlelength=0.8, handleheight=0.7,
+        labelspacing=0.25, handletextpad=0.3,
+        ncol=1 if len(unique_types) <= 15 else 2
+    )
+
     plt.show()
 
-# --- HOW TO USE ---
-# 1. Run without threshold to see the heights
-plot_tree(matrix)
-
-# 2. Look at the Y-axis (Height). 
-#    Find a gap where the vertical lines are long.
-#    Pick a number in that gap (e.g., 50).
-
-# 3. Run again with that threshold to see the color groups
-plot_tree(matrix, cut_threshold=30)
-# %%
-import pandas as pd
-import seaborn as sns
-import matplotlib.pyplot as plt
-def manual_cluster_extract(matrix, k):
-    """
-    You choose K. I give you the list.
-    """
-    print(f"--- MANUAL EXTRACTION (K={k}) ---")
-    
-    # 1. Standard FNT Prep
-    data_log = np.log1p(matrix)
-    Z = linkage(squareform(data_log), method='ward')
-    
-    # 2. Cut Tree
-    labels = fcluster(Z, t=k, criterion='maxclust')
-    
-    # 3. Create DataFrame
-    df_clusters = pd.DataFrame({
-        'NeuronID': matrix.index,
-        'Cluster_ID': labels
-    })
-    
-    # 4. Print Summary
-    counts = df_clusters['Cluster_ID'].value_counts().sort_index()
-    print("Cluster Sizes:")
-    print(counts)
-    
-    return df_clusters
+    # --- Supplementary bar chart ---
+    plot_cluster_sizes(results)
 
 
-def merge_strict_intersection(fnt_clusters_df, region_summary_path):
-    """
-    Merges FNT Clusters with Biological Types.
-    STRICTLY restricts data to neurons present in BOTH lists.
-    """
-    print("--- MERGING DATASETS (STRICT INTERSECTION) ---")
-    
-    # 1. Load the Biological Data (The Big List)
-    bio_df = pd.read_csv(region_summary_path)
-    
-    # 2. Normalize IDs to ensure they match
-    # We strip whitespace to be safe
-    fnt_clusters_df['NeuronID'] = fnt_clusters_df['NeuronID'].astype(str).str.strip()
-    bio_df['NeuronID'] = bio_df['NeuronID'].astype(str).str.strip()
-    
-    # 3. Validation Prints (Before Merge)
-    count_fnt = len(fnt_clusters_df)
-    count_bio = len(bio_df)
-    print(f"1. FNT Cluster List (Insula Only):  {count_fnt} neurons")
-    print(f"2. Region Analysis List (All):      {count_bio} neurons")
-    
-    # 4. THE MERGE (Inner Join)
-    # how='inner' drops rows that don't match in both tables
-    master_df = pd.merge(fnt_clusters_df, bio_df, on='NeuronID', how='inner')
-    
-    # 5. Validation Prints (After Merge)
-    count_merged = len(master_df)
-    dropped = count_bio - count_merged
-    
-    print("-" * 40)
-    print(f"3. FINAL MERGED DATASET:            {count_merged} neurons")
-    print(f"   -> {dropped} neurons were dropped (Non-Insula / No FNT data)")
-    print("-" * 40)
-    
-    # Save
-    master_df.to_csv("Insula_FNT_vs_Type_Master.csv", index=False)
-    return master_df
+def plot_cluster_sizes(results):
+    """Stacked bar chart showing neuron count per cluster, coloured by biological type."""
+    print("Generating Cluster Size Chart...")
 
-def plot_correspondence(master_df):
-    """
-    Visualizes: Do Structural Clusters map to PT/IT/CT types?
-    """
-    if master_df.empty:
-        print("Error: Merged dataframe is empty.")
-        return
+    ct = pd.crosstab(results['Subtype_Cluster'], results['Bio_Type'])
+    ct = ct.sort_index()
 
-    # Cross-Tabulation
-    ct = pd.crosstab(master_df['Cluster_ID'], master_df['Neuron_Type'])
-    
-    print("\nCluster Composition:")
-    print(ct)
-    
-    # Heatmap
-    plt.figure(figsize=(8, 6))
-    sns.heatmap(ct, annot=True, fmt='d', cmap='Blues', linewidths=1)
-    plt.title("Insula Structural Clusters vs. Projection Types")
-    plt.ylabel("FNT Structural Cluster")
-    plt.xlabel("Projection Type")
+    unique_types = sorted(results['Bio_Type'].unique())
+    palette = dict(zip(unique_types, sns.color_palette("tab20", len(unique_types))))
+
+    fig, ax = plt.subplots(figsize=(max(6, len(ct) * 0.45), 5))
+
+    bottom = np.zeros(len(ct))
+    x = np.arange(len(ct))
+
+    for bio_type in unique_types:
+        vals = ct[bio_type].values if bio_type in ct.columns else np.zeros(len(ct))
+        ax.bar(x, vals, bottom=bottom, color=palette[bio_type],
+               label=bio_type, edgecolor='white', linewidth=0.4)
+        bottom += vals
+
+    totals = ct.sum(axis=1).values
+    for i, total in enumerate(totals):
+        ax.text(i, total + max(totals) * 0.01, str(total),
+                ha='center', va='bottom', fontsize=8, fontweight='bold')
+
+    ax.set_xticks(x)
+    ax.set_xticklabels([f"C{c}" for c in ct.index], fontsize=8, rotation=45, ha='right')
+    ax.set_xlabel("Cluster", fontsize=12)
+    ax.set_ylabel("Number of Neurons", fontsize=12)
+    ax.set_title("Neurons per Cluster (by Biological Type)", fontsize=13, fontweight='bold')
+    ax.legend(title="Bio Type", bbox_to_anchor=(1.02, 1), loc='upper left',
+              fontsize=8, title_fontsize=9, frameon=True,
+              handlelength=1.0, labelspacing=0.25)
+    ax.grid(axis='y', alpha=0.3)
+    ax.set_ylim(0, max(totals) * 1.12)
+
+    fig.tight_layout()
     plt.show()
 
-# ==========================================
-# RUN IT
-# ==========================================
-# Assuming 'df_clusters' is your output from the auto_cluster function
-# And 'Summary_Results.csv' is your file from ProjectomeAnalysis
-MY_CHOSEN_K = 7
-
-# 3. Run Extraction
-df_clusters = manual_cluster_extract(matrix, k=MY_CHOSEN_K)
-
-# 4. Now run the Merger with this manual dataframe
-master_data = merge_strict_intersection(df_clusters, "Summary_Results.csv")
-if master_data is not None:
-    plot_correspondence(master_data)
-# %%
-import os
-import pandas as pd
-
-def map_clusters_zero_based(matrix, k, fnt_folder_path):
-    print(f"--- MAPPING (0-BASED INDEX) ---")
-    
-    # 1. Get File List (Sorted)
-    # The tool processed these: [File_0, File_1, ... File_211]
-    file_list = sorted([f for f in os.listdir(fnt_folder_path) if f.endswith('.decimate.fnt')])
-    
-    print(f"Files found: {len(file_list)} (Should be 212)")
-    print(f"Matrix rows: {len(matrix)} (Should be 212)")
-    
-    # 2. Check Alignment
-    if len(file_list) != len(matrix):
-        print("CRITICAL WARNING: File count does not match Matrix row count!")
-    
-    # 3. Create Mapping Dictionary
-    # Since matrix IDs are 0..211, and List indices are 0..211, they match perfectly.
-    id_map = {}
-    for numeric_id in matrix.index:
-        # Direct mapping: ID 0 -> List[0]
-        if 0 <= numeric_id < len(file_list):
-            clean_name = file_list[numeric_id].replace('.decimate.fnt', '')
-            id_map[numeric_id] = clean_name
-        else:
-            id_map[numeric_id] = f"Unknown_ID_{numeric_id}"
-
-    # 4. Standard Clustering
-    from scipy.cluster.hierarchy import linkage, fcluster
-    from scipy.spatial.distance import squareform
-    
-    data_log = np.log1p(matrix)
-    Z = linkage(squareform(data_log), method='ward')
-    labels = fcluster(Z, t=k, criterion='maxclust')
-    
-    # 5. Build Result
-    # Map the Index (0..211) to the Name ("001.swc"...)
-    mapped_names = [id_map[i] for i in matrix.index]
-    
-    df_clusters = pd.DataFrame({
-        'NeuronID': mapped_names,
-        'Cluster_ID': labels
-    })
-    
-    print("\nMapping Verification:")
-    print(f"ID 0   mapped to -> {id_map.get(0)}")
-    print(f"ID 211 mapped to -> {id_map.get(211)}")
-    
-    return df_clusters
 
 # ==========================================
-# RUN IT
+# MAIN
 # ==========================================
-FNT_FOLDER = r'./processed_neurons/251637/fnt_processed'
+def main():
+    # 1. Load
+    raw_matrix, type_map = load_data(DIST_FILE, TYPE_FILE, FNT_FOLDER)
 
-# Do NOT drop anything. Pass the full matrix.
-df_clusters = map_clusters_zero_based(matrix, k=3, fnt_folder_path=FNT_FOLDER)
+    # 2. Transform + optional penalty
+    final_dist = process_matrix(raw_matrix, type_map,
+                                use_spearman=USE_SPEARMAN,
+                                use_penalty=USE_PENALTY,
+                                penalty_strength=PENALTY_STRENGTH)
 
-# Check the first few rows to ensure names look right
-print(df_clusters.head())
-# %%
+    # 3. Linkage
+    Z = compute_linkage(final_dist, method='ward')
+
+    # 4. Find best K
+    suggested_k = calculate_c_index(final_dist, Z, max_k=65)
+
+    # 5. Let user override
+    try:
+        val = input(f"Enter K (Default={suggested_k}): ").strip()
+        k = int(val) if val else suggested_k
+    except (ValueError, EOFError):
+        k = suggested_k
+
+    # 6. Assign clusters & save
+    results = assign_clusters_and_save(final_dist, Z, type_map,
+                                       k, use_penalty=USE_PENALTY)
+
+    # 7. Plot heatmap + bar chart
+    plot_heatmap(final_dist, Z, results, type_map,
+                 use_spearman=USE_SPEARMAN, use_penalty=USE_PENALTY)
+
+
+if __name__ == "__main__":
+    main()

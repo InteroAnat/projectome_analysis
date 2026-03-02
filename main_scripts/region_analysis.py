@@ -252,6 +252,54 @@ class region_analysis_per_neuron:
         return soma_region, terminal_regions   
 
 # ==============================================================================
+# HELPER FUNCTIONS
+# ==============================================================================
+def _parse_terminal_regions(x):
+    """Helper to parse Terminal_Regions from various formats to list of UNIQUE regions."""
+    if isinstance(x, (list, tuple)):
+        # Remove duplicates while preserving order
+        seen = set()
+        unique = []
+        for item in x:
+            if item not in seen:
+                seen.add(item)
+                unique.append(item)
+        return unique
+    if isinstance(x, str):
+        import ast
+        try:
+            # Try to parse as a Python literal (e.g., "['region1', 'region2']")
+            if x.startswith('[') and x.endswith(']'):
+                parsed = ast.literal_eval(x)
+                # Remove duplicates while preserving order
+                seen = set()
+                unique = []
+                for item in parsed:
+                    if item not in seen:
+                        seen.add(item)
+                        unique.append(item)
+                return unique
+            # Handle case where it's a string representation without brackets
+            # e.g., "region1, region2" or "'region1', 'region2'"
+            if ',' in x:
+                parts = [p.strip().strip("'\"") for p in x.split(',')]
+                # Remove duplicates while preserving order
+                seen = set()
+                unique = []
+                for item in parts:
+                    if item not in seen:
+                        seen.add(item)
+                        unique.append(item)
+                return unique
+            # Single item
+            return [x.strip().strip("'\"")]
+        except:
+            # If all else fails, return as single-item list
+            return [x]
+    return []
+
+
+# ==============================================================================
 # 3. POPULATION MANAGER
 # ==============================================================================
 class PopulationRegionAnalysis:
@@ -320,8 +368,17 @@ class PopulationRegionAnalysis:
             self.neurons[neuron.swc_filename] = neuron
 
             # --- CLASSIFICATION & STORAGE ---
-            term_name_list = [item['region'] for item in analysis.terminal_regions]
-            n_type = self.classifier.classify_single_neuron(term_name_list,analysis.soma_region)
+            # Get all terminal regions (may have duplicates from multiple points in same region)
+            term_name_list_all = [item['region'] for item in analysis.terminal_regions]
+            # Get unique regions while preserving order
+            seen = set()
+            term_name_list = []
+            for region in term_name_list_all:
+                if region not in seen:
+                    seen.add(region)
+                    term_name_list.append(region)
+            
+            n_type = self.classifier.classify_single_neuron(term_name_list, analysis.soma_region)
 
             row = {
                 'SampleID': self.sample_id,
@@ -329,8 +386,8 @@ class PopulationRegionAnalysis:
                 'Neuron_Type': n_type,
                 'Soma_Region': analysis.soma_region,
                 'Total_Length': analysis.neuron_total_length,
-                'Terminal_Count': len(term_name_list),
-                'Terminal_Regions': term_name_list, 
+                'Terminal_Count': len(term_name_list),  # Count of UNIQUE regions
+                'Terminal_Regions': term_name_list,  # List of UNIQUE regions 
                 'Region_projection_length': analysis.mapped_brain_region_lengths,
                 'Outlier_Count': len(neuron.outliers),
                 'Outlier_Details': neuron.outliers
@@ -497,6 +554,430 @@ class PopulationRegionAnalysis:
             ax.text(i, height, str(height), ha='center', va='bottom')
         plt.show()
 
+    def load_processed_dataframe(self, df_or_path):
+        """
+        Load a pre-processed dataframe from a file path or DataFrame object.
+        This allows using plotting methods on previously saved dataframes (e.g., ACC_df, INS_df).
+        Ensures Terminal_Regions is properly parsed as a list.
+        
+        Args:
+            df_or_path: Either a pandas DataFrame or a file path (str) to an Excel/csv file.
+        """
+        if isinstance(df_or_path, pd.DataFrame):
+            self.plot_dataframe = df_or_path.copy()
+        elif isinstance(df_or_path, str):
+            if df_or_path.endswith('.xlsx'):
+                self.plot_dataframe = pd.read_excel(df_or_path)
+            elif df_or_path.endswith('.csv'):
+                self.plot_dataframe = pd.read_csv(df_or_path)
+            else:
+                raise ValueError("File must be .xlsx or .csv format")
+        else:
+            raise TypeError("Input must be a pandas DataFrame or a file path string")
+        
+        # Ensure Terminal_Regions is properly parsed as list
+        if 'Terminal_Regions' in self.plot_dataframe.columns:
+            self.plot_dataframe['Terminal_Regions'] = self.plot_dataframe['Terminal_Regions'].apply(
+                _parse_terminal_regions
+            )
+        
+        print(f"Loaded dataframe with {len(self.plot_dataframe)} neurons")
+        return self.plot_dataframe
+
+
+# ==============================================================================
+# STANDALONE PLOTTING FUNCTIONS (for use with loaded dataframes)
+# ==============================================================================
+
+def plot_soma_distribution_df(df, title='Summary of Soma Distribution by Region', figsize=(10, 6)):
+    """
+    Standalone function to plot soma distribution from a dataframe.
+    Can be used with ACC_df, INS_df, etc. loaded from files.
+    
+    Args:
+        df: pandas DataFrame with 'Soma_Region' column
+        title: Plot title
+        figsize: Figure size tuple
+    """
+    if df.empty or 'Soma_Region' not in df.columns:
+        print("DataFrame is empty or missing 'Soma_Region' column")
+        return
+    
+    soma_counts = df['Soma_Region'].value_counts()
+    fig, ax = plt.subplots(figsize=figsize)
+    soma_counts.plot(kind='bar', ax=ax)
+    ax.set_title(title)
+    ax.set_ylabel('Number of Neurons')
+    plt.xticks(rotation=45)
+    plt.tight_layout()
+    
+    for i, height in enumerate(soma_counts):
+        ax.text(i, height, str(height), ha='center', va='bottom')
+    plt.show()
+
+
+def plot_type_distribution_df(df, title=None):
+    """
+    Standalone function to plot neuron type distribution from a dataframe.
+    
+    Args:
+        df: pandas DataFrame with 'Neuron_Type' column
+        title: Plot title (default: auto-generated)
+    """
+    if df.empty or 'Neuron_Type' not in df.columns:
+        print("DataFrame is empty or missing 'Neuron_Type' column")
+        return
+    
+    counts = df['Neuron_Type'].value_counts()
+    
+    type_colors = {
+        'PT': '#d62728',
+        'CT': '#2ca02c',
+        'ITc': '#9467bd',
+        'ITs': '#e377c2',
+        'ITi': '#17becf',
+        'Unclassified': '#7f7f7f'
+    }
+    
+    colors = [type_colors.get(x, '#333333') for x in counts.index]
+    
+    plt.figure(figsize=(8, 8))
+    wedges, texts, autotexts = plt.pie(
+        counts, 
+        labels=counts.index, 
+        autopct=lambda pct: f'{pct:.1f}%\n({int(pct/100.*counts.sum())})',
+        startangle=140, 
+        colors=colors,
+        pctdistance=0.85,
+        explode=[0.02]*len(counts)
+    )
+    
+    centre_circle = plt.Circle((0,0), 0.70, fc='white')
+    fig = plt.gcf()
+    fig.gca().add_artist(centre_circle)
+    
+    if title is None:
+        title = f"Neuron Type Distribution (N={len(df)})"
+    plt.title(title, fontsize=14)
+    plt.tight_layout()
+    plt.show()
+
+def plot_terminal_distribution_df(df, top_n=20, title=None, exclude_unknown=True, show_pie=True, figsize=(16, 6), save_report_path=None):
+    """
+    Plot terminal region distribution from a dataframe.
+    By default excludes 'Unknown' regions and shows pie chart of Known vs Unknown distribution.
+    Returns statistics report as string and optionally saves to file.
+    
+    Args:
+        df: pandas DataFrame with 'Terminal_Regions' column (list of regions per neuron)
+        top_n: Number of top terminal regions to display
+        title: Plot title (default: auto-generated)
+        exclude_unknown: If True, exclude regions containing 'Unknown' from the bar plot (default: True)
+        show_pie: If True, display pie chart of Known vs Unknown distribution (default: True)
+        figsize: Figure size tuple
+        save_report_path: If provided, saves the statistics report to this file path
+        
+    Returns:
+        str: Statistics report as formatted string
+    """
+    if df.empty or 'Terminal_Regions' not in df.columns:
+        msg = "DataFrame is empty or missing 'Terminal_Regions' column"
+        print(msg)
+        return msg
+    
+    df = df.copy()
+    df['Terminal_Regions'] = df['Terminal_Regions'].apply(_parse_terminal_regions)
+    
+    # Calculate Known vs Unknown statistics for pie chart
+    df['Known_Count'] = df['Terminal_Regions'].apply(
+        lambda x: sum(1 for region in x if 'Unknown' not in str(region))
+    )
+    df['Unknown_Count'] = df['Terminal_Regions'].apply(
+        lambda x: sum(1 for region in x if 'Unknown' in str(region))
+    )
+    
+    total_known = df['Known_Count'].sum()
+    total_unknown = df['Unknown_Count'].sum()
+    total_sites = total_known + total_unknown
+    neurons_with_unknown = (df['Unknown_Count'] > 0).sum()
+    neurons_only_known = (df['Unknown_Count'] == 0).sum()
+    total_neurons = len(df)
+    
+    # Create figure with 1 or 2 subplots depending on show_pie
+    if show_pie:
+        fig, axes = plt.subplots(1, 2, figsize=figsize, gridspec_kw={'width_ratios': [1, 1.5]})
+        ax_pie = axes[0]
+        ax_bar = axes[1]
+    else:
+        fig, ax_bar = plt.subplots(figsize=(figsize[0] * 0.6, figsize[1]))
+    
+    # --- Pie Chart: Known vs Unknown Distribution ---
+    if show_pie:
+        site_labels = [f'Known\n({total_known} sites)', f'Unknown\n({total_unknown} sites)']
+        site_values = [total_known, total_unknown]
+        site_colors = ['#2E8B57', '#FF6B6B']
+        
+        wedges, texts, autotexts = ax_pie.pie(
+            site_values,
+            labels=site_labels,
+            autopct=lambda pct: f'{pct:.1f}%\n({int(pct/100.*sum(site_values))})',
+            startangle=90,
+            colors=site_colors,
+            explode=[0.02, 0.05],
+            shadow=True,
+            textprops={'fontsize': 10}
+        )
+        
+        for autotext in autotexts:
+            autotext.set_color('white')
+            autotext.set_fontweight('bold')
+            autotext.set_fontsize(11)
+        
+        ax_pie.set_title(f'Site Distribution\n(N={total_neurons} neurons)', 
+                        fontsize=11, fontweight='bold', pad=15)
+    
+    # --- Bar Chart: Terminal Region Distribution ---
+    exploded = df.explode('Terminal_Regions')
+    
+    # Filter out unknown regions if requested
+    if exclude_unknown:
+        original_count = len(exploded)
+        exploded_filtered = exploded[~exploded['Terminal_Regions'].str.contains('Unknown', na=False)]
+        unknown_excluded = original_count - len(exploded_filtered)
+        counts = exploded_filtered['Terminal_Regions'].value_counts().head(top_n)
+    else:
+        unknown_excluded = 0
+        counts = exploded['Terminal_Regions'].value_counts().head(top_n)
+    
+    # Plot bar chart
+    counts.plot(kind='bar', ax=ax_bar, color='steelblue', edgecolor='black')
+    
+    # Add value labels on bars
+    for i, v in enumerate(counts.values):
+        ax_bar.text(i, v + 0.5, str(v), ha='center', va='bottom', fontsize=10)
+    
+    # Set title
+    if title is None:
+        title = f"Top {top_n} Terminal Regions (Excluding Unknown)" if exclude_unknown else f"Top {top_n} Terminal Regions"
+    
+    ax_bar.set_title(title, fontsize=12, fontweight='bold')
+    ax_bar.set_xlabel('Target Region', fontsize=11)
+    ax_bar.set_ylabel('Number of Neurons Projecting', fontsize=11)
+    ax_bar.tick_params(axis='x', rotation=45)
+    
+    # Add note about excluded unknown regions
+    if exclude_unknown and unknown_excluded > 0:
+        ax_bar.text(0.5, -0.15, f'Note: {unknown_excluded} "Unknown" entries excluded', 
+                   transform=ax_bar.transAxes, ha='center', fontsize=9, 
+                   style='italic', color='red')
+    
+    plt.tight_layout()
+    plt.show()
+    
+    # Build statistics report
+    report_lines = []
+    report_lines.append("="*60)
+    report_lines.append("TERMINAL REGION DISTRIBUTION REPORT")
+    report_lines.append("="*60)
+    report_lines.append("")
+    report_lines.append("--- Known vs Unknown Statistics ---")
+    report_lines.append(f"  Total projection sites: {total_sites}")
+    report_lines.append(f"  Known sites: {total_known} ({total_known/total_sites*100:.1f}%)")
+    report_lines.append(f"  Unknown sites: {total_unknown} ({total_unknown/total_sites*100:.1f}%)")
+    report_lines.append(f"  Neurons with unknown regions: {neurons_with_unknown} ({neurons_with_unknown/total_neurons*100:.1f}%)")
+    report_lines.append(f"  Neurons with only known regions: {neurons_only_known} ({neurons_only_known/total_neurons*100:.1f}%)")
+    report_lines.append("")
+    report_lines.append("--- Terminal Region Distribution ---")
+    report_lines.append(f"  Total unique regions shown: {len(counts)}")
+    report_lines.append(f"  Total projection entries (after filtering): {counts.sum()}")
+    if exclude_unknown:
+        report_lines.append(f"  Unknown entries excluded from plot: {unknown_excluded}")
+    report_lines.append("")
+    report_lines.append(f"  Top {len(counts)} regions:")
+    for i, (region, count) in enumerate(counts.items(), 1):
+        percentage = count / counts.sum() * 100
+        report_lines.append(f"    {i:2d}. {region}: {count} neurons ({percentage:.1f}%)")
+    report_lines.append("")
+    report_lines.append("="*60)
+    
+    report_text = "\n".join(report_lines)
+    print(report_text)
+    
+    # Save to file if path provided
+    if save_report_path:
+        try:
+            with open(save_report_path, 'w', encoding='utf-8') as f:
+                f.write(report_text)
+            print(f"\n[Report saved to: {save_report_path}]")
+        except Exception as e:
+            print(f"\n[Error saving report: {e}]")
+    
+    return report_text
+
+
+def plot_projection_sites_count_df(df, title='Projection Sites Count per Neuron', figsize=(12, 5), save_report_path=None):
+    """
+    Plot the distribution of projection sites per neuron.
+    Excludes 'Unknown' regions from the projection sites count.
+    Shows statistics for unknown projection sites and outliers separately.
+    Returns statistics report as string and optionally saves to file.
+    
+    Args:
+        df: pandas DataFrame with 'Terminal_Regions' column (list of regions per neuron)
+        title: Plot title
+        figsize: Figure size tuple
+        save_report_path: If provided, saves the statistics report to this file path
+        
+    Returns:
+        str: Statistics report as formatted string
+    """
+    if df.empty or 'Terminal_Regions' not in df.columns:
+        msg = "DataFrame is empty or missing 'Terminal_Regions' column"
+        print(msg)
+        return msg
+    
+    df = df.copy()
+    
+    # Count projection sites per neuron, EXCLUDING unknown regions
+    df['Projection_Sites_Count'] = df['Terminal_Regions'].apply(
+        lambda x: sum(1 for region in x if 'Unknown' not in str(region)) if isinstance(x, (list, tuple)) else 0
+    )
+    
+    # Count unknown projection sites per neuron (for statistics only)
+    df['Unknown_Sites_Count'] = df['Terminal_Regions'].apply(
+        lambda x: sum(1 for region in x if 'Unknown' in str(region)) if isinstance(x, (list, tuple)) else 0
+    )
+    
+    # Get outlier count (default to 0 if column doesn't exist)
+    if 'Outlier_Count' not in df.columns:
+        df['Outlier_Count'] = 0
+    
+    fig, axes = plt.subplots(1, 2, figsize=figsize)
+    
+    # Histogram - excludes unknown sites
+    axes[0].hist(df['Projection_Sites_Count'], bins=range(0, df['Projection_Sites_Count'].max()+2), 
+                 edgecolor='black', alpha=0.7, align='left', color='steelblue')
+    axes[0].set_xlabel('Number of Projection Sites (Known Regions Only)')
+    axes[0].set_ylabel('Number of Neurons')
+    axes[0].set_title('Distribution of Projection Sites Count\n(Excluding Unknown Regions)')
+    axes[0].axvline(df['Projection_Sites_Count'].mean(), color='red', linestyle='--', 
+                    label=f'Mean: {df["Projection_Sites_Count"].mean():.1f}')
+    axes[0].legend()
+    
+    # Box plot by neuron type if available
+    if 'Neuron_Type' in df.columns:
+        type_order = df.groupby('Neuron_Type')['Projection_Sites_Count'].median().sort_values(ascending=False).index
+        df['Neuron_Type'] = pd.Categorical(df['Neuron_Type'], categories=type_order, ordered=True)
+        df_sorted = df.sort_values('Neuron_Type')
+        
+        type_counts = df_sorted.groupby('Neuron_Type')['Projection_Sites_Count'].apply(list).to_dict()
+        bp = axes[1].boxplot([type_counts.get(t, [0]) for t in type_counts.keys()], 
+                           labels=type_counts.keys(), patch_artist=True)
+        
+        # Color boxes by type
+        type_colors = {'PT': '#d62728', 'CT': '#2ca02c', 'ITc': '#9467bd', 
+                      'ITs': '#e377c2', 'ITi': '#17becf', 'Unclassified': '#7f7f7f'}
+        for patch, label in zip(bp['boxes'], type_counts.keys()):
+            patch.set_facecolor(type_colors.get(label, '#333333'))
+            patch.set_alpha(0.6)
+        
+        axes[1].set_xlabel('Neuron Type')
+        axes[1].set_ylabel('Number of Projection Sites (Known Regions)')
+        axes[1].set_title('Projection Sites by Neuron Type\n(Excluding Unknown Regions)')
+        axes[1].tick_params(axis='x', rotation=45)
+    else:
+        axes[1].boxplot(df['Projection_Sites_Count'])
+        axes[1].set_ylabel('Number of Projection Sites (Known Regions)')
+        axes[1].set_title('Projection Sites Distribution\n(Excluding Unknown Regions)')
+    
+    plt.suptitle(title, fontsize=12, fontweight='bold')
+    plt.tight_layout()
+    plt.show()
+    
+    # Build statistics report
+    total_neurons = len(df)
+    neurons_with_unknown = (df['Unknown_Sites_Count'] > 0).sum()
+    neurons_with_outliers = (df['Outlier_Count'] > 0).sum()
+    
+    report_lines = []
+    report_lines.append("="*60)
+    report_lines.append("PROJECTION SITES STATISTICS (KNOWN REGIONS ONLY)")
+    report_lines.append("="*60)
+    report_lines.append("")
+    report_lines.append(f"Total neurons analyzed: {total_neurons}")
+    report_lines.append("")
+    report_lines.append("--- Known Projection Sites (Excluding Unknown) ---")
+    report_lines.append(f"  Total known sites: {df['Projection_Sites_Count'].sum()}")
+    report_lines.append(f"  Mean known sites per neuron: {df['Projection_Sites_Count'].mean():.2f}")
+    report_lines.append(f"  Median: {df['Projection_Sites_Count'].median():.1f}")
+    report_lines.append(f"  Min: {df['Projection_Sites_Count'].min()}")
+    report_lines.append(f"  Max: {df['Projection_Sites_Count'].max()}")
+    report_lines.append(f"  Std: {df['Projection_Sites_Count'].std():.2f}")
+    report_lines.append("")
+    report_lines.append("  Distribution of known sites per neuron:")
+    known_dist = df['Projection_Sites_Count'].value_counts().sort_index()
+    for sites, count in known_dist.head(10).items():
+        report_lines.append(f"    {sites} site(s): {count} neurons ({count/total_neurons*100:.1f}%)")
+    
+    report_lines.append("")
+    report_lines.append("--- Unknown Projection Sites (Excluded from Plot) ---")
+    report_lines.append(f"  Neurons with unknown sites: {neurons_with_unknown} ({neurons_with_unknown/total_neurons*100:.1f}%)")
+    report_lines.append(f"  Total unknown sites excluded: {df['Unknown_Sites_Count'].sum()}")
+    report_lines.append(f"  Mean unknown sites per neuron: {df['Unknown_Sites_Count'].mean():.2f}")
+    
+    report_lines.append("")
+    report_lines.append("--- Outlier Statistics ---")
+    report_lines.append(f"  Neurons with outliers: {neurons_with_outliers} ({neurons_with_outliers/total_neurons*100:.1f}%)")
+    report_lines.append(f"  Total outliers: {df['Outlier_Count'].sum()}")
+    report_lines.append(f"  Mean outliers per neuron: {df['Outlier_Count'].mean():.2f}")
+    report_lines.append("")
+    report_lines.append("  Distribution of outlier count per neuron:")
+    outlier_dist = df['Outlier_Count'].value_counts().sort_index()
+    for outliers, count in outlier_dist.head(10).items():
+        if outliers == 0:
+            report_lines.append(f"    0 outliers: {count} neurons ({count/total_neurons*100:.1f}%)")
+        else:
+            report_lines.append(f"    {outliers} outlier(s): {count} neurons ({count/total_neurons*100:.1f}%)")
+    
+    report_lines.append("")
+    report_lines.append("="*60)
+    
+    report_text = "\n".join(report_lines)
+    print(report_text)
+    
+    # Save to file if path provided
+    if save_report_path:
+        try:
+            with open(save_report_path, 'w', encoding='utf-8') as f:
+                f.write(report_text)
+            print(f"\n[Report saved to: {save_report_path}]")
+        except Exception as e:
+            print(f"\n[Error saving report: {e}]")
+    
+    return report_text
+def load_processed_df(path):
+    """
+    Load a processed dataframe from Excel or CSV file.
+    Ensures Terminal_Regions is properly parsed as a list.
+    
+    Args:
+        path: Path to .xlsx or .csv file
+        
+    Returns:
+        pandas DataFrame with Terminal_Regions as proper lists
+    """
+    if path.endswith('.xlsx'):
+        df = pd.read_excel(path)
+    elif path.endswith('.csv'):
+        df = pd.read_csv(path)
+    else:
+        raise ValueError("File must be .xlsx or .csv format")
+    
+    # Ensure Terminal_Regions is properly parsed as list
+    if 'Terminal_Regions' in df.columns:
+        df['Terminal_Regions'] = df['Terminal_Regions'].apply(_parse_terminal_regions)
+    
+    return df
 
 
 # ==============================================================================
