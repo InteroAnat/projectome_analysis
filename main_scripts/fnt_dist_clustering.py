@@ -7,6 +7,7 @@ Features:
 3. **SUPERVISED PENALTY:** Artificially increases distance between different biological types.
 4. C-index Optimization for K.
 5. Publication-ready Plotting with cluster size annotations on dendrogram.
+6. **NEW: Creates new table combining original data + cluster assignments.**
 """
 
 import pandas as pd
@@ -31,6 +32,9 @@ FNT_FOLDER = r'D:\projectome_analysis\main_scripts\processed_neurons\251637\fnt_
 USE_SPEARMAN = True
 USE_PENALTY = True
 PENALTY_STRENGTH = 1.5
+
+# Output suffix for the new combined table
+OUTPUT_SUFFIX = "_clustered"
 
 
 # ==========================================
@@ -194,38 +198,100 @@ def calculate_c_index(dist_matrix, linkage_matrix, max_k=65):
 
 
 # ==========================================
-# 6. CLUSTER & SAVE
+# 6. CLUSTER & SAVE (UPDATED - NEW TABLE)
 # ==========================================
 def assign_clusters_and_save(dist_matrix, linkage_matrix, type_map,
-                             k, use_penalty=True):
-    """Assign cluster labels, build results DataFrame, save to Excel, print summary."""
+                             k, type_file, use_penalty=True,
+                             use_spearman=True, output_suffix="_clustered"):
+    """
+    Assign cluster labels and create a NEW table combining 
+    original neuron data with cluster assignments.
+    Cluster column placed after NeuronID and Neuron_Type.
+    """
     labels = fcluster(linkage_matrix, t=k, criterion='maxclust')
 
-    results = pd.DataFrame({
-        'NeuronID': dist_matrix.index,
-        'Bio_Type': [type_map.get(n, 'Unknown') for n in dist_matrix.index],
-        'Subtype_Cluster': labels
-    })
+    # Create cluster assignment dictionary
+    cluster_map = dict(zip(dist_matrix.index, labels))
 
     # Console summary
-    print(f"\n{'=' * 55}")
-    print(f"  CLUSTER SUMMARY  (k = {k},  N = {len(results)})")
-    print(f"{'=' * 55}")
+    print(f"\n{'=' * 65}")
+    print(f"  CLUSTER SUMMARY  (k = {k},  N = {len(cluster_map)})")
+    print(f"{'=' * 65}")
 
-    cluster_counts = results['Subtype_Cluster'].value_counts().sort_index()
+    # Build summary
+    results_temp = pd.DataFrame({
+        'NeuronID': dist_matrix.index,
+        'Bio_Type': [type_map.get(n, 'Unknown') for n in dist_matrix.index],
+        'Morph_Cluster': labels
+    })
+
+    cluster_counts = results_temp['Morph_Cluster'].value_counts().sort_index()
     for cid, count in cluster_counts.items():
-        subset = results[results['Subtype_Cluster'] == cid]
+        subset = results_temp[results_temp['Morph_Cluster'] == cid]
         type_breakdown = subset['Bio_Type'].value_counts()
         comp_str = ", ".join(f"{t}: {n}" for t, n in type_breakdown.items())
         print(f"  Cluster {cid:>3d}  |  n = {count:>4d}  |  {comp_str}")
 
-    print(f"{'=' * 55}\n")
+    print(f"{'=' * 65}\n")
 
-    fname = f"fnt_dist_Results_Penalty{'_On' if use_penalty else '_Off'}_k{k}.xlsx"
-    results.to_excel(fname, index=False)
-    print(f"Saved: {fname}")
+    # ==========================================
+    # Load original table and create NEW combined table
+    # ==========================================
+    print("--- Creating New Combined Table ---")
 
-    return results
+    if type_file.endswith('.xlsx'):
+        original_df = pd.read_excel(type_file)
+    else:
+        original_df = pd.read_csv(type_file)
+
+    print(f"    Original table: {len(original_df)} rows, {len(original_df.columns)} columns")
+
+    # Filter to only neurons that were clustered
+    clustered_neurons = set(cluster_map.keys())
+    new_df = original_df[original_df['NeuronID'].isin(clustered_neurons)].copy()
+
+    print(f"    Neurons in clustering: {len(new_df)}")
+
+    # Add cluster column
+    new_df['Morph_Cluster'] = new_df['NeuronID'].map(cluster_map)
+
+    # ==========================================
+    # REORDER COLUMNS - Move Morph_Cluster to front
+    # ==========================================
+    # Option 1: Place right after NeuronID
+    cols = list(new_df.columns)
+    cols.remove('Morph_Cluster')
+    
+    # Find position after NeuronID (or after Neuron_Type if it exists)
+    if 'Neuron_Type' in cols:
+        insert_pos = cols.index('Neuron_Type') + 1
+    elif 'NeuronID' in cols:
+        insert_pos = cols.index('NeuronID') + 1
+    else:
+        insert_pos = 0  # Put at very front if neither found
+    
+    cols.insert(insert_pos, 'Morph_Cluster')
+    new_df = new_df[cols]
+
+    # Sort by cluster for convenience
+    new_df = new_df.sort_values(['Morph_Cluster', 'NeuronID']).reset_index(drop=True)
+
+    # Generate output filename
+    base_name, ext = os.path.splitext(type_file)
+    mode_str = "spearman" if use_spearman else "log1p"
+    penalty_str = "_penalty" if use_penalty else ""
+    new_fname = f"{base_name}{output_suffix}_k{k}_{mode_str}{penalty_str}{ext}"
+
+    # Save new table
+    if new_fname.endswith('.xlsx'):
+        new_df.to_excel(new_fname, index=False)
+    else:
+        new_df.to_csv(new_fname, index=False)
+
+    print(f"    Saved: {new_fname}")
+    print(f"    Columns: {list(new_df.columns)}")
+
+    return results_temp, new_df
 
 
 # ==========================================
@@ -240,7 +306,7 @@ def _annotate_dendrogram_clusters(g, results, Z):
     reordered_idx = g.dendrogram_row.reordered_ind
 
     # Map reordered positions to cluster labels
-    ordered_labels = results['Subtype_Cluster'].values[reordered_idx]
+    ordered_labels = results['Morph_Cluster'].values[reordered_idx]
 
     # Find contiguous runs of each cluster in dendrogram order
     cluster_runs = []
@@ -253,22 +319,18 @@ def _annotate_dendrogram_clusters(g, results, Z):
             start = i
     cluster_runs.append((current_label, start, len(ordered_labels) - 1))
 
-    # Dendrogram x-axis runs right-to-left (tree root on right, leaves on left)
     xlim = ax_dendro.get_xlim()
     x_pos = xlim[0] + (xlim[1] - xlim[0]) * 0.03
 
-    # Scale font to neuron count so it stays readable
     n_total = len(ordered_labels)
     base_font = max(5, min(7, 350 // max(n_total, 1)))
 
     for cid, row_start, row_end in cluster_runs:
         n_neurons = row_end - row_start + 1
-        # seaborn clustermap spaces leaves at 10-unit intervals
         y_bot = row_start * 10 + 5
         y_top = row_end * 10 + 5
         y_mid = (y_bot + y_top) / 2.0
 
-        # Small bracket line
         bracket_x = x_pos + (xlim[1] - xlim[0]) * 0.01
         ax_dendro.plot([bracket_x, bracket_x], [y_bot, y_top],
                        color='black', lw=0.6, clip_on=False)
@@ -277,7 +339,6 @@ def _annotate_dendrogram_clusters(g, results, Z):
         ax_dendro.plot([bracket_x, bracket_x + (xlim[1] - xlim[0]) * 0.015],
                        [y_top, y_top], color='black', lw=0.6, clip_on=False)
 
-        # Label
         ax_dendro.text(
             x_pos, y_mid,
             f"C{cid} n={n_neurons}",
@@ -307,10 +368,8 @@ def plot_heatmap(dist_matrix, Z, results, type_map,
     cbar_label = ("Dissimilarity (1 − Correlation)" if use_spearman
                   else "Dissimilarity (Log Distance)")
 
-    n_clusters = results['Subtype_Cluster'].nunique()
-    n_neurons = len(results)
+    n_clusters = results['Morph_Cluster'].nunique()
 
-    # --- Clustermap (original settings) ---
     g = sns.clustermap(
         dist_matrix,
         row_linkage=Z, col_linkage=Z,
@@ -323,23 +382,18 @@ def plot_heatmap(dist_matrix, Z, results, type_map,
         rasterized=True
     )
 
-    # Axis labels
     g.ax_heatmap.set_xlabel("Neurons", fontsize=12, labelpad=10)
     g.ax_heatmap.set_ylabel("Neurons", fontsize=12, labelpad=10)
     g.ax_heatmap.tick_params(axis='both', which='both', length=0, labelsize=0)
 
-    # Title
     g.fig.suptitle(
         f"{mode_str} {pen_str} | Clusters: {n_clusters}",
         y=0.98, fontsize=16, fontweight='bold'
     )
 
-    # --- Annotate cluster sizes on dendrogram ---
     _annotate_dendrogram_clusters(g, results, Z)
 
-    # --- Legend: compact, right side ---
     handles = [mpatches.Patch(color=lut[t], label=t) for t in unique_types]
-
     g.fig.legend(
         handles=handles, title="Biological Type",
         loc="center right", bbox_to_anchor=(0.98, 0.8),
@@ -349,10 +403,9 @@ def plot_heatmap(dist_matrix, Z, results, type_map,
         labelspacing=0.25, handletextpad=0.3,
         ncol=1 if len(unique_types) <= 15 else 2
     )
-
+    plt.savefig("fnt_dist_Clusters.png", dpi=300, bbox_inches='tight')
     plt.show()
 
-    # --- Supplementary bar chart ---
     plot_cluster_sizes(results)
 
 
@@ -360,7 +413,7 @@ def plot_cluster_sizes(results):
     """Stacked bar chart showing neuron count per cluster, coloured by biological type."""
     print("Generating Cluster Size Chart...")
 
-    ct = pd.crosstab(results['Subtype_Cluster'], results['Bio_Type'])
+    ct = pd.crosstab(results['Morph_Cluster'], results['Bio_Type'])
     ct = ct.sort_index()
 
     unique_types = sorted(results['Bio_Type'].unique())
@@ -394,6 +447,7 @@ def plot_cluster_sizes(results):
     ax.set_ylim(0, max(totals) * 1.12)
 
     fig.tight_layout()
+    plt.savefig("fnt_dist_Clustersizes.png", dpi=300, bbox_inches='tight')
     plt.show()
 
 
@@ -423,9 +477,15 @@ def main():
     except (ValueError, EOFError):
         k = suggested_k
 
-    # 6. Assign clusters & save
-    results = assign_clusters_and_save(final_dist, Z, type_map,
-                                       k, use_penalty=USE_PENALTY)
+    # 6. Assign clusters & create new combined table
+    results, combined_df = assign_clusters_and_save(
+        final_dist, Z, type_map,
+        k=k,
+        type_file=TYPE_FILE,
+        use_penalty=USE_PENALTY,
+        use_spearman=USE_SPEARMAN,
+        output_suffix=OUTPUT_SUFFIX
+    )
 
     # 7. Plot heatmap + bar chart
     plot_heatmap(final_dist, Z, results, type_map,
