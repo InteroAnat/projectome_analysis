@@ -42,9 +42,11 @@ def load_ins_data(filepath):
 
 
 def load_cluster_data(filepath):
-    """Load cluster assignments."""
+    """Load cluster assignments and types."""
     df = pd.read_excel(filepath)
-    return dict(zip(df['NeuronID'], df['Subtype_Cluster']))
+    cluster_map = dict(zip(df['NeuronID'], df['Subtype_Cluster']))
+    type_map = dict(zip(df['NeuronID'], df['Bio_Type']))
+    return cluster_map, type_map
 
 
 # ==========================================
@@ -77,22 +79,23 @@ def calc_projection_strength(projections, min_neurons=5):
 # ==========================================
 # CLUSTERING & ORDERING
 # ==========================================
-def order_by_cluster(strength_df, cluster_map, neuron_types):
-    """Reorder neurons by cluster, then by type within cluster."""
+def order_by_cluster(strength_df, cluster_map, type_map):
+    """Reorder neurons by cluster. Returns ordered matrix, clusters, and types."""
     # Create ordering DataFrame
     order_df = pd.DataFrame({
         'neuron_id': strength_df.index,
         'cluster': [cluster_map.get(nid, 0) for nid in strength_df.index],
-        'type': neuron_types
     })
     
-    # Sort by cluster, then by type
-    type_order = {'ITi': 0, 'ITs': 1, 'ITc': 2, 'PT': 3, 'CT': 4}
-    order_df['type_code'] = order_df['type'].map(type_order)
-    order_df = order_df.sort_values(['cluster', 'type_code'])
+    # Sort by cluster (clusters are pure by type)
+    order_df = order_df.sort_values('cluster')
     
-    # Reorder strength matrix
-    return strength_df.loc[order_df['neuron_id']], order_df['cluster'].values
+    # Get ordered data
+    ordered_strength = strength_df.loc[order_df['neuron_id']]
+    ordered_clusters = order_df['cluster'].values
+    ordered_types = [type_map.get(nid, 'Unknown') for nid in order_df['neuron_id']]
+    
+    return ordered_strength, ordered_clusters, ordered_types
 
 
 # ==========================================
@@ -188,7 +191,7 @@ def main():
     # Load data
     print("\n[1/4] Loading data...")
     projections = load_ins_data(INS_TABLE)
-    cluster_map = load_cluster_data(CLUSTER_FILE)
+    cluster_map, type_map = load_cluster_data(CLUSTER_FILE)
     print(f"      {len(projections)} neurons, {len(cluster_map)} with clusters")
     
     # Calculate projection strength
@@ -196,10 +199,9 @@ def main():
     strength_df = calc_projection_strength(projections)
     print(f"      Matrix: {strength_df.shape}")
     
-    # Get neuron types and order by cluster
+    # Order by cluster
     print("\n[3/4] Ordering by cluster...")
-    neuron_types = [projections[nid]['type'] for nid in strength_df.index]
-    strength_ordered, clusters = order_by_cluster(strength_df, cluster_map, neuron_types)
+    strength_ordered, clusters, neuron_types = order_by_cluster(strength_df, cluster_map, type_map)
     print(f"      Clusters: {sorted(set(clusters))}")
     
     # Plot
