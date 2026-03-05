@@ -1028,6 +1028,79 @@ class PopulationRegionAnalysis:
         return pd.DataFrame(rows)
 
     # ==================================================================
+    # DIAGNOSTICS
+    # ==================================================================
+    def diagnose_projection_regions(self, level: str = "finest"):
+        """
+        Diagnose which projection regions cannot be resolved to hierarchy levels.
+        
+        Args:
+            level: Hierarchy level to check ("finest" or 1-6)
+        """
+        print(f"\n{'='*60}")
+        print(f"PROJECTION REGION DIAGNOSTICS (level={level})")
+        print(f"{'='*60}")
+        
+        # Get all unique regions from projections
+        all_regions = set()
+        length_col = f"Region_Projection_Length_{level}" if level != "finest" else "Region_Projection_Length_finest"
+        
+        if length_col not in self.plot_dataframe.columns:
+            print(f"[ERROR] Column {length_col} not found")
+            print(f"Available: {[c for c in self.plot_dataframe.columns if 'Projection' in c]}")
+            return
+        
+        for proj_dict in self.plot_dataframe[length_col]:
+            if isinstance(proj_dict, dict):
+                all_regions.update(proj_dict.keys())
+        
+        print(f"\nTotal unique regions in projections: {len(all_regions)}")
+        
+        # Check resolution for each region
+        unmapped = []
+        region_type_counts = {"cortical": 0, "subcortical": 0, "unknown": 0}
+        
+        from region_analysis.laterality import LateralityParser
+        
+        for region in sorted(all_regions):
+            rtype = LateralityParser.get_region_type(region)
+            region_type_counts[rtype] += 1
+            
+            # Try to resolve at each level
+            can_resolve = False
+            for lv in range(1, 7):
+                result = resolve_to_level(
+                    region, lv, self.hierarchy, 
+                    self.dual_hierarchy or self.hierarchy_table
+                )
+                if result is not None:
+                    can_resolve = True
+                    break
+            
+            if not can_resolve:
+                unmapped.append((region, rtype))
+        
+        print(f"\nRegion type distribution:")
+        for k, v in region_type_counts.items():
+            print(f"  {k}: {v}")
+        
+        if unmapped:
+            print(f"\n[WARNING] {len(unmapped)} regions CANNOT be resolved:")
+            print("\nTop 20 unmapped regions:")
+            for region, rtype in unmapped[:20]:
+                print(f"  - {region} ({rtype})")
+            
+            # Show sample debug for first unmapped region
+            if unmapped:
+                print(f"\nDetailed debug for first unmapped region:")
+                self.debug_region_resolution(unmapped[0][0])
+        else:
+            print(f"\n[SUCCESS] All regions can be resolved!")
+        
+        print(f"{'='*60}\n")
+        return unmapped
+
+    # ==================================================================
     # REGION MATRIX (backward compat)
     # ==================================================================
     def get_region_matrix(self) -> pd.DataFrame:
@@ -1138,6 +1211,56 @@ class PopulationRegionAnalysis:
                 source = "ARM"
             status = f"{result} [{source}]" if result else "None"
             print(f"  L{lv}: {status}")
+
+    def debug_region_resolution(self, region: str):
+        """
+        Debug why a specific region isn't being resolved.
+        Shows step-by-step resolution process.
+        """
+        from region_analysis.hierarchy_table import _strip_prefix
+        
+        print(f"\n{'='*60}")
+        print(f"REGION RESOLUTION DEBUG: {region}")
+        print(f"{'='*60}")
+        
+        # Step 1: Strip prefix
+        base = _strip_prefix(region)
+        print(f"\n1. Strip prefix: {region} -> {base}")
+        
+        # Step 2: Check laterality
+        from region_analysis.laterality import LateralityParser
+        side = LateralityParser.get_side(region)
+        rtype = LateralityParser.get_region_type(region)
+        print(f"2. Classification: side={side}, type={rtype}")
+        
+        # Step 3: Check dual hierarchy
+        if self.dual_hierarchy:
+            print(f"\n3. Dual Hierarchy loaded:")
+            print(f"   Cortex table: {self.dual_hierarchy.cortex_table.n_regions if self.dual_hierarchy.cortex_table else 0} regions")
+            print(f"   Subcortical table: {self.dual_hierarchy.subcortical_table.n_regions if self.dual_hierarchy.subcortical_table else 0} regions")
+            
+            # Try to find in appropriate table
+            table = self.dual_hierarchy._get_table_for_region(region)
+            if table:
+                print(f"   Selected table: {'cortex' if table == self.dual_hierarchy.cortex_table else 'subcortical'}")
+                has_region = table.has_region(region)
+                print(f"   has_region({region}): {has_region}")
+                
+                if has_region:
+                    path = table.get_path(region)
+                    print(f"   Full path: {path}")
+            else:
+                print(f"   ERROR: No table found for region type '{rtype}'")
+        
+        # Step 4: Try resolution at each level
+        print(f"\n4. Resolution by level:")
+        for lv in range(1, 7):
+            result = resolve_to_level(region, lv, self.hierarchy, 
+                                     self.dual_hierarchy or self.hierarchy_table)
+            status = result if result else "NOT FOUND"
+            print(f"   L{lv}: {status}")
+        
+        print(f"{'='*60}\n")
 
     # ==================================================================
     # OUTLIER EXPORT
