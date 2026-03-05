@@ -753,6 +753,14 @@ class PopulationRegionAnalysis:
         
         # Get base projection matrix
         base_matrix = self.get_projection_matrix(level)
+        
+        # DEBUG: Check what columns we got
+        region_cols = [c for c in base_matrix.columns if c not in ["NeuronID", "Neuron_Type"]]
+        prefixed = [c for c in region_cols if c.startswith(('CL_', 'CR_', 'SL_', 'SR_'))]
+        print(f"[SPLIT DEBUG] Level={level}, Total regions={len(region_cols)}, Prefixed={len(prefixed)}")
+        if prefixed:
+            print(f"  Prefixed columns: {prefixed[:10]}")
+        
         if base_matrix.empty:
             return base_matrix, base_matrix
         
