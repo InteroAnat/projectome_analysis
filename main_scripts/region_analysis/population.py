@@ -769,7 +769,32 @@ class PopulationRegionAnalysis:
             self.plot_dataframe["Soma_Region"]
         ))
         
-        # Classify each region column by laterality for each neuron
+        # First pass: collect all ipsi regions and all contra regions across all neurons
+        all_ipsi_regions = set()
+        all_contra_regions = set()
+        
+        for idx, row in base_matrix.iterrows():
+            neuron_id = row["NeuronID"]
+            soma_region = neuron_soma_map.get(neuron_id, "")
+            
+            for col in region_cols:
+                length = row.get(col, 0)
+                if length == 0:
+                    continue
+                lat = LateralityParser.classify(soma_region, col)
+                if lat == "Ipsilateral":
+                    all_ipsi_regions.add(col)
+                elif lat == "Contralateral":
+                    all_contra_regions.add(col)
+                else:
+                    # Unknown - add to both
+                    all_ipsi_regions.add(col)
+                    all_contra_regions.add(col)
+        
+        all_ipsi_regions = sorted(all_ipsi_regions)
+        all_contra_regions = sorted(all_contra_regions)
+        
+        # Second pass: build rows with ALL columns (0 if no projection)
         ipsi_data = []
         contra_data = []
         
@@ -781,16 +806,23 @@ class PopulationRegionAnalysis:
             ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             
+            # Initialize all region columns with 0
+            for col in all_ipsi_regions:
+                ipsi_row[col] = 0
+            for col in all_contra_regions:
+                contra_row[col] = 0
+            
+            # Fill in actual values
             for col in region_cols:
                 length = row.get(col, 0)
+                if length == 0:
+                    continue
                 lat = LateralityParser.classify(soma_region, col)
                 
                 if lat == "Ipsilateral":
                     ipsi_row[col] = length
                 elif lat == "Contralateral":
                     contra_row[col] = length
-                # Unknown laterality goes to both (or could be excluded)
-                # For now, put in both to ensure complete rows
                 else:
                     ipsi_row[col] = length
                     contra_row[col] = length
@@ -801,18 +833,6 @@ class PopulationRegionAnalysis:
         # Create DataFrames
         ipsi_df = pd.DataFrame(ipsi_data)
         contra_df = pd.DataFrame(contra_data)
-        
-        # Remove columns that are all zeros for cleaner output
-        ipsi_region_cols = [c for c in ipsi_df.columns if c not in ["NeuronID", "Neuron_Type"]]
-        contra_region_cols = [c for c in contra_df.columns if c not in ["NeuronID", "Neuron_Type"]]
-        
-        # Keep only columns with non-zero values
-        ipsi_nonzero = [c for c in ipsi_region_cols if (ipsi_df[c] != 0).any()]
-        contra_nonzero = [c for c in contra_region_cols if (contra_df[c] != 0).any()]
-        
-        # Reorder: metadata first, then non-zero regions
-        ipsi_df = ipsi_df[["NeuronID", "Neuron_Type"] + ipsi_nonzero]
-        contra_df = contra_df[["NeuronID", "Neuron_Type"] + contra_nonzero]
         
         return ipsi_df, contra_df
 
@@ -847,7 +867,31 @@ class PopulationRegionAnalysis:
             self.plot_dataframe["Soma_Region"]
         ))
         
-        # Classify and convert to strength
+        # First pass: collect all ipsi regions and all contra regions across all neurons
+        all_ipsi_regions = set()
+        all_contra_regions = set()
+        
+        for idx, row in base_matrix.iterrows():
+            neuron_id = row["NeuronID"]
+            soma_region = neuron_soma_map.get(neuron_id, "")
+            
+            for col in region_cols:
+                length = row.get(col, 0)
+                if length == 0:
+                    continue
+                lat = LateralityParser.classify(soma_region, col)
+                if lat == "Ipsilateral":
+                    all_ipsi_regions.add(col)
+                elif lat == "Contralateral":
+                    all_contra_regions.add(col)
+                else:
+                    all_ipsi_regions.add(col)
+                    all_contra_regions.add(col)
+        
+        all_ipsi_regions = sorted(all_ipsi_regions)
+        all_contra_regions = sorted(all_contra_regions)
+        
+        # Second pass: build rows with ALL columns (0 if no projection)
         ipsi_data = []
         contra_data = []
         
@@ -859,9 +903,18 @@ class PopulationRegionAnalysis:
             ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             
+            # Initialize all region columns with 0
+            for col in all_ipsi_regions:
+                ipsi_row[col] = 0
+            for col in all_contra_regions:
+                contra_row[col] = 0
+            
+            # Fill in actual values
             for col in region_cols:
                 length = row.get(col, 0)
-                strength = round(np.log10(length + 1), 4) if length > 0 else 0
+                if length == 0:
+                    continue
+                strength = round(np.log10(length + 1), 4)
                 lat = LateralityParser.classify(soma_region, col)
                 
                 if lat == "Ipsilateral":
@@ -878,16 +931,6 @@ class PopulationRegionAnalysis:
         # Create DataFrames
         ipsi_df = pd.DataFrame(ipsi_data)
         contra_df = pd.DataFrame(contra_data)
-        
-        # Remove columns that are all zeros
-        ipsi_region_cols = [c for c in ipsi_df.columns if c not in ["NeuronID", "Neuron_Type"]]
-        contra_region_cols = [c for c in contra_df.columns if c not in ["NeuronID", "Neuron_Type"]]
-        
-        ipsi_nonzero = [c for c in ipsi_region_cols if (ipsi_df[c] != 0).any()]
-        contra_nonzero = [c for c in contra_region_cols if (contra_df[c] != 0).any()]
-        
-        ipsi_df = ipsi_df[["NeuronID", "Neuron_Type"] + ipsi_nonzero]
-        contra_df = contra_df[["NeuronID", "Neuron_Type"] + contra_nonzero]
         
         return ipsi_df, contra_df
 
