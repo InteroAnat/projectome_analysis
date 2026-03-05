@@ -22,14 +22,30 @@ def resolve_to_level(
     hierarchy_table: "Optional[object]" = None,
 ) -> Optional[str]:
     """Resolve region to target level. CSV table first, ARM key fallback."""
+    # Debug for specific regions
+    debug_regions = {'SL_HF', 'SR_HF', 'SL_DMId'}
+    is_debug = region in debug_regions
+    
+    if is_debug:
+        print(f"    [RESOLVE DEBUG] {region} -> L{target_level}")
+        print(f"      hierarchy_table type: {type(hierarchy_table).__name__ if hierarchy_table else None}")
+    
     if hierarchy_table is not None:
         result = hierarchy_table.aggregate_to_level(region, target_level)
+        if is_debug:
+            print(f"      CSV result: {result}")
         if result is not None:
             return result
+    
     if arm_hierarchy is not None:
         result = arm_hierarchy.aggregate_to_level(region, target_level)
+        if is_debug:
+            print(f"      ARM result: {result}")
         if result is not None:
             return result
+    
+    if is_debug:
+        print(f"      FINAL: None")
     return None
 
 
@@ -245,10 +261,15 @@ def _aggregate_length_dict_to_level(
     unmapped_regions = []
     unmapped_total = 0.0
     
+    # Track specific problematic regions
+    debug_regions = {'SL_HF', 'SR_HF', 'SL_DMId', 'SR_DMId'}
+    
     for region, length in length_dict.items():
+        region_str = str(region)
+        
         # Try target level first
         mapped = resolve_to_level(
-            str(region), level,
+            region_str, level,
             arm_hierarchy=hierarchy,
             hierarchy_table=hierarchy_table,
         )
@@ -257,7 +278,7 @@ def _aggregate_length_dict_to_level(
         if mapped is None and level > 1:
             for try_level in range(level - 1, 0, -1):
                 mapped = resolve_to_level(
-                    str(region), try_level,
+                    region_str, try_level,
                     arm_hierarchy=hierarchy,
                     hierarchy_table=hierarchy_table,
                 )
@@ -266,15 +287,22 @@ def _aggregate_length_dict_to_level(
         
         if mapped is not None:
             agg[mapped] += length
+            # Debug output for specific regions
+            if region_str in debug_regions:
+                print(f"  [AGG DEBUG] {region_str} -> {mapped} (level={level})")
         else:
             # Last resort: strip prefix and use base name
             from region_analysis.hierarchy_table import _strip_prefix
-            base_name = _strip_prefix(str(region))
+            base_name = _strip_prefix(region_str)
             if base_name:
                 agg[base_name] += length
+                if region_str in debug_regions:
+                    print(f"  [AGG DEBUG] {region_str} -> {base_name} (STRIPPED, level={level})")
             else:
                 unmapped_total += length
-                unmapped_regions.append(str(region))
+                unmapped_regions.append(region_str)
+                if region_str in debug_regions:
+                    print(f"  [AGG DEBUG] {region_str} -> UNMAPPED (level={level})")
     
     if unmapped_total > 0:
         agg["_Unmapped"] += unmapped_total
