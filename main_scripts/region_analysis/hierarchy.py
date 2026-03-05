@@ -313,15 +313,26 @@ def add_projection_length_hierarchy(
             )
         )
         df[col_name] = results.apply(lambda x: x[0])
+        
+        # Collect diagnostic info
         n_unmapped = results.apply(lambda x: len(x[1])).sum()
+        all_un: Set[str] = set()
+        for ulist in results.apply(lambda x: x[1]):
+            all_un.update(ulist)
+        
+        # Get sample of aggregated keys (non-unmapped)
+        sample_keys: Set[str] = set()
+        for agg_dict in results.apply(lambda x: x[0]):
+            if isinstance(agg_dict, dict):
+                sample_keys.update(agg_dict.keys())
+        sample_keys = sample_keys - {"_Unmapped"}
+        
+        # Print summary
+        print(f"[HIERARCHY L{lv}] {col_name}: {len(sample_keys)} unique regions")
         if n_unmapped > 0:
-            all_un: Set[str] = set()
-            for ulist in results.apply(lambda x: x[1]):
-                all_un.update(ulist)
-            print(
-                f"[HIERARCHY L{lv}] {n_unmapped} entries unmapped. "
-                f"Examples: {sorted(all_un)[:5]}"
-            )
+            print(f"  {n_unmapped} entries unmapped: {sorted(all_un)[:5]}")
+        if len(sample_keys) > 0:
+            print(f"  Sample regions: {sorted(sample_keys)[:10]}")
 
     df = df.rename(columns={length_col: "Region_Projection_Length_finest"})
     return df
