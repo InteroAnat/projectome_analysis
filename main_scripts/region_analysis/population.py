@@ -444,9 +444,9 @@ class PopulationRegionAnalysis:
         do_hier = add_hierarchy if add_hierarchy is not None else self.auto_hierarchy
         if do_hier and (self.hierarchy or self.hierarchy_table):
             print("\n[HIERARCHY] Adding columns...")
-            # Create all levels L1-L6 for both soma and projections
-            # projection_min_level=1 ensures all levels are generated
-            self._apply_hierarchy_columns(max_level=6, projection_min_level=1)
+            # Default: Only create L6 (finest level) for projections
+            # L6 corresponds to ARM level 6 - the finest parcellation
+            self._apply_hierarchy_columns(max_level=6, projection_min_level=6)
 
         do_lat = add_laterality if add_laterality is not None else self.auto_laterality
         if do_lat:
@@ -555,14 +555,14 @@ class PopulationRegionAnalysis:
         return self.plot_dataframe
 
     def add_projection_hierarchy_columns(
-        self, max_level: int = 6, min_level: int = 1, arm_key_path: str = None
+        self, max_level: int = 6, min_level: int = 6, arm_key_path: str = None
     ) -> pd.DataFrame:
         """
         Add projection hierarchy columns for specified level range.
         
         Args:
-            max_level: Maximum hierarchy level (default: 6)
-            min_level: Minimum hierarchy level (default: 1)
+            max_level: Maximum hierarchy level (default: 6 - finest)
+            min_level: Minimum hierarchy level (default: 6 - only finest level)
             arm_key_path: Optional path to ARM key file
         """
         if self.plot_dataframe.empty:
@@ -1585,7 +1585,10 @@ class PopulationRegionAnalysis:
     def _ensure_hierarchy_columns_for_levels(self, levels: list):
         """
         Ensure hierarchy columns exist for all requested levels.
-        Re-applies hierarchy if columns are missing.
+        Creates missing levels on-demand when save_all() requests them.
+        
+        Args:
+            levels: List of levels to ensure exist (e.g., [3, 6] for L3 and L6)
         """
         if not levels:
             return
@@ -1597,12 +1600,13 @@ class PopulationRegionAnalysis:
                 missing_levels.append(lv)
         
         if missing_levels:
-            print(f"[HIERARCHY] Missing projection columns for levels: {missing_levels}")
+            print(f"[HIERARCHY] Creating missing projection columns: {missing_levels}")
             if self.hierarchy is not None or self.hierarchy_table is not None:
-                min_level = min(missing_levels)
-                max_level = max(missing_levels + [6])
-                print(f"[HIERARCHY] Re-applying hierarchy for levels {min_level}-{max_level}")
-                self._apply_hierarchy_columns(max_level=max_level, projection_min_level=min_level)
+                # Only create the missing levels (not all L1-L6)
+                min_missing = min(missing_levels)
+                max_missing = max(missing_levels)
+                print(f"[HIERARCHY] Generating levels {min_missing}-{max_missing}")
+                self._apply_hierarchy_columns(max_level=6, projection_min_level=min_missing)
             else:
                 print("[WARN] No hierarchy source available. Creating empty columns.")
                 self._ensure_projection_columns_exist(min(missing_levels), max(missing_levels))
