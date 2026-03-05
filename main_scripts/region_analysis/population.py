@@ -22,11 +22,9 @@ import matplotlib.pyplot as plt
 from region_analysis.output_manager import OutputManager
 from region_analysis.hierarchy import (
     RegionHierarchy,
-    add_soma_hierarchy_column,
     add_projection_length_hierarchy,
     add_projection_hierarchy,
     extract_soma_level,
-    hierarchy_summary,
     resolve_to_level,
 )
 from region_analysis.hierarchy_table import DualHierarchyTable
@@ -132,25 +130,6 @@ class PopulationRegionAnalysis:
             # Legacy single-file loading
             self._load_hierarchy_csv(hierarchy_csv)
 
-        # Status
-        arm_s = (
-            f"{len(self.hierarchy.level_map)} regions"
-            if self.hierarchy else "not loaded"
-        )
-        
-        if self.dual_hierarchy:
-            csv_s = f"{self.dual_hierarchy.n_regions} regions (dual hierarchy)"
-        elif self.hierarchy_table:
-            csv_s = (
-                f"{self.hierarchy_table.n_regions} regions, "
-                f"L{self.hierarchy_table._min_level}-L{self.hierarchy_table._max_level}"
-            )
-        else:
-            csv_s = "not loaded"
-        
-        print(f"[INIT] ARM key (fallback): {arm_s}")
-        print(f"[INIT] CSV hierarchy (PRIORITY): {csv_s}")
-
     # ==================================================================
     # HIERARCHY LOADING
     # ==================================================================
@@ -164,21 +143,16 @@ class PopulationRegionAnalysis:
             r"D:\projectome_analysis\neuron_tables\ARM_key_all.txt",
             "../atlas/ARM_key_all.txt",
         ]
-        print("[HIERARCHY] Auto-detecting ARM key ...")
         for path in candidates:
             if os.path.exists(path):
-                print(f"  FOUND: {path}")
                 self._load_hierarchy(path)
                 return
-        print("[WARN] ARM key not auto-detected.")
 
     def _load_hierarchy(self, arm_key_path: str):
         try:
-            print(f"[HIERARCHY] Loading ARM key: {arm_key_path}")
             self.hierarchy = RegionHierarchy.from_file(arm_key_path)
             self._arm_key_path = arm_key_path
-        except Exception as e:
-            print(f"[HIERARCHY] Failed: {e}")
+        except Exception:
             self.hierarchy = None
 
     def _load_hierarchy_csv(self, path):
@@ -191,36 +165,10 @@ class PopulationRegionAnalysis:
         """
         from region_analysis.hierarchy_table import HierarchyTable
 
-        # Normalize to list
-        if isinstance(path, str):
-            paths = [path]
-        elif isinstance(path, (list, tuple)):
-            paths = list(path)
-        else:
-            print(f"[WARN] Invalid hierarchy_csv type: {type(path)}")
-            return
-
-        # Filter existing files
-        valid = []
-        for p in paths:
-            if os.path.exists(p):
-                valid.append(p)
-            else:
-                print(f"[WARN] Hierarchy CSV not found: {p}")
-
-        if not valid:
-            print("[WARN] No valid hierarchy CSV files found.")
-            return
-
-        self.hierarchy_table = HierarchyTable.from_files(*valid)
-
-        # Run match report against atlas
-        if (
-            self.atlas_table is not None
-            and "Abbreviation" in self.atlas_table.columns
-        ):
-            abbrevs = self.atlas_table["Abbreviation"].dropna().unique().tolist()
-            self.hierarchy_table.match_report(abbrevs)
+        paths = [path] if isinstance(path, str) else list(path) if isinstance(path, (list, tuple)) else []
+        valid = [p for p in paths if os.path.exists(p)]
+        if valid:
+            self.hierarchy_table = HierarchyTable.from_files(*valid)
 
     def load_hierarchy_csv(self, path):
         """
@@ -231,40 +179,15 @@ class PopulationRegionAnalysis:
             path: Single file path (str) or list of paths.
         """
         from region_analysis.hierarchy_table import HierarchyTable
-
-        if isinstance(path, str):
-            paths = [path]
-        elif isinstance(path, (list, tuple)):
-            paths = list(path)
-        else:
-            print(f"[WARN] Invalid path type: {type(path)}")
-            return
-
+        paths = [path] if isinstance(path, str) else list(path) if isinstance(path, (list, tuple)) else []
         if self.hierarchy_table is None:
             self.hierarchy_table = HierarchyTable()
-
         for p in paths:
             if os.path.exists(p):
                 self.hierarchy_table.load_file(p)
-            else:
-                print(f"[WARN] Not found: {p}")
-
-        if self.hierarchy_table.n_regions > 0:
-            self.hierarchy_table._print_summary()
 
     def _load_dual_hierarchy(self, cortex_paths=None, subcortical_paths=None):
-        """
-        Load separate hierarchy tables for cortex and subcortical regions.
-        
-        This prevents conflicts when the same abbreviation exists in both
-        cortical and subcortical hierarchies (e.g., 'RM' in auditory cortex
-        vs hypothalamus).
-        
-        Args:
-            cortex_paths: Single path or list of paths for cortical hierarchy CSV(s)
-            subcortical_paths: Single path or list of paths for subcortical hierarchy CSV(s)
-        """
-        # Normalize paths to lists
+        """Load separate hierarchy tables for cortex and subcortical regions."""
         def normalize_paths(paths):
             if paths is None:
                 return []
@@ -272,38 +195,14 @@ class PopulationRegionAnalysis:
                 return [paths]
             return list(paths)
         
-        cortex_list = normalize_paths(cortex_paths)
-        subcortical_list = normalize_paths(subcortical_paths)
+        cortex_valid = [p for p in normalize_paths(cortex_paths) if os.path.exists(p)]
+        subcortical_valid = [p for p in normalize_paths(subcortical_paths) if os.path.exists(p)]
         
-        # Filter to existing files
-        cortex_valid = [p for p in cortex_list if os.path.exists(p)]
-        subcortical_valid = [p for p in subcortical_list if os.path.exists(p)]
-        
-        # Report missing files
-        for p in cortex_list:
-            if p not in cortex_valid:
-                print(f"[WARN] Cortex hierarchy not found: {p}")
-        for p in subcortical_list:
-            if p not in subcortical_valid:
-                print(f"[WARN] Subcortical hierarchy not found: {p}")
-        
-        if not cortex_valid and not subcortical_valid:
-            print("[WARN] No valid hierarchy files found for dual loading.")
-            return
-        
-        # Create dual hierarchy table
-        self.dual_hierarchy = DualHierarchyTable(
-            cortex_paths=cortex_valid if cortex_valid else None,
-            subcortical_paths=subcortical_valid if subcortical_valid else None,
-        )
-        
-        # Run match report against atlas
-        if (
-            self.atlas_table is not None
-            and "Abbreviation" in self.atlas_table.columns
-        ):
-            abbrevs = self.atlas_table["Abbreviation"].dropna().unique().tolist()
-            self.dual_hierarchy.match_report(abbrevs)
+        if cortex_valid or subcortical_valid:
+            self.dual_hierarchy = DualHierarchyTable(
+                cortex_paths=cortex_valid if cortex_valid else None,
+                subcortical_paths=subcortical_valid if subcortical_valid else None,
+            )
 
     # ==================================================================
     # PROCESSING
@@ -443,18 +342,11 @@ class PopulationRegionAnalysis:
 
         do_hier = add_hierarchy if add_hierarchy is not None else self.auto_hierarchy
         hier_available = self.hierarchy is not None or self.hierarchy_table is not None or self.dual_hierarchy is not None
-        print(f"\n[HIERARCHY CHECK] do_hier={do_hier}, hierarchy_available={hier_available}")
         if do_hier and hier_available:
-            print("[HIERARCHY] Adding columns...")
-            # Default: Only create L6 (finest level) for projections
-            # L6 corresponds to ARM level 6 - the finest parcellation
             self._apply_hierarchy_columns(max_level=6, projection_min_level=6)
-        else:
-            print(f"[HIERARCHY] SKIPPED: do_hier={do_hier}, available={hier_available}")
 
         do_lat = add_laterality if add_laterality is not None else self.auto_laterality
         if do_lat:
-            print("\n[LATERALITY] Adding columns...")
             self._apply_laterality_columns()
 
     # ==================================================================
@@ -473,31 +365,15 @@ class PopulationRegionAnalysis:
         """
         # Determine which hierarchy source to use
         if self.dual_hierarchy is not None:
-            # Use dual hierarchy system (separate cortex/subcortical tables)
-            print("[HIERARCHY] Using dual hierarchy system (cortex + subcortical)")
             hierarchy_source = self.dual_hierarchy
         elif self.hierarchy_table is not None:
-            # Use single hierarchy table
             hierarchy_source = self.hierarchy_table
         elif self.hierarchy is not None:
-            # Use ARM key only
             hierarchy_source = None  # Will use ARM key in functions
         else:
-            print("[HIERARCHY] No source loaded.")
             return
         
-        # Soma hierarchy: L1 to max_level
-        print(f"[HIERARCHY] Soma: levels 1-{max_level}")
-        self.plot_dataframe = add_soma_hierarchy_column(
-            self.plot_dataframe,
-            self.hierarchy,
-            "Soma_Region",
-            max_level,
-            hierarchy_table=hierarchy_source,
-        )
-        
         # Projection hierarchy: projection_min_level to max_level
-        print(f"[HIERARCHY] Projections: levels {projection_min_level}-{max_level}")
         self.plot_dataframe = add_projection_length_hierarchy(
             self.plot_dataframe,
             self.hierarchy,
@@ -507,39 +383,15 @@ class PopulationRegionAnalysis:
             hierarchy_table=hierarchy_source,
         )
         
-        # Verify all projection columns exist and create empty dicts if missing
+        # Verify all projection columns exist
         self._ensure_projection_columns_exist(projection_min_level, max_level)
-        
-        # Print summary
-        summary = hierarchy_summary(self.plot_dataframe, max_level)
-        print("\n[HIERARCHY] Soma summary:")
-        print(summary.to_string(index=False))
-        
-        # Print projection column status
-        print("\n[HIERARCHY] Projection columns status:")
-        for lv in range(projection_min_level, max_level + 1):
-            col_name = f"Region_Projection_Length_L{lv}"
-            if col_name in self.plot_dataframe.columns:
-                # Count non-empty dicts
-                non_empty = self.plot_dataframe[col_name].apply(
-                    lambda x: len(x) if isinstance(x, dict) else 0
-                ).sum()
-                print(f"  {col_name}: OK ({non_empty} total regions)")
-            else:
-                print(f"  {col_name}: MISSING")
 
     def _ensure_projection_columns_exist(self, min_level: int, max_level: int):
-        """
-        Ensure all projection length columns exist for levels min_level to max_level.
-        Creates empty dict columns if they don't exist.
-        """
+        """Ensure projection length columns exist, create empty dicts if missing."""
         for lv in range(min_level, max_level + 1):
             col_name = f"Region_Projection_Length_L{lv}"
             if col_name not in self.plot_dataframe.columns:
-                print(f"[WARN] Creating missing column: {col_name}")
-                self.plot_dataframe[col_name] = self.plot_dataframe.apply(
-                    lambda _: {}, axis=1
-                )
+                self.plot_dataframe[col_name] = self.plot_dataframe.apply(lambda _: {}, axis=1)
 
     def add_hierarchy_columns(
         self, arm_key_path: str = None, max_level: int = 6
@@ -701,26 +553,8 @@ class PopulationRegionAnalysis:
             print(f"  Available projection columns: {available_proj_cols}")
             return pd.DataFrame()
 
-        # DEBUG: Check what keys are in the source column
-        all_keys = set()
-        prefixed_keys = []
-        clean_keys = []
-        for val in self.plot_dataframe[length_col]:
-            if isinstance(val, dict):
-                for k in val.keys():
-                    all_keys.add(k)
-        for k in sorted(all_keys):
-            if k.startswith(('CL_', 'CR_', 'SL_', 'SR_')):
-                prefixed_keys.append(k)
-            else:
-                clean_keys.append(k)
-        
-        print(f"[MATRIX L{level}] Column: {length_col}")
-        print(f"  Total unique keys: {len(all_keys)}")
-        print(f"  Prefixed (WRONG): {len(prefixed_keys)} - {prefixed_keys[:10]}")
-        print(f"  Clean (CORRECT): {len(clean_keys)} - {clean_keys[:10]}")
-
         # Convert column to list of dicts, handling non-dict values
+        # Keep prefixes internally for correct laterality classification
         data_list = []
         for val in self.plot_dataframe[length_col]:
             if isinstance(val, dict):
@@ -749,6 +583,7 @@ class PopulationRegionAnalysis:
                 print(
                     f"[MATRIX L{level}] _Unmapped: {total_u:.1f} mm ({pct:.1f}%)"
                 )
+        
         return matrix
 
     def get_projection_strength(self, level: str = "finest") -> pd.DataFrame:
@@ -765,37 +600,37 @@ class PopulationRegionAnalysis:
         """
         Split projection matrix into ipsilateral and contralateral DataFrames.
         
-        IMPORTANT: Preserves original region names (with prefixes) because
-        SL_HF and SR_HF are different regions (left vs right hippocampus) and
-        belong in different sheets (ipsi vs contra). Prefixes must NOT be stripped.
+        Uses original data with prefixes for correct laterality classification,
+        then strips prefixes for clean output.
         
         Args:
             level: Hierarchy level ("finest" or 1-6)
             
         Returns:
-            Tuple of (ipsi_df, contra_df) where each contains only regions
-            of that laterality. All neurons have complete rows (0 if no projection).
+            Tuple of (ipsi_df, contra_df) with prefixes stripped.
         """
         from region_analysis.laterality import LateralityParser
+        from region_analysis.hierarchy import _strip_prefix
         
-        # Get base projection matrix
-        base_matrix = self.get_projection_matrix(level)
+        # Get source column with prefixes (for correct laterality classification)
+        if level == "finest":
+            candidates = ["Region_projection_length"]
+        else:
+            level_int = int(level) if isinstance(level, str) and level.isdigit() else level
+            candidates = [f"Region_Projection_Length_L{level_int}"]
         
-        if base_matrix.empty:
-            return base_matrix, base_matrix
+        source_col = None
+        for c in candidates:
+            if c in self.plot_dataframe.columns:
+                source_col = c
+                break
+        
+        if source_col is None:
+            return pd.DataFrame(), pd.DataFrame()
         
         # Ensure laterality columns exist
         if "Soma_Side" not in self.plot_dataframe.columns:
             self._apply_laterality_columns()
-        
-        # Get region columns (excluding metadata)
-        region_cols = [c for c in base_matrix.columns if c not in ["NeuronID", "Neuron_Type"]]
-        
-        # DEBUG: Check what columns we got
-        prefixed = [c for c in region_cols if c.startswith(('CL_', 'CR_', 'SL_', 'SR_'))]
-        print(f"[SPLIT DEBUG] Level={level}, Total regions={len(region_cols)}, Prefixed={len(prefixed)}")
-        if prefixed:
-            print(f"  Sample prefixed: {prefixed[:10]}")
         
         # Build neuron_id to soma_region mapping
         neuron_soma_map = dict(zip(
@@ -803,70 +638,69 @@ class PopulationRegionAnalysis:
             self.plot_dataframe["Soma_Region"]
         ))
         
-        # First pass: collect all ipsi regions and all contra regions (keeping ORIGINAL names)
+        # Collect all regions and classify by laterality
+        all_regions = set()
+        for val in self.plot_dataframe[source_col]:
+            if isinstance(val, dict):
+                all_regions.update(val.keys())
+        
         all_ipsi_regions = set()
         all_contra_regions = set()
         
-        for idx, row in base_matrix.iterrows():
-            neuron_id = row["NeuronID"]
-            soma_region = neuron_soma_map.get(neuron_id, "")
+        for _, row in self.plot_dataframe.iterrows():
+            soma_region = row.get("Soma_Region", "")
+            length_dict = row.get(source_col, {})
+            if not isinstance(length_dict, dict):
+                continue
             
-            for col in region_cols:
-                length = row.get(col, 0)
+            for region, length in length_dict.items():
                 if length == 0:
                     continue
-                lat = LateralityParser.classify(soma_region, col)
+                lat = LateralityParser.classify(soma_region, region)
                 if lat == "Ipsilateral":
-                    all_ipsi_regions.add(col)  # Keep original name (e.g., 'SL_HF')
+                    all_ipsi_regions.add(region)
                 elif lat == "Contralateral":
-                    all_contra_regions.add(col)  # Keep original name (e.g., 'SR_HF')
+                    all_contra_regions.add(region)
                 else:
-                    # Unknown - add to both
-                    all_ipsi_regions.add(col)
-                    all_contra_regions.add(col)
+                    all_ipsi_regions.add(region)
+                    all_contra_regions.add(region)
         
-        all_ipsi_regions = sorted(all_ipsi_regions)
-        all_contra_regions = sorted(all_contra_regions)
-        
-        # Second pass: build rows with ALL columns (0 if no projection)
+        # Build rows with clean (stripped) column names
         ipsi_data = []
         contra_data = []
         
-        for idx, row in base_matrix.iterrows():
+        for _, row in self.plot_dataframe.iterrows():
             neuron_id = row["NeuronID"]
-            neuron_type = row["Neuron_Type"]
-            soma_region = neuron_soma_map.get(neuron_id, "")
+            neuron_type = row.get("Neuron_Type", "")
+            soma_region = row.get("Soma_Region", "")
+            length_dict = row.get(source_col, {})
+            if not isinstance(length_dict, dict):
+                length_dict = {}
             
             ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             
-            # Initialize all region columns with 0
-            for col in all_ipsi_regions:
-                ipsi_row[col] = 0
-            for col in all_contra_regions:
-                contra_row[col] = 0
-            
-            # Fill in actual values
-            for col in region_cols:
-                length = row.get(col, 0)
+            # Fill in values with stripped column names
+            for region, length in length_dict.items():
                 if length == 0:
                     continue
-                lat = LateralityParser.classify(soma_region, col)
+                lat = LateralityParser.classify(soma_region, region)
+                clean_region = _strip_prefix(region)
                 
                 if lat == "Ipsilateral":
-                    ipsi_row[col] = length
+                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + length
                 elif lat == "Contralateral":
-                    contra_row[col] = length
+                    contra_row[clean_region] = contra_row.get(clean_region, 0) + length
                 else:
-                    ipsi_row[col] = length
-                    contra_row[col] = length
+                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + length
+                    contra_row[clean_region] = contra_row.get(clean_region, 0) + length
             
             ipsi_data.append(ipsi_row)
             contra_data.append(contra_row)
         
         # Create DataFrames
-        ipsi_df = pd.DataFrame(ipsi_data)
-        contra_df = pd.DataFrame(contra_data)
+        ipsi_df = pd.DataFrame(ipsi_data).fillna(0)
+        contra_df = pd.DataFrame(contra_data).fillna(0)
         
         return ipsi_df, contra_df
 
@@ -874,101 +708,75 @@ class PopulationRegionAnalysis:
         """
         Split projection strength matrix into ipsilateral and contralateral DataFrames.
         
-        IMPORTANT: Preserves original region names (with prefixes) because
-        SL_HF and SR_HF are different regions (left vs right hippocampus) and
-        belong in different sheets (ipsi vs contra). Prefixes must NOT be stripped.
+        Uses original data with prefixes for correct laterality classification,
+        then strips prefixes for clean output.
         
         Args:
             level: Hierarchy level ("finest" or 1-6)
             
         Returns:
-            Tuple of (ipsi_df, contra_df) where each contains log10(strength) for
-            regions of that laterality. All neurons have complete rows (0 if no projection).
+            Tuple of (ipsi_df, contra_df) with prefixes stripped.
         """
         from region_analysis.laterality import LateralityParser
+        from region_analysis.hierarchy import _strip_prefix
         
-        # Get base projection matrix (lengths)
-        base_matrix = self.get_projection_matrix(level)
-        if base_matrix.empty:
-            return base_matrix, base_matrix
+        # Get source column with prefixes (for correct laterality classification)
+        if level == "finest":
+            candidates = ["Region_projection_length"]
+        else:
+            level_int = int(level) if isinstance(level, str) and level.isdigit() else level
+            candidates = [f"Region_Projection_Length_L{level_int}"]
+        
+        source_col = None
+        for c in candidates:
+            if c in self.plot_dataframe.columns:
+                source_col = c
+                break
+        
+        if source_col is None:
+            return pd.DataFrame(), pd.DataFrame()
         
         # Ensure laterality columns exist
         if "Soma_Side" not in self.plot_dataframe.columns:
             self._apply_laterality_columns()
         
-        # Get region columns
-        region_cols = [c for c in base_matrix.columns if c not in ["NeuronID", "Neuron_Type"]]
-        
-        # Build neuron_id to soma_region mapping
-        neuron_soma_map = dict(zip(
-            self.plot_dataframe["NeuronID"],
-            self.plot_dataframe["Soma_Region"]
-        ))
-        
-        # First pass: collect all ipsi regions and all contra regions (keeping ORIGINAL names)
-        all_ipsi_regions = set()
-        all_contra_regions = set()
-        
-        for idx, row in base_matrix.iterrows():
-            neuron_id = row["NeuronID"]
-            soma_region = neuron_soma_map.get(neuron_id, "")
-            
-            for col in region_cols:
-                length = row.get(col, 0)
-                if length == 0:
-                    continue
-                lat = LateralityParser.classify(soma_region, col)
-                if lat == "Ipsilateral":
-                    all_ipsi_regions.add(col)  # Keep original name
-                elif lat == "Contralateral":
-                    all_contra_regions.add(col)  # Keep original name
-                else:
-                    all_ipsi_regions.add(col)
-                    all_contra_regions.add(col)
-        
-        all_ipsi_regions = sorted(all_ipsi_regions)
-        all_contra_regions = sorted(all_contra_regions)
-        
-        # Second pass: build rows with ALL columns (0 if no projection)
+        # Build rows with clean (stripped) column names
         ipsi_data = []
         contra_data = []
         
-        for idx, row in base_matrix.iterrows():
+        for _, row in self.plot_dataframe.iterrows():
             neuron_id = row["NeuronID"]
-            neuron_type = row["Neuron_Type"]
-            soma_region = neuron_soma_map.get(neuron_id, "")
+            neuron_type = row.get("Neuron_Type", "")
+            soma_region = row.get("Soma_Region", "")
+            length_dict = row.get(source_col, {})
+            if not isinstance(length_dict, dict):
+                length_dict = {}
             
             ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             
-            # Initialize all region columns with 0
-            for col in all_ipsi_regions:
-                ipsi_row[col] = 0
-            for col in all_contra_regions:
-                contra_row[col] = 0
-            
-            # Fill in actual values
-            for col in region_cols:
-                length = row.get(col, 0)
+            # Fill in values with stripped column names
+            for region, length in length_dict.items():
                 if length == 0:
                     continue
+                lat = LateralityParser.classify(soma_region, region)
+                clean_region = _strip_prefix(region)
                 strength = round(np.log10(length + 1), 4)
-                lat = LateralityParser.classify(soma_region, col)
                 
                 if lat == "Ipsilateral":
-                    ipsi_row[col] = strength
+                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + strength
                 elif lat == "Contralateral":
-                    contra_row[col] = strength
+                    contra_row[clean_region] = contra_row.get(clean_region, 0) + strength
                 else:
-                    ipsi_row[col] = strength
-                    contra_row[col] = strength
+                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + strength
+                    contra_row[clean_region] = contra_row.get(clean_region, 0) + strength
             
             ipsi_data.append(ipsi_row)
             contra_data.append(contra_row)
         
         # Create DataFrames
-        ipsi_df = pd.DataFrame(ipsi_data)
-        contra_df = pd.DataFrame(contra_data)
+        ipsi_df = pd.DataFrame(ipsi_data).fillna(0)
+        contra_df = pd.DataFrame(contra_data).fillna(0)
         
         return ipsi_df, contra_df
 
