@@ -442,11 +442,15 @@ class PopulationRegionAnalysis:
             return
 
         do_hier = add_hierarchy if add_hierarchy is not None else self.auto_hierarchy
-        if do_hier and (self.hierarchy or self.hierarchy_table):
-            print("\n[HIERARCHY] Adding columns...")
+        hier_available = self.hierarchy is not None or self.hierarchy_table is not None or self.dual_hierarchy is not None
+        print(f"\n[HIERARCHY CHECK] do_hier={do_hier}, hierarchy_available={hier_available}")
+        if do_hier and hier_available:
+            print("[HIERARCHY] Adding columns...")
             # Default: Only create L6 (finest level) for projections
             # L6 corresponds to ARM level 6 - the finest parcellation
             self._apply_hierarchy_columns(max_level=6, projection_min_level=6)
+        else:
+            print(f"[HIERARCHY] SKIPPED: do_hier={do_hier}, available={hier_available}")
 
         do_lat = add_laterality if add_laterality is not None else self.auto_laterality
         if do_lat:
