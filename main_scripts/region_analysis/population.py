@@ -1182,6 +1182,31 @@ class PopulationRegionAnalysis:
         
         print(f"{'='*60}\n")
 
+    def test_specific_regions(self, regions: list = None):
+        """
+        Test hierarchy resolution for specific problematic regions.
+        
+        Args:
+            regions: List of region names to test (default: SL_HF, SR_HF, SL_DMId)
+        """
+        if regions is None:
+            regions = ['SL_HF', 'SR_HF', 'SL_DMId']
+        
+        print(f"\n{'='*60}")
+        print(f"TESTING SPECIFIC REGIONS")
+        print(f"{'='*60}")
+        
+        hierarchy_source = self.dual_hierarchy or self.hierarchy_table
+        
+        for region in regions:
+            print(f"\n{region}:")
+            for lv in [1, 2, 3, 4, 5, 6]:
+                result = resolve_to_level(region, lv, self.hierarchy, hierarchy_source)
+                status = f"-> {result}" if result else "FAILED"
+                print(f"  L{lv}: {status}")
+        
+        print(f"{'='*60}\n")
+
     # ==================================================================
     # REGION MATRIX (backward compat)
     # ==================================================================

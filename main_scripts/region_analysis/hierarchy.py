@@ -263,6 +263,7 @@ def _aggregate_length_dict_to_level(
     
     # Track specific problematic regions
     debug_regions = {'SL_HF', 'SR_HF', 'SL_DMId', 'SR_DMId'}
+    debug_found = False
     
     for region, length in length_dict.items():
         region_str = str(region)
@@ -289,7 +290,8 @@ def _aggregate_length_dict_to_level(
             agg[mapped] += length
             # Debug output for specific regions
             if region_str in debug_regions:
-                print(f"  [AGG DEBUG] {region_str} -> {mapped} (level={level})")
+                print(f"  [AGG DEBUG] {region_str} -> {mapped} (target L{level})")
+                debug_found = True
         else:
             # Last resort: strip prefix and use base name
             from region_analysis.hierarchy_table import _strip_prefix
@@ -297,12 +299,20 @@ def _aggregate_length_dict_to_level(
             if base_name:
                 agg[base_name] += length
                 if region_str in debug_regions:
-                    print(f"  [AGG DEBUG] {region_str} -> {base_name} (STRIPPED, level={level})")
+                    print(f"  [AGG DEBUG] {region_str} -> {base_name} (STRIPPED, target L{level})")
+                    debug_found = True
             else:
                 unmapped_total += length
                 unmapped_regions.append(region_str)
                 if region_str in debug_regions:
-                    print(f"  [AGG DEBUG] {region_str} -> UNMAPPED (level={level})")
+                    print(f"  [AGG DEBUG] {region_str} -> UNMAPPED (target L{level})")
+                    debug_found = True
+    
+    # Print summary if we found debug regions
+    if debug_found:
+        prefixed_keys = [k for k in agg.keys() if k.startswith(('CL_', 'CR_', 'SL_', 'SR_'))]
+        if prefixed_keys:
+            print(f"  [AGG DEBUG] WARNING: Still have prefixed keys: {prefixed_keys}")
     
     if unmapped_total > 0:
         agg["_Unmapped"] += unmapped_total
