@@ -232,22 +232,50 @@ def _aggregate_length_dict_to_level(
     level: int,
     hierarchy_table=None,
 ) -> Tuple[dict, List[str]]:
+    """
+    Aggregate projection lengths to target hierarchy level.
+    
+    If a region cannot be resolved to the target level, tries to resolve to 
+    the finest available level (closest to target but not higher). This handles
+    subcortical regions that only exist at specific levels (e.g., HF at L3-L4).
+    """
     if not isinstance(length_dict, dict) or not length_dict:
         return {}, []
     agg = defaultdict(float)
     unmapped_regions = []
     unmapped_total = 0.0
+    
     for region, length in length_dict.items():
+        # Try target level first
         mapped = resolve_to_level(
             str(region), level,
             arm_hierarchy=hierarchy,
             hierarchy_table=hierarchy_table,
         )
+        
+        # If not resolved, try finer levels (level-1 down to 1)
+        if mapped is None and level > 1:
+            for try_level in range(level - 1, 0, -1):
+                mapped = resolve_to_level(
+                    str(region), try_level,
+                    arm_hierarchy=hierarchy,
+                    hierarchy_table=hierarchy_table,
+                )
+                if mapped is not None:
+                    break
+        
         if mapped is not None:
             agg[mapped] += length
         else:
-            unmapped_total += length
-            unmapped_regions.append(str(region))
+            # Last resort: strip prefix and use base name
+            from region_analysis.hierarchy_table import _strip_prefix
+            base_name = _strip_prefix(str(region))
+            if base_name:
+                agg[base_name] += length
+            else:
+                unmapped_total += length
+                unmapped_regions.append(str(region))
+    
     if unmapped_total > 0:
         agg["_Unmapped"] += unmapped_total
     return dict(agg), unmapped_regions
