@@ -767,18 +767,13 @@ class PopulationRegionAnalysis:
         Returns:
             Tuple of (ipsi_df, contra_df) where each contains only regions
             of that laterality. All neurons have complete rows (0 if no projection).
+            Region names have prefixes stripped for clean output.
         """
         from region_analysis.laterality import LateralityParser
+        from region_analysis.hierarchy_table import _strip_prefix
         
         # Get base projection matrix
         base_matrix = self.get_projection_matrix(level)
-        
-        # DEBUG: Check what columns we got
-        region_cols = [c for c in base_matrix.columns if c not in ["NeuronID", "Neuron_Type"]]
-        prefixed = [c for c in region_cols if c.startswith(('CL_', 'CR_', 'SL_', 'SR_'))]
-        print(f"[SPLIT DEBUG] Level={level}, Total regions={len(region_cols)}, Prefixed={len(prefixed)}")
-        if prefixed:
-            print(f"  Prefixed columns: {prefixed[:10]}")
         
         if base_matrix.empty:
             return base_matrix, base_matrix
@@ -790,13 +785,22 @@ class PopulationRegionAnalysis:
         # Get region columns (excluding metadata)
         region_cols = [c for c in base_matrix.columns if c not in ["NeuronID", "Neuron_Type"]]
         
+        # Build mapping from original column name to clean name (strip prefixes)
+        col_to_clean = {col: _strip_prefix(col) for col in region_cols}
+        
+        # DEBUG: Check what columns we got
+        prefixed = [c for c in region_cols if c.startswith(('CL_', 'CR_', 'SL_', 'SR_'))]
+        print(f"[SPLIT DEBUG] Level={level}, Total regions={len(region_cols)}, Prefixed={len(prefixed)}")
+        if prefixed:
+            print(f"  Stripping prefixes: {[(c, col_to_clean[c]) for c in prefixed[:5]]}")
+        
         # Build neuron_id to soma_region mapping
         neuron_soma_map = dict(zip(
             self.plot_dataframe["NeuronID"],
             self.plot_dataframe["Soma_Region"]
         ))
         
-        # First pass: collect all ipsi regions and all contra regions across all neurons
+        # First pass: collect all ipsi regions and all contra regions (using CLEAN names)
         all_ipsi_regions = set()
         all_contra_regions = set()
         
@@ -809,14 +813,15 @@ class PopulationRegionAnalysis:
                 if length == 0:
                     continue
                 lat = LateralityParser.classify(soma_region, col)
+                clean_name = col_to_clean[col]
                 if lat == "Ipsilateral":
-                    all_ipsi_regions.add(col)
+                    all_ipsi_regions.add(clean_name)
                 elif lat == "Contralateral":
-                    all_contra_regions.add(col)
+                    all_contra_regions.add(clean_name)
                 else:
                     # Unknown - add to both
-                    all_ipsi_regions.add(col)
-                    all_contra_regions.add(col)
+                    all_ipsi_regions.add(clean_name)
+                    all_contra_regions.add(clean_name)
         
         all_ipsi_regions = sorted(all_ipsi_regions)
         all_contra_regions = sorted(all_contra_regions)
@@ -833,26 +838,27 @@ class PopulationRegionAnalysis:
             ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             
-            # Initialize all region columns with 0
+            # Initialize all region columns with 0 (using CLEAN names)
             for col in all_ipsi_regions:
                 ipsi_row[col] = 0
             for col in all_contra_regions:
                 contra_row[col] = 0
             
-            # Fill in actual values
+            # Fill in actual values (mapping original col name to clean name)
             for col in region_cols:
                 length = row.get(col, 0)
                 if length == 0:
                     continue
                 lat = LateralityParser.classify(soma_region, col)
+                clean_name = col_to_clean[col]
                 
                 if lat == "Ipsilateral":
-                    ipsi_row[col] = length
+                    ipsi_row[clean_name] = length
                 elif lat == "Contralateral":
-                    contra_row[col] = length
+                    contra_row[clean_name] = length
                 else:
-                    ipsi_row[col] = length
-                    contra_row[col] = length
+                    ipsi_row[clean_name] = length
+                    contra_row[clean_name] = length
             
             ipsi_data.append(ipsi_row)
             contra_data.append(contra_row)
@@ -873,8 +879,10 @@ class PopulationRegionAnalysis:
         Returns:
             Tuple of (ipsi_df, contra_df) where each contains log10(strength) for
             regions of that laterality. All neurons have complete rows (0 if no projection).
+            Region names have prefixes stripped for clean output.
         """
         from region_analysis.laterality import LateralityParser
+        from region_analysis.hierarchy_table import _strip_prefix
         
         # Get base projection matrix (lengths)
         base_matrix = self.get_projection_matrix(level)
@@ -888,13 +896,16 @@ class PopulationRegionAnalysis:
         # Get region columns
         region_cols = [c for c in base_matrix.columns if c not in ["NeuronID", "Neuron_Type"]]
         
+        # Build mapping from original column name to clean name (strip prefixes)
+        col_to_clean = {col: _strip_prefix(col) for col in region_cols}
+        
         # Build neuron_id to soma_region mapping
         neuron_soma_map = dict(zip(
             self.plot_dataframe["NeuronID"],
             self.plot_dataframe["Soma_Region"]
         ))
         
-        # First pass: collect all ipsi regions and all contra regions across all neurons
+        # First pass: collect all ipsi regions and all contra regions (using CLEAN names)
         all_ipsi_regions = set()
         all_contra_regions = set()
         
@@ -907,13 +918,14 @@ class PopulationRegionAnalysis:
                 if length == 0:
                     continue
                 lat = LateralityParser.classify(soma_region, col)
+                clean_name = col_to_clean[col]
                 if lat == "Ipsilateral":
-                    all_ipsi_regions.add(col)
+                    all_ipsi_regions.add(clean_name)
                 elif lat == "Contralateral":
-                    all_contra_regions.add(col)
+                    all_contra_regions.add(clean_name)
                 else:
-                    all_ipsi_regions.add(col)
-                    all_contra_regions.add(col)
+                    all_ipsi_regions.add(clean_name)
+                    all_contra_regions.add(clean_name)
         
         all_ipsi_regions = sorted(all_ipsi_regions)
         all_contra_regions = sorted(all_contra_regions)
@@ -930,27 +942,28 @@ class PopulationRegionAnalysis:
             ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
             
-            # Initialize all region columns with 0
+            # Initialize all region columns with 0 (using CLEAN names)
             for col in all_ipsi_regions:
                 ipsi_row[col] = 0
             for col in all_contra_regions:
                 contra_row[col] = 0
             
-            # Fill in actual values
+            # Fill in actual values (mapping original col name to clean name)
             for col in region_cols:
                 length = row.get(col, 0)
                 if length == 0:
                     continue
                 strength = round(np.log10(length + 1), 4)
+                clean_name = col_to_clean[col]
                 lat = LateralityParser.classify(soma_region, col)
                 
                 if lat == "Ipsilateral":
-                    ipsi_row[col] = strength
+                    ipsi_row[clean_name] = strength
                 elif lat == "Contralateral":
-                    contra_row[col] = strength
+                    contra_row[clean_name] = strength
                 else:
-                    ipsi_row[col] = strength
-                    contra_row[col] = strength
+                    ipsi_row[clean_name] = strength
+                    contra_row[clean_name] = strength
             
             ipsi_data.append(ipsi_row)
             contra_data.append(contra_row)
