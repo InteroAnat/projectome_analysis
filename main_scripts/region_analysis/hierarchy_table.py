@@ -44,6 +44,7 @@ _LEVEL_PATTERNS = [
     re.compile(r"^L(\d+)$", re.IGNORECASE),
     re.compile(r"^Lv[\s_]*(\d+)$", re.IGNORECASE),
     re.compile(r"^Hierarchy[\s_]*(\d+)$", re.IGNORECASE),
+    re.compile(r"^Level_(\d+)$", re.IGNORECASE),  # For v2 files: Level_0, Level_1, etc.
 ]
 
 
@@ -170,18 +171,43 @@ class HierarchyTable:
         self._max_level = max(self._max_level, max(levels))
         print(f"    Detected levels: {levels}, Rows: {len(df)}")
 
+        # Check for v2 format (separate _abbr columns)
+        abbr_cols = {}
+        index_cols = {}
+        for lv in levels:
+            abbr_col = f"{level_cols[lv]}_abbr"
+            index_col = f"{level_cols[lv]}_index"
+            if abbr_col in df.columns:
+                abbr_cols[lv] = abbr_col
+            if index_col in df.columns:
+                index_cols[lv] = index_col
+        
+        is_v2_format = len(abbr_cols) > 0
+        if is_v2_format:
+            print(f"    Detected v2 format (separate abbr columns)")
+
         n_parsed = 0
         for _, row in df.iterrows():
             row_path: Dict[int, str] = {}
             row_info: Dict[int, Tuple[int, str, str]] = {}
 
             for lv in levels:
-                cell = str(row[level_cols[lv]]).strip()
-                parsed = _parse_cell(cell)
-                if parsed:
-                    idx, full_name, abbrev = parsed
-                    row_path[lv] = abbrev
-                    row_info[lv] = (idx, full_name, abbrev)
+                if is_v2_format and lv in abbr_cols:
+                    # v2 format: use plain abbreviation from _abbr column
+                    abbrev = str(row[abbr_cols[lv]]).strip()
+                    full_name = str(row[level_cols[lv]]).strip()
+                    idx = int(row[index_cols[lv]]) if lv in index_cols and pd.notna(row[index_cols[lv]]) else 0
+                    if abbrev and abbrev.lower() != 'nan':
+                        row_path[lv] = abbrev
+                        row_info[lv] = (idx, full_name, abbrev)
+                else:
+                    # v1 format: parse "1: name (abbr)" style
+                    cell = str(row[level_cols[lv]]).strip()
+                    parsed = _parse_cell(cell)
+                    if parsed:
+                        idx, full_name, abbrev = parsed
+                        row_path[lv] = abbrev
+                        row_info[lv] = (idx, full_name, abbrev)
 
             if not row_path:
                 continue
@@ -260,15 +286,22 @@ class HierarchyTable:
         ancestor abbreviation at *target_level*.
 
         Steps:
-            1. Strip laterality prefix -> 'area_24a'
-            2. Match against CSV entries
-            3. Walk up the stored path to target_level
+            1. Try exact match (for v2 files where abbreviations have prefixes)
+            2. Strip laterality prefix -> 'area_24a'
+            3. Match against CSV entries
+            4. Walk up the stored path to target_level
 
         Returns None if not found or level not covered.
         """
         if pd.isna(atlas_region):
             return None
-        base = _strip_prefix(str(atlas_region))
+        region_str = str(atlas_region)
+        # Try exact match first (v2 format)
+        if region_str in self.region_paths:
+            path = self.region_paths[region_str]
+            return path.get(target_level)
+        # Fall back to stripped matching (v1 format)
+        base = _strip_prefix(region_str)
         key = self._find_match(base)
         if key is None:
             return None
@@ -286,7 +319,12 @@ class HierarchyTable:
         """
         if pd.isna(atlas_region):
             return None
-        base = _strip_prefix(str(atlas_region))
+        region_str = str(atlas_region)
+        # Try exact match first (v2 format)
+        if region_str in self.region_paths:
+            return self.region_paths[region_str].copy()
+        # Fall back to stripped matching (v1 format)
+        base = _strip_prefix(region_str)
         key = self._find_match(base)
         if key is None:
             return None
@@ -310,7 +348,12 @@ class HierarchyTable:
 
     def has_region(self, atlas_region: str) -> bool:
         """Check if an atlas region can be found in this table."""
-        base = _strip_prefix(str(atlas_region))
+        region_str = str(atlas_region)
+        # Try exact match first (for v2 files where abbreviations have prefixes)
+        if region_str in self.region_paths:
+            return True
+        # Fall back to stripped matching
+        base = _strip_prefix(region_str)
         return self._find_match(base) is not None
 
     # ------------------------------------------------------------------
