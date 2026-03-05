@@ -697,6 +697,25 @@ class PopulationRegionAnalysis:
             print(f"  Available projection columns: {available_proj_cols}")
             return pd.DataFrame()
 
+        # DEBUG: Check what keys are in the source column
+        all_keys = set()
+        prefixed_keys = []
+        clean_keys = []
+        for val in self.plot_dataframe[length_col]:
+            if isinstance(val, dict):
+                for k in val.keys():
+                    all_keys.add(k)
+        for k in sorted(all_keys):
+            if k.startswith(('CL_', 'CR_', 'SL_', 'SR_')):
+                prefixed_keys.append(k)
+            else:
+                clean_keys.append(k)
+        
+        print(f"[MATRIX L{level}] Column: {length_col}")
+        print(f"  Total unique keys: {len(all_keys)}")
+        print(f"  Prefixed (WRONG): {len(prefixed_keys)} - {prefixed_keys[:10]}")
+        print(f"  Clean (CORRECT): {len(clean_keys)} - {clean_keys[:10]}")
+
         # Convert column to list of dicts, handling non-dict values
         data_list = []
         for val in self.plot_dataframe[length_col]:
