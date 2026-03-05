@@ -1100,6 +1100,54 @@ class PopulationRegionAnalysis:
         print(f"{'='*60}\n")
         return unmapped
 
+    def check_projection_column_names(self, level: str = "finest"):
+        """
+        Check what region names are in a projection column.
+        Useful for verifying prefix stripping is working.
+        """
+        col_name = f"Region_Projection_Length_{level}" if level != "finest" else "Region_Projection_Length_finest"
+        
+        if col_name not in self.plot_dataframe.columns:
+            print(f"[ERROR] Column {col_name} not found")
+            return
+        
+        print(f"\n{'='*60}")
+        print(f"COLUMN NAME CHECK: {col_name}")
+        print(f"{'='*60}")
+        
+        # Collect all unique keys across all dictionaries
+        all_keys = set()
+        prefixed = []
+        clean = []
+        
+        for proj_dict in self.plot_dataframe[col_name]:
+            if isinstance(proj_dict, dict):
+                for key in proj_dict.keys():
+                    all_keys.add(key)
+        
+        # Categorize
+        for key in sorted(all_keys):
+            if key.startswith(('CL_', 'CR_', 'SL_', 'SR_')):
+                prefixed.append(key)
+            else:
+                clean.append(key)
+        
+        print(f"\nTotal unique regions: {len(all_keys)}")
+        print(f"  With prefixes (CL_/CR_/SL_/SR_): {len(prefixed)}")
+        print(f"  Clean names: {len(clean)}")
+        
+        if prefixed:
+            print(f"\nPrefixed regions (should be cleaned):")
+            for r in prefixed[:20]:
+                print(f"  - {r}")
+        
+        if clean:
+            print(f"\nClean regions (sample):")
+            for r in clean[:20]:
+                print(f"  - {r}")
+        
+        print(f"{'='*60}\n")
+
     # ==================================================================
     # REGION MATRIX (backward compat)
     # ==================================================================
