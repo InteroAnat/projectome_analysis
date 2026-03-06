@@ -1,0 +1,235 @@
+#load library
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+
+
+# load data and precalculated clustering result
+file_results <- "251637_results_v5.xlsx"
+cluster_info <- readRDS("clustering_results.rds")
+
+
+#load sheets 
+proj_df_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_df_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+
+
+#arrange into cluster order 
+proj_df_ipsi_clustered <- merge(proj_df_ipsi,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_contra_clustered <- merge(proj_df_contra,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+
+
+
+# make matrices, here they are aligned with dendroorder already.
+meta_cols <- 4
+
+mat_ipsi_t <- t(proj_df_ipsi_clustered %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_ipsi_t) <- proj_df_ipsi_clustered$NeuronID
+
+
+mat_contra_t <- t(proj_df_contra_clustered %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_contra_t) <- proj_df_contra_clustered$NeuronID
+
+
+# define fill in colours 
+max_val <- max(rowMaxs(mat_ipsi_t))
+
+colour_func <- colorRamp2(c(0, max_val/2, max_val), c("#F7FBF0", "blue", "darkblue"))
+
+# define type colours
+type_colors <- c(
+  "ITc" = "#4DAF4A", "ITs" = "#984EA3", "CT" = "#FF7F00",
+  "PT" = "#FFFF33", "ITi" = "#E41A1C"
+)
+
+dend <- as.dendrogram(cluster_info$hclust_obj)
+n_clusters <- length(unique(cluster_vec_ordered))
+
+
+
+
+neuron_types <- proj_df_ipsi_clustered$Neuron_Type
+real_order <- unique(proj_df_ipsi_clustered$Cluster) 
+
+slice_types <- sapply(real_order, function(g) {
+  # 直接去排好序的表里找这个 Cluster 对应的类型
+  proj_df_ipsi_clustered$Neuron_Type[proj_df_ipsi_clustered$Cluster == g][1]
+})
+
+
+
+ha_top <- HeatmapAnnotation(
+  Type = anno_block(
+    gp = gpar(fill = type_colors[slice_types], col = "black"),
+    labels = slice_types,
+    labels_gp=gpar(fontsize=8),
+    height = unit(0.6, "cm")
+  ),
+  Subtype = anno_block(
+    gp = gpar(fill = "grey90"),
+    labels = paste0("#", 1:n_clusters),
+    labels_gp=gpar(fontsize=7),
+    
+    height = unit(0.2, "cm")
+  
+  )
+ 
+)
+
+
+
+
+ht_opt(
+  heatmap_row_names_gp = gpar(fontsize = 8),
+  heatmap_row_title_gp = gpar(fontsize = 11, fontface = "bold"),
+  TITLE_PADDING = unit(c(15, 15), "mm")
+)
+
+ht_ipsi <- Heatmap(
+  mat_ipsi_t,
+  name = "IPSI",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title='Ipsilateral',
+  row_title_side = "right",
+  cluster_rows = FALSE,
+  
+  # 新增：用预计算的 dend 作为列树（顶部显示）
+  cluster_columns = dend,          # <--- 用你的 dend 代替自动聚类
+  show_column_dend = TRUE,         # <--- 开启列树显示
+  column_dend_height = unit(4, "mm"),  # <--- 关键：放大树高度（从默认 0.5cm 调到 4cm，试试看）
+  top_annotation=ha_top,
+  column_split=12,
+  column_title = NULL,
+  column_gap = unit(0.5, "mm"),
+  border=T
+  
+)
+
+ht_contra <- Heatmap(
+  mat_contra_t,
+  name = "CONTRA",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title="Contralateral",
+  row_title_side = "right",
+
+  cluster_rows = FALSE,
+  
+  cluster_columns = dend,          # <--- 同步
+  show_column_dend = FALSE,        # <--- 只在 ipsi 上显示树（避免重复）
+  column_dend_height = unit(4, "mm"), # <--- 即使隐藏，也设置高度一致
+  
+  column_split=12,
+  column_gap = unit(0.5, "mm"),
+  border =T
+  
+)
+
+ht_list <- ht_ipsi %v% ht_contra
+
+title_text = paste0("Overview of 251637 Insular neuron (n=",dim(proj_df_ipsi)[1],") projections (region hierarchy 3)")
+pdf("heatmap_251637.pdf", width = 20, height = 15) 
+draw(ht_list,
+     column_title = title_text,
+     column_title_gp=gpar(fontsize = 16, fontface = "bold"),
+     show_heatmap_legend = F,
+     # padding = unit(c(下, 左, 上, 右), "单位")
+     padding = unit(c(15, 5, 0, 5), "mm")
+     )
+
+decorate_row_title("IPSI", {
+  grid.lines(x = unit(0.1, "npc"),          # 往右挪一点，不碰到文字
+             y = unit(c(0.02, 0.98), "npc"), # 留 2% 的缺口，防止和下一组连上
+             gp = gpar(lwd = 5, col = "#377EB8")) # 给 IPSI 一个蓝色系
+})
+
+# 装饰 CONTRA 组
+decorate_row_title("CONTRA", {
+  grid.lines(x = unit(0.1, "npc"), 
+             y = unit(c(0.02, 0.98), "npc"), 
+             gp = gpar(lwd = 5, col = "#E41A1C")) # 给 CONTRA 一个红色系
+})
+
+dev.off()  # 关闭
+
+
+
+
+
+# --- 核心包装函数：统一所有热图样式 ---
+build_projection_ht <- function(mat, name, title, 
+                                target_dend = dend, # 默认使用你定义的 dend
+                                order = 1,          # 1=最顶层, 2=中底层
+                                n_split = 12) {
+  # 自动逻辑：只有第一张图显示树和两层 Annotation
+  is_first <- (order == 1)
+  
+  Heatmap(
+    mat, 
+    name = name, 
+    row_title = title,
+    col = colour_func,               # 使用你定义的颜色函数
+    cluster_rows = FALSE,            # 统一不聚类行
+    row_title_side = "right",
+    
+    # --- 聚类树与切分逻辑 ---
+    cluster_columns = target_dend,
+    column_split = n_split,
+    show_column_dend = is_first,     # 仅顶层显示树
+    column_dend_height = unit(4, "cm"),
+    
+    # --- 顶部组件开关 ---
+    top_annotation = if(is_first) ha_top else NULL, # 仅顶层显示两层标签
+    column_title = NULL,
+    column_gap = unit(0.5, "mm"),
+    
+    # --- 基础 UI 设置 ---
+    show_column_names = FALSE,
+    border = TRUE
+  )
+}# --- 自动化保存与装饰函数 ---
+render_projection_plot <- function(ht_list, filename, title, w = 20, h = 15) {
+  pdf(filename, width = w, height = h)
+  
+  # 统一绘图配置
+  draw(ht_list, 
+       column_title = title, 
+       column_title_gp = gpar(fontsize = 16, fontface = "bold"),
+       show_heatmap_legend = FALSE,
+       # 顺序：下, 左, 上, 右 (50mm 给右侧留足空间)
+       padding = unit(c(15, 5, 25, 50), "mm"))
+  
+  # 侧边装饰线颜色映射
+  side_colors <- c("IPSI" = "#377EB8", "CONTRA" = "#E41A1C")
+  
+  # 自动遍历 ht_list 里的成员并添加侧边线
+  for(nm in names(side_colors)) {
+    decorate_row_title(nm, {
+      grid.lines(x = unit(0.1, "npc"), # 推向右侧防止挡字
+                 y = unit(c(0.02, 0.98), "npc"), 
+                 gp = gpar(lwd = 6, col = side_colors[nm])) 
+    })
+  }
+  
+  dev.off()
+  message(paste("Successfully saved:", filename))
+}
+# 1. 准备热图
+h1 <- build_projection_ht(mat_ipsi_t,   "IPSI",   "Ipsilateral", dend, order = 1)
+h2 <- build_projection_ht(mat_contra_t, "CONTRA", "Contralateral", dend, order = 2)
+
+# 2. 垂直拼接
+final_list <- h1 %v% h2 
+
+# 3. 一键出图
+render_projection_plot(final_list, "Comparison_3_Layers.pdf", "Three-Layer Projection Analysis")

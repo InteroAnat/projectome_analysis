@@ -1,23 +1,5 @@
 atlas/
-neuron-vis/resource
-resource/
-main_scripts/resources
-main_scripts/processed_neurons
-main_scripts/debug_outliers
-main_scripts/.ipynb_checkpoints
-literature/
-*.tif
-
-
-*.tif
-# Ignore specific file types in the main folder
-*.tif
-*.msi
-*.fnt
-*.nrrd
-*.gz
-*.zip
-*.tar
-*.tar.gz
-*.nifti
-*.nii
+neuron-vis/
+main_scripts/debug_outliers/
+processed_neurons/
+.Rproj.user
