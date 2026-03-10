@@ -26,7 +26,7 @@ import sys
 # 1. CONFIGURATION
 # ==========================================
 DIST_FILE = r'D:\projectome_analysis\main_scripts\processed_neurons\251637\fnt_processed\ins\ins_dist.txt'
-TYPE_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\INS_df_v3.xlsx'
+TYPE_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_results.xlsx'
 FNT_FOLDER = r'D:\projectome_analysis\main_scripts\processed_neurons\251637\fnt_processed\ins'
 
 USE_SPEARMAN = True
@@ -81,7 +81,7 @@ def load_data(dist_file, type_file, fnt_folder):
         matrix.columns = matrix.columns.map(id_to_name)
 
     if type_file.endswith('.xlsx'):
-        bio_df = pd.read_excel(type_file)
+        bio_df = pd.read_excel(type_file,sheet_name='Projection_Strength_L3')
     else:
         bio_df = pd.read_csv(type_file)
 
@@ -240,7 +240,7 @@ def assign_clusters_and_save(dist_matrix, linkage_matrix, type_map,
     print("--- Creating New Combined Table ---")
 
     if type_file.endswith('.xlsx'):
-        original_df = pd.read_excel(type_file)
+        original_df = pd.read_excel(type_file,sheet_name='Projection_Strength_L3')
     else:
         original_df = pd.read_csv(type_file)
 
@@ -471,11 +471,11 @@ def main():
     suggested_k = calculate_c_index(final_dist, Z, max_k=65)
 
     # 5. Let user override
-    try:
-        val = input(f"Enter K (Default={suggested_k}): ").strip()
-        k = int(val) if val else suggested_k
-    except (ValueError, EOFError):
-        k = suggested_k
+    # try:
+    #     val = input(f"Enter K (Default={suggested_k}): ").strip()
+    #     k = int(val) if val else suggested_k
+    # except (ValueError, EOFError):
+    k = 30
 
     # 6. Assign clusters & create new combined table
     results, combined_df = assign_clusters_and_save(

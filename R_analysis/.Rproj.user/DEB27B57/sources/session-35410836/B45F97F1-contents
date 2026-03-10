@@ -1,0 +1,598 @@
+---
+title: "Single-Neuron Projection Analysis - 251637 Dataset"
+subtitle: "Based on Gao et al., 2023 Neuron methodology"
+author: "Analysis Pipeline"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    fig_width: 10
+    fig_height: 8
+  pdf_document:
+    toc: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.width = 10,
+  fig.height = 8
+)
+
+# Load required packages
+packages <- c("readxl", "dplyr", "tidyr", "ggplot2", "ggpubr", "ggExtra",
+              "ComplexHeatmap", "circlize", "RColorBrewer", "viridis",
+              "grid", "igraph", "pheatmap")
+
+for (pkg in packages) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pkg, repos = "https://cloud.r-project.org/")
+    library(pkg, character.only = TRUE)
+  }
+}
+library(tibble)
+library(matrixStats)
+
+# ComplexHeatmap from Bioconductor
+if (!require("ComplexHeatmap", quietly = TRUE)) {
+  if (!require("BiocManager", quietly = TRUE)) {
+    install.packages("BiocManager")
+  }
+  BiocManager::install("ComplexHeatmap")
+  library(ComplexHeatmap)
+}
+
+# Set color schemes
+type_colors <- c(
+  "ITc" = "#4DAF4A",  # Green
+  "ITs" = "#984EA3",  # Purple
+  "CT"  = "#FF7F00",  # Orange
+  "PT"  = "#E41A1C",  # Red
+  "ITi" = "#377EB8"   # Blue
+)
+
+col_fun_strength <- colorRamp2(
+  c(0, 2, 4, 6, 8),
+  c("white", "lightblue", "blue", "darkblue", "navy")
+)
+```
+
+# 1. Data Loading and Overview
+
+```{r load-data}
+# File path - modify if needed
+file_results <- "251637_results_v5.xlsx"
+
+# Check file exists
+if (!file.exists(file_results)) {
+  stop("File not found: ", file_results, 
+       "\nPlease ensure the file is in the working directory.")
+}
+
+# Load all sheets
+df_summary <- read_excel(file_results, sheet = "Summary")
+df_hierarchy <- read_excel(file_results, sheet = "Soma_Hierarchy")
+df_terminals <- read_excel(file_results, sheet = "Terminal_Sites")
+df_laterality <- read_excel(file_results, sheet = "Laterality")
+
+# Load L3 projection data (hierarchy level 3)
+df_proj_l3_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+df_proj_l3_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+df_proj_length_l3_ipsi <- read_excel(file_results, sheet = "Projection_Length_L3_ipsi")
+
+# Print data overview
+cat("Data Overview:\n")
+cat("================\n")
+cat("Summary:", nrow(df_summary), "neurons\n")
+cat("L3 ipsilateral regions:", ncol(df_proj_l3_ipsi) - 2, "\n")
+cat("L3 contralateral regions:", ncol(df_proj_l3_contra) - 2, "\n")
+cat("Terminal sites:", nrow(df_terminals), "\n")
+```
+
+## 1.1 Neuron Type Distribution
+
+```{r neuron-type-dist}
+# Create type distribution plot
+ggplot(df_summary, aes(x = Neuron_Type, fill = Neuron_Type)) +
+  geom_bar() +
+  scale_fill_manual(values = type_colors) +
+  geom_text(stat = 'count', aes(label = ..count..), vjust = -0.5, size = 5) +
+  labs(
+    title = "Neuron Type Distribution",
+    subtitle = paste("n =", nrow(df_summary), "neurons from CR_Ial"),
+    x = "Neuron Type",
+    y = "Count"
+  ) +
+  theme_classic(base_size = 14) +
+  theme(legend.position = "none")
+```
+
+# 2. Morphological Characteristics
+
+## 2.1 Total Axon Length by Type
+
+```{r axon-length}
+ggplot(df_summary, aes(x = Neuron_Type, y = Total_Length, fill = Neuron_Type)) +
+  geom_boxplot(alpha = 0.8) +
+  geom_jitter(width = 0.2, alpha = 0.3, size = 1.5) +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Total Axon Length by Neuron Type",
+    x = "Neuron Type",
+    y = "Total Length (μm)"
+  ) +
+  theme_classic(base_size = 14) +
+  theme(legend.position = "none") +
+  stat_compare_means(method = "anova", label.y = max(df_summary$Total_Length) * 1.1)
+```
+
+## 2.2 Axon Length vs Terminal Count
+
+```{r length-vs-terminal}
+p_scatter <- ggplot(df_summary, aes(x = Total_Length, y = Terminal_Count, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_manual(values = type_colors) +
+  geom_smooth(method = "lm", se = TRUE, color = "black", linetype = "dashed") +
+  labs(
+    title = "Axon Length vs Terminal Count",
+    x = "Total Axon Length (μm)",
+    y = "Terminal Count"
+  ) +
+  theme_classic(base_size = 14)
+
+# Add marginal distributions
+ggExtra::ggMarginal(p_scatter, groupColour = TRUE, groupFill = TRUE, margins = "both")
+```
+
+## 2.3 Statistical Summary by Type
+
+```{r type-stats}
+# Calculate statistics
+type_stats <- df_summary %>%
+  group_by(Neuron_Type) %>%
+  summarise(
+    n = n(),
+    mean_length = mean(Total_Length),
+    sd_length = sd(Total_Length),
+    median_length = median(Total_Length),
+    mean_terminals = mean(Terminal_Count),
+    sd_terminals = sd(Terminal_Count),
+    mean_laterality = mean(Laterality_Index),
+    .groups = "drop"
+  )
+
+knitr::kable(type_stats, digits = 2, 
+             caption = "Morphological Characteristics by Neuron Type")
+```
+
+# 3. Projection Heatmap Analysis
+
+## 3.1 Prepare Projection Matrix
+
+```{r prepare-matrix}
+# Extract projection matrix for ipsilateral projections
+proj_matrix_l3 <- df_proj_l3_ipsi %>%
+  select(-NeuronID, -Neuron_Type) %>%
+  as.matrix()
+rownames(proj_matrix_l3) <- df_proj_l3_ipsi$NeuronID
+
+# Transpose: rows = brain regions, columns = neurons
+proj_matrix_t <- t(proj_matrix_l3)
+
+# Clean data (remove NA/Inf)
+good_rows <- rowSums(!is.finite(proj_matrix_t)) == 0
+mat_clean <- proj_matrix_t[good_rows, ]
+
+# Get neuron type information
+neuron_types <- df_proj_l3_ipsi$Neuron_Type[match(colnames(mat_clean), df_proj_l3_ipsi$NeuronID)]
+
+# Get summary info
+neuron_info <- df_summary %>%
+  filter(NeuronID %in% colnames(mat_clean)) %>%
+  arrange(match(NeuronID, colnames(mat_clean)))
+
+cat("Projection matrix:", nrow(mat_clean), "regions x", ncol(mat_clean), "neurons\n")
+```
+
+## 3.2 Basic Projection Heatmap
+
+```{r basic-heatmap, fig.width=12, fig.height=14}
+# Create type annotation
+ha_top_type <- HeatmapAnnotation(
+  Type = neuron_types,
+  col = list(Type = type_colors),
+  annotation_name_side = "left"
+)
+
+# Basic heatmap
+ht_basic <- Heatmap(
+  log1p(mat_clean),
+  name = "Log Strength",
+  col = col_fun_strength,
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  top_annotation = ha_top_type,
+  show_column_names = FALSE,
+  row_names_gp = gpar(fontsize = 8),
+  column_title = "Neurons (grouped by type)",
+  row_title = "Brain Regions (L3)",
+  width = unit(10, "cm"),
+  height = unit(12, "cm")
+)
+
+draw(ht_basic)
+```
+
+## 3.3 Heatmap with Rich Annotations
+
+```{r rich-heatmap, fig.width=14, fig.height=16}
+# Create rich annotation
+ha_top_rich <- HeatmapAnnotation(
+  Type = neuron_types,
+  TotalLength = anno_barplot(
+    neuron_info$Total_Length,
+    gp = gpar(fill = "steelblue"),
+    height = unit(0.8, "cm")
+  ),
+  TerminalCount = anno_barplot(
+    neuron_info$Terminal_Count,
+    gp = gpar(fill = "orange"),
+    height = unit(0.8, "cm")
+  ),
+  col = list(Type = type_colors),
+  annotation_name_side = "left"
+)
+
+# Create type factor for splitting
+type_factor <- factor(neuron_types, levels = c("ITi", "ITs", "CT", "PT", "ITc"))
+
+# Rich heatmap
+ht_rich <- Heatmap(
+  log1p(mat_clean),
+  name = "Log Strength",
+  col = col_fun_strength,
+  cluster_columns = TRUE,
+  column_split = type_factor,
+  column_gap = unit(1, "mm"),
+  top_annotation = ha_top_rich,
+  show_column_names = FALSE,
+  row_names_gp = gpar(fontsize = 7),
+  column_title = "Neurons (k=212, grouped by type)",
+  row_title = "Brain Regions (L3 hierarchy)",
+  width = unit(12, "cm"),
+  height = unit(14, "cm"),
+  border = TRUE
+)
+
+draw(ht_rich)
+```
+
+# 4. Functional Analysis - Projection Patterns
+
+## 4.1 Type-to-Region Projection Profile
+
+```{r type-region-profile}
+# Calculate mean projection for each type to each region
+type_region_profile <- df_proj_l3_ipsi %>%
+  group_by(Neuron_Type) %>%
+  summarise(across(-NeuronID, mean, na.rm = TRUE), .groups = "drop") %>%
+  column_to_rownames("Neuron_Type")
+
+# Normalize by row (each type)
+type_region_norm <- type_region_profile / rowMaxs(as.matrix(type_region_profile))
+
+# Plot heatmap
+ht_type_region <- Heatmap(
+  as.matrix(type_region_norm),
+  name = "Normalized\nStrength",
+  col = colorRamp2(c(0, 0.5, 1), c("white", "yellow", "red")),
+  cluster_rows = TRUE,
+  cluster_columns = TRUE,
+  row_names_side = "left",
+  column_names_side = "top",
+  row_names_gp = gpar(fontsize = 12, fontface = "bold"),
+  column_names_gp = gpar(fontsize = 6),
+  column_names_rot = 45,
+  width = unit(14, "cm"),
+  height = unit(5, "cm"),
+  border = TRUE
+)
+
+draw(ht_type_region)
+```
+
+## 4.2 Projection Strength Distribution
+
+```{r strength-distribution}
+# Convert to long format
+df_proj_long <- df_proj_l3_ipsi %>%
+  pivot_longer(cols = -(1:2), names_to = "Region", values_to = "Strength")
+
+# Plot violin
+ggplot(df_proj_long, aes(x = Neuron_Type, y = Strength, fill = Neuron_Type)) +
+  geom_violin(scale = "width", trim = TRUE, alpha = 0.8) +
+  geom_boxplot(width = 0.15, outlier.shape = NA, fill = "white") +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Projection Strength Distribution by Neuron Type",
+    x = "Neuron Type",
+    y = "Projection Strength (log)"
+  ) +
+  theme_classic(base_size = 14) +
+  theme(legend.position = "none") +
+  stat_compare_means()
+```
+
+## 4.3 Number of Projection Targets
+
+```{r n-targets}
+# Calculate number of targets per neuron
+df_n_targets <- df_proj_l3_ipsi %>%
+  mutate(n_targets = rowSums(select(., -(1:2)) > 0)) %>%
+  select(NeuronID, Neuron_Type, n_targets)
+
+ggplot(df_n_targets, aes(x = Neuron_Type, y = n_targets, fill = Neuron_Type)) +
+  geom_violin(scale = "width", trim = TRUE, alpha = 0.8) +
+  geom_boxplot(width = 0.15, outlier.shape = NA, fill = "white") +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Number of Projection Targets",
+    x = "Neuron Type",
+    y = "Number of Target Regions"
+  ) +
+  theme_classic(base_size = 14) +
+  theme(legend.position = "none") +
+  stat_compare_means()
+```
+
+# 5. Laterality Analysis
+
+## 5.1 Laterality Index Distribution
+
+```{r laterality-index}
+ggplot(df_summary, aes(x = Neuron_Type, y = Laterality_Index, fill = Neuron_Type)) +
+  geom_boxplot(alpha = 0.8) +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  scale_fill_manual(values = type_colors) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+  labs(
+    title = "Laterality Index by Neuron Type",
+    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+    x = "Neuron Type",
+    y = "Laterality Index"
+  ) +
+  theme_classic(base_size = 14) +
+  theme(legend.position = "none")
+```
+
+## 5.2 Ipsilateral vs Contralateral Comparison
+
+```{r ipsi-contra}
+# Prepare data
+df_lateral <- df_summary %>%
+  select(NeuronID, Neuron_Type, 
+         Ipsilateral = Total_Ipsilateral_Length,
+         Contralateral = Total_Contralateral_Length) %>%
+  pivot_longer(cols = c(Ipsilateral, Contralateral),
+               names_to = "Hemisphere", values_to = "Length")
+
+ggplot(df_lateral, aes(x = Hemisphere, y = Length, fill = Hemisphere)) +
+  geom_boxplot(alpha = 0.8) +
+  facet_wrap(~Neuron_Type, scales = "free_y") +
+  scale_fill_manual(values = c("Ipsilateral" = "#FDB462", "Contralateral" = "#80B1D3")) +
+  labs(
+    title = "Ipsilateral vs Contralateral Projection Length",
+    y = "Total Length (μm)"
+  ) +
+  theme_classic(base_size = 12) +
+  theme(legend.position = "none")
+```
+
+# 6. Terminal Site Analysis
+
+## 6.1 Terminal Distribution by Brain Lobe
+
+```{r terminal-l1}
+# Count terminals by L1 (if available)
+terminal_l1 <- df_terminals %>%
+  filter(!is.na(Terminal_L1)) %>%
+  group_by(Terminal_L1) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  arrange(desc(n))
+
+if (nrow(terminal_l1) > 0) {
+  ggplot(terminal_l1, aes(x = reorder(Terminal_L1, -n), y = n)) +
+    geom_bar(stat = "identity", fill = "steelblue") +
+    labs(
+      title = "Terminal Distribution by Brain Lobe (L1)",
+      x = "Brain Lobe",
+      y = "Number of Terminal Sites"
+    ) +
+    theme_classic(base_size = 12) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+} else {
+  cat("No L1 data available in Terminal_Sites sheet\n")
+}
+```
+
+## 6.2 Terminal Distribution by L3 Region
+
+```{r terminal-l3}
+# Count terminals by L3 (if available)
+terminal_l3 <- df_terminals %>%
+  filter(!is.na(Terminal_L3)) %>%
+  group_by(Terminal_L3) %>%
+  summarise(n = n(), .groups = "drop") %>%
+  arrange(desc(n)) %>%
+  head(20)
+
+if (nrow(terminal_l3) > 0) {
+  ggplot(terminal_l3, aes(x = reorder(Terminal_L3, -n), y = n)) +
+    geom_bar(stat = "identity", fill = "steelblue") +
+    labs(
+      title = "Top 20 Terminal Regions (L3)",
+      x = "Brain Region (L3)",
+      y = "Number of Terminal Sites"
+    ) +
+    theme_classic(base_size = 10) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+} else {
+  cat("No L3 data available in Terminal_Sites sheet\n")
+}
+```
+
+# 7. Network Analysis
+
+## 7.1 Type-to-Type Connection Matrix
+
+```{r type-connection}
+# Calculate connection strength between types
+# For each type pair, calculate mean projection from type A to regions containing type B name
+
+types <- unique(df_proj_l3_ipsi$Neuron_Type)
+n_types <- length(types)
+conn_matrix <- matrix(0, nrow = n_types, ncol = n_types)
+rownames(conn_matrix) <- types
+colnames(conn_matrix) <- types
+
+for (i in 1:n_types) {
+  for (j in 1:n_types) {
+    source_neurons <- df_proj_l3_ipsi$NeuronID[df_proj_l3_ipsi$Neuron_Type == types[i]]
+    target_regions <- grep(types[j], colnames(df_proj_l3_ipsi), value = TRUE, ignore.case = TRUE)
+    
+    if (length(source_neurons) > 0 && length(target_regions) > 0) {
+      values <- as.matrix(df_proj_l3_ipsi[df_proj_l3_ipsi$NeuronID %in% source_neurons, target_regions])
+      conn_matrix[i, j] <- mean(values, na.rm = TRUE)
+    }
+  }
+}
+
+# Plot connection matrix
+ht_conn <- Heatmap(
+  conn_matrix,
+  name = "Connection\nStrength",
+  col = colorRamp2(c(0, max(conn_matrix)/2, max(conn_matrix)), 
+                   c("white", "orange", "red")),
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  row_names_side = "left",
+  column_names_side = "top",
+  row_names_gp = gpar(fontsize = 12, fontface = "bold"),
+  column_names_gp = gpar(fontsize = 12, fontface = "bold"),
+  width = unit(6, "cm"),
+  height = unit(6, "cm"),
+  border = TRUE,
+  rect_gp = gpar(col = "gray", lwd = 1)
+)
+
+draw(ht_conn)
+```
+
+## 7.2 Network Visualization
+
+```{r network-viz}
+# Create network graph
+threshold <- quantile(conn_matrix, 0.3)
+adj_matrix <- conn_matrix > threshold
+
+net <- graph_from_adjacency_matrix(
+  adj_matrix,
+  mode = "directed",
+  weighted = TRUE,
+  diag = TRUE
+)
+
+# Set node colors
+V(net)$color <- type_colors[V(net)$name]
+V(net)$size <- 30
+
+# Plot
+par(mar = c(0, 0, 0, 0))
+plot(net,
+     vertex.label.cex = 1.2,
+     vertex.label.font = 2,
+     edge.width = E(net)$weight * 2,
+     edge.arrow.size = 0.6,
+     edge.curved = 0.2,
+     main = "Type-to-Type Connection Network")
+```
+
+# 8. Soma Hierarchy Analysis
+
+## 8.1 Soma Location Distribution
+
+```{r soma-hierarchy}
+# Analyze soma hierarchy levels
+if ("Soma_L1" %in% colnames(df_hierarchy)) {
+  soma_l1 <- df_hierarchy %>%
+    group_by(Soma_L1) %>%
+    summarise(n = n(), .groups = "drop")
+  
+  ggplot(soma_l1, aes(x = reorder(Soma_L1, -n), y = n)) +
+    geom_bar(stat = "identity", fill = "steelblue") +
+    labs(
+      title = "Soma Distribution by Brain Lobe (L1)",
+      x = "Brain Lobe",
+      y = "Number of Neurons"
+    ) +
+    theme_classic(base_size = 12) +
+    theme(axis.text.x = element_text(angle = 45, hjust = 1))
+} else {
+  cat("Soma hierarchy data structure:\n")
+  print(colnames(df_hierarchy))
+}
+```
+
+# 9. Summary Statistics
+
+```{r summary-stats}
+# Overall summary
+cat("=" ,rep("=", 60), "\n", sep="")
+cat("SUMMARY STATISTICS\n")
+cat("=" ,rep("=", 60), "\n\n", sep="")
+
+cat("Total neurons:", nrow(df_summary), "\n")
+cat("Neuron types:", paste(unique(df_summary$Neuron_Type), collapse = ", "), "\n")
+cat("L3 regions (ipsilateral):", ncol(df_proj_l3_ipsi) - 2, "\n")
+cat("Terminal sites:", nrow(df_terminals), "\n\n")
+
+cat("Morphological characteristics:\n")
+cat("  Mean axon length:", round(mean(df_summary$Total_Length), 2), "μm\n")
+cat("  Mean terminal count:", round(mean(df_summary$Terminal_Count), 2), "\n")
+cat("  Mean laterality index:", round(mean(df_summary$Laterality_Index), 4), "\n")
+```
+
+# 10. Save Results
+
+```{r save-results, eval=FALSE}
+# Create output directory
+output_dir <- "analysis_output"
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir)
+}
+
+# Save type statistics
+write.csv(type_stats, file.path(output_dir, "type_statistics.csv"), row.names = FALSE)
+
+# Save type-region profile
+write.csv(type_region_profile, file.path(output_dir, "type_region_profile.csv"))
+
+# Save type-type connection
+write.csv(conn_matrix, file.path(output_dir, "type_type_connection.csv"))
+
+# Save neuron info
+write.csv(neuron_info, file.path(output_dir, "neuron_info.csv"), row.names = FALSE)
+
+cat("Results saved to:", output_dir, "\n")
+```
+
+---
+
+**Analysis completed!** 
+
+This pipeline provides comprehensive single-neuron projection analysis following Gao et al., 2023 Neuron methodology.

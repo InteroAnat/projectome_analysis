@@ -1,0 +1,62 @@
+flowchart TB
+    subgraph Input["📁 Input Data"]
+        A1["SWC Files<br/>processed_neurons/251637/"]
+        A2["Neuron Metadata<br/>ACC_df_v2.xlsx / INS_df_v2.xlsx"]
+    end
+
+    subgraph Pipeline["🔧 FNT Processing Pipeline<br/>fnt-dist_pipeline.py"]
+        direction TB
+        B1["Load Neuron Lists<br/>load_neuron_dataframes()"] --> B2["Process Neurons<br/>process_neuron_group()"]
+        B2 --> B3["SWC → FNT Conversion<br/>swc_to_fnt()"]
+        B3 --> B4["Decimate FNT<br/>decimate_fnt()<br/>-d 5000 -a 5000"]
+        B4 --> B5["Update Neuron Names<br/>update_fnt_neuron_name()"]
+        B5 --> B6["Join FNT Files<br/>join_fnt_files()<br/>fnt-join.exe"]
+        B6 --> B7["Compute Distance Matrix<br/>compute_fnt_distances()<br/>fnt-dist.exe"]
+    end
+
+    subgraph Output1["📤 Pipeline Output"]
+        C1["Distance Matrix<br/>{group}_dist.txt<br/>(i, j, score, m, nm)"]
+        C2["Joined FNT<br/>{group}_joined.fnt"]
+    end
+
+    subgraph Clustering["🎯 Clustering Analysis"]
+        direction TB
+        D1["Load Distance Matrix<br/>load_data()"] --> D2["Transform & Penalty<br/>process_matrix()"]
+        D2 --> D2a["Spearman Mode<br/>1 - corr(spearman)"]
+        D2 --> D2b["Log1p Mode<br/>log1p(raw)"]
+        D2a --> D3["Apply Supervised Penalty<br/>+penalty to cross-type distances"]
+        D2b --> D3
+        D3 --> D4["Compute Linkage<br/>compute_linkage()<br/>method='ward'"]
+        D4 --> D5["C-Index Optimization<br/>calculate_c_index()<br/>k=2..65"]
+        D5 --> D6["Assign Clusters<br/>fcluster()"]
+        D6 --> D7["Save Results<br/>assign_clusters_and_save()"]
+    end
+
+    subgraph Visualization["📊 Visualization"]
+        E1["Heatmap<br/>plot_heatmap()<br/>sns.clustermap"]
+        E2["Cluster Size Chart<br/>plot_cluster_sizes()<br/>Stacked bar chart"]
+        E3["C-Index Curve<br/>calculate_c_index()<br/>Optimization plot"]
+    end
+
+    subgraph Results["📈 Output Results"]
+        F1["Cluster Assignments<br/>fnt_dist_Results_Penalty_On_k{N}.xlsx"]
+        F2["Publication Plots<br/>Heatmap + Bar Chart"]
+    end
+
+    %% Connections
+    A1 --> Pipeline
+    A2 --> Pipeline
+    Pipeline --> Output1
+    C1 --> Clustering
+    C2 -.-> Clustering
+    Clustering --> Visualization
+    Clustering --> Results
+    Visualization --> Results
+
+    %% Styling
+    style Input fill:#e1f5fe
+    style Pipeline fill:#fff3e0
+    style Output1 fill:#f3e5f5
+    style Clustering fill:#e8f5e9
+    style Visualization fill:#fff8e1
+    style Results fill:#fce4ec

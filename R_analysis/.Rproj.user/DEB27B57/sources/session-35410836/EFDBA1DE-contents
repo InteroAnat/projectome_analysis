@@ -1,0 +1,137 @@
+# Figure S1
+# 1. correlation between neuron density and cortical thickness
+# 2. coverage factor 
+
+# S1B neuron density and cortical thickness ----
+
+PFC_structure <- snp::getStructureFromAcronym(acronymList = paste0("l_", SourceRegion))
+
+write.table(x = data.frame(structureID = substring(text = PFC_structure, first = 3),
+                           acronym = SourceRegion),
+            file = "~/Documents/YanLab/Task_Local/LocalMorphology/CodeMatlab/anno_PFC.txt",
+            quote = F,
+            row.names = F, col.names = F)
+
+thickness_PFC_subregion <- 
+  read.table(file = "./CodeMatlab/figure_S1_PFC_subregions_thickness.txt", 
+             sep = ",", col.names = c("Mean", "Median"))
+
+
+ggplot(data = data.frame(NeuronDensity = cell_density_PFC$Neurons..mm.3., 
+                         Thickness_subregion = thickness_PFC_subregion$Median, 
+                         Group_region = SourceRegion), 
+            mapping = aes(x = Thickness_subregion, y = NeuronDensity)) +
+  geom_point(size = 3, aes(color = Group_region))+
+  geom_smooth(method = "lm") + 
+  theme_classic() +
+  theme(axis.text.x = element_text(size = 8), 
+        axis.text.y = element_text(size = 8), 
+        legend.position = "left") +
+  #scale_x_continuous(breaks = get_breaks(n = 8)) + 
+  scale_color_manual(values = ColorSourceRegion)+
+  #scale_y_continuous(breaks = get_breaks(n = 6), limits = c(0, 5e5)) +
+  ggpmisc::stat_fit_glance(method = "lm",
+                           geom = "text_npc",
+                           aes(label = paste0("P=", signif(..p.value.., digits = 4))),
+                           label.x = "left",
+                           label.y = "bottom") +
+  ggpmisc::stat_poly_eq(aes(label = paste0(..rr.label..)), 
+                        label.x = "right", 
+                        label.y = "bottom")
+
+
+# S1C Dendritic tiling (coverage factor) ----
+
+# reference:
+
+cell_density <-
+  read.table(file = "./CodeR/gradient/Data_Sheet_2_A Cell Atlas for the Mouse Brain.CSV", 
+             sep = ",", header = T)
+
+neuronal_density <- 
+  read.table(file = "~/shared/PFC_dendrite/Figure_1_Reconstruction_of_dendrites/SM/neuronal_density_PFC.csv",
+             header = TRUE, sep = ",")
+
+neuronal_density$Density[12] <- 0
+
+
+
+tmp_region <- dendrite_info$BrainRegion[Index_apical_tmp]
+tmp_layer <- dendrite_info$LaminarLayer[Index_apical_tmp]
+
+volume_basal_dendrite <- matrix(nrow = 11, ncol = 2)
+rownames(volume_basal_dendrite) <- SourceRegion
+colnames(volume_basal_dendrite) <- Layer
+Layer <- c("2/3", "5")
+
+for(iRegion in 1:11) {
+  region <- SourceRegion[iRegion]
+  for(iLayer in 1:2) {
+    layer <- Layer[iLayer]
+    tmp_index <- 
+      base::intersect(which(tmp_region == region), which(tmp_layer == layer))
+    
+    if(length(tmp_index) == 0) {
+      volume_basal_dendrite[iRegion, iLayer] <- 0
+      print(paste0(region, "-", layer))
+      next
+    }
+    
+    tmp_volume <- feature_combine$basal_Volume[tmp_index]
+    
+    volume_basal_dendrite[iRegion, iLayer] <- mean(tmp_volume)
+  }
+}
+
+
+cf <- as.matrix(neuronal_density_new) * as.matrix(volume_basal_dendrite) / 1000 / 1000 / 1000
+rownames(cf) <- SourceRegion
+colnames(cf) <- Layer
+
+neuronal_density_new <- 
+  cbind(neuronal_density$Density[seq(from = 1, to = 22, by = 2)],
+        neuronal_density$Density[seq(from = 2, to = 22, by = 2)])
+
+rownames(neuronal_density_new) <- SourceRegion
+colnames(neuronal_density_new) <- Layer
+
+order_cf <- order(rowSums(cf), decreasing = T)
+
+
+barplot(t(cf[order_cf,]), beside = T, main = "Coverage factor")
+
+barplot(t(volume_basal_dendrite[order_cf,]), beside = T, main = "Volume of basal")
+
+barplot(t(neuronal_density_new[order_cf,]), beside = T, main = "Neuronal density")
+
+
+
+
+## backup relationship between cortical thickness and lengths of dendritic subdomains ----
+
+tmpMatch <- c("ITi"="IT", "ITc"="IT", "PT"="PT", "CT"="CT")
+
+df <- data.frame(thickness = thickness_soma, 
+                 basal = feature_combine$basal_cable.length, 
+                 tuft = feature_combine$arbor.Length,
+                 trunk = feature_combine$trunk.Length,
+                 total = feature_combine$dendrite_cable.length,
+                 type = tmpMatch[match(dendrite_info$Type[Index_apical_tmp],
+                                       names(tmpMatch))])
+
+
+ggplot(data = df, aes(x = thickness, y = total, group = type, color = type)) +
+  geom_point(aes(color = type)) +
+  geom_smooth(method = "lm") +
+  ggpmisc::stat_fit_glance(method = "lm",
+                           geom = "text_npc",
+                           aes(label = paste0("P=", signif(..p.value.., digits = 4))),
+                           label.x = "left",
+                           label.y = "bottom") +
+  ggpmisc::stat_poly_eq(aes(label = paste0(..rr.label..)), 
+                        label.x = "right", 
+                        label.y = "bottom")
+
+
+
+

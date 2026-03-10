@@ -1,0 +1,52 @@
+
+# R 代码：合并 Ipsi 和 Contra 投射数据
+# 确保相同脑区数值相加，避免产生 .x 和 .y 列
+
+library(readxl)
+library(dplyr)
+
+# 1. 读取数据
+file_path <- "tables/251637_results_v5.xlsx"
+ipsi <- read_excel(file_path, sheet = "Projection_Length_L3_ipsi")
+contra <- read_excel(file_path, sheet = "Projection_Length_L3_contra")
+
+# 2. 获取脑区列表（排除元数据列）
+meta_cols <- c("NeuronID", "Neuron_Type")
+ipsi_regions <- setdiff(names(ipsi), meta_cols)
+contra_regions <- setdiff(names(contra), meta_cols)
+
+# 3. 找到共同脑区
+common_regions <- intersect(ipsi_regions, contra_regions)
+cat("共同脑区 (将相加):", paste(common_regions, collapse = ", "), "\n")
+
+# 4. 合并数据框
+# 使用 full_join 保留所有神经元
+merged <- full_join(ipsi, contra, by = c("NeuronID", "Neuron_Type"), suffix = c("", "_contra"))
+
+# 5. 处理共同脑区：数值相加
+for (region in common_regions) {
+  contra_col <- paste0(region, "_contra")
+  if (contra_col %in% names(merged)) {
+    # 将 NA 视为 0 进行相加
+    merged[[region]] <- coalesce(merged[[region]], 0) + coalesce(merged[[contra_col]], 0)
+    # 删除 contra 列
+    merged[[contra_col]] <- NULL
+  }
+}
+
+# 6. 将所有剩余 NA 填充为 0
+region_cols <- setdiff(names(merged), meta_cols)
+merged <- merged %>% mutate(across(all_of(region_cols), ~coalesce(., 0)))
+
+# 7. 保存结果
+write.csv(merged, "merged_projection_length.csv", row.names = FALSE)
+
+cat("\n合并完成！\n")
+cat("总神经元数:", nrow(merged), "\n")
+cat("总脑区数:", length(region_cols), "\n")
+cat("前5个脑区:", paste(head(region_cols, 5), collapse = ", "), "\n")
+
+# 8. 验证示例（以 CM 为例）
+cat("\n验证示例 - CM 脑区:\n")
+cat("008.swc 的 CM 值:", merged$CM[merged$NeuronID == "008.swc"], "\n")
+cat("（应为 ipsi 8.383 + contra 4.153 = 12.536）\n")

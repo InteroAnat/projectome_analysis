@@ -1,0 +1,50 @@
+"0","# 设置文件路径
+file_results <- ""251637_results_v5.xlsx""
+
+# 读取各个sheet
+df_summary <- read_excel(file_results, sheet = ""Summary"")
+df_laterality <- read_excel(file_results, sheet = ""Laterality"")
+df_soma <- read_excel(file_results, sheet = ""Soma_Hierarchy"")
+
+# 读取L3投射数据（Hierarchy Level 3 - 52个脑区）
+df_proj_l3_ipsi <- read_excel(file_results, sheet = ""Projection_Strength_L3_ipsi"")
+df_proj_l3_contra <- read_excel(file_results, sheet = ""Projection_Strength_L3_contra"")
+
+# 显示数据基本信息
+cat(""=== 数据概览 ===\n"")
+"
+"1","=== 数据概览 ===
+"
+"0","cat(""Summary sheet:"", nrow(df_summary), ""神经元 x"", ncol(df_summary), ""列\n"")"
+"1","Summary sheet:"
+"1"," "
+"1","212"
+"1"," "
+"1","神经元 x"
+"1"," "
+"1","18"
+"1"," "
+"1","列
+"
+"0","cat(""L3 Ipsi投射:"", nrow(df_proj_l3_ipsi), ""神经元 x"", ncol(df_proj_l3_ipsi), ""列\n"")"
+"1","L3 Ipsi投射:"
+"1"," "
+"1","212"
+"1"," "
+"1","神经元 x"
+"1"," "
+"1","54"
+"1"," "
+"1","列
+"
+"0","cat(""L3 Contra投射:"", nrow(df_proj_l3_contra), ""神经元 x"", ncol(df_proj_l3_contra), ""列\n"")"
+"1","L3 Contra投射:"
+"1"," "
+"1","212"
+"1"," "
+"1","神经元 x"
+"1"," "
+"1","6"
+"1"," "
+"1","列
+"

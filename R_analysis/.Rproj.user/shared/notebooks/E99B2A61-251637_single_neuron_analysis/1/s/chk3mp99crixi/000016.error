@@ -1,0 +1,1 @@
+{"frames":[{"func":"df_proj_l3_ipsi %>% group_by(Neuron_Type) %>% summarise(across(-NeuronID, \n    mean, na.rm = TRUE), .groups = \"drop\") %>% column_to_rownames(\"Neuron_Type\")","file":"","line_number":0,"end_line_number":0,"character_number":0,"end_character_number":0}],"message":"错误于column_to_rownames(., \"Neuron_Type\"): \n  没有\"column_to_rownames\"这个函数\n"}

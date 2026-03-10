@@ -1,0 +1,28 @@
+#load library
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+library(matrixStats)
+
+
+# load data and precalculated clustering result
+file_results <- "tables/251637_results_v5.xlsx"
+cluster_info <- readRDS("tables/clustering_results.rds")
+
+
+#load sheets and combine into new one 
+proj_df_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_df_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+
+proj_df_left
+
+
+#arrange into cluster order 
+proj_df_ipsi_clustered <- merge(proj_df_ipsi,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_contra_clustered <- merge(proj_df_contra,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+

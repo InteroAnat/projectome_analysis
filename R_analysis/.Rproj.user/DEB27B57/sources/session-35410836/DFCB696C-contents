@@ -1,0 +1,1151 @@
+---
+title: "完整单神经元投射分析 - 基于251637数据"
+subtitle: "遵循Gao et al. 2023 (Neuron) 和 Gou et al. 2025 (Cell) 方法学"
+author: "单神经元投射分析流程"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    fig_width: 12
+    fig_height: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.retina = 2
+)
+
+# 设置中文字体支持
+options(encoding = "UTF-8")
+```
+
+# 1. 环境准备与数据加载
+
+## 1.1 安装和加载必要的包
+
+```{r load-packages}
+# 检查并安装必要的包
+packages <- c("readxl", "ComplexHeatmap", "circlize", "dplyr", "tidyr", 
+              "ggplot2", "RColorBrewer", "cluster", "factoextra", 
+              "umap", "igraph", "reshape2", "grid", "scales")
+
+for (pkg in packages) {
+  if (!require(pkg, character.only = TRUE, quietly = TRUE)) {
+    install.packages(pkg)
+    library(pkg, character.only = TRUE)
+  }
+}
+library(tibble)
+# 设置随机种子以确保可重复性
+set.seed(42)
+```
+
+## 1.2 读取Excel数据
+
+```{r load-data}
+# 设置文件路径
+file_results <- "251637_results_v5.xlsx"
+
+# 读取各个sheet
+df_summary <- read_excel(file_results, sheet = "Summary")
+df_laterality <- read_excel(file_results, sheet = "Laterality")
+df_soma <- read_excel(file_results, sheet = "Soma_Hierarchy")
+
+# 读取L3投射数据（Hierarchy Level 3 - 52个脑区）
+df_proj_l3_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+df_proj_l3_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+
+# 显示数据基本信息
+cat("=== 数据概览 ===\n")
+cat("Summary sheet:", nrow(df_summary), "神经元 x", ncol(df_summary), "列\n")
+cat("L3 Ipsi投射:", nrow(df_proj_l3_ipsi), "神经元 x", ncol(df_proj_l3_ipsi), "列\n")
+cat("L3 Contra投射:", nrow(df_proj_l3_contra), "神经元 x", ncol(df_proj_l3_contra), "列\n")
+```
+
+## 1.3 数据预处理
+
+```{r data-preprocessing}
+# 提取L3脑区名称（排除NeuronID和Neuron_Type列）
+l3_regions <- setdiff(names(df_proj_l3_ipsi), c("NeuronID", "Neuron_Type"))
+cat("L3脑区数量:", length(l3_regions), "\n")
+
+# 创建投射矩阵（行=神经元，列=L3脑区）
+proj_matrix_ipsi <- df_proj_l3_ipsi %>% 
+  select(-Neuron_Type) %>% 
+  column_to_rownames("NeuronID") %>% 
+  as.matrix()
+
+proj_matrix_contra <- df_proj_l3_contra %>% 
+  select(-Neuron_Type) %>% 
+  column_to_rownames("NeuronID") %>% 
+  as.matrix()
+
+# 转置矩阵：行=脑区，列=神经元（符合热图惯例）
+proj_matrix_ipsi_t <- t(proj_matrix_ipsi)
+proj_matrix_contra_t <- t(proj_matrix_contra)
+
+# 数据清理：移除全零行和包含NA/Inf的行
+clean_matrix <- function(mat) {
+  # 移除全零行
+  nonzero_rows <- rowSums(mat > 0) > 0
+  mat <- mat[nonzero_rows, ]
+  
+  # 移除包含NA/Inf的行
+  valid_rows <- rowSums(!is.finite(mat)) == 0
+  mat <- mat[valid_rows, ]
+  
+  return(mat)
+}
+
+proj_matrix_ipsi_clean <- clean_matrix(proj_matrix_ipsi_t)
+proj_matrix_contra_clean <- clean_matrix(proj_matrix_contra_t)
+
+cat("清理后同侧矩阵:", nrow(proj_matrix_ipsi_clean), "脑区 x", ncol(proj_matrix_ipsi_clean), "神经元\n")
+cat("清理后对侧矩阵:", nrow(proj_matrix_contra_clean), "脑区 x", ncol(proj_matrix_contra_clean), "神经元\n")
+```
+
+## 1.4 神经元信息整合
+
+```{r neuron-info}
+# 创建神经元信息数据框
+neuron_info <- df_summary %>%
+  select(NeuronID, Neuron_Type, Soma_Region, Soma_Side, 
+         Total_Length, Terminal_Count, Laterality_Index) %>%
+  mutate(
+    # 解析脑岛亚区（基于Henry Evrard 2012分区）
+    Insula_Subregion = case_when(
+      grepl("Ial", Soma_Region) ~ "Ial",
+      grepl("Iai", Soma_Region) ~ "Iai", 
+      grepl("Ia/Id", Soma_Region) ~ "Ia/Id",
+      grepl("Ig", Soma_Region) ~ "Ig",
+      TRUE ~ "Other"
+    ),
+    # 解析左右侧
+    Hemisphere = ifelse(grepl("C[Rr]", Soma_Region), "Right", "Left"),
+    # 侧向性分类
+    Laterality_Class = case_when(
+      Laterality_Index >= 0.8 ~ "Ipsi-dominant",
+      Laterality_Index <= -0.8 ~ "Contra-dominant",
+      abs(Laterality_Index) < 0.2 ~ "Bilateral",
+      TRUE ~ "Mixed"
+    )
+  )
+
+# 确保神经元顺序与投射矩阵一致
+neuron_ids <- colnames(proj_matrix_ipsi_clean)
+neuron_info <- neuron_info %>% filter(NeuronID %in% neuron_ids)
+neuron_info <- neuron_info[match(neuron_ids, neuron_info$NeuronID), ]
+
+# 显示神经元类型分布
+cat("\n=== 神经元类型分布 ===\n")
+print(table(neuron_info$Neuron_Type))
+
+cat("\n=== 脑岛亚区分布 ===\n")
+print(table(neuron_info$Insula_Subregion))
+
+cat("\n=== 半球分布 ===\n")
+print(table(neuron_info$Hemisphere))
+```
+
+# 2. 基础可视化
+
+## 2.1 定义颜色方案
+
+```{r color-schemes}
+# 神经元类型颜色（基于Gao et al. 2023）
+type_colors <- c(
+  "ITc" = "#E41A1C",  # 红色 - intratelencephalic cortical
+  "ITs" = "#377EB8",  # 蓝色 - intratelencephalic subcortical  
+  "ITi" = "#4DAF4A",  # 绿色 - intratelencephalic ipsilateral
+  "CT"  = "#984EA3",  # 紫色 - corticothalamic
+  "PT"  = "#FF7F00"   # 橙色 - pyramidal tract
+)
+
+# 脑岛亚区颜色
+insula_colors <- c(
+  "Ial" = "#FB8072",    # 前外侧
+  "Iai" = "#80B1D3",    # 前腹侧
+  "Ia/Id" = "#B3DE69",  # 前/背侧过渡区
+  "Ig" = "#FCCDE5",     # 颗粒区
+  "Other" = "#D9D9D9"
+)
+
+# 半球颜色
+hemisphere_colors <- c("Right" = "#E78AC3", "Left" = "#A6D854")
+
+# 投射强度颜色映射（对数变换）
+col_fun_strength <- colorRamp2(
+  c(0, 1, 2, 3, 4),
+  c("white", "#FEE0D2", "#FC9272", "#EF3B2C", "#99000D")
+)
+
+# 侧向性指数颜色
+col_fun_laterality <- colorRamp2(
+  c(-1, -0.5, 0, 0.5, 1),
+  c("#2166AC", "#92C5DE", "#F7F7F7", "#F4A582", "#B2182B")
+)
+```
+
+## 2.2 基础投射热图
+
+```{r basic-heatmap, fig.width=14, fig.height=10}
+# 准备热图数据（对数变换）
+heatmap_data <- log1p(proj_matrix_ipsi_clean)
+
+# 创建顶部注释（神经元信息）
+ha_top <- HeatmapAnnotation(
+  Type = neuron_info$Neuron_Type,
+  InsulaRegion = neuron_info$Insula_Subregion,
+  Hemisphere = neuron_info$Hemisphere,
+  Laterality = neuron_info$Laterality_Index,
+  col = list(
+    Type = type_colors,
+    InsulaRegion = insula_colors,
+    Hemisphere = hemisphere_colors,
+    Laterality = col_fun_laterality
+  ),
+  annotation_name_side = "left",
+  show_legend = c(TRUE, TRUE, TRUE, TRUE),
+  height = unit(1.5, "cm")
+)
+
+# 创建右侧注释（脑区统计）
+region_stats <- data.frame(
+  MeanStrength = rowMeans(proj_matrix_ipsi_clean),
+  N_Neurons = rowSums(proj_matrix_ipsi_clean > 0)
+)
+
+ha_right <- rowAnnotation(
+  MeanStrength = anno_barplot(region_stats$MeanStrength, 
+                               gp = gpar(fill = "#74ADD1")),
+  N_Neurons = anno_barplot(region_stats$N_Neurons,
+                            gp = gpar(fill = "#FDAE61")),
+  width = unit(3, "cm")
+)
+
+# 绘制基础热图
+ht_basic <- Heatmap(
+  heatmap_data,
+  name = "Log(Strength+1)",
+  col = col_fun_strength,
+  
+  # 聚类设置
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  show_column_dend = TRUE,
+  show_row_dend = TRUE,
+  
+  # 顶部注释
+  top_annotation = ha_top,
+  
+  # 右侧注释
+  right_annotation = ha_right,
+  
+  # 标签设置
+  row_names_gp = gpar(fontsize = 8),
+  column_names_gp = gpar(fontsize = 6),
+  column_names_rot = 45,
+  
+  # 标题
+  column_title = "神经元 (按聚类排列)",
+  row_title = "L3脑区 (Hierarchy Level 3)",
+  
+  # 热图尺寸
+  width = unit(10, "inch"),
+  height = unit(8, "inch")
+)
+
+# 绘制热图
+draw(ht_basic, merge_legend = TRUE)
+```
+
+## 2.3 按神经元类型分面的热图
+
+```{r split-by-type, fig.width=16, fig.height=10}
+# 按神经元类型分面
+type_factor <- factor(neuron_info$Neuron_Type, 
+                       levels = c("ITc", "ITs", "ITi", "CT", "PT"))
+
+ht_split <- Heatmap(
+  heatmap_data,
+  name = "Log(Strength+1)",
+  col = col_fun_strength,
+  
+  # 按类型分面
+  column_split = type_factor,
+  
+  # 聚类
+  cluster_columns = TRUE,
+  cluster_row_slices = FALSE,
+  
+  # 顶部注释
+  top_annotation = HeatmapAnnotation(
+    InsulaRegion = neuron_info$Insula_Subregion,
+    Hemisphere = neuron_info$Hemisphere,
+    col = list(
+      InsulaRegion = insula_colors,
+      Hemisphere = hemisphere_colors
+    ),
+    annotation_name_side = "left"
+  ),
+  
+  # 标签
+  row_names_gp = gpar(fontsize = 8),
+  column_names_gp = gpar(fontsize = 5),
+  column_names_rot = 45,
+  
+  # 标题
+  column_title = "神经元类型: %s",
+  row_title = "L3脑区",
+  
+  # 每个分面的标题样式
+  column_title_gp = gpar(fontsize = 12, fontface = "bold")
+)
+
+draw(ht_split)
+```
+
+# 3. 脑岛特异性分析
+
+## 3.1 脑岛亚区投射模式比较
+
+```{r insula-analysis, fig.width=14, fig.height=8}
+# 按脑岛亚区聚合投射数据
+insula_projection <- neuron_info %>%
+  select(NeuronID, Insula_Subregion, Hemisphere) %>%
+  left_join(
+    df_proj_l3_ipsi %>% select(-Neuron_Type),
+    by = "NeuronID"
+  ) %>%
+  pivot_longer(cols = -c(NeuronID, Insula_Subregion, Hemisphere),
+               names_to = "Target_Region",
+               values_to = "Strength")
+
+# 计算每个脑岛亚区到各靶区的平均投射强度
+insula_mean <- insula_projection %>%
+  group_by(Insula_Subregion, Target_Region) %>%
+  summarise(
+    Mean_Strength = mean(Strength, na.rm = TRUE),
+    N_Neurons = n(),
+    .groups = "drop"
+  )
+
+# 创建脑岛亚区投射热图
+insula_matrix <- insula_mean %>%
+  pivot_wider(
+    id_cols = Target_Region,
+    names_from = Insula_Subregion,
+    values_from = Mean_Strength
+  ) %>%
+  column_to_rownames("Target_Region") %>%
+  as.matrix()
+
+# 对数变换
+insula_matrix_log <- log1p(insula_matrix)
+
+# 绘制脑岛亚区投射热图
+ht_insula <- Heatmap(
+  insula_matrix_log,
+  name = "Log(Mean Strength+1)",
+  col = col_fun_strength,
+  
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  
+  row_names_gp = gpar(fontsize = 9),
+  column_names_gp = gpar(fontsize = 11, fontface = "bold"),
+  
+  column_title = "脑岛亚区 (Henry Evrard分区)",
+  row_title = "靶区 (L3)",
+  
+  cell_fun = function(j, i, x, y, width, height, fill) {
+    # 在单元格中显示数值
+    grid.text(
+      sprintf("%.2f", insula_matrix[i, j]),
+      x, y,
+      gp = gpar(fontsize = 7, col = ifelse(insula_matrix_log[i, j] > 2, "white", "black"))
+    )
+  }
+)
+
+draw(ht_insula)
+```
+
+## 3.2 左右脑岛投射不对称性分析
+
+```{r hemispheric-asymmetry, fig.width=12, fig.height=8}
+# 计算左右脑岛的投射差异
+hemisphere_projection <- neuron_info %>%
+  select(NeuronID, Hemisphere) %>%
+  left_join(
+    df_proj_l3_ipsi %>% select(-Neuron_Type),
+    by = "NeuronID"
+  ) %>%
+  pivot_longer(cols = -c(NeuronID, Hemisphere),
+               names_to = "Target_Region",
+               values_to = "Strength")
+
+# 计算每个半球到各靶区的平均投射
+hemi_mean <- hemisphere_projection %>%
+  group_by(Hemisphere, Target_Region) %>%
+  summarise(
+    Mean_Strength = mean(Strength, na.rm = TRUE),
+    .groups = "drop"
+  ) %>%
+  pivot_wider(
+    id_cols = Target_Region,
+    names_from = Hemisphere,
+    values_from = Mean_Strength
+  )
+
+# 计算不对称性指数
+hemi_asym <- hemi_mean %>%
+  mutate(
+    Asymmetry_Index = (Right - Left) / (Right + Left + 0.001),
+    Total = Right + Left
+  ) %>%
+  arrange(desc(abs(Asymmetry_Index)))
+
+# 可视化不对称性
+p_asym <- ggplot(hemi_asym, aes(x = reorder(Target_Region, Asymmetry_Index), 
+                                  y = Asymmetry_Index)) +
+  geom_bar(stat = "identity", aes(fill = Asymmetry_Index > 0)) +
+  geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+  scale_fill_manual(values = c("TRUE" = "#E78AC3", "FALSE" = "#A6D854"),
+                    labels = c("左偏", "右偏")) +
+  coord_flip() +
+  labs(
+    title = "左右脑岛投射不对称性",
+    subtitle = "正值 = 右脑岛投射更强，负值 = 左脑岛投射更强",
+    x = "靶区 (L3)",
+    y = "不对称性指数",
+    fill = "偏侧性"
+  ) +
+  theme_minimal() +
+  theme(
+    axis.text.y = element_text(size = 8),
+    legend.position = "bottom"
+  )
+
+print(p_asym)
+```
+
+# 4. 功能性分析方法
+
+## 4.1 PCA降维分析
+
+```{r pca-analysis, fig.width=14, fig.height=6}
+# 准备PCA数据（转置：神经元为行）
+pca_data <- t(proj_matrix_ipsi_clean)
+pca_data <- pca_data[, apply(pca_data, 2, var) > 0]  # 移除零方差列
+
+# 执行PCA
+pca_result <- prcomp(pca_data, scale. = TRUE, center = TRUE)
+
+# 提取主成分
+pca_df <- data.frame(
+  PC1 = pca_result$x[, 1],
+  PC2 = pca_result$x[, 2],
+  PC3 = pca_result$x[, 3],
+  Neuron_Type = neuron_info$Neuron_Type,
+  Insula_Subregion = neuron_info$Insula_Subregion,
+  Hemisphere = neuron_info$Hemisphere,
+  Laterality_Index = neuron_info$Laterality_Index
+)
+
+# 计算方差解释比例
+var_explained <- summary(pca_result)$importance[2, ] * 100
+
+# 绘制PCA结果
+p_pca_type <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_manual(values = type_colors) +
+  labs(
+    title = "PCA: 按神经元类型",
+    x = sprintf("PC1 (%.1f%%)", var_explained[1]),
+    y = sprintf("PC2 (%.1f%%)", var_explained[2])
+  ) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+p_pca_insula <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Insula_Subregion)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_manual(values = insula_colors) +
+  labs(
+    title = "PCA: 按脑岛亚区",
+    x = sprintf("PC1 (%.1f%%)", var_explained[1]),
+    y = sprintf("PC2 (%.1f%%)", var_explained[2])
+  ) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+p_pca_hemi <- ggplot(pca_df, aes(x = PC1, y = PC2, color = Hemisphere)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_manual(values = hemisphere_colors) +
+  labs(
+    title = "PCA: 按半球",
+    x = sprintf("PC1 (%.1f%%)", var_explained[1]),
+    y = sprintf("PC2 (%.1f%%)", var_explained[2])
+  ) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+# 组合图形
+cowplot::plot_grid(p_pca_type, p_pca_insula, p_pca_hemi, ncol = 3)
+```
+
+## 4.2 UMAP非线性降维
+
+```{r umap-analysis, fig.width=14, fig.height=6}
+# 执行UMAP降维
+umap_config <- umap.defaults
+umap_config$n_neighbors <- 15
+umap_config$min_dist <- 0.1
+
+umap_result <- umap(pca_data, config = umap_config)
+
+# 创建UMAP数据框
+umap_df <- data.frame(
+  UMAP1 = umap_result$layout[, 1],
+  UMAP2 = umap_result$layout[, 2],
+  Neuron_Type = neuron_info$Neuron_Type,
+  Insula_Subregion = neuron_info$Insula_Subregion,
+  Hemisphere = neuron_info$Hemisphere,
+  Laterality_Index = neuron_info$Laterality_Index,
+  Total_Length = neuron_info$Total_Length
+)
+
+# 绘制UMAP结果
+p_umap_type <- ggplot(umap_df, aes(x = UMAP1, y = UMAP2, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_manual(values = type_colors) +
+  labs(title = "UMAP: 按神经元类型") +
+  theme_minimal()
+
+p_umap_insula <- ggplot(umap_df, aes(x = UMAP1, y = UMAP2, color = Insula_Subregion)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_manual(values = insula_colors) +
+  labs(title = "UMAP: 按脑岛亚区") +
+  theme_minimal()
+
+p_umap_length <- ggplot(umap_df, aes(x = UMAP1, y = UMAP2, color = Total_Length)) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_viridis_c(trans = "log10") +
+  labs(title = "UMAP: 按总轴突长度") +
+  theme_minimal()
+
+cowplot::plot_grid(p_umap_type, p_umap_insula, p_umap_length, ncol = 3)
+```
+
+## 4.3 PAM聚类分析（基于Gao et al. 2023方法）
+
+```{r pam-clustering, fig.width=12, fig.height=8}
+# 准备聚类数据（对数变换）
+cluster_data <- log1p(pca_data)
+
+# 使用轮廓系数确定最优聚类数
+sil_width <- c()
+max_k <- 10
+
+for (k in 2:max_k) {
+  pam_result <- pam(cluster_data, k = k)
+  sil_width[k-1] <- pam_result$silinfo$avg.width
+}
+
+# 绘制轮廓系数图
+sil_df <- data.frame(K = 2:max_k, Silhouette = sil_width)
+p_sil <- ggplot(sil_df, aes(x = K, y = Silhouette)) +
+  geom_line(color = "#2C7FB8", size = 1) +
+  geom_point(color = "#2C7FB8", size = 3) +
+  geom_vline(xintercept = which.max(sil_width) + 1, 
+             linetype = "dashed", color = "red") +
+  labs(
+    title = "PAM聚类: 轮廓系数确定最优K值",
+    x = "聚类数 (K)",
+    y = "平均轮廓系数"
+  ) +
+  theme_minimal()
+
+print(p_sil)
+
+# 使用最优K值进行聚类
+optimal_k <- which.max(sil_width) + 1
+cat("最优聚类数:", optimal_k, "\n")
+
+pam_final <- pam(cluster_data, k = optimal_k)
+
+# 将聚类结果添加到神经元信息
+neuron_info$Cluster <- factor(pam_final$clustering)
+
+# 可视化聚类结果
+p_cluster_umap <- ggplot(umap_df, aes(x = UMAP1, y = UMAP2, color = factor(pam_final$clustering))) +
+  geom_point(size = 3, alpha = 0.7) +
+  scale_color_brewer(palette = "Set1") +
+  labs(
+    title = sprintf("PAM聚类结果 (K=%d)", optimal_k),
+    color = "Cluster"
+  ) +
+  theme_minimal()
+
+print(p_cluster_umap)
+```
+
+## 4.4 聚类特征分析
+
+```{r cluster-characteristics, fig.width=14, fig.height=10}
+# 分析每个聚类的特征
+cluster_features <- neuron_info %>%
+  group_by(Cluster) %>%
+  summarise(
+    N = n(),
+    ITi_pct = mean(Neuron_Type == "ITi") * 100,
+    ITs_pct = mean(Neuron_Type == "ITs") * 100,
+    CT_pct = mean(Neuron_Type == "CT") * 100,
+    PT_pct = mean(Neuron_Type == "PT") * 100,
+    Ial_pct = mean(Insula_Subregion == "Ial") * 100,
+    Iai_pct = mean(Insula_Subregion == "Iai") * 100,
+    IaId_pct = mean(Insula_Subregion == "Ia/Id") * 100,
+    Right_pct = mean(Hemisphere == "Right") * 100,
+    Mean_Length = mean(Total_Length),
+    Mean_Laterality = mean(Laterality_Index),
+    .groups = "drop"
+  )
+
+print(cluster_features)
+
+# 创建聚类-脑区投射热图
+cluster_proj <- data.frame(
+  NeuronID = rownames(pca_data),
+  Cluster = pam_final$clustering
+) %>%
+  left_join(
+    df_proj_l3_ipsi %>% select(-Neuron_Type),
+    by = "NeuronID"
+  ) %>%
+  select(-NeuronID) %>%
+  group_by(Cluster) %>%
+  summarise(across(everything(), mean, na.rm = TRUE)) %>%
+  column_to_rownames("Cluster") %>%
+  as.matrix()
+
+cluster_proj_log <- log1p(t(cluster_proj))
+
+ht_cluster <- Heatmap(
+  cluster_proj_log,
+  name = "Log(Mean Strength+1)",
+  col = col_fun_strength,
+  
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  
+  row_names_gp = gpar(fontsize = 9),
+  column_names_gp = gpar(fontsize = 11, fontface = "bold"),
+  
+  column_title = "PAM聚类",
+  row_title = "L3脑区",
+  
+  cell_fun = function(j, i, x, y, width, height, fill) {
+    grid.text(
+      sprintf("%.2f", cluster_proj[j, i]),
+      x, y,
+      gp = gpar(fontsize = 8, col = ifelse(cluster_proj_log[i, j] > 2, "white", "black"))
+    )
+  }
+)
+
+draw(ht_cluster)
+```
+
+# 5. 双侧投射分析
+
+## 5.1 同侧vs对侧投射比较
+
+```{r ipsi-contra-comparison, fig.width=14, fig.height=10}
+# 确保两个矩阵的维度一致
+common_regions <- intersect(rownames(proj_matrix_ipsi_clean), 
+                            rownames(proj_matrix_contra_clean))
+common_neurons <- intersect(colnames(proj_matrix_ipsi_clean),
+                            colnames(proj_matrix_contra_clean))
+
+mat_ipsi <- proj_matrix_ipsi_clean[common_regions, common_neurons]
+mat_contra <- proj_matrix_contra_clean[common_regions, common_neurons]
+
+# 计算每个神经元的同侧和对侧投射总量
+bilateral_summary <- data.frame(
+  NeuronID = common_neurons,
+  Ipsi_Total = colSums(mat_ipsi),
+  Contra_Total = colSums(mat_contra),
+  Ipsi_N_Regions = colSums(mat_ipsi > 0),
+  Contra_N_Regions = colSums(mat_contra > 0)
+) %>%
+  mutate(
+    Ipsi_Ratio = Ipsi_Total / (Ipsi_Total + Contra_Total + 0.001),
+    Laterality_Index = (Ipsi_Total - Contra_Total) / (Ipsi_Total + Contra_Total + 0.001)
+  ) %>%
+  left_join(
+    neuron_info %>% select(NeuronID, Neuron_Type, Insula_Subregion, Hemisphere),
+    by = "NeuronID"
+  )
+
+# 可视化同侧/对侧比例分布
+p_bilateral <- ggplot(bilateral_summary, aes(x = Ipsi_Total, y = Contra_Total)) +
+  geom_point(aes(color = Neuron_Type), size = 3, alpha = 0.6) +
+  scale_color_manual(values = type_colors) +
+  geom_abline(slope = 1, intercept = 0, linetype = "dashed", color = "gray50") +
+  scale_x_log10() +
+  scale_y_log10() +
+  labs(
+    title = "同侧 vs 对侧投射总量",
+    x = "同侧投射总量 (log scale)",
+    y = "对侧投射总量 (log scale)",
+    color = "神经元类型"
+  ) +
+  theme_minimal()
+
+print(p_bilateral)
+
+# 侧向性指数分布
+p_laterality <- ggplot(bilateral_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
+  geom_histogram(bins = 30, alpha = 0.7, position = "identity") +
+  scale_fill_manual(values = type_colors) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "black") +
+  labs(
+    title = "侧向性指数分布",
+    x = "侧向性指数 (1=纯同侧, -1=纯对侧)",
+    y = "神经元数量"
+  ) +
+  theme_minimal()
+
+print(p_laterality)
+```
+
+## 5.2 双侧平衡热图
+
+```{r bilateral-heatmap, fig.width=16, fig.height=10}
+# 准备双侧热图数据
+# 获取与neuron_info匹配的神经元
+matched_neurons <- intersect(common_neurons, neuron_info$NeuronID)
+mat_ipsi_matched <- mat_ipsi[, matched_neurons]
+mat_contra_matched <- mat_contra[, matched_neurons]
+
+# 过滤neuron_info
+neuron_info_matched <- neuron_info %>% 
+  filter(NeuronID %in% matched_neurons) %>%
+  arrange(match(NeuronID, matched_neurons))
+
+# 创建双侧热图
+heatmap_ipsi <- log1p(mat_ipsi_matched)
+heatmap_contra <- log1p(mat_contra_matched)
+
+# 顶部注释
+ha_bilateral <- HeatmapAnnotation(
+  Type = neuron_info_matched$Neuron_Type,
+  InsulaRegion = neuron_info_matched$Insula_Subregion,
+  Laterality = neuron_info_matched$Laterality_Index,
+  col = list(
+    Type = type_colors,
+    InsulaRegion = insula_colors,
+    Laterality = col_fun_laterality
+  ),
+  annotation_name_side = "left"
+)
+
+# 同侧热图
+ht_ipsi <- Heatmap(
+  heatmap_ipsi,
+  name = "Ipsi Log(Strength+1)",
+  col = col_fun_strength,
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  top_annotation = ha_bilateral,
+  row_names_gp = gpar(fontsize = 8),
+  column_names_gp = gpar(fontsize = 5),
+  column_title = "同侧投射",
+  row_title = "L3脑区",
+  show_column_names = FALSE
+)
+
+# 对侧热图
+ht_contra <- Heatmap(
+  heatmap_contra,
+  name = "Contra Log(Strength+1)",
+  col = col_fun_strength,
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  row_names_gp = gpar(fontsize = 8),
+  column_names_gp = gpar(fontsize = 5),
+  column_title = "对侧投射",
+  show_column_names = FALSE
+)
+
+# 组合热图
+ht_list <- ht_ipsi + ht_contra
+draw(ht_list)
+```
+
+# 6. 网络分析
+
+## 6.1 构建投射网络
+
+```{r network-analysis, fig.width=12, fig.height=10}
+# 构建神经元-脑区二部图邻接矩阵
+# 阈值化：只保留显著投射
+threshold <- quantile(proj_matrix_ipsi_clean, 0.75)
+adj_matrix <- (proj_matrix_ipsi_clean > threshold) * 1
+
+# 计算脑区之间的共投射（Jaccard相似性）
+n_regions <- nrow(adj_matrix)
+co_projection <- matrix(0, n_regions, n_regions)
+rownames(co_projection) <- rownames(adj_matrix)
+colnames(co_projection) <- rownames(adj_matrix)
+
+for (i in 1:n_regions) {
+  for (j in 1:n_regions) {
+    if (i != j) {
+      intersection <- sum(adj_matrix[i, ] & adj_matrix[j, ])
+      union <- sum(adj_matrix[i, ] | adj_matrix[j, ])
+      if (union > 0) {
+        co_projection[i, j] <- intersection / union
+      }
+    }
+  }
+}
+
+# 创建网络图
+library(igraph)
+
+# 设置阈值构建网络
+co_threshold <- 0.3
+g <- graph_from_adjacency_matrix(
+  co_projection > co_threshold,
+  mode = "undirected",
+  diag = FALSE
+)
+
+# 计算网络中心性
+V(g)$degree <- degree(g)
+V(g)$betweenness <- betweenness(g)
+V(g)$eigenvector <- eigen_centrality(g)$vector
+
+# 设置节点属性
+V(g)$label <- V(g)$name
+V(g)$size <- V(g)$degree * 2 + 5
+V(g)$color <- "#80B1D3"
+
+# 绘制网络
+set.seed(42)
+plot(g, 
+     layout = layout_with_fr(g),
+     vertex.label.cex = 0.7,
+     vertex.label.color = "black",
+     edge.color = "gray70",
+     edge.width = 1,
+     main = "脑区间共投射网络 (Jaccard相似性 > 0.3)")
+```
+
+## 6.2 网络中心性分析
+
+```{r centrality-analysis, fig.width=14, fig.height=6}
+# 提取中心性指标
+centrality_df <- data.frame(
+  Region = V(g)$name,
+  Degree = V(g)$degree,
+  Betweenness = V(g)$betweenness,
+  Eigenvector = V(g)$eigenvector
+) %>%
+  arrange(desc(Degree))
+
+# 可视化中心性
+p_degree <- ggplot(centrality_df, aes(x = reorder(Region, Degree), y = Degree)) +
+  geom_bar(stat = "identity", fill = "#74ADD1") +
+  coord_flip() +
+  labs(title = "度中心性", x = "脑区", y = "度数") +
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 8))
+
+p_between <- ggplot(centrality_df, aes(x = reorder(Region, Betweenness), y = Betweenness)) +
+  geom_bar(stat = "identity", fill = "#FDAE61") +
+  coord_flip() +
+  labs(title = "介数中心性", x = "脑区", y = "介数") +
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 8))
+
+cowplot::plot_grid(p_degree, p_between, ncol = 2)
+```
+
+# 7. 靶区出发的分析
+
+## 7.1 靶区接收投射模式
+
+```{r target-analysis, fig.width=14, fig.height=8}
+# 分析每个靶区接收的投射特征
+target_analysis <- data.frame(
+  Region = rownames(proj_matrix_ipsi_clean),
+  Mean_Strength = rowMeans(proj_matrix_ipsi_clean),
+  N_Neurons = rowSums(proj_matrix_ipsi_clean > 0),
+  Total_Strength = rowSums(proj_matrix_ipsi_clean)
+) %>%
+  mutate(
+    Connection_Rate = N_Neurons / ncol(proj_matrix_ipsi_clean) * 100
+  ) %>%
+  arrange(desc(Total_Strength))
+
+# 可视化靶区接收投射
+p_target <- ggplot(target_analysis, 
+                   aes(x = reorder(Region, Total_Strength), 
+                       y = Total_Strength)) +
+  geom_bar(stat = "identity", aes(fill = Connection_Rate)) +
+  scale_fill_gradient(low = "#FEE0D2", high = "#99000D") +
+  coord_flip() +
+  labs(
+    title = "各L3脑区接收的总投射强度",
+    subtitle = "颜色表示连接率 (%)",
+    x = "靶区 (L3)",
+    y = "总投射强度",
+    fill = "连接率(%)"
+  ) +
+  theme_minimal() +
+  theme(axis.text.y = element_text(size = 8))
+
+print(p_target)
+```
+
+## 7.2 靶区-神经元类型关联
+
+```{r target-type-association, fig.width=14, fig.height=10}
+# 分析不同神经元类型对各靶区的投射偏好
+type_target <- neuron_info %>%
+  select(NeuronID, Neuron_Type) %>%
+  left_join(
+    df_proj_l3_ipsi %>% select(-Neuron_Type),
+    by = "NeuronID"
+  ) %>%
+  pivot_longer(cols = -c(NeuronID, Neuron_Type),
+               names_to = "Target_Region",
+               values_to = "Strength") %>%
+  group_by(Neuron_Type, Target_Region) %>%
+  summarise(
+    Mean_Strength = mean(Strength, na.rm = TRUE),
+    N = n(),
+    .groups = "drop"
+  )
+
+# 创建类型-靶区热图
+type_target_matrix <- type_target %>%
+  pivot_wider(
+    id_cols = Target_Region,
+    names_from = Neuron_Type,
+    values_from = Mean_Strength,
+    values_fill = 0
+  ) %>%
+  column_to_rownames("Target_Region") %>%
+  as.matrix()
+
+type_target_log <- log1p(type_target_matrix)
+
+ht_type_target <- Heatmap(
+  type_target_log,
+  name = "Log(Mean Strength+1)",
+  col = col_fun_strength,
+  
+  cluster_columns = TRUE,
+  cluster_rows = TRUE,
+  
+  row_names_gp = gpar(fontsize = 9),
+  column_names_gp = gpar(fontsize = 11, fontface = "bold"),
+  
+  column_title = "神经元类型",
+  row_title = "靶区 (L3)",
+  
+  cell_fun = function(j, i, x, y, width, height, fill) {
+    grid.text(
+      sprintf("%.2f", type_target_matrix[i, j]),
+      x, y,
+      gp = gpar(fontsize = 7, col = ifelse(type_target_log[i, j] > 2, "white", "black"))
+    )
+  }
+)
+
+draw(ht_type_target)
+```
+
+# 8. 综合Cell风格热图
+
+## 8.1 创建高质量发表热图
+
+```{r cell-style-heatmap, fig.width=16, fig.height=12}
+# 准备高质量热图数据
+# 使用更严格的过滤和排序
+region_variance <- apply(proj_matrix_ipsi_clean, 1, var)
+top_regions <- names(sort(region_variance, decreasing = TRUE))[1:40]
+
+mat_cell <- proj_matrix_ipsi_clean[top_regions, ]
+
+# 重新聚类列（神经元）
+col_dist <- dist(t(log1p(mat_cell)))
+col_hclust <- hclust(col_dist, method = "ward.D2")
+
+# 根据聚类结果重新排序
+neuron_order <- col_hclust$order
+mat_cell_ordered <- mat_cell[, neuron_order]
+
+# 更新神经元信息顺序
+neuron_info_ordered <- neuron_info %>%
+  filter(NeuronID %in% colnames(mat_cell_ordered)) %>%
+  arrange(match(NeuronID, colnames(mat_cell_ordered)))
+
+# 创建Cell风格注释
+ha_cell <- HeatmapAnnotation(
+  # 神经元类型（主分类）
+  Type = anno_block(
+    gp = gpar(fill = type_colors),
+    labels = levels(factor(neuron_info_ordered$Neuron_Type)),
+    labels_gp = gpar(col = "white", fontsize = 10, fontface = "bold")
+  ),
+  
+  # 脑岛亚区
+  Insula = neuron_info_ordered$Insula_Subregion,
+  
+  # 半球
+  Hemisphere = neuron_info_ordered$Hemisphere,
+  
+  # 投射统计
+  AxonLength = anno_barplot(
+    log1p(neuron_info_ordered$Total_Length),
+    gp = gpar(fill = "#74ADD1"),
+    border = FALSE,
+    height = unit(1, "cm")
+  ),
+  
+  Terminals = anno_barplot(
+    neuron_info_ordered$Terminal_Count,
+    gp = gpar(fill = "#FDAE61"),
+    border = FALSE,
+    height = unit(1, "cm")
+  ),
+  
+  Laterality = anno_barplot(
+    abs(neuron_info_ordered$Laterality_Index),
+    gp = gpar(fill = "#A6D854"),
+    border = FALSE,
+    height = unit(1, "cm")
+  ),
+  
+  col = list(
+    Insula = insula_colors,
+    Hemisphere = hemisphere_colors
+  ),
+  
+  annotation_name_side = "left",
+  annotation_name_gp = gpar(fontsize = 9),
+  gap = unit(2, "mm")
+)
+
+# 创建主热图
+ht_cell <- Heatmap(
+  log1p(mat_cell_ordered),
+  name = "Log(Projection Strength+1)",
+  col = col_fun_strength,
+  
+  # 聚类
+  cluster_columns = col_hclust,
+  cluster_rows = TRUE,
+  
+  # 分面（按神经元类型）
+  column_split = factor(neuron_info_ordered$Neuron_Type),
+  column_gap = unit(3, "mm"),
+  
+  # 注释
+  top_annotation = ha_cell,
+  
+  # 标签
+  row_names_gp = gpar(fontsize = 9),
+  column_names_gp = gpar(fontsize = 5),
+  show_column_names = FALSE,
+  
+  # 标题
+  column_title = "神经元类型: %s",
+  column_title_gp = gpar(fontsize = 12, fontface = "bold"),
+  row_title = "L3脑区 (Hierarchy Level 3)",
+  row_title_gp = gpar(fontsize = 12, fontface = "bold"),
+  
+  # 图例
+  heatmap_legend_param = list(
+    title = "Log(Strength+1)",
+    title_gp = gpar(fontsize = 10),
+    labels_gp = gpar(fontsize = 8),
+    legend_height = unit(4, "cm")
+  )
+)
+
+draw(ht_cell, merge_legend = TRUE)
+```
+
+# 9. 总结与输出
+
+## 9.1 分析结果汇总
+
+```{r summary}
+cat("=== 分析结果汇总 ===\n\n")
+
+cat("1. 数据概览:\n")
+cat("   - 总神经元数:", nrow(neuron_info), "\n")
+cat("   - L3脑区数:", length(l3_regions), "\n")
+cat("   - 神经元类型:", paste(unique(neuron_info$Neuron_Type), collapse = ", "), "\n")
+cat("   - 脑岛亚区:", paste(unique(neuron_info$Insula_Subregion), collapse = ", "), "\n\n")
+
+cat("2. 投射特征:\n")
+cat("   - 平均同侧投射强度:", mean(bilateral_summary$Ipsi_Total), "\n")
+cat("   - 平均对侧投射强度:", mean(bilateral_summary$Contra_Total), "\n")
+cat("   - 平均侧向性指数:", mean(bilateral_summary$Laterality_Index), "\n\n")
+
+cat("3. 聚类结果:\n")
+cat("   - 最优聚类数:", optimal_k, "\n")
+cat("   - 各聚类神经元数:\n")
+print(table(pam_final$clustering))
+
+cat("\n4. 网络分析:\n")
+cat("   - 网络节点数:", vcount(g), "\n")
+cat("   - 网络边数:", ecount(g), "\n")
+cat("   - 平均度:", mean(degree(g)), "\n")
+```
+
+## 9.2 保存结果
+
+```{r save-results}
+# 保存神经元信息（包含聚类结果）
+write.csv(neuron_info, "/mnt/okcomputer/output/neuron_info_with_clusters.csv", 
+          row.names = FALSE)
+
+# 保存聚类特征
+write.csv(cluster_features, "/mnt/okcomputer/output/cluster_characteristics.csv",
+          row.names = FALSE)
+
+# 保存网络中心性
+write.csv(centrality_df, "/mnt/okcomputer/output/network_centrality.csv",
+          row.names = FALSE)
+
+# 保存靶区分析
+write.csv(target_analysis, "/mnt/okcomputer/output/target_region_analysis.csv",
+          row.names = FALSE)
+
+cat("结果已保存到 /mnt/okcomputer/output/\n")
+```
+
+---
+
+**分析完成！** 本分析遵循了Gao et al. 2023 (Neuron) 和 Gou et al. 2025 (Cell) 的方法学，包括：
+
+1. **数据预处理**: 读取L3投射数据，清理和标准化
+2. **基础可视化**: ComplexHeatmap热图，按神经元类型分面
+3. **脑岛特异性分析**: Henry Evrard分区比较，左右不对称性
+4. **功能性分析**: PCA、UMAP降维，PAM聚类，轮廓系数优化
+5. **双侧投射分析**: 同侧/对侧比较，侧向性指数
+6. **网络分析**: 共投射网络，中心性分析
+7. **靶区分析**: 从靶区出发的投射模式分析

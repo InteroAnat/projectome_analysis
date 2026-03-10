@@ -1,0 +1,50 @@
+============================================================
+REGION ANALYSIS REPORT - 251637
+============================================================
+Generated: 2026-03-04 15:00:44
+
+--- OVERVIEW ---
+Total neurons: 1
+
+--- Neuron Types ---
+  ITs: 1 (100.0%)
+
+--- Soma Regions (Top 10) ---
+  CR_Ial: 1
+
+--- Laterality ---
+  Soma side R: 1
+  Total ipsi terminals:   9
+  Total contra terminals: 0
+  Laterality Index - mean: 0.000, median: 0.000
+
+--- Projection Strength (Population) ---
+  Raw length: mean=75.92, median=18.01, max=329.49 mm
+  Log strength: mean=1.409, median=1.271, max=2.519
+
+--- Morphology ---
+Total length - Mean: 1106.11, Std: nan
+Terminal count - Mean: 10.00, Max: 10
+
+--- Outliers ---
+Neurons with outliers: 1 (100.0%)
+Total outlier events: 35
+
+--- Hierarchy Columns Status ---
+  L1: OK
+  L2: OK
+  L3: OK
+  L4: OK
+  L5: OK
+  L6: OK
+
+--- Excel Workbook Contents ---
+  Sheet 1: Summary              (scalar overview)
+  Sheet 2: Soma_Hierarchy       (L1-L6 expanded)
+  Sheet 3: Projection_Length    (neuron x region, mm)
+  Sheet 4: Projection_Strength  (log10(mm + 1))
+  Sheet 5: Terminal_Sites       (one row per terminal)
+  Sheet 6: Laterality           (ipsi/contra analysis)
+  Sheet 7: Outliers             (one row per outlier)
+
+============================================================

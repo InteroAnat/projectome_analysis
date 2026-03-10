@@ -1,0 +1,71 @@
+============================================================
+REGION ANALYSIS REPORT - 251637
+============================================================
+Generated: 2026-03-05 17:25:33
+
+--- OVERVIEW ---
+Total neurons: 212
+
+--- Neuron Types ---
+  ITi: 143 (67.5%)
+  ITs: 50 (23.6%)
+  CT: 11 (5.2%)
+  PT: 7 (3.3%)
+  ITc: 1 (0.5%)
+
+--- Soma Regions (Top 10) ---
+  CR_Ia/Id: 60
+  CR_Ial: 51
+  CL_Ia/Id: 45
+  CL_Ig: 24
+  CL_Ial: 12
+  CL_Iai: 11
+  CR_Iai: 9
+
+--- Laterality ---
+  Soma side R: 120
+  Soma side L: 92
+  Total ipsi terminals:   1018
+  Total contra terminals: 7
+  Laterality Index - mean: 0.003, median: 0.000
+
+--- Projection Strength (Population) ---
+  Raw length: mean=70.23, median=21.60, max=1514.43 mm
+  Log strength: mean=1.367, median=1.354, max=3.181
+
+--- Morphology ---
+Total length - Mean: 585.20, Std: 754.02
+Terminal count - Mean: 5.61, Max: 28
+
+--- Outliers ---
+Neurons with outliers: 164 (77.4%)
+Total outlier events: 5283
+
+--- Hierarchy Columns Status ---
+  L1: MISSING
+  L2: MISSING
+  L3: OK
+  L4: OK
+  L5: OK
+  L6: OK
+
+--- Excel Workbook Contents ---
+  Sheet 1: Summary                    (scalar overview)
+  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)
+  Sheet 3: Terminal_Sites             (one row per terminal)
+  Sheet 4: Laterality                 (ipsi/contra scalars)
+  Sheet 5: Outliers                   (one row per outlier)
+
+  Projection Length Sheets (split by laterality):
+    Projection_Length_ipsi          (ipsilateral regions only)
+    Projection_Length_contra        (contralateral regions only)
+    Projection_Length_L{n}_ipsi     (level n, ipsilateral)
+    Projection_Length_L{n}_contra   (level n, contralateral)
+
+  Projection Strength Sheets (split by laterality):
+    Projection_Strength_ipsi        (ipsilateral regions, log10)
+    Projection_Strength_contra      (contralateral regions, log10)
+    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)
+    Projection_Strength_L{n}_contra (level n, contralateral, log10)
+
+============================================================

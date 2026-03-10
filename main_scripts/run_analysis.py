@@ -16,8 +16,8 @@ def main(neuron_ids, sample_id="251637", show_plots=False):
     ATLAS_PATH     = r"D:\projectome_analysis\atlas\ARM_in_NMT_v2.1_sym.nii.gz"
     TABLE_PATH     = r"D:\projectome_analysis\atlas\ARM_key_all.txt"
     TEMPLATE       = r"D:\projectome_analysis\atlas\NMT_v2.1_sym\NMT_v2.1_sym\NMT_v2.1_sym_SS.nii.gz"
-    ctx_HIERARCHY_CSV = r"D:\projectome_analysis\atlas\CHARM_key_table.csv"
-    subctx_HIERARCHY_CSV = r"D:\projectome_analysis\atlas\SARM_key_table.csv"
+    ctx_HIERARCHY_CSV = r"D:\projectome_analysis\atlas\CHARM_key_table_v2.csv"
+    subctx_HIERARCHY_CSV = r"D:\projectome_analysis\atlas\SARM_key_table_v2.csv"
     atlas_data  = nib.load(ATLAS_PATH).get_fdata()
     atlas_table = pd.read_csv(TABLE_PATH, delimiter="\t")
     template    = nib.load(TEMPLATE)
@@ -45,9 +45,9 @@ def main(neuron_ids, sample_id="251637", show_plots=False):
 
     # Verify priority
     # pop.debug_hierarchy("CL_area_24a")
-    
+    pop.test_specific_regions()
     output_path = pop.save_all(
-        include_strength_levels=[3,6],
+        include_strength_levels=[3],
         generate_plots=True,
        
     )

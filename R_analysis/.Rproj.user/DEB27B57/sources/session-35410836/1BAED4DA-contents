@@ -1,0 +1,135 @@
+---
+title: "domain"
+output: html_document
+---
+
+
+```{r load library}
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+library(matrixStats)
+```
+
+```{r load data}
+
+# load data and precalculated clustering result
+file_results <- "tables/251637_results_v5.xlsx"
+cluster_info <- readRDS("clustering_results.rds")
+dend <- as.dendrogram(cluster_info$hclust_obj)
+
+
+sheets <- excel_sheets(file_results)
+print(sheets)
+
+#load sheets and combine into new one 
+proj_df_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_df_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+summary <-  read_excel(file_results, sheet = "Summary")
+
+
+
+
+
+
+# arrange into cluster order 
+# _c means after getting cluster info and _s after getting soma_info
+proj_df_ipsi_c <- merge(proj_df_ipsi,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_ipsi_c_s <- merge (proj_df_ipsi_c ,summary %>% select('NeuronID','Soma_Region','Soma_Side'),by='NeuronID') %>% relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+proj_df_contra_c <- merge(proj_df_contra,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_contra_c_s <- merge (proj_df_contra_c ,summary %>% select('NeuronID','Soma_Region','Soma_Side'),by='NeuronID') %>% relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+
+
+# ipsi_L <- proj_df_ipsi_c_s %>% filter(Soma_Side == "L")
+# 
+# ipsi_R <- proj_df_ipsi_c_s %>% filter(Soma_Side == "R")
+# 
+# contra_L <- proj_df_contra_c_s %>% filter(Soma_Side == "L")
+# 
+# contra_R <- proj_df_contra_c_s %>%  filter(Soma_Side == "R")
+
+# make matrices, preserve only projection data
+meta_cols <- 6
+
+mat_ipsi_t <- t(proj_df_ipsi_c_s%>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_ipsi_t) <- proj_df_ipsi_c_s$NeuronID
+
+# remove 
+mat_contra <- t(proj_df_contra_c_s %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_contra) <- proj_df_contra_c_s$NeuronID
+
+# aacquire indices of the LR neurons 
+ipsi_L_cols <- proj_df_ipsi_c_s$Soma_Side == "L"
+ipsi_R_cols <- proj_df_ipsi_c_s$Soma_Side == "R"
+contra_L_cols <- proj_df_contra_c_s$Soma_Side == "L"
+contra_R_cols <- proj_df_contra_c_s$Soma_Side == "R"
+
+# 创建子矩阵
+mat_ipsi_L <- mat_ipsi[, ipsi_L_cols, drop = FALSE]
+mat_ipsi_R <- mat_ipsi[, ipsi_R_cols, drop = FALSE]
+mat_contra_L <- mat_contra[, contra_L_cols, drop = FALSE]
+mat_contra_R <- mat_contra[, contra_R_cols, drop = FALSE]
+
+print(sort(unique(proj_df_ipsi_c_s$Cluster[proj_df_ipsi_c_s$Soma_Side=='L'])))
+print(sort(unique(proj_df_ipsi_c_s$Cluster[proj_df_ipsi_c_s$Soma_Side=='R'])))
+
+
+
+#creating split vectors
+
+side_vec <- c(rep("L", ncol(mat_ipsi_L)), rep("R", ncol(mat_ipsi_R)))
+
+# Cluster 编号（1-12）
+cluster_vec <- c(proj_df_ipsi_full$Cluster[idx_L], 
+                 proj_df_ipsi_full$Cluster[idx_R])
+
+```
+```{r get merged projection }
+
+
+file_path <- "tables/251637_results_v5.xlsx"
+ipsi <- read_excel(file_path, sheet = "Projection_Length_L3_ipsi")
+contra <- read_excel(file_path, sheet = "Projection_Length_L3_contra")
+
+# 2. 获取脑区列表（排除元数据列）
+meta_cols <- c("NeuronID", "Neuron_Type")
+ipsi_regions <- setdiff(names(ipsi), meta_cols)
+contra_regions <- setdiff(names(contra), meta_cols)
+
+# 3. 找到共同脑区
+common_regions <- intersect(ipsi_regions, contra_regions)
+cat("共同脑区 (将相加):", paste(common_regions, collapse = ", "), "\n")
+
+# 4. 合并数据框
+# 使用 full_join 保留所有神经元
+merged <- full_join(ipsi, contra, by = c("NeuronID", "Neuron_Type"), suffix = c("", "_contra"))
+
+# 5. 处理共同脑区：数值相加
+for (region in common_regions) {
+  contra_col <- paste0(region, "_contra")
+  if (contra_col %in% names(merged)) {
+    # 将 NA 视为 0 进行相加
+    merged[[region]] <- coalesce(merged[[region]], 0) + coalesce(merged[[contra_col]], 0)
+    # 删除 contra 列
+    merged[[contra_col]] <- NULL
+  }
+}
+
+# 6. 将所有剩余 NA 填充为 0
+region_cols <- setdiff(names(merged), meta_cols)
+merged <- merged %>% mutate(across(all_of(region_cols), ~coalesce(., 0)))
+
+
+write.csv(merged, "merged_projection_length.csv", row.names = FALSE)
+
+
+```

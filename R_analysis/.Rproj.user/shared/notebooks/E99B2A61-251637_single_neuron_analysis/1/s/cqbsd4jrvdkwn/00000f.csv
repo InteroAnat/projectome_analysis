@@ -1,0 +1,12 @@
+"0","# Prepare data"
+"0","df_lateral <- df_summary %>%"
+"0","  select(NeuronID, Neuron_Type, "
+"0","         Ipsilateral = Total_Ipsilateral_Length,"
+"0","         Contralateral = Total_Contralateral_Length) %>%"
+"0","  pivot_longer(cols = c(Ipsilateral, Contralateral),"
+"0","               names_to = ""Hemisphere"", values_to = ""Length"")"
+"1","[1m[33mError[39m in `select()`:[22m
+[33m![39m Can't select columns that don't exist.
+[31m✖[39m Column `Total_Ipsilateral_Length` doesn't exist.
+[90mRun `]8;;x-r-run:rlang::last_trace()rlang::last_trace()]8;;` to see where the error occurred.[39m
+"

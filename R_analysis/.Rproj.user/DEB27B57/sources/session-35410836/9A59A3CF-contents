@@ -1,0 +1,226 @@
+---
+editor_options: 
+  markdown: 
+    wrap: 72
+---
+
+# Viral Vector Injection Parameters in Neuroscience Research: A Comprehensive Review
+
+**Date:** March 2026\
+**Prepared for:** Neuroscience Research Community\
+**Scope:** Injection parameters for optogenetics, chemogenetics, and
+viral tracing in rodent and non-human primate (NHP) models
+
+------------------------------------------------------------------------
+
+## Executive Summary
+
+This report synthesizes injection parameters from 30+ peer-reviewed
+studies using viral vectors for circuit manipulation and tracing in
+neuroscience research. The focus is on practical parameters including
+viral serotypes, titers, injection volumes, flow rates, stereotaxic
+coordinates, and expression times.
+
+------------------------------------------------------------------------
+
+## 1. VIRAL VECTOR SYSTEMS
+
+### 1.1 Adeno-Associated Virus (AAV) - Most Common Platform
+
+| Study | Serotype | Promoter | Titer | Application |
+|--------------|--------------|--------------|--------------|----------------|
+| **Hirabayashi et al., 2024** | AAV2 | CMV | 2.2-2.3 × 10¹³ GC/ml | Chemogenetics (DREADD) in OFC |
+| **Sano et al., 2020** | AAV2, AAV-DJ | CAG | 1.0-1.5 × 10¹³ vg/ml | Retrograde labeling via AAVR |
+| **Watakabe et al., 2015** | AAV1, AAV5, AAV7, AAV8, AAV9 | CaMKIIα, SynI | 0.4-2.5 × 10¹³ GC/ml | Comparative transduction in marmoset/macaque |
+| **Noritake et al., 2023** | AAV-DJ, AAV2-retro | CAGGS, EF1α | 7.5-9.8 × 10¹² vg/ml | Chemogenetic circuit dissection |
+| **Watanabe et al., 2020** | AAV2, AAV5 | CAG | 1.5-4.3 × 10¹² GC/ml | Optogenetic stimulation of motor cortex |
+| **Trautmann et al., 2021** | AAV1 | CaMKIIα, hSyn | Not specified | GCaMP6f imaging in motor cortex |
+| **Miura et al., 2020** | AAV5 | CaMKII | 1.0 × 10¹⁴ GC/ml | Insular cortex GCaMP6f imaging |
+| **Gerits et al., 2015** | AAV2/1, AAV2/5, AAV2/7, AAV2/8 | CaMKIIα | Not specified | Serotype comparison in macaque |
+
+**Key Findings:** - **AAV5** is the most widely used serotype in NHPs
+(36% of experiments, per Tremblay et al., 2020) - **AAV9** is second
+most common (13%), followed by AAV2 variants - **AAV-DJ** shows broad
+tropism and is increasingly popular for enhanced transduction -
+**AAV2-retro** provides efficient retrograde access for pathway-specific
+manipulation
+
+### 1.2 Lentiviral Vectors
+
+| Study | Pseudotype | Titer | Application |
+|----------------|--------------------|----------------|---------------------|
+| **Kato et al., 2011** | Fusion glycoprotein B (rabies VSV-G chimera) | 3.1-7.5 × 10¹¹ copies/ml | Retrograde gene transfer |
+| **Kinoshita et al., 2012** | HiRet (fusion B2 type) | 3.9-7.5 × 10¹¹ copies/ml | Inducible TeNT expression in spinal cord |
+
+### 1.3 Other Vectors
+
+| Vector | Study | Application |
+|---------------------|------------------|---------------------------------|
+| **CAV-2** | Tremblay et al., 2020 | Retrograde labeling (3% of NHP experiments) |
+| **Rabies virus** | Kato et al., 2011 | Monosynaptic retrograde tracing |
+
+------------------------------------------------------------------------
+
+## 2. INJECTION PARAMETERS
+
+### 2.1 Volumes and Flow Rates
+
+| Study | Volume | Flow Rate | Needle Gauge | Species |
+|--------------|--------------|--------------|-----------------|--------------|
+| **Hirabayashi et al., 2024** | 2-3 μl/site | 0.1 μl/min | 30G | Macaque (OFC) |
+| **Sano et al., 2020** | 0.1-0.5 μl/site | 0.1 μl/min | Not specified | Mouse (various) |
+| **Noritake et al., 2023** | 0.5-0.75 μl | Not specified | Not specified | Macaque (MPFC/LH) |
+| **Ohta et al., 2021** | 1-10 μl | 1 μl/min | Not specified | Macaque |
+| **Miura et al., 2020** | 100-500 nl | 100 nl/min | 35G | Mouse (insula) |
+| **Gerits et al., 2015** | 23-920 nl | Not specified | Not specified | Macaque |
+| **Kinoshita et al., 2012** | 0.5 ml (spinal) | 0.1 ml/min | 100 μm tip | Macaque (C6-T1) |
+| **Kinoshita et al., 2019** | 0.5-0.8 μl | Not specified | Not specified | Macaque (SC/Pul) |
+
+**Recommended Practices:** - **Small volumes (100-500 nl)** for focal
+targeting in mice - **Larger volumes (1-3 μl)** for primate cortex with
+broader spread - **Slow flow rates (0.1-1 μl/min)** minimize tissue
+damage and backflow - **30-35G needles** for mice; **27-30G** for NHPs
+
+### 2.2 Expression Times
+
+| Study | Expression Time | Notes |
+|-----------------|--------------------------------------|-----------------|
+| **Hirabayashi et al., 2024** | 7 weeks | DREADD expression verified by PET |
+| **Kinoshita et al., 2019** | 6-11 weeks | Tet-On system; Dox effects at 10 days |
+| **Trautmann et al., 2021** | 5 weeks | GCaMP6f expression in motor cortex |
+| **Tremblay et al., 2020** | 4-12 weeks | Typical range across NHP studies |
+| **Sano et al., 2020** | 3-4 weeks | AAV-mediated retrograde labeling |
+
+**General Guidelines:** - **Minimum 3-4 weeks** for AAV expression -
+**6-8 weeks** optimal for most NHP optogenetics - **10-12+ weeks** may
+be needed for some serotypes/promoters
+
+------------------------------------------------------------------------
+
+## 3. PROMOTER SYSTEMS
+
+### 3.1 Neuron-Specific Promoters (NHP Studies)
+
+| Promoter | Cell Type Specificity | Usage Frequency |
+|-----------------|-------------------------------|------------------------|
+| **CaMKIIα** | Excitatory neurons | 37% (most common) |
+| **hSyn (human synapsin)** | All neurons | 22% |
+| **CAG** | Ubiquitous | 11% |
+| **CMV** | Ubiquitous (often neuron-biased in AAV) | Common in chemogenetics |
+| **EF1α** | Ubiquitous | Less common |
+
+### 3.2 Inducible Systems
+
+| System | Components | Study Application |
+|-----------------|---------------------|----------------------------------|
+| **Tet-On** | rtTAV16 + TRE promoter | Kinoshita et al., 2012; enables doxycycline-inducible TeNT |
+| **Cre/loxP** | DIO cassette + Cre | Noritake et al., 2023; pathway-specific manipulation |
+
+------------------------------------------------------------------------
+
+## 4. STEREOTAXIC COORDINATES
+
+### 4.1 Macaque Brain Targets
+
+| Target Region | AP | ML | DV | Reference |
+|---------------------|------------|------------|------------|---------------|
+| **Primary Motor Cortex (M1)** | Various | Various | 0.5-4.0 mm from surface | Watanabe et al., 2020 |
+| **Orbitofrontal Cortex (OFC)** | fPET-guided | fPET-guided | 0.5 mm below cortical surface | Hirabayashi et al., 2024 |
+| **Superior Colliculus (SC)** | Not specified | Not specified | Not specified | Kinoshita et al., 2019 |
+| **Pulvinar (Pul)** | 8 mm anterior to ear bar | Various | Various | Kinoshita et al., 2019 |
+| **Lateral Hypothalamus (LH)** | 0-6 mm posterior to AC | 35° lateral angle | Electrophysiologically guided | Noritake et al., 2023 |
+
+### 4.2 Mouse Brain Targets
+
+| Target                   | Coordinates               | Study             |
+|--------------------------|---------------------------|-------------------|
+| **Primary Motor Cortex** | AP +1.3, ML ±1.7, DV -4.2 | Sano et al., 2020 |
+| **Insular Cortex**       | Various ML 1.1            | Ohta et al., 2021 |
+
+------------------------------------------------------------------------
+
+## 5. SPECIALIZED TECHNIQUES
+
+### 5.1 Retrograde Gene Transfer Methods
+
+| Method | Vector | Mechanism | Study |
+|-----------------|-----------------|----------------------|-----------------|
+| **HiRet** | Lentivirus + fusion glycoprotein B | Rabies VSV-G chimera | Kato et al., 2011; Kinoshita et al., 2012 |
+| **AAV2-retro** | Engineered AAV2 capsid | Enhanced retrograde uptake | Sano et al., 2020; Noritake et al., 2023 |
+| **AAV-AAVR** | AAV-DJ + AAVR expression | Receptor-mediated enhanced uptake | Sano et al., 2020 |
+| **CAV-2** | Canine adenovirus | Natural retrograde tropism | Tremblay et al., 2020 |
+
+### 5.2 Chemogenetics (DREADD) Parameters
+
+| Study | DREADD Variant | Ligand | Dose |
+|---------------|---------------------------|---------------|---------------|
+| **Hirabayashi et al., 2024** | hM4Di | [¹¹C]DCZ (PET) | 344.8-369.6 MBq |
+| **Hirabayashi et al., 2024** | hM4Di | DCZ (behavioral) | Not specified |
+| **Noritake et al., 2023** | hM4D(Gi) | DCZ | Not specified |
+| **Stern et al., 2021** | hM3D, hM4D | CNO | Standard doses |
+
+------------------------------------------------------------------------
+
+## 6. QUALITY CONTROL & VALIDATION
+
+### 6.1 Transduction Efficiency Assessment
+
+| Method | Study | Purpose |
+|------------------------|---------------------|---------------------------|
+| **PET imaging with [¹¹C]DCZ** | Hirabayashi et al., 2024 | In vivo DREADD expression quantification |
+| **Histological GFP/mCherry** | All studies | Post-mortem transduction verification |
+| **Electrophysiology** | Multiple | Functional validation of opsin/DREADD effects |
+
+### 6.2 Recommended Validation Steps
+
+1.  **Pilot injections** with fluorescent reporters before functional
+    experiments
+2.  **Titer verification** by qPCR or flow cytometry
+3.  **Histological confirmation** of injection sites and expression
+    patterns
+4.  **Functional validation** (electrophysiology or behavior)
+
+------------------------------------------------------------------------
+
+## 7. KEY RECOMMENDATIONS
+
+### 7.1 For New NHP Optogenetics Labs
+
+1.  **Start with AAV5-CaMKIIα** or **AAV-DJ-CAG** as reliable defaults
+2.  **Use titer ≥ 10¹² GC/ml** for consistent expression
+3.  **Inject 1-3 μl at 0.1 μl/min** for cortical targets
+4.  **Wait 6-8 weeks** before experimentation
+5.  **Include fluorescent reporter** (eYFP most common)
+
+### 7.2 For Chemogenetics
+
+1.  **AAV2 with CMV or CAG** provides strong DREADD expression
+2.  **PET validation** (if available) confirms expression before
+    behavioral testing
+3.  **Allow 7+ weeks** for full DREADD expression
+
+### 7.3 For Retrograde Manipulation
+
+1.  **AAV2-retro** is now the gold standard for most pathways
+2.  **AAV-AAVR complementation** enhances efficiency in resistant
+    pathways
+3.  **Consider HiRet lentivirus** for specific applications requiring
+    integration
+
+------------------------------------------------------------------------
+
+## 8. REFERENCES
+
+*Full citations for all studies reviewed in this report are available in
+the user's Zotero library.*
+
+Key methodological papers: 1. Tremblay et al., 2020 - Open Resource for
+NHP Optogenetics (Neuron) 2. Watakabe et al., 2015 - AAV Serotype
+Comparison (Neuroscience Research) 3. Sano et al., 2020 - AAV-AAVR
+Retrograde Transfer (J Neurosci Methods) 4. Kato et al., 2011 - HiRet
+Lentiviral System (Hum Gene Ther)
+
+------------------------------------------------------------------------
+
+*Report generated from Zotero library analysis. All parameters extracted
+directly from peer-reviewed publications.*

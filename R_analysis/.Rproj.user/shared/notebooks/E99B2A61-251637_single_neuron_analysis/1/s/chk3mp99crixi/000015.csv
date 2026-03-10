@@ -1,0 +1,8 @@
+"0","# Calculate mean projection for each type to each region"
+"0","type_region_profile <- df_proj_l3_ipsi %>%"
+"0","  group_by(Neuron_Type) %>%"
+"0","  summarise(across(-NeuronID, mean, na.rm = TRUE), .groups = ""drop"") %>%"
+"0","  column_to_rownames(""Neuron_Type"")"
+"2","错误于column_to_rownames(., ""Neuron_Type""): 
+  没有""column_to_rownames""这个函数
+"

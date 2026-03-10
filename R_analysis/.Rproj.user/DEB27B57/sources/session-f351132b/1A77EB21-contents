@@ -1,0 +1,204 @@
+#load library
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+library(matrixStats)
+
+
+# load data and precalculated clustering result
+file_results <- "tables/251637_results_v5.xlsx"
+cluster_info <- readRDS("tables/clustering_results.rds")
+
+
+#load sheets 
+proj_df_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_df_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+summary <-  read_excel(file_results, sheet = "Summary")
+
+
+
+
+#arrange into cluster order 
+proj_df_ipsi_c <- merge(proj_df_ipsi,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_ipsi_c_s <- merge (proj_df_ipsi_c ,summary %>% select('NeuronID','Soma_Region','Soma_Side'),by='NeuronID') %>% relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+proj_df_contra_c <- merge(proj_df_contra,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_contra_c_s <- merge (proj_df_contra_c ,summary %>% select('NeuronID','Soma_Region','Soma_Side'),by='NeuronID') %>% relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+# ipsi_L <- proj_df_ipsi_c_s %>% filter(Soma_Side == "L")
+# 
+# ipsi_R <- proj_df_ipsi_c_s %>% filter(Soma_Side == "R")
+# 
+# contra_L <- proj_df_contra_c_s %>% filter(Soma_Side == "L")
+# 
+# contra_R <- proj_df_contra_c_s %>%  filter(Soma_Side == "R")
+# make matrices, here they are aligned with dendroorder already.
+meta_cols <- 6
+
+mat_ipsi_t <- t(proj_df_ipsi_c_s%>%
+                  select(-(1:meta_cols)) %>%
+                  as.matrix())
+colnames(mat_ipsi_t) <- proj_df_ipsi_c_s$NeuronID
+
+
+mat_contra_t <- t(proj_df_contra_c_s %>%
+                    select(-(1:meta_cols)) %>%
+                    as.matrix())
+colnames(mat_contra_t) <- proj_df_contra_c_s$NeuronID
+
+# 获取 L/R 神经元的列索引
+ipsi_L_cols <- proj_df_ipsi_c_s$Soma_Side == "L"
+ipsi_R_cols <- proj_df_ipsi_c_s$Soma_Side == "R"
+contra_L_cols <- proj_df_contra_c_s$Soma_Side == "L"
+contra_R_cols <- proj_df_contra_c_s$Soma_Side == "R"
+
+# 创建子矩阵
+mat_ipsi_L_t <- mat_ipsi_t[, ipsi_L_cols, drop = FALSE]
+mat_ipsi_R_t <- mat_ipsi_t[, ipsi_R_cols, drop = FALSE]
+mat_contra_L_t <- mat_contra_t[, contra_L_cols, drop = FALSE]
+mat_contra_R_t <- mat_contra_t[, contra_R_cols, drop = FALSE]
+
+
+
+
+
+# define fill in colours 
+max_val <- max(rowMaxs(mat_ipsi_t))
+
+colour_func <- colorRamp2(c(0, max_val/2, max_val), c("#F7FBF0", "blue", "darkblue"))
+
+# define type colours
+type_colors <- c(
+  "ITc" = "#4DAF4A", "ITs" = "#984EA3", "CT" = "#FF7F00",
+  "PT" = "#FFFF33", "ITi" = "#E41A1C"
+)
+
+dend <- as.dendrogram(cluster_info$hclust_obj)
+cluster_vec_ordered <- proj_df_ipsi_clustered $Cluster
+n_clusters <- length(unique(cluster_vec_ordered))
+
+cluster_vec_L <- proj_df_ipsi_c_s$Cluster[proj_df_ipsi_c_s$Soma_Side == "L"]
+cluster_vec_R <- proj_df_ipsi_c_s$Cluster[proj_df_ipsi_c_s$Soma_Side == "R"]
+
+real_order_L <- unique(cluster_vec_L)  # 自动保持原有顺序：7, 8, 9, 10, 11, 12
+slice_types_L <- sapply(real_order_L, function(g) {
+  # 从 proj_df_ipsi_c_s 中找到该 cluster 第一个神经元的类型
+  proj_df_ipsi_c_s$Neuron_Type[proj_df_ipsi_c_s$Cluster == g][1]
+})
+
+# neuron_types <- proj_df_ipsi_clustered$Neuron_Type
+# real_order <- unique(proj_df_ipsi_clustered$Cluster) 
+# 
+# slice_types <- sapply(real_order, function(g) {
+#   # 直接去排好序的表里找这个 Cluster 对应的类型
+#   proj_df_ipsi_clustered$Neuron_Type[proj_df_ipsi_clustered$Cluster == g][1]
+# })
+
+side_colors <- c("L" = "#E74C3C", "R" = "#3498DB")  # 左红右蓝
+
+L_slice_types <- slice_types[ipsi_L_cols]
+
+ha_top <- HeatmapAnnotation(
+  Type = anno_block(
+    gp = gpar(fill = type_colors[L_slice_types], col = "black"),
+    labels = L_slice_types,
+    labels_gp=gpar(fontsize=8),
+    height = unit(0.6, "cm")
+  ),
+  Subtype = anno_block(
+    gp = gpar(fill = "grey90"),
+    labels = paste0("#", real_order),
+    labels_gp=gpar(fontsize=7),
+    
+    height = unit(0.2, "cm")
+  
+  )
+  
+
+)
+
+# 
+side_cluster_factor <- factor(
+  paste0(proj_df_ipsi_clustered$Soma_Side, "_", proj_df_ipsi_clustered$Cluster),
+  levels = paste0(rep(c("L", "R"), each = 12), "_", rep(1:12, 2))
+)
+
+ht_opt(
+  heatmap_row_names_gp = gpar(fontsize = 8),
+  heatmap_row_title_gp = gpar(fontsize = 11, fontface = "bold"),
+  TITLE_PADDING = unit(c(15, 15), "mm")
+)
+
+
+ht_ipsi <- Heatmap(
+  mat_ipsi_L_t,
+  name = "IPSI",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title='Ipsilateral',
+  row_title_side = "right",
+  cluster_rows = FALSE,
+
+  # 新增：用预计算的 dend 作为列树（顶部显示）
+  cluster_columns = F,          # <--- 用你的 dend 代替自动聚类
+  show_column_dend = F,         # <--- 开启列树显示
+  column_dend_height = unit(4, "cm"),  # <--- 关键：放大树高度（从默认 0.5cm 调到 4cm，试试看）
+  top_annotation=ha_top,
+  column_split=factor(cluster_vec_L),
+  column_title = NULL,
+  column_gap = unit(0.5, "mm"),
+  border=T
+
+)
+
+ht_contra <- Heatmap(
+  mat_contra_L_t,
+  name = "CONTRA",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title="Contralateral",
+  row_title_side = "right",
+
+  cluster_rows = FALSE,
+
+  cluster_columns = F,          # <--- 同步
+  show_column_dend = FALSE,        # <--- 只在 ipsi 上显示树（避免重复）
+  column_dend_height = unit(4, "mm"), # <--- 即使隐藏，也设置高度一致
+
+  column_split=factor(cluster_vec_L),
+  column_gap = unit(0.5, "mm"),
+  border =T
+
+)
+
+ht_list <- ht_ipsi %v% ht_contra
+
+title_text = paste0("Overview of 251637 Insular neuron (n=",dim(proj_df_ipsi)[1],") projections (region hierarchy 3)")
+pdf("heatmap_251637_4.pdf", width = 20, height = 15)
+draw(ht_list,
+     column_title = title_text,
+     column_title_gp=gpar(fontsize = 16, fontface = "bold"),
+     show_heatmap_legend = F,
+     # padding = unit(c(下, 左, 上, 右), "单位")
+     padding = unit(c(15, 5, 0, 5), "mm")
+     )
+
+decorate_row_title("IPSI", {
+  grid.lines(x = unit(0.1, "npc"),          # 往右挪一点，不碰到文字
+             y = unit(c(0.02, 0.98), "npc"), # 留 2% 的缺口，防止和下一组连上
+             gp = gpar(lwd = 5, col = "#377EB8")) # 给 IPSI 一个蓝色系
+})
+
+# 装饰 CONTRA 组
+decorate_row_title("CONTRA", {
+  grid.lines(x = unit(0.1, "npc"),
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#E41A1C")) # 给 CONTRA 一个红色系
+})
+
+dev.off()  # 关闭
+
+

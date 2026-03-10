@@ -1,0 +1,35 @@
+library(here)
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+library(matrixStats)
+
+source(here('summarise_plot.R'))
+
+
+
+
+
+
+#
+
+
+
+
+
+
+
+# 1. 准备热图
+h1 <- build_projection_ht(mat_ipsi_t,   "IPSI",   "Ipsilateral", dend, order = 1)
+h2 <- build_projection_ht(mat_contra_t, "CONTRA", "Contralateral", dend, order = 2)
+
+# 2. 垂直拼接
+final_list <- h1 %v% h2 
+
+# 3. 一键出图（自动保存到 figures/ 文件夹）
+render_projection_plot(final_list, "Comparison_3_Layers.pdf", "251637_summary_projection_plot")

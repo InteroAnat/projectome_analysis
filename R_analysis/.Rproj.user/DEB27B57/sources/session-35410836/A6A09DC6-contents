@@ -1,0 +1,484 @@
+#F7FCF5 (极浅的绿色，最接近你的图片)
+#F7FBF0 (带有淡淡米黄色的白)
+#F0F9E8 (更明显一点的淡绿色)
+#FFFFF0 (Ivory 象牙色)
+
+
+
+
+# ========== 0. 加载包 ==========
+library(readxl)
+library(dplyr)
+library(ComplexHeatmap)
+library(circlize)
+library(grid)
+
+cat("✅ 包加载完成\n\n")
+
+# ========== 1. 数据读取和准备 ==========
+
+file_results <- "251637_results_v5.xlsx"
+
+# 读取数据
+df_summary <- read_excel(file_results, sheet = "Summary")
+df_proj_strength_l3 <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+
+# 提取投射矩阵
+proj_matrix <- df_proj_strength_l3 %>%
+    select(-NeuronID, -Neuron_Type) %>%
+    as.matrix()
+rownames(proj_matrix) <- df_proj_strength_l3$NeuronID
+
+# 转置（行=脑区，列=神经元）
+proj_matrix_t <- t(proj_matrix)
+
+# 清理数据
+good_rows <- rowSums(!is.finite(proj_matrix_t)) == 0
+mat_temp <- proj_matrix_t[good_rows, ]
+good_cols <- colSums(!is.finite(mat_temp)) == 0
+mat_clean <- mat_temp[, good_cols]
+
+# 获取神经元类型
+neuron_types <- df_proj_strength_l3$Neuron_Type[match(colnames(mat_clean), 
+                                                       df_proj_strength_l3$NeuronID)]
+
+# 合并summary信息
+neuron_info <- df_summary %>%
+    filter(NeuronID %in% colnames(mat_clean)) %>%
+    arrange(match(NeuronID, colnames(mat_clean)))
+
+cat("数据准备完成:", nrow(mat_clean), "regions x", ncol(mat_clean), "neurons\n\n")
+
+# ========== 2. 定义颜色 ==========
+
+# 类型颜色
+type_colors <- c(
+    "ITc" = "#4DAF4A",
+    "ITs" = "#984EA3", 
+    "CT"  = "#FF7F00",
+    "PT"  = "#FFFF33",
+    "ITi" = "#E41A1C"
+)
+
+# 投射强度颜色
+col_fun <- colorRamp2(c(0, 2, 4, 6, 8), 
+                      c("white", "lightblue", "blue", "darkblue", "navy"))
+
+# ========== 3. 示例1: 最基础的热图 ==========
+
+cat("🔥 示例1: 最基础的热图\n")
+
+ht_basic <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength"
+)
+
+# 显示热图
+draw(ht_basic)
+
+# 保存
+pdf("01_basic_heatmap.pdf", width = 10, height = 8)
+draw(ht_basic)
+dev.off()
+
+cat("✅ 已保存: 01_basic_heatmap.pdf\n\n")
+
+# ========== 4. 示例2: 添加颜色 ==========
+
+cat("🔥 示例2: 添加自定义颜色\n")
+
+ht_color <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun,  # 使用自定义颜色
+    
+    # 聚类
+    cluster_rows = TRUE,
+    cluster_columns = TRUE
+)
+
+draw(ht_color)
+
+pdf("02_colored_heatmap.pdf", width = 10, height = 8)
+draw(ht_color)
+dev.off()
+
+cat("✅ 已保存: 02_colored_heatmap.pdf\n\n")
+
+# ========== 5. 示例3: 添加顶部注释（类型）==========
+
+cat("🔥 示例3: 添加顶部注释（神经元类型）\n")
+
+# 创建顶部注释
+ha_top_type <- HeatmapAnnotation(
+    Type = neuron_types,  # 分类变量
+    col = list(Type = type_colors),  # 颜色映射
+    annotation_name_side = "left"  # 注释名在左边
+)
+
+ht_with_type <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun,
+    cluster_columns = TRUE,
+    top_annotation = ha_top_type,  # 添加顶部注释
+    show_column_names = FALSE,  # 不显示列名（太多）
+    row_names_gp = gpar(fontsize = 6)  # 行名字体
+)
+
+draw(ht_with_type)
+
+pdf("03_heatmap_with_type_annotation.pdf", width = 12, height = 10)
+draw(ht_with_type)
+dev.off()
+
+cat("✅ 已保存: 03_heatmap_with_type_annotation.pdf\n\n")
+
+# ========== 6. 示例4: 添加条形图注释 ==========
+
+cat("🔥 示例4: 添加条形图注释\n")
+
+# 创建带条形图的顶部注释
+ha_top_bars <- HeatmapAnnotation(
+    # 类型（色块）
+    Type = neuron_types,
+    
+    # 投射长度（条形图）
+    TotalLength = anno_barplot(
+        neuron_info$Total_Length,
+        gp = gpar(fill = "steelblue"),  # 蓝色
+        height = unit(1, "cm")
+    ),
+    
+    # 终端数量（条形图）
+    Terminals = anno_barplot(
+        neuron_info$Terminal_Count,
+        gp = gpar(fill = "orange"),  # 橙色
+        height = unit(1, "cm")
+    ),
+    
+    # 颜色映射
+    col = list(Type = type_colors),
+    annotation_name_side = "left"
+)
+
+ht_with_bars <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun,
+    cluster_columns = TRUE,
+    top_annotation = ha_top_bars,
+    show_column_names = FALSE,
+    row_names_gp = gpar(fontsize = 6)
+)
+
+draw(ht_with_bars)
+
+pdf("04_heatmap_with_barplot_annotation.pdf", width = 14, height = 12)
+draw(ht_with_bars)
+dev.off()
+
+cat("✅ 已保存: 04_heatmap_with_barplot_annotation.pdf\n\n")
+
+# ========== 7. 示例5: 热图分割（按类型）==========
+
+cat("🔥 示例5: 热图分割（按神经元类型）\n")
+
+# 创建类型因子（保持顺序）
+type_factor <- factor(neuron_types, levels = unique(neuron_types))
+
+ht_split <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun,
+    
+    # 列分割
+    cluster_columns = TRUE,
+    column_split = type_factor,  # 按类型分割
+    column_gap = unit(2, "mm"),  # 分割间隙
+    
+    # 每个类型内部聚类
+    cluster_column_slices = TRUE,
+    
+    top_annotation = ha_top_type,
+    show_column_names = FALSE,
+    row_names_gp = gpar(fontsize = 6),
+    
+    # 标题
+    column_title = "Neuron Types",
+    column_title_gp = gpar(fontsize = 12, fontface = "bold")
+)
+
+draw(ht_split)
+
+pdf("05_heatmap_split_by_type.pdf", width = 14, height = 10)
+draw(ht_split)
+dev.off()
+
+cat("✅ 已保存: 05_heatmap_split_by_type.pdf\n\n")
+
+# ========== 8. 示例6: 添加右侧注释 ==========
+
+cat("🔥 示例6: 添加右侧注释\n")
+
+# 创建脑区分组（根据名称前缀）
+region_names <- rownames(mat_clean)
+region_groups <- ifelse(
+    grepl("^l_", region_names), "Left",
+    ifelse(grepl("^r_", region_names), "Right", "Other")
+)
+
+# 右侧注释
+ha_right <- rowAnnotation(
+    # 脑区分组
+    Hemisphere = region_groups,
+    
+    # 每个脑区的总投射量
+    TotalProj = anno_barplot(
+        rowSums(mat_clean),
+        gp = gpar(fill = "purple"),
+        width = unit(1.5, "cm")
+    ),
+    
+    col = list(Hemisphere = c("Left" = "#FDB462", "Right" = "#80B1D3", "Other" = "gray")),
+    annotation_name_side = "top"
+)
+
+ht_with_right <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun,
+    cluster_columns = TRUE,
+    top_annotation = ha_top_type,
+    right_annotation = ha_right,  # 添加右侧注释
+    show_column_names = FALSE,
+    row_names_gp = gpar(fontsize = 6)
+)
+
+draw(ht_with_right)
+
+pdf("06_heatmap_with_right_annotation.pdf", width = 16, height = 10)
+draw(ht_with_right)
+dev.off()
+
+cat("✅ 已保存: 06_heatmap_with_right_annotation.pdf\n\n")
+
+# ========== 9. 示例7: 完整版热图 ==========
+
+cat("🔥 示例7: 完整版热图（所有元素）\n")
+
+# 完整的顶部注释
+ha_top_full <- HeatmapAnnotation(
+    Type = neuron_types,
+    TotalLength = anno_barplot(neuron_info$Total_Length, 
+                                gp = gpar(fill = "steelblue"),
+                                height = unit(0.8, "cm")),
+    TerminalCount = anno_barplot(neuron_info$Terminal_Count,
+                                  gp = gpar(fill = "orange"),
+                                  height = unit(0.8, "cm")),
+    Ipsilateral = anno_barplot(neuron_info$N_Ipsilateral,
+                                gp = gpar(fill = "green4"),
+                                height = unit(0.8, "cm")),
+    col = list(Type = type_colors),
+    annotation_name_side = "left",
+    annotation_name_gp = gpar(fontsize = 9, fontface = "bold"),
+    show_legend = c(TRUE, FALSE, FALSE, FALSE)  # 只显示Type的图例
+)
+
+# 右侧注释
+ha_right_full <- rowAnnotation(
+    Hemisphere = region_groups,
+    TotalProj = anno_barplot(rowSums(mat_clean), 
+                             gp = gpar(fill = "purple"),
+                             width = unit(1.5, "cm")),
+    col = list(Hemisphere = c("Left" = "#FDB462", "Right" = "#80B1D3")),
+    annotation_name_side = "top"
+)
+
+# 完整热图
+ht_full <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun,
+    
+    # 聚类
+    cluster_columns = TRUE,
+    cluster_rows = TRUE,
+    column_dend_gp = gpar(col = "gray40", lwd = 0.5),
+    column_dend_height = unit(1.5, "cm"),
+    
+    # 注释
+    top_annotation = ha_top_full,
+    right_annotation = ha_right_full,
+    
+    # 标签
+    show_column_names = FALSE,
+    row_names_side = "left",
+    row_names_gp = gpar(fontsize = 5),
+    
+    # 标题
+    column_title = "212 Neurons from CR_Ial",
+    column_title_gp = gpar(fontsize = 14, fontface = "bold"),
+    row_title = "Brain Regions (L3)",
+    row_title_gp = gpar(fontsize = 12, fontface = "bold"),
+    
+    # 边框
+    border = TRUE,
+    rect_gp = gpar(col = "gray90", lwd = 0.3),
+    
+    # 尺寸
+    width = unit(14, "cm"),
+    height = unit(12, "cm"),
+    
+    # 图例
+    heatmap_legend_param = list(
+        title = "Log(Strength)",
+        title_gp = gpar(fontsize = 10, fontface = "bold"),
+        labels_gp = gpar(fontsize = 8),
+        legend_height = unit(5, "cm"),
+        direction = "vertical"
+    )
+)
+
+draw(ht_full, merge_legend = TRUE, heatmap_legend_side = "right")
+
+pdf("07_full_heatmap.pdf", width = 18, height = 14)
+draw(ht_full, merge_legend = TRUE, heatmap_legend_side = "right")
+dev.off()
+
+cat("✅ 已保存: 07_full_heatmap.pdf\n\n")
+
+# ========== 10. 示例8: 多个热图拼接 ==========
+
+cat("🔥 示例8: 多个热图拼接（强度vs长度对比）\n")
+
+# 读取长度数据
+df_proj_length_l3 <- read_excel(file_results, sheet = "Projection_Length_L3")
+
+proj_length_matrix <- df_proj_length_l3 %>%
+    select(-NeuronID, -Neuron_Type) %>%
+    as.matrix()
+rownames(proj_length_matrix) <- df_proj_length_l3$NeuronID
+
+proj_length_t <- t(proj_length_matrix)
+
+# 匹配行列
+common_regions <- intersect(rownames(mat_clean), rownames(proj_length_t))
+common_neurons <- intersect(colnames(mat_clean), colnames(proj_length_t))
+
+mat_strength <- mat_clean[common_regions, common_neurons]
+mat_length <- proj_length_t[common_regions, common_neurons]
+mat_length_log <- log1p(mat_length)
+
+# 创建两个热图
+ht_strength <- Heatmap(
+    mat_strength,
+    name = "Strength",
+    col = col_fun,
+    cluster_columns = TRUE,
+    top_annotation = ha_top_type,
+    show_column_names = FALSE,
+    cluster_rows = TRUE,
+    row_names_gp = gpar(fontsize = 5),
+    column_title = "Projection Strength",
+    width = unit(10, "cm"),
+    height = unit(10, "cm")
+)
+
+ht_length <- Heatmap(
+    mat_length_log,
+    name = "Length",
+    col = col_fun,
+    cluster_columns = TRUE,
+    show_column_names = FALSE,
+    cluster_rows = TRUE,
+    row_names_gp = gpar(fontsize = 5),
+    column_title = "Projection Length (log)",
+    width = unit(10, "cm"),
+    height = unit(10, "cm")
+)
+
+# 拼接并保存
+pdf("08_heatmap_comparison.pdf", width = 20, height = 12)
+draw(ht_strength + ht_length, merge_legend = TRUE)
+dev.off()
+
+cat("✅ 已保存: 08_heatmap_comparison.pdf\n\n")
+
+# ========== 11. 示例9: 自定义颜色方案 ==========
+
+cat("🔥 示例9: 不同的颜色方案\n")
+
+# 方案1: 蓝-白-红（适合差异数据）
+col_fun_bwr <- colorRamp2(
+    c(0, 4, 8),
+    c("blue", "white", "red")
+)
+
+# 方案2: viridis（现代配色）
+library(viridis)
+col_fun_viridis <- colorRamp2(
+    seq(0, 8, length.out = 100),
+    viridis(100)
+)
+
+# 方案3: 热图配色
+col_fun_heat <- colorRamp2(
+    c(0, 2, 4, 6, 8),
+    c("black", "red", "orange", "yellow", "white")
+)
+
+# 使用viridis绘制
+ht_viridis <- Heatmap(
+    log1p(mat_clean),
+    name = "Log Strength",
+    col = col_fun_viridis,
+    cluster_columns = TRUE,
+    top_annotation = ha_top_type,
+    show_column_names = FALSE,
+    row_names_gp = gpar(fontsize = 6)
+)
+
+pdf("09_heatmap_viridis.pdf", width = 12, height = 10)
+draw(ht_viridis)
+dev.off()
+
+cat("✅ 已保存: 09_heatmap_viridis.pdf\n\n")
+
+# ========== 12. 示例10: 保存不同格式 ==========
+
+cat("🔥 示例10: 保存不同格式\n")
+
+# PDF（矢量图，推荐）
+pdf("10_heatmap_vector.pdf", width = 14, height = 12)
+draw(ht_full, merge_legend = TRUE)
+dev.off()
+
+# PNG（位图，适合PPT）
+png("10_heatmap_raster.png", width = 2400, height = 2000, res = 150)
+draw(ht_full, merge_legend = TRUE)
+dev.off()
+
+# TIFF（高分辨率，适合印刷）
+tiff("10_heatmap_highres.tiff", width = 3000, height = 2500, res = 300)
+draw(ht_full, merge_legend = TRUE)
+dev.off()
+
+cat("✅ 已保存多种格式\n\n")
+
+# ========== 完成 ==========
+
+cat("=" ,rep("=", 60), "\n", sep="")
+cat("  ✅ 所有示例完成!\n")
+cat("  生成文件:\n")
+cat("    - 01_basic_heatmap.pdf\n")
+cat("    - 02_colored_heatmap.pdf\n")
+cat("    - 03_heatmap_with_type_annotation.pdf\n")
+cat("    - 04_heatmap_with_barplot_annotation.pdf\n")
+cat("    - 05_heatmap_split_by_type.pdf\n")
+cat("    - 06_heatmap_with_right_annotation.pdf\n")
+cat("    - 07_full_heatmap.pdf\n")
+cat("    - 08_heatmap_comparison.pdf\n")
+cat("    - 09_heatmap_viridis.pdf\n")
+cat("    - 10_heatmap_*.pdf/png/tiff\n")
+cat("=" ,rep("=", 60), "\n", sep="")

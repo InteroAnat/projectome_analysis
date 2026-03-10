@@ -27,6 +27,17 @@ import pandas as pd
 import glob
 from pathlib import Path
 
+# Setup path for IONData
+neurovis_path = os.path.abspath(r'D:\projectome_analysis\neuron-vis\neuronVis')
+if neurovis_path not in sys.path:
+    sys.path.append(neurovis_path)
+try:
+    import IONData
+    IONDATA_AVAILABLE = True
+except ImportError:
+    IONDATA_AVAILABLE = False
+    print("Warning: IONData module not available. SWC download functionality disabled.")
+
 # ==============================================================================
 # CONFIGURATION
 # ==============================================================================
@@ -34,9 +45,10 @@ from pathlib import Path
 # Paths
 SAMPLE_ID = '251637'
 SWC_DIR = f'processed_neurons/{SAMPLE_ID}'
+RAW_SWC_DIR = f'processed_neurons/{SAMPLE_ID}/raw_swcs'  # Separate folder for downloaded raw SWCs
 OUTPUT_DIR = f'processed_neurons/{SAMPLE_ID}/fnt_processed'
-ACC_DF_FILE = 'ACC_df_v2.xlsx'
-INS_DF_FILE = 'INS_df_v2.xlsx'
+ACC_DF_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\ACC_df_v3.xlsx'
+INS_DF_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\INS_df_v3.xlsx'
 
 # FNT tool parameters
 DECIMATE_D = 5000  # Distance parameter for decimation
@@ -115,6 +127,83 @@ def load_neuron_dataframes():
 # FNT PROCESSING FUNCTIONS
 # ==============================================================================
 
+def preprocess_swc_coordinates(swc_file, output_swc=None):
+    """Preprocess SWC file to flip x-coordinate to the left side (x < 32000).
+    
+    SWC format columns:
+    1: node ID
+    2: structure type
+    3: x coordinate (column index 2, 0-indexed)
+    4: y coordinate
+    5: z coordinate
+    6: radius
+    7: parent node ID
+    
+    The midline is at x = 32000. Neurons on the right side (x > 32000) are
+    mirrored to the left side using: new_x = 64000 - x
+    This ensures proper reflection across the midline.
+    
+    Example: x = 48000 (right side, 16000 from midline) 
+             -> new_x = 64000 - 48000 = 16000 (left side, 16000 from midline)
+    """
+    MIDLINE = 32000
+    
+    if output_swc is None:
+        output_swc = f"{swc_file}.processed.swc"
+    
+    # Check if already exists
+    if os.path.exists(output_swc):
+        print(f"    Preprocessed SWC already exists: {os.path.basename(output_swc)}")
+        return output_swc
+    
+    try:
+        with open(swc_file, 'r') as f:
+            lines = f.readlines()
+        
+        processed_lines = []
+        flipped_count = 0
+        already_left_count = 0
+        
+        for line in lines:
+            line_stripped = line.strip()
+            
+            # Keep comment lines unchanged
+            if not line_stripped or line_stripped.startswith('#'):
+                processed_lines.append(line)
+                continue
+            
+            # Split the line into columns
+            parts = line_stripped.split()
+            
+            if len(parts) >= 3:
+                try:
+                    x = float(parts[2])
+                    if x > MIDLINE:
+                        # Mirror across the midline
+                        x = 2 * MIDLINE - x  # = 64000 - x
+                        parts[2] = str(x)
+                        flipped_count += 1
+                    else:
+                        already_left_count += 1
+                except ValueError:
+                    pass  # Keep original if conversion fails
+            
+            processed_lines.append(' '.join(parts) + '\n')
+        
+        with open(output_swc, 'w') as f:
+            f.writelines(processed_lines)
+        
+        if flipped_count > 0:
+            print(f"    Flipped {flipped_count} nodes from right to left (x > {MIDLINE})")
+        if already_left_count > 0:
+            print(f"    {already_left_count} nodes already on left side (x <= {MIDLINE})")
+        
+        return output_swc
+    except Exception as e:
+        print(f"    Error preprocessing SWC: {e}")
+        return None
+
+
 def swc_to_fnt(swc_file, output_fnt=None):
     """Convert SWC file to FNT format."""
     if output_fnt is None:
@@ -182,27 +271,122 @@ def update_fnt_neuron_name(fnt_file, neuron_name):
         return False
 
 
+def download_swc_if_missing(neuron_id, sample_id=SAMPLE_ID):
+    """Download SWC file using IONDATA if not found locally.
+    
+    Downloads are saved to RAW_SWC_DIR to keep raw data separate from processed files.
+    Note: IONDATA saves to ../resource/swc_raw/{sample_id}/ by default, so we move it.
+    
+    Args:
+        neuron_id: Neuron ID (e.g., '001.swc')
+        sample_id: Sample ID for IONDATA lookup
+    
+    Returns:
+        str: Path to SWC file if successful, None otherwise
+    """
+    # Target location for raw SWCs
+    raw_swc_file = os.path.join(RAW_SWC_DIR, neuron_id)
+    
+    # Check if already exists in raw folder
+    if os.path.exists(raw_swc_file):
+        print(f"    Found existing raw SWC: {raw_swc_file}")
+        return raw_swc_file
+    
+    # Try to download using IONDATA
+    if not IONDATA_AVAILABLE:
+        print(f"    IONData not available, cannot download {neuron_id}")
+        return None
+    
+    try:
+        print(f"    SWC not found locally, attempting download via IONDATA...")
+        os.makedirs(RAW_SWC_DIR, exist_ok=True)
+        
+        # Initialize IONData and download neuron
+        # Note: neuron_id should include .swc extension for IONDATA
+        iondata = IONData.IONData()
+        iondata.getRawNeuronTreeByID(sample_id, neuron_id)
+        
+        # IONDATA saves to ../resource/swc_raw/{sample_id}/{neuron_id}
+        iondata_default_path = f'../resource/swc_raw/{sample_id}/{neuron_id}'
+        
+        # Check if download was successful at IONDATA's default location
+        if os.path.exists(iondata_default_path):
+            # Move to our raw_swcs folder
+            shutil.move(iondata_default_path, raw_swc_file)
+            print(f"    ✓ Successfully downloaded and moved {neuron_id} to {RAW_SWC_DIR}")
+            return raw_swc_file
+        # Also check if it was somehow already in the right place
+        elif os.path.exists(raw_swc_file):
+            print(f"    ✓ Successfully downloaded {neuron_id} to {RAW_SWC_DIR}")
+            return raw_swc_file
+        else:
+            print(f"    ✗ Download failed: {neuron_id} not found at {iondata_default_path}")
+            return None
+    except Exception as e:
+        print(f"    ✗ Error downloading {neuron_id}: {e}")
+        return None
+
+
+def find_swc_file(neuron_id, swc_dir):
+    """Find SWC file in either the original directory or the raw_swcs folder.
+    
+    Priority:
+    1. Check RAW_SWC_DIR first (downloaded raw data)
+    2. Check swc_dir (original location)
+    3. Try to download if not found
+    
+    Args:
+        neuron_id: Neuron ID (e.g., '001.swc')
+        swc_dir: Original SWC directory to check
+    
+    Returns:
+        str: Path to SWC file if found/downloaded, None otherwise
+    """
+    # Priority 1: Check raw_swcs folder
+    raw_path = os.path.join(RAW_SWC_DIR, neuron_id)
+    if os.path.exists(raw_path):
+        return raw_path
+    
+    # Priority 2: Check original swc_dir
+    original_path = os.path.join(swc_dir, neuron_id)
+    if os.path.exists(original_path):
+        return original_path
+    
+    # Priority 3: Try to download
+    return download_swc_if_missing(neuron_id)
+
+
 def process_single_neuron(neuron_id, swc_dir, output_dir):
     """Process a single neuron through the FNT pipeline."""
-    swc_file = os.path.join(swc_dir, neuron_id)
+    # Find SWC file (check raw_swcs first, then original dir, then download)
+    swc_file = find_swc_file(neuron_id, swc_dir)
     
-    if not os.path.exists(swc_file):
-        print(f"  ✗ SWC file not found: {swc_file}")
+    if swc_file is None:
+        print(f"  ✗ SWC file not found and could not download: {neuron_id}")
         return False
     
-    # Step 1: Convert SWC to FNT
+    print(f"  Using SWC: {swc_file}")
+    
+    # Step 1: Preprocess SWC to flip x-coordinate if > 32000
+    preprocessed_swc = os.path.join(output_dir, f"{neuron_id}.processed.swc")
+    preprocessed_swc = preprocess_swc_coordinates(swc_file, preprocessed_swc)
+    if preprocessed_swc is None:
+        print(f"  ✗ Failed to preprocess SWC coordinates: {neuron_id}")
+        return False
+    
+    # Step 2: Convert preprocessed SWC to FNT
     fnt_file = os.path.join(output_dir, f"{neuron_id}.fnt")
-    if not swc_to_fnt(swc_file, fnt_file):
+    if not swc_to_fnt(preprocessed_swc, fnt_file):
         print(f"  ✗ Failed to convert SWC to FNT: {neuron_id}")
         return False
     
-    # Step 2: Decimate FNT
+    # Step 3: Decimate FNT
     decimate_file = os.path.join(output_dir, f"{neuron_id}.decimate.fnt")
     if not decimate_fnt(fnt_file, decimate_file):
         print(f"  ✗ Failed to decimate FNT: {neuron_id}")
         return False
     
-    # Step 3: Update neuron name in decimated FNT
+    # Step 4: Update neuron name in decimated FNT
     neuron_name = neuron_id.replace('.swc', '')
     if not update_fnt_neuron_name(decimate_file, neuron_name):
         print(f"  ✗ Failed to update FNT name: {neuron_id}")

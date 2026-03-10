@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 import sys, os
 import numpy as np
 import pandas as pd
@@ -11,7 +10,7 @@ from skimage import measure
 # Configuration
 NMT_DIR = r"D:\projectome_analysis\atlas\NMT_v2.1_sym\NMT_v2.1_sym"
 OUTPUT_DIR = r".\flatmap_outputs"
-SOMA_CSV = r'INS_df_v2.xlsx'
+SOMA_CSV = r'D:\projectome_analysis\main_scripts\neuron_tables\INS_df_v3.xlsx'
 
 TYPE_COLORS = {
     'PT': '#d62728', 'CT': '#2ca02c', 
