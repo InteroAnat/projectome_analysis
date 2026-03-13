@@ -21,12 +21,23 @@ class RegionAnalysisPerNeuron:
         self.terminal_regions: list = []
 
     def run(self):
-        self.mapped_brain_region_lengths, self.neuron_total_length = (
+        all_region_lengths, self.neuron_total_length = (
             self._calculate_neuronal_branch_length()
         )
         self.soma_region, self.terminal_regions = self._soma_and_terminal_region()
+        # Only keep regions that contain terminals (exclude fiber passing)
+        terminal_region_names = {t["region"] for t in self.terminal_regions}
+        self.mapped_brain_region_lengths = {
+            region: length
+            for region, length in all_region_lengths.items()
+            if region in terminal_region_names
+        }
 
     region_analysis = run
+
+    def get_terminal_regions_set(self) -> set:
+        """Return set of region names that contain terminals."""
+        return {t["region"] for t in self.terminal_regions}
 
     @staticmethod
     def _distance(p1, p2) -> float:
