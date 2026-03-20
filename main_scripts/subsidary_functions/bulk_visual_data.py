@@ -39,11 +39,21 @@ current_date = datetime.now().strftime('%Y%m%d')
 
 SAMPLE_ID = '251637'
 INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_INS.xlsx'
+
+# INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_M1.xlsx'
+# INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_subset.xlsx'
 PARENT_OUTPUT_DIR = r"W:\fMOST"
 
 # ==========================================
 # MAIN LOGIC
 # ==========================================
+def sanitize_path(name):
+    """Sanitize string for use in folder/file paths."""
+    if not name:
+        return name
+    # Replace path separators and other problematic characters
+    return name.replace('/', '-').replace('\\', '-').replace(':', '-')
+
 def process_batch():
     print(f"Loading neuron list from {INPUT_FILE}...")
     if INPUT_FILE.endswith('.xlsx'):
@@ -69,16 +79,21 @@ def process_batch():
     # Process each region group
     for region in regions:
         region_df = df[df['Soma_Region'] == region]
+        
+        # Sanitize region name for folder path
+        safe_region_folder = sanitize_path(str(region))
+        
         print(f"\n{'='*60}")
         print(f"Processing Region: {region} ({len(region_df)} neurons)")
+        print(f"Folder: Region_{safe_region_folder}")
         print(f"{'='*60}")
         
-        # Create region-specific output directory
+        # Create region-specific output directory (using sanitized name)
         region_output_base = os.path.join(
             PARENT_OUTPUT_DIR, 
             SAMPLE_ID,
             f"cube_data_{os.path.splitext(os.path.basename(INPUT_FILE))[0]}_{current_date}",
-            f"Region_{region}"
+            f"Region_{safe_region_folder}"
         )
         
         # Create subdirectories
