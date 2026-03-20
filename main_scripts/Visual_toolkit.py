@@ -1,11 +1,12 @@
 """
 Visual_toolkit.py - Macaque Brain Hybrid-Resolution Visualization Toolkit
 
-Version: 1.3.0 (MIP Visualization Fix)
+Version: 1.4.0 (Soma Region & Coordinate Support + Cache)
 
-UPDATE NOTES (v1.3.0):
-    - Changed `plot_soma_block` from single-slice view to Maximum Intensity Projection (MIP).
-      This ensures the soma is visible even if it is not perfectly centered in the Z-stack.
+UPDATE NOTES (v1.4.0):
+    - Added soma_region parameter to export and plot methods.
+    - Filenames and titles now include soma region and formatted coordinates.
+    - Supports cache directory configuration for bulk processing.
 """
 
 import os
@@ -52,13 +53,27 @@ class Visual_toolkit:
     """
     A unified tool for retrieving Macaque brain data from mixed sources.
     """
-    def __init__(self, sample_id='251637'):
-        self.sample_id = sample_id
-        project_root = os.path.dirname(os.getcwd())
+    def __init__(self, sample_id='251637', cache_dir=None):
+        """
+        Initialize toolkit.
         
-        self.output_dir = os.path.join(project_root, 'resource', 'segmented_cubes', sample_id)
-        self.cache_http_dir = os.path.join(project_root, 'resource', 'cubes', sample_id, 'high_res_http')
-        self.cache_ssh_dir  = os.path.join(project_root, 'resource', 'cubes', sample_id, 'low_res_ssh')
+        Args:
+            sample_id: Sample ID (e.g., '251637')
+            cache_dir: Optional custom cache directory. If None, uses default project structure.
+        """
+        self.sample_id = sample_id
+        
+        if cache_dir:
+            # Use custom cache directory (for bulk processing)
+            self.output_dir = os.path.join(cache_dir, 'output')
+            self.cache_http_dir = os.path.join(cache_dir, 'cubes', sample_id, 'high_res_http')
+            self.cache_ssh_dir = os.path.join(cache_dir, 'cubes', sample_id, 'low_res_ssh')
+        else:
+            # Use default project structure
+            project_root = os.path.dirname(os.getcwd())
+            self.output_dir = os.path.join(project_root, 'resource', 'segmented_cubes', sample_id)
+            self.cache_http_dir = os.path.join(project_root, 'resource', 'cubes', sample_id, 'high_res_http')
+            self.cache_ssh_dir = os.path.join(project_root, 'resource', 'cubes', sample_id, 'low_res_ssh')
         
         for folder in [self.output_dir, self.cache_http_dir, self.cache_ssh_dir]:
             if not os.path.exists(folder):
@@ -214,14 +229,24 @@ class Visual_toolkit:
         return volume, [origin_x, origin_y, origin_z], RESOLUTION_LOW
 
     # ==========================================
-    # EXPORT & VISUALIZATION (UPDATED)
+    # EXPORT & VISUALIZATION (UPDATED WITH SOMA REGION)
     # ==========================================
-    def export_data(self, volume, origin, resolution, neuron_id, suffix="Volume", output_dir=None):
+    def export_data(self, volume, origin, resolution, neuron_id, suffix="Volume", 
+                    soma_region=None, soma_coords=None, output_dir=None):
+        """
+        Export volume data with soma region info in filename.
+        Coordinates are shown in title but NOT in filename.
+        """
         target_dir = output_dir if output_dir else self.output_dir
         if not os.path.exists(target_dir):
             os.makedirs(target_dir, exist_ok=True)
 
-        filename = f"{self.sample_id}_{neuron_id}_{suffix}"
+        # Build filename with region (coordinates NOT in filename)
+        if soma_region:
+            filename = f"{self.sample_id}_{neuron_id}_{soma_region}_{suffix}"
+        else:
+            filename = f"{self.sample_id}_{neuron_id}_{suffix}"
+            
         ext = ".nii.gz" if volume.ndim == 3 else ".tif"
         full_path = os.path.join(target_dir, filename + ext)
         
@@ -238,14 +263,15 @@ class Visual_toolkit:
             if volume.ndim == 3: volume = np.max(volume, axis=0) 
             tifffile.imwrite(full_path, volume)
 
-    def plot_soma_block(self, volume_3d, origin, resolution, soma_coords, neuron_id, suffix="SomaBlock", output_dir=None):
+    def plot_soma_block(self, volume_3d, origin, resolution, soma_coords, neuron_id, 
+                        suffix="SomaBlock", soma_region=None, output_dir=None):
         """
         Plots Grayscale Anatomy (High Res) using MIP.
+        Includes soma region in filename and title.
         """
         print(f"  > Generating Grayscale Plot ({suffix})...")
         
         # --- FIXED: Use MIP (Maximum Intensity Projection) instead of Middle Slice ---
-        # This collapses the Z-stack to ensure the soma is seen regardless of Z-position.
         img = np.max(volume_3d, axis=0)
         
         # Local Soma Pixel
@@ -254,7 +280,6 @@ class Visual_toolkit:
         
         # Contrast (Gamma 0.5)
         p1, p99 = np.percentile(img, 0.5), np.percentile(img, 99.5)
-        # Avoid division by zero if image is empty
         if p99 > p1:
             img_norm = np.clip((img - p1)/(p99-p1), 0, 1)
         else:
@@ -262,14 +287,17 @@ class Visual_toolkit:
         
         img_final = np.power(img_norm, 0.5)
         
-        self._save_plot(img_final, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], 
-                       cmap='gray', marker_color='cyan', output_dir=output_dir, scale_bar_um=30)
+        self._save_plot(img_final, sx, sy, resolution, neuron_id, suffix, 
+                       volume_3d.shape[0], cmap='gray', marker_color='cyan', 
+                       soma_region=soma_region, soma_coords=soma_coords,
+                       output_dir=output_dir, scale_bar_um=30)
 
     def plot_widefield_context(self, volume_3d, origin, resolution, soma_coords, neuron_id, 
                              suffix="WideField", manual_threshold=100, bg_intensity=0.4, 
-                             swc_tree=None, output_dir=None):
+                             swc_tree=None, soma_region=None, output_dir=None):
         """
         Plots Green Intensity on Dark Background + SWC Overlay using MIP.
+        Includes soma region in filename and title.
         """
         print(f"  > Generating Composite Plot ({suffix})...")
         
@@ -312,7 +340,8 @@ class Visual_toolkit:
         sy = (soma_coords[1] - origin[1]) / resolution[1]
         
         self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, volume_3d.shape[0], 
-                           marker_color='white', output_dir=output_dir, scale_bar_um=500)
+                           marker_color='white', soma_region=soma_region, soma_coords=soma_coords,
+                           output_dir=output_dir, scale_bar_um=500)
 
     def _overlay_swc(self, ax, swc_tree, origin, resolution, h, w):
         if swc_tree:
@@ -329,12 +358,16 @@ class Visual_toolkit:
             if path_x and path_y:
                 ax.plot(path_x, path_y, color='red', linewidth=0.5, alpha=0.5)
 
-    def _save_plot(self, img_data, sx, sy, resolution, neuron_id, suffix, z_slices, cmap, marker_color, output_dir=None, scale_bar_um=30):
+    def _save_plot(self, img_data, sx, sy, resolution, neuron_id, suffix, z_slices, 
+                   cmap, marker_color, soma_region=None, soma_coords=None, output_dir=None, scale_bar_um=30):
         fig, ax = plt.subplots(figsize=(12, 12), facecolor='black')
         ax.imshow(img_data, cmap=cmap, origin='upper')
-        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir, scale_bar_um)
+        self._finalize_plot(fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, 
+                           marker_color, soma_region=soma_region, soma_coords=soma_coords,
+                           output_dir=output_dir, scale_bar_um=scale_bar_um)
 
-    def _finalize_plot(self, fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, marker_color, output_dir=None, scale_bar_um=30):
+    def _finalize_plot(self, fig, ax, sx, sy, resolution, neuron_id, suffix, z_slices, 
+                       marker_color, soma_region=None, soma_coords=None, output_dir=None, scale_bar_um=30):
         h, w = ax.images[0].get_size()
         
         target_dir = output_dir if output_dir else self.output_dir
@@ -357,11 +390,24 @@ class Visual_toolkit:
         ax.plot([bx, bx+bar_px], [by, by], color='white', linewidth=3)
         ax.text(bx+bar_px/2, by-20, f"{scale_bar_um} µm", color='white', ha='center', fontweight='bold')
         
-        title = f"{self.sample_id} | {neuron_id} | {suffix}\nFOV: {w*resolution[0]:.0f}x{h*resolution[1]:.0f} µm | Depth: {z_slices*resolution[2]:.0f} µm"
-        ax.set_title(title, color='white', fontsize=14)
+        # Build title with soma region and coordinates
+        if soma_region:
+            region_line = f"Region: {soma_region}"
+            if soma_coords:
+                region_line += f" | XYZ: ({int(soma_coords[0])}, {int(soma_coords[1])}, {int(soma_coords[2])})"
+            title = f"{self.sample_id} | {neuron_id} | {suffix}\n{region_line}\nFOV: {w*resolution[0]:.0f}x{h*resolution[1]:.0f} µm | Depth: {z_slices*resolution[2]:.0f} µm"
+        else:
+            title = f"{self.sample_id} | {neuron_id} | {suffix}\nFOV: {w*resolution[0]:.0f}x{h*resolution[1]:.0f} µm | Depth: {z_slices*resolution[2]:.0f} µm"
+        
+        ax.set_title(title, color='white', fontsize=12)
         ax.axis('off')
         
-        plot_name = f"{self.sample_id}_{neuron_id}_{suffix}_Plot.png"
+        # Build filename with soma region (coordinates NOT in filename)
+        if soma_region:
+            plot_name = f"{self.sample_id}_{neuron_id}_{soma_region}_{suffix}_Plot.png"
+        else:
+            plot_name = f"{self.sample_id}_{neuron_id}_{suffix}_Plot.png"
+            
         save_path = os.path.join(target_dir, plot_name)
         
         plt.savefig(save_path, bbox_inches='tight', pad_inches=0.1, facecolor='black', dpi=600)
@@ -379,12 +425,16 @@ if __name__ == "__main__":
         except: soma_xyz = tree.root.xyz
         print(f"Target Soma: {soma_xyz}")
         
-        # Test 1: High Res Soma Block (Uses new MIP logic)
-        high_res_volume, high_res_origin, high_res_resolution = toolkit.get_high_res_block(soma_xyz, grid_radius=1)
-        toolkit.plot_soma_block(high_res_volume, high_res_origin, high_res_resolution, soma_xyz, NEURON)
+        # Test with soma region
+        test_region = "DI"
         
-        # Test 2: Low Res Wide Field (Uses existing MIP logic)
+        # Test 1: High Res Soma Block
+        high_res_volume, high_res_origin, high_res_resolution = toolkit.get_high_res_block(soma_xyz, grid_radius=1)
+        toolkit.plot_soma_block(high_res_volume, high_res_origin, high_res_resolution, soma_xyz, NEURON, soma_region=test_region)
+        
+        # Test 2: Low Res Wide Field
         low_res_volume, low_res_origin, low_res_resolution = toolkit.get_low_res_widefield(soma_xyz, width_um=8000, height_um=8000, depth_um=30)
-        toolkit.plot_widefield_context(low_res_volume, low_res_origin, low_res_resolution, soma_xyz, NEURON, bg_intensity=2.0, swc_tree=tree)
+        toolkit.plot_widefield_context(low_res_volume, low_res_origin, low_res_resolution, soma_xyz, NEURON, 
+                                       bg_intensity=2.0, swc_tree=tree, soma_region=test_region)
         
     toolkit.close()
