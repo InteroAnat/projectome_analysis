@@ -231,6 +231,13 @@ class Visual_toolkit:
     # ==========================================
     # EXPORT & VISUALIZATION (UPDATED WITH SOMA REGION)
     # ==========================================
+    def _sanitize_filename(self, name):
+        """Sanitize string for use in filename (remove/replace path separators)."""
+        if not name:
+            return name
+        # Replace path separators and other problematic characters
+        return name.replace('/', '-').replace('\\', '-').replace(':', '-')
+
     def export_data(self, volume, origin, resolution, neuron_id, suffix="Volume", 
                     soma_region=None, soma_coords=None, output_dir=None):
         """
@@ -242,8 +249,10 @@ class Visual_toolkit:
             os.makedirs(target_dir, exist_ok=True)
 
         # Build filename with region (coordinates NOT in filename)
+        # Sanitize region name to prevent path issues
         if soma_region:
-            filename = f"{self.sample_id}_{neuron_id}_{soma_region}_{suffix}"
+            safe_region = self._sanitize_filename(soma_region)
+            filename = f"{self.sample_id}_{neuron_id}_{safe_region}_{suffix}"
         else:
             filename = f"{self.sample_id}_{neuron_id}_{suffix}"
             
@@ -403,8 +412,10 @@ class Visual_toolkit:
         ax.axis('off')
         
         # Build filename with soma region (coordinates NOT in filename)
+        # Sanitize region name to prevent path issues
         if soma_region:
-            plot_name = f"{self.sample_id}_{neuron_id}_{soma_region}_{suffix}_Plot.png"
+            safe_region = self._sanitize_filename(soma_region)
+            plot_name = f"{self.sample_id}_{neuron_id}_{safe_region}_{suffix}_Plot.png"
         else:
             plot_name = f"{self.sample_id}_{neuron_id}_{suffix}_Plot.png"
             
