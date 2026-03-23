@@ -38,11 +38,12 @@ except ImportError:
 current_date = datetime.now().strftime('%Y%m%d')
 
 SAMPLE_ID = '251637'
-INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_INS.xlsx'
+# INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_INS.xlsx'
 
 # INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_M1.xlsx'
 # INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_subset.xlsx'
-PARENT_OUTPUT_DIR = r"W:\fMOST"
+INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_ACC.xlsx'
+PARENT_OUTPUT_DIR = r"W:\fMOST\test"
 
 # ==========================================
 # MAIN LOGIC
