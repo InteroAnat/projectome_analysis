@@ -1,0 +1,550 @@
+---
+title: "数据可视化教程 - ggplot2入门到精通"
+subtitle: "Data Visualization with ggplot2: Grammar of Graphics"
+author: "系统学习系列 #3"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    fig_width: 12
+    fig_height: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.dpi = 150
+)
+```
+
+---
+
+# 学习目标
+
+完成本教程后，您将能够：
+
+1. ✅ 理解ggplot2的图形语法
+2. ✅ 创建各种统计图形：散点图、线图、柱状图、箱线图等
+3. ✅ 自定义图形外观：颜色、主题、标签
+4. ✅ 创建多面板图形
+5. ✅ 保存高质量图形
+
+---
+
+# 1. ggplot2简介
+
+## 1.1 图形语法 (Grammar of Graphics)
+
+ggplot2基于"图形语法"理念，将图形分解为可组合的基本元素：
+
+- **数据 (data)**: 要可视化的数据框
+- **映射 (aes)**: 数据变量到图形属性的映射
+- **几何对象 (geom)**: 表示数据的图形元素
+- **统计变换 (stat)**: 数据汇总计算
+- **坐标系 (coord)**: 数据映射到平面的方式
+- **分面 (facet)**: 分面板显示数据子集
+- **主题 (theme)**: 图形整体外观
+
+## 1.2 安装和基础设置
+
+```{r setup-ggplot}
+# 安装（如果还没有）
+# install.packages("ggplot2")
+
+# 加载
+library(ggplot2)
+library(dplyr)      # 数据处理
+library(tidyr)      # 数据整理
+
+# 设置默认主题
+theme_set(theme_minimal(base_size = 12))
+
+# 创建示例数据
+set.seed(42)
+neurons <- data.frame(
+  NeuronID = paste0("N", sprintf("%03d", 1:100)),
+  Type = sample(c("ITi", "ITs", "CT", "PT"), 100, 
+                replace = TRUE, prob = c(0.65, 0.25, 0.07, 0.03)),
+  Length = round(rnorm(100, 8000, 4000)),
+  Terminals = NA,
+  Ipsilateral = sample(c(TRUE, FALSE), 100, replace = TRUE, prob = c(0.7, 0.3)),
+  Laterality_Index = rnorm(100, 0.6, 0.3),
+  Cluster = sample(1:12, 100, replace = TRUE)
+)
+
+# 让Terminals与Length相关
+neurons$Terminals <- round(neurons$Length / 150 + rnorm(100, 0, 10))
+neurons$Terminals <- pmax(neurons$Terminals, 5)
+
+# 确保Length合理
+neurons$Length <- pmax(neurons$Length, 500)
+
+# 限制Laterality_Index范围
+neurons$Laterality_Index <- pmin(pmax(neurons$Laterality_Index, -1), 1)
+
+head(neurons)
+```
+
+---
+
+# 2. 基础图形
+
+## 2.1 散点图 (Scatter Plot) ⭐
+
+```{r scatter-basic}
+# 基础散点图
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point()
+
+# 添加颜色和透明度
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5, color = "steelblue", size = 2)
+
+# 按类型着色
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(alpha = 0.6, size = 2)
+
+# 按类型和大小映射
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type, size = Laterality_Index)) +
+  geom_point(alpha = 0.5)
+```
+
+## 2.2 柱状图 (Bar Plot)
+
+```{r bar-basic}
+# 计数柱状图
+ggplot(neurons, aes(x = Type)) +
+  geom_bar(fill = "steelblue")
+
+# 按侧向性分组
+ggplot(neurons, aes(x = Type, fill = Ipsilateral)) +
+  geom_bar(position = "stack")  # 堆叠
+
+ggplot(neurons, aes(x = Type, fill = Ipsilateral)) +
+  geom_bar(position = "dodge")  # 并列
+
+ggplot(neurons, aes(x = Type, fill = Ipsilateral)) +
+  geom_bar(position = "fill")   # 比例
+```
+
+## 2.3 箱线图和小提琴图 (Box & Violin Plot)
+
+```{r boxplot}
+# 基础箱线图
+ggplot(neurons, aes(x = Type, y = Length)) +
+  geom_boxplot()
+
+# 添加散点
+ggplot(neurons, aes(x = Type, y = Length, fill = Type)) +
+  geom_boxplot(alpha = 0.5) +
+  geom_jitter(width = 0.2, alpha = 0.3)
+
+# 小提琴图
+ggplot(neurons, aes(x = Type, y = Length, fill = Type)) +
+  geom_violin(alpha = 0.5) +
+  geom_boxplot(width = 0.2, alpha = 0.8)
+```
+
+## 2.4 直方图和密度图
+
+```{r histogram}
+# 直方图
+ggplot(neurons, aes(x = Length)) +
+  geom_histogram(bins = 30, fill = "steelblue", color = "white")
+
+# 密度图
+ggplot(neurons, aes(x = Length)) +
+  geom_density(fill = "steelblue", alpha = 0.5)
+
+# 按类型分组的密度图
+ggplot(neurons, aes(x = Length, fill = Type)) +
+  geom_density(alpha = 0.5)
+
+# 直方图 + 密度曲线
+ggplot(neurons, aes(x = Length)) +
+  geom_histogram(aes(y = ..density..), bins = 30, 
+                 fill = "steelblue", color = "white", alpha = 0.5) +
+  geom_density(color = "red", size = 1)
+```
+
+---
+
+# 3. 图形定制
+
+## 3.1 颜色方案
+
+```{r colors}
+# 使用内置颜色
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(size = 2) +
+  scale_color_brewer(palette = "Set1")  # 调色板
+
+# 自定义颜色
+type_colors <- c("ITi" = "#377EB8", "ITs" = "#4DAF4A", 
+                 "CT" = "#FF7F00", "PT" = "#E41A1C")
+
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(size = 2) +
+  scale_color_manual(values = type_colors)
+
+# 连续变量的颜色
+ggplot(neurons, aes(x = Length, y = Terminals, color = Laterality_Index)) +
+  geom_point(size = 2) +
+  scale_color_gradient(low = "blue", high = "red")
+
+# viridis颜色方案 (色盲友好)
+ggplot(neurons, aes(x = Length, y = Terminals, color = Laterality_Index)) +
+  geom_point(size = 2) +
+  scale_color_viridis_c()
+```
+
+## 3.2 坐标轴和标签
+
+```{r labels}
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(alpha = 0.6, size = 2) +
+  labs(
+    title = "Neuron Projection Analysis",
+    subtitle = "Relationship between axon length and terminal count",
+    x = "Total Axon Length (μm)",
+    y = "Number of Terminal Sites",
+    color = "Neuron Type",
+    caption = "Data from 251637 insula neurons"
+  )
+```
+
+## 3.3 坐标轴变换
+
+```{r scales}
+# 对数坐标
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  scale_x_log10() +
+  scale_y_log10()
+
+# 限制坐标范围
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  coord_cartesian(xlim = c(0, 20000), ylim = c(0, 150))
+
+# 固定纵横比
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  coord_fixed(ratio = 100)  # x/y比例
+```
+
+## 3.4 主题
+
+```{r themes}
+p <- ggplot(neurons, aes(x = Type, y = Length, fill = Type)) +
+  geom_boxplot()
+
+# 不同主题
+p + theme_gray()      # 默认灰色背景
+p + theme_bw()        # 黑白
+p + theme_minimal()   # 极简
+p + theme_classic()   # 经典
+
+# 自定义主题
+p + theme(
+  plot.title = element_text(size = 16, face = "bold", hjust = 0.5),
+  axis.title = element_text(size = 12),
+  axis.text = element_text(size = 10),
+  legend.position = "bottom",
+  panel.grid.major = element_line(color = "gray90"),
+  panel.grid.minor = element_blank()
+)
+```
+
+---
+
+# 4. 高级图形
+
+## 4.1 散点图矩阵 (Pairs Plot)
+
+```{r pairs-plot}
+library(GGally)
+
+# 选择数值列
+numeric_cols <- neurons %>%
+  select(Length, Terminals, Laterality_Index)
+
+# 创建散点图矩阵
+ggpairs(numeric_cols,
+        upper = list(continuous = wrap("cor", size = 4)),
+        lower = list(continuous = wrap("points", alpha = 0.5, size = 1)),
+        diag = list(continuous = wrap("densityDiag", alpha = 0.5)))
+
+# 按类型着色
+ggpairs(neurons,
+        columns = c("Length", "Terminals", "Laterality_Index"),
+        aes(color = Type),
+        upper = list(continuous = wrap("cor", size = 4)),
+        lower = list(continuous = wrap("points", alpha = 0.5, size = 1)))
+```
+
+## 4.2 回归线和置信区间
+
+```{r regression}
+# 线性回归
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "lm", color = "red", fill = "pink")
+
+# LOESS平滑曲线
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  geom_smooth(method = "loess", color = "blue", fill = "lightblue")
+
+# 按类型分组回归
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(alpha = 0.4) +
+  geom_smooth(method = "lm", se = FALSE)
+```
+
+## 4.3 多面板图形 (Faceting)
+
+```{r faceting}
+# 按类型分面
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~ Type)  # 按类型分面
+
+# 多维度分面
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~ Type + Ipsilateral, ncol = 4)
+
+# 网格分面
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  facet_grid(Ipsilateral ~ Type)
+
+# 自由坐标轴
+ggplot(neurons, aes(x = Length, y = Terminals)) +
+  geom_point(alpha = 0.5) +
+  facet_wrap(~ Type, scales = "free")
+```
+
+---
+
+# 5. 统计图形
+
+## 5.1 误差线和均值
+
+```{r errorbars}
+# 计算统计值
+stats <- neurons %>%
+  group_by(Type) %>%
+  summarize(
+    mean_length = mean(Length),
+    se_length = sd(Length) / sqrt(n()),
+    mean_terminals = mean(Terminals),
+    se_terminals = sd(Terminals) / sqrt(n())
+  )
+
+# 带误差线的柱状图
+ggplot(stats, aes(x = Type, y = mean_length, fill = Type)) +
+  geom_bar(stat = "identity", alpha = 0.7) +
+  geom_errorbar(aes(ymin = mean_length - se_length, 
+                    ymax = mean_length + se_length),
+                width = 0.2)
+
+# 点图 + 误差线
+ggplot(stats, aes(x = Type, y = mean_length, color = Type)) +
+  geom_point(size = 4) +
+  geom_errorbar(aes(ymin = mean_length - se_length, 
+                    ymax = mean_length + se_length),
+                width = 0.2, size = 1)
+```
+
+## 5.2 相关系数图
+
+```{r correlation}
+library(corrplot)
+
+# 计算相关系数
+cor_data <- neurons %>%
+  select(Length, Terminals, Laterality_Index) %>%
+  cor()
+
+# 基础相关系数图
+corrplot(cor_data, method = "color", type = "upper",
+         addCoef.col = "black", tl.col = "black")
+
+# 圆形相关系数图
+corrplot(cor_data, method = "circle", type = "lower")
+```
+
+---
+
+# 6. 高级定制
+
+## 6.1 注释
+
+```{r annotations}
+ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(alpha = 0.5) +
+  # 添加文本注释
+  annotate("text", x = 15000, y = 20, 
+           label = "High length, low terminals",
+           hjust = 0, size = 4) +
+  # 添加矩形
+  annotate("rect", xmin = 14000, xmax = 20000, 
+           ymin = 0, ymax = 30, 
+           alpha = 0.1, fill = "red") +
+  # 添加箭头
+  annotate("segment", x = 15000, xend = 17000, 
+           y = 25, yend = 15,
+           arrow = arrow(length = unit(0.2, "cm")))
+```
+
+## 6.2 多图组合
+
+```{r cowplot}
+library(cowplot)
+
+# 创建多个图
+p1 <- ggplot(neurons, aes(x = Length)) +
+  geom_histogram(bins = 30, fill = "steelblue")
+
+p2 <- ggplot(neurons, aes(x = Type, y = Length, fill = Type)) +
+  geom_boxplot()
+
+p3 <- ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(alpha = 0.5)
+
+p4 <- ggplot(neurons, aes(x = Laterality_Index)) +
+  geom_density(fill = "steelblue", alpha = 0.5)
+
+# 组合图形
+plot_grid(p1, p2, p3, p4, labels = c("A", "B", "C", "D"), ncol = 2)
+
+# 不同大小
+plot_grid(p1, p2, ncol = 1, rel_heights = c(1, 2))
+```
+
+---
+
+# 7. 保存图形
+
+## 7.1 ggsave函数
+
+```{r save-plot, eval=FALSE}
+# 创建一个图
+final_plot <- ggplot(neurons, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(size = 2, alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(
+    title = "Neuron Projection Analysis",
+    x = "Total Axon Length (μm)",
+    y = "Terminal Count"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "bottom")
+
+# 保存为不同格式
+ggsave("neuron_plot.pdf", final_plot, width = 10, height = 6)
+ggsave("neuron_plot.png", final_plot, width = 10, height = 6, dpi = 300)
+ggsave("neuron_plot.tiff", final_plot, width = 10, height = 6, dpi = 300)
+ggsave("neuron_plot.svg", final_plot, width = 10, height = 6)
+
+# 保存多个图
+# ggsave("figure.pdf", plot_grid(p1, p2, ncol = 2), width = 12, height = 5)
+```
+
+---
+
+# 8. 实战示例
+
+## 8.1 完整的投射分析图
+
+```{r complete-example}
+# 数据准备
+plot_data <- neurons %>%
+  mutate(
+    Size_Category = case_when(
+      Length < 5000 ~ "Small",
+      Length < 10000 ~ "Medium",
+      TRUE ~ "Large"
+    ),
+    Terminal_Density = Terminals / (Length / 1000)
+  )
+
+# 主图：投射长度vs终端数量
+main_plot <- ggplot(plot_data, aes(x = Length, y = Terminals, color = Type)) +
+  geom_point(aes(size = abs(Laterality_Index)), alpha = 0.6) +
+  geom_smooth(method = "lm", se = TRUE, alpha = 0.2) +
+  scale_color_manual(values = c("ITi" = "#377EB8", "ITs" = "#4DAF4A", 
+                                "CT" = "#FF7F00", "PT" = "#E41A1C")) +
+  labs(
+    title = "Axon Length vs Terminal Count",
+    subtitle = "Point size indicates laterality bias",
+    x = "Total Axon Length (μm)",
+    y = "Number of Terminals",
+    color = "Type",
+    size = "|Laterality|"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "right")
+
+print(main_plot)
+
+# 箱线图
+type_plot <- ggplot(plot_data, aes(x = Type, y = Length, fill = Type)) +
+  geom_violin(alpha = 0.5) +
+  geom_boxplot(width = 0.2, alpha = 0.8) +
+  scale_fill_manual(values = c("ITi" = "#377EB8", "ITs" = "#4DAF4A", 
+                               "CT" = "#FF7F00", "PT" = "#E41A1C")) +
+  labs(title = "Length Distribution by Type", y = "Length (μm)") +
+  theme_minimal() +
+  theme(legend.position = "none")
+
+print(type_plot)
+
+# 组合
+plot_grid(main_plot, type_plot, ncol = 1, rel_heights = c(2, 1))
+```
+
+---
+
+# 总结
+
+## ggplot2核心概念
+
+```
+ggplot(data = <DATA>) +
+  <GEOM_FUNCTION>(aes(<MAPPINGS>)) +
+  <SCALE_FUNCTION> +
+  <COORDINATE_FUNCTION> +
+  <FACET_FUNCTION> +
+  <THEME_FUNCTION>
+```
+
+## 常用geom
+
+| 函数 | 用途 |
+|------|------|
+| `geom_point()` | 散点图 |
+| `geom_line()` | 线图 |
+| `geom_bar()` | 柱状图 |
+| `geom_histogram()` | 直方图 |
+| `geom_density()` | 密度图 |
+| `geom_boxplot()` | 箱线图 |
+| `geom_violin()` | 小提琴图 |
+| `geom_smooth()` | 平滑曲线 |
+| `geom_text()` | 文本 |
+
+## 下一步
+
+- **04_PCA_Dimensionality_Reduction.Rmd** - 降维分析
+- **05_Statistical_Tests.Rmd** - 统计检验
+
+---
+
+**恭喜您掌握ggplot2可视化！** 🎉

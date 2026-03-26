@@ -1,0 +1,581 @@
+---
+title: "主成分分析教程 - PCA与降维"
+subtitle: "Principal Component Analysis for Projectome Data"
+author: "系统学习系列 #4"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    fig_width: 10
+    fig_height: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.dpi = 150
+)
+```
+
+---
+
+# 学习目标
+
+完成本教程后，您将能够：
+
+1. ✅ 理解PCA的数学原理和生物学意义
+2. ✅ 对投射组数据进行PCA分析
+3. ✅ 可视化PCA结果（散点图、碎石图、载荷图）
+4. ✅ 解释主成分的生物学含义
+5. ✅ 使用t-SNE和UMAP进行非线性降维
+
+---
+
+# 1. PCA理论基础
+
+## 1.1 什么是PCA?
+
+**主成分分析 (Principal Component Analysis, PCA)** 是一种线性降维技术，通过正交变换将高维数据投影到低维空间，同时保留最大方差。
+
+### PCA在神经科学中的应用：
+- **神经元分类**：基于投射模式识别神经元类型
+- **降维可视化**：将高维投射数据可视化
+- **噪声过滤**：提取主要变异模式
+- **特征提取**：识别最重要的投射特征
+
+## 1.2 PCA原理图解
+
+```{r pca-concept, eval=FALSE}
+# PCA找到数据方差最大的方向作为第一主成分
+# 第二主成分与第一主成分正交，解释剩余方差最大部分
+# 依此类推...
+```
+
+---
+
+# 2. 数据准备
+
+## 2.1 读取投射组数据
+
+```{r load-data}
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(factoextra)   # PCA可视化
+
+# 读取数据
+data_dir <- "tables"
+file_results <- file.path(data_dir, "251637_results_v5.xlsx")
+file_clustering_rds <- file.path(data_dir, "clustering_results.rds")
+
+# 读取投射数据和聚类结果
+proj_strength <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+cluster_info <- readRDS(file_clustering_rds)
+
+# 查看数据结构
+cat("投射数据维度:", nrow(proj_strength), "x", ncol(proj_strength), "\n")
+cat("脑区数量:", ncol(proj_strength) - 2, "\n")  # 减去NeuronID和Neuron_Type
+```
+
+## 2.2 数据预处理
+
+```{r preprocess}
+# 提取投射矩阵
+proj_matrix <- proj_strength %>%
+  select(-NeuronID, -Neuron_Type) %>%
+  as.matrix()
+
+rownames(proj_matrix) <- proj_strength$NeuronID
+
+# 处理缺失值
+proj_matrix[is.na(proj_matrix)] <- 0
+
+# 数据标准化（每行标准化）
+# PCA对变量的尺度敏感，标准化很重要
+proj_scaled <- scale(proj_matrix, center = TRUE, scale = TRUE)
+
+# 查看标准化后的数据
+cat("标准化后数据范围:", round(min(proj_scaled), 2), "to", round(max(proj_scaled), 2), "\n")
+cat("标准化后均值:", round(mean(proj_scaled), 5), "\n")
+cat("标准化后标准差:", round(sd(as.vector(proj_scaled)), 2), "\n")
+```
+
+---
+
+# 3. PCA分析
+
+## 3.1 执行PCA
+
+```{r pca-compute}
+# 使用prcomp进行PCA
+# center=TRUE: 中心化 (减去均值)
+# scale.=TRUE: 标准化 (除以标准差)
+pca_result <- prcomp(proj_scaled, center = TRUE, scale. = TRUE)
+
+# 查看PCA结果摘要
+summary(pca_result)
+```
+
+## 3.2 解释方差
+
+```{r variance}
+# 提取方差信息
+var_explained <- pca_result$sdev^2 / sum(pca_result$sdev^2)
+var_cumsum <- cumsum(var_explained)
+
+# 创建方差数据框
+var_df <- data.frame(
+  PC = 1:length(var_explained),
+  Variance = var_explained,
+  Cumulative = var_cumsum
+)
+
+# 显示前10个主成分
+head(var_df, 10)
+
+# 找到解释90%方差的主成分数
+n_pc_90 <- which(var_cumsum >= 0.9)[1]
+cat("解释90%方差需要", n_pc_90, "个主成分\n")
+```
+
+## 3.3 碎石图 (Scree Plot)
+
+碎石图帮助确定保留多少主成分。
+
+```{r scree-plot}
+# 基础碎石图
+fviz_eig(pca_result, addlabels = TRUE, ylim = c(0, 50))
+
+# 自定义碎石图
+ggplot(var_df[1:20, ], aes(x = PC, y = Variance * 100)) +
+  geom_bar(stat = "identity", fill = "steelblue", alpha = 0.7) +
+  geom_line(aes(x = PC, y = Cumulative * 100), color = "red", size = 1) +
+  geom_point(aes(x = PC, y = Cumulative * 100), color = "red", size = 2) +
+  geom_hline(yintercept = 90, linetype = "dashed", color = "gray50") +
+  labs(
+    title = "PCA Scree Plot",
+    subtitle = paste("First", n_pc_90, "PCs explain 90% of variance"),
+    x = "Principal Component",
+    y = "Explained Variance (%)"
+  ) +
+  scale_x_continuous(breaks = 1:20) +
+  theme_minimal()
+```
+
+---
+
+# 4. PCA可视化
+
+## 4.1 主成分得分图 (Score Plot)
+
+展示样本在主成分空间中的分布。
+
+```{r score-plot}
+# 获取主成分得分
+pc_scores <- as.data.frame(pca_result$x)
+pc_scores$NeuronID <- rownames(pc_scores)
+
+# 添加元数据
+pc_scores <- pc_scores %>%
+  left_join(
+    proj_strength %>% select(NeuronID, Neuron_Type),
+    by = "NeuronID"
+  ) %>%
+  left_join(
+    cluster_info$cluster_df %>% select(NeuronID, Cluster),
+    by = "NeuronID"
+  )
+
+# PC1 vs PC2散点图
+ggplot(pc_scores, aes(x = PC1, y = PC2, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.6) +
+  stat_ellipse(level = 0.95, size = 1) +  # 添加置信椭圆
+  scale_color_manual(values = c(
+    "ITi" = "#377EB8", "ITs" = "#4DAF4A",
+    "CT" = "#FF7F00", "PT" = "#E41A1C"
+  )) +
+  labs(
+    title = "PCA Score Plot: PC1 vs PC2",
+    subtitle = paste0(
+      "PC1: ", round(var_explained[1] * 100, 1), "% | ",
+      "PC2: ", round(var_explained[2] * 100, 1), "%"
+    ),
+    x = "PC1",
+    y = "PC2"
+  ) +
+  theme_minimal()
+
+# 使用factoextra包的可视化
+fviz_pca_ind(pca_result,
+             label = "none",
+             habillage = pc_scores$Neuron_Type,
+             addEllipses = TRUE,
+             ellipse.level = 0.95,
+             palette = "jco",
+             title = "PCA - Individuals")
+```
+
+## 4.2 按聚类着色
+
+```{r pca-by-cluster}
+# 按形态学聚类着色
+ggplot(pc_scores, aes(x = PC1, y = PC2, color = factor(Cluster))) +
+  geom_point(size = 3, alpha = 0.6) +
+  scale_color_viridis_d(option = "turbo") +
+  labs(
+    title = "PCA by Morphological Cluster",
+    subtitle = "PC1 vs PC2",
+    x = "PC1",
+    y = "PC2",
+    color = "Cluster"
+  ) +
+  theme_minimal()
+```
+
+## 4.3 3D PCA可视化
+
+```{r pca-3d, eval=FALSE}
+# 需要plotly包
+# install.packages("plotly")
+library(plotly)
+
+# 3D散点图
+plot_ly(pc_scores, 
+        x = ~PC1, y = ~PC2, z = ~PC3,
+        color = ~Neuron_Type,
+        colors = c("#377EB8", "#4DAF4A", "#FF7F00", "#E41A1C"),
+        type = "scatter3d",
+        mode = "markers",
+        marker = list(size = 5)) %>%
+  layout(
+    title = "3D PCA Visualization",
+    scene = list(
+      xaxis = list(title = "PC1"),
+      yaxis = list(title = "PC2"),
+      zaxis = list(title = "PC3")
+    )
+  )
+```
+
+---
+
+# 5. 载荷分析 (Loadings)
+
+## 5.1 变量载荷图
+
+载荷表示原始变量与主成分的相关性。
+
+```{r loadings}
+# 获取载荷
+loadings <- as.data.frame(pca_result$rotation)
+loadings$Variable <- rownames(loadings)
+
+# Top 10 对PC1贡献最大的变量
+top_pc1 <- loadings %>%
+  arrange(desc(abs(PC1))) %>%
+  head(10)
+
+ggplot(top_pc1, aes(x = reorder(Variable, abs(PC1)), y = PC1)) +
+  geom_bar(stat = "identity", aes(fill = PC1 > 0)) +
+  coord_flip() +
+  labs(
+    title = "Top 10 Variables Contributing to PC1",
+    x = "Brain Region",
+    y = "Loading"
+  ) +
+  theme_minimal()
+
+# 载荷散点图 (PC1 vs PC2)
+fviz_pca_var(pca_result,
+             axes = c(1, 2),
+             col.var = "contrib",
+             gradient.cols = c("#00AFBB", "#E7B800", "#FC4E07"),
+             repel = TRUE,
+             title = "PCA Variable Loadings")
+```
+
+## 5.2 双标图 (Biplot)
+
+同时显示样本和变量。
+
+```{r biplot}
+# 双标图
+fviz_pca_biplot(pca_result,
+                label = "var",
+                habillage = pc_scores$Neuron_Type,
+                addEllipses = TRUE,
+                ellipse.level = 0.95,
+                repel = TRUE,
+                title = "PCA Biplot",
+                select.var = list(contrib = 10))  # 只显示贡献最大的10个变量
+```
+
+---
+
+# 6. PCA结果解释
+
+## 6.1 主成分生物学解释
+
+```{r interpret-pc}
+# PC1的主要贡献脑区
+pc1_top <- loadings %>%
+  arrange(desc(abs(PC1))) %>%
+  head(20)
+
+cat("PC1主要贡献脑区 (前20):\n")
+print(pc1_top$Variable)
+
+# PC2的主要贡献脑区
+pc2_top <- loadings %>%
+  arrange(desc(abs(PC2))) %>%
+  head(20)
+
+cat("\nPC2主要贡献脑区 (前20):\n")
+print(pc2_top$Variable)
+
+# 解释
+# PC1通常代表投射强度/范围的总体差异
+# PC2通常代表投射模式的类型差异（如皮层vs皮层下）
+```
+
+## 6.2 神经元在主成分空间的特征
+
+```{r pc-characteristics}
+# 计算各类型在PC空间的中心
+type_centers <- pc_scores %>%
+  group_by(Neuron_Type) %>%
+  summarize(
+    PC1_mean = mean(PC1),
+    PC2_mean = mean(PC2),
+    PC1_sd = sd(PC1),
+    PC2_sd = sd(PC2),
+    n = n()
+  )
+
+print(type_centers)
+
+# 可视化类型中心
+ggplot(pc_scores, aes(x = PC1, y = PC2, color = Neuron_Type)) +
+  geom_point(alpha = 0.3) +
+  geom_point(data = type_centers, 
+             aes(x = PC1_mean, y = PC2_mean, color = Neuron_Type),
+             size = 5, shape = 18) +
+  scale_color_manual(values = c(
+    "ITi" = "#377EB8", "ITs" = "#4DAF4A",
+    "CT" = "#FF7F00", "PT" = "#E41A1C"
+  )) +
+  labs(
+    title = "Neuron Type Centers in PC Space",
+    subtitle = "Large diamonds indicate type centroids"
+  ) +
+  theme_minimal()
+```
+
+---
+
+# 7. 非线性降维：t-SNE和UMAP
+
+## 7.1 t-SNE
+
+t-SNE (t-Distributed Stochastic Neighbor Embedding) 适合可视化高维数据的局部结构。
+
+```{r tsne}
+# 需要Rtsne包
+# install.packages("Rtsne")
+library(Rtsne)
+
+# t-SNE需要去除重复行
+proj_unique <- proj_scaled[!duplicated(proj_scaled), ]
+
+# 执行t-SNE (取 perplexity 为样本数的1/3左右)
+set.seed(42)
+tsne_result <- Rtsne(proj_unique, 
+                     dims = 2, 
+                     perplexity = 30,
+                     verbose = TRUE,
+                     max_iter = 1000)
+
+# 创建结果数据框
+tsne_df <- data.frame(
+  TSNE1 = tsne_result$Y[, 1],
+  TSNE2 = tsne_result$Y[, 2],
+  NeuronID = rownames(proj_unique)
+) %>%
+  left_join(
+    proj_strength %>% select(NeuronID, Neuron_Type),
+    by = "NeuronID"
+  )
+
+# 可视化
+ggplot(tsne_df, aes(x = TSNE1, y = TSNE2, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.6) +
+  scale_color_manual(values = c(
+    "ITi" = "#377EB8", "ITs" = "#4DAF4A",
+    "CT" = "#FF7F00", "PT" = "#E41A1C"
+  )) +
+  labs(
+    title = "t-SNE Visualization of Projection Patterns",
+    subtitle = "Perplexity = 30"
+  ) +
+  theme_minimal()
+```
+
+## 7.2 UMAP
+
+UMAP (Uniform Manifold Approximation and Projection) 保留局部和全局结构。
+
+```{r umap, eval=FALSE}
+# 需要umap包
+# install.packages("umap")
+library(umap)
+
+# 执行UMAP
+umap_config <- umap.defaults
+umap_config$n_neighbors <- 15
+umap_config$min_dist <- 0.1
+
+set.seed(42)
+umap_result <- umap(proj_scaled, config = umap_config)
+
+# 可视化
+umap_df <- data.frame(
+  UMAP1 = umap_result$layout[, 1],
+  UMAP2 = umap_result$layout[, 2],
+  NeuronID = rownames(proj_scaled)
+) %>%
+  left_join(
+    proj_strength %>% select(NeuronID, Neuron_Type),
+    by = "Neuron_ID"
+  )
+
+ggplot(umap_df, aes(x = UMAP1, y = UMAP2, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.6) +
+  scale_color_manual(values = c(
+    "ITi" = "#377EB8", "ITs" = "#4DAF4A",
+    "CT" = "#FF7F00", "PT" = "#E41A1C"
+  )) +
+  labs(title = "UMAP Visualization") +
+  theme_minimal()
+```
+
+---
+
+# 8. 实战应用
+
+## 8.1 投射模式聚类验证
+
+使用PCA验证已有的形态学聚类。
+
+```{r cluster-validation}
+# 计算silhouette分数
+library(cluster)
+
+# 基于PCA距离的silhouette
+pc_dist <- dist(pc_scores[, 1:10])  # 使用前10个PC
+sil <- silhouette(pc_scores$Cluster, pc_dist)
+
+# 可视化silhouette
+fviz_silhouette(sil, palette = "jco", ggtheme = theme_minimal())
+
+# 平均silhouette分数
+cat("平均Silhouette分数:", round(mean(sil[, 3]), 3), "\n")
+```
+
+## 8.2 异常值检测
+
+基于PCA检测投射模式的异常神经元。
+
+```{r outlier-detection}
+# 计算每个神经元的马氏距离（基于前几个PC）
+library(MASS)
+
+pc_subset <- pc_scores[, 1:5]  # 使用前5个PC
+mean_vec <- colMeans(pc_subset)
+cov_mat <- cov(pc_subset)
+
+mahal_dist <- mahalanobis(pc_subset, mean_vec, cov_mat)
+
+# 添加距离到数据框
+pc_scores$Mahal_Dist <- mahal_dist
+pc_scores$Outlier <- mahal_dist > qchisq(0.975, df = 5)  # 卡方检验阈值
+
+# 可视化异常值
+ggplot(pc_scores, aes(x = PC1, y = PC2, color = Outlier)) +
+  geom_point(size = 3, alpha = 0.6) +
+  scale_color_manual(values = c("TRUE" = "red", "FALSE" = "gray50")) +
+  labs(
+    title = "Outlier Detection using Mahalanobis Distance",
+    subtitle = "Red points are potential outliers"
+  ) +
+  theme_minimal()
+
+cat("检测到", sum(pc_scores$Outlier), "个异常神经元\n")
+```
+
+---
+
+# 9. 完整PCA分析流程
+
+```{r complete-pipeline, eval=FALSE}
+# 完整的PCA分析函数
+run_pca_analysis <- function(projection_matrix, metadata) {
+  # 1. 预处理
+  proj_scaled <- scale(projection_matrix)
+  
+  # 2. PCA
+  pca <- prcomp(proj_scaled, center = TRUE, scale. = TRUE)
+  
+  # 3. 提取结果
+  scores <- as.data.frame(pca$x)
+  scores <- cbind(scores, metadata)
+  
+  # 4. 方差解释
+  var_exp <- summary(pca)$importance
+  
+  # 5. 返回结果列表
+  list(
+    pca = pca,
+    scores = scores,
+    variance = var_exp,
+    loadings = pca$rotation
+  )
+}
+
+# 使用示例
+# result <- run_pca_analysis(proj_matrix, neuron_metadata)
+# fviz_pca_ind(result$pca, habillage = result$scores$Type)
+```
+
+---
+
+# 总结
+
+## PCA关键步骤
+
+1. **数据预处理**：标准化是关键
+2. **执行PCA**：使用`prcomp()`
+3. **选择主成分**：碎石图辅助决策
+4. **可视化**：得分图、载荷图、双标图
+5. **解释**：结合领域知识理解PC含义
+
+## 降维方法比较
+
+| 方法 | 类型 | 优点 | 缺点 |
+|------|------|------|------|
+| PCA | 线性 | 快速、可解释 | 只能捕获线性关系 |
+| t-SNE | 非线性 | 保留局部结构 | 计算慢、结果随机 |
+| UMAP | 非线性 | 保留全局+局部 | 参数敏感 |
+
+## 下一步
+
+- **05_Statistical_Tests.Rmd** - 统计检验
+- **Novel_Projectome_Analysis_Tutorial.Rmd** - 创新分析
+
+---
+
+**恭喜您掌握PCA降维分析！** 🎉

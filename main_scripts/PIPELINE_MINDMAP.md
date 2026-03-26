@@ -36,7 +36,13 @@
 │                            ─────────────────────────                    & NIfTI
 │                            • Visual_toolkit                      ───────────
 │                            • IONData                     • HighRes Soma Block
-│                            • High/Low Res Blocks         • LowRes WideField
+│                            • High/Low Res Blocks         • LowRes WideField  │
+│                                                                              │
+│                            STEP 4: Additional Rendering                      │
+│                            ─────────────────────────────                     │
+│                            • Brain Mesh Render (brain_viz.py)                │
+│                            • NeuronView Render (GL-based)                    │
+│                            • Clustered Heatmap (Gou 2025 Fig2A)              │
 │                                                                              │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
@@ -47,63 +53,91 @@
 
 ```mermaid
 flowchart TB
+    %% Define styles with proper contrast
+    classDef default fill:#fff,stroke:#333,color:#000
+    classDef titleStyle fill:#424242,stroke:#212121,color:#fff,stroke-width:3px
+    classDef inputStyle fill:#e3f2fd,stroke:#1565c0,color:#000
+    classDef step1Style fill:#e8f5e9,stroke:#2e7d32,color:#000
+    classDef step2Style fill:#fff3e0,stroke:#ef6c00,color:#000
+    classDef step3Style fill:#fce4ec,stroke:#c2185b,color:#000
+    classDef step4Style fill:#e0f2f1,stroke:#00695c,color:#000
+    classDef outputStyle fill:#ffebee,stroke:#c62828,color:#000
+    classDef gap padding:30px,margin:30px
+
     subgraph Input["📥 INPUT"]
-        SID[Sample ID<br/>e.g., 251637]
+        direction TB
+        SID[/"Sample ID<br/>e.g., 251637"/]
         GL[getNeuronListByRegion<br/>function]
         NIDS[Neuron IDs list]
     end
 
     subgraph Step1["🔵 STEP 1: Region Analysis"]
+        direction TB
         S1[step1.run_region_analysis.py]
-        S1_deps[Dependencies:
-        PopulationRegionAnalysis
-        Cortex/Subcortex Hierarchy
-        ARM/CHARM/SARM Atlas
-        Laterality Analysis]
-        S1_out["Output: Neuron Tables
-        (.xlsx with projection_strength,
-        soma_region, terminal_regions,
-        laterality, etc.)"]
+        S1_deps[Dependencies:<br/>PopulationRegionAnalysis, Cortex/Subcortex<br/>Hierarchy, ARM/CHARM/SARM Atlas,<br/>Laterality Analysis]
+        S1_out[/"Output: Neuron Tables (.xlsx)<br/>projection_strength, soma_region,<br/>terminal_regions, laterality"/]
     end
 
     subgraph Step2["🟢 STEP 2: FNT Distance Pipeline"]
+        direction TB
         S2[step2.fnt-dist_pipeline.py]
-        S2_deps[Dependencies:
-        fnt-from-swc
-        fnt-decimate
-        fnt-join
-        fnt-dist
-        IONData]
-        S2_out["Output: FNT Files +
-        Distance Matrix
-        (*_joined.fnt,
-        *_dist.txt)"]
+        S2_deps[Dependencies:<br/>fnt-from-swc, fnt-decimate,<br/>fnt-join, fnt-dist, IONData]
+        S2_out[/"Output: FNT Files + Distance Matrix<br/>(*_joined.fnt, *_dist.txt)"/]
     end
 
     subgraph Step3["🟠 STEP 3: Bulk Visualization"]
-        S3[step3.bulk_visual_data.py]
-        S3_deps[Dependencies:
-        Visual_toolkit
-        IONData
-        High/Low Res Blocks]
-        S3_out["Output: Plots & NIfTI
-        (HighRes Soma Block,
-        LowRes WideField)"]
+        direction TB
+        S3[step3.1.bulk_visual_data.py]
+        S3_deps[Dependencies:<br/>Visual_toolkit, IONData,<br/>High/Low Res Blocks]
+        S3_out[/"Output: Plots & NIfTI<br/>HighRes Soma Block, LowRes WideField"/]
+    end
+    
+    subgraph Step4["🟣 STEP 4: Statistical Analysis"]
+        direction TB
+        S4[R based analysis]
+
+    end 
+
+    subgraph Step5["🔷 STEP 5: Additional Rendering"]
+        direction TB
+        S5A[step3.2.run_brain_viz_meshRender.py<br/>BrainViz + RegionExtractor]
+        S5B[step3.3.neuronviewRender.py<br/>neuronVis + RenderGL]
+       
+        S5_out[/"Output:<br/>• brain_viz_*<br/>• neuronview renders<br/>"/]
     end
 
-    SID --> GL
-    GL --> NIDS
-    NIDS --> S1
-    S1 --> S1_deps
-    S1_deps --> S1_out
+    %% Main vertical flow - sequential
+    SID --> GL --> NIDS --> S1 --> S1_deps --> S1_out
     
-    S1_out -.->|neuron_tables| S2
-    S2 --> S2_deps
-    S2_deps --> S2_out
+    %% Branching from S1_out to Step2 and Step3
+   
+
+    S2 --> S2_deps --> S2_out
     
-    S1_out -.->|neuron_tables| S3
-    S3 --> S3_deps
-    S3_deps --> S3_out
+
+    S3 --> S3_deps --> S3_out
+
+    S1_out --> Step2
+    S1_out --> Step3
+
+    S1_out --> Step4
+
+    Step2 ~~~ Step3 ~~~ Step4
+
+    S4 --> Step5
+    S3_out --> Step5
+    
+    S5A --> S5_out
+    S5B --> S5_out
+    
+
+    %% Apply dark background to subgraph titles
+    style Input fill:#1565c0,stroke:#0d47a1,color:#fff
+    style Step1 fill:#2e7d32,stroke:#1b5e20,color:#fff
+    style Step2 fill:#ef6c00,stroke:#e65100,color:#fff
+    style Step3 fill:#6a1b9a,stroke:#4a148c,color:#fff
+    style Step4 fill:#c62828,stroke:#b71c1c,color:#fff
+    style Step5 fill:#00695c,stroke:#004d40,color:#fff
 ```
 
 ---
@@ -140,6 +174,7 @@ main(neuron_ids=neuron_ids, sample_id='251637')
 | **Atlas Keys** | `ARM_key_all.txt`, `CHARM_key_table_v2.csv`, `SARM_key_table_v2.csv` | `atlas/` |
 | **Step 2 Output** | `*_joined.fnt`, `*_dist.txt` | `processed_neurons/{sample_id}/fnt_processed/` |
 | **Step 3 Output** | `.png` plots, `.nii.gz` volumes | Configurable output dir |
+| **Step 5 Output** | Brain viz PNGs, heatmaps | `brain_viz_output/`, `output/` |
 | **Cache** | Cube data | `resource/cubes/{sample_id}/` |
 
 ---
@@ -160,7 +195,7 @@ main(neuron_ids=neuron_ids, sample_id='251637')
 ```mermaid
 flowchart TD
     subgraph Input["Step 1 Input"]
-        I1[Sample ID: "251637"]
+        I1[Sample ID: 251637]
         I2[Neuron IDs from getNeuronListByRegion]
     end
 
@@ -277,6 +312,121 @@ flowchart TD
 
 ---
 
+## Step 5: Additional Rendering
+
+### 5.1 Brain Mesh Render (step3.2.run_brain_viz_meshRender.py)
+
+```mermaid
+flowchart TD
+    subgraph Input["Step 5.1 Input"]
+        I1[Neuron Tables from Step 1]
+        I2[ARM Atlas
+        ARM_in_NMT_v2.1_sym.nii.gz]
+        I3[NMT Brain Template]
+    end
+
+    subgraph Processing["Step 5.1 Processing"]
+        P1[BrainViz Class]
+        P2[RegionExtractor
+        extract_regions from atlas]
+        P3[Mesh Generation
+        add_mesh_from_array]
+        P4[Neuron Loading
+        load_neurons with type_col]
+    end
+
+    subgraph Output["Step 5.1 Output"]
+        O1[brain_viz_recreated.png]
+        O2[brain_viz_generated.png]
+        O3[brain_viz_dynamic.png]
+    end
+
+    I1 --> P4
+    I2 --> P2
+    I3 --> P1
+    P1 --> P3
+    P2 --> P3
+    P3 --> P1
+    P4 --> P1
+    P1 --> O1
+    P1 --> O2
+    P1 --> O3
+```
+
+### 5.2 NeuronView Render (step3.3.neuronviewRender.py)
+
+```mermaid
+flowchart TD
+    subgraph Input["Step 5.2 Input"]
+        I1[Sample ID: 251637]
+        I2[Neuron ID Lists
+        bg_neurons by type]
+        I3[Region .obj Files]
+    end
+
+    subgraph Processing["Step 5.2 Processing"]
+        P1[neuronVis Class]
+        P2[RenderGL / RenderMacaqueGL]
+        P3[addNeuronByID with colors
+        ITs/ITi/CT/PT types]
+        P4[addRegion from .obj]
+        P5[setView / animation]
+    end
+
+    subgraph Output["Step 5.2 Output"]
+        O1[Interactive 3D Window]
+        O2[savepng output]
+    end
+
+    I1 --> P3
+    I2 --> P3
+    I3 --> P4
+    P1 --> P2
+    P3 --> P1
+    P4 --> P1
+    P2 --> P5
+    P5 --> O1
+    P5 --> O2
+```
+
+### 5.3 Clustered Heatmap (visualize_clustered_heatmap.py)
+
+```mermaid
+flowchart TD
+    subgraph Input["Step 5.3 Input"]
+        I1[Clustered Neuron Table
+        251637_results_clustered_k9_spearman_penalty.xlsx]
+    end
+
+    subgraph Processing["Step 5.3 Processing"]
+        P1[Load projection matrix]
+        P2[Log transform
+        log10(proj + 0.001)]
+        P3[Sort by Morph_Cluster
+        and Neuron_Type]
+        P4[Matplotlib gridspec
+        • Cluster color bar
+        • Type color bar
+        • Main heatmap]
+    end
+
+    subgraph Output["Step 5.3 Output"]
+        O1[fig2a_style_clustered_heatmap.png]
+        O2[fig2a_style_clustered_heatmap.pdf]
+        O3[Cluster statistics]
+    end
+
+    I1 --> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> O1
+    P4 --> O2
+    P4 --> O3
+```
+
+---
+
 ## Generic Pipeline Variant
 
 > **Note:** `fnt-dist_pipeline_generic.py` - Works with **any** neuron table (not restricted to ACC/INS)
@@ -285,7 +435,7 @@ flowchart TD
 flowchart LR
     A[Neuron Table<br/>from Step 1<br/>or manual] --> B[fnt-dist_pipeline_generic.py]
     B --> C{get_paths<br/>sample_id}
-    C --> D[processed_neurons/{sample_id}/]
+    C --> D[processed_neurons/sample_id/]
     D --> E[FNT Processing]
     E --> F[*_joined.fnt<br/>*_dist.txt]
 ```
@@ -298,7 +448,10 @@ flowchart LR
 |------|------|
 | Step 1 Script | `main_scripts/step1.run_region_analysis.py` |
 | Step 2 Script | `main_scripts/step2.fnt-dist_pipeline.py` |
-| Step 3 Script | `main_scripts/step3.bulk_visual_data.py` |
+| Step 3.1 Script | `main_scripts/step3.1.bulk_visual_data.py` |
+| Step 3.2 Script | `main_scripts/step3.2.run_brain_viz_meshRender.py` |
+| Step 3.3 Script | `main_scripts/step3.3.neuronviewRender.py` |
+| Clustered Heatmap | `main_scripts/visualize_clustered_heatmap.py` |
 | Generic Pipeline | `main_scripts/fnt-dist_pipeline_generic.py` |
 | getNeuronListByRegion | `main_scripts/region_analysis/getNeuronListByRegion.py` |
 | Region Analysis Module | `main_scripts/region_analysis/` |
@@ -326,11 +479,21 @@ main(neuron_ids=neuron_ids, sample_id='251637')
 # Run → outputs *_joined.fnt, *_dist.txt
 
 # === STEP 3: Bulk Visualization ===
-# Edit INPUT_FILE in step3.bulk_visual_data.py
+# Edit INPUT_FILE in step3.1.bulk_visual_data.py
 # Run → outputs plots and NIfTI files
+
+# === STEP 5: Additional Rendering ===
+# 5.1 Brain Mesh Render
+python main_scripts/step3.2.run_brain_viz_meshRender.py [1-6]
+
+# 5.2 NeuronView Render
+python main_scripts/step3.3.neuronviewRender.py
+
+# 5.3 Clustered Heatmap
+python main_scripts/visualize_clustered_heatmap.py
 ```
 
 ---
 
-*Generated: 2026-03-24*
+*Generated: 2026-03-26*
 *View this file on GitHub for interactive Mermaid diagrams*

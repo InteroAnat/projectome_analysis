@@ -36,6 +36,39 @@ This repository contains tools for processing and analyzing fMOST (fluorescence 
    The code depends on `IONData` from the `neuron-vis/neuronVis` package.
    Make sure this directory exists and is in the Python path.
 
+## Pipeline Overview
+
+The analysis workflow consists of 5 main steps:
+
+```
+┌─────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────┐    ┌─────────────────────┐
+│  INPUT  │───▶│  STEP 1     │───▶│  STEP 2     │───▶│  STEP 3     │───▶│  STEP 5: Additional │
+│ Sample  │    │  Region     │    │  FNT        │    │  Bulk Viz   │    │  Rendering          │
+│   ID    │    │  Analysis   │    │  Pipeline   │    │             │    │                     │
+└─────────┘    └─────────────┘    └─────────────┘    └─────────────┘    └─────────────────────┘
+                      │                                    │                      │
+                      ▼                                    ▼                      ▼
+               ┌─────────────┐                      ┌─────────────┐    ┌─────────────────────┐
+               │ Neuron      │                      │ Plots &     │    │ • Brain Mesh Render │
+               │ Tables      │                      │ NIfTI       │    │ • NeuronView Render │
+               │ (.xlsx)     │                      │             │    │ • Clustered Heatmap │
+               └─────────────┘                      └─────────────┘    └─────────────────────┘
+```
+
+| Step | Script | Description | Output |
+|------|--------|-------------|--------|
+| 1 | `step1.run_region_analysis.py` | Population region analysis, hierarchy, laterality | `neuron_tables/*.xlsx` |
+| 2 | `step2.fnt-dist_pipeline.py` | SWC→FNT conversion, decimation, distance matrix | `*_joined.fnt`, `*_dist.txt` |
+| 3 | `step3.1.bulk_visual_data.py` | High/low resolution visualization | `.png`, `.nii.gz` |
+| 4 | R analysis scripts | Statistical analysis, clustering | `heatmap_LR_combined_split.pdf` |
+| 5.1 | `step3.2.run_brain_viz_meshRender.py` | 3D brain mesh rendering with regions | `brain_viz_*.png` |
+| 5.2 | `step3.3.neuronviewRender.py` | Interactive 3D neuron visualization | Interactive GL window |
+| 5.3 | `visualize_clustered_heatmap.py` | Gou 2025 Fig2A style clustered heatmap | `fig2a_style_heatmap.png` |
+
+See `main_scripts/PIPELINE_MINDMAP.md` for detailed flowcharts and dependencies.
+
+---
+
 ## Main Components
 
 ### 1. Visual Toolkit (`main_scripts/Visual_toolkit.py`)
@@ -126,33 +159,89 @@ Note: Run from project root directory where the script is located.
 
 Distance-based clustering of neurons using FNT distance matrices.
 
-### 5. Region Analysis (`main_scripts/region_analysis.py`)
+### 4. Region Analysis (`main_scripts/region_analysis/`)
 
 Anatomical region-based analysis of neuron projections.
+
+**Key Scripts:**
+- `step1.run_region_analysis.py` - Main region analysis pipeline
+- `region_analysis/getNeuronListByRegion.py` - Query neurons by region
+- `region_analysis/population.py` - Population-level analysis
+- `region_analysis/hierarchy.py` - Cortex/Subcortex hierarchy
+- `region_analysis/laterality.py` - Laterality analysis
+
+### 5. Additional Rendering Tools
+
+#### 5.1 Brain Mesh Render (`step3.2.run_brain_viz_meshRender.py`)
+3D brain surface visualization with region meshes.
+
+**Features:**
+- Extract region meshes from ARM atlas
+- Visualize neurons by type (ITs, ITi, CT, PT)
+- Multiple rendering examples (1-6)
+
+```bash
+python main_scripts/step3.2.run_brain_viz_meshRender.py 2
+```
+
+#### 5.2 NeuronView Render (`step3.3.neuronviewRender.py`)
+Interactive OpenGL-based neuron visualization.
+
+**Features:**
+- Interactive 3D navigation
+- Type-based neuron coloring
+- Region overlay from .obj files
+
+```bash
+python main_scripts/step3.3.neuronviewRender.py
+```
+
+#### 5.3 Clustered Heatmap (`visualize_clustered_heatmap.py`)
+Generate publication-quality heatmaps (Gou et al. 2025 style).
+
+**Features:**
+- Morphological cluster visualization
+- Neuron type color bars
+- Log-transformed projection strength
+
+```bash
+python main_scripts/visualize_clustered_heatmap.py
+```
 
 ## Directory Structure
 
 ```
 projectome_analysis/
-├── main_scripts/              # Core analysis scripts
-│   ├── Visual_toolkit.py      # Main visualization toolkit
-│   ├── Visual_toolkit_gui.py  # GUI for visualization
-│   ├── fnt_dist_clustering.py # Clustering algorithms
-│   ├── fnt_tools.py           # FNT utility functions
-│   ├── monkey_936.py          # Macaque 936 region analysis
-│   ├── region_analysis.py     # Region-based analysis
-│   ├── tiff_ds2m.py           # TIFF processing
-│   ├── volume2.py             # Volume processing
-│   └── subsidary_functions/   # Helper functions
+├── main_scripts/                  # Core analysis scripts
+│   ├── step1.run_region_analysis.py      # Step 1: Region analysis
+│   ├── step2.fnt-dist_pipeline.py        # Step 2: FNT distance pipeline
+│   ├── step3.1.bulk_visual_data.py       # Step 3: Bulk visualization
+│   ├── step3.2.run_brain_viz_meshRender.py  # Step 5.1: Brain mesh render
+│   ├── step3.3.neuronviewRender.py       # Step 5.2: NeuronView render
+│   ├── visualize_clustered_heatmap.py    # Step 5.3: Clustered heatmap
+│   ├── Visual_toolkit.py          # Main visualization toolkit
+│   ├── Visual_toolkit_gui.py      # GUI for visualization
+│   ├── brain_viz.py               # Brain visualization class
+│   ├── fnt_dist_clustering.py     # Clustering algorithms
+│   ├── fnt_tools.py               # FNT utility functions
+│   ├── region_analysis/           # Region analysis modules
+│   │   ├── getNeuronListByRegion.py
+│   │   ├── population.py
+│   │   ├── hierarchy.py
+│   │   └── laterality.py
+│   └── subsidary_functions/       # Helper functions
 │
+├── R_analysis/                # R-based statistical analysis
+│   └── scripts/               # R analysis scripts
 ├── fnt_dist_on_cluster/       # HPC cluster job scripts
-├── insula_macaque_results/    # Analysis results
-├── soma_detection_unet/       # U-Net soma detection
-├── atlas/                     # Atlas data
+├── atlas/                     # Atlas data (ARM, CHARM, SARM)
 ├── literature/                # Reference papers
-├── resource/                  # Output data (gitignored)
+├── resource/                  # Data cache (gitignored)
 ├── processed_neurons/         # Processed neuron files (gitignored)
+├── brain_viz_output/          # Brain visualization outputs
+├── figures_charts/            # Generated figures
 ├── deb_fmost.yml              # Conda environment
+├── PIPELINE_MINDMAP.md        # Detailed pipeline documentation
 └── README.md                  # This file
 ```
 
@@ -289,4 +378,15 @@ Note: The `run_clustering` function may need to be called from within the script
 
 ---
 
-**Last Updated:** January 2026
+**Last Updated:** March 2026
+
+## Changelog
+
+### March 2026
+- **Added Step 5: Additional Rendering**
+  - `step3.2.run_brain_viz_meshRender.py` - 3D brain mesh visualization
+  - `step3.3.neuronviewRender.py` - Interactive OpenGL neuron rendering
+  - `visualize_clustered_heatmap.py` - Gou 2025 Fig2A style heatmaps
+- **Restructured pipeline scripts** with step numbering (step1, step2, step3.1, etc.)
+- **Added PIPELINE_MINDMAP.md** with detailed flowcharts and Mermaid diagrams
+- **Enhanced region analysis** with modular architecture in `region_analysis/`

@@ -1,0 +1,650 @@
+---
+title: "R语言基础教程 - 神经投射组数据入门"
+subtitle: "R Basics with Projectome Data: From Zero to Data Analysis"
+author: "系统学习系列 #1"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    fig_width: 10
+    fig_height: 7
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.dpi = 150
+)
+```
+
+---
+
+# 学习目标 (Learning Objectives)
+
+完成本教程后，您将能够：
+
+1. ✅ 理解R语言基本语法和数据类型
+2. ✅ 使用向量、矩阵和数据框操作数据
+3. ✅ 读取和查看神经投射组数据
+4. ✅ 进行基本的统计计算
+5. ✅ 使用条件语句和循环
+
+---
+
+# 1. R语言简介
+
+## 1.1 什么是R?
+
+R是一种用于**统计计算**和**图形展示**的编程语言。在神经科学中，R是发表级别数据可视化的首选工具。
+
+### R的优势：
+- **免费开源**
+- **强大的统计功能**
+- **优美的图形系统**
+- **丰富的包生态系统**
+
+## 1.2 基本运算
+
+```{r basic-math}
+# R可以作为计算器使用
+2 + 3          # 加法
+10 - 5         # 减法
+4 * 5          # 乘法
+20 / 4         # 除法
+2^3            # 幂运算
+10 %% 3        # 取余数
+sqrt(16)       # 平方根
+log(10)        # 自然对数
+log10(100)     # 常用对数
+exp(1)         # 指数函数
+```
+
+---
+
+# 2. 变量与赋值
+
+## 2.1 变量赋值
+
+在R中，我们使用 `<-` (推荐) 或 `=` 给变量赋值：
+
+```{r variables}
+# 赋值操作
+neuron_count <- 212
+total_length <- 15000.5
+brain_region <- "Insula"
+is_active <- TRUE
+
+# 查看变量
+neuron_count
+total_length
+brain_region
+
+# 使用print()
+print(neuron_count)
+print(paste("We have", neuron_count, "neurons from", brain_region))
+```
+
+## 2.2 变量命名规则
+
+- ✅ 可以包含字母、数字、下划线和点
+- ✅ 必须以字母或点开头
+- ❌ 不能使用保留字 (if, else, for, etc.)
+- 💡 建议使用有意义的名称
+
+```{r naming}
+# 好的命名
+neuron_id <- "001.swc"
+axon_length <- 5000
+is_interneuron <- FALSE
+
+# 避免
+x <- 5000      # 不清晰
+n <- 212       # 不清晰
+```
+
+---
+
+# 3. 数据类型
+
+## 3.1 基本数据类型
+
+```{r data-types}
+# 数值型 (numeric)
+length_um <- 15000.5
+class(length_um)
+
+# 整数型 (integer)
+n_terminals <- 50L  # L表示整数
+class(n_terminals)
+
+# 字符型 (character)
+neuron_type <- "ITi"
+class(neuron_type)
+
+# 逻辑型 (logical)
+is_ipsilateral <- TRUE  # 或 FALSE
+class(is_ipsilateral)
+
+# 检查类型
+is.numeric(length_um)
+is.character(neuron_type)
+is.logical(is_ipsilateral)
+```
+
+## 3.2 类型转换
+
+```{r type-conversion}
+# 数值转字符
+as.character(212)
+
+# 字符转数值
+as.numeric("15000.5")
+
+# 逻辑转数值 (TRUE=1, FALSE=0)
+as.numeric(TRUE)
+as.numeric(FALSE)
+
+# 注意：转换失败会产生NA
+as.numeric("hello")  # 产生NA并警告
+```
+
+---
+
+# 4. 向量 (Vectors)
+
+向量是R中最基本的数据结构，用于存储**相同类型**的数据。
+
+## 4.1 创建向量
+
+使用 `c()` 函数 (combine) 创建向量：
+
+```{r vectors}
+# 数值向量
+neuron_lengths <- c(1200, 3500, 8000, 15000, 2200)
+neuron_lengths
+
+# 字符向量
+neuron_types <- c("ITi", "ITs", "CT", "PT", "ITi")
+neuron_types
+
+# 逻辑向量
+is_ipsi <- c(TRUE, TRUE, FALSE, TRUE, FALSE)
+is_ipsi
+
+# 序列向量
+1:10                    # 1到10
+seq(1, 10, by = 2)      # 步长为2
+rep(1, 5)               # 重复5次
+rep(c("ITi", "ITs"), each = 2)
+```
+
+## 4.2 向量操作
+
+```{r vector-ops}
+lengths <- c(1200, 3500, 8000, 15000, 2200)
+
+# 基本统计
+length(lengths)         # 元素个数
+sum(lengths)            # 总和
+mean(lengths)           # 平均值
+median(lengths)         # 中位数
+sd(lengths)             # 标准差
+min(lengths)            # 最小值
+max(lengths)            # 最大值
+range(lengths)          # 范围
+summary(lengths)        # 综合统计
+
+# 向量运算
+lengths + 100           # 每个元素加100
+lengths * 2             # 每个元素乘2
+lengths / 1000          # 转换为mm
+
+# 两个向量运算
+len1 <- c(1000, 2000, 3000)
+len2 <- c(500, 800, 1200)
+len1 + len2             # 对应元素相加
+len1 * len2             # 对应元素相乘
+```
+
+## 4.3 向量索引
+
+使用方括号 `[]` 访问向量元素：
+
+```{r vector-indexing}
+types <- c("ITi", "ITs", "CT", "PT", "ITc", "ITi")
+
+# 按位置索引
+types[1]                # 第一个元素
+types[c(1, 3, 5)]       # 第1,3,5个元素
+types[2:4]              # 第2到4个元素
+types[-1]               # 排除第一个元素
+types[-(2:4)]           # 排除第2-4个元素
+
+# 逻辑索引
+lengths <- c(1200, 3500, 8000, 15000, 2200, 500)
+lengths[lengths > 3000]           # 大于3000的元素
+types[lengths > 3000]             # 对应的大神经元类型
+
+# 名称索引 (如果向量有名字)
+named_lengths <- c(N1 = 1200, N2 = 3500, N3 = 8000)
+named_lengths["N2"]
+```
+
+## 4.4 向量函数
+
+```{r vector-functions}
+values <- c(5, 2, 8, 1, 9, 3)
+
+# 排序
+sort(values)            # 升序
+sort(values, decreasing = TRUE)  # 降序
+order(values)           # 返回排序后的索引
+values[order(values)]   # 等同于sort
+
+# 唯一值
+unique(types)           # 唯一的类型
+
+# 计数
+table(types)            # 每种类型的数量
+
+# 匹配
+match(c("ITi", "PT"), types)  # 找到位置
+
+# 条件选择
+which(lengths > 3000)   # 满足条件的索引
+which.max(lengths)      # 最大值索引
+which.min(lengths)      # 最小值索引
+```
+
+---
+
+# 5. 矩阵 (Matrices)
+
+矩阵是二维数据结构，所有元素必须是相同类型。
+
+## 5.1 创建矩阵
+
+```{r matrices}
+# 从向量创建矩阵
+values <- 1:12
+mat <- matrix(values, nrow = 3, ncol = 4)
+mat
+
+# 按行填充
+matrix(1:12, nrow = 3, byrow = TRUE)
+
+# 创建投射矩阵示例 (3个神经元 x 4个脑区)
+projection_matrix <- matrix(
+  c(0, 50, 120, 0,
+    80, 0, 200, 30,
+    0, 100, 0, 60),
+  nrow = 3,
+  byrow = TRUE
+)
+rownames(projection_matrix) <- c("N001", "N002", "N003")
+colnames(projection_matrix) <- c("ACC", "PFC", "STR", "THA")
+projection_matrix
+```
+
+## 5.2 矩阵操作
+
+```{r matrix-ops}
+# 矩阵索引
+projection_matrix[1, 2]       # 第1行第2列
+projection_matrix[1, ]        # 第1行 (N001的所有投射)
+projection_matrix[, 3]        # 第3列 (所有神经元到STR的投射)
+projection_matrix["N002", ]   # 按行名索引
+
+# 矩阵统计
+rowSums(projection_matrix)    # 每个神经元的总投射
+colSums(projection_matrix)    # 每个脑区的总接收
+rowMeans(projection_matrix)   # 平均值
+colMeans(projection_matrix)
+
+# 转置
+t(projection_matrix)
+
+# 矩阵运算
+mat1 <- matrix(1:4, nrow = 2)
+mat2 <- matrix(5:8, nrow = 2)
+mat1 + mat2                   # 矩阵加法
+mat1 * mat2                   # 元素乘法
+mat1 %*% mat2                 # 矩阵乘法
+```
+
+---
+
+# 6. 数据框 (Data Frames) ⭐
+
+数据框是R中**最重要的数据结构**，类似于Excel表格，可以存储不同类型的数据。
+
+## 6.1 创建数据框
+
+```{r dataframes}
+# 创建神经元数据框
+neuron_data <- data.frame(
+  NeuronID = c("001.swc", "002.swc", "003.swc", "004.swc", "005.swc"),
+  Type = c("ITi", "ITs", "ITi", "CT", "PT"),
+  Length = c(1200, 3500, 8000, 15000, 2200),
+  Terminals = c(15, 45, 80, 120, 25),
+  Ipsilateral = c(TRUE, TRUE, FALSE, TRUE, FALSE)
+)
+
+neuron_data
+class(neuron_data)
+
+# 查看结构
+str(neuron_data)              # 结构
+summary(neuron_data)          # 统计摘要
+dim(neuron_data)              # 维度
+nrow(neuron_data)             # 行数
+colnames(neuron_data)         # 列名
+rownames(neuron_data)         # 行名
+```
+
+## 6.2 数据框索引 ⭐
+
+```{r df-indexing}
+# 按列选择
+neuron_data$Length            # $符号选择列
+neuron_data[["Length"]]       # 双括号选择
+neuron_data[, "Length"]       # 按名称选择
+neuron_data[, 3]              # 按位置选择
+
+# 选择多列
+neuron_data[, c("NeuronID", "Type", "Length")]
+neuron_data[, 1:3]
+
+# 按行选择
+neuron_data[1, ]              # 第1行
+neuron_data[1:3, ]            # 第1-3行
+
+# 行列同时选择
+neuron_data[1:3, c("NeuronID", "Length")]
+
+# 逻辑选择 (非常重要!)
+neuron_data[neuron_data$Length > 3000, ]           # 长投射神经元
+neuron_data[neuron_data$Type == "ITi", ]           # ITi类型神经元
+neuron_data[neuron_data$Type %in% c("ITi", "ITs"), ]  # 多种类型
+neuron_data[neuron_data$Length > 3000 & neuron_data$Ipsilateral == TRUE, ]  # 多条件
+```
+
+## 6.3 修改数据框
+
+```{r df-modify}
+# 添加新列
+neuron_data$Length_mm <- neuron_data$Length / 1000
+neuron_data
+
+# 修改列
+neuron_data$Type <- as.factor(neuron_data$Type)
+str(neuron_data)
+
+# 添加新行
+new_neuron <- data.frame(
+  NeuronID = "006.swc",
+  Type = "ITc",
+  Length = 5000,
+  Terminals = 60,
+  Ipsilateral = FALSE,
+  Length_mm = 5
+)
+neuron_data <- rbind(neuron_data, new_neuron)
+neuron_data
+
+# 删除列
+neuron_data$Length_mm <- NULL  # 设为NULL删除
+
+# 删除行
+neuron_data <- neuron_data[-nrow(neuron_data), ]  # 删除最后一行
+neuron_data
+```
+
+---
+
+# 7. 读取神经投射组数据
+
+## 7.1 读取Excel文件
+
+```{r read-excel, eval=FALSE}
+# 首先安装和加载readxl包
+if (!require("readxl")) install.packages("readxl")
+library(readxl)
+
+# 读取Excel文件
+file_path <- "tables/251637_results_v5.xlsx"
+
+# 查看所有sheet
+excel_sheets(file_path)
+
+# 读取Summary sheet
+df_summary <- read_excel(file_path, sheet = "Summary")
+
+# 查看数据
+head(df_summary)              # 前6行
+tail(df_summary)              # 后6行
+dim(df_summary)               # 维度
+
+# 读取投射数据
+proj_length <- read_excel(file_path, sheet = "Projection_Length_L3_ipsi")
+head(proj_length[, 1:6])      # 查看前几列
+```
+
+## 7.2 数据探索
+
+```{r explore-data, eval=FALSE}
+# 基础统计
+summary(df_summary)
+
+# 神经元类型分布
+table(df_summary$Neuron_Type)
+prop.table(table(df_summary$Neuron_Type))  # 比例
+
+# 投射长度统计
+mean(df_summary$Total_Length)
+median(df_summary$Total_Length)
+sd(df_summary$Total_Length)
+
+# 按类型分组统计
+aggregate(Total_Length ~ Neuron_Type, data = df_summary, FUN = mean)
+aggregate(Terminal_Count ~ Neuron_Type, data = df_summary, FUN = summary)
+```
+
+---
+
+# 8. 控制结构
+
+## 8.1 条件语句
+
+```{r conditionals}
+# if语句
+length <- 5000
+if (length > 3000) {
+  print("Long projection neuron")
+}
+
+# if-else
+length <- 2000
+if (length > 3000) {
+  print("Long")
+} else {
+  print("Short")
+}
+
+# if-else if-else
+length <- 8000
+if (length < 3000) {
+  category <- "Short"
+} else if (length < 10000) {
+  category <- "Medium"
+} else {
+  category <- "Long"
+}
+category
+
+# ifelse() 向量化的条件
+lengths <- c(1200, 3500, 8000, 15000, 2200)
+categories <- ifelse(lengths > 5000, "Long", "Short")
+categories
+
+# 嵌套ifelse
+categories <- ifelse(lengths < 3000, "Short",
+                    ifelse(lengths < 10000, "Medium", "Long"))
+categories
+```
+
+## 8.2 循环
+
+```{r loops}
+# for循环
+neuron_ids <- c("N001", "N002", "N003", "N004")
+for (id in neuron_ids) {
+  print(paste("Processing neuron:", id))
+}
+
+# 遍历索引
+lengths <- c(1200, 3500, 8000, 15000)
+for (i in 1:length(lengths)) {
+  print(paste("Neuron", i, ":", lengths[i], "um"))
+}
+
+# while循环
+count <- 1
+while (count <= 5) {
+  print(paste("Count:", count))
+  count <- count + 1
+}
+
+# apply家族 (R推荐的方式)
+mat <- matrix(1:12, nrow = 3)
+apply(mat, 1, sum)    # 对行求和
+apply(mat, 2, mean)   # 对列求平均
+
+# lapply - 返回列表
+lapply(1:3, function(x) x^2)
+
+# sapply - 简化结果
+sapply(1:3, function(x) x^2)
+```
+
+---
+
+# 9. 函数
+
+## 9.1 创建函数
+
+```{r functions}
+# 基本函数
+convert_mm <- function(length_um) {
+  length_um / 1000
+}
+convert_mm(5000)
+
+# 多参数函数
+calculate_density <- function(length, n_terminals) {
+  density <- n_terminals / length * 1000  # terminals per mm
+  return(density)
+}
+calculate_density(5000, 50)
+
+# 带默认参数的函数
+category_length <- function(length, threshold = 5000) {
+  if (length > threshold) {
+    return("Long")
+  } else {
+    return("Short")
+  }
+}
+category_length(8000)
+category_length(8000, threshold = 10000)
+
+# 返回多个值
+neuron_stats <- function(lengths) {
+  list(
+    mean = mean(lengths),
+    sd = sd(lengths),
+    n = length(lengths),
+    cv = sd(lengths) / mean(lengths)  # 变异系数
+  )
+}
+result <- neuron_stats(c(1000, 2000, 3000, 4000, 5000))
+result$mean
+result$cv
+```
+
+---
+
+# 10. 练习
+
+## 练习1: 向量操作
+
+```{r ex1}
+# 创建包含10个神经元长度的向量
+my_lengths <- c(1200, 3500, 8000, 15000, 2200, 500, 9000, 12000, 3000, 4500)
+
+# 计算：
+# 1. 平均长度
+# 2. 最长和最短的神经元
+# 3. 长度大于5000的神经元数量
+# 4. 将这些长度转换为mm
+
+# 答案：
+mean(my_lengths)
+max(my_lengths)
+min(my_lengths)
+sum(my_lengths > 5000)
+my_lengths / 1000
+```
+
+## 练习2: 数据框操作
+
+```{r ex2}
+# 创建一个包含5个神经元的数据框
+my_neurons <- data.frame(
+  ID = paste0("N", 1:5),
+  Type = c("ITi", "ITs", "ITi", "CT", "PT"),
+  Length = c(1200, 3500, 8000, 15000, 2200)
+)
+
+# 任务：
+# 1. 添加一列"Category"：Length>5000为"Long"，否则为"Short"
+# 2. 选择所有ITi类型的神经元
+# 3. 计算每种类型的平均长度
+
+# 答案：
+my_neurons$Category <- ifelse(my_neurons$Length > 5000, "Long", "Short")
+my_neurons[my_neurons$Type == "ITi", ]
+aggregate(Length ~ Type, data = my_neurons, FUN = mean)
+```
+
+---
+
+# 总结
+
+## 关键概念回顾
+
+| 概念 | 说明 | 示例 |
+|------|------|------|
+| 向量 | 一维数据 | `c(1, 2, 3)` |
+| 矩阵 | 二维同类型数据 | `matrix(1:6, nrow=2)` |
+| 数据框 | 二维不同类型数据 | `data.frame(x=1:3, y=c("a","b","c"))` |
+| 索引 | 访问数据 | `df[1, ]`, `df$column` |
+| 函数 | 可复用的代码 | `function(x) x^2` |
+
+## 下一步学习
+
+完成本教程后，请继续学习：
+
+1. **02_Data_Manipulation_Tutorial.Rmd** - 使用dplyr进行数据操作
+2. **03_ggplot2_Visualization.Rmd** - 数据可视化
+3. **04_PCA_Dimensionality_Reduction.Rmd** - 主成分分析
+4. **05_Statistical_Tests.Rmd** - 统计检验
+
+---
+
+**恭喜您完成R语言基础教程！** 🎉

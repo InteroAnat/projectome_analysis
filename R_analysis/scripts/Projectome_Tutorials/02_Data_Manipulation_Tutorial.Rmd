@@ -1,0 +1,727 @@
+---
+title: "数据操作教程 - dplyr包入门"
+subtitle: "Data Manipulation with dplyr: The Grammar of Data"
+author: "系统学习系列 #2"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    fig_width: 10
+    fig_height: 7
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.dpi = 150
+)
+```
+
+---
+
+# 学习目标
+
+完成本教程后，您将能够：
+
+1. ✅ 使用dplyr包进行高效数据操作
+2. ✅ 掌握核心动词：select, filter, mutate, arrange, summarize
+3. ✅ 使用管道操作符 `%>%` 连接操作
+4. ✅ 进行分组统计
+5. ✅ 数据连接 (join) 操作
+
+---
+
+# 1. dplyr简介
+
+## 1.1 什么是dplyr?
+
+dplyr是R中用于数据操作的强大包，提供了一组直观的"动词"来处理数据框。
+
+### dplyr的优势：
+- **语法直观**：函数名即功能
+- **速度快**：底层使用C++实现
+- **管道友好**：支持 `%>%` 操作符
+- **内存高效**：不修改原数据
+
+## 1.2 安装和加载
+
+```{r load-dplyr}
+# 安装（如果还没有）
+# install.packages("dplyr")
+
+# 加载
+library(dplyr)
+
+# 也加载其他有用的包
+library(readxl)   # 读取Excel
+library(tidyr)    # 数据整理
+```
+
+---
+
+# 2. 核心动词 (Core Verbs)
+
+dplyr有6个核心动词：
+
+| 动词 | 功能 | 对应SQL |
+|------|------|---------|
+| `select()` | 选择列 | SELECT |
+| `filter()` | 筛选行 | WHERE |
+| `mutate()` | 添加/修改列 | - |
+| `arrange()` | 排序 | ORDER BY |
+| `summarize()` | 汇总统计 | AGGREGATE |
+| `group_by()` | 分组 | GROUP BY |
+
+## 2.1 创建示例数据
+
+```{r sample-data}
+# 创建示例神经元数据
+neurons <- data.frame(
+  NeuronID = paste0("N", sprintf("%03d", 1:20)),
+  Type = sample(c("ITi", "ITs", "CT", "PT"), 20, replace = TRUE, prob = c(0.6, 0.25, 0.1, 0.05)),
+  Length = round(rnorm(20, 8000, 4000)),
+  Terminals = round(rnorm(20, 60, 30)),
+  Ipsilateral = sample(c(TRUE, FALSE), 20, replace = TRUE, prob = c(0.7, 0.3)),
+  Soma_X = round(rnorm(20, 50, 10)),
+  Soma_Y = round(rnorm(20, 50, 10)),
+  Soma_Z = round(rnorm(20, 30, 5)),
+  stringsAsFactors = FALSE
+)
+
+# 确保数值合理
+neurons$Length <- pmax(neurons$Length, 500)
+neurons$Terminals <- pmax(neurons$Terminals, 5)
+
+# 查看数据
+head(neurons)
+glimpse(neurons)   # dplyr的查看函数
+```
+
+---
+
+# 3. select() - 选择列
+
+## 3.1 基本选择
+
+```{r select-basic}
+# 选择特定列
+neurons %>% select(NeuronID, Type, Length)
+
+# 排除列
+neurons %>% select(-Soma_X, -Soma_Y, -Soma_Z)
+
+# 选择列范围
+neurons %>% select(NeuronID:Terminals)
+
+# 排除范围
+neurons %>% select(-(Soma_X:Soma_Z))
+```
+
+## 3.2 高级选择
+
+```{r select-advanced}
+# 根据名称模式选择
+neurons %>% select(starts_with("Soma"))   # 以Soma开头的列
+neurons %>% select(ends_with("al"))       # 以al结尾的列
+neurons %>% select(contains("ID"))        # 包含ID的列
+
+# 根据类型选择
+neurons %>% select(where(is.numeric))     # 所有数值列
+neurons %>% select(where(is.character))   # 所有字符列
+neurons %>% select(where(is.logical))     # 所有逻辑列
+
+# 重新排列列
+cols_first <- neurons %>% select(Type, everything())  # Type移到最前面
+cols_first
+
+# 重命名列
+neurons %>% select(ID = NeuronID, Cell_Type = Type, Axon_Length = Length)
+```
+
+---
+
+# 4. filter() - 筛选行
+
+## 4.1 基本筛选
+
+```{r filter-basic}
+# 单条件筛选
+neurons %>% filter(Type == "ITi")                    # ITi类型
+neurons %>% filter(Length > 5000)                    # 长投射神经元
+neurons %>% filter(Ipsilateral == TRUE)              # 同侧投射
+
+# 多条件筛选 (AND)
+neurons %>% filter(Type == "ITi", Length > 5000)     # 两个条件都要满足
+neurons %>% filter(Type == "ITi" & Length > 5000)    # 同上
+
+# 多条件筛选 (OR)
+neurons %>% filter(Type == "ITi" | Type == "ITs")    # ITi或ITs
+
+# 排除条件
+neurons %>% filter(Type != "PT")                     # 排除PT类型
+neurons %>% filter(!(Type == "PT"))                  # 同上
+```
+
+## 4.2 高级筛选
+
+```{r filter-advanced}
+# %in% 操作符
+neurons %>% filter(Type %in% c("ITi", "ITs"))        # 在列表中的类型
+neurons %>% filter(!Type %in% c("PT", "CT"))         # 不在列表中
+
+# 多值匹配
+long_types <- c("ITi", "CT")
+neurons %>% filter(Type %in% long_types)
+
+# 数值范围
+neurons %>% filter(Length > 5000 & Length < 15000)   # 范围筛选
+neurons %>% filter(between(Length, 5000, 15000))     # 同上，更简洁
+
+# 处理NA（如果有的话）
+# neurons %>% filter(!is.na(Length))                 # 排除NA
+# neurons %>% filter(is.na(Length))                  # 只保留NA
+
+# 复杂条件
+neurons %>% filter(
+  (Type == "ITi" & Length > 5000) |
+  (Type == "ITs" & Terminals > 80)
+)
+
+# near() 函数（处理浮点数比较）
+# neurons %>% filter(near(Length, 5000, tol = 0.1))
+```
+
+---
+
+# 5. mutate() - 添加/修改列
+
+## 5.1 基本操作
+
+```{r mutate-basic}
+# 添加新列
+neurons %>% mutate(Length_mm = Length / 1000)
+
+# 同时添加多个列
+neurons %>% mutate(
+  Length_mm = Length / 1000,
+  Terminal_density = Terminals / Length_mm,
+  Log_Length = log(Length)
+)
+
+# 修改现有列
+neurons %>% mutate(Length = Length / 1000)           # 单位转换
+neurons %>% mutate(Type = toupper(Type))             # 转大写
+```
+
+## 5.2 条件修改
+
+```{r mutate-conditional}
+# 使用if_else
+neurons %>% mutate(
+  Size_Category = if_else(Length > 8000, "Long", "Short")
+)
+
+# 多条件分类
+categorized <- neurons %>% mutate(
+  Size_Category = case_when(
+    Length < 3000 ~ "Short",
+    Length < 8000 ~ "Medium",
+    Length < 15000 ~ "Long",
+    TRUE ~ "Very Long"
+  )
+)
+categorized %>% select(NeuronID, Length, Size_Category)
+
+# 基于多列的条件
+neurons %>% mutate(
+  Project_Type = case_when(
+    Type == "ITi" & Ipsilateral == TRUE ~ "Local_IT",
+    Type == "ITs" ~ "Striatal_IT",
+    Type %in% c("CT", "PT") ~ "Subcortical",
+    TRUE ~ "Other"
+  )
+)
+```
+
+## 5.3 窗口函数
+
+```{r window-functions}
+# 排名
+neurons %>% mutate(Length_Rank = rank(desc(Length)))
+
+# 分位数分组
+neurons %>% mutate(
+  Length_Quartile = ntile(Length, 4)  # 四分位数
+)
+
+# 滞后和领先值
+neurons %>% 
+  arrange(Length) %>%
+  mutate(
+    Prev_Length = lag(Length),
+    Next_Length = lead(Length),
+    Length_Change = Length - lag(Length)
+  ) %>%
+  select(NeuronID, Length, Prev_Length, Length_Change)
+
+# 累积统计
+neurons %>% 
+  arrange(Length) %>%
+  mutate(
+    CumSum_Length = cumsum(Length),
+    CumMean_Length = cummean(Length),
+    Running_Max = cummax(Length)
+  ) %>%
+  select(NeuronID, Length, CumSum_Length, CumMean_Length)
+```
+
+---
+
+# 6. arrange() - 排序
+
+```{r arrange}
+# 升序排序
+neurons %>% arrange(Length)
+
+# 降序排序
+neurons %>% arrange(desc(Length))
+
+# 多列排序
+neurons %>% arrange(Type, desc(Length))              # 先按类型，再按长度降序
+
+# 提取极值
+neurons %>% arrange(desc(Length)) %>% head(5)        # 最长的5个
+neurons %>% arrange(Length) %>% head(5)              # 最短的5个
+
+# 结合slice提取特定行
+neurons %>% arrange(desc(Length)) %>% slice(1:3)     # 最长的3个
+neurons %>% arrange(desc(Length)) %>% slice_head(n = 3)  # 同上
+neurons %>% arrange(desc(Length)) %>% slice_tail(n = 3)  # 最短的3个
+
+# 随机抽样
+neurons %>% slice_sample(n = 5)                      # 随机5个
+neurons %>% slice_sample(prop = 0.2)                 # 随机20%
+```
+
+---
+
+# 7. summarize() - 汇总统计
+
+## 7.1 基本汇总
+
+```{r summarize-basic}
+# 单一统计
+neurons %>% summarize(mean_length = mean(Length))
+
+# 多个统计
+neurons %>% summarize(
+  n = n(),                                    # 计数
+  mean_length = mean(Length),
+  median_length = median(Length),
+  sd_length = sd(Length),
+  min_length = min(Length),
+  max_length = max(Length),
+  q25 = quantile(Length, 0.25),
+  q75 = quantile(Length, 0.75)
+)
+
+# 其他有用函数
+neurons %>% summarize(
+  n = n(),
+  n_distinct_types = n_distinct(Type),
+  total_length = sum(Length),
+  first_neuron = first(NeuronID),
+  last_neuron = last(NeuronID)
+)
+```
+
+## 7.2 分组汇总 (group_by)
+
+```{r groupby}
+# 按类型分组统计
+by_type <- neurons %>%
+  group_by(Type) %>%
+  summarize(
+    n = n(),
+    mean_length = mean(Length),
+    sd_length = sd(Length),
+    mean_terminals = mean(Terminals)
+  )
+by_type
+
+# 多列分组
+neurons %>%
+  group_by(Type, Ipsilateral) %>%
+  summarize(
+    n = n(),
+    mean_length = mean(Length),
+    .groups = 'drop'                          # 取消分组
+  )
+
+# 分组后筛选
+neurons %>%
+  group_by(Type) %>%
+  filter(Length == max(Length)) %>%            # 每类中最长的
+  select(Type, NeuronID, Length)
+
+# 分组后变异
+neurons %>%
+  group_by(Type) %>%
+  mutate(
+    Z_Score = (Length - mean(Length)) / sd(Length)  # 组内标准化
+  ) %>%
+  select(NeuronID, Type, Length, Z_Score)
+```
+
+---
+
+# 8. 管道操作符 %>%
+
+管道操作符 `%>%` (读作"then") 是dplyr的精髓，让代码更易读。
+
+## 8.1 基本用法
+
+```{r pipes}
+# 不使用管道
+result <- filter(neurons, Type == "ITi")
+result <- select(result, NeuronID, Length, Terminals)
+result <- arrange(result, desc(Length))
+head(result, 5)
+
+# 使用管道
+neurons %>%
+  filter(Type == "ITi") %>%
+  select(NeuronID, Length, Terminals) %>%
+  arrange(desc(Length)) %>%
+  head(5)
+```
+
+## 8.2 复杂管道示例
+
+```{r complex-pipes}
+# 复杂分析流程
+analysis <- neurons %>%
+  # 1. 添加分类列
+  mutate(
+    Size_Category = case_when(
+      Length < 5000 ~ "Small",
+      Length < 10000 ~ "Medium",
+      TRUE ~ "Large"
+    ),
+    Terminal_Density = Terminals / (Length / 1000)
+  ) %>%
+  # 2. 筛选
+  filter(Terminals >= 10) %>%
+  # 3. 分组统计
+  group_by(Type, Size_Category) %>%
+  summarize(
+    n = n(),
+    mean_density = mean(Terminal_Density),
+    sd_density = sd(Terminal_Density),
+    .groups = 'drop'
+  ) %>%
+  # 4. 筛选和排序
+  filter(n >= 2) %>%
+  arrange(desc(mean_density))
+
+analysis
+```
+
+---
+
+# 9. 数据连接 (Joins)
+
+## 9.1 创建示例数据
+
+```{r join-data}
+# 主神经元数据
+neurons_main <- neurons %>% select(NeuronID, Type, Length, Terminals)
+
+# 额外的神经元信息
+neuron_info <- data.frame(
+  NeuronID = paste0("N", sprintf("%03d", c(1:15, 101:105))),
+  Hemisphere = sample(c("Left", "Right"), 20, replace = TRUE),
+  Layer = sample(c("L2/3", "L5", "L6"), 20, replace = TRUE),
+  Quality = sample(c("High", "Medium", "Low"), 20, replace = TRUE),
+  stringsAsFactors = FALSE
+)
+
+# 区域信息
+region_info <- data.frame(
+  Type = c("ITi", "ITs", "CT", "PT"),
+  Full_Name = c("Intratelencephalic ipsilateral", 
+                "Intratelencephalic striatal",
+                "Corticothalamic",
+                "Pyramidal Tract"),
+  Projection_Target = c("Ipsilateral cortex", 
+                        "Striatum",
+                        "Thalamus",
+                        "Spinal cord/Brainstem"),
+  stringsAsFactors = FALSE
+)
+
+head(neuron_info)
+head(region_info)
+```
+
+## 9.2 Join操作
+
+```{r joins}
+# left_join - 保留左表所有行
+neurons_main %>%
+  left_join(neuron_info, by = "NeuronID")
+
+# inner_join - 只保留匹配的行
+neurons_main %>%
+  inner_join(neuron_info, by = "NeuronID")
+
+# right_join - 保留右表所有行
+neurons_main %>%
+  right_join(neuron_info, by = "NeuronID")
+
+# full_join - 保留所有行
+neurons_main %>%
+  full_join(neuron_info, by = "NeuronID")
+
+# 连接类型信息
+neurons_main %>%
+  left_join(region_info, by = "Type") %>%
+  select(NeuronID, Type, Full_Name, Length)
+
+# 多列连接
+# left_join(df1, df2, by = c("ID1" = "ID2", "Date1" = "Date2"))
+```
+
+---
+
+# 10. 实用技巧
+
+## 10.1 数据转换
+
+```{r reshaping}
+# 宽格式转长格式 (pivot_longer)
+neurons_wide <- neurons %>%
+  select(NeuronID, Type, Soma_X, Soma_Y, Soma_Z)
+
+neurons_long <- neurons_wide %>%
+  pivot_longer(
+    cols = starts_with("Soma"),
+    names_to = "Axis",
+    values_to = "Coordinate"
+  ) %>%
+  mutate(Axis = gsub("Soma_", "", Axis))
+
+neurons_long
+
+# 长格式转宽格式 (pivot_wider)
+neurons_long %>%
+  pivot_wider(
+    names_from = Axis,
+    values_from = Coordinate,
+    names_prefix = "Coord_"
+  )
+```
+
+## 10.2 条件计数和求和
+
+```{r conditional-agg}
+# 条件计数
+neurons %>%
+  summarize(
+    n_total = n(),
+    n_long = sum(Length > 8000),
+    n_ITi_ipsi = sum(Type == "ITi" & Ipsilateral == TRUE),
+    pct_long = mean(Length > 8000) * 100
+  )
+
+# 条件求和
+neurons %>%
+  summarize(
+    total_length = sum(Length),
+    long_neuron_length = sum(Length[Length > 8000]),
+    avg_ITi_length = mean(Length[Type == "ITi"])
+  )
+```
+
+## 10.3 行操作
+
+```{r row-ops}
+# 添加行号
+neurons %>% mutate(row_id = row_number())
+
+# 去重
+neurons %>% distinct(Type)                          # 唯一类型
+neurons %>% distinct(Type, Ipsilateral)             # 唯一组合
+neurons %>% distinct(Type, .keep_all = TRUE)        # 保留其他列
+
+# 计数
+tally(neurons)                                      # 总行数
+neurons %>% count(Type)                             # 按类型计数
+neurons %>% count(Type, sort = TRUE)                # 排序
+neurons %>% count(Type, Ipsilateral)                # 多列计数
+
+# 添加计数列
+neurons %>% add_count(Type)                         # 添加每类计数
+```
+
+---
+
+# 11. 实战练习
+
+## 练习1: 基础操作
+
+```{r practice1}
+# 使用neurons数据框完成以下任务：
+
+# 1. 选择NeuronID, Type, Length, Terminals列
+# 2. 筛选出ITi类型的神经元
+# 3. 添加一列Length_mm (Length / 1000)
+# 4. 按Length降序排列
+# 5. 显示前10行
+
+# 答案：
+result1 <- neurons %>%
+  select(NeuronID, Type, Length, Terminals) %>%
+  filter(Type == "ITi") %>%
+  mutate(Length_mm = Length / 1000) %>%
+  arrange(desc(Length)) %>%
+  head(10)
+
+result1
+```
+
+## 练习2: 分组统计
+
+```{r practice2}
+# 任务：
+# 1. 按Type分组
+# 2. 计算每组的：神经元数量、平均Length、平均Terminals
+# 3. 筛选出平均Length > 6000的组
+# 4. 按平均Length降序排列
+
+# 答案：
+result2 <- neurons %>%
+  group_by(Type) %>%
+  summarize(
+    n = n(),
+    mean_length = mean(Length),
+    mean_terminals = mean(Terminals),
+    .groups = 'drop'
+  ) %>%
+  filter(mean_length > 6000) %>%
+  arrange(desc(mean_length))
+
+result2
+```
+
+## 练习3: 综合练习
+
+```{r practice3}
+# 创建一个完整的分析报告：
+# 1. 只保留同侧投射的神经元
+# 2. 根据Length分为"Short" (<5000), "Medium" (5000-10000), "Long" (>10000)
+# 3. 按Type和Size_Category分组
+# 4. 计算每组的数量、平均Length、平均Terminals
+# 5. 添加一列terminal_density (Terminals / (Length/1000))
+# 6. 筛选出数量>=2的组
+# 7. 按terminal_density降序排列
+
+# 答案：
+report <- neurons %>%
+  filter(Ipsilateral == TRUE) %>%
+  mutate(
+    Size_Category = case_when(
+      Length < 5000 ~ "Short",
+      Length <= 10000 ~ "Medium",
+      TRUE ~ "Long"
+    ),
+    Terminal_Density = Terminals / (Length / 1000)
+  ) %>%
+  group_by(Type, Size_Category) %>%
+  summarize(
+    n = n(),
+    mean_length = mean(Length),
+    mean_terminals = mean(Terminals),
+    mean_density = mean(Terminal_Density),
+    .groups = 'drop'
+  ) %>%
+  filter(n >= 2) %>%
+  arrange(desc(mean_density))
+
+report
+```
+
+---
+
+# 12. 与真实数据结合
+
+```{r real-data, eval=FALSE}
+# 读取真实神经投射组数据
+library(readxl)
+
+df <- read_excel("tables/251637_results_v5.xlsx", sheet = "Summary")
+
+# 使用dplyr进行分析
+analysis <- df %>%
+  # 选择关键列
+  select(NeuronID, Neuron_Type, Total_Length, Terminal_Count, 
+         N_Ipsilateral, N_Contralateral, Laterality_Index) %>%
+  # 添加分类
+  mutate(
+    Length_Category = case_when(
+      Total_Length < 3000 ~ "Short",
+      Total_Length < 8000 ~ "Medium",
+      TRUE ~ "Long"
+    ),
+    Laterality_Bias = case_when(
+      Laterality_Index > 0.5 ~ "Strongly_Ipsi",
+      Laterality_Index > 0 ~ "Weakly_Ipsi",
+      Laterality_Index > -0.5 ~ "Weakly_Contra",
+      TRUE ~ "Strongly_Contra"
+    )
+  ) %>%
+  # 分组统计
+  group_by(Neuron_Type, Length_Category) %>%
+  summarize(
+    n = n(),
+    mean_length = mean(Total_Length),
+    mean_terminals = mean(Terminal_Count),
+    mean_laterality = mean(Laterality_Index),
+    .groups = 'drop'
+  ) %>%
+  # 排序
+  arrange(Neuron_Type, desc(n))
+
+print(analysis)
+```
+
+---
+
+# 总结
+
+## dplyr核心函数速查表
+
+| 函数 | 功能 | 示例 |
+|------|------|------|
+| `select()` | 选择列 | `select(df, col1, col2)` |
+| `filter()` | 筛选行 | `filter(df, col > 5)` |
+| `mutate()` | 添加/修改列 | `mutate(df, new = col1 + col2)` |
+| `arrange()` | 排序 | `arrange(df, desc(col))` |
+| `summarize()` | 汇总 | `summarize(df, mean = mean(col))` |
+| `group_by()` | 分组 | `group_by(df, category)` |
+| `left_join()` | 左连接 | `left_join(df1, df2, by = "ID")` |
+
+## 下一步
+
+完成本教程后，请学习：
+- **03_ggplot2_Visualization.Rmd** - 数据可视化
+- **04_PCA_Dimensionality_Reduction.Rmd** - 降维分析
+
+---
+
+**恭喜您掌握dplyr数据操作！** 🎉

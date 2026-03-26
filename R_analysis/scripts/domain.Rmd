@@ -1,0 +1,481 @@
+---
+title: "251637_fMOST_summary"
+author: "binbin"
+date: "'r Sys.Date()'"
+output: html_document
+---
+
+```{r load library}
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+library(matrixStats)
+
+```
+
+# Basic info about the dataset 
+
+```{r load data}
+
+
+# load data and precalculated clustering result
+file_results <- "../tables/251637_INS.xlsx"
+cluster_info <- readRDS("clustering_results.rds")
+
+
+
+dend <- as.dendrogram(cluster_info$hclust_obj)
+
+
+
+#load sheets and combine into new one 
+proj_df_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_df_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+summary <-  read_excel(file_results, sheet = "Summary")
+
+
+
+
+
+
+#merge projection with cluster and soma info ， _c -> cluster, _s soma
+proj_df_ipsi_c <- merge(proj_df_ipsi,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_ipsi_c_s <- merge (proj_df_ipsi_c ,summary %>% select('NeuronID','Soma_Region','Soma_Side'),by='NeuronID') %>% relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+proj_df_contra_c <- merge(proj_df_contra,cluster_info$cluster_df %>% select(-BioType),by='NeuronID') %>% relocate(c(Cluster,DendroOrder),.after=2) %>% arrange(DendroOrder)
+proj_df_contra_c_s <- merge (proj_df_contra_c ,summary %>% select('NeuronID','Soma_Region','Soma_Side'),by='NeuronID') %>% relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+
+
+
+
+
+
+
+
+# ipsi_L <- proj_df_ipsi_c_s %>% filter(Soma_Side == "L")
+# 
+# ipsi_R <- proj_df_ipsi_c_s %>% filter(Soma_Side == "R")
+# 
+# contra_L <- proj_df_contra_c_s %>% filter(Soma_Side == "L")
+# 
+# contra_R <- proj_df_contra_c_s %>%  filter(Soma_Side == "R")
+idx_L <- proj_df_ipsi_c_s$Soma_Side == "L"
+idx_R <- proj_df_ipsi_c_s$Soma_Side == "R"
+
+cat(sprintf("distribution：L=%d, R=%d\n", sum(idx_L), sum(idx_R)))
+
+
+# make matrices
+meta_cols <- 6
+
+mat_ipsi <- t(proj_df_ipsi_c_s%>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_ipsi) <- proj_df_ipsi_c_s$NeuronID
+cat(sprintf("\n矩阵维度：%d 脑区 × %d 神经元\n", nrow(mat_ipsi), ncol(mat_ipsi)))
+
+
+mat_contra <- t(proj_df_contra_c_s %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_contra) <- proj_df_contra_c_s$NeuronID
+
+# 获取 L/R 神经元的列索引
+ipsi_L_cols <- proj_df_ipsi_c_s$Soma_Side == "L"
+ipsi_R_cols <- proj_df_ipsi_c_s$Soma_Side == "R"
+contra_L_cols <- proj_df_contra_c_s$Soma_Side == "L"
+contra_R_cols <- proj_df_contra_c_s$Soma_Side == "R"
+
+# 创建子矩阵
+mat_ipsi_L <- mat_ipsi[, all_of(ipsi_L_cols), drop = FALSE]
+mat_ipsi_R<- mat_ipsi[, all_of(ipsi_R_cols), drop = FALSE]
+mat_contra_L <- mat_contra[, all_of(contra_L_cols), drop = FALSE]
+mat_contra_R <- mat_contra[, all_of(contra_R_cols), drop = FALSE]
+
+
+# prepare matrix for 
+mat_ipsi_combined <- cbind(mat_ipsi_L, mat_ipsi_R)
+mat_contra_combined <- cbind(mat_contra_L, mat_contra_R)
+
+
+
+```
+
+```{r basic plots practice}
+# 图1: 神经元类型分布（左右对比）
+p1 <- ggplot(summary_cluster, aes(x = Neuron_Type, fill = Hemisphere)) +
+  geom_bar(position = "dodge") +
+  theme_minimal() +
+  labs(title = "Neuron Type Distribution by Hemisphere", x = "Neuron Type", y = "Count") +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# 图2: 聚类结果与原始类型交叉验证
+p2 <- ggplot(summary_cluster, aes(x = factor(Subtype_Cluster), fill = Neuron_Type)) +
+  geom_bar(position = "fill") +
+  scale_y_continuous(labels = scales::percent) +
+  theme_minimal() +
+  labs(title = "Proportion of Neuron Types within Each Cluster", 
+       x = "Cluster", y = "Proportion", fill = "Original Type")
+
+p1 + p2
+```
+
+```{r LR - projection_plot}
+
+# prepare split vecs
+
+# Hemisphere 标识（L/R）
+side_vec <- c(rep("L", ncol(mat_ipsi_L)), rep("R", ncol(mat_ipsi_R)))
+
+# Cluster 编号（1-12）
+cluster_vec <- c(proj_df_ipsi_c_s$Cluster[idx_L], 
+                 proj_df_ipsi_c_s$Cluster[idx_R])
+
+# Neuron Type（ITs, ITi, CT, PT, ITc）
+type_vec <- c(proj_df_ipsi_c_s$Neuron_Type[idx_L], 
+              proj_df_ipsi_c_s$Neuron_Type[idx_R])
+
+
+
+split_labels <- paste0(side_vec, "_", cluster_vec)
+
+# 创建 factor，保持实际出现的顺序（避免空level）
+split_factor <- factor(split_labels, levels = unique(split_labels))
+
+cat(sprintf("Split组合数：%d 个（如：%s...）\n", 
+            length(levels(split_factor)), 
+            paste(head(levels(split_factor), 3), collapse=", ")))
+
+
+
+# ==================== 8. 颜色定义 ====================
+# 8.1 投射强度颜色（蓝白黑渐变）
+max_val <- max(rowMaxs(mat_ipsi_combined), rowMaxs(mat_contra_combined))
+colour_func <- colorRamp2(
+  c(0, max_val/2, max_val), 
+  c("#F7FBF0", "#6495ED", "#00008B")  # 白→蓝→深蓝
+)
+
+# 8.2 细胞类型颜色
+type_colors <- c(
+  "ITc" = "#4DAF4A",  # 绿色
+  "ITs" = "#984EA3",  # 紫色
+  "CT"  = "#FF7F00",  # 橙色
+  "PT"  = "#FFFF33",  # 黄色
+  "ITi" = "#E41A1C"   # 红色
+)
+
+# 8.3 左右脑颜色
+side_colors <- c("L" = "#E74C3C", "R" = "#3498DB")  # 左红右蓝
+
+
+
+slice_info <- data.frame(
+  label = levels(split_factor),
+  side = sapply(strsplit(levels(split_factor), "_"), `[`, 1),
+  cluster = as.numeric(sapply(strsplit(levels(split_factor), "_"), `[`, 2)),
+  stringsAsFactors = FALSE
+)
+
+# 9.2 为每个 slice 分配代表性细胞类型（该cluster的主要类型）
+slice_info$type <- sapply(1:nrow(slice_info), function(i) {
+  s <- slice_info$side[i]
+  c <- slice_info$cluster[i]
+  # 找到对应 side+cluster 的第一个神经元类型
+  proj_df_ipsi_c_s$Neuron_Type[proj_df_ipsi_c_s $Soma_Side == s & 
+                                  proj_df_ipsi_c_s $Cluster == c][1]
+})
+
+# 9.3 创建三层注释
+ha_top <- HeatmapAnnotation(
+  # 第一层：左右脑大块颜色标识
+  # Hemisphere = anno_block(
+  #   gp = gpar(fill = side_colors[slice_info$side], col = NA),
+  #   labels = slice_info$side,
+  #   labels_gp = gpar(fontsize = 10, col = "white", fontface = "bold"),
+  #   height = unit(0.8, "cm")
+  # ),
+  
+  # 第二层：Cluster编号
+  Cluster = anno_block(
+    gp = gpar(fill = "grey95", col = "grey70"),
+    labels = paste0("#", slice_info$cluster),
+    labels_gp = gpar(fontsize = 8),
+    height = unit(0.5, "cm")
+  ),
+  
+  # 第三层：细胞类型颜色
+  Type = anno_block(
+    gp = gpar(fill = type_colors[slice_info$type], col = "black", lwd = 0.5),
+    labels = slice_info$type,
+    labels_gp = gpar(fontsize = 9, col = "white", fontface = "bold"),
+    height = unit(0.7, "cm")
+  ),
+  
+  # 底部细条：显示每个神经元的Side（可选，用于验证对齐）
+  Hemisphere = side_vec,
+  col = list(Hemisphere = side_colors),
+show_legend =c(FALSE, FALSE, FALSE, TRUE),  annotation_height = unit(4, "cm")
+)
+
+# ==================== 10. 绘制热图 ====================
+ht_opt(
+  heatmap_row_names_gp = gpar(fontsize = 8),
+  heatmap_row_title_gp = gpar(fontsize = 13, fontface = "bold"),
+  TITLE_PADDING = unit(c(10, 10), "mm")
+)
+
+# 10.1 IPSI 热图
+ht_ipsi <- Heatmap(
+  mat_ipsi_combined,
+  name = "IPSI",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title = "Ipsilateral",
+  row_title_side = "right",
+  row_title_gp = gpar(fontsize = 13, fontface = "bold", col = "#377EB8"),
+  
+  # 聚类设置（无列聚类，保持L→R顺序）
+  cluster_columns = FALSE,
+  show_column_dend = FALSE,
+  cluster_rows = FALSE,  # 设为TRUE如需对脑区聚类
+  
+  # Split设置（关键）
+  column_split = split_factor,
+  column_title_gp = gpar(fontsize = 8, fontface = "bold"),
+  column_gap = unit(0, "mm"),  # 组间间隙
+  column_title = NULL,           # 只在ipsi显示标题
+
+  top_annotation = ha_top,
+  border = TRUE,
+  show_heatmap_legend = FALSE,
+  
+)
+
+# 10.2 CONTRA 热图（与IPSI对齐）
+ht_contra <- Heatmap(
+  mat_contra_combined,
+  name = "CONTRA",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title = "Contralateral",
+  row_title_side = "right",
+  row_title_gp = gpar(fontsize = 13, fontface = "bold", col = "#E41A1C"),
+  
+  cluster_columns = FALSE,
+  show_column_dend = FALSE,
+  cluster_rows = FALSE,
+  
+  # 使用完全相同的split确保上下对齐
+  column_split = split_factor,
+  column_title = NULL,           # 只在ipsi显示标题
+  column_gap = unit(0, "mm"),
+  
+  border = TRUE,
+  show_heatmap_legend = FALSE
+)
+
+# ==================== 11. 输出 ====================
+ht_list <- ht_ipsi %v% ht_contra
+
+# 生成标题
+title_text <- sprintf(
+  "Sample 251637 Insular Projections (n=%d: L=%d, R=%d) | Cluster-Side Combined View", 
+  ncol(mat_ipsi_combined), sum(idx_L), sum(idx_R)
+)
+
+# 保存PDF
+output_file <- "heatmap_LR_combined_split.pdf"
+pdf(output_file, width = 26, height = 16)
+
+draw(ht_list,
+     column_title = title_text,
+     column_title_gp = gpar(fontsize = 16, fontface = "bold"),
+     show_heatmap_legend = TRUE,
+     padding = unit(c(15, 8, 15, 50), "mm"),annotation_legend_side = "right"
+)
+# 2. 创建自定义 Legends
+lgd_side <- Legend(
+  title = "Hemisphere",
+  at = c("L", "R"),
+  legend_gp = gpar(fill = c("L" = "#E74C3C", "R" = "#3498DB")),
+  nrow = 1
+)
+
+lgd_type <- Legend(
+  title = "Cell Type",
+  at = c("ITc", "ITs", "CT", "PT", "ITi"),
+  legend_gp = gpar(fill = type_colors)
+)
+
+# 3. 组合 legends
+pd <- packLegend(lgd_side, lgd_type, direction = "vertical")
+draw(pd, x = unit(0.95, "npc"), y = unit(0.5, "npc"), just = c("left", "center"))
+
+
+# 添加装饰线区分Ipsi/Contra
+decorate_row_title("IPSI", {
+  grid.lines(x = unit(0.03, "npc"), 
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#377EB8", lineend = "round"))
+})
+
+decorate_row_title("CONTRA", {
+  grid.lines(x = unit(0.03, "npc"), 
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#E41A1C", lineend = "round"))
+})
+
+dev.off()
+
+cat(sprintf("\n✓ 热图已保存: %s\n", output_file))
+cat(sprintf("  尺寸: %d 脑区 × %d 神经元\n", nrow(mat_ipsi_combined), ncol(mat_ipsi_combined)))
+cat(sprintf("  Split slices: %d (每个Side-Cluster组合一个)\n", length(levels(split_factor))))
+
+```
+
+```{r Whole_ projection_plot}
+cluster_vec_ordered <- proj_df_ipsi_c_s $Cluster
+n_clusters <- length(unique(cluster_vec_ordered))
+
+
+
+
+neuron_types <- proj_df_ipsi_c$Neuron_Type
+real_order <- unique(proj_df_ipsi_c$Cluster) 
+
+slice_types <- sapply(real_order, function(g) {
+  # 直接去排好序的表里找这个 Cluster 对应的类型
+  proj_df_ipsi_c$Neuron_Type[proj_df_ipsi_c$Cluster == g][1]
+})
+type_colors <- c(
+  "ITc" = "#4DAF4A", "ITs" = "#984EA3", "CT" = "#FF7F00",
+  "PT" = "#FFFF33", "ITi" = "#E41A1C"
+)
+
+# define fill in colours 
+ha_top <- HeatmapAnnotation(
+  Type = anno_block(
+    gp = gpar(fill = type_colors[slice_types], col = "black"),
+    labels = slice_types,
+    labels_gp=gpar(fontsize=12),
+    height = unit(2, "cm")
+  ),
+  Subtype = anno_block(
+    gp = gpar(fill = "grey90"),
+    labels = paste0("#", 1:n_clusters),
+    labels_gp=gpar(fontsize=8),
+    
+    height = unit(1, "cm")
+  
+  )
+ 
+)
+
+# --- 核心包装函数：统一所有热图样式 ---
+build_projection_ht <- function(mat, name, title, 
+                                target_dend=dend,
+                                order = 1,
+                                n_split = n_clusters) {
+  is_first <- (order == 1)
+  max_val=max(rowMaxs(mat))
+  Heatmap(
+    mat, 
+    name = name, 
+    row_title = title,
+    col = colorRamp2(c(0, max_val/2, max_val), c("#F7FBF0", "blue", "darkblue"))
+,
+    cluster_rows = FALSE,
+    row_title_side = "right",
+    cluster_columns = target_dend,
+    column_split = n_split,
+    show_column_dend = is_first,
+    column_dend_height = unit(4, "cm"),
+    top_annotation = if(is_first) ha_top else NULL,
+    column_title = NULL,
+    column_gap = unit(0.5, "mm"),
+    show_column_names = FALSE,
+    border = TRUE
+  )
+}
+
+# --- 自动化保存与装饰函数（改进版）---
+render_projection_plot <- function(ht_list, filename, title, 
+                                   w = 20, h = 15,
+                                   folder = "figures") {  # 新增：输出文件夹参数
+  
+  # 1. 自动创建 figures 文件夹（如果不存在）
+  if (!dir.exists(folder)) {
+    dir.create(folder, showWarnings = FALSE, recursive = TRUE)
+    message(paste("Created folder:", folder))
+  }
+  
+  # 2. 拼接完整路径
+  filepath <- file.path(folder, filename)
+  
+  # 3. 打开 PDF 设备
+  pdf(filepath, width = w, height = h)
+  
+  # 4. 统一绘图配置
+  draw(ht_list, 
+       column_title = title, 
+       column_title_gp = gpar(fontsize = 16, fontface = "bold"),
+       show_heatmap_legend = FALSE,
+       padding = unit(c(15, 5, 25, 50), "mm"))
+  
+  # 5. 侧边装饰线
+  side_colors <- c("IPSI" = "#377EB8", "CONTRA" = "#E41A1C")
+  
+  for(nm in names(side_colors)) {
+    decorate_row_title(nm, {
+      grid.lines(x = unit(0, "npc"),
+                 y = unit(c(0.02, 0.98), "npc"), 
+                 gp = gpar(lwd = 6, col = side_colors[nm])) 
+    })
+  }
+  
+  # 6. 关闭设备
+  dev.off()
+  
+  message(paste("Successfully saved:", filepath))
+}
+
+
+
+
+# 1. 准备热图
+# h1r <- build_projection_ht(mat_ipsi_R_t,   "IPSI",   "Ipsilateral", dend_R, order = 1)
+# h1l <- build_projection_ht(mat_ipsi_L_t,   "IPSI",   "Ipsilateral", dend_L, order = 1)
+
+# h2r <- build_projection_ht(mat_contra_R_t, "CONTRA", "Contralateral", dend_R, order = 2)
+# h2l <- build_projection_ht(mat_contra_L_t, "CONTRA", "Contralateral", dend_L, order = 2)
+
+h1 <- build_projection_ht(mat_ipsi_t,   "IPSI",   "Ipsilateral", dend, order = 1)
+h2 <- build_projection_ht(mat_contra_t,   "CONTRA", "Contralateral", dend, order = 2)
+
+final_list <- h1 %v% h2
+
+# 3. 一键出图（自动保存到 figures/ 文件夹）
+render_projection_plot(final_list, "left.pdf", "251637_summary_projection_plot")
+
+# 可选：自定义文件夹
+# render_projection_plot(final_list, "plot.pdf", "Title", folder = "output/figures")
+
+
+
+
+
+
+```
+
+```{r}
+# 超简版本
+
+
+
+
+```
