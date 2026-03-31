@@ -1,0 +1,89 @@
+---
+workflow March
+---
+
+flowchart TB
+    %% Define styles with proper contrast
+    classDef default fill:#fff,stroke:#333,color:#000
+    classDef titleStyle fill:#424242,stroke:#212121,color:#fff,stroke-width:3px
+    classDef inputStyle fill:#e3f2fd,stroke:#1565c0,color:#000
+    classDef step1Style fill:#e8f5e9,stroke:#2e7d32,color:#000
+    classDef step2Style fill:#fff3e0,stroke:#ef6c00,color:#000
+    classDef step3Style fill:#fce4ec,stroke:#c2185b,color:#000
+    classDef step4Style fill:#e0f2f1,stroke:#00695c,color:#000
+    classDef outputStyle fill:#ffebee,stroke:#c62828,color:#000
+    classDef gap padding:30px,margin:30px
+
+    subgraph Input["📥 INPUT"]
+        direction TB
+        SID[/"Sample ID<br/>e.g., 251637"/]
+        GL[getNeuronListByRegion<br/>function]
+        NIDS[Neuron IDs list]
+    end
+
+    subgraph Step1["🔵 STEP 1: Region Analysis"]
+        direction TB
+        S1[step1.run_region_analysis.py]
+        S1_deps[Dependencies:<br/>PopulationRegionAnalysis, Cortex/Subcortex<br/>Hierarchy, ARM/CHARM/SARM Atlas,<br/>Laterality Analysis]
+        S1_out[/"Output: Neuron Tables (.xlsx)<br/>projection_strength, soma_region,<br/>terminal_regions, laterality"/]
+    end
+
+    subgraph Step2["🟢 STEP 2: FNT Distance Pipeline"]
+        direction TB
+        S2[step2.fnt-dist_pipeline.py]
+        S2_deps[Dependencies:<br/>fnt-from-swc, fnt-decimate,<br/>fnt-join, fnt-dist, IONData]
+        S2_out[/"Output: FNT Files + Distance Matrix<br/>(*_joined.fnt, *_dist.txt)"/]
+    end
+
+    subgraph Step3["🟠 STEP 3: Bulk Visualization"]
+        direction TB
+        S3[step3.1.bulk_visual_data.py]
+        S3_deps[Dependencies:<br/>Visual_toolkit, IONData,<br/>High/Low Res Blocks]
+        S3_out[/"Output: Plots & NIfTI<br/>HighRes Soma Block, LowRes WideField"/]
+    end
+    
+    subgraph Step4["🟣 STEP 4: Statistical Analysis"]
+        direction TB
+        S4[R based analysis]
+
+    end 
+
+    subgraph Step5["🔷 STEP 5: Additional Rendering"]
+        direction TB
+        S5A["step3.2.run_brain_viz_meshRender.py (with example usage)<br/> dep (BrainViz + RegionExtractor)"]
+        S5B["step3.3.neuronviewRender.py<br/> dep(neuronVis + RenderGL)"]
+        S5C["step3.4.region_flatmap.visualisation <br/> "subcortex_visualisation submodule""]
+    end
+
+    %% Main vertical flow - sequential
+    SID --> GL --> NIDS --> Step1 
+    S1 --> S1_deps --> S1_out
+    
+    %% Branching from S1_out to Step2 and Step3
+   
+
+    S2 --> S2_deps --> S2_out
+    
+
+    S3 --> S3_deps --> S3_out
+
+    S1_out --> Step2
+    S1_out --> Step3
+
+    S1_out --> Step4
+
+    Step2 ~~~ Step3 ~~~ Step4
+
+    S4 --> Step5
+    S3_out --> Step5
+    
+   
+    
+
+    %% Apply dark background to subgraph titles
+    style Input fill:#1565c0,stroke:#0d47a1,color:#fff
+    style Step1 fill:#2e7d32,stroke:#1b5e20,color:#fff
+    style Step2 fill:#ef6c00,stroke:#e65100,color:#fff
+    style Step3 fill:#6a1b9a,stroke:#4a148c,color:#fff
+    style Step4 fill:#c62828,stroke:#b71c1c,color:#fff
+    style Step5 fill:#00695c,stroke:#004d40,color:#fff
