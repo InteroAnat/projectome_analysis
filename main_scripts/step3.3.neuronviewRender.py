@@ -238,4 +238,10 @@ if __name__=="__main__":
 	# neuronvis.render.animation(90*0)
 	neuronvis.render.run()
 	# neuronvis.render.closeWindow()
+ 
+ 
+ 
+ 
+ 	# could use getneuronlist or pd operation to filter specific neuron groups.
+  
 	pass
