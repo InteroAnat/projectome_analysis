@@ -102,7 +102,7 @@ flowchart TB
         direction TB
         S5A[step3.2.run_brain_viz_meshRender.py<br/>BrainViz + RegionExtractor]
         S5B[step3.3.neuronviewRender.py<br/>neuronVis + RenderGL]
-       
+        S5C[step3.4.region_flatmap.viz.py<br/>RegionFlatmap]
         S5_out[/"Output:<br/>• brain_viz_*<br/>• neuronview renders<br/>"/]
     end
 

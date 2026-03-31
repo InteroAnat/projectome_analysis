@@ -117,6 +117,7 @@ class BrainViz:
         self.elev = 30
         self.azim = 60
         self.background_color = 'white'
+        self.legend_markerscale = 2.0
     
     # ==================== MESH LOADING ====================
     
@@ -391,7 +392,7 @@ class BrainViz:
         ax.view_init(elev=self.elev, azim=self.azim)
         
         if show_legend:
-            ax.legend(loc='upper left', fontsize=9)
+            legend = ax.legend(loc='upper left', fontsize=10, markerscale=self.legend_markerscale)
         
         plt.tight_layout()
         

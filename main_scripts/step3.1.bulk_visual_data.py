@@ -42,7 +42,7 @@ SAMPLE_ID = '251637'
 
 # INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_M1.xlsx'
 # INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_subset.xlsx'
-INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_ACC.xlsx'
+INPUT_FILE = r'D:\projectome_analysis\neuron_tables\251637_ACC.xlsx'
 PARENT_OUTPUT_DIR = r"W:\fMOST\test"
 
 # ==========================================

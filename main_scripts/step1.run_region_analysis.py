@@ -79,11 +79,11 @@ main(ins_swcIDs)
 
 # %%
 # to acquire neurons for a 
-from region_analysis import getNeuronListByRegion
+from region_analysis.getNeuronListByRegion import getNeuronListByRegion
 
-motor_ids = getNeuronListByRegion('251637', ['motor', 'premotor'], return_ids_only=False, verbose=False)
+motor_ids = getNeuronListByRegion('251637', ['premotor'], return_ids_only=True, verbose=False)
 # main(motor_ids)
 
 # %%
-main()
+main(motor_ids)
 # %%
