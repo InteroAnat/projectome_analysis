@@ -1,4 +1,138 @@
+# ============================================================================
+# Projectome Analysis - Git Ignore Patterns
+# ============================================================================
+
+# ============================================================================
+# LARGE DATA FILES - Never commit these
+# ============================================================================
+
+# NIfTI neuroimaging files (*.nii, *.nii.gz)
+*.nii
+*.nii.gz
+
+# SWC neuron morphology files
+*.swc
+
+# Atlas data (large files)
 atlas/
-main_scripts/debug_outliers/
+
+# Processed neuron data (large directories)
 processed_neurons/
+main_scripts/processed_neurons/
+
+# Raw data resources
+resource/
+
+# Cache directories
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+*.so
+
+# ============================================================================
+# TEMPORARY / OUTPUT FILES
+# ============================================================================
+
+# Debug output directories
+main_scripts/debug_outliers/
+
+# Output directories (generated results)
+output/
+main_scripts/output/
+brain_viz_output/
+flatmap_outputs/
+flatmap_step_by_step/
+
+# Cube cache
+cube_cache/
+resource/cubes/
+
+# ============================================================================
+# JUPYTER NOTEBOOK CHECKPOINTS
+# ============================================================================
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# ============================================================================
+# PYTHON ENVIRONMENT
+# ============================================================================
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# ============================================================================
+# IDE / EDITOR FILES
+# ============================================================================
+
+# VS Code
+.vscode/
+.vscode/settings.json
+.vscode/extensions.json
+
+# RStudio
 .Rproj.user
+.Rhistory
+.RData
+.Ruserdata
+
+# PyCharm
+.idea/
+*.iml
+
+# ============================================================================
+# OPERATING SYSTEM FILES
+# ============================================================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# ============================================================================
+# TEMPORARY FILES
+# ============================================================================
+
+# Temporary files
+*.tmp
+*.temp
+*.log
+
+# Excel temporary files
+~$*.xlsx
+~$*.xls
+
+# PDF temporary files (if generated)
+*_tmp.pdf
+*_tmp.html
+
+# ============================================================================
+# TEST FILES
+# ============================================================================
+test.pdf
+test.png
+test_*.png
+test_*.pdf
+
+# ============================================================================
+# SUBMODULES (managed separately)
+# ============================================================================
+neuron-vis/
+subcortex_visualization/
