@@ -1,0 +1,34 @@
+*DS_Store
+
+# Ignore package metadata
+*.egg-info/
+
+# Ignore build directories
+build/
+dist/
+
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Ignore R files
+.Rhistory
+*/*.Rproj.user
+*/*.Rbuildignore
+
+
+# Readme images
+readme_images.svg
+
+# Testing files
+testing*
+custom_segmentation_pipeline/*
+
+# Atlas info folder
+atlas_info/raw_volumes
+
+# While testing interactive jupyter
+interactive_online.ipynb
+create_R_package.R
+test_R_package.R

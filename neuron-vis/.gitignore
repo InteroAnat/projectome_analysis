@@ -1,0 +1,27 @@
+﻿################################################################################
+# 此 .gitignore 文件已由 Microsoft(R) Visual Studio 自动创建。
+################################################################################
+
+/build
+/resource
+/source/pycontrol/__pycache__
+/source/pycontrol/build/MainWindow
+/source/pycontrol/dist/MainWindow
+*.spec
+/source/pycontrol/.spyproject/config
+/build2
+/source/pycontrol/.spyproject
+/.ipynb_checkpoints
+/__pycache__
+/neuronVis/__pycache__
+/neuronVis/pytorch_ssim/__pycache__
+/neuronVis/resource
+/.spyproject
+*.nrrd
+*.pyproj
+.DS_Store
+/.vs/neuronVis/v14
+*.swc
+*.json
+*.zip
+*.obj
