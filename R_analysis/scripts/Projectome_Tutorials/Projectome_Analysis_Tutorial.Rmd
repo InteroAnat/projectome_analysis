@@ -94,7 +94,7 @@ cat("包加载完成\n")
 # 设置数据路径 (根据实际路径修改)
 data_dir <- "tables"  # 或 "/path/to/your/data"
 file_results <- file.path(data_dir, "251637_results_v5.xlsx")
-file_clustering_rds <- file.path(data_dir, "clustering_results.rds")
+file_clustering_rds <- "../../../data_output/clustering/clustering_results.rds"
 
 # 检查文件是否存在
 if (!file.exists(file_results)) {

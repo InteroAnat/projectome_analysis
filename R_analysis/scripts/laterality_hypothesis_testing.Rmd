@@ -1,0 +1,776 @@
+---
+title: "渐进式假设检验：左右神经元投射差异"
+subtitle: "Progressive Hypothesis Testing for Lateralization of Neuronal Projections"
+author: "Analysis Pipeline"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    fig_width: 10
+    fig_height: 8
+---
+
+<!-- Chunk-by-chunk in Cursor: install "R" (REditorSupport.r, see .vscode/extensions.json). Open repo as folder. Command Palette → "R: Create R Terminal". In an Rmd chunk: Ctrl+Shift+Enter = Run Current Chunk, Ctrl+Alt+P = run all chunks above, Ctrl+Enter = run selection/line. Full Knit needs Pandoc; integrated terminal sets RSTUDIO_PANDOC in .vscode/settings.json. -->
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center'
+)
+
+# Load required libraries (same as domain.Rmd)
+library(readxl)
+library(pheatmap)
+library(ComplexHeatmap)
+library(openxlsx)
+library(circlize)
+library(grid)
+library(dplyr)
+library(dendextend)
+library(matrixStats)
+
+# Additional libraries for hypothesis testing
+library(vegan)       # For PERMANOVA and Mantel test
+library(ggplot2)     # For additional plots
+library(ggpubr)      # stat_compare_means (used before later chunks load it)
+library(patchwork)   # For combining plots
+
+# Set seed for reproducibility
+set.seed(42)
+```
+
+# 数据加载 (参考 domain.Rmd)
+
+```{r load_data}
+# load data and precalculated clustering result (same as domain.Rmd)
+file_results <- "../tables/251637_INS.xlsx"
+cluster_info <- readRDS("../../data_output/clustering/clustering_results.rds")
+
+dend <- as.dendrogram(cluster_info$hclust_obj)
+
+# load sheets and combine into new one 
+proj_df_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_df_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+summary <- read_excel(file_results, sheet = "Summary")
+
+# merge projection with cluster and soma info, _C -> cluster, _s soma
+proj_df_ipsi_C <- merge(proj_df_ipsi, cluster_info$cluster_df %>% select(-BioType), by='NeuronID') %>% 
+  relocate(c(Cluster, DendroOrder), .after=2) %>% arrange(DendroOrder)
+proj_df_ipsi_CS <- merge(proj_df_ipsi_C, summary %>% select('NeuronID', 'Soma_Region', 'Soma_Side'), by='NeuronID') %>% 
+  relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+
+proj_df_contra_C <- merge(proj_df_contra, cluster_info$cluster_df %>% select(-BioType), by='NeuronID') %>% 
+  relocate(c(Cluster, DendroOrder), .after=2) %>% arrange(DendroOrder)
+proj_df_contra_CS <- merge(proj_df_contra_C, summary %>% select('NeuronID', 'Soma_Region', 'Soma_Side'), by='NeuronID') %>% 
+  relocate(Soma_Region, Soma_Side, .after = 'NeuronID')
+
+# Create indices (same as domain.Rmd)
+idx_L <- proj_df_ipsi_CS$Soma_Side == "L"
+idx_R <- proj_df_ipsi_CS$Soma_Side == "R"
+
+cat(sprintf("distribution: L=%d, R=%d\n", sum(idx_L), sum(idx_R)))
+
+# make matrices (same as domain.Rmd)
+meta_cols <- 6
+
+mat_ipsi <- t(proj_df_ipsi_CS %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_ipsi) <- proj_df_ipsi_CS$NeuronID
+cat(sprintf("\n矩阵维度: %d 脑区 × %d 神经元\n", nrow(mat_ipsi), ncol(mat_ipsi)))
+
+mat_contra <- t(proj_df_contra_CS %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_contra) <- proj_df_contra_CS$NeuronID
+
+# Get L/R neuron column indices
+ipsi_L_cols <- proj_df_ipsi_CS$Soma_Side == "L"
+ipsi_R_cols <- proj_df_ipsi_CS$Soma_Side == "R"
+contra_L_cols <- proj_df_contra_CS$Soma_Side == "L"
+contra_R_cols <- proj_df_contra_CS$Soma_Side == "R"
+
+# Create sub-matrices
+mat_ipsi_L <- mat_ipsi[, ipsi_L_cols, drop = FALSE]
+mat_ipsi_R <- mat_ipsi[, ipsi_R_cols, drop = FALSE]
+mat_contra_L <- mat_contra[, contra_L_cols, drop = FALSE]
+mat_contra_R <- mat_contra[, contra_R_cols, drop = FALSE]
+
+# Prepare combined matrices
+mat_ipsi_combined <- cbind(mat_ipsi_L, mat_ipsi_R)
+mat_contra_combined <- cbind(mat_contra_L, mat_contra_R)
+
+# Store for later use
+proj_df_ipsi_s <- proj_df_ipsi_CS
+proj_df_contra_s <- proj_df_contra_CS
+```
+
+# ========== 距离矩阵加载与 Spearman 相关分析 ==========
+
+```{r load_and_spearman}
+
+# 1. 加载 FNT 距离矩阵
+fnt_df <- read_excel("../../data_output/clustering/raw_matrix_神经元矩阵.xlsx")
+fnt_matrix <- as.matrix(fnt_df)
+rownames(fnt_matrix) <- colnames(fnt_matrix) <- colnames(fnt_df)
+
+cat("FNT matrix:", nrow(fnt_matrix), "x", ncol(fnt_matrix), "\n")
+cat("First IDs:", head(colnames(fnt_matrix)), "\n")
+
+# 2. 找到共同神经元
+proj_ids <- colnames(mat_ipsi)
+common_ids <- sort(intersect(proj_ids, colnames(fnt_matrix)))
+
+cat("Projection neurons:", length(proj_ids), "\n")
+cat("FNT neurons:", ncol(fnt_matrix), "\n")
+cat("Common neurons:", length(common_ids), "\n")
+
+# 3. 截取共同部分
+fnt_sub <- fnt_matrix[common_ids, common_ids]
+proj_idx <- match(common_ids, proj_ids)
+mat_ipsi_sub <- mat_ipsi[, proj_idx]
+
+# 4. 计算投射距离矩阵（Bray-Curtis）
+proj_dist_raw <- as.matrix(vegdist(t(mat_ipsi_sub), method = "bray"))
+rownames(proj_dist_raw) <- colnames(proj_dist_raw) <- common_ids
+
+# 5. ========== Spearman 相关分析 ==========
+# 提取上三角向量
+fnt_vec <- fnt_sub[upper.tri(fnt_sub)]
+proj_vec <- proj_dist_raw[upper.tri(proj_dist_raw)]
+
+# 计算 Spearman 相关（使用 cor 函数）
+spearman_result <- cor.test(fnt_vec, proj_vec, method = "spearman")
+
+cat("\n=== Spearman Correlation ===\n")
+cat(sprintf("Correlation (rho): %.3f\n", spearman_result$estimate))
+cat(sprintf("p-value: %.4f\n", spearman_result$p.value))
+
+# 置换检验（Permutation test）
+n_perm <- 999
+perm_stats <- replicate(n_perm, {
+  shuffled_proj <- sample(proj_vec)
+  cor(fnt_vec, shuffled_proj, method = "spearman", use = "complete.obs")
+})
+
+perm_p <- mean(abs(perm_stats) >= abs(spearman_result$estimate))
+cat(sprintf("Permutation p-value: %.4f\n", perm_p))
+
+# 保存结果
+fnt_sub <- fnt_matrix[common_ids, common_ids]
+proj_dist_matrix <- proj_dist_raw
+
+# Mantel：在两套“神经元对–神经元对”距离上检验整体相关性（与下面 Spearman
+# 向量相关检验目标一致；Mantel 通过置换得到 p 值， ecologists 常用写法）
+mantel_fnt_proj <- mantel(
+  as.dist(fnt_sub),
+  as.dist(proj_dist_matrix),
+  method = "spearman",
+  permutations = 999
+)
+cat("\n=== Mantel: FNT distance ~ projection distance ===\n")
+print(mantel_fnt_proj)
+```
+
+---
+
+# Level 1: 描述性探索
+
+## 1.1 样本分布
+
+```{r level1_distribution}
+# Distribution by side and neuron type
+p1 <- ggplot(proj_df_ipsi_s, aes(x = Soma_Side, fill = Soma_Side)) +
+  geom_bar() +
+  geom_text(stat = 'count', aes(label = ..count..), vjust = -0.5) +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(title = "Neuron Count by Hemisphere", x = "Soma Side", y = "Count") +
+  theme_minimal()
+
+p2 <- ggplot(proj_df_ipsi_s, aes(x = Neuron_Type, fill = Soma_Side)) +
+  geom_bar(position = "dodge") +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +geom_text(
+  stat = "count",
+  aes(label = after_stat(count)),
+  position = position_dodge(0.9),
+  vjust = -0.6
+) +
+  labs(title = "Neuron Type Distribution by Side") +
+  theme_minimal()
+
+p1 + p2
+```
+
+## 1.1b Step 1：类型构成、平均投射强度、投射 PCA
+
+```{r step1_composition_mean_pca}
+# 类型 × 半球：计数 + 半球内构成比例
+tab_type_side <- xtabs(~ Neuron_Type + Soma_Side, data = proj_df_ipsi_s)
+cat("\n=== Cell counts (Type × Side) ===\n")
+print(tab_type_side)
+cat("\n=== Proportions within each hemisphere (columns sum to 1) ===\n")
+print(round(prop.table(tab_type_side, margin = 2), 3))
+
+# “Projection length” here = matrix row-sum strength (ipsi / contra / both)，与热图矩阵一致
+tot_ipsi <- colSums(mat_ipsi)
+tot_contra <- colSums(mat_contra)
+tot_both <- tot_ipsi + tot_contra
+step1_df <- data.frame(
+  NeuronID = colnames(mat_ipsi),
+  Soma_Side = proj_df_ipsi_s$Soma_Side,
+  Neuron_Type = proj_df_ipsi_s$Neuron_Type,
+  Total_ipsi = as.numeric(tot_ipsi),
+  Total_contra = as.numeric(tot_contra),
+  Total_both = as.numeric(tot_both),
+  stringsAsFactors = FALSE
+)
+
+mean_by_type_side <- step1_df %>%
+  group_by(Neuron_Type, Soma_Side) %>%
+  summarise(
+    n = n(),
+    mean_ipsi = mean(Total_ipsi),
+    mean_contra = mean(Total_contra),
+    mean_total = mean(Total_both),
+    .groups = "drop"
+  )
+cat("\n=== Mean row-sum (projection strength) by Type × Side ===\n")
+print(as.data.frame(mean_by_type_side))
+
+ggplot(step1_df, aes(x = Neuron_Type, y = Total_both, fill = Soma_Side)) +
+  geom_boxplot(outlier.size = 1) +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(
+    title = "Total projection strength (ipsi + contra), by type and hemisphere",
+    y = "Sum of matrix entries per neuron"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# PCA：神经元为行、脑区为列（与原始投射矩阵同形转置）；PCoA/PCA 都降维，度量不同
+X_pca <- t(mat_ipsi)
+pca_proj <- prcomp(log1p(X_pca), center = TRUE, scale. = TRUE)
+ve <- summary(pca_proj)$importance[2, 1:2] * 100
+pca_axes <- data.frame(
+  NeuronID = colnames(mat_ipsi),
+  PC1 = pca_proj$x[, 1],
+  PC2 = pca_proj$x[, 2],
+  Soma_Side = proj_df_ipsi_s$Soma_Side,
+  Neuron_Type = proj_df_ipsi_s$Neuron_Type
+)
+
+ggplot(pca_axes, aes(x = PC1, y = PC2, color = Soma_Side)) +
+  geom_point(alpha = 0.75, size = 2.5) +
+  stat_ellipse(level = 0.95, linewidth = 0.4) +
+  scale_color_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(
+    title = "PCA of ipsilateral projection profiles",
+    subtitle = "One point per neuron; features = brain regions (log1p + scaled)",
+    x = sprintf("PC1 (%.1f%% variance)", ve[1]),
+    y = sprintf("PC2 (%.1f%% variance)", ve[2])
+  ) +
+  theme_minimal()
+
+ggplot(pca_axes, aes(x = PC1, y = PC2, color = Soma_Side)) +
+  geom_point(alpha = 0.75, size = 2) +
+  facet_wrap(~Neuron_Type) +
+  scale_color_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(
+    title = "PCA by neuron type",
+    x = sprintf("PC1 (%.1f%%)", ve[1]),
+    y = sprintf("PC2 (%.1f%%)", ve[2])
+  ) +
+  theme_minimal()
+```
+
+## 1.2 投射强度统计
+
+```{r level1_projection_stats}
+# Calculate total projection per neuron
+total_proj_ipsi <- colSums(mat_ipsi)
+total_proj_contra <- colSums(mat_contra)
+
+proj_summary_df <- data.frame(
+  NeuronID = colnames(mat_ipsi),
+  Side = c(rep("L", sum(ipsi_L_cols)), rep("R", sum(ipsi_R_cols))),
+  Neuron_Type = proj_df_ipsi_s$Neuron_Type,
+  Cluster = proj_df_ipsi_s$Cluster,
+  Ipsi_Total = total_proj_ipsi,
+  Contra_Total = total_proj_contra,
+  Total_Proj = total_proj_ipsi + total_proj_contra,
+  Ipsi_Ratio = total_proj_ipsi / (total_proj_ipsi + total_proj_contra + 0.001)
+)
+
+# Summary by side
+summary_stats <- proj_summary_df %>%
+  group_by(Side) %>%
+  summarise(
+    n = n(),
+    mean_total = mean(Total_Proj),
+    median_total = median(Total_Proj),
+    mean_ipsi_ratio = mean(Ipsi_Ratio),
+    .groups = "drop"
+  )
+
+print(summary_stats)
+
+# Distribution plots
+p3 <- ggplot(proj_summary_df, aes(x = Total_Proj, fill = Side)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(title = "Total Projection Distribution") +
+  theme_minimal()
+
+
+p4_final <- proj_summary_df %>%
+  group_by(Neuron_Type) %>%
+  filter(n_distinct(Side) == 2) %>%  # 过滤只有单侧的类型
+  ungroup() %>%
+  ggplot(aes(x = Neuron_Type, y = Total_Proj, fill = Side)) +
+  geom_boxplot(outlier.size = 1) +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  stat_compare_means(
+    method = "wilcox.test",
+    label = "p.signif",
+    hide.ns = FALSE
+  ) +
+  labs(title = "Total Projection (L vs R)") +
+  theme_minimal()
+
+
+p3 + p4_final
+```
+``` {r }
+# 加载包
+library(dplyr)
+library(ggplot2)
+library(ggpubr)
+library(patchwork)
+
+# Calculate total projection per neuron
+total_proj_ipsi <- colSums(mat_ipsi)
+total_proj_contra <- colSums(mat_contra)
+
+proj_summary_df <- data.frame(
+  NeuronID = colnames(mat_ipsi),
+  Side = c(rep("L", sum(ipsi_L_cols)), rep("R", sum(ipsi_R_cols))),
+  Neuron_Type = proj_df_ipsi_s$Neuron_Type,
+  Cluster = proj_df_ipsi_s$Cluster,
+  Ipsi_Total = total_proj_ipsi,
+  Contra_Total = total_proj_contra,
+  Total_Proj = total_proj_ipsi + total_proj_contra,
+  Ipsi_Ratio = total_proj_ipsi / (total_proj_ipsi + total_proj_contra + 0.001)
+)
+
+# Summary by side
+summary_stats <- proj_summary_df %>%
+  group_by(Side) %>%
+  summarise(
+    n = n(),
+    mean_total = mean(Total_Proj),
+    median_total = median(Total_Proj),
+    mean_ipsi_ratio = mean(Ipsi_Ratio),
+    .groups = "drop"
+  )
+
+print(summary_stats)
+
+# Distribution plots
+p3 <- ggplot(proj_summary_df, aes(x = Total_Proj, fill = Side)) +
+  geom_density(alpha = 0.5) +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(title = "Total Projection Distribution") +
+  theme_minimal()
+
+# ---------------- 核心：箱线图 + 显示样本数量 n ----------------
+p4_final <- proj_summary_df %>%
+  group_by(Neuron_Type) %>%
+  filter(n_distinct(Side) == 2) %>%  # 过滤只有单侧的类型，防止报错
+  ungroup() %>%
+  
+  ggplot(aes(x = Neuron_Type, y = Total_Proj, fill = Side)) +
+  geom_boxplot(outlier.size = 1, width = 0.6) +
+  scale_fill_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  
+  # 统计检验：只显示星号，隐藏ns
+  stat_compare_means(
+    method = "wilcox.test",
+    label = "p.signif",
+    hide.ns = TRUE,
+    vjust = 0.8
+  ) +
+  
+  # ✅ 关键：显示每组样本数量 n=xxx
+  stat_summary(
+    aes(label = after_stat(paste("n =", ..count..))),
+    fun = "mean",
+    geom = "text",
+    vjust = -2.5,  # 位置上下调整
+    hjust = 0.5,
+    size = 3.5,
+    color = "black"
+  ) +
+  
+  labs(
+    title = "Total Projection by Side & Neuron Type",
+    x = "Neuron Type",
+    y = "Total Projection"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+# 出图
+p4_final
+
+```
+
+
+
+---
+
+# Level 2: 整体差异检验
+
+## 2.1 投射距离的 PERMANOVA
+
+```{r level2_permanova}
+# PERMANOVA on projection distance profiles
+dist_matrix <- as.dist(proj_dist_matrix)
+side_factor <- factor(proj_df_ipsi_s$Soma_Side[match(common_ids, proj_df_ipsi_s$NeuronID)])
+
+adonis_result <- adonis2(dist_matrix ~ side_factor, permutations = 999, by = "margin")
+print(adonis_result)
+
+# PCoA
+pcoa_result <- cmdscale(dist_matrix, k = 2, eig = TRUE)
+pcoa_df <- data.frame(
+  PC1 = pcoa_result$points[, 1],
+  PC2 = pcoa_result$points[, 2],
+  Side = side_factor,
+  Neuron_Type = proj_df_ipsi_s$Neuron_Type[match(common_ids, proj_df_ipsi_s$NeuronID)]
+)
+
+var_exp <- round(100 * pcoa_result$eig / sum(pcoa_result$eig), 1)
+
+ggplot(pcoa_df, aes(x = PC1, y = PC2, color = Side)) +
+  geom_point(size = 3, alpha = 0.7) +
+  stat_ellipse(level = 0.95) +
+  scale_color_manual(values = c("L" = "#E74C3C", "R" = "#3498DB")) +
+  labs(title = "PCoA of Projection Distance",
+       subtitle = sprintf("PERMANOVA: R²=%.3f, p=%.4f", 
+                          adonis_result$R2[1], adonis_result$`Pr(>F)`[1]),
+       x = sprintf("PC1 (%.1f%%)", var_exp[1]),
+       y = sprintf("PC2 (%.1f%%)", var_exp[2])) +
+  theme_minimal()
+```
+
+---
+
+# Level 3: 形态 vs 投射 Spearman 相关（核心）
+
+## 3.1 Spearman 相关结果
+
+```{r spearman_results}
+cat("=== Spearman Correlation: Morphology vs Projection ===\n")
+cat(sprintf("rho = %.3f\n", spearman_result$estimate))
+cat(sprintf("p-value = %.4f\n", spearman_result$p.value))
+cat(sprintf("95%% CI: [%.3f, %.3f]\n", spearman_result$conf.int[1], spearman_result$conf.int[2]))
+cat(sprintf("Permutation p = %.4f\n", perm_p))
+
+# 解释
+if (perm_p < 0.05) {
+  if (abs(spearman_result$estimate) > 0.5) {
+    cat("\n>>> Strong correlation: Morphology strongly predicts projection!\n")
+  } else if (abs(spearman_result$estimate) > 0.3) {
+    cat("\n>>> Moderate correlation: Some relationship exists.\n")
+  } else {
+    cat("\n>>> Weak correlation.\n")
+  }
+} else {
+  cat("\n>>> No significant correlation.\n")
+}
+```
+
+## 3.2 Spearman 散点图（秩次）
+
+```{r spearman_scatter}
+# 计算秩次用于可视化
+fnt_rank <- rank(fnt_vec)
+proj_rank <- rank(proj_vec)
+
+plot_df <- data.frame(
+  Morphology_Rank = fnt_rank,
+  Projection_Rank = proj_rank
+)
+
+# 散点图
+p_scatter <- ggplot(plot_df, aes(x = Morphology_Rank, y = Projection_Rank)) +
+  geom_hex(bins = 50) +
+  scale_fill_viridis_c() +
+  geom_smooth(method = "lm", color = "red", se = TRUE) +
+  labs(title = "Spearman Correlation: Morphology vs Projection",
+       subtitle = sprintf("rho = %.3f, p = %.4f (n = %d pairs)", 
+                          spearman_result$estimate, perm_p, length(fnt_vec)),
+       x = "Morphology Distance (rank)",
+       y = "Projection Distance (rank)") +
+  theme_minimal()
+
+p_scatter
+```
+
+## 3.3 原始尺度散点图（参考）
+
+```{r raw_scatter}
+plot_df_raw <- data.frame(
+  Morphology = fnt_vec,
+  Projection = proj_vec
+)
+
+p_raw <- ggplot(plot_df_raw, aes(x = Morphology, y = Projection)) +
+  geom_point(alpha = 0.3) +
+  geom_smooth(method = "lm", color = "red") +
+  labs(title = "Original Scale (for reference)",
+       subtitle = sprintf("Spearman rho = %.3f", spearman_result$estimate),
+       x = "FNT Distance (raw)",
+       y = "Projection Distance (Bray-Curtis)") +
+  theme_minimal()
+
+p_raw
+```
+
+## 3.4 分面分析
+
+```{r facet_analysis}
+# 获取神经元类型和side
+neuron_types <- proj_df_ipsi_s$Neuron_Type[match(common_ids, proj_df_ipsi_s$NeuronID)]
+neuron_sides <- proj_df_ipsi_s$Soma_Side[match(common_ids, proj_df_ipsi_s$NeuronID)]
+
+# 创建配对数据
+n <- length(common_ids)
+pair_data <- data.frame(
+  Morphology = numeric(),
+  Projection = numeric(),
+  SameType = logical(),
+  SameSide = logical()
+)
+
+for(i in 1:(n-1)) {
+  for(j in (i+1):n) {
+    pair_data <- rbind(pair_data, data.frame(
+      Morphology = fnt_sub[i, j],
+      Projection = proj_dist_matrix[i, j],
+      SameType = neuron_types[i] == neuron_types[j],
+      SameSide = neuron_sides[i] == neuron_sides[j]
+    ))
+  }
+}
+
+# 计算分层 Spearman 相关
+cor_same <- cor(pair_data$Morphology[pair_data$SameType], 
+                pair_data$Projection[pair_data$SameType], 
+                method = "spearman")
+cor_diff <- cor(pair_data$Morphology[!pair_data$SameType], 
+                pair_data$Projection[!pair_data$SameType], 
+                method = "spearman")
+
+# 分面图
+p_facet <- ggplot(pair_data, aes(x = Morphology, y = Projection)) +
+  geom_hex(bins = 30) +
+  geom_smooth(method = "lm", color = "red") +
+  facet_wrap(~ SameType, 
+             labeller = labeller(SameType = c("TRUE" = "Same Type", 
+                                               "FALSE" = "Different Type"))) +
+  labs(title = "Spearman Correlation by Cell Type",
+       subtitle = sprintf("Same type: rho=%.3f | Diff type: rho=%.3f", cor_same, cor_diff),
+       x = "Morphology Distance",
+       y = "Projection Distance") +
+  theme_minimal()
+
+p_facet
+
+cat("\nSpearman correlation (same type):", round(cor_same, 3), "\n")
+cat("Spearman correlation (diff type):", round(cor_diff, 3), "\n")
+```
+
+---
+
+# Level 4: 热图对比（相同排序才有可比性）
+
+并排热图要在**同一行/列顺序**下阅读：各自 `cluster_rows = TRUE` 会得到两套不同排序，视觉上无法对齐比较。
+
+做法：用两套距离的**归一化平均**做层次聚类，得到一个顺序 `ord`，两张图共用 `row_order = column_order = ord`。第三张为**逐元素差异**（各自在上三角上 z-score 后取绝对差），大值 = 两种距离最不「同变」的神经元对。
+
+```{r heatmap_comparison}
+library(ComplexHeatmap)
+side_info <- neuron_sides
+ut <- upper.tri(fnt_sub)
+z_f <- (fnt_sub - mean(fnt_sub[ut])) / sd(fnt_sub[ut])
+z_p <- (proj_dist_matrix - mean(proj_dist_matrix[ut])) / sd(proj_dist_matrix[ut])
+diff_z <- abs(z_f - z_p)
+diag(diff_z) <- NA
+
+fnt_n <- fnt_sub / max(fnt_sub)
+proj_n <- proj_dist_matrix / max(proj_dist_matrix)
+combo <- (fnt_n + proj_n) / 2
+ord <- hclust(as.dist(combo))$order
+
+fnt_col <- colorRamp2(
+  quantile(fnt_sub[ut], probs = c(0.05, 0.5, 0.95)),
+  c("white", "orange", "red4")
+)
+proj_col <- colorRamp2(
+  quantile(proj_dist_matrix[ut], probs = c(0.05, 0.5, 0.95)),
+  c("white", "steelblue", "navy")
+)
+diff_col <- colorRamp2(
+  quantile(diff_z, probs = c(0.05, 0.5, 0.95), na.rm = TRUE),
+  c("white", "tan", "brown4")
+)
+
+ha <- rowAnnotation(
+  Side = side_info,
+  col = list(Side = c("L" = "#E74C3C", "R" = "#3498DB"))
+)
+
+ht1 <- Heatmap(
+  fnt_sub,
+  name = "FNT",
+  col = fnt_col,
+  left_annotation = ha,
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  row_order = ord,
+  column_order = ord,
+  show_row_names = FALSE,
+  show_column_names = FALSE,
+  column_title = "FNT distance"
+)
+ht2 <- Heatmap(
+  proj_dist_matrix,
+  name = "Proj",
+  col = proj_col,
+  left_annotation = ha,
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  row_order = ord,
+  column_order = ord,
+  show_row_names = FALSE,
+  show_column_names = FALSE,
+  column_title = "Projection distance"
+)
+ht3 <- Heatmap(
+  diff_z,
+  name = "|Dz|",
+  col = diff_col,
+  left_annotation = ha,
+  cluster_rows = FALSE,
+  cluster_columns = FALSE,
+  row_order = ord,
+  column_order = ord,
+  show_row_names = FALSE,
+  show_column_names = FALSE,
+  column_title = "|z_FNT - z_Proj|"
+)
+
+ht1 + ht2 + ht3
+```
+</think>
+Fixing a bad partial edit — reading the file and applying a clean replacement.
+
+<｜tool▁calls▁begin｜><｜tool▁call▁begin｜>
+Read
+
+---
+
+# Level 5: 细胞类型特异性
+
+```{r celltype_analysis}
+# PERMANOVA by neuron type
+celltype_results <- data.frame(
+  Neuron_Type = character(),
+  R2 = numeric(),
+  p_value = numeric(),
+  n = integer()
+)
+
+for(ntype in unique(neuron_types)) {
+  idx <- neuron_types == ntype
+  if(sum(idx) < 3) next
+  
+  sub_dist <- as.dist(proj_dist_matrix[idx, idx])
+  sub_side <- factor(neuron_sides[idx])
+  
+  if(length(unique(sub_side)) < 2) next
+  
+  res <- adonis2(sub_dist ~ sub_side, permutations = 999)
+  
+  celltype_results <- rbind(celltype_results, data.frame(
+    Neuron_Type = ntype,
+    R2 = res$R2[1],
+    p_value = res$`Pr(>F)`[1],
+    n = sum(idx)
+  ))
+}
+
+print(celltype_results)
+
+ggplot(celltype_results, aes(x = Neuron_Type, y = R2, fill = p_value < 0.05)) +
+  geom_bar(stat = "identity") +
+  geom_text(aes(label = sprintf("n=%d", n)), vjust = -0.5) +
+  scale_fill_manual(values = c("TRUE" = "#E74C3C", "FALSE" = "#95A5A6")) +
+  labs(title = "Lateralization by Neuron Type",
+       y = "PERMANOVA R²") +
+  theme_minimal()
+```
+
+---
+
+# 结果汇总
+
+```{r summary}
+summary_report <- data.frame(
+  Level = c("Level 1", "Level 2", "Level 3", "Level 4"),
+  Test = c("Descriptive", "PERMANOVA (Projection)", 
+           "Spearman (Morph vs Proj)", "Cell-type"),
+  Result = c(
+    sprintf("L=%d, R=%d", sum(idx_L), sum(idx_R)),
+    sprintf("R²=%.3f, p=%.4f", adonis_result$R2[1], adonis_result$`Pr(>F)`[1]),
+    sprintf("rho=%.3f, p=%.4f", spearman_result$estimate, perm_p),
+    sprintf("%d types tested", nrow(celltype_results))
+  ),
+  Interpretation = c(
+    "Sample sizes",
+    ifelse(adonis_result$`Pr(>F)`[1] < 0.05, "Significant side diff", "No side diff"),
+    ifelse(perm_p < 0.05, 
+           ifelse(abs(spearman_result$estimate) > 0.5, "Strong morph-proj link", "Weak link"),
+           "No morph-proj link"),
+    "Type-specific lateralization"
+  )
+)
+
+print(summary_report)
+
+# Save
+write.xlsx(list(
+  Summary = summary_report,
+  Spearman_Test = data.frame(
+    Rho = spearman_result$estimate,
+    P_value = spearman_result$p.value,
+    Permutation_p = perm_p,
+    CI_lower = spearman_result$conf.int[1],
+    CI_upper = spearman_result$conf.int[2]
+  ),
+  CellType_Tests = celltype_results
+), file = "laterality_spearman_results.xlsx", overwrite = TRUE)
+
+cat("\nResults saved to: laterality_spearman_results.xlsx\n")
+```
+
+---
+
+**分析完成**: `r Sys.time()`
+
+**方法**: Spearman 秩相关分析形态与投射距离的关系

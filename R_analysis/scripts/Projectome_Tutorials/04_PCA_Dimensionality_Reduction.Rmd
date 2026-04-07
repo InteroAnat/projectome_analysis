@@ -71,7 +71,7 @@ library(factoextra)   # PCA可视化
 # 读取数据
 data_dir <- "tables"
 file_results <- file.path(data_dir, "251637_results_v5.xlsx")
-file_clustering_rds <- file.path(data_dir, "clustering_results.rds")
+file_clustering_rds <- "../../../data_output/clustering/clustering_results.rds"
 
 # 读取投射数据和聚类结果
 proj_strength <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")

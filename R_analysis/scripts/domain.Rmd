@@ -25,7 +25,7 @@ library(matrixStats)
 
 # load data and precalculated clustering result
 file_results <- "../tables/251637_INS.xlsx"
-cluster_info <- readRDS("clustering_results.rds")
+cluster_info <- readRDS("../../data_output/clustering/clustering_results.rds")
 
 
 

@@ -1,0 +1,882 @@
+---
+title: "Insula laterality: analyses by scientific question"
+subtitle: "Left vs right insula neurons (structured by question)"
+date: "`r Sys.Date()`"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    code_folding: show
+    fig_width: 12
+    fig_height: 8
+---
+
+This report is organized by **scientific question**: for each question we state a one-line hypothesis, prepare data, plot, and run statistics. Edit all file paths in the `config` chunk below (paths are relative to this Rmd in `R_analysis/scripts/`).
+
+```{r config, include=TRUE}
+# --- Paths (relative to this Rmd: R_analysis/scripts/) ---
+INS_XLSX_OVERRIDE <- Sys.getenv("LATERALITY_INS_XLSX", unset = "")
+PATH_INS_CANDIDATES <- c(
+  INS_XLSX_OVERRIDE,
+  "../../neuron_tables/251637_INS_HE_inferred.xlsx",
+  "../tables/251637_INS_HE_inferred.xlsx",
+  "../../neuron_tables/251637_INS_HE.xlsx",
+  "../tables/251637_INS_HE.xlsx",
+  "../tables/251637_INS.xlsx"
+)
+PATH_INS_XLSX <- PATH_INS_CANDIDATES[nzchar(PATH_INS_CANDIDATES) & file.exists(PATH_INS_CANDIDATES)][1]
+if (is.na(PATH_INS_XLSX)) {
+  stop("INS workbook not found. Checked: ", paste(PATH_INS_CANDIDATES, collapse = "; "))
+}
+PATH_CLUSTER_RDS <- "../../data_output/clustering/clustering_results.rds"
+# FNT = feature / morphology distance matrix (neuron x neuron); Chinese filename from lab export
+PATH_FNT_XLSX    <- c(
+  "../../data_output/clustering/raw_matrix_神经元矩阵.xlsx",
+  "../../raw_matrix_神经元矩阵.xlsx",
+  "raw_matrix_神经元矩阵.xlsx"
+)
+PATH_FNT_XLSX <- PATH_FNT_XLSX[file.exists(PATH_FNT_XLSX)][1]
+
+PERM_N <- 999L
+set.seed(42)
+```
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE, warning = TRUE, fig.align = "center")
+library(readxl)
+library(dplyr)
+library(ggplot2)
+library(vegan)
+library(ComplexHeatmap)
+library(circlize)
+library(ggpubr)
+library(scales)
+library(patchwork)
+
+# Automatic significance labeling used across SQ1/SQ2 tables
+p_to_sig <- function(p) {
+  dplyr::case_when(
+    is.na(p) ~ NA_character_,
+    p < 0.001 ~ "***",
+    p < 0.01 ~ "**",
+    p < 0.05 ~ "*",
+    TRUE ~ "ns"
+  )
+}
+```
+
+------------------------------------------------------------------------
+
+# Preparation: align projection matrices with neuron metadata
+
+```{r prep}
+cluster_info <- readRDS(PATH_CLUSTER_RDS)
+proj_ipsi    <- read_excel(PATH_INS_XLSX, sheet = "Projection_Strength_L3_ipsi")
+proj_contra  <- read_excel(PATH_INS_XLSX, sheet = "Projection_Strength_L3_contra")
+summary_sh   <- read_excel(PATH_INS_XLSX, sheet = "Summary")
+
+# Normalize region labels to hemisphere-neutral form.
+# Handles prefixes like CL_/CR_, L_/R_, L-/R-; side remains in Soma_Side.
+.strip_soma_region_prefix <- function(x) {
+  v <- trimws(as.character(x))
+  w <- sub("^(CL|CR)[_\\-]", "", v, perl = TRUE)
+  w <- sub("^[LR][_\\-]", "", w, perl = TRUE)
+  ifelse(nzchar(w), w, v)
+}
+
+meta_cols <- 6L
+
+proj_ipsi <- proj_ipsi %>%
+  merge(cluster_info$cluster_df %>% dplyr::select(-BioType), by = "NeuronID") %>%
+  merge(summary_sh %>% dplyr::select(NeuronID, Soma_Region, Soma_Side), by = "NeuronID") %>%
+  relocate(NeuronID, Soma_Region, Soma_Side, Neuron_Type, Cluster, DendroOrder) %>%
+  mutate(Soma_Region = factor(.strip_soma_region_prefix(Soma_Region)))
+
+proj_contra <- proj_contra %>%
+  merge(cluster_info$cluster_df %>% dplyr::select(-BioType), by = "NeuronID") %>%
+  merge(summary_sh %>% dplyr::select(NeuronID, Soma_Region, Soma_Side), by = "NeuronID") %>%
+  relocate(NeuronID, Soma_Region, Soma_Side, Neuron_Type, Cluster, DendroOrder) %>%
+  mutate(Soma_Region = factor(.strip_soma_region_prefix(Soma_Region)))
+
+mat_ipsi <- t(as.matrix(proj_ipsi %>% dplyr::select(-(1:meta_cols))))
+colnames(mat_ipsi) <- proj_ipsi$NeuronID
+
+mat_contra <- t(as.matrix(proj_contra %>% dplyr::select(-(1:meta_cols))))
+colnames(mat_contra) <- proj_contra$NeuronID
+
+stopifnot(all.equal(proj_ipsi$NeuronID, proj_contra$NeuronID))
+
+meta <- proj_ipsi %>%
+  transmute(
+    NeuronID = NeuronID,
+    Soma_Region = droplevels(Soma_Region),
+    Soma_Side = factor(Soma_Side, levels = c("L", "R")),
+    Neuron_Type = factor(Neuron_Type),
+    Cluster = Cluster
+  )
+
+cat(sprintf("Neurons: n=%d | L=%d R=%d\n",
+            nrow(meta), sum(meta$Soma_Side == "L"), sum(meta$Soma_Side == "R")))
+cat(sprintf("Soma regions (hemisphere prefixes stripped in prep): %d levels\n", nlevels(meta$Soma_Region)))
+```
+
+### Matrix sparsity diagnostics
+
+```{r matrix_sparsity_report}
+matrix_sparsity <- function(m, name) {
+  nz_per_neuron <- colSums(m > 0, na.rm = TRUE)
+  nz_per_region <- rowSums(m > 0, na.rm = TRUE)
+  data.frame(
+    matrix = name,
+    n_regions = nrow(m),
+    n_neurons = ncol(m),
+    zero_fraction = mean(m == 0, na.rm = TRUE),
+    nonzero_fraction = mean(m > 0, na.rm = TRUE),
+    mean_nonzero_targets_per_neuron = mean(nz_per_neuron, na.rm = TRUE),
+    median_nonzero_targets_per_neuron = median(nz_per_neuron, na.rm = TRUE),
+    mean_neurons_per_region = mean(nz_per_region, na.rm = TRUE),
+    median_neurons_per_region = median(nz_per_region, na.rm = TRUE)
+  )
+}
+
+sparsity_report <- bind_rows(
+  matrix_sparsity(mat_ipsi, "ipsi_strength"),
+  matrix_sparsity(mat_contra, "contra_strength"),
+  {
+    # Align by shared region and neuron IDs before summing.
+    common_regions <- intersect(rownames(mat_ipsi), rownames(mat_contra))
+    common_neurons <- intersect(colnames(mat_ipsi), colnames(mat_contra))
+    if (length(common_regions) == 0L || length(common_neurons) == 0L) {
+      warning("No overlap between ipsi and contra matrices; total_strength sparsity uses ipsi only.")
+      matrix_sparsity(mat_ipsi, "total_strength_fallback_ipsi")
+    } else {
+      mat_ipsi_al <- mat_ipsi[common_regions, common_neurons, drop = FALSE]
+      mat_contra_al <- mat_contra[common_regions, common_neurons, drop = FALSE]
+      matrix_sparsity(mat_ipsi_al + mat_contra_al, "total_strength")
+    }
+  }
+)
+
+print(sparsity_report)
+cat(sprintf("ipsi matrix sparsity: %.1f%% zeros\n", 100 * sparsity_report$zero_fraction[sparsity_report$matrix == "ipsi_strength"]))
+cat(sprintf("contra matrix sparsity: %.1f%% zeros\n", 100 * sparsity_report$zero_fraction[sparsity_report$matrix == "contra_strength"]))
+```
+
+Whether **FNT (morphology / feature-neuron distance)** is available controls whether chunks SQ4–SQ5 evaluate (`has_fnt`):
+
+```{r prep_fnt}
+has_fnt <- !is.na(PATH_FNT_XLSX) && nzchar(PATH_FNT_XLSX)
+if (has_fnt) {
+  fnt_full <- readxl::read_excel(PATH_FNT_XLSX)
+  fnt_mat <- as.matrix(fnt_full)
+  rownames(fnt_mat) <- colnames(fnt_mat) <- colnames(fnt_full)
+  common_ids <- sort(intersect(colnames(mat_ipsi), colnames(fnt_mat)))
+  fnt_sub <- fnt_mat[common_ids, common_ids, drop = FALSE]
+  mat_ipsi_fnt <- mat_ipsi[, common_ids, drop = FALSE]
+  proj_dist <- as.matrix(vegdist(t(mat_ipsi_fnt), method = "bray"))
+  rownames(proj_dist) <- colnames(proj_dist) <- common_ids
+  meta_fnt <- meta %>% filter(NeuronID %in% common_ids)
+  cat(sprintf("FNT ok: |common|=%d (of %d projection neurons)\n",
+              length(common_ids), ncol(mat_ipsi)))
+} else {
+  common_ids <- character(0)
+  fnt_sub <- proj_dist <- NULL
+  meta_fnt <- meta
+  cat("FNT file not found: skip SQ4–SQ5 or set PATH_FNT_XLSX in config.\n")
+}
+```
+
+------------------------------------------------------------------------
+
+# Part A: Count-based Laterality Analyses
+
+This section is specialized for **count / composition statistics** (contingency tables, proportions, chi-square/Fisher).
+
+## SQ1: Count-based composition tests block (SQ1a + SQ1b)
+
+This unified SQ1 block includes both count-statistics components:
+- **SQ1a (L/R):** `Neuron_Type × Soma_Side`
+- **SQ1b (Region):** `Neuron_Type × Soma_Region`
+- **SQ1c (Region vs Side count):** `Soma_Region × Soma_Side`
+
+For both tables, the primary inference is Pearson $\chi^2$; Fisher's exact test is used as a fallback when expected counts are small and the table size is feasible.
+
+**Composition display**: Plots use **proportions within each side** ($n_{\text{type,side}} / N_{\text{side}}$), so unequal total neuron counts between L and R do not distort the visual comparison of cell-type mix. **Atlas `Soma_Region` strings are stripped of `CL_` / `CR_` in prep** so labels match across hemispheres; side comes from **`Soma_Side`**. SQ1 includes **raw counts per `Soma_Region` dodged by L/R** for region-wise sampling clarity.
+
+```{r sq1_composition, fig.width=14, fig.height=12.5}
+tab <- xtabs(~ Neuron_Type + Soma_Side, data = meta)
+print(tab)
+# Proportion of each type within each hemisphere (columns sum to 1)
+prop_side <- prop.table(tab, margin = 2)
+print(round(prop_side, 4))
+
+sq1_by_side <- meta %>%
+  dplyr::count(Soma_Side, Neuron_Type, name = "n") %>%
+  group_by(Soma_Side) %>%
+  mutate(prop = n / sum(n)) %>%
+  ungroup()
+
+chi <- suppressWarnings(chisq.test(tab))
+print(chi)
+
+# Rule of thumb: expected frequencies < 5 undermine chi-square asymptotics (Cochran's guideline).
+exp_ok <- all(chi$expected >= 5, na.rm = TRUE)
+if (!exp_ok) {
+  message("SQ1: Some expected counts < 5; chi-square p-value may be inaccurate; running Fisher's exact test.")
+}
+fish_tab <- NULL
+if (!exp_ok && is.matrix(tab) && prod(dim(tab)) <= 1e6) {
+  fish_tab <- tryCatch(fisher.test(tab), error = function(e) NULL)
+  if (!is.null(fish_tab)) print(fish_tab)
+}
+
+sq1_lr_summary <- data.frame(
+  table_name = "Neuron_Type_x_Soma_Side",
+  preferred_test = if (exp_ok) "chi-square" else if (!is.null(fish_tab)) "fisher" else "chi-square_with_small_expected",
+  p_value = if (exp_ok || is.null(fish_tab)) chi$p.value else fish_tab$p.value
+) %>%
+  mutate(
+    significant = p_value < 0.05,
+    sig_label = p_to_sig(p_value)
+  )
+print(sq1_lr_summary)
+
+side_cols <- c(L = "#E74C3C", R = "#3498DB")
+
+# Region-level count tables used by SQ1b/SQ1c statistics and plots
+meta_sq1_region <- meta %>%
+  filter(!is.na(Soma_Region), nzchar(trimws(as.character(Soma_Region)))) %>%
+  mutate(
+    Soma_Region = droplevels(Soma_Region),
+    Neuron_Type = droplevels(Neuron_Type)
+  )
+
+# Region pick strategy for SQ1:
+# keep only bilateral soma regions (both L and R present) to avoid side-encoded labels.
+meta_sq1_region <- meta_sq1_region %>%
+  group_by(Soma_Region) %>%
+  filter(n_distinct(Soma_Side) == 2L) %>%
+  ungroup() %>%
+  mutate(Soma_Region = droplevels(Soma_Region))
+
+# Export helpers (kept for compatibility with export chunk names)
+sq1b_tab <- NULL
+sq1b_prop_region <- NULL
+sq1b_chi <- NULL
+sq1b_exp_ok <- NA
+sq1b_fish_tab <- NULL
+sq1_region_side_tab <- NULL
+sq1_region_side_chi <- NULL
+sq1_region_side_exp_ok <- NA
+sq1_region_side_fisher <- NULL
+
+if (nrow(meta_sq1_region) >= 4L && nlevels(meta_sq1_region$Soma_Region) >= 2L) {
+  # SQ1c: Region vs Side (count table)
+  sq1_region_side_tab <- xtabs(~ Soma_Region + Soma_Side, data = meta_sq1_region)
+  print(sq1_region_side_tab)
+  sq1_region_side_chi <- suppressWarnings(chisq.test(sq1_region_side_tab))
+  print(sq1_region_side_chi)
+  sq1_region_side_exp_ok <- all(sq1_region_side_chi$expected >= 5, na.rm = TRUE)
+  if (!sq1_region_side_exp_ok && prod(dim(sq1_region_side_tab)) <= 1e6) {
+    sq1_region_side_fisher <- tryCatch(fisher.test(sq1_region_side_tab), error = function(e) NULL)
+    if (!is.null(sq1_region_side_fisher)) print(sq1_region_side_fisher)
+  }
+  sq1_region_side_summary <- data.frame(
+    table_name = "Soma_Region_x_Soma_Side",
+    preferred_test = if (sq1_region_side_exp_ok) "chi-square" else if (!is.null(sq1_region_side_fisher)) "fisher" else "chi-square_with_small_expected",
+    p_value = if (sq1_region_side_exp_ok || is.null(sq1_region_side_fisher)) sq1_region_side_chi$p.value else sq1_region_side_fisher$p.value
+  ) %>%
+    mutate(
+      significant = p_value < 0.05,
+      sig_label = p_to_sig(p_value)
+    )
+  print(sq1_region_side_summary)
+
+  # SQ1b: Region vs Type (count table)
+  if (nlevels(meta_sq1_region$Neuron_Type) >= 2L) {
+    sq1b_tab <- xtabs(~ Neuron_Type + Soma_Region, data = meta_sq1_region)
+    print(sq1b_tab)
+    print(addmargins(sq1b_tab))
+    sq1b_prop_region <- prop.table(sq1b_tab, margin = 2)
+    print(round(sq1b_prop_region, 4))
+
+    sq1b_chi <- suppressWarnings(chisq.test(sq1b_tab))
+    print(sq1b_chi)
+    sq1b_exp_ok <- all(sq1b_chi$expected >= 5, na.rm = TRUE)
+    if (!sq1b_exp_ok && prod(dim(sq1b_tab)) <= 1e6) {
+      sq1b_fish_tab <- tryCatch(fisher.test(sq1b_tab), error = function(e) NULL)
+      if (!is.null(sq1b_fish_tab)) print(sq1b_fish_tab)
+    }
+    sq1_region_type_summary <- data.frame(
+      table_name = "Neuron_Type_x_Soma_Region",
+      preferred_test = if (sq1b_exp_ok) "chi-square" else if (!is.null(sq1b_fish_tab)) "fisher" else "chi-square_with_small_expected",
+      p_value = if (sq1b_exp_ok || is.null(sq1b_fish_tab)) sq1b_chi$p.value else sq1b_fish_tab$p.value
+    ) %>%
+      mutate(
+        significant = p_value < 0.05,
+        sig_label = p_to_sig(p_value)
+      )
+    print(sq1_region_type_summary)
+  }
+}
+
+n_L <- sum(meta$Soma_Side == "L")
+n_R <- sum(meta$Soma_Side == "R")
+
+sq1_p1 <- ggplot(meta, aes(x = Soma_Side, fill = Soma_Side)) +
+  geom_bar(width = 0.6) +
+  geom_text(
+    stat = "count",
+    aes(label = after_stat(count)),
+    vjust = -0.35,
+    size = 4
+  ) +
+  scale_fill_manual(values = side_cols) +
+  labs(
+    title = "SQ1: Total neurons per hemisphere (raw N)",
+    subtitle = sprintf("N_L = %d, N_R = %d", n_L, n_R),
+    x = "Soma side",
+    y = "Count"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "none")
+
+# Within each side, proportion per type (sums to 100% for L and separately for R)
+sq1_p2 <- ggplot(sq1_by_side, aes(x = Neuron_Type, y = prop, fill = Soma_Side)) +
+  geom_col(position = position_dodge(width = 0.85), width = 0.75) +
+  geom_text(
+    aes(label = sprintf("%d\n(%s)", n, percent(prop, accuracy = 0.1))),
+    position = position_dodge(width = 0.85),
+    vjust = -0.1,
+    size = 2.85,
+  ) +
+  scale_fill_manual(values = side_cols, name = "Side") +
+  scale_y_continuous(labels = label_percent(accuracy = 1), expand = expansion(mult = c(0, 0.12))) +
+  labs(
+    title = "SQ1: Cell-type mix standardized by side (proportion of N_side)",
+    subtitle = "Each bar = n_type,side / N_hemisphere; compare L vs R at equal total weight",
+    x = "Neuron type",
+    y = "Proportion within hemisphere"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 40, hjust = 1))
+
+# 100% stacked: full composition per hemisphere on one axis
+sq1_p3 <- ggplot(meta, aes(x = Soma_Side, fill = Neuron_Type)) +
+  geom_bar(position = "fill", width = 0.55) +
+  scale_y_continuous(labels = label_percent(accuracy = 1)) +
+  labs(
+    title = "SQ1: Composition (100% per side)",
+    x = "Soma side",
+    y = "Proportion within hemisphere"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "right")
+
+# Soma_Region hemisphere-neutral in prep; compare L vs R sample depth per label
+
+n_drop_region <- nrow(meta) - nrow(meta_sq1_region)
+sq1_p4_sub <- if (n_drop_region > 0L) {
+  sprintf("Excluded %d neuron(s) outside bilateral/non-blank Soma_Region set.", n_drop_region)
+} else {
+  "All neurons are in bilateral, non-blank Soma_Region labels."
+}
+
+sq1_p3b <- NULL
+if (nrow(meta_sq1_region)) {
+  sq1_p3b <- ggplot(meta_sq1_region, aes(x = Soma_Region, fill = Soma_Side)) +
+    geom_bar(position = position_dodge(width = 0.85), width = 0.78) +
+    geom_text(
+      stat = "count",
+      aes(label = after_stat(count), group = Soma_Side),
+      position = position_dodge(width = 0.85),
+      vjust = -0.25,
+      size = 3.2
+    ) +
+    scale_fill_manual(values = side_cols, name = "Soma side") +
+    scale_y_continuous(expand = expansion(mult = c(0, 0.14))) +
+    labs(
+      title = "SQ1: Neuron count per soma region, by hemisphere",
+      subtitle = paste0(
+        "Dodged bars: L vs R within each Soma_Region. ",
+        sq1_p4_sub
+      ),
+      x = "Soma_Region",
+      y = "Count"
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      axis.text.x = element_text(angle = 45, hjust = 1),
+      legend.position = "right"
+    )
+}
+
+sq1_top <- (sq1_p1 | sq1_p2) + plot_layout(widths = c(1, 2.25), guides = "collect")
+if (!is.null(sq1_p3b)) {
+  sq1_top / sq1_p3 / sq1_p3b +
+    plot_layout(heights = c(1.05, 0.72, 0.92)) &
+    theme(plot.title = element_text(size = 11.5))
+} else {
+  sq1_top / sq1_p3 +
+    plot_layout(heights = c(1.05, 0.85)) &
+    theme(plot.title = element_text(size = 11.5))
+}
+```
+
+------------------------------------------------------------------------
+
+# Part B: Projection-Strength Laterality Analyses
+
+This section is specialized for **projection strength** (continuous outcomes; Wilcoxon / distributional comparisons / multivariate distance models).
+
+## SQ2: Projection-strength counterparts to SQ1 (L/R and Soma_Region)
+
+**SQ2a (L/R counterpart):** Within each `Neuron_Type`, compare total projection strength between L and R (`wilcox.test(total ~ Soma_Side)` with BH correction across types).\
+**SQ2b (Region counterpart):** In **bilateral** regions (both L and R present), compare total strength by hemisphere overall within each region and within `Soma_Region × Neuron_Type` strata (BH across strata).
+
+**Note**: `total` is a matrix-derived projection-strength summary, not necessarily physical axon length unless source columns are length-based.
+
+```{r sq2_univariate_strength, fig.width=18, fig.height=10}
+strength <- data.frame(
+  NeuronID = meta$NeuronID,
+  Soma_Side = meta$Soma_Side,
+  Neuron_Type = meta$Neuron_Type,
+  Soma_Region = meta$Soma_Region,
+  ipsi = colSums(mat_ipsi),
+  contra = colSums(mat_contra),
+  total = colSums(mat_ipsi) + colSums(mat_contra),
+  stringsAsFactors = FALSE
+)
+
+side_cols <- c(L = "#E74C3C", R = "#3498DB")
+
+strength_cmp <- strength %>%
+  group_by(Neuron_Type) %>%
+  filter(n_distinct(Soma_Side) == 2L) %>%
+  ungroup()
+
+# Left panel: only types with both L and R neurons (drop types present on one side only, e.g. all-ITc-on-one-side)
+sq2_density <- ggplot(strength_cmp, aes(x = total, fill = Soma_Side)) +
+  geom_density(alpha = 0.45, linewidth = 0.3) +
+  facet_wrap(~Neuron_Type, scales = "free") +
+  scale_fill_manual(values = side_cols, name = "Side") +
+  labs(
+    title = "SQ2: Distribution of total strength (ipsi + contra)",
+    x = "Total projection strength",
+    y = "Density"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(
+    strip.text = element_text(size = 11, face = "plain"),
+    axis.text = element_text(size = 10)
+  )
+
+sq2_n_lab <- strength_cmp %>%
+  group_by(Neuron_Type, Soma_Side) %>%
+  summarise(
+    n = n(),
+    y = max(total, na.rm = TRUE) * 1.08,
+    .groups = "drop"
+  )
+
+# Right panel: matches laterality_hypothesis_testing.Rmd style — one figure, x = neuron type
+sq2_box <- ggplot(strength_cmp, aes(x = Neuron_Type, y = total, fill = Soma_Side)) +
+  geom_boxplot(
+    position = position_dodge(width = 0.85),
+    width = 0.62,
+    alpha = 0.88,
+    outlier.size = 1
+  ) +
+  geom_text(
+    data = sq2_n_lab,
+    aes(x = Neuron_Type, y = y, label = paste0("n=", n), group = Soma_Side),
+    position = position_dodge(width = 0.85),
+    size = 3.2, 
+    inherit.aes = FALSE
+  ) +
+  scale_fill_manual(values = side_cols, name = "Side") +
+    # Two-sample Wilcoxon (Mann–Whitney); uncorrected p per type — see table for BH-adjusted q
+    stat_compare_means(
+    aes(group = Soma_Side),
+    method = "wilcox.test",
+    label = "p.signif",
+    hide.ns = FALSE,
+    tip.length = 0.02,
+    bracket.size = 0.22,
+    step.increase = 0.06
+  ) +
+  labs(
+    title = "SQ2: Total projection by type & side (Wilcoxon L vs R within each type; plot p uncorrected)",
+    x = "Neuron type",
+    y = "Total projection strength"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+sq2_row1 <- (sq2_density | sq2_box) +
+  plot_layout(widths = c(1, 1), guides = "collect") &
+  theme(plot.title = element_text(size = 12))
+
+strength_reg <- strength %>%
+  filter(!is.na(Soma_Region), nzchar(trimws(as.character(Soma_Region)))) %>%
+  mutate(Soma_Region = droplevels(factor(Soma_Region)))
+
+bilateral_region_levels <- strength_reg %>%
+  group_by(Soma_Region) %>%
+  filter(n_distinct(Soma_Side) == 2L) %>%
+  group_keys() %>%
+  pull(Soma_Region)
+
+strength_bilateral_regions <- strength_reg %>%
+  filter(Soma_Region %in% bilateral_region_levels) %>%
+  mutate(Soma_Region = droplevels(Soma_Region))
+
+sq2_region_density <- NULL
+wt_region_overall <- NULL
+wt_region_type <- NULL
+
+if (nrow(strength_bilateral_regions) >= 4L && length(bilateral_region_levels)) {
+  sq2_region_density <- ggplot(strength_bilateral_regions, aes(x = total, fill = Soma_Side)) +
+    geom_density(alpha = 0.45, linewidth = 0.3) +
+    facet_wrap(~ Soma_Region, nrow = 1L, scales = "free") +
+    scale_fill_manual(values = side_cols, name = "Side") +
+    labs(
+      title = "SQ2 (regions): Total strength by hemisphere, bilateral Soma_Region only",
+      subtitle = "All neuron types pooled within each region; facets = regions with both L and R",
+      x = "Total projection strength",
+      y = "Density"
+    ) +
+    theme_minimal(base_size = 12) +
+    theme(
+      strip.text = element_text(size = 10, face = "plain"),
+      legend.position = "bottom"
+    )
+
+  wt_region_overall <- strength_bilateral_regions %>%
+    group_by(Soma_Region) %>%
+    filter(n_distinct(Soma_Side) == 2L, n() >= 4L) %>%
+    summarise(
+      p_wilcox_total = tryCatch(
+        wilcox.test(total ~ Soma_Side)$p.value,
+        error = function(e) NA_real_
+      ),
+      n = n(),
+      n_L = sum(Soma_Side == "L"),
+      n_R = sum(Soma_Side == "R"),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      p_wilcox_BH = p.adjust(p_wilcox_total, method = "BH"),
+      significant = p_wilcox_BH < 0.05,
+      sig_label = p_to_sig(p_wilcox_BH)
+    )
+
+  wt_region_type <- strength_bilateral_regions %>%
+    group_by(Soma_Region, Neuron_Type) %>%
+    filter(n_distinct(Soma_Side) == 2L, n() >= 4L) %>%
+    summarise(
+      p_wilcox_total = tryCatch(
+        wilcox.test(total ~ Soma_Side)$p.value,
+        error = function(e) NA_real_
+      ),
+      n = n(),
+      n_L = sum(Soma_Side == "L"),
+      n_R = sum(Soma_Side == "R"),
+      .groups = "drop"
+    ) %>%
+    mutate(
+      p_wilcox_BH = p.adjust(p_wilcox_total, method = "BH"),
+      significant = p_wilcox_BH < 0.05,
+      sig_label = p_to_sig(p_wilcox_BH)
+    )
+
+  cat("SQ2: Wilcoxon total ~ Side, bilateral regions (all types pooled)\n")
+  print(wt_region_overall)
+  cat("SQ2: Wilcoxon total ~ Side within Soma_Region × Neuron_Type (BH across strata)\n")
+  print(wt_region_type)
+
+  (sq2_row1) / sq2_region_density +
+    plot_layout(heights = c(1, 0.68), guides = "collect") &
+    theme(plot.title = element_text(size = 11))
+} else {
+  message("SQ2: No bilateral soma regions or too few neurons; skipping region-level strength plots.")
+  sq2_row1
+}
+
+# Per-type Wilcoxon on total strength (no region stratification); BH across types
+wt <- strength %>%
+  group_by(Neuron_Type) %>%
+  filter(n_distinct(Soma_Side) == 2, n() >= 4) %>%
+  summarise(
+    p_wilcox_total = tryCatch(
+      wilcox.test(total ~ Soma_Side)$p.value,
+      error = function(e) NA_real_
+    ),
+    n = n(),
+    .groups = "drop"
+  )
+wt <- wt %>%
+  mutate(
+    p_wilcox_BH = p.adjust(p_wilcox_total, method = "BH"),
+    significant = p_wilcox_BH < 0.05,
+    sig_label = p_to_sig(p_wilcox_BH)
+  )
+print(wt)
+```
+
+------------------------------------------------------------------------
+
+## SQ3: Do left and right differ in **multivariate projection pattern** (target-region vectors)?
+
+**Hypothesis**: In the high-dimensional space of region × strength, the L vs R clouds differ in location and/or spread.\
+**Why ipsi-only here?** We use `mat_ipsi` to isolate hemisphere-specific targeting and avoid a trivial side-coupling that can appear when ipsi + contra are pooled (because contra definitions are side-referenced). This keeps the distance model focused on within-hemisphere projection organization.\
+**Steps**: (1) neuron × region matrix (`mat_ipsi`) → Bray–Curtis dissimilarities between neurons; (2) `adonis2` (PERMANOVA) on `Side`; (3) `betadisper` + `permutest` to test dispersion homogeneity (with euclidification for Bray–Curtis in this step: `sqrt.dist=TRUE`, `add=\"lingoes\"`); (4) PCoA for ordination. **Caveat**: PERMANOVA assumes **exchangeability** of residuals under permutation; heterogeneity of dispersion can inflate false positives, hence the explicit `betadisper` check. $R^2$ is **partial variance explained** by `Side` in the pseudo-F framework, not OLS $R^2$.
+
+```{r sq3_permanova, fig.width=14, fig.height=13}
+ipsi_nr <- t(mat_ipsi) # neuron x region
+side <- meta$Soma_Side[match(rownames(ipsi_nr), meta$NeuronID)]
+
+# Profile-normalized matrix (composition-like view)
+ipsi_tot <- rowSums(ipsi_nr)
+ipsi_prop <- ipsi_nr
+ok_tot <- ipsi_tot > 0
+ipsi_prop[ok_tot, ] <- ipsi_nr[ok_tot, , drop = FALSE] / ipsi_tot[ok_tot]
+
+# Presence/absence matrix for Jaccard
+ipsi_pa <- ipsi_nr > 0
+
+# Aitchison via CLR + Euclidean with a small pseudocount
+pos_vals <- ipsi_nr[ipsi_nr > 0]
+pseudocount <- if (length(pos_vals)) min(pos_vals) / 2 else 1e-6
+ipsi_clr <- log(ipsi_nr + pseudocount) - rowMeans(log(ipsi_nr + pseudocount))
+
+dist_list <- list(
+  bray_raw = vegdist(ipsi_nr, method = "bray"),
+  bray_prop = vegdist(ipsi_prop, method = "bray"),
+  jaccard_pa = vegdist(ipsi_pa, method = "jaccard", binary = TRUE),
+  aitchison_clr = dist(ipsi_clr)
+)
+
+sq3_multi_tab <- lapply(names(dist_list), function(nm) {
+  d <- dist_list[[nm]]
+  side_d <- side[match(labels(d), rownames(ipsi_nr))]
+  ado_i <- adonis2(d ~ side_d, permutations = PERM_N, by = "margin")
+
+  # Euclidify for dispersion check when distance is non-Euclidean
+  bd_i <- betadisper(d, side_d, type = "centroid", sqrt.dist = TRUE, add = "lingoes")
+  bd_perm_i <- permutest(bd_i, permutations = PERM_N)
+  p_bd <- suppressWarnings(as.numeric(bd_perm_i$tab[1, "Pr(>F)"]))
+
+  data.frame(
+    distance = nm,
+    R2 = as.numeric(ado_i$R2[1]),
+    p_permanova = as.numeric(ado_i$`Pr(>F)`[1]),
+    p_betadisper = p_bd
+  )
+}) %>%
+  bind_rows() %>%
+  mutate(
+    significant_permanova = p_permanova < 0.05,
+    sig_permanova = p_to_sig(p_permanova),
+    significant_betadisper = p_betadisper < 0.05,
+    sig_betadisper = p_to_sig(p_betadisper)
+  )
+print(sq3_multi_tab)
+
+# SQ3-specific sparsity diagnostics on the matrices used in this section.
+sq3_sparsity <- bind_rows(
+  matrix_sparsity(t(ipsi_nr), "sq3_ipsi_raw_region_by_neuron"),
+  matrix_sparsity(t(ipsi_prop), "sq3_ipsi_profile_normalized"),
+  matrix_sparsity(t(ipsi_pa), "sq3_ipsi_presence_absence")
+) %>%
+  mutate(zero_percent = 100 * zero_fraction)
+print(sq3_sparsity)
+
+# Keep legacy export variables based on primary metric (bray_raw)
+sq3_summary <- sq3_multi_tab %>%
+  filter(distance == "bray_raw") %>%
+  transmute(
+    term = "side",
+    R2 = R2,
+    p = p_permanova,
+    significant = significant_permanova,
+    sig_label = sig_permanova
+  )
+sq3_betadisper <- sq3_multi_tab %>%
+  filter(distance == "bray_raw") %>%
+  transmute(
+    p = p_betadisper,
+    significant = significant_betadisper,
+    sig_label = sig_betadisper
+  )
+
+ord_plot <- function(d, title, subtitle = NULL) {
+  md <- cmdscale(d, k = 2, eig = TRUE)
+  eig_pos <- pmax(0, md$eig)
+  pct <- if (sum(eig_pos) > 0) eig_pos / sum(eig_pos) * 100 else c(NA_real_, NA_real_)
+  odf <- data.frame(
+    NeuronID = labels(d),
+    Axis1 = md$points[, 1],
+    Axis2 = md$points[, 2]
+  ) %>%
+    left_join(meta, by = "NeuronID")
+  ggplot(odf, aes(.data$Axis1, .data$Axis2, color = .data$Soma_Side)) +
+    geom_point(alpha = 0.8) +
+    stat_ellipse(level = 0.95, linewidth = 0.35) +
+    scale_color_manual(values = c(L = "#E74C3C", R = "#3498DB")) +
+    labs(
+      title = title,
+      subtitle = subtitle,
+      x = sprintf("Axis 1 (%.1f%%)", pct[1]),
+      y = sprintf("Axis 2 (%.1f%%)", pct[2])
+    ) +
+    theme_minimal(base_size = 10)
+}
+
+row_br <- sq3_multi_tab %>% filter(distance == "bray_raw")
+p1 <- ord_plot(
+  dist_list$bray_raw,
+  "SQ3: PCoA (Bray raw)",
+  sprintf("PERMANOVA p=%.4f, betadisper p=%.4f", row_br$p_permanova[1], row_br$p_betadisper[1])
+)
+p2 <- ord_plot(dist_list$bray_prop, "SQ3: PCoA (Bray on normalized profile)")
+p3 <- ord_plot(dist_list$jaccard_pa, "SQ3: PCoA (Jaccard presence/absence)")
+p4 <- ord_plot(dist_list$aitchison_clr, "SQ3: PCoA (Aitchison CLR-Euclidean)")
+(p1 | p2) / (p3 | p4)
+```
+
+**Extension**: If SQ1 suggests different type composition by side, add Covariates: e.g. `adonis2(... ~ Neuron_Type + Soma_Side)` (order matters for sequential SS interpretation) or **stratify by type** as in SQ6.
+
+------------------------------------------------------------------------
+
+## SQ4: Are **pairwise FNT distances** concordant with **pairwise projection distances**?
+
+**Hypothesis**: Pairs closer in morphology tend to be closer in projection space (direction and strength of association are empirical).\
+**Method**: On `common_ids`, **Mantel test** correlates the two distance matrices with a permutation null (proper inference for matrix-valued dependence). A raw **Spearman correlation** on upper-triangle pairs duplicates entries and **does not yield a valid independent-sample p-value**; we still report **rho** descriptively and use **Mantel's permuted p** for significance.
+
+```{r sq4_mantel, eval=has_fnt}
+ut <- upper.tri(fnt_sub)
+fv <- fnt_sub[ut]
+pv <- proj_dist[ut]
+
+# Descriptive association only — pairs are not independent; do not interpret cor.test p-value
+sp_rho <- suppressWarnings(cor(fv, pv, method = "spearman", use = "complete.obs"))
+cat(sprintf("Spearman rho (upper triangle, descriptive) = %.3f\n", sp_rho))
+
+mt <- mantel(as.dist(fnt_sub), as.dist(proj_dist), method = "spearman", permutations = PERM_N)
+print(mt)
+sq4_summary <- data.frame(
+  statistic = unname(mt$statistic),
+  p = unname(mt$signif)
+) %>%
+  mutate(
+    significant = p < 0.05,
+    sig_label = p_to_sig(p)
+  )
+print(sq4_summary)
+
+ggplot(data.frame(FNT = fv, Proj = pv), aes(FNT, Proj)) +
+  geom_hex(bins = 60) +
+  scale_fill_distiller(palette = "Blues", direction = 1) +
+  labs(title = "SQ4: Pairwise FNT vs pairwise projection distance (upper triangle)",
+       subtitle = sprintf("Spearman rho=%.3f (descriptive); inference: Mantel p", sp_rho)) +
+  theme_minimal()
+```
+
+------------------------------------------------------------------------
+
+## SQ5: How to compare the two distance matrices side by side in heatmaps?
+
+**Key idea**: Both heatmaps must use the **same row/column order** (here from a fused clustering signal). A third panel shows **\|**$z_{\text{FNT}} - z_{\text{Proj}}$\| per pair after z-scaling upper-triangle moments to highlight discrepancies.
+
+```{r sq5_heatmaps, eval=has_fnt, fig.height=5, fig.width=14}
+ut_h <- upper.tri(fnt_sub)
+side_lab <- meta_fnt$Soma_Side[match(rownames(fnt_sub), meta_fnt$NeuronID)]
+ha <- rowAnnotation(
+  Side = side_lab,
+  col = list(Side = c(L = "#E74C3C", R = "#3498DB"))
+)
+
+z_f <- (fnt_sub - mean(fnt_sub[ut_h])) / sd(fnt_sub[ut_h])
+z_p <- (proj_dist - mean(proj_dist[ut_h])) / sd(proj_dist[ut_h])
+diff_z <- abs(z_f - z_p)
+diag(diff_z) <- NA
+
+combo <- (fnt_sub / max(fnt_sub) + proj_dist / max(proj_dist)) / 2
+ord <- hclust(as.dist(combo))$order
+
+rcols <- function(x, utm) {
+  colorRamp2(quantile(x[utm], c(0.05, 0.5, 0.95)), c("white", "orange", "red4"))
+}
+
+Heatmap(fnt_sub, name = "FNT", col = rcols(fnt_sub, ut_h),
+        left_annotation = ha, cluster_rows = FALSE, cluster_columns = FALSE,
+        row_order = ord, column_order = ord, show_row_names = FALSE, show_column_names = FALSE) +
+Heatmap(proj_dist, name = "Proj", col = rcols(proj_dist, ut_h),
+        left_annotation = ha, cluster_rows = FALSE, cluster_columns = FALSE,
+        row_order = ord, column_order = ord, show_row_names = FALSE, show_column_names = FALSE) +
+Heatmap(diff_z, name = "|Dz|",
+        col = colorRamp2(quantile(diff_z, c(0.05, 0.5, 0.95), na.rm = TRUE), c("white", "tan", "brown4")),
+        left_annotation = ha, cluster_rows = FALSE, cluster_columns = FALSE,
+        row_order = ord, column_order = ord, show_row_names = FALSE, show_column_names = FALSE,
+        column_title = "|z_FNT - z_Proj|")
+```
+
+------------------------------------------------------------------------
+
+## SQ6: **Does laterality depend on neuron type?** (stratified PERMANOVA)
+
+**Hypothesis**: Only some types show L vs R separation in multivariate projection space.
+
+**Multiple testing**: $p$-values across types are corrected with **Benjamini–Hochberg FDR** in the printed table (`p_BH`).
+
+```{r sq6_stratify}
+res_type <- lapply(split(meta, meta$Neuron_Type), function(m) {
+  if (nrow(m) < 6L || n_distinct(m$Soma_Side) < 2L) return(NULL)
+  ix <- colnames(mat_ipsi) %in% m$NeuronID
+  d <- vegdist(t(mat_ipsi[, ix, drop = FALSE]), method = "bray")
+  s <- m$Soma_Side[match(labels(d), m$NeuronID)]
+  a <- adonis2(d ~ s, permutations = PERM_N)
+  data.frame(
+    Neuron_Type = unique(m$Neuron_Type),
+    n = nrow(m),
+    R2 = a$R2[1],
+    p = a$`Pr(>F)`[1]
+  )
+})
+sq6_tab <- bind_rows(Filter(Negate(is.null), res_type))
+if (nrow(sq6_tab)) {
+  sq6_tab <- sq6_tab %>%
+    mutate(
+      p_BH = p.adjust(p, method = "BH"),
+      significant_raw = p < 0.05,
+      sig_label_raw = p_to_sig(p),
+      significant_BH = p_BH < 0.05,
+      sig_label_BH = p_to_sig(p_BH)
+    )
+}
+print(sq6_tab)
+
+if (nrow(sq6_tab)) {
+  sq6_plot <- sq6_tab %>%
+    mutate(sig_fdr = ifelse(p_BH < 0.05, "BH q < 0.05", "BH q >= 0.05"))
+  ggplot(sq6_plot, aes(reorder(Neuron_Type, R2), R2, fill = sig_fdr)) +
+    geom_col() +
+    coord_flip() +
+    scale_fill_manual(
+      values = c("BH q < 0.05" = "#E74C3C", "BH q >= 0.05" = "#bdc3c7"),
+      name = NULL
+    ) +
+    labs(
+      title = "SQ6: PERMANOVA R² for Side within each neuron type",
+      subtitle = "Bar color: Benjamini–Hochberg FDR across neuron types",
+      x = NULL
+    ) +
+    theme_minimal()
+}
+```
+
+------------------------------------------------------------------------
+
+# Export results
+Interactive mode: final workbook export chunk removed to keep this notebook focused on chunk-by-chunk analysis and debugging.
