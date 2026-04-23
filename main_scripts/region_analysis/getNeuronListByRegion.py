@@ -22,6 +22,7 @@ def getNeuronListByRegion(
     sample_id: str,
     region_keywords: Union[str, List[str]],
     atlas_path: str = ATLAS_PATH,
+    search_abbreviation: bool = True,
     return_ids_only: bool = False,
     verbose: bool = True,
 ) -> Union[pd.DataFrame, List[str]]:
@@ -30,9 +31,10 @@ def getNeuronListByRegion(
     
     Args:
         sample_id: fMOST sample ID (e.g., '251637')
-        region_keywords: Keyword(s) to search in atlas Full_Name 
+        region_keywords: Keyword(s) to search in atlas Full_Name and (optionally) Abbreviation
                         (e.g., 'insula' or ['motor', 'cortex'])
         atlas_path: Path to ARM_key_all.txt atlas file
+        search_abbreviation: If True, also search keywords in atlas Abbreviation (acronyms)
         return_ids_only: If True, return list of neuron IDs instead of DataFrame
         verbose: Print matching info if True
     
@@ -47,10 +49,21 @@ def getNeuronListByRegion(
     # Normalize keywords to list
     if isinstance(region_keywords, str):
         region_keywords = [region_keywords]
+    region_keywords = [k.strip() for k in region_keywords if isinstance(k, str) and k.strip()]
+    if not region_keywords:
+        if verbose:
+            print('[WARN] Empty region_keywords')
+        return [] if return_ids_only else pd.DataFrame()
     
     # Load atlas and extract target regions
     atlas_df = pd.read_csv(atlas_path, delimiter='\t')
-    mask = atlas_df['Full_Name'].fillna('').str.contains('|'.join(region_keywords), case=False)
+    keyword_regex = '|'.join(re.escape(k) for k in region_keywords)
+    full_name_mask = atlas_df['Full_Name'].fillna('').str.contains(keyword_regex, case=False, regex=True)
+    if search_abbreviation:
+        abbr_mask = atlas_df['Abbreviation'].fillna('').str.contains(keyword_regex, case=False, regex=True)
+        mask = full_name_mask | abbr_mask
+    else:
+        mask = full_name_mask
     roi_abbr = atlas_df.loc[mask, 'Abbreviation'].dropna().tolist()
     
     if not roi_abbr:
