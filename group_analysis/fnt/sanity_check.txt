@@ -1,0 +1,36 @@
+FNT distance matrix sanity check
+================================
+
+Source: D:\projectome_analysis\group_analysis\fnt\multi_monkey_INS_dist.txt
+Joined FNT: D:\projectome_analysis\group_analysis\fnt\multi_monkey_INS_joined.fnt
+n neurons: 306
+n pairs (incl. self): 46971
+
+Score distribution overall:
+count    4.697100e+04
+mean     2.065831e+09
+std      2.303480e+09
+min      3.000000e-04
+25%      5.146710e+08
+50%      1.266640e+09
+75%      2.655715e+09
+max      2.059280e+10
+
+Off-diagonal pairs: 46665
+Within-monkey: 34320
+Cross-monkey:  12345
+
+Score by pair-kind (off-diagonal):
+             count          mean           std        min          25%           50%           75%           max
+pair_kind                                                                                                       
+cross      12345.0  2.147551e+09  2.479075e+09  8367860.0  537292000.0  1.189710e+09  2.591860e+09  1.790380e+10
+within     34320.0  2.054855e+09  2.238493e+09  1261200.0  522082500.0  1.322480e+09  2.690650e+09  2.059280e+10
+
+Score by sample-pair group (off-diagonal):
+              count          mean           std          min          25%           50%           75%           max
+pair_label                                                                                                         
+251637      33670.0  2.060439e+09  2.232048e+09    1914000.0  531078000.0  1.342325e+09  2.692140e+09  2.059280e+10
+252383         10.0  5.569062e+08  2.822667e+08  208626000.0  367482500.0  5.434195e+08  6.420638e+08  1.097920e+09
+252384         10.0  5.580093e+08  2.068095e+08  120444000.0  449580500.0  5.787210e+08  6.528052e+08  8.697220e+08
+252385        630.0  1.803940e+09  2.565670e+09    1261200.0  200533250.0  6.273895e+08  2.614905e+09  1.371760e+10
+cross       12345.0  2.147551e+09  2.479075e+09    8367860.0  537292000.0  1.189710e+09  2.591860e+09  1.790380e+10

@@ -1,0 +1,16 @@
+[
+    "nmtI|charm|Frontal|ACgG|ACC"
+    "nmtI|charm|Frontal|ACgG|MCC"
+    "nmtI|charm|Frontal|lat_PFC|dlPFC"
+    "nmtI|charm|Frontal|lat_PFC|vlPFC"
+    # "nmtI|charm|Parietal|IPL|area_7_in_IPL"
+    "nmtI|charm|Parietal|IPL|area_7_in_IPL|area_7a/b|area_7a"
+    "nmtI|charm|Parietal|IPL|lat_IPS|LIP"
+    "nmtI|charm|Parietal|PMC|PCgG|PCC"
+    "nmtI|charm|Parietal|PMC|PCgG|RSC"
+    "nmtI|charm|Temporal|ITC|STSf"
+    "nmtI|charm|Temporal|ITC|TE"
+    "nmtI|charm|Temporal|ITC|TEO"
+    "nmtI|charm|Temporal|STG/STSd|STGr/STSd|STGr"
+    "nmtI|charm|Temporal|STG/STSd|STGr/STSd|STSd"
+]

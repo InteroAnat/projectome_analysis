@@ -1,0 +1,68 @@
+============================================================
+REGION ANALYSIS REPORT - 251730
+============================================================
+Generated: 2026-04-27 13:05:43
+
+--- OVERVIEW ---
+Total neurons: 79
+
+--- Neuron Types ---
+  Unclassified: 51 (64.6%)
+  ITi: 13 (16.5%)
+  ITs: 8 (10.1%)
+  PT: 4 (5.1%)
+  CT: 3 (3.8%)
+
+--- Soma Regions (Top 10) ---
+  SR_SA: 30
+  SR_CAA: 20
+  SL_DGA: 19
+  SR_DGA: 10
+
+--- Laterality ---
+  Soma side R: 60
+  Soma side L: 19
+  Total ipsi terminals:   363
+  Total contra terminals: 3
+  Laterality Index - mean: 0.001, median: 0.000
+
+--- Projection Strength (Population) ---
+  Raw length: mean=128.84, median=40.82, max=1459.38 mm
+  Log strength: mean=1.630, median=1.621, max=3.164
+
+--- Morphology ---
+Total length - Mean: 659.17, Std: 779.78
+Terminal count - Mean: 5.25, Max: 24
+
+--- Outliers ---
+Neurons with outliers: 49 (62.0%)
+Total outlier events: 967
+
+--- Hierarchy Columns Status ---
+  L1: MISSING
+  L2: MISSING
+  L3: OK
+  L4: OK
+  L5: OK
+  L6: OK
+
+--- Excel Workbook Contents ---
+  Sheet 1: Summary                    (scalar overview)
+  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)
+  Sheet 3: Terminal_Sites             (one row per terminal)
+  Sheet 4: Laterality                 (ipsi/contra scalars)
+  Sheet 5: Outliers                   (one row per outlier)
+
+  Projection Length Sheets (split by laterality):
+    Projection_Length_ipsi          (ipsilateral regions only)
+    Projection_Length_contra        (contralateral regions only)
+    Projection_Length_L{n}_ipsi     (level n, ipsilateral)
+    Projection_Length_L{n}_contra   (level n, contralateral)
+
+  Projection Strength Sheets (split by laterality):
+    Projection_Strength_ipsi        (ipsilateral regions, log10)
+    Projection_Strength_contra      (contralateral regions, log10)
+    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)
+    Projection_Strength_L{n}_contra (level n, contralateral, log10)
+
+============================================================
