@@ -648,6 +648,7 @@ class PopulationRegionAnalysis:
         all_contra_regions = set()
         
         for _, row in self.plot_dataframe.iterrows():
+            soma_side = row.get("Soma_Side", "Unknown")
             soma_region = row.get("Soma_Region", "")
             length_dict = row.get(source_col, {})
             if not isinstance(length_dict, dict):
@@ -656,13 +657,13 @@ class PopulationRegionAnalysis:
             for region, length in length_dict.items():
                 if length == 0:
                     continue
-                lat = LateralityParser.classify(soma_region, region)
+                if soma_side in ("L", "R"):
+                    lat = LateralityParser.classify_with_soma_side(soma_side, region)
+                else:
+                    lat = LateralityParser.classify(soma_region, region)
                 if lat == "Ipsilateral":
                     all_ipsi_regions.add(region)
                 elif lat == "Contralateral":
-                    all_contra_regions.add(region)
-                else:
-                    all_ipsi_regions.add(region)
                     all_contra_regions.add(region)
         
         # Build rows with clean (stripped) column names
@@ -672,6 +673,7 @@ class PopulationRegionAnalysis:
         for _, row in self.plot_dataframe.iterrows():
             neuron_id = row["NeuronID"]
             neuron_type = row.get("Neuron_Type", "")
+            soma_side = row.get("Soma_Side", "Unknown")
             soma_region = row.get("Soma_Region", "")
             length_dict = row.get(source_col, {})
             if not isinstance(length_dict, dict):
@@ -684,15 +686,15 @@ class PopulationRegionAnalysis:
             for region, length in length_dict.items():
                 if length == 0:
                     continue
-                lat = LateralityParser.classify(soma_region, region)
+                if soma_side in ("L", "R"):
+                    lat = LateralityParser.classify_with_soma_side(soma_side, region)
+                else:
+                    lat = LateralityParser.classify(soma_region, region)
                 clean_region = _strip_prefix(region)
                 
                 if lat == "Ipsilateral":
                     ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + length
                 elif lat == "Contralateral":
-                    contra_row[clean_region] = contra_row.get(clean_region, 0) + length
-                else:
-                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + length
                     contra_row[clean_region] = contra_row.get(clean_region, 0) + length
             
             ipsi_data.append(ipsi_row)
@@ -747,6 +749,7 @@ class PopulationRegionAnalysis:
         for _, row in self.plot_dataframe.iterrows():
             neuron_id = row["NeuronID"]
             neuron_type = row.get("Neuron_Type", "")
+            soma_side = row.get("Soma_Side", "Unknown")
             soma_region = row.get("Soma_Region", "")
             length_dict = row.get(source_col, {})
             if not isinstance(length_dict, dict):
@@ -759,16 +762,16 @@ class PopulationRegionAnalysis:
             for region, length in length_dict.items():
                 if length == 0:
                     continue
-                lat = LateralityParser.classify(soma_region, region)
+                if soma_side in ("L", "R"):
+                    lat = LateralityParser.classify_with_soma_side(soma_side, region)
+                else:
+                    lat = LateralityParser.classify(soma_region, region)
                 clean_region = _strip_prefix(region)
                 strength = round(np.log10(length + 1), 4)
                 
                 if lat == "Ipsilateral":
                     ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + strength
                 elif lat == "Contralateral":
-                    contra_row[clean_region] = contra_row.get(clean_region, 0) + strength
-                else:
-                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + strength
                     contra_row[clean_region] = contra_row.get(clean_region, 0) + strength
             
             ipsi_data.append(ipsi_row)

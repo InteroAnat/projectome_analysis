@@ -51,6 +51,10 @@ class LateralityParser:
     @staticmethod
     def classify(soma_region: str, terminal_region: str) -> str:
         soma_side = LateralityParser.get_side(soma_region)
+        return LateralityParser.classify_with_soma_side(soma_side, terminal_region)
+
+    @staticmethod
+    def classify_with_soma_side(soma_side: str, terminal_region: str) -> str:
         term_side = LateralityParser.get_side(terminal_region)
         if soma_side == "Unknown" or term_side == "Unknown":
             return "Unknown"
@@ -60,6 +64,13 @@ class LateralityParser:
     def parse_terminal_list(
         soma_region: str, terminal_regions: list
     ) -> List[Dict[str, str]]:
+        soma_side = LateralityParser.get_side(soma_region)
+        return LateralityParser.parse_terminal_list_with_soma_side(soma_side, terminal_regions)
+
+    @staticmethod
+    def parse_terminal_list_with_soma_side(
+        soma_side: str, terminal_regions: list
+    ) -> List[Dict[str, str]]:
         if not isinstance(terminal_regions, (list, tuple)):
             terminal_regions = []
         results = []
@@ -68,7 +79,7 @@ class LateralityParser:
                 {
                     "region": r,
                     "side": LateralityParser.get_side(r),
-                    "laterality": LateralityParser.classify(soma_region, r),
+                    "laterality": LateralityParser.classify_with_soma_side(soma_side, r),
                 }
             )
         return results
@@ -77,11 +88,18 @@ class LateralityParser:
     def split_projection_lengths(
         soma_region: str, projection_dict: dict
     ) -> Tuple[dict, dict, dict]:
+        soma_side = LateralityParser.get_side(soma_region)
+        return LateralityParser.split_projection_lengths_with_soma_side(soma_side, projection_dict)
+
+    @staticmethod
+    def split_projection_lengths_with_soma_side(
+        soma_side: str, projection_dict: dict
+    ) -> Tuple[dict, dict, dict]:
         if not isinstance(projection_dict, dict):
             return {}, {}, {}
         ipsi, contra, unk = {}, {}, {}
         for region, length in projection_dict.items():
-            lat = LateralityParser.classify(soma_region, region)
+            lat = LateralityParser.classify_with_soma_side(soma_side, region)
             if lat == "Ipsilateral":
                 ipsi[region] = length
             elif lat == "Contralateral":
@@ -91,11 +109,40 @@ class LateralityParser:
         return ipsi, contra, unk
 
 
+def _infer_soma_side_from_coords(df: pd.DataFrame, soma_col: str, soma_x_col: str) -> pd.Series:
+    """Infer soma side from coordinates when name-based side is unknown."""
+    name_side = df[soma_col].apply(LateralityParser.get_side)
+    if soma_x_col not in df.columns:
+        return pd.Series(["Unknown"] * len(df), index=df.index)
+
+    x = pd.to_numeric(df[soma_x_col], errors="coerce")
+    known = pd.DataFrame({"side": name_side, "x": x}).dropna()
+    known = known[known["side"].isin(["L", "R"])]
+    if known.empty or set(known["side"]) != {"L", "R"}:
+        return pd.Series(["Unknown"] * len(df), index=df.index)
+
+    med_l = known.loc[known["side"] == "L", "x"].median()
+    med_r = known.loc[known["side"] == "R", "x"].median()
+    thr = (med_l + med_r) / 2.0
+    l_is_lower = med_l < med_r
+
+    out = pd.Series(["Unknown"] * len(df), index=df.index, dtype=object)
+    valid = x.notna()
+    if l_is_lower:
+        out.loc[valid & (x <= thr)] = "L"
+        out.loc[valid & (x > thr)] = "R"
+    else:
+        out.loc[valid & (x >= thr)] = "L"
+        out.loc[valid & (x < thr)] = "R"
+    return out
+
+
 def add_laterality_columns(
     df: pd.DataFrame,
     soma_col: str = "Soma_Region",
     terminal_col: str = "Terminal_Regions",
     length_col: str = None,
+    soma_x_col: str = "Soma_NII_X",
 ) -> pd.DataFrame:
     df = df.copy()
     P = LateralityParser
@@ -106,10 +153,19 @@ def add_laterality_columns(
                 length_col = candidate
                 break
 
-    df["Soma_Side"] = df[soma_col].apply(P.get_side)
+    # Stage 1: parse side from region name prefix.
+    df["Soma_Side_Name"] = df[soma_col].apply(P.get_side)
+    # Stage 2 (fallback): infer side from soma coordinates if name is unknown.
+    df["Soma_Side_Coord"] = _infer_soma_side_from_coords(df, soma_col=soma_col, soma_x_col=soma_x_col)
+    df["Soma_Side"] = df["Soma_Side_Name"]
+    use_coord = df["Soma_Side"].eq("Unknown") & df["Soma_Side_Coord"].isin(["L", "R"])
+    df.loc[use_coord, "Soma_Side"] = df.loc[use_coord, "Soma_Side_Coord"]
+    df["Soma_Side_Method"] = "name"
+    df.loc[use_coord, "Soma_Side_Method"] = "coord_fallback"
+    df.loc[df["Soma_Side"].eq("Unknown"), "Soma_Side_Method"] = "unknown"
 
     df["Terminal_Laterality"] = df.apply(
-        lambda row: P.parse_terminal_list(row[soma_col], row[terminal_col]),
+        lambda row: P.parse_terminal_list_with_soma_side(row["Soma_Side"], row[terminal_col]),
         axis=1,
     )
 
@@ -136,7 +192,7 @@ def add_laterality_columns(
 
     if length_col and length_col in df.columns:
         splits = df.apply(
-            lambda row: P.split_projection_lengths(row[soma_col], row[length_col]),
+            lambda row: P.split_projection_lengths_with_soma_side(row["Soma_Side"], row[length_col]),
             axis=1,
         )
         df["Ipsilateral_Projection_Length"] = splits.apply(lambda x: x[0])
@@ -168,8 +224,10 @@ def add_laterality_columns(
     n = len(df)
     n_ipsi = (df["N_Ipsilateral"] > 0).sum()
     n_contra = (df["N_Contralateral"] > 0).sum()
+    n_coord_fb = int((df["Soma_Side_Method"] == "coord_fallback").sum())
     print(
         f"[LATERALITY] {n} neurons: "
-        f"{n_ipsi} with ipsi targets, {n_contra} with contra targets"
+        f"{n_ipsi} with ipsi targets, {n_contra} with contra targets "
+        f"(coord fallback for soma side: {n_coord_fb})"
     )
     return df

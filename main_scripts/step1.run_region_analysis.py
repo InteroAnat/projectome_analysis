@@ -9,6 +9,7 @@ Priority: CSV hierarchy > ARM key
 import nibabel as nib
 import pandas as pd
 import os
+from datetime import datetime
 from region_analysis import PopulationRegionAnalysis
 
 
@@ -51,6 +52,18 @@ def main(neuron_ids=None, sample_id="251637", show_plots=False):
         generate_plots=True,
        
     )
+
+    # Rename default results workbook to include timestamp for traceability.
+    if output_path:
+        tables_dir = os.path.join(output_path, "tables")
+        default_results = os.path.join(tables_dir, f"{sample_id}_results.xlsx")
+        if os.path.exists(default_results):
+            ts = datetime.now().strftime("%Y%m%d_%H%M%S")
+            timestamped_results = os.path.join(
+                tables_dir, f"{sample_id}_results_{ts}.xlsx"
+            )
+            os.replace(default_results, timestamped_results)
+            print(f"[RENAMED] {timestamped_results}")
     
     counts = pop.get_neuron_count()
     print(f"\n[COMPLETE] {output_path}")
@@ -81,9 +94,10 @@ main(ins_swcIDs)
 # to acquire neurons for a 
 from region_analysis.getNeuronListByRegion import getNeuronListByRegion
 
-motor_ids = getNeuronListByRegion('251637', ['premotor'], return_ids_only=True, verbose=False)
+motor_ids = getNeuronListByRegion('251637')
+# print(motor_ids[0:5])
 # main(motor_ids)
 
 # %%
-main(motor_ids)
+main(sample_id="251637")
 # %%
