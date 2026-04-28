@@ -1,0 +1,8 @@
+"stratum_id","filter_R","role","min_n_inferential"
+"IDD5_plus_IDM_balanced","Region %in% c('IDD5','IDM')","primary inferential",10
+"IDD5_balanced","Region == 'IDD5'","stricter check",10
+"IDM_balanced","Region == 'IDM'","replication",10
+"all_combined","TRUE","overall sensitivity",10
+"IAL_combined","Region == 'IAL'","v3 caudal-OFC sanity",10
+"IAPM_combined","Region == 'IAPM'","descriptive only",999
+"IDV_combined","Region == 'IDV'","descriptive only",999
