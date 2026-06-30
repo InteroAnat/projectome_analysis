@@ -42,8 +42,10 @@ SAMPLE_ID = '251637'
 
 # INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_M1.xlsx'
 # INPUT_FILE = r'D:\projectome_analysis\main_scripts\neuron_tables\251637_subset.xlsx'
-INPUT_FILE = r'D:\projectome_analysis\neuron_tables\251637_ACC.xlsx'
-PARENT_OUTPUT_DIR = r"W:\fMOST\test"
+# INPUT_FILE = r'D:\projectome_analysis\neuron_tables\251637_ACC.xlsx'
+INPUT_FILE = r'D:\projectome_analysis\neuron_tables\251637_von_economo_check.xlsx'
+PARENT_OUTPUT_DIR = os.path.join(os.environ['USERPROFILE'], 'Downloads', 'bulk_visual')
+GRID_RADIUS = 2  # GUI Grid Radius: 1=1 block, 2=3×3×3 blocks
 
 # ==========================================
 # MAIN LOGIC
@@ -125,7 +127,7 @@ def process_batch():
                 
                 # B. Process High-Res (Soma)
                 if GENERATE_HIGH_RES:
-                    vol_h, org_h, res_h = toolkit.get_high_res_block(soma_xyz, grid_radius=1)
+                    vol_h, org_h, res_h = toolkit.get_high_res_block(soma_xyz, grid_radius=GRID_RADIUS)
                     
                     # Save NIfTI with region (coordinates in title only, not filename)
                     toolkit.export_data(

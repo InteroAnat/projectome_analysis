@@ -41,13 +41,29 @@ HTTP_PATH = 'monkeydata'
 BLOCK_SIZE_PIXELS = [360, 360, 90]    # [X, Y, Z]
 RESOLUTION_HIGH   = [0.65, 0.65, 3.0] # [X, Y, Z] microns
 
-# 2. LOW RESOLUTION (SSH Source) - 5.0um Resampled
+# 2. LOW RESOLUTION - 5.0um resampled widefield
+# Primary: lab SMB share (replaces removed SSH path). Fallback: legacy SSH.
+LOW_RES_SHARE_BY_SAMPLE = {
+    '251637': r"\\10.102.8.200\microscopy_data\fMOST\936-251637\251637-CH1_resample\resample_5um",
+}
 SSH_HOST = "172.20.10.250"
 SSH_PORT = 20007
 SSH_USER = "binbin"
 SSH_PASS = "IONconnect2026"
 SSH_REMOTE_BASE = "/home/binbin/share/251637CH1_projection/251637-CH1_resample/resample_5um"
 RESOLUTION_LOW  = [5.0, 5.0, 3.0]     # [X, Y, Z] microns
+
+
+def _read_tiff(path):
+    """Read fMOST TIFF (LZW); fall back to PIL when imagecodecs is missing."""
+    try:
+        return tifffile.imread(path)
+    except Exception:
+        pass
+    from PIL import Image
+    Image.MAX_IMAGE_PIXELS = None
+    return np.array(Image.open(path))
+
 
 class Visual_toolkit:
     """
@@ -81,6 +97,10 @@ class Visual_toolkit:
 
         self.ssh_client = None
         self.sftp = None
+        self.low_res_share_base = LOW_RES_SHARE_BY_SAMPLE.get(sample_id)
+
+    def _low_res_slice_filename(self, z_index):
+        return f"{self.sample_id}_{z_index:05d}_CH1_resample.tif"
 
     def _init_ssh(self):
         if self.sftp: return
@@ -107,8 +127,10 @@ class Visual_toolkit:
         local_path = os.path.join(self.cache_http_dir, str(idx_z), filename)
         
         if os.path.exists(local_path):
-            try: return tifffile.imread(local_path)
-            except: os.remove(local_path)
+            try:
+                return _read_tiff(local_path)
+            except Exception:
+                os.remove(local_path)
 
         url = f"{HTTP_HOST}/{HTTP_PATH}/{self.sample_id}/cube/{idx_z}/{filename}"
         try:
@@ -117,8 +139,9 @@ class Visual_toolkit:
                 data = response.read()
             with open(local_path, 'wb') as f:
                 f.write(data)
-            return tifffile.imread(local_path)
-        except: return None
+            return _read_tiff(local_path)
+        except Exception:
+            return None
 
     def get_high_res_block(self, center_um, grid_radius=2):
         print(f"\n[ACTION] Acquiring High-Res Soma Block (Radius {grid_radius})")
@@ -168,25 +191,35 @@ class Visual_toolkit:
         return volume, [origin_x, origin_y, origin_z], RESOLUTION_HIGH
 
     # ==========================================
-    # SOURCE 2: LOW RES (SSH)
+    # SOURCE 2: LOW RES (SMB share, SSH fallback)
     # ==========================================
-    def _download_ssh_slice(self, z_index):
-        self._init_ssh()
-        if not self.sftp: return None
-        
-        filename = f"{self.sample_id}_{z_index:05d}_CH1_resample.tif"
+    def _get_low_res_slice_path(self, z_index):
+        """Return path to a resampled z-slice TIFF (UNC share preferred)."""
+        filename = self._low_res_slice_filename(z_index)
+
+        if self.low_res_share_base:
+            share_path = os.path.join(self.low_res_share_base, filename)
+            if os.path.isfile(share_path):
+                return share_path
+
         local_path = os.path.join(self.cache_ssh_dir, filename)
-        
-        if os.path.exists(local_path): return local_path
-        
+        if os.path.isfile(local_path):
+            return local_path
+
+        self._init_ssh()
+        if not self.sftp:
+            return None
         try:
             remote_path = f"{SSH_REMOTE_BASE}/{filename}"
             self.sftp.get(remote_path, local_path)
-            return local_path
-        except: return None
+            return local_path if os.path.isfile(local_path) else None
+        except Exception:
+            return None
 
     def get_low_res_widefield(self, center_um, width_um=10000, height_um=10000, depth_um=90):
         print(f"\n[ACTION] Acquiring Low-Res Wide Field ({width_um}x{height_um} um)")
+        if self.low_res_share_base:
+            print(f"  > Low-res source: {self.low_res_share_base}")
         
         z_idx = int(center_um[2] / RESOLUTION_LOW[2])
         cx_px = int(center_um[0] / RESOLUTION_LOW[0])
@@ -206,19 +239,23 @@ class Visual_toolkit:
         print(f"  > Fetching Z-Slices: {z_start} to {z_end}...")
         
         for z in range(z_start, z_end + 1):
-            f_path = self._download_ssh_slice(z)
+            f_path = self._get_low_res_slice_path(z)
+            th, tw = max_y - min_y, max_x - min_x
             if f_path:
-                img = tifffile.imread(f_path)
+                try:
+                    img = _read_tiff(f_path)
+                except Exception as exc:
+                    print(f"  > [WARN] Could not read slice z={z}: {exc}")
+                    stack.append(np.zeros((th, tw), dtype=np.uint16))
+                    continue
                 h, w = img.shape
                 my = min(max_y, h); mx = min(max_x, w)
                 crop = img[min_y:my, min_x:mx]
-                
-                th, tw = max_y - min_y, max_x - min_x
                 if crop.shape != (th, tw):
                     crop = np.pad(crop, ((0, th-crop.shape[0]), (0, tw-crop.shape[1])), mode='constant')
                 stack.append(crop)
             else:
-                stack.append(np.zeros((max_y-min_y, max_x-min_x), dtype=np.uint16))
+                stack.append(np.zeros((th, tw), dtype=np.uint16))
 
         volume = np.array(stack)
         
