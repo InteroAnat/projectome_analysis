@@ -143,7 +143,11 @@ class FNTNeuronPipeline:
         return df
     
     def _preprocess_swc(self, swc_file: str, output_swc: str) -> bool:
-        """Preprocess SWC to flip x-coordinate to left hemisphere."""
+        """Raw SWC sagittal reflect for ``x > 32000``: **left-to-right** / right-hemifield convention for FNT.
+
+        Same convention as ``preprocess_swc_coordinates`` in ``step2_fnt-dist_pipeline.py``:
+        **not** neuron-table physical XYZ, **not** IONData-normalized tree coords.
+        """
         MIDLINE = 32000
         
         if os.path.exists(output_swc):
@@ -168,6 +172,7 @@ class FNTNeuronPipeline:
                     try:
                         x = float(parts[2])
                         if x > MIDLINE:
+                            # Raw SWC x > midline → L→R / right-hemifield mirror for fnt-dist
                             x = 2 * MIDLINE - x
                             parts[2] = str(x)
                             flipped += 1
@@ -180,7 +185,7 @@ class FNTNeuronPipeline:
                 f.writelines(processed_lines)
             
             if flipped > 0:
-                print(f"    Flipped {flipped} nodes from right to left")
+                print(f"    Flipped {flipped} raw-SWC nodes (x > {MIDLINE}, L→R / right-hemifield mirror)")
             
             return True
             

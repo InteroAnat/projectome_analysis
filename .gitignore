@@ -71,6 +71,12 @@ dist/
 *.egg
 
 # ============================================================================
+# CURSOR — vendor clone of claude-scientific-skills (optional local mirror)
+# ============================================================================
+# Remove this line if you commit upstream/ as a submodule or full vendor tree.
+.cursor/claude-scientific-skills/upstream/
+
+# ============================================================================
 # IDE / EDITOR FILES
 # ============================================================================
 
@@ -114,6 +120,19 @@ Icon
 *.tmp
 *.temp
 *.log
+*.swp
+projectome.sqlite
+
+# Accidental root tree/debug dumps
+/tree
+/tree.txt
+/tree.html
+/tree_*.txt
+/t.html
+/t.png
+/folder_strt*
+/worker
+/start
 
 # Excel temporary files
 ~$*.xlsx

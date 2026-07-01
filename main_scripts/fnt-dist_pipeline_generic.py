@@ -149,23 +149,23 @@ def load_neuron_table(table_path, neuron_id_column=NEURON_ID_COLUMN):
 # ==============================================================================
 
 def preprocess_swc_coordinates(swc_file, output_swc=None):
-    """Preprocess SWC file to flip x-coordinate to the left side (x < 32000).
-    
-    SWC format columns:
-    1: node ID
-    2: structure type
-    3: x coordinate (column index 2, 0-indexed)
-    4: y coordinate
-    5: z coordinate
-    6: radius
-    7: parent node ID
-    
-    The midline is at x = 32000. Neurons on the right side (x > 32000) are
-    mirrored to the left side using: new_x = 64000 - x
-    This ensures proper reflection across the midline.
-    
-    Example: x = 48000 (right side, 16000 from midline) 
-             -> new_x = 64000 - 48000 = 16000 (left side, 16000 from midline)
+    """Reflect **raw SWC** across the sagittal midline for FNT (**left-to-right** mirror).
+
+    **Coordinate system:** Applies only to **raw SWC** ``x`` (column 3), in the registration
+    frame used for ``swc_raw`` / this pipeline — **not** the physical soma XYZ columns in
+    neuron table spreadsheets (different units and origin), and **not** **normalized**
+    reconstructions from IONData or similar (e.g. ``getNeuronTreeByID`` vs
+    ``getRawNeuronTreeByID`` can differ drastically in ``x`` for the same cell).
+
+    **Hemisphere rule (raw SWC):** Midline at ``x = 32000`` (SWC units). **Right**
+    hemisphere: ``x > 32000``. **Left**: ``x <= 32000``. For each node with ``x > 32000``,
+    set ``x' = 64000 - x`` — sagittal **left-to-right** reflection into the **right**
+    hemifield / coordinate convention expected by ``fnt-dist``.
+
+    SWC columns: id, type, x, y, z, radius, parent.
+
+    Does **not** modify workbook ``Soma_Side`` or atlas strings. FNT / clustering use these
+    SWC-derived files; this function’s **logic** is unchanged when comments are clarified.
     """
     MIDLINE = 32000
     
@@ -200,7 +200,7 @@ def preprocess_swc_coordinates(swc_file, output_swc=None):
                 try:
                     x = float(parts[2])
                     if x > MIDLINE:
-                        # Mirror across the midline
+                        # Raw SWC x > midline → reflect L→R (right hemifield / fnt-dist convention)
                         x = 2 * MIDLINE - x  # = 64000 - x
                         parts[2] = str(x)
                         flipped_count += 1
@@ -215,9 +215,9 @@ def preprocess_swc_coordinates(swc_file, output_swc=None):
             f.writelines(processed_lines)
         
         if flipped_count > 0:
-            print(f"    Flipped {flipped_count} nodes from right to left (x > {MIDLINE})")
+            print(f"    Flipped {flipped_count} raw-SWC nodes (x > {MIDLINE}, L→R / right-hemifield mirror)")
         if already_left_count > 0:
-            print(f"    {already_left_count} nodes already on left side (x <= {MIDLINE})")
+            print(f"    {already_left_count} raw-SWC nodes unchanged (x <= {MIDLINE})")
         
         return output_swc
     except Exception as e:
@@ -393,7 +393,7 @@ def process_single_neuron(neuron_id, swc_dir, raw_swc_dir, output_dir):
     
     print(f"  Using SWC: {swc_file}")
     
-    # Step 1: Preprocess SWC to flip x-coordinate if > 32000
+    # Step 1: Raw SWC — L→R midline reflect for x > 32000 (fnt-dist); not NMT table XYZ
     preprocessed_swc = os.path.join(output_dir, f"{neuron_id}.processed.swc")
     preprocessed_swc = preprocess_swc_coordinates(swc_file, preprocessed_swc)
     if preprocessed_swc is None:
