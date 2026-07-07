@@ -42,9 +42,11 @@ BLOCK_SIZE_PIXELS = [360, 360, 90]    # [X, Y, Z]
 RESOLUTION_HIGH   = [0.65, 0.65, 3.0] # [X, Y, Z] microns
 
 # 2. LOW RESOLUTION - 5.0um resampled widefield
-# Primary: lab SMB share (replaces removed SSH path). Fallback: legacy SSH.
+# Primary: lab SMB share under 5micron_datasets (2026-07). Fallback: legacy SSH.
+LOW_RES_SHARE_ROOT = r"\\10.102.8.200\microscopy_data\fMOST\5micron_datasets"
 LOW_RES_SHARE_BY_SAMPLE = {
-    '251637': r"\\10.102.8.200\microscopy_data\fMOST\936-251637\251637-CH1_resample\resample_5um",
+    '251637': os.path.join(LOW_RES_SHARE_ROOT, "251637-CH1_resample", "resample_5um"),
+    '252385': os.path.join(LOW_RES_SHARE_ROOT, "252385-CH1_resample", "resample_5um"),
 }
 SSH_HOST = "172.20.10.250"
 SSH_PORT = 20007

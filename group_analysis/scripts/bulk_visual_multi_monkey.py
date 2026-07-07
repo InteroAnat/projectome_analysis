@@ -8,7 +8,7 @@ Wraps step3.1.bulk_visual_data.py logic to run on ALL new monkey samples
   - PrCO    : auto-labeled PrCO
   - Unknown : Soma_Region empty / contains "Unknown"
 
-Output goes to W:\\fMOST\\visual\\{SAMPLE_ID}\\Region_{group}\\{HighRes,LowRes}\\...
+Output goes to \\\\10.102.8.200\\microscopy_data\\fMOST\\visual\\{SAMPLE_ID}\\...
 
 Skips 251637 entirely.
 """
@@ -37,7 +37,8 @@ from insula_label_set import build_insula_label_set, normalize_label, strip_pref
 
 NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
 STEP1_DIR   = os.path.join(PROJECT_ROOT, "group_analysis", "step1_results")
-PARENT_OUT  = r"W:\fMOST\visual"
+FMOST_SHARE_ROOT = r"\\10.102.8.200\microscopy_data\fMOST"
+PARENT_OUT = os.path.join(FMOST_SHARE_ROOT, "visual")
 
 GENERATE_HIGH_RES = True
 GENERATE_LOW_RES  = True
