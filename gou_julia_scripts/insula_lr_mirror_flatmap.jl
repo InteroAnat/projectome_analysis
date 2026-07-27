@@ -19,12 +19,18 @@ function rotate_flatmesh(objflat, dir::Symbol)
     GeometryBasics.Mesh(pos, GeometryBasics.faces(objflat))
 end
 
-function run_insula_lr_mirror(; niter::Int=30000)
+function run_insula_lr_mirror(; niter::Int=30000,
+                                soma_table::AbstractString=SOMA_TABLE,
+                                sheet::AbstractString="Summary",
+                                out_root::AbstractString=OUT_ROOT,
+                                out_dir::Union{Nothing,AbstractString}=nothing,
+                                cache_dir::AbstractString=CACHE_DIR)
     tag = :leftinsula
-    depth_cache = joinpath(CACHE_DIR, "depth_volume.jld2")
-    flat_cache  = joinpath(CACHE_DIR, "flatmap_$(tag)_n$(niter).jld2")
-    out_dir     = joinpath(OUT_ROOT, "insula")
-    mkpath(out_dir)
+    depth_cache = joinpath(cache_dir, "depth_volume.jld2")
+    flat_cache  = joinpath(cache_dir, "flatmap_$(tag)_n$(niter).jld2")
+    fig_dir     = out_dir === nothing ? joinpath(out_root, "insula") : String(out_dir)
+    mkpath(fig_dir)
+    mkpath(cache_dir)
 
     depthimg, depthres = if isfile(depth_cache)
         JLD2.load(depth_cache, "depthimg", "depthres")
@@ -46,7 +52,7 @@ function run_insula_lr_mirror(; niter::Int=30000)
         fm.objflat, fm.objphy
     end
 
-    df = load_somata()
+    df = load_somata(; path=soma_table, sheet=sheet)
     uvw = xyz2uvw(df.soma_pos, depthimg, depthres, objflat, objphy)
     insertcols!(df,
         :somauv => map(v -> SVector(v[1:end-1]...,), uvw),
@@ -97,9 +103,9 @@ function run_insula_lr_mirror(; niter::Int=30000)
 
     Label(fig[0, :], "Insula LR mirrored flatmaps", fontsize=18, font=:bold)
 
-    save(joinpath(out_dir, "insula_LR_mirror_flatmaps.png"), fig;
+    save(joinpath(fig_dir, "insula_LR_mirror_flatmaps.png"), fig;
          px_per_unit=3, backend=CairoMakie)
-    save(joinpath(out_dir, "insula_LR_mirror_flatmaps.svg"), fig;
+    save(joinpath(fig_dir, "insula_LR_mirror_flatmaps.svg"), fig;
          backend=CairoMakie)
 
     return (; valid=nrow(valid), left=nrow(lside), right=nrow(rside))

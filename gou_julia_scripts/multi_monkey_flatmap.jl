@@ -1,6 +1,7 @@
 # Multi-monkey insula flatmap - adapted from gou_flatmap_minimal.jl.
 # Generates one all-monkey combined plot (color by sample) and one
-# 2x2 per-sample panel using the cached leftinsula flatmap.
+# adaptive per-sample panel grid using the cached leftinsula flatmap.
+# Samples / colors / layout are discovered from the soma table at runtime.
 # Reuses depth_volume.jld2 + flatmap_leftinsula_n30000.jld2 caches.
 
 using CairoMakie
@@ -15,10 +16,8 @@ mkpath(MM_OUT_DIR)
 # ── Sample-aware soma loader ─────────────────────────────────────
 # Reads multi_monkey_INS_combined.xlsx Summary sheet and produces a DataFrame
 # matching the one expected by xyz2uvw + plot_flatmap_soma!.
-function load_combined_somata(; path=COMBINED_XLSX)
-    tbl = XLSX.readtable(path, "Summary")
-    df  = DataFrame(tbl.data, vec(Symbol.(tbl.column_labels)))
-    rename!(df, Symbol.(names(df)))
+function load_combined_somata(; path=COMBINED_XLSX, sheet="Summary")
+    df = _read_soma_table(path, sheet)
 
     # SampleID may be Int or String depending on cell formatting; normalize
     df.SampleID = string.(df.SampleID)
@@ -53,36 +52,94 @@ function load_combined_somata(; path=COMBINED_XLSX)
     df
 end
 
-# Sample → distinctive color (color-blind safe-ish)
-const SAMPLE_COLORS = Dict(
-    "251637" => Makie.to_color(:steelblue),
-    "252383" => Makie.to_color(:darkorange),
-    "252384" => Makie.to_color(:forestgreen),
-    "252385" => Makie.to_color(:firebrick),
+# Preferred colors for the original four (visual continuity with Apr 2026 plots).
+const SAMPLE_COLOR_PREFERRED = Dict(
+    "251637" => :steelblue,
+    "252383" => :darkorange,
+    "252384" => :forestgreen,
+    "252385" => :firebrick,
 )
+
+# Extension palette for new / future SampleIDs (deterministic by sorted ID).
+const SAMPLE_COLOR_POOL = [
+    :steelblue, :darkorange, :forestgreen, :firebrick,
+    :mediumpurple, :teal, :goldenrod, :deeppink,
+    :sienna, :dodgerblue, :olivedrab, :crimson,
+]
+
+"""Stable SampleID → color map from whatever IDs are present in the table."""
+function sample_color_map(sample_ids)
+    ids = sort(unique(string.(sample_ids)))
+    used = Set{Symbol}()
+    cmap = Dict{String,Any}()
+
+    for sid in ids
+        if haskey(SAMPLE_COLOR_PREFERRED, sid)
+            sym = SAMPLE_COLOR_PREFERRED[sid]
+            cmap[sid] = Makie.to_color(sym)
+            push!(used, sym)
+        end
+    end
+
+    pool_i = 1
+    for sid in ids
+        haskey(cmap, sid) && continue
+        while pool_i <= length(SAMPLE_COLOR_POOL) && SAMPLE_COLOR_POOL[pool_i] in used
+            pool_i += 1
+        end
+        if pool_i <= length(SAMPLE_COLOR_POOL)
+            sym = SAMPLE_COLOR_POOL[pool_i]
+            pool_i += 1
+            push!(used, sym)
+            cmap[sid] = Makie.to_color(sym)
+        else
+            # Exhausted named pool: deterministic HSV from sorted index
+            h = ((findfirst(==(sid), ids) - 1) * 0.6180339887) % 1.0
+            cmap[sid] = Makie.to_color(Makie.HSVA(h * 360, 0.65, 0.80, 1.0))
+        end
+    end
+    return cmap
+end
+
+"""Adaptive panel grid: ncols = ceil(sqrt(N)), nrows = ceil(N / ncols)."""
+function sample_panel_grid(n::Int)
+    n <= 0 && return (0, 0)
+    ncols = ceil(Int, sqrt(n))
+    nrows = ceil(Int, n / ncols)
+    return nrows, ncols
+end
 
 # Side → marker
 sample_marker(s) = s == "L" ? :circle : :utriangle
 
-function run_multi_monkey_flatmap(; niter::Int=30000)
+function run_multi_monkey_flatmap(; niter::Int=30000,
+                                    soma_table::AbstractString=COMBINED_XLSX,
+                                    sheet::AbstractString="Summary",
+                                    out_dir::AbstractString=MM_OUT_DIR,
+                                    cache_dir::AbstractString=CACHE_DIR)
     # Inner `include()` calls inside zz2fig (e.g. monkeytemp/wyz-upload/...)
     # resolve relative to the cwd at call time, not the file path. Force cwd
     # to MONKEYREC_ROOT so those resolve correctly.
     cd(MONKEYREC_ROOT)
 
     tag = :leftinsula
-    depth_cache = joinpath(CACHE_DIR, "depth_volume.jld2")
-    flat_cache  = joinpath(CACHE_DIR, "flatmap_$(tag)_n$(niter).jld2")
+    depth_cache = joinpath(cache_dir, "depth_volume.jld2")
+    flat_cache  = joinpath(cache_dir, "flatmap_$(tag)_n$(niter).jld2")
+    mkpath(out_dir)
 
-    @info "Loading cached depth volume + flatmap..."
+    @info "Loading cached depth volume + flatmap..." depth=depth_cache flat=flat_cache
+    isfile(depth_cache) || error("Missing depth cache: $depth_cache (run --mode single once to build)")
+    isfile(flat_cache)  || error("Missing flatmap cache: $flat_cache (run --mode single once to build)")
     depthimg, depthres = JLD2.load(depth_cache, "depthimg", "depthres")
     objflat, objphy = JLD2.load(flat_cache, "objflat", "objphy")
     objphy = hasproperty(objphy, :normals) ? objphy :
              GeometryBasics.normal_mesh(objphy.position, GeometryBasics.faces(objphy))
 
-    @info "Loading combined somata..."
-    df = load_combined_somata()
+    @info "Loading combined somata..." path=soma_table sheet=sheet
+    df = load_combined_somata(; path=soma_table, sheet=sheet)
+    samples_all = sort(unique(df.SampleID))
     @info "Total neurons in combined table: $(nrow(df))"
+    @info "Samples discovered (n=$(length(samples_all))): $(join(samples_all, ", "))"
     @info "Per-sample counts: $(combine(groupby(df, :SampleID), nrow))"
 
     @info "Projecting somata via xyz2uvw..."
@@ -99,10 +156,9 @@ function run_multi_monkey_flatmap(; niter::Int=30000)
 
     # ── Figure 1: ALL monkeys, color = sample, marker = side ────────
     samples_present = sort(unique(valid.SampleID))
+    colors = sample_color_map(samples_present)
     counts = Dict(sid => sum(valid.SampleID .== sid) for sid in samples_present)
-    side_counts = Dict(sid => (sum((valid.SampleID .== sid) .& (valid.original_side .== "L")),
-                                sum((valid.SampleID .== sid) .& (valid.original_side .== "R")))
-                       for sid in samples_present)
+    @info "Color map" pairs=["$sid => $(colors[sid])" for sid in samples_present]
 
     fig_all = Figure(size=(700, 700), backgroundcolor=:white)
     ax_all = Axis(fig_all[1, 1],
@@ -118,11 +174,11 @@ function run_multi_monkey_flatmap(; niter::Int=30000)
             sub = filter(r -> r.SampleID == sid && r.original_side == side &&
                               !any(isnan, r.somauv), valid)
             nrow(sub) == 0 && continue
-            color = get(SAMPLE_COLORS, sid, Makie.to_color(:gray))
+            color = colors[sid]
             mk = sample_marker(side)
-            sc = scatter!(ax_all, sub.somauv,
-                          color=color, marker=mk,
-                          markersize=8, strokecolor=:black, strokewidth=0.4)
+            scatter!(ax_all, sub.somauv,
+                     color=color, marker=mk,
+                     markersize=8, strokecolor=:black, strokewidth=0.4)
             push!(legend_handles,
                   MarkerElement(color=color, marker=mk, markersize=10,
                                 strokecolor=:black, strokewidth=0.4))
@@ -133,26 +189,25 @@ function run_multi_monkey_flatmap(; niter::Int=30000)
     Legend(fig_all[1, 2], legend_handles, legend_labels;
            framevisible=true, labelsize=10)
     n_total = nrow(valid)
-    n_251637 = get(counts, "251637", 0)
-    n_252383 = get(counts, "252383", 0)
-    n_252384 = get(counts, "252384", 0)
-    n_252385 = get(counts, "252385", 0)
+    count_str = join(["$sid=$(counts[sid])" for sid in samples_present], " + ")
     Label(fig_all[0, :],
-          "Combined: n=$n_total  (251637=$n_251637 + 252383=$n_252383 + 252384=$n_252384 + 252385=$n_252385)",
+          "Combined: n=$n_total  ($count_str)",
           fontsize=12, font=:bold)
-    save(joinpath(MM_OUT_DIR, "flatmap_all_monkeys_combined.png"), fig_all;
+    save(joinpath(out_dir, "flatmap_all_monkeys_combined.png"), fig_all;
          px_per_unit=3, backend=CairoMakie)
-    save(joinpath(MM_OUT_DIR, "flatmap_all_monkeys_combined.svg"), fig_all;
+    save(joinpath(out_dir, "flatmap_all_monkeys_combined.svg"), fig_all;
          backend=CairoMakie)
-    @info "Saved combined-all flatmap"
+    @info "Saved combined-all flatmap" n_samples=length(samples_present)
 
-    # ── Figure 2: per-sample 2x2 panel ──────────────────────────────
-    fig_per = Figure(size=(1200, 1100), backgroundcolor=:white)
-    sample_layout = [("251637", 1, 1),
-                     ("252383", 1, 2),
-                     ("252384", 2, 1),
-                     ("252385", 2, 2)]
-    for (sid, row, col) in sample_layout
+    # ── Figure 2: per-sample adaptive panel grid ────────────────────
+    n_samp = length(samples_present)
+    nrows, ncols = sample_panel_grid(n_samp)
+    fig_w = max(600, 500 * ncols)
+    fig_h = max(550, 500 * nrows)
+    fig_per = Figure(size=(fig_w, fig_h), backgroundcolor=:white)
+    for (i, sid) in enumerate(samples_present)
+        row = div(i - 1, ncols) + 1
+        col = mod(i - 1, ncols) + 1
         sub = filter(r -> r.SampleID == sid && !any(isnan, r.somauv), valid)
         nL = sum(sub.original_side .== "L")
         nR = sum(sub.original_side .== "R")
@@ -171,14 +226,16 @@ function run_multi_monkey_flatmap(; niter::Int=30000)
         end
         limits!(ax, lims...)
     end
-    Label(fig_per[0, :], "Per-sample insula somata", fontsize=15, font=:bold)
-    save(joinpath(MM_OUT_DIR, "flatmap_per_monkey_panels.png"), fig_per;
+    Label(fig_per[0, :],
+          "Per-sample insula somata (n=$n_samp: $(join(samples_present, ", ")))",
+          fontsize=15, font=:bold)
+    save(joinpath(out_dir, "flatmap_per_monkey_panels.png"), fig_per;
          px_per_unit=3, backend=CairoMakie)
-    save(joinpath(MM_OUT_DIR, "flatmap_per_monkey_panels.svg"), fig_per;
+    save(joinpath(out_dir, "flatmap_per_monkey_panels.svg"), fig_per;
          backend=CairoMakie)
-    @info "Saved per-sample panels"
+    @info "Saved per-sample panels" grid="$(nrows)×$(ncols)" n_samples=n_samp
 
-    @info "Done. Output in $MM_OUT_DIR"
+    @info "Done. Output in $out_dir"
     valid
 end
 

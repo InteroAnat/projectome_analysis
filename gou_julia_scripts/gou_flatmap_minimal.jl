@@ -187,10 +187,30 @@ function build_flatmap(; tag::Symbol=:leftfrontal, niter::Int=30000)
 end
 
 # ── Soma loading ───────────────────────────────────────────────────
-function load_somata(; path=SOMA_TABLE)
-    tbl = XLSX.readtable(path, 1)
-    df  = DataFrame(tbl.data, vec(Symbol.(tbl.column_labels)))
+
+"""
+    _read_soma_table(path, sheet) -> DataFrame
+
+Read a soma xlsx. `sheet` may be a name (String) or 1-based index (Int).
+If the named sheet is missing, fall back to the first sheet with a warning.
+"""
+function _read_soma_table(path, sheet)
+    sheet_names = XLSX.sheetnames(XLSX.readxlsx(path))
+    if sheet isa Integer
+        tbl = XLSX.readtable(path, sheet)
+    elseif sheet isa AbstractString && String(sheet) in sheet_names
+        tbl = XLSX.readtable(path, String(sheet))
+    else
+        @warn "Sheet not found; falling back to first sheet" requested=sheet available=sheet_names path=path
+        tbl = XLSX.readtable(path, 1)
+    end
+    df = DataFrame(tbl.data, vec(Symbol.(tbl.column_labels)))
     rename!(df, Symbol.(names(df)))
+    df
+end
+
+function load_somata(; path=SOMA_TABLE, sheet="Summary")
+    df = _read_soma_table(path, sheet)
     soma_pos = map(eachrow(df)) do r
         xyz = SVector{3,Float32}(Float32(r.Soma_Phys_X),
                                  Float32(r.Soma_Phys_Y),
@@ -207,6 +227,7 @@ function load_somata(; path=SOMA_TABLE)
     insertcols!(df, :original_side => original_side)
     insertcols!(df, :typ   => string.(df.Neuron_Type))
     insertcols!(df, :qroot => fill(false, nrow(df)))
+    @info "Loaded soma table" path=path sheet=sheet rows=nrow(df)
     df
 end
 
@@ -352,15 +373,21 @@ function add_insula_labels!(ax, objflat, objphy)
     end
 end
 
-function run_insula_pipeline(; niter::Int=30000)
+function run_insula_pipeline(; niter::Int=30000,
+                               soma_table::AbstractString=SOMA_TABLE,
+                               sheet::AbstractString="Summary",
+                               out_root::AbstractString=OUT_ROOT,
+                               out_dir::Union{Nothing,AbstractString}=nothing,
+                               cache_dir::AbstractString=CACHE_DIR)
     tag = :leftinsula
-    depth_cache = joinpath(CACHE_DIR, "depth_volume.jld2")
-    flat_cache  = joinpath(CACHE_DIR, "flatmap_$(tag)_n$(niter).jld2")
-    ins_dir     = joinpath(OUT_ROOT, "insula")
+    depth_cache = joinpath(cache_dir, "depth_volume.jld2")
+    flat_cache  = joinpath(cache_dir, "flatmap_$(tag)_n$(niter).jld2")
+    ins_dir     = out_dir === nothing ? joinpath(out_root, "insula") : String(out_dir)
     mkpath(ins_dir)
+    mkpath(cache_dir)
 
     depthimg, depthres = if isfile(depth_cache)
-        @info "Loading cached depth volume"
+        @info "Loading cached depth volume" path=depth_cache
         JLD2.load(depth_cache, "depthimg", "depthres")
     else
         @info "Building depth volume..."
@@ -371,7 +398,7 @@ function run_insula_pipeline(; niter::Int=30000)
     end
 
     objflat, objphy = if isfile(flat_cache)
-        @info "Loading cached insula flatmap"
+        @info "Loading cached insula flatmap" path=flat_cache
         of, op = JLD2.load(flat_cache, "objflat", "objphy")
         op = hasproperty(op, :normals) ? op :
              GeometryBasics.normal_mesh(op.position, GeometryBasics.faces(op))
@@ -383,8 +410,8 @@ function run_insula_pipeline(; niter::Int=30000)
         fm.objflat, fm.objphy
     end
 
-    @info "Projecting somata..."
-    df = load_somata()
+    @info "Projecting somata..." path=soma_table sheet=sheet
+    df = load_somata(; path=soma_table, sheet=sheet)
     uvw = xyz2uvw(df.soma_pos, depthimg, depthres, objflat, objphy)
     insertcols!(df,
         :somauv => map(v -> SVector(v[1:end-1]...,), uvw),
