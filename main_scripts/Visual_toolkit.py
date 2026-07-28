@@ -47,6 +47,8 @@ LOW_RES_SHARE_ROOT = r"\\10.102.8.200\microscopy_data\fMOST\5micron_datasets"
 LOW_RES_SHARE_BY_SAMPLE = {
     '251637': os.path.join(LOW_RES_SHARE_ROOT, "251637-CH1_resample", "resample_5um"),
     '252385': os.path.join(LOW_RES_SHARE_ROOT, "252385-CH1_resample", "resample_5um"),
+    # 252527 folder uses underscore (not hyphen) on the 5micron share
+    '252527': os.path.join(LOW_RES_SHARE_ROOT, "252527_CH1_resample", "resample_5um"),
 }
 SSH_HOST = "172.20.10.250"
 SSH_PORT = 20007

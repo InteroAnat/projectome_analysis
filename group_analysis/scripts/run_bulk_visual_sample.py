@@ -5,6 +5,7 @@ Exports the filtered step1 Summary table into each run folder under ``tables/``.
 Examples:
   python run_bulk_visual_sample.py --sample 252385 --group INS --png-only
   python run_bulk_visual_sample.py --sample 252385 --groups INS,PrCO --with-soma --run-stamp 20260707
+  python run_bulk_visual_sample.py --sample 252527 --potential-ins --with-soma --grid-radius 2
 """
 from __future__ import annotations
 
@@ -40,10 +41,50 @@ from bulk_visual_multi_monkey import (  # noqa: E402
     sanitize,
 )
 
+COMBINED_DIR = os.path.join(PROJECT_ROOT, "group_analysis", "combined")
+HARMONIZED_XLSX = os.path.join(COMBINED_DIR, "multi_monkey_INS_combined_harmonized.xlsx")
+COMBINED_XLSX = os.path.join(COMBINED_DIR, "multi_monkey_INS_combined.xlsx")
+
+
+def _resolve_potential_ins_table() -> str:
+    """Latest potential-INS cohort table (harmonized preferred)."""
+    if os.path.isfile(HARMONIZED_XLSX):
+        return HARMONIZED_XLSX
+    if os.path.isfile(COMBINED_XLSX):
+        return COMBINED_XLSX
+    raise FileNotFoundError(
+        f"Missing potential-INS workbook: {HARMONIZED_XLSX} or {COMBINED_XLSX}"
+    )
+
+
+def load_potential_ins_neurons(sample_id: str) -> tuple[pd.DataFrame, dict]:
+    """Load refined potential-INS keepers for one sample (atlas + PrCO rescue)."""
+    path = _resolve_potential_ins_table()
+    meta = {"step1_xlsx": path, "source": "potential_ins"}
+    summ = pd.read_excel(path, sheet_name="Summary")
+    keep = summ[summ["SampleID"].astype(str) == str(sample_id)].copy()
+    if not len(keep):
+        raise ValueError(f"No potential-INS rows for {sample_id} in {path}")
+    if "Soma_Region_Refined" in keep.columns:
+        keep["Soma_Region"] = keep["Soma_Region_Refined"]
+    elif "Soma_Region" not in keep.columns:
+        raise ValueError(f"No Soma_Region / Soma_Region_Refined in {path}")
+    keep["group"] = "INS"
+    print(f"[source] potential-INS table: {path} ({len(keep)} rows for {sample_id})")
+    return keep, meta
+
 
 def load_neurons(
-    sample_id: str, group: str, combined_fallback: bool
+    sample_id: str,
+    group: str,
+    combined_fallback: bool,
+    potential_ins: bool = False,
 ) -> tuple[pd.DataFrame, dict]:
+    if potential_ins:
+        if group != "INS":
+            raise ValueError("--potential-ins only applies to group INS")
+        return load_potential_ins_neurons(sample_id)
+
     meta = {"step1_xlsx": None, "source": None}
     xlsx = find_results_xlsx(sample_id)
     if xlsx:
@@ -60,9 +101,7 @@ def load_neurons(
             f"No step1 Summary for {sample_id} and --no-combined-fallback"
         )
 
-    combined = os.path.join(
-        PROJECT_ROOT, "group_analysis", "combined", "multi_monkey_INS_combined.xlsx"
-    )
+    combined = COMBINED_XLSX
     if not os.path.isfile(combined):
         raise FileNotFoundError(f"Missing combined workbook: {combined}")
 
@@ -120,7 +159,12 @@ def _plot_exists(plot_dir: str, sample_id: str, neuron_id: str, suffix: str) -> 
 
 def run(args: argparse.Namespace) -> dict:
     datestamp = args.run_stamp or datetime.now().strftime("%Y%m%d")
-    neurons, meta = load_neurons(args.sample, args.group, args.combined_fallback)
+    neurons, meta = load_neurons(
+        args.sample,
+        args.group,
+        args.combined_fallback,
+        potential_ins=args.potential_ins,
+    )
     if args.smoke:
         nid = args.smoke if args.smoke.endswith(".swc") else f"{args.smoke}.swc"
         neurons = neurons[
@@ -317,6 +361,14 @@ def main() -> None:
         "--no-combined-fallback",
         action="store_true",
         help="Do not fall back to multi_monkey_INS_combined.xlsx",
+    )
+    parser.add_argument(
+        "--potential-ins",
+        action="store_true",
+        help=(
+            "Use latest potential-INS cohort table "
+            "(harmonized preferred: atlas + PrCO-rescue keepers), not step1 auto labels"
+        ),
     )
     args = parser.parse_args()
     args.combined_fallback = not args.no_combined_fallback
