@@ -38,10 +38,11 @@
 │                            • IONData                     • HighRes Soma Block
 │                            • High/Low Res Blocks         • LowRes WideField  │
 │                                                                              │
-│                            STEP 4: Additional Rendering                      │
+│                            STEP 5: Additional Rendering                      │
 │                            ─────────────────────────────                     │
 │                            • Brain Mesh Render (brain_viz.py)                │
 │                            • NeuronView Render (GL-based)                    │
+│                            • Atlas Mesh Extraction (.mz3 / Surf Ice)         │
 │                            • Clustered Heatmap (Gou 2025 Fig2A)              │
 │                                                                              │
 └─────────────────────────────────────────────────────────────────────────────┘
@@ -102,8 +103,9 @@ flowchart TB
         direction TB
         S5A[step3.2.run_brain_viz_meshRender.py<br/>BrainViz + RegionExtractor]
         S5B[step3.3.neuronviewRender.py<br/>neuronVis + RenderGL]
-        S5C[step3.4.region_flatmap.viz.py<br/>RegionFlatmap]
-        S5_out[/"Output:<br/>• brain_viz_*<br/>• neuronview renders<br/>"/]
+        S5C[step3.4.mesh_extraction.py<br/>volume_to_mesh_mz3_MONKEY]
+        S5D[visualize_clustered_heatmap.py<br/>Gou 2025 Fig2A]
+        S5_out[/"Output:<br/>• brain_viz_*<br/>• neuronview renders<br/>• mesh_outputs/*.mz3<br/>• clustered heatmap"/]
     end
 
     %% Main vertical flow - sequential
@@ -129,6 +131,8 @@ flowchart TB
     
     S5A --> S5_out
     S5B --> S5_out
+    S5C --> S5_out
+    S5D --> S5_out
     
 
     %% Apply dark background to subgraph titles
@@ -174,7 +178,7 @@ main(neuron_ids=neuron_ids, sample_id='251637')
 | **Atlas Keys** | `ARM_key_all.txt`, `CHARM_key_table_v2.csv`, `SARM_key_table_v2.csv` | `atlas/` |
 | **Step 2 Output** | `*_joined.fnt`, `*_dist.txt` | `processed_neurons/{sample_id}/fnt_processed/` |
 | **Step 3 Output** | `.png` plots, `.nii.gz` volumes | Configurable output dir |
-| **Step 5 Output** | Brain viz PNGs, heatmaps | `brain_viz_output/`, `output/` |
+| **Step 5 Output** | Brain viz PNGs, `.mz3` meshes, heatmaps | `brain_viz_output/`, `mesh_outputs/`, `output/` |
 | **Cache** | Cube data | `resource/cubes/{sample_id}/` |
 
 ---
@@ -389,16 +393,50 @@ flowchart TD
     P5 --> O2
 ```
 
-### 5.3 Clustered Heatmap (visualize_clustered_heatmap.py)
+### 5.3 Atlas Mesh Extraction (step3.4.mesh_extraction.py)
+
+Macaque ARM/NMT volume → Surf Ice `.mz3`. Engine is the local monkey fork of [anniegbryant/subcortex_visualization](https://github.com/anniegbryant/subcortex_visualization): `subcortex_visualization/monkey_atlas_guide/volume_to_mesh_mz3_MONKEY.py` (requires `niimath`). Import wrappers: `monkey_atlas_mesh.py`, `mesh_from_atlas.py`.
 
 ```mermaid
 flowchart TD
     subgraph Input["Step 5.3 Input"]
+        I1[ARM atlas<br/>ARM_in_NMT_v2.1_sym.nii.gz]
+        I2[ARM_key_all.txt]
+        I3[Optional NMT brainmask<br/>template mode]
+    end
+
+    subgraph Processing["Step 5.3 Processing"]
+        P1[step3.4.mesh_extraction.py]
+        P2[volume_to_mesh_mz3_MONKEY.py<br/>hierarchy level 1-6]
+        P3[niimath mesh generation]
+        P4[combine_mz3 + colors]
+    end
+
+    subgraph Output["Step 5.3 Output"]
+        O1[mesh_outputs/atlas_regions/*.mz3]
+        O2[mesh_outputs/template/*.mz3]
+    end
+
+    I1 --> P1
+    I2 --> P1
+    I3 --> P1
+    P1 --> P2
+    P2 --> P3
+    P3 --> P4
+    P4 --> O1
+    P4 --> O2
+```
+
+### 5.4 Clustered Heatmap (visualize_clustered_heatmap.py)
+
+```mermaid
+flowchart TD
+    subgraph Input["Step 5.4 Input"]
         I1[Clustered Neuron Table
         251637_results_clustered_k9_spearman_penalty.xlsx]
     end
 
-    subgraph Processing["Step 5.3 Processing"]
+    subgraph Processing["Step 5.4 Processing"]
         P1[Load projection matrix]
         P2[Log transform
         log10(proj + 0.001)]
@@ -410,7 +448,7 @@ flowchart TD
         • Main heatmap]
     end
 
-    subgraph Output["Step 5.3 Output"]
+    subgraph Output["Step 5.4 Output"]
         O1[fig2a_style_clustered_heatmap.png]
         O2[fig2a_style_clustered_heatmap.pdf]
         O3[Cluster statistics]
@@ -451,7 +489,11 @@ flowchart LR
 | Step 3.1 Script | `main_scripts/step3.1.bulk_visual_data.py` |
 | Step 3.2 Script | `main_scripts/step3.2.run_brain_viz_meshRender.py` |
 | Step 3.3 Script | `main_scripts/step3.3.neuronviewRender.py` |
+| Step 3.4 Script | `main_scripts/step3.4.mesh_extraction.py` |
+| Monkey mesh engine | `subcortex_visualization/monkey_atlas_guide/volume_to_mesh_mz3_MONKEY.py` |
+| Mesh wrappers | `main_scripts/monkey_atlas_mesh.py`, `main_scripts/mesh_from_atlas.py` |
 | Clustered Heatmap | `main_scripts/visualize_clustered_heatmap.py` |
+| Step 3.4 Output | `mesh_outputs/` |
 | Generic Pipeline | `main_scripts/fnt-dist_pipeline_generic.py` |
 | getNeuronListByRegion | `main_scripts/region_analysis/getNeuronListByRegion.py` |
 | Region Analysis Module | `main_scripts/region_analysis/` |
@@ -489,11 +531,14 @@ python main_scripts/step3.2.run_brain_viz_meshRender.py [1-6]
 # 5.2 NeuronView Render
 python main_scripts/step3.3.neuronviewRender.py
 
-# 5.3 Clustered Heatmap
+# 5.3 Atlas Mesh Extraction (ARM/NMT → .mz3; needs niimath)
+python main_scripts/step3.4.mesh_extraction.py
+
+# 5.4 Clustered Heatmap
 python main_scripts/visualize_clustered_heatmap.py
 ```
 
 ---
 
-*Generated: 2026-03-26*
+*Updated: 2026-08-12 — added step 3.4 monkey atlas mesh extraction*
 *View this file on GitHub for interactive Mermaid diagrams*

@@ -36,6 +36,11 @@ This repository contains tools for processing and analyzing fMOST (fluorescence 
    The code depends on `IONData` from the `neuron-vis/neuronVis` package.
    Make sure this directory exists and is in the Python path.
 
+5. Atlas mesh extraction (step 3.4) also needs:
+   - Local clone `subcortex_visualization/` (upstream: [anniegbryant/subcortex_visualization](https://github.com/anniegbryant/subcortex_visualization))
+   - Monkey renderer `subcortex_visualization/monkey_atlas_guide/volume_to_mesh_mz3_MONKEY.py`
+   - `niimath` on PATH (mesh generation; [rordenlab/niimath](https://github.com/rordenlab/niimath/releases))
+
 ## Pipeline Overview
 
 The analysis workflow consists of 5 main steps:
@@ -51,8 +56,9 @@ The analysis workflow consists of 5 main steps:
                ┌─────────────┐                      ┌─────────────┐    ┌─────────────────────┐
                │ Neuron      │                      │ Plots &     │    │ • Brain Mesh Render │
                │ Tables      │                      │ NIfTI       │    │ • NeuronView Render │
-               │ (.xlsx)     │                      │             │    │ • Clustered Heatmap │
-               └─────────────┘                      └─────────────┘    └─────────────────────┘
+               │ (.xlsx)     │                      │             │    │ • Atlas Mesh (.mz3) │
+               └─────────────┘                      └─────────────┘    │ • Clustered Heatmap │
+                                                                       └─────────────────────┘
 ```
 
 | Step | Script | Description | Output |
@@ -63,7 +69,8 @@ The analysis workflow consists of 5 main steps:
 | 4 | R analysis scripts | Statistical analysis, clustering | `heatmap_LR_combined_split.pdf` |
 | 5.1 | `step3.2.run_brain_viz_meshRender.py` | 3D brain mesh rendering with regions | `brain_viz_*.png` |
 | 5.2 | `step3.3.neuronviewRender.py` | Interactive 3D neuron visualization | Interactive GL window |
-| 5.3 | `visualize_clustered_heatmap.py` | Gou 2025 Fig2A style clustered heatmap | `fig2a_style_heatmap.png` |
+| 5.3 | `step3.4.mesh_extraction.py` | ARM/NMT volume → Surf Ice `.mz3` (monkey atlas mesh) | `mesh_outputs/*.mz3` |
+| 5.4 | `visualize_clustered_heatmap.py` | Gou 2025 Fig2A style clustered heatmap | `fig2a_style_heatmap.png` |
 
 See `main_scripts/PIPELINE_MINDMAP.md` for detailed flowcharts and dependencies.
 
@@ -196,7 +203,23 @@ Interactive OpenGL-based neuron visualization.
 python main_scripts/step3.3.neuronviewRender.py
 ```
 
-#### 5.3 Clustered Heatmap (`visualize_clustered_heatmap.py`)
+#### 5.3 Atlas Mesh Extraction (`step3.4.mesh_extraction.py`)
+Convert ARM atlas regions or the NMT brainmask to a color-coded `.mz3` mesh for [Surf Ice](https://github.com/neurolabusc/surf-ice).
+
+This is the macaque fork of Bryant’s `subcortex_visualization` custom-segmentation renderer. The mesh engine is `volume_to_mesh_mz3_MONKEY.py` (ARM hierarchy levels, non-sequential region IDs). Wrappers: `monkey_atlas_mesh.py`, `mesh_from_atlas.py`.
+
+**Features:**
+- Atlas mode: extract regions by name substring, ARM ID, or abbreviation at a chosen hierarchy level (1–6)
+- Template mode: whole-brain mesh from `NMT_v2.1_sym_brainmask.nii.gz`
+- Output for Surf Ice / Inkscape 2D tracing (Bryant pipeline)
+
+```bash
+python main_scripts/step3.4.mesh_extraction.py
+```
+
+Edit `MODE`, `ATLAS_REGION_NAMES` / `ATLAS_REGION_IDS`, and `HIERARCHY_LEVEL` at the top of the script before running. Requires `niimath` on PATH.
+
+#### 5.4 Clustered Heatmap (`visualize_clustered_heatmap.py`)
 Generate publication-quality heatmaps (Gou et al. 2025 style).
 
 **Features:**
@@ -218,7 +241,10 @@ projectome_analysis/
 │   ├── step3.1.bulk_visual_data.py       # Step 3: Bulk visualization
 │   ├── step3.2.run_brain_viz_meshRender.py  # Step 5.1: Brain mesh render
 │   ├── step3.3.neuronviewRender.py       # Step 5.2: NeuronView render
-│   ├── visualize_clustered_heatmap.py    # Step 5.3: Clustered heatmap
+│   ├── step3.4.mesh_extraction.py        # Step 5.3: ARM/NMT → .mz3 mesh
+│   ├── monkey_atlas_mesh.py       # Import wrapper for monkey mesh renderer
+│   ├── mesh_from_atlas.py         # CLI wrapper around volume_to_mesh_mz3_MONKEY
+│   ├── visualize_clustered_heatmap.py    # Step 5.4: Clustered heatmap
 │   ├── Visual_toolkit.py          # Main visualization toolkit
 │   ├── Visual_toolkit_gui.py      # GUI for visualization
 │   ├── brain_viz.py               # Brain visualization class
@@ -235,13 +261,16 @@ projectome_analysis/
 │   └── scripts/               # R analysis scripts
 ├── fnt_dist_on_cluster/       # HPC cluster job scripts
 ├── atlas/                     # Atlas data (ARM, CHARM, SARM)
+├── subcortex_visualization/   # Bryant toolbox + monkey_atlas_guide renderer
+│   └── monkey_atlas_guide/volume_to_mesh_mz3_MONKEY.py
+├── mesh_outputs/              # .mz3 meshes from step 3.4 (often gitignored)
 ├── literature/                # Reference papers
 ├── resource/                  # Data cache (gitignored)
 ├── processed_neurons/         # Processed neuron files (gitignored)
 ├── brain_viz_output/          # Brain visualization outputs
 ├── figures_charts/            # Generated figures
 ├── deb_fmost.yml              # Conda environment
-├── PIPELINE_MINDMAP.md        # Detailed pipeline documentation
+├── main_scripts/PIPELINE_MINDMAP.md  # Detailed pipeline documentation
 └── README.md                  # This file
 ```
 
@@ -378,9 +407,15 @@ Note: The `run_clustering` function may need to be called from within the script
 
 ---
 
-**Last Updated:** March 2026
+**Last Updated:** August 2026
 
 ## Changelog
+
+### August 2026
+- **Documented Step 5.3: Atlas mesh extraction**
+  - `step3.4.mesh_extraction.py` — ARM/NMT volume → Surf Ice `.mz3`
+  - Engine: `subcortex_visualization/monkey_atlas_guide/volume_to_mesh_mz3_MONKEY.py` (fork of [anniegbryant/subcortex_visualization](https://github.com/anniegbryant/subcortex_visualization))
+  - Clustered heatmap renumbered to Step 5.4
 
 ### March 2026
 - **Added Step 5: Additional Rendering**
