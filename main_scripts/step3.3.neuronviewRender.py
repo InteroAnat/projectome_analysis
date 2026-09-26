@@ -228,11 +228,16 @@ if __name__=="__main__":
     
 		neuronvis.addNeuronByID(sample_id, swc_name,color=color ,somaHide=False, axonHide=False, dendriteHide=False, isLine=True)
 	
-	neuronvis.addRegion(
-		name='MyRegion',  # Any name you want
-		color=[0.3, 0.7, 1.0],  # Light blue
-		regionFileName=r"C:\Users\binbi\Downloads\NeuronView (1)\data\allobj\macaqueallobj\striatum (Str).obj"
-	)
+	# Local NeuronView mesh. Do not bake a Downloads path into the repo.
+	striatum_obj = os.environ.get("NEURONVIEW_STRIATUM_OBJ", "").strip()
+	if striatum_obj and os.path.isfile(striatum_obj):
+		neuronvis.addRegion(
+			name='MyRegion',  # Any name you want
+			color=[0.3, 0.7, 1.0],  # Light blue
+			regionFileName=striatum_obj
+		)
+	else:
+		print("Skipping striatum mesh. Set NEURONVIEW_STRIATUM_OBJ to a local .obj path.")
 
 	neuronvis.render.setView('anterior')
 	# neuronvis.render.animation(90*0)
