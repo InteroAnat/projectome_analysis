@@ -27,7 +27,10 @@ for p in (MAIN_SCRIPTS, NEUROVIS):
 
 from region_analysis import PopulationRegionAnalysis  # noqa: E402
 
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
+SCRIPTS = os.path.join(PROJECT_ROOT, "group_analysis", "scripts")
+if SCRIPTS not in sys.path:
+    sys.path.insert(0, SCRIPTS)
+from cohort import NEW_SAMPLES  # noqa: E402
 
 ATLAS_PATH = os.path.join(PROJECT_ROOT, "atlas", "ARM_in_NMT_v2.1_sym.nii.gz")
 TABLE_PATH = os.path.join(PROJECT_ROOT, "atlas", "ARM_key_all.txt")
@@ -36,7 +39,10 @@ TEMPLATE = os.path.join(PROJECT_ROOT, "atlas", "NMT_v2.1_sym",
 CTX_HIER_CSV = os.path.join(PROJECT_ROOT, "atlas", "CHARM_key_table_v2.csv")
 SUBCTX_HIER_CSV = os.path.join(PROJECT_ROOT, "atlas", "SARM_key_table_v2.csv")
 
-OUT_BASE = os.path.join(PROJECT_ROOT, "group_analysis", "step1_results")
+OUT_BASE = os.environ.get(
+    "PROJECTOME_STEP1_OUT",
+    os.path.join(PROJECT_ROOT, "group_analysis", "step1_results"),
+)
 os.makedirs(OUT_BASE, exist_ok=True)
 
 

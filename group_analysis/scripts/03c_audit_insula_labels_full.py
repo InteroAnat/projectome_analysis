@@ -24,8 +24,7 @@ sys.path.insert(0, SCRIPTS)
 
 from insula_label_set import (build_insula_label_set, normalize_label,
                                strip_prefix)
-
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
+from cohort import NEW_SAMPLES
 
 
 def find_results_xlsx(sid):

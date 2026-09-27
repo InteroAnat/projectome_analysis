@@ -26,7 +26,11 @@ STEP1_DIR = os.path.join(GROUP_DIR, "step1_results")
 OUT_DIR = os.path.join(GROUP_DIR, "recovery")
 os.makedirs(OUT_DIR, exist_ok=True)
 
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
+SCRIPTS = os.path.join(GROUP_DIR, "scripts")
+if SCRIPTS not in sys.path:
+    sys.path.insert(0, SCRIPTS)
+from cohort import NEW_SAMPLES  # noqa: E402
+
 INSULA_LABELS = {"IAL", "IAPM", "IDD5", "IDM", "IDV", "IAI", "IA", "ID",
                  "IA/ID", "Iai"}
 ADJACENT_LABELS_FOR_RESCUE = {

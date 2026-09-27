@@ -4,9 +4,9 @@ import pandas as pd
 
 sys.path.insert(0, r"D:\projectome_analysis\group_analysis\scripts")
 from insula_label_set import build_insula_label_set, normalize_label, strip_prefix
+from cohort import NEW_SAMPLES
 
 INSULA_LABELS, _ = build_insula_label_set()
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
 STEP1_DIR = r"D:\projectome_analysis\group_analysis\step1_results"
 
 

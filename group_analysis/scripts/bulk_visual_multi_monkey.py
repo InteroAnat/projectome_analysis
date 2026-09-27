@@ -34,8 +34,8 @@ for p in (NEUROVIS, MAIN_SCRIPTS, GROUP_SCRIPTS):
 from Visual_toolkit import Visual_toolkit  # noqa: E402
 import IONData as IT  # noqa: E402
 from insula_label_set import build_insula_label_set, normalize_label, strip_prefix  # noqa: E402
+from cohort import NEW_SAMPLES  # noqa: E402
 
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
 STEP1_DIR   = os.path.join(PROJECT_ROOT, "group_analysis", "step1_results")
 FMOST_SHARE_ROOT = r"\\10.102.8.200\microscopy_data\fMOST"
 PARENT_OUT = os.path.join(FMOST_SHARE_ROOT, "visual")

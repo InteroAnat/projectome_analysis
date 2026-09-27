@@ -20,7 +20,10 @@ if NEUROVIS not in sys.path:
 
 import IONData  # type: ignore
 
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
+SCRIPTS = os.path.join(PROJECT_ROOT, "group_analysis", "scripts")
+if SCRIPTS not in sys.path:
+    sys.path.insert(0, SCRIPTS)
+from cohort import NEW_SAMPLES  # noqa: E402
 
 OUT_DIR = os.path.join(PROJECT_ROOT, "group_analysis", "step1_results")
 os.makedirs(OUT_DIR, exist_ok=True)
