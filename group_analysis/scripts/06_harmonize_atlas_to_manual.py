@@ -30,17 +30,20 @@ This is an *improvised* harmonization, marked accordingly in
 `Soma_Region_Source`:
     atlas_to_manual_harmonized_251637_rule           - high confidence
     atlas_to_manual_harmonized_251637_rule_ambiguous - needs visual QC
+    atlas_Ig_to_IG_granular_user_rule_20260926       - user decision 2026-09-26
 
-In particular, atlas Ig -> manual IDD5 (100% in 251637) is anatomically
-non-trivial: it implies that 24/63 IDD5 manual labels in 251637 sit in
-atlas-Ig voxels, so any "IDD5 -> Ig (target)" laterality finding has a
-non-trivial intra-Ig recurrent component. This needs explicit discussion
-in the manuscript.
+User decision (2026-09-26): atlas ``Ig`` maps to granular ``IG`` (not IDD5).
+Empirical 251637 crosstab had Ig→IDD5 at 100% (24 cells), but that collapsed
+granular Ig into the dysgranular stratum; treat those as granular for cohort
+refresh. Atlas ``G`` (gustatory cortex) is **not** remapped to IG — leave G as is.
+Only ``Soma_Region_Source == auto_atlas_insula`` rows are edited; curated
+251637 and coord-rescued rows are preserved.
 
 Outputs
 -------
 Writes a sibling file
 `group_analysis/combined/multi_monkey_INS_combined_harmonized.xlsx`
+(override with ``PROJECTOME_HARMONIZED_OUT``; input via ``PROJECTOME_COMBINED_IN``)
 with:
   - Summary: adds `Soma_Region_Refined_PreHarmonize` column,
              updates `Soma_Region_Refined` and `Soma_Region_Source`.
@@ -62,7 +65,10 @@ import pandas as pd
 
 PROJECT_ROOT = r"D:\projectome_analysis"
 GROUP_DIR = os.path.join(PROJECT_ROOT, "group_analysis")
-COMBINED_XLSX = os.path.join(GROUP_DIR, "combined", "multi_monkey_INS_combined.xlsx")
+COMBINED_XLSX = os.environ.get(
+    "PROJECTOME_COMBINED_IN",
+    os.path.join(GROUP_DIR, "combined", "multi_monkey_INS_combined.xlsx"),
+)
 OUT_XLSX = os.environ.get(
     "PROJECTOME_HARMONIZED_OUT",
     os.path.join(
@@ -70,16 +76,18 @@ OUT_XLSX = os.environ.get(
     ),
 )
 
-# Empirical atlas-leaf -> manual-leaf mapping (derived from 251637 n=260).
+# Atlas-leaf -> manual-leaf mapping.
 # Format: atlas_leaf -> (dominant_manual, confidence_label)
+# confidence "user_ig" → special Soma_Region_Source tag (granular IG).
 EMPIRICAL_MAPPING = {
     "Ial":       ("IAL",  "high"),       # 92.1% -> IAL
     "PrCO":      ("IAL",  "high"),       # 100.0% -> IAL (already coord-rescued in v5)
-    "Ig":        ("IDD5", "high"),       # 100.0% -> IDD5 (improvised; verify in widefield)
+    "Ig":        ("IG",   "user_ig"),    # user rule 2026-09-26: granular IG (not IDD5)
     "Iai":       ("IAPM", "ambiguous"),  # 55/45 IAPM/IAL split
     "Ia/Id":     ("IDM",  "ambiguous"),  # 63/34/3 IDM/IDD5/IDV split
     "Unknown_0": ("IDM",  "ambiguous"),  # 77/23 IDM/IDD5 split
 }
+# Do NOT map atlas "G" (gustatory) → IG.
 
 # 251637 reference crosstab (frozen from neuron_tables_new + step1 join, n=260)
 # Used in the Mapping_Rule sheet for documentation.
@@ -141,7 +149,12 @@ def harmonize() -> None:
             continue
         manual, conf = EMPIRICAL_MAPPING[atlas_leaf]
         prev = summ.at[idx, "Soma_Region_Refined"]
-        if manual == prev:
+        if conf == "user_ig":
+            if prev != manual:
+                summ.at[idx, "Soma_Region_Refined"] = manual
+                changed_rows += 1
+            new_source = "atlas_Ig_to_IG_granular_user_rule_20260926"
+        elif manual == prev:
             # Already in the manual scheme; just update the source flag.
             new_source = "atlas_already_in_manual_scheme"
         else:
@@ -171,17 +184,28 @@ def harmonize() -> None:
     sheets["Summary"] = summ
 
     # Mapping_Rule sheet documenting the empirical rule.
+    def _mapping_notes(leaf: str, conf: str) -> str:
+        if conf == "user_ig":
+            return (
+                "USER RULE 2026-09-26: atlas Ig → granular IG "
+                "(overrides empirical Ig→IDD5 crosstab); atlas G untouched"
+            )
+        if conf == "high":
+            return "100% concordance in 251637 empirical crosstab"
+        return "split assignment in 251637; verify by coord/visual QC"
+
     mapping_rule = pd.DataFrame(
         [
             {
                 "atlas_leaf": k,
                 "manual_dominant": v[0],
                 "confidence": v[1],
-                "source": "empirical_251637_crosstab_n=260",
-                "notes": (
-                    "100% concordance" if v[1] == "high" else
-                    "split assignment in 251637; verify by coord/visual QC"
+                "source": (
+                    "user_rule_20260926_granular_IG"
+                    if v[1] == "user_ig"
+                    else "empirical_251637_crosstab_n=260"
                 ),
+                "notes": _mapping_notes(k, v[1]),
             }
             for k, v in EMPIRICAL_MAPPING.items()
         ]
