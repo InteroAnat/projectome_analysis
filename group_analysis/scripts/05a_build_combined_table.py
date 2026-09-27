@@ -32,15 +32,21 @@ GROUP_DIR = os.path.join(PROJECT_ROOT, "group_analysis")
 SCRIPTS = os.path.join(GROUP_DIR, "scripts")
 sys.path.insert(0, SCRIPTS)
 from insula_label_set import normalize_label, strip_prefix as _strip_prefix
+from cohort import NEW_SAMPLES, REFERENCE_SAMPLE
 
 REF_INS_XLSX = os.path.join(PROJECT_ROOT, "neuron_tables_new",
                              "251637_INS_HE_inferred.xlsx")
-RECOVERY_DIR = os.path.join(GROUP_DIR, "recovery")
-STEP1_DIR = os.path.join(GROUP_DIR, "step1_results")
-OUT_DIR = os.path.join(GROUP_DIR, "combined")
+RECOVERY_DIR = os.environ.get(
+    "PROJECTOME_RECOVERY_DIR", os.path.join(GROUP_DIR, "recovery")
+)
+STEP1_DIR = os.environ.get(
+    "PROJECTOME_STEP1_DIR", os.path.join(GROUP_DIR, "step1_results")
+)
+OUT_DIR = os.environ.get(
+    "PROJECTOME_COMBINED_OUT", os.path.join(GROUP_DIR, "combined")
+)
 os.makedirs(OUT_DIR, exist_ok=True)
 
-NEW_SAMPLES = ["251730", "252383", "252384", "252385"]
 PROJ_SHEETS = (
     # Finest level (L6) - has Ial/Ig/Iam/Iapm etc. as separate columns
     "Projection_Length_ipsi",
@@ -83,11 +89,14 @@ def union_projection_sheet(combined_meta: pd.DataFrame, source_xlsx: str,
 
 def main() -> int:
     # 1. Read 251637 untouched (Summary + projection sheets)
-    print(f"[5a] Reading 251637 untouched: {REF_INS_XLSX}")
+    print(f"[5a] Reading {REFERENCE_SAMPLE} untouched: {REF_INS_XLSX}")
+    print(f"[5a] RECOVERY_DIR={RECOVERY_DIR}")
+    print(f"[5a] OUT_DIR={OUT_DIR}")
+    print(f"[5a] NEW_SAMPLES={NEW_SAMPLES}")
     ref_xl = pd.ExcelFile(REF_INS_XLSX)
     ref_summary = pd.read_excel(REF_INS_XLSX, sheet_name="Summary")
-    ref_summary["SampleID"] = "251637"
-    ref_summary["NeuronUID"] = "251637::" + ref_summary["NeuronID"].astype(str)
+    ref_summary["SampleID"] = REFERENCE_SAMPLE
+    ref_summary["NeuronUID"] = f"{REFERENCE_SAMPLE}::" + ref_summary["NeuronID"].astype(str)
     # Add provenance
     ref_summary["Soma_Region_Auto"] = ref_summary["Soma_Region"]
     ref_summary["Soma_Region_Refined"] = ref_summary["Soma_Region"].astype(str).map(
@@ -99,8 +108,8 @@ def main() -> int:
     for s in PROJ_SHEETS:
         if s in ref_xl.sheet_names:
             df = pd.read_excel(REF_INS_XLSX, sheet_name=s)
-            df["SampleID"] = "251637"
-            df["NeuronUID"] = "251637::" + df["NeuronID"].astype(str)
+            df["SampleID"] = REFERENCE_SAMPLE
+            df["NeuronUID"] = f"{REFERENCE_SAMPLE}::" + df["NeuronID"].astype(str)
             ref_proj_sheets[s] = df
             print(f"  251637 {s}: {df.shape}")
         else:
