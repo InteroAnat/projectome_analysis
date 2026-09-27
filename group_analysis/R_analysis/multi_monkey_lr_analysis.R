@@ -1,23 +1,23 @@
 # ============================================================
 # Phase 6 - Multi-monkey L/R analysis with SampleID stratification
 #
-# Inputs:
-#   - group_analysis/combined/multi_monkey_INS_combined.xlsx
-#   - group_analysis/fnt/multi_monkey_INS_dist.txt
-#   - group_analysis/fnt/fnt_work/*.decimate.fnt  (for index ordering)
-#   - data_output/gou_function_table/area_function_category_full.csv
-#   - R_analysis/scripts/LR_analysis_hypothesis_v3/tables/
-#                       region_to_gou_category_map.csv
+# DEPRECATED (2026-09-26): reads non-harmonized
+#   multi_monkey_INS_combined.xlsx and uses 251637-only
+#   IDD5_plus_IDM stratum. Use instead:
+#     group_analysis/R_analysis/v2_combined_primary_pipeline.R
+#   (harmonized workbook + IDD5_plus_IDM_balanced).
 #
-# Outputs (under group_analysis/R_analysis/outputs/):
-#   stats/  - L/R test tables per stratum (Gou 6 categories)
-#   stats/permanova_combined.csv  - PERMANOVA with strata=SampleID
-#   stats/mantel_combined.csv     - FNT vs projection Mantel
-#   figures/panels_combined.png   - boxplots
-#
-# Built on top of the existing fnt_dist_clustering.r loader semantics
-# (Spearman rank-transform; no penalty for now since types are mixed).
+# Archive replay only: Sys.setenv(PROJECTOME_ALLOW_LEGACY_LR = "1")
 # ============================================================
+
+if (Sys.getenv("PROJECTOME_ALLOW_LEGACY_LR", "") != "1") {
+  stop(paste0(
+    "DEPRECATED: multi_monkey_lr_analysis.R reads non-harmonized xlsx ",
+    "and 251637-only IDD5_plus_IDM. Use v2_combined_primary_pipeline.R ",
+    "(harmonized + balanced strata). To force archive replay: ",
+    "Sys.setenv(PROJECTOME_ALLOW_LEGACY_LR='1')"
+  ), call. = FALSE)
+}
 
 suppressPackageStartupMessages({
   library(readxl); library(dplyr); library(tidyr); library(readr)
