@@ -244,34 +244,45 @@ recv_rank <- recv_all %>%
   filter(stratum %in% c("all_combined", "IDD5_plus_IDM", "IDD5_251637")) %>%
   mutate(
     effect_abs = abs(mean_L - mean_R),
-    best_q = pmin(
-      ifelse(is.na(p_presence_BH), 1, p_presence_BH),
-      ifelse(is.na(p_pres_BH), 1, p_pres_BH),
-      ifelse(is.na(p_magnitude_BH), 1, p_magnitude_BH),
-      ifelse(is.na(p_mag_BH), 1, p_mag_BH)
-    )
+    q_presence = dplyr::coalesce(p_presence_BH, p_pres_BH),
+    q_magnitude = dplyr::coalesce(p_magnitude_BH, p_mag_BH)
   ) %>%
-  group_by(target) %>%
+  tidyr::pivot_longer(
+    cols = c(q_presence, q_magnitude),
+    names_to = "family",
+    values_to = "q"
+  ) %>%
+  mutate(family = ifelse(family == "q_presence", "presence", "magnitude")) %>%
+  filter(!is.na(q)) %>%
+  group_by(family, target) %>%
   summarise(
     source_family = paste(unique(source_family), collapse = ";"),
-    best_stratum = stratum[which.min(best_q)],
-    best_q = min(best_q, na.rm = TRUE),
+    best_stratum = stratum[which.min(q)],
+    best_q = min(q, na.rm = TRUE),
     max_effect_abs = max(effect_abs, na.rm = TRUE),
-    direction_at_best = direction[which.min(best_q)],
-    support_balanced = any(stratum %in% c("IDD5_plus_IDM", "IDD5_251637") & best_q < 0.05, na.rm = TRUE),
+    direction_at_best = direction[which.min(q)],
+    support_balanced = any(
+      stratum %in% c("IDD5_plus_IDM", "IDD5_251637") & q < 0.05,
+      na.rm = TRUE
+    ),
     .groups = "drop"
   ) %>%
   mutate(
     confidence = ifelse(support_balanced, "high_confidence_balanced_support", "illustrative_only")
   ) %>%
-  arrange(best_q, desc(max_effect_abs))
+  arrange(family, best_q, desc(max_effect_abs))
 
 write.csv(recv_rank, file.path(OUT_STATS, "asymmetric_receiver_sites_ranked.csv"), row.names = FALSE)
 
-top_recv <- recv_rank %>% slice_head(n = 15) %>%
-  mutate(target = factor(target, levels = rev(target)))
+top_recv <- recv_rank %>%
+  filter(best_q < 0.05) %>%
+  group_by(family) %>%
+  slice_head(n = 15) %>%
+  ungroup() %>%
+  mutate(target = factor(target, levels = rev(unique(target))))
 fig_recv <- ggplot(top_recv, aes(x = target, y = max_effect_abs, fill = confidence)) +
   geom_col() +
+  facet_wrap(~family, scales = "free_y") +
   coord_flip() +
   scale_fill_manual(
     values = c(
@@ -280,8 +291,8 @@ fig_recv <- ggplot(top_recv, aes(x = target, y = max_effect_abs, fill = confiden
     )
   ) +
   labs(
-    title = "Top asymmetric receiver sites (supplemental L/R scan)",
-    subtitle = "Ranked by BH significance and effect size; balanced-stratum support highlighted",
+    title = "Top asymmetric receiver sites (presence vs magnitude)",
+    subtitle = "Ranked within family; BH already applied upstream per stratum×family (no pmin)",
     x = "Receiver target",
     y = "Max |mean_L - mean_R|"
   ) +

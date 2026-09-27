@@ -611,9 +611,9 @@ f3_plot$is_self <- mapply(function(reg, tgt) {
   tgt %in% self_proj_lookup[[reg]]
 }, as.character(f3_plot$Region), as.character(f3_plot$target))
 
-# Visual: combined mean-prop heatmap with sample-size annotations and self-projection de-emphasized
+# Visual: combined mean-prop heatmap; grey cells with n_source < 10
 fig3a <- ggplot(f3_plot, aes(target, Region)) +
-  geom_tile(aes(fill = mean_prop_combined), color = "white") +
+  geom_tile(aes(fill = mean_prop_combined, alpha = inferential_row), color = "white") +
   geom_tile(
     data = filter(f3_plot, is_self),
     aes(target, Region), fill = NA, color = "grey30", linetype = "dotted",
@@ -622,12 +622,13 @@ fig3a <- ggplot(f3_plot, aes(target, Region)) +
   geom_text(aes(
     label = ifelse(edge_above_thr & mean_prop_combined > 0.01,
                    sprintf("%.2f\nn=%d", mean_prop_combined, n_with_proj),
-                   ifelse(n_with_proj > 0, sprintf("n=%d", n_with_proj), ""))
+                   "")
   ), size = 2.4, color = "black") +
   scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean prop\n(L+R)") +
+  scale_alpha_manual(values = c(`TRUE` = 1, `FALSE` = 0.25), guide = "none") +
   labs(
     title = "F3A. Intra-insula source x target (L+R combined)",
-    subtitle = "Columns: Ward.D2 on prevalence; dotted outline = same-subregion “self” edge.",
+    subtitle = "Columns: Ward.D2 on prevalence; dotted = self edge; greyed rows n_source<10; blank if edge n<3.",
     x = "Target insula sub-region", y = "Source soma sub-region"
   ) +
   theme_minimal(base_size = 10) +
@@ -1091,42 +1092,50 @@ f6_df <- bind_rows(f6_rows) %>%
   mutate(
     p_pres_BH = p.adjust(p_pres, method = "BH"),
     p_mag_BH  = p.adjust(p_mag,  method = "BH"),
-    best_q = pmin(p_pres_BH, p_mag_BH, na.rm = TRUE),
     direction = ifelse(mean_L > mean_R, "L>R", "R>L")
   ) %>%
-  ungroup() %>%
-  arrange(best_q, desc(abs(cliffs_delta)))
+  ungroup()
 write.csv(f6_df, file.path(OUT_STATS, "06_asymmetric_receivers_BH.csv"), row.names = FALSE)
 
-# Top targets that survive BH<0.05 in any balanced stratum.
-# Group by target_id (region@hierarchy) so LPal@L3 is distinct from L6 pallidal sub-leaves.
+# Top targets that survive BH<0.05 — report presence and magnitude separately
+# (never pmin across families; BH already within stratum × hier × family).
 balanced_strata <- c("IDD5_plus_IDM_balanced", "IDD5_balanced", "IDM_balanced")
-top_targets <- f6_df %>%
-  filter(stratum %in% balanced_strata, best_q < 0.05) %>%
-  group_by(target_id) %>%
+f6_long <- bind_rows(
+  f6_df %>% mutate(test_family = "presence",  q = p_pres_BH),
+  f6_df %>% mutate(test_family = "magnitude", q = p_mag_BH)
+)
+write.csv(f6_long, file.path(OUT_STATS, "06_asymmetric_receivers_BH_long.csv"),
+          row.names = FALSE)
+
+top_targets <- f6_long %>%
+  filter(stratum %in% balanced_strata, !is.na(q), q < 0.05) %>%
+  group_by(test_family, target_id) %>%
   summarise(
-    best_q = min(best_q, na.rm = TRUE),
-    best_stratum = stratum[which.min(best_q)],
-    direction_at_best = direction[which.min(best_q)],
+    best_q = min(q, na.rm = TRUE),
+    best_stratum = stratum[which.min(q)],
+    direction_at_best = direction[which.min(q)],
     abs_delta = max(abs(cliffs_delta), na.rm = TRUE),
-    family = first(family),
+    spatial_family = first(family),
     .groups = "drop"
   ) %>%
-  arrange(best_q, desc(abs_delta)) %>%
-  slice_head(n = 18)
+  group_by(test_family) %>%
+  arrange(best_q, desc(abs_delta), .by_group = TRUE) %>%
+  slice_head(n = 18) %>%
+  ungroup()
 if (nrow(top_targets)) {
   top_targets <- top_targets %>%
-    mutate(target_id = factor(target_id, levels = rev(target_id)))
+    mutate(target_id = factor(target_id, levels = rev(unique(target_id))))
   fig6 <- ggplot(top_targets, aes(target_id, abs_delta, fill = direction_at_best)) +
     geom_col() +
-    geom_text(aes(label = sprintf("q=%.2g\n%s\n%s", best_q, best_stratum, family)),
+    geom_text(aes(label = sprintf("q=%.2g\n%s\n%s", best_q, best_stratum, spatial_family)),
               hjust = -0.05, size = 2.2, lineheight = 0.95) +
+    facet_wrap(~test_family, scales = "free_y") +
     coord_flip() +
     expand_limits(y = max(top_targets$abs_delta, na.rm = TRUE) * 1.55) +
     scale_fill_manual(values = c(`L>R` = "#0072b2", `R>L` = "#c1272d"), name = "Direction") +
     labs(
-      title = "F6 supplement. Top asymmetric receiver targets (rank-based)",
-      subtitle = "BH within stratum × layer × family (intra vs extra insula).",
+      title = "F6 supplement. Top asymmetric receiver targets (by test family)",
+      subtitle = "BH within stratum × layer × spatial family; presence and magnitude ranked separately.",
       caption = "Composition LI: F6_projection_LI_*.png",
       x = "Target (region@layer)", y = "max |Cliff's δ|"
     ) +
@@ -1137,8 +1146,8 @@ if (nrow(top_targets)) {
     annotate("text", x = 0.5, y = 0.5, label = "No rank-based BH hits in balanced strata") +
     theme_void() +
     labs(
-      title = "F6 supplement. Top asymmetric receiver targets (rank-based)",
-      subtitle = "No BH hits in balanced strata at q<.05.",
+      title = "F6 supplement. Top asymmetric receiver targets (by test family)",
+      subtitle = "No BH hits in balanced strata at q<.05 (presence or magnitude).",
       caption = "Composition LI: F6_projection_LI_*.png"
     ) +
     theme(plot.caption = element_text(size = 7.5, hjust = 0))
