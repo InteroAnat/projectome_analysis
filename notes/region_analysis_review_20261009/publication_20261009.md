@@ -24,4 +24,12 @@ The final live suite passed **409 tests**, with zero failures, errors or skips. 
 
 The [final delivery check](final_delivery_receipt_20261009.json) passed: 4,973 source bindings over 4,955 paths, five corrected diagnostic workbooks, 245 historical and 320 current ARM NIfTI files, 12 primary ARM sheets, and the saved hierarchy/clustering/MSTIM independent receipts. Source hashes and complete earlier numerical checks agree; original producer receipts are preserved. No source data were written and no anatomical acceptance is claimed.
 
-Status: verified delivery; exact-byte staging and remote publication in progress.
+The prepared evidence commit is `6baef3dd61eaf271f3840b03a45bba350b77c8ce`. Exact index-byte verification passed for 991 files (306,137,087 bytes), with no credential findings or out-of-scope staged files. Line-ending-only differences were ignored for the separate code whitespace check; no hash-bound source bytes were changed to clean historical whitespace.
+
+## Public-push approval dependency
+
+GitHub readback confirms that `InteroAnat/projectome_analysis` is **public**, with default branch `master`. The attempted feature-branch push was rejected by automatic approval review before execution. The stated reason was that the broad instruction to push updates did not specifically authorize publicly exporting this exact potentially sensitive scientific payload. The payload includes neuron/dataset inventories, projection tables, source paths, figures and QC; original reconstructions, NIfTIs and credentials are excluded.
+
+An explicit approval request now identifies the public destination and prepared scope. No push or remote feature-branch creation is claimed. The validated local branch and all deliverables are preserved. Default-branch readback before the rejected attempt was `f096e8165da18f84e91ea69d6e5cbfd58f248e75`.
+
+Status: validated and committed locally; public push awaiting explicit user approval required by automatic approval review.
