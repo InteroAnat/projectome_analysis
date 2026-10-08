@@ -1,0 +1,158 @@
+test_cross_sample_same_bare_id_remains_distinct_in_export (__main__.StandaloneIdentityTests) ... ERROR
+test_missing_duplicate_or_mismatched_exact_identity_fails (__main__.StandaloneIdentityTests) ... test_missing_projection_source_fails (__main__.StandaloneIdentityTests) ... FAIL
+test_precomputed_overlap_and_nonabsolute_anatomy_rejected (__main__.StandaloneIdentityTests) ... test_stale_precomputed_only_reclassified_by_explicit_side (__main__.StandaloneIdentityTests) ... FAIL
+test_uid_only_identity_and_unknown_lengths_preserved (__main__.StandaloneIdentityTests) ... ERROR
+
+======================================================================
+ERROR: test_cross_sample_same_bare_id_remains_distinct_in_export (__main__.StandaloneIdentityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 41, in test_cross_sample_same_bare_id_remains_distinct_in_export
+    self.assertEqual(r.NeuronUID.tolist(),['A::001.swc','B::001.swc'])
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\pandas\core\generic.py", line 6321, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'NeuronUID'
+
+======================================================================
+ERROR: test_uid_only_identity_and_unknown_lengths_preserved (__main__.StandaloneIdentityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 54, in test_uid_only_identity_and_unknown_lengths_preserved
+    self.assertEqual(r['unknown_laterality'].Length.iloc[0],3.)
+KeyError: 'unknown_laterality'
+
+======================================================================
+FAIL: test_missing_duplicate_or_mismatched_exact_identity_fails (__main__.StandaloneIdentityTests) (columns=['NeuronID', 'Neuron_Type', 'Soma_Region', 'Soma_Side', 'Length_Unit', 'Region_projection_length'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 35, in test_missing_duplicate_or_mismatched_exact_identity_fails
+    with self.subTest(columns=list(data)),self.assertRaises(ValueError):L(data)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_duplicate_or_mismatched_exact_identity_fails (__main__.StandaloneIdentityTests) (columns=['SampleID', 'NeuronID', 'Neuron_Type', 'Soma_Region', 'Soma_Side', 'Length_Unit', 'Region_projection_length'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 35, in test_missing_duplicate_or_mismatched_exact_identity_fails
+    with self.subTest(columns=list(data)),self.assertRaises(ValueError):L(data)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_duplicate_or_mismatched_exact_identity_fails (__main__.StandaloneIdentityTests) (columns=['SampleID', 'NeuronID', 'Neuron_Type', 'Soma_Region', 'Soma_Side', 'Length_Unit', 'NeuronUID', 'Region_projection_length'])
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 35, in test_missing_duplicate_or_mismatched_exact_identity_fails
+    with self.subTest(columns=list(data)),self.assertRaises(ValueError):L(data)
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_projection_source_fails (__main__.StandaloneIdentityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 29, in test_missing_projection_source_fails
+    with self.assertRaises(ValueError):L(frame()).analyze()
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_precomputed_overlap_and_nonabsolute_anatomy_rejected (__main__.StandaloneIdentityTests) (ipsi={'CL_A': 1.0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 25, in test_precomputed_overlap_and_nonabsolute_anatomy_rejected
+    with self.subTest(ipsi=ipsi),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_precomputed_overlap_and_nonabsolute_anatomy_rejected (__main__.StandaloneIdentityTests) (ipsi={'A': 1.0})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 25, in test_precomputed_overlap_and_nonabsolute_anatomy_rejected
+    with self.subTest(ipsi=ipsi),self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_stale_precomputed_only_reclassified_by_explicit_side (__main__.StandaloneIdentityTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_standalone_identity.py", line 20, in test_stale_precomputed_only_reclassified_by_explicit_side
+    self.assertTrue(result['ipsilateral'].empty)
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.013s
+
+FAILED (failures=7, errors=2)
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 2 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 2
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 2
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: []
+[LATERALITY ANALYSIS] Using fallback classification
+[ERROR] No projection length column found
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using pre-computed ipsi/contra columns
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  With ipsilateral projections: 1
+  With contralateral projections: 1
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using pre-computed ipsi/contra columns
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  With ipsilateral projections: 1
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using pre-computed ipsi/contra columns
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  With ipsilateral projections: 1
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using pre-computed ipsi/contra columns
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  With ipsilateral projections: 0
+  With contralateral projections: 0

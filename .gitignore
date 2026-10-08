@@ -23,6 +23,10 @@ main_scripts/processed_neurons/
 # Raw data resources
 resource/
 
+# Full per-node endpoint ledgers are local scientific derivatives. Their
+# hashes, QC summaries and reproduction workflow are published separately.
+group_analysis/evolution_20261008/**/leaf_records.jsonl
+
 # Cache directories
 __pycache__/
 *.py[cod]

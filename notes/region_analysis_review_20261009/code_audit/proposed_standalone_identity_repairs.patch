@@ -1,0 +1,445 @@
+--- main_scripts/region_analysis/laterality_projection_analysis.py
++++ main_scripts/region_analysis/laterality_projection_analysis.py
+@@ -18,9 +18,11 @@
+ 
+ # Add parent directory to path for imports
+ SCRIPT_DIR = Path(__file__).parent
+-sys.path.insert(0, str(SCRIPT_DIR))
++sys.path.insert(0, str(SCRIPT_DIR.parent))
+ 
+ from region_analysis.laterality import LateralityParser
++from region_analysis.utils import (load_processed_df, normalize_region_dataframe,
++    projection_column_names, neuron_metadata, terminal_target_status)
+ 
+ 
+ # ==============================================================================
+@@ -32,8 +34,8 @@
+     Analyze projections split by laterality (ipsilateral vs contralateral).
+     
+     Generates separate tables for each side with:
+-    - Projection lengths (mm) per region
+-    - Projection strengths (log10) per region
++    - Retained reconstruction lengths in the declared input unit
++    - Projection display strengths log10(length + 1)
+     - Soma hemisphere information
+     """
+     
+@@ -42,8 +44,44 @@
+         Args:
+             df: DataFrame with neuron data including laterality columns
+         """
+-        self.df = df.copy()
++        self.df = normalize_region_dataframe(df)
+         self._validate_columns()
++        if "SampleID" not in self.df and "NeuronUID" not in self.df:
++            raise ValueError("Standalone analysis requires NeuronUID or SampleID plus NeuronID")
++        if self.df.NeuronID.isna().any() or not self.df.NeuronID.map(lambda v: isinstance(v, str) and bool(v.strip())).all():
++            raise ValueError("NeuronID must be present literal text")
++        if "NeuronUID" in self.df:
++            if not self.df.NeuronUID.map(lambda v: isinstance(v, str) and "::" in v and bool(v.split("::", 1)[0].strip())).all():
++                raise ValueError("NeuronUID must encode SampleID::NeuronID")
++            uid_samples = self.df.NeuronUID.str.split("::", n=1).str[0]
++            uid_neurons = self.df.NeuronUID.str.split("::", n=1).str[1]
++            if not uid_neurons.eq(self.df.NeuronID).all():
++                raise ValueError("NeuronUID disagrees with NeuronID")
++            if "SampleID" not in self.df:
++                self.df["SampleID"] = uid_samples
++        if self.df.SampleID.isna().any():
++            raise ValueError("SampleID must be present")
++        self.df["SampleID"] = self.df.SampleID.map(
++            lambda v: str(int(v)) if isinstance(v, (int, float, np.integer, np.floating)) and not isinstance(v, (bool, np.bool_)) and np.isfinite(v) and float(v).is_integer() else str(v).strip())
++        if self.df.SampleID.eq("").any() or self.df.SampleID.str.contains("::", regex=False).any():
++            raise ValueError("SampleID must be present")
++        expected = self.df.SampleID + "::" + self.df.NeuronID
++        if "NeuronUID" in self.df and not self.df.NeuronUID.eq(expected).all():
++            raise ValueError("NeuronUID disagrees with SampleID/NeuronID")
++        self.df["NeuronUID"] = expected
++        neuron_metadata(self.df)  # Shared missing/duplicate exact-identity guard.
++        if "Length_Unit" not in self.df:
++            self.df["Length_Unit"] = "unspecified source units"
++        else:
++            self.df["Length_Unit"] = self.df.Length_Unit.fillna("unspecified source units")
++            if not self.df.Length_Unit.map(lambda value: isinstance(value, str)).all():
++                raise ValueError("Length_Unit must be literal text")
++            self.df["Length_Unit"] = self.df.Length_Unit.str.strip().replace("", "unspecified source units")
++        if self.df.Length_Unit.nunique() > 1:
++            raise ValueError("Cannot pool projection lengths with mixed source units")
++        self.unknown_laterality = pd.DataFrame()
++        if "Soma_Side" not in self.df:
++            self.df["Soma_Side"] = self.df.Soma_Region.apply(LateralityParser.get_side)
+         
+     def _validate_columns(self):
+         """Check required columns exist."""
+@@ -72,18 +110,22 @@
+         """
+         Generate ipsilateral and contralateral projection tables.
+         
+-        Uses pre-computed Ipsilateral_Projection_Length and 
+-        Contralateral_Projection_Length columns if available.
++        Classify absolute target labels using the resolved Soma_Side. If only
++        precomputed dictionaries exist, recover their nonoverlapping absolute
++        labels and reclassify them; stale ipsi/contra placement is not trusted.
++        Unknown-side/target lengths are returned separately, never imputed zero.
+         
+         Args:
+             length_col: Column containing projection length dictionaries (fallback)
+-            levels: Hierarchy levels to include (default: [3, 4, 5, 6])
++            levels: Unsupported here; use the population hierarchy workflow.
+             
+         Returns:
+-            Dictionary with 'ipsilateral' and 'contralateral' DataFrames
+-        """
+-        if levels is None:
+-            levels = [3, 4, 5, 6]
++            Ipsi/contra tables plus exact-identity unknown_laterality records.
++            Side tables are conditional on available side and target labels;
++            they do not turn excluded/unresolved observations into zeros.
++        """
++        if levels:
++            raise ValueError("Standalone hierarchy export is unavailable; use PopulationRegionAnalysis with explicit hierarchy inputs")
+         
+         # Check for pre-computed laterality columns
+         has_precomputed = (
+@@ -91,68 +133,32 @@
+             "Contralateral_Projection_Length" in self.df.columns
+         )
+         
+-        if has_precomputed:
+-            print("[LATERALITY ANALYSIS] Using pre-computed ipsi/contra columns")
++        has_absolute = any(column in self.df for column in (length_col, "Region_projection_length", "Region_Projection_Length_finest"))
++        if has_precomputed and not has_absolute:
+             return self._analyze_precomputed()
+         else:
+             print("[LATERALITY ANALYSIS] Using fallback classification")
+             return self._analyze_fallback(length_col)
+     
+     def _analyze_precomputed(self) -> Dict[str, pd.DataFrame]:
+-        """Analyze using pre-computed Ipsilateral_Projection_Length etc."""
+-        ipsi_data = []
+-        contra_data = []
+-        
++        """Recover only absolute, nonoverlapping target maps and reclassify."""
++        recovered = []
++        columns = ["Ipsilateral_Projection_Length", "Contralateral_Projection_Length"]
++        if "Unknown_Laterality_Projection_Length" in self.df:
++            columns.append("Unknown_Laterality_Projection_Length")
+         for _, row in self.df.iterrows():
+-            neuron_id = row["NeuronID"]
+-            soma_region = row.get("Soma_Region", "")
+-            soma_side = row.get("Soma_Side", "")
+-            neuron_type = row.get("Neuron_Type", "")
+-            
+-            # Get pre-computed projections
+-            ipsi_proj = row.get("Ipsilateral_Projection_Length", {})
+-            contra_proj = row.get("Contralateral_Projection_Length", {})
+-            
+-            if isinstance(ipsi_proj, dict) and ipsi_proj:
+-                ipsi_data.append({
+-                    "NeuronID": neuron_id,
+-                    "Neuron_Type": neuron_type,
+-                    "Soma_Region": soma_region,
+-                    "Soma_Side": soma_side,
+-                    "Projections": ipsi_proj,
+-                    "Total_Length": sum(ipsi_proj.values()),
+-                    "N_Regions": len(ipsi_proj),
+-                })
+-            
+-            if isinstance(contra_proj, dict) and contra_proj:
+-                contra_data.append({
+-                    "NeuronID": neuron_id,
+-                    "Neuron_Type": neuron_type,
+-                    "Soma_Region": soma_region,
+-                    "Soma_Side": soma_side,
+-                    "Projections": contra_proj,
+-                    "Total_Length": sum(contra_proj.values()),
+-                    "N_Regions": len(contra_proj),
+-                })
+-        
+-        print(f"[LATERALITY ANALYSIS] Results:")
+-        print(f"  Total neurons: {len(self.df)}")
+-        print(f"  With ipsilateral projections: {len(ipsi_data)}")
+-        print(f"  With contralateral projections: {len(contra_data)}")
+-        
+-        # Create DataFrames
+-        ipsi_df = pd.DataFrame(ipsi_data) if ipsi_data else pd.DataFrame()
+-        contra_df = pd.DataFrame(contra_data) if contra_data else pd.DataFrame()
+-        
+-        # Expand projection dictionaries to columns
+-        ipsi_result = self._expand_projections(ipsi_df, "ipsilateral")
+-        contra_result = self._expand_projections(contra_df, "contralateral")
+-        
+-        return {
+-            "ipsilateral": ipsi_result,
+-            "contralateral": contra_result,
+-        }
+-    
++            union = {}
++            for column in columns:
++                for target, length in row[column].items():
++                    if target in union:
++                        raise ValueError("Precomputed laterality dictionaries overlap in absolute targets")
++                    if not target.startswith(("CL_", "CR_", "SL_", "SR_")) and terminal_target_status(target) == "known":
++                        raise ValueError("Precomputed lengths require absolute prefixed anatomical targets")
++                    union[target] = length
++            recovered.append(union)
++        self.df["Region_projection_length"] = recovered
++        return self._analyze_fallback("Region_projection_length")
++
+     def _analyze_fallback(self, length_col: str) -> Dict[str, pd.DataFrame]:
+         """Fallback: classify projections using LateralityParser."""
+         # Determine which length column to use
+@@ -163,8 +169,7 @@
+                     break
+         
+         if length_col not in self.df.columns:
+-            print(f"[ERROR] No projection length column found")
+-            return {}
++            raise ValueError("No recoverable absolute projection-length source found")
+         
+         print(f"[LATERALITY ANALYSIS] Using column: {length_col}")
+         print(f"[LATERALITY ANALYSIS] Processing {len(self.df)} neurons")
+@@ -173,21 +178,30 @@
+         contra_data = []
+         n_unknown_soma = 0
+         n_empty_projections = 0
+-        
+-        for idx, row in self.df.iterrows():
++        unknown_records = []
++        
++        for position, (_, row) in enumerate(self.df.iterrows()):
+             neuron_id = row["NeuronID"]
+             soma_region = row.get("Soma_Region", "")
+             soma_side = row.get("Soma_Side", "")
++            soma_side = soma_side if isinstance(soma_side, str) and soma_side in ("L", "R") else "Unknown"
+             neuron_type = row.get("Neuron_Type", "")
++            identity = {key: row[key] for key in ("SampleID", "NeuronUID", "Length_Unit")}
++            proj_lengths = row[length_col]
++            for region, length in proj_lengths.items():
++                if terminal_target_status(region) != "known" or LateralityParser.classify_with_soma_side(soma_side, region) == "Unknown":
++                    unknown_records.append({**identity, "NeuronID": neuron_id,
++                        "Neuron_Type": neuron_type, "Soma_Region": soma_region,
++                        "Soma_Side": soma_side, "Target_Region": region, "Length": length})
+             
+             # Debug first few rows
+-            if idx < 3:
++            if position < 3:
+                 print(f"  [DEBUG] Neuron {neuron_id}: soma='{soma_region}', side='{soma_side}'")
+             
+             # Check if soma side is known
+-            if not soma_side or soma_side == "Unknown":
++            if soma_side not in ("L", "R"):
+                 n_unknown_soma += 1
+-                if idx < 3:
++                if position < 3:
+                     print(f"    -> Unknown soma side")
+                 continue
+             
+@@ -195,11 +209,11 @@
+             proj_lengths = row.get(length_col, {})
+             if not isinstance(proj_lengths, dict) or not proj_lengths:
+                 n_empty_projections += 1
+-                if idx < 3:
++                if position < 3:
+                     print(f"    -> No projections data")
+                 continue
+             
+-            if idx < 3:
++            if position < 3:
+                 print(f"    -> {len(proj_lengths)} projection regions")
+             
+             # Get terminal laterality info if available
+@@ -210,9 +224,10 @@
+             contra_regions = {}
+             
+             for region, length in proj_lengths.items():
+-                lat = self._get_region_laterality(region, soma_region, term_lat)
+-                
+-                if idx < 3 and len(ipsi_regions) == 0 and len(contra_regions) == 0:
++                lat = (LateralityParser.classify_with_soma_side(soma_side, region)
++                       if terminal_target_status(region) == "known" else "Unknown")
++                
++                if position < 3 and len(ipsi_regions) == 0 and len(contra_regions) == 0:
+                     print(f"    -> Sample region '{region}': laterality='{lat}'")
+                 
+                 if lat == "Ipsilateral":
+@@ -220,11 +235,12 @@
+                 elif lat == "Contralateral":
+                     contra_regions[region] = length
+             
+-            if idx < 3:
++            if position < 3:
+                 print(f"    -> Ipsi: {len(ipsi_regions)}, Contra: {len(contra_regions)}")
+             
+             if ipsi_regions:
+                 ipsi_data.append({
++                    **identity,
+                     "NeuronID": neuron_id,
+                     "Neuron_Type": neuron_type,
+                     "Soma_Region": soma_region,
+@@ -236,6 +252,7 @@
+             
+             if contra_regions:
+                 contra_data.append({
++                    **identity,
+                     "NeuronID": neuron_id,
+                     "Neuron_Type": neuron_type,
+                     "Soma_Region": soma_region,
+@@ -257,10 +274,12 @@
+         
+         ipsi_result = self._expand_projections(ipsi_df, "ipsilateral")
+         contra_result = self._expand_projections(contra_df, "contralateral")
++        self.unknown_laterality = pd.DataFrame(unknown_records)
+         
+         return {
+             "ipsilateral": ipsi_result,
+             "contralateral": contra_result,
++            "unknown_laterality": self.unknown_laterality.copy(),
+         }
+     
+     def _get_region_laterality(
+@@ -300,9 +319,9 @@
+         """
+         Expand projection dictionaries to separate columns.
+         
+-        Creates columns for:
+-        - Length per region (with CL_/CR_/SL_/SR_ prefixes removed)
+-        - Strength (log10) per region
++        Preserve exact neuron metadata and source units; remove hemisphere
++        prefixes only through the shared collision-safe anatomical namespace.
++        Display strength is log10(final aggregated regional length + 1).
+         """
+         from region_analysis.laterality import LateralityParser
+         
+@@ -315,15 +334,21 @@
+             if isinstance(proj, dict):
+                 all_regions_raw.update(proj.keys())
+         
+-        # Clean region names by removing prefixes
+-        all_regions_clean = sorted(set(
+-            LateralityParser.get_base_name(r) for r in all_regions_raw
+-        ))
++        # Use all input targets so homonym names agree across the two sides.
++        input_regions = set(all_regions_raw)
++        for column in ("Region_projection_length", "Region_Projection_Length_finest",
++                       "Ipsilateral_Projection_Length", "Contralateral_Projection_Length"):
++            if column in self.df:
++                for mapping in self.df[column]:
++                    input_regions.update(mapping)
++        names = projection_column_names(input_regions)
++        all_regions_clean = sorted({names[region] for region in all_regions_raw})
+         
+         # Build result
+         result_rows = []
+         for _, row in df.iterrows():
+             new_row = {
++                **{key: row[key] for key in ("SampleID", "NeuronUID", "Length_Unit")},
+                 "NeuronID": row["NeuronID"],
+                 "Neuron_Type": row.get("Neuron_Type", ""),
+                 "Soma_Region": row["Soma_Region"],
+@@ -338,7 +363,7 @@
+             # Sum lengths if multiple raw regions map to same cleaned name
+             clean_to_length = {}
+             for raw_region, length in projections.items():
+-                clean_name = LateralityParser.get_base_name(raw_region)
++                clean_name = names[raw_region]
+                 clean_to_length[clean_name] = clean_to_length.get(clean_name, 0) + length
+             
+             for region in all_regions_clean:
+@@ -362,10 +387,11 @@
+         
+         Sheets:
+             - Ipsilateral_Length: Projection lengths for ipsilateral regions
+-            - Ipsilateral_Strength: log10(strength) for ipsilateral regions
++            - Ipsilateral_Strength: log10(length + 1) for ipsilateral regions
+             - Contralateral_Length: Projection lengths for contralateral regions
+-            - Contralateral_Strength: log10(strength) for contralateral regions
+-            - Summary: Statistics for both sides
++            - Contralateral_Strength: log10(length + 1) for contralateral regions
++            - Unknown_Laterality: Unresolved-side/target lengths with exact identities
++            - Summary: Descriptive statistics in unchanged source units
+         
+         Args:
+             output_path: Path to output Excel file
+@@ -376,6 +402,8 @@
+         """
+         if results is None:
+             results = self.analyze()
++        if Path(output_path).exists():
++            raise FileExistsError("Use a fresh laterality output file; existing tables are protected")
+         
+         with pd.ExcelWriter(output_path, engine="openpyxl") as writer:
+             # Split into length and strength DataFrames
+@@ -392,12 +420,12 @@
+                     continue
+                 
+                 # Separate length and strength columns
+-                meta_cols = ["NeuronID", "Neuron_Type", "Soma_Region", "Soma_Side",
++                meta_cols = ["NeuronUID", "SampleID", "NeuronID", "Neuron_Type", "Length_Unit", "Soma_Region", "Soma_Side",
+                             f"{side}_total_length", f"{side}_n_regions"]
+                 
+                 # Length columns: end with '_length' but not '_strength'
+                 length_cols = [c for c in df.columns 
+-                              if c.endswith("_length") and not c.endswith("_strength")]
++                              if c.endswith("_length") and c not in meta_cols]
+                 # Strength columns: end with '_strength'
+                 strength_cols = [c for c in df.columns if c.endswith("_strength")]
+                 
+@@ -422,6 +450,9 @@
+             # Summary sheet
+             summary = self._create_summary(results)
+             summary.to_excel(writer, sheet_name="Summary", index=False)
++            unknown = results.get("unknown_laterality", self.unknown_laterality)
++            if unknown is not None and not unknown.empty:
++                unknown.to_excel(writer, sheet_name="Unknown_Laterality", index=False)
+         
+         print(f"\n[SAVED] {output_path}")
+         return output_path
+@@ -442,11 +473,15 @@
+                 continue
+             
+             side_key = side[:4]  # "ipsi" or "contra"
++            units = df.Length_Unit.dropna().unique()
++            if len(units) != 1:
++                raise ValueError("Cannot pool projection lengths with mixed source units")
+             rows.append({
+                 "Side": side,
+                 "N_Neurons": len(df),
+                 "Mean_Regions": df[f"{side}_n_regions"].mean(),
+                 "Mean_Total_Length": df[f"{side}_total_length"].mean(),
++                "Length_Unit": units[0],
+             })
+         
+         return pd.DataFrame(rows)
+@@ -477,20 +512,14 @@
+     )
+     parser.add_argument(
+         "--levels",
+-        help="Hierarchy levels to include (comma-separated)",
+-        default="3,4,5,6",
++        help="Reserved hierarchy request; use PopulationRegionAnalysis for hierarchy exports",
++        default="",
+     )
+     
+     args = parser.parse_args()
+     
+     # Load data
+-    if args.input.endswith(".xlsx"):
+-        df = pd.read_excel(args.input)
+-    elif args.input.endswith(".csv"):
+-        df = pd.read_csv(args.input)
+-    else:
+-        print("[ERROR] Input must be .xlsx or .csv")
+-        sys.exit(1)
++    df = load_processed_df(args.input)
+     
+     print(f"[LOADED] {len(df)} neurons from {args.input}")
+     
+@@ -500,7 +529,7 @@
+         args.output = f"{base}_laterality_projections.xlsx"
+     
+     # Parse levels
+-    levels = [int(x) for x in args.levels.split(",")]
++    levels = [int(x) for x in args.levels.split(",") if x.strip()]
+     
+     # Run analysis
+     analyzer = LateralityProjectionAnalyzer(df)

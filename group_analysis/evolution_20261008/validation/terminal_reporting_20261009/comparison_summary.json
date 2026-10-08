@@ -1,0 +1,80 @@
+{
+  "source_workbook": "notes\\region_analysis_review_20261004\\runs\\refined_subtables_20261004_072110\\master_analysis\\251637_20261004_072115_region_analysis\\tables\\251637_results_20261004_072515.xlsx",
+  "source_sha256": "508cea4b5c6ba8e1401e55302c2adcb9e319d6842cffe6d0d5f57e0c5080f282",
+  "frozen_input_sha256": "65a3b8acb63bfd8ee309dc9c6a436fbf72bdc2aacdbd419320f82cdfd65e0800",
+  "cohort_status": "Historical 562-neuron reporting replay; no promotion or source mutation. Curated 260-neuron study membership is unaffected.",
+  "before": {
+    "neurons": 562,
+    "unique_target_entries": 2408,
+    "actual_known": 1949,
+    "actual_unresolved": 459
+  },
+  "after": {
+    "neurons": 562,
+    "unique_target_entries": 2408,
+    "actual_known": 1947,
+    "actual_unresolved": 461
+  },
+  "affected_rows": [
+    {
+      "NeuronID": "157.swc",
+      "old_known": 6,
+      "new_known": 5,
+      "reclassified_targets": [
+        "Out_of_Bounds"
+      ]
+    },
+    {
+      "NeuronID": "320.swc",
+      "old_known": 11,
+      "new_known": 10,
+      "reclassified_targets": [
+        "Out_of_Bounds"
+      ]
+    }
+  ],
+  "population_ast_changed_methods": [
+    "_save_terminal_report",
+    "_save_projection_sites_report"
+  ],
+  "invariants": [
+    "Ordered SampleID/NeuronID identities, Neuron_Type, Terminal_Count, Outlier_Count and target lists are identical frozen inputs for all four report consumers.",
+    "All population methods except the two reporting methods are AST-identical to the frozen pre-edit source.",
+    "Known plus unresolved equals all parsed unique target entries; zero-target neurons reported separately.",
+    "Literal anatomical labels and digits preserved; only exact explicit sentinel/absence values treated unresolved."
+  ],
+  "validation": {
+    "new_terminal_reporting_tests": 8,
+    "existing_region_analysis_tests": 16,
+    "result": "24 passed"
+  },
+  "pending_contracts": [
+    "Known means a usable literal label, not atlas-membership verification.",
+    "Unknown report category remains backward-compatible text for all unresolved targets; status helper distinguishes unknown/outside/unmapped/absent/invalid.",
+    "Terminal_Count remains unique target regions, not individual axon leaves, biological terminals or boutons.",
+    "Legacy classifier decisions, CT numeric ranges, hierarchy, laterality, cohort membership and detection policies unchanged.",
+    "Top-N report region totals retain existing shown-region scope.",
+    "Existing Matplotlib boxplot labels deprecation remains unrelated."
+  ],
+  "artifact_sha256": {
+    "after_plot_projection_sites_report.txt": "5a39c309153fbc128accd4e7b96ce40ab4e07d0ce65943769aaf245c440399f3",
+    "after_plot_terminal_report.txt": "89cbcfa0489a72e668872bee1b490d2cec1a169894836c43e66a1780c4a7b891",
+    "after_projection_sites_report.txt": "ede06e4975a0f3754d2fd1eaca51770961e1eb57616d4c81f7dbfcca4038fb5b",
+    "after_report_plot_1.png": "be1ec7392f618814a80ed386d85d7656a6bef03f9847af6bb8bde32a6bbd8da3",
+    "after_report_plot_2.png": "172ff54b535164b24381732ecb1b71923cfb6ea7f367b490f821d99162983e4d",
+    "after_summary.json": "89060e4f546199106e8975ede44b34c72fa855f131f0595da0fe7421fc594f96",
+    "after_terminal_report.txt": "53f5e7781c0f9b2afcb4255e82f9af7ecf5bd4f3bd2cebc5bc086d5329c5567a",
+    "before_plotting.py.txt": "87c8a42b8d81183f2094a106321f45a64831c2b2be6c58c2fb797e2bb4a7e2f6",
+    "before_plot_projection_sites_report.txt": "dbec1197202a491907207d63266e3ec4517a3215a520a69b29397671ba47ecf8",
+    "before_plot_terminal_report.txt": "b93ce840b648790468a1381818e34f7a34640432cf2e136c5424250ed9aa118a",
+    "before_population.py.txt": "175daf4f5bb47b233241755dd9c8abeb1c3ed473ea775f0118b7474a608d13cb",
+    "before_projection_sites_report.txt": "112f2d0dfff7cde0f49b5f56fd7d5d8d427623c185e0a27754c5363e1ceca706",
+    "before_report_plot_1.png": "c9e6f1d8516a036f03d120cf0ed38cfa35875a3970ffcf8698f5ca98424cb98b",
+    "before_report_plot_2.png": "ea4e8cd3bcbd09d4481b52390b93ec9cf6d2659bf4631eca5d577eb72c410eff",
+    "before_summary.json": "da23c6fc2385b8d9fd5309e2f278acf86f351c7b58c6992c4cb2f7a28f9acb37",
+    "before_terminal_report.txt": "da16d0c5cf165600af7457921cd2291db721c131fc7c385f874673f2a7228de0",
+    "before_utils.py.txt": "76fe7f0528d1b107eb09147a43ca2d6795d4c92499fe1794ffdd51f9db22c2d8",
+    "frozen_input.json": "65a3b8acb63bfd8ee309dc9c6a436fbf72bdc2aacdbd419320f82cdfd65e0800",
+    "replay_frozen_report.py": "1fd073b5bcee6abf5ac1ddb0974af48cb49e2be983c015bcad09a1a0be87942e"
+  }
+}

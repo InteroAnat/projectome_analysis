@@ -1,0 +1,33 @@
+{
+  "status": "display_correction_completed",
+  "checked_utc": "2026-10-08T23:44:00.036531+00:00",
+  "reason": "Original long vertical colorbar text clipped; wrapped label and tight saved bounds",
+  "sources": {
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_regional_comparison\\integration_provenance.json": "2ca71635955dfb80ba2be324447d5251d7cf86cd6b92ac539fbfdebb3f15e8ba",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_regional_comparison\\cm032_alignment_and_response_qc.png": "c13ebbe16f4b7cb108fee12f2331b815bb9e65882879b37d753ce53b3e356ead",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_regional_comparison\\cm032_projectome_common_coverage.csv": "0f1277b02b540403a5d5523c204b0d5bfd10e7c39213aa575435050753714995",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_regional_comparison\\cm032_signed_response_by_ARM_level.csv": "a08738c0cdd6606a7d56588b58b1f512e3be6b004e662bbf3e5ac7d215a758bc",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\reproduced_contrast_space-NMTv2p1.nii.gz": "1d0b18a216659de2fc85ba2f733b19ebe466675e30b89b25442f34616d9e1685",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\analysis_coverage_space-NMTv2p1.nii.gz": "45001689b3629f705e60eb492ee715b22f243748e0074087d04d79c9d9e67165",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_NMT_Warped.nii.gz": "324f1a84bcfe52c3d1f2859e97629567fad51e2e70197a7d4e3cd26182216358"
+  },
+  "display": {
+    "cuts_xyz": [
+      56,
+      200,
+      87
+    ],
+    "contrast_abs_percentile": 99,
+    "contrast_color_limit": 2.6598263328968836,
+    "normalized_anatomy_display_threshold": 96269.84490010572,
+    "anatomical_acceptance": false
+  },
+  "script_sha256": "799a7f7fc4f526aca7dd8cfda552bd3dd187b7313157b297d6ade53290294315",
+  "renderer_sha256": "4470f879a1904fd77932dc1cb4d9700be5c8e12ce30a567b7c002a70194b26f4",
+  "output_sha256": {
+    "cm032_alignment_and_response_qc.png": "522ce4606fbc84206833352c297776432a3418c2fcedcaada3050741b09c01a6"
+  },
+  "regional_values_recomputed": false,
+  "scientific_acceptance": false
+}

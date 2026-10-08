@@ -1,0 +1,189 @@
+{
+  "status": "rendered_and_png_decoded",
+  "created_utc": "2026-10-08T17:16:09.834305+00:00",
+  "renderer_sha256": "c13625951244db0aa347a7d4cd10f3632c5b36e97e3cbe5a43d7ad5f654c4163",
+  "run_provenance_sha256": "c1dad5d36b07119f1d539a06cc279bee49abb1ecd49ecadf1de5ccf9cfced024",
+  "readback_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review\\projection_run_readback.json",
+  "readback_sha256": "c4a137a0b8b327728cd3e835ea8d035d1c064d3ae382922709f964ba1d9a4b3f",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "background": "matching individual NMT MRI slice; no depth projection",
+  "grayscale_window": {
+    "brain_mask_percentiles": [
+      1,
+      99.5
+    ],
+    "vmin": 75.0,
+    "vmax": 920.0
+  },
+  "metric": "axon-density",
+  "scope": "group",
+  "units": "mean template axon length density [mm/mm\u00b3/selected neuron]",
+  "cut_policy": "fixed",
+  "map_display": "log10(1 + density)",
+  "smoothing": "none; source maps unchanged",
+  "common_display_vmax": 0.932817792616302,
+  "display_upper_percentile": 99.5,
+  "slice_selection": "explicit common XYZ voxel indices",
+  "fixed_slice_voxels_xyz": [
+    56,
+    200,
+    87
+  ],
+  "selection_limit": "Display-selected slices do not establish full-volume targets or biological absence",
+  "slices": [
+    {
+      "AnimalID": null,
+      "Subregion": "AtlasINS_L",
+      "contributing_animals": [
+        "331",
+        "605",
+        "631",
+        "797",
+        "900",
+        "945",
+        "948"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-AtlasINS_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "2b5c16c58266bf254ae801840cf39fba9cceeb038e6f30d61d15d44a59e49ae4",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "AtlasINS_R",
+      "contributing_animals": [
+        "331",
+        "605",
+        "631",
+        "797",
+        "945",
+        "948"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-AtlasINS_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "75f391777e1be1b7bf15a59dcbc553524c8f5726ec0d214000cc7165b2deee46",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "Candidate_L",
+      "contributing_animals": [
+        "331",
+        "797",
+        "948"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-Candidate_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "16d02dcce1452e12b358af86094eccf1acdcb83f3d1bf6ffd1d1454fb8a8fae6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "Candidate_R",
+      "contributing_animals": [
+        "331",
+        "797",
+        "936",
+        "945",
+        "948"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-Candidate_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "90a3898d9f4fa77b21f02fc39976f9cf0d5e31393d8517c25587d9886434245c",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "G_exploratory_L",
+      "contributing_animals": [
+        "331",
+        "631",
+        "900"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-G_exploratory_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "134cc9d175ce34a942178a04827e5bd5183b9439622e6052c44bd7128993dab7",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "G_exploratory_R",
+      "contributing_animals": [
+        "631",
+        "900"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-G_exploratory_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "5291aa031240b37ec9f12540948c3e94e249e68cf33cb98d473fc3e1958ab726",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "HumanINS_L",
+      "contributing_animals": [
+        "936"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-HumanINS_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "b40a62aa970709bdba688a012c41142289a13d193f8d15f25c15ef36791fe6de",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "HumanINS_R",
+      "contributing_animals": [
+        "936"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-HumanINS_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "fab7e514debc614b13f6f429e5acc29ecc1adbe697ab1dff8350ae0ee10169f6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-01.png",
+      "sha256": "7d967ee6a6e42bb3c0dd76d12673cffc5d61811e08b6d3a079cb9ed848f90b77",
+      "pixels": [
+        1690,
+        1664
+      ]
+    },
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-02.png",
+      "sha256": "de0be0f110064fba95e8ca6f5249a62b4e60cfae12abd2d3c266230c6c5bad49",
+      "pixels": [
+        1690,
+        1664
+      ]
+    }
+  ],
+  "source_data_modified": false,
+  "anatomical_acceptance": "not established",
+  "terminal_site_measurement": "not measured"
+}

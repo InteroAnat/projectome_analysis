@@ -1,0 +1,302 @@
+{
+  "started_utc": "2026-10-08T17:20:18.895246+00:00",
+  "steps": [
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2\\endpoint_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_occupancy_animals",
+        "--metric",
+        "endpoint-occupancy",
+        "--scope",
+        "animal",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 7,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2\\endpoint_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_density_animals",
+        "--metric",
+        "endpoint-density",
+        "--scope",
+        "animal",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 7,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2\\endpoint_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_density_groups",
+        "--metric",
+        "endpoint-density",
+        "--scope",
+        "group",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 2,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review\\projection_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\axon_density_animals",
+        "--metric",
+        "axon-density",
+        "--scope",
+        "animal",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 7,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review\\projection_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\axon_density_groups",
+        "--metric",
+        "axon-density",
+        "--scope",
+        "group",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 2,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\endpoint_density_animals",
+        "--metric",
+        "endpoint-density",
+        "--scope",
+        "animal",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 3,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\endpoint_density_groups",
+        "--metric",
+        "endpoint-density",
+        "--scope",
+        "group",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 1,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009_review\\projection_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\axon_density_animals",
+        "--metric",
+        "axon-density",
+        "--scope",
+        "animal",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 3,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/render_projection_slices.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009",
+        "--readback",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009_review\\projection_run_readback.json",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\axon_density_groups",
+        "--metric",
+        "axon-density",
+        "--scope",
+        "group",
+        "--cut-policy",
+        "fixed",
+        "--slice-voxels",
+        "56",
+        "200",
+        "87"
+      ],
+      "returncode": 0,
+      "figures": 1,
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    }
+  ],
+  "cut_selection_receipt": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\validation\\multimonkey_matched_slices_cli_20261009.json",
+  "fixed_slice_voxels_xyz": [
+    56,
+    200,
+    87
+  ],
+  "scope": "display-only; layout v2; each family uses same fixed cuts; no data changes",
+  "status": "passed_same_cut_layout_and_png_decode",
+  "finished_utc": "2026-10-08T17:24:25.695692+00:00"
+}

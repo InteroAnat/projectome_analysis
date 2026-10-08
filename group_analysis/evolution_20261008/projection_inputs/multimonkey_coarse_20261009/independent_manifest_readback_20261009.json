@@ -1,0 +1,122 @@
+{
+  "observed_at": "2026-10-09T00:57:31.529794+08:00",
+  "status": "passed",
+  "scope": "Independent software-only exact-identity/evidence partition/registry/hash readback of the actual prepared manifest and ledger; no map generation, resampling, relabeling, source writes or anatomical acceptance.",
+  "manifest_rows": 436,
+  "distinct_exact_UIDs": 436,
+  "registry_animals": [
+    "331",
+    "605",
+    "631",
+    "797",
+    "900",
+    "936",
+    "945",
+    "948"
+  ],
+  "disjoint_evidence_counts": {
+    "HumanINS": 260,
+    "Candidate": 63,
+    "AtlasINS": 89,
+    "G_exploratory": 24
+  },
+  "ledger_rows": 465,
+  "unmapped_ledger_rows": 29,
+  "unmapped_exact_samples": [
+    "250432"
+  ],
+  "selected_SWCs_freshly_hash_verified": 436,
+  "all_audited_atlas_source_files_rehashed": 2480,
+  "atlas_source_byte_changes": [],
+  "canonical_baseline": {
+    "path": "group_analysis/visual_review_20261002/manifest/canonical_hashes.json",
+    "sha256": "5362cfbfb2d1e3a39fb6cc137eef93edcdea7decf72566da0e002b8908205ed5",
+    "checks": [
+      {
+        "path": "group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx",
+        "expected_sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178",
+        "actual_sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178",
+        "match": true
+      },
+      {
+        "path": "group_analysis\\combined\\multi_monkey_INS_combined.xlsx",
+        "expected_sha256": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3",
+        "actual_sha256": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3",
+        "match": true
+      },
+      {
+        "path": "R_analysis\\tables\\somainfo_Henry_2026.04.03.xlsx",
+        "expected_sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+        "actual_sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+        "match": true
+      },
+      {
+        "path": "neuron_tables\\251637_INS_HE.xlsx",
+        "expected_sha256": "b27898e8c1e56b1616b211c7ce1852fea1c864aa04d77e9665f50dc7f596b419",
+        "actual_sha256": "b27898e8c1e56b1616b211c7ce1852fea1c864aa04d77e9665f50dc7f596b419",
+        "match": true
+      }
+    ]
+  },
+  "prepared_input_hash_checks": {
+    "audited_sources": true,
+    "inventory_provenance": true,
+    "animal_registry": true,
+    "reference": true
+  },
+  "reference": {
+    "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "shape": [
+      256,
+      312,
+      200
+    ],
+    "affine": [
+      [
+        0.25,
+        -0.0,
+        -0.0,
+        -31.875
+      ],
+      [
+        -0.0,
+        0.25,
+        -0.0,
+        -27.75
+      ],
+      [
+        0.0,
+        0.0,
+        0.25,
+        -8.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "spatial_units": "mm"
+  },
+  "artifact_hashes": {
+    "projection_manifest.csv": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2",
+    "selection_ledger.csv": "af19709a17ef9732975342d53f8112307d2faf481eaf8ac36f05cbbdbf1bc506",
+    "preparation_provenance.json": "69f31d5899a86232c3a70a2adbb35b7079252059dbbc0dbf583f531401c68c16"
+  },
+  "adapter_current_sha256": "65124d666e0e244336697c784e9324ebc69042cb77441cc3fb406fc7d92eb9f5",
+  "adapter_matches_preparation": false,
+  "errors": [],
+  "computational_blockers": [],
+  "descriptive_map_readiness": "No source/identity/hash/registry blocker found for descriptive graph endpoint-candidate and all-axon maps under the explicitly declared current coordinate convention.",
+  "scientific_limits": [
+    "Current XYZ/250 zero-center encoding and literal published ceil-1 convention remain origin-sensitive; no silent shift is justified.",
+    "Cached raw-fMOST-to-NMT export transforms and anatomical registration acceptance remain unverified.",
+    "Henry broad visual INS evidence, atlas labels, strict spatial candidates and additional G remain distinct disjoint strata.",
+    "Graph leaf endpoint candidates are not confirmed terminal arbors or synaptic targets; all-axon maps include passage fibers.",
+    "Maps are cross-cohort descriptive atlas summaries; atlas tissue classes and agreement do not establish fine parcels, VEN identity or biological connectivity."
+  ],
+  "scientific_acceptance": false,
+  "network_requests": 0,
+  "canonical_writes": false
+}

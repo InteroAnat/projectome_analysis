@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "scope": "Final-source test reruns and independent arithmetic/distance oracles before saved-table readback; not anatomical or full output acceptance",
+  "checks": {
+    "exporter_focused_tests": 12,
+    "clustering_focused_tests": 16,
+    "independent_exporter_arithmetic_examples": 3,
+    "independent_profile_distance_oracles": 4
+  },
+  "source_sha256": {
+    "group_analysis/scripts/export_arm_projection_tables.py": "01216c76c599301cb77eb0ed10601687278c70bd6c3d498af7786dc78bafb695",
+    "group_analysis/scripts/cluster_arm_projection_profiles.py": "d438b323f6fcf60fce62c4a9e12707d67d87937bdd609ca166fa3677e2d5f908",
+    "tests/test_arm_projection_tables.py": "fd5b22e7dfc1b51ec6cbc6108de8310d96ae51fc8db21ec263ef94ca97a35608",
+    "tests/test_projection_profile_clustering.py": "e55a7886409ebc8ddd40f540ac75b382efe54fb4aca7789c3c5eeb0607e27b7c"
+  },
+  "source_data_modified_by_reviewer": false,
+  "anatomical_acceptance": false
+}

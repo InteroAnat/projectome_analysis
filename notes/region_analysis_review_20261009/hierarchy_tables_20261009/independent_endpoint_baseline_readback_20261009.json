@@ -1,0 +1,44 @@
+{
+  "status": "passed",
+  "scope": "Existing main endpoint baseline CSVs only; new hierarchy export not yet checked",
+  "script_sha256": "9eb534679c0d4a055a7ae869d6bb8d3426a769778eceaa7a0af3dc38631e02ba",
+  "n_selected": 436,
+  "n_endpoint_eligible": 403,
+  "animal_source_groups": 47,
+  "per_neuron_target_rows": 11714,
+  "animal_target_rows_checked": 4428,
+  "total_candidate_endpoints": 71562,
+  "per_level_endpoint_totals": {
+    "1": 71562,
+    "2": 71562,
+    "3": 71562,
+    "4": 71562,
+    "5": 71562,
+    "6": 71562
+  },
+  "observed_target_status_rows": {
+    "mapped": 9768,
+    "zero_unassigned": 1914,
+    "key_level_conflict": 26,
+    "out_of_FOV": 6
+  },
+  "dedup_example": {
+    "AnimalID": "936",
+    "source": "ARM6_728_R",
+    "level": 1,
+    "target_index": 638,
+    "candidate_endpoint_count": 4644,
+    "neurons_with_target_evidence": 48,
+    "n_selected": 60,
+    "n_eligible": 51,
+    "regional_frequency": 0.9411764705882353
+  },
+  "input_hashes": {
+    "run_provenance.json": "4007fe92d5e8d96471779110530052e4920183849a0a195eed12263980444b0a",
+    "per_neuron_qc.csv": "814f44174239bfcf3f52e1a745de786687b7de22e939db197c5dc685ab857900",
+    "per_neuron_target_counts.csv": "902aac1f15ee59ed55a79cfa1e6caf29aefaac48fe8ad31e03775ae7d35db6ad",
+    "animal_region_summaries.csv": "6c369f42e5a3460c2859ed0982e1a771f72368bcacdb119a569e6f85359c6124"
+  },
+  "source_data_modified": false,
+  "limitation": "CSV reconciliation does not establish source-image or terminal acceptance or validate an unavailable new exporter."
+}

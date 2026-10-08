@@ -1,0 +1,251 @@
+{
+  "status": "staged_only_not_applied",
+  "created_utc": "2026-10-08T22:29:31.907633+00:00",
+  "patch_path": "notes\\region_analysis_review_20261009\\methods_audit\\proposed_methods_label_corrections.patch",
+  "patch_sha256": "8f51081f08050fb3f15681801d440a7d0772553f883f60b3e60ef1e25d5baa65",
+  "changed_files": [
+    {
+      "path": "group_analysis/R_analysis/v2_combined_primary_pipeline.R",
+      "original_sha256": "74a943b9a56f870a45b2257f58696ccb466b2d43f12c7f1120b83e0d635396b7",
+      "proposed_sha256": "f68d746c4c6305fb773544e69e7ad1bde89afc2203b873d30b1483a445cde64b",
+      "nontext_R_tokens_identical": true,
+      "numeric_operations_changed": false,
+      "replacement_receipts": [
+        {
+          "before": "mean ipsi projection proportion (Wilcoxon)",
+          "after": "mean normalized ipsi log-strength share (neuron-level Wilcoxon; animal dependence unmodeled)",
+          "occurrences": 1
+        },
+        {
+          "before": "OLS slope of target ~ soma_pos with permutation p",
+          "after": "OLS slope of normalized log-strength share ~ soma_pos; ordinary t-test p, animal dependence unmodeled",
+          "occurrences": 1
+        },
+        {
+          "before": "\"primary inferential\"",
+          "after": "\"exploratory neuron contrast\"",
+          "occurrences": 1
+        },
+        {
+          "before": "\"replication\",",
+          "after": "\"additional region contrast; not independent replication\",",
+          "occurrences": 1
+        },
+        {
+          "before": "balanced strata",
+          "after": "region-restricted neuron strata",
+          "occurrences": 2
+        },
+        {
+          "before": "Leave-one-monkey-out",
+          "after": "Leave-one-SampleID-out",
+          "occurrences": 2
+        },
+        {
+          "before": "Mean prop\\n(L+R)",
+          "after": "Mean log-strength share\\n(L+R)",
+          "occurrences": 2
+        },
+        {
+          "before": "mean prop\\n(L+R)",
+          "after": "mean log-strength share\\n(L+R)",
+          "occurrences": 1
+        },
+        {
+          "before": "Mean\\nprop",
+          "after": "Mean\\nlog-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Projection proportion to target (row-normalized L6)",
+          "after": "Normalized log-strength share to target (L6)",
+          "occurrences": 1
+        },
+        {
+          "before": "Row-normalized ipsi profile: L3 extrinsic + L6 intra-insula; cell = summed target prop per domain.",
+          "after": "Normalized ipsi log-strength shares; overlapping L3/L6 features; cells sum assigned feature shares.",
+          "occurrences": 1
+        },
+        {
+          "before": "on total axon length",
+          "after": "on legacy regional voxel lengths (unverified compartments/terminal-target selection)",
+          "occurrences": 1
+        },
+        {
+          "before": "continuous hemispheric bias (Gou-style)",
+          "after": "continuous legacy voxel-length hemispheric bias",
+          "occurrences": 1
+        },
+        {
+          "before": "domain mass",
+          "after": "assigned transformed-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Domain mass",
+          "after": "Assigned transformed-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Row-normalized proportions per neuron",
+          "after": "Row-normalized log-strength shares per neuron; overlapping spatial features",
+          "occurrences": 1
+        },
+        {
+          "before": "Mean summed target proportion",
+          "after": "Mean summed normalized log-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Mean L6 proportion",
+          "after": "Mean normalized L6 log-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "L6 row-normalized proportion",
+          "after": "Normalized L6 log-strength share",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "path": "group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd",
+      "original_sha256": "d1dc9bfb1507d621b8bf6e60efc22a51492ac9cc0560c253d26dbb13fb2d025b",
+      "proposed_sha256": "1d94eebe986e0ab240e1a2123b00bc309d71c3d4715b361a797eafc7c7c068d3",
+      "nontext_R_tokens_identical": true,
+      "numeric_operations_changed": false,
+      "replacement_receipts": [
+        {
+          "before": "mean ipsi projection proportion (Wilcoxon)",
+          "after": "mean normalized ipsi log-strength share (neuron-level Wilcoxon; animal dependence unmodeled)",
+          "occurrences": 1
+        },
+        {
+          "before": "OLS slope of target ~ soma_pos with permutation p",
+          "after": "OLS slope of normalized log-strength share ~ soma_pos; ordinary t-test p, animal dependence unmodeled",
+          "occurrences": 1
+        },
+        {
+          "before": "\"primary inferential\"",
+          "after": "\"exploratory neuron contrast\"",
+          "occurrences": 1
+        },
+        {
+          "before": "\"replication\",",
+          "after": "\"additional region contrast; not independent replication\",",
+          "occurrences": 1
+        },
+        {
+          "before": "only L/R-balanced anatomical stratum",
+          "after": "L/R-sampled region restriction; not animal balancing",
+          "occurrences": 3
+        },
+        {
+          "before": "only L/R-balanced anatomical strata",
+          "after": "L/R-sampled region restrictions; not animal balancing",
+          "occurrences": 1
+        },
+        {
+          "before": "balanced strata",
+          "after": "region-restricted neuron strata",
+          "occurrences": 8
+        },
+        {
+          "before": "balanced stratum",
+          "after": "region-restricted neuron stratum",
+          "occurrences": 4
+        },
+        {
+          "before": "Leave-one-monkey-out",
+          "after": "Leave-one-SampleID-out",
+          "occurrences": 6
+        },
+        {
+          "before": "Mean prop\\n(L+R)",
+          "after": "Mean log-strength share\\n(L+R)",
+          "occurrences": 2
+        },
+        {
+          "before": "mean prop\\n(L+R)",
+          "after": "mean log-strength share\\n(L+R)",
+          "occurrences": 1
+        },
+        {
+          "before": "Mean\\nprop",
+          "after": "Mean\\nlog-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Projection proportion to target (row-normalized L6)",
+          "after": "Normalized log-strength share to target (L6)",
+          "occurrences": 1
+        },
+        {
+          "before": "on total L6 axon length",
+          "after": "on legacy L6 regional voxel lengths (unverified compartments/terminal-target selection)",
+          "occurrences": 1
+        },
+        {
+          "before": "on total axon length",
+          "after": "on legacy regional voxel lengths (unverified compartments/terminal-target selection)",
+          "occurrences": 1
+        },
+        {
+          "before": "on axon length (Gou-style)",
+          "after": "on legacy regional voxel lengths; not segmented-arbor replication",
+          "occurrences": 1
+        },
+        {
+          "before": "continuous hemispheric bias (Gou-style)",
+          "after": "continuous legacy voxel-length hemispheric bias",
+          "occurrences": 1
+        },
+        {
+          "before": "58% of axonal budget",
+          "after": "58% of normalized log-strength composition (historical cohort; not a raw-length budget)",
+          "occurrences": 2
+        },
+        {
+          "before": "average insula axonal budget",
+          "after": "average normalized log-strength profile",
+          "occurrences": 1
+        },
+        {
+          "before": "sub-region's axonal budget split",
+          "after": "sub-region's normalized log-strength profile map",
+          "occurrences": 1
+        },
+        {
+          "before": "domain mass",
+          "after": "assigned transformed-strength share",
+          "occurrences": 2
+        },
+        {
+          "before": "Domain mass",
+          "after": "Assigned transformed-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Mean summed target proportion",
+          "after": "Mean summed normalized log-strength share",
+          "occurrences": 1
+        },
+        {
+          "before": "Mean L6 proportion",
+          "after": "Mean normalized L6 log-strength share",
+          "occurrences": 1
+        }
+      ]
+    },
+    {
+      "path": "notes/LR_insula_analysis_review.md",
+      "original_sha256": "817e6673b291d564ac6337d8dd8d885ee42b94912bd823a916546ce624a1056b",
+      "proposed_sha256": "432a24d8e3485a5d52ba3841adb039258a4edf16140f1cedc7c0f6c8277a6fa8",
+      "append_only_original_bytes_preserved": true
+    }
+  ],
+  "production_inputs_unchanged": true,
+  "historical_output_files_in_patch": [],
+  "numeric_outputs_regenerated": false,
+  "validation_limit": "Static R token comparison; no R execution or inferential redesign. String changes require human review of intended labels/specifications."
+}

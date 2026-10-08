@@ -1,0 +1,138 @@
+{
+  "observed_at": "2026-10-09T00:49:54.523710+08:00",
+  "inputs": {
+    "atlas_audit": {
+      "path": "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/validated_atlas_lookup/neuron_soma_locations.csv",
+      "sha256": "1a069b4db16249f0ebee55fe1052258ebaf510d8abd13b7ab53a090733021e08"
+    },
+    "sources": {
+      "path": "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/validated_atlas_lookup/source_inventory.csv",
+      "sha256": "1eb5cf89c191f7f64baf4a7936431d59f97c85f9613b51637afbbff5d9600bd8"
+    },
+    "policies": {
+      "path": "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/coordinate_origin_sensitivity/per_neuron_origin_sensitivity.csv",
+      "sha256": "8f9aea947ec3ed7e989ad179e9c30971598169efdc1335941b2129a351535b78"
+    },
+    "visual_table": {
+      "path": "group_analysis/visual_review_20261002/tables/correction_table.csv",
+      "sha256": "f3897d2e069ae1ce29a90bb6d9cc08371761829316ade504d38dc6f71855840b"
+    },
+    "raw_graph_readback": {
+      "path": "notes/bulk_visual_review_20261002/all_raw_swc_graph_readback_20261004.json",
+      "sha256": "cc08bbcb90cd561de033f746f8414c85b63a96d87306a1d4a25d61c1dda75acc"
+    },
+    "Henry": {
+      "path": "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx",
+      "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6"
+    },
+    "animal_registry": {
+      "path": "group_analysis/docs/dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d"
+    },
+    "segmentation": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_segmentation.nii.gz",
+      "sha256": "48004cc0f85198f0d78126e1bea44018fd4f3d0cbc26d0005da646de0876be9c"
+    },
+    "reference": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    "label_key": {
+      "path": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    }
+  },
+  "official_segmentation_classes": {
+    "1": "CSF",
+    "2": "GM",
+    "3": "scGM",
+    "4": "WM",
+    "5": "BV"
+  },
+  "embedded_label_table_sha256": "682c465e64be231cbb9430595d4cdec54429c3459b0335e8683946aa60997918",
+  "exact_neurons": 8746,
+  "review_queue": 563,
+  "map_ready": 1912,
+  "source_file_graph_readbacks": 2480,
+  "graph_status_counts": {
+    "missing_unassessed": 6834,
+    "numeric_graph_verified_all_copies": 1912
+  },
+  "coarse_states": {
+    "WM_or_boundary_uncertain": 821,
+    "unresolved": 7442,
+    "candidate-only": 223,
+    "reviewed_INS": 260
+  },
+  "tissue_policy_counts": {
+    "persistent_WM": 456,
+    "persistent_GM": 5806,
+    "origin_sensitive_GM_WM_transition": 376,
+    "background_or_unmapped": 10,
+    "CSF_to_GM": 111,
+    "GM_to_CSF": 32,
+    "CSF_to_CSF": 322,
+    "persistent_scGM": 1262,
+    "missing_or_out_of_bounds_unassessed": 337,
+    "CSF_to_scGM": 15,
+    "scGM_to_CSF": 19
+  },
+  "map_sources_by_exact_sample": {
+    "250432": 234,
+    "251637": 562,
+    "251730": 196,
+    "252383": 136,
+    "252384": 100,
+    "252385": 128,
+    "252527": 99,
+    "252714": 144,
+    "252718": 190,
+    "252790": 123
+  },
+  "exclusive_map_groups": {
+    "Other_R": 920,
+    "AtlasINS_R": 37,
+    "AtlasINS_L": 60,
+    "Candidate_L": 40,
+    "Other_L": 527,
+    "HumanINS_R": 157,
+    "Candidate_R": 44,
+    "HumanINS_L": 103,
+    "G_exploratory_L": 17,
+    "G_exploratory_R": 7
+  },
+  "registry_eligible_exclusive_groups": {
+    "HumanINS_R": 157,
+    "Candidate_R": 44,
+    "Other_R": 599,
+    "Other_L": 447,
+    "HumanINS_L": 103,
+    "AtlasINS_R": 31,
+    "AtlasINS_L": 58,
+    "Candidate_L": 19,
+    "G_exploratory_L": 17,
+    "G_exploratory_R": 7
+  },
+  "map_sources_by_evidence": {
+    "atlas_INS": 309,
+    "atlas_G": 32,
+    "potential_INS_candidate": 441,
+    "Henry_coarse_INS_visual_evidence": 260
+  },
+  "network_requests": 0,
+  "canonical_edits": false,
+  "anatomical_acceptance": false,
+  "review_rules": {
+    "radius_mm": 2,
+    "numeric_ID_window": 2,
+    "ID_cue_is_anatomy": false,
+    "same_sample_and_channel_only": true,
+    "Henry_visual_origin": "user confirmed historical wide-field visual checks; exact workbook annotation rows only"
+  },
+  "limitations": [
+    "Tissue segmentation is NMT-space software evidence, not native white-matter or registration acceptance.",
+    "Portal labels, both origin-policy lookups, Henry visual annotations and reviewed fine labels remain separate.",
+    "Historical 832 machine review categories are not human decisions. Missing/partial image sources remain explicit.",
+    "Only available cached NMT graphs map-ready; all 8746 identities retained in full manifest."
+  ]
+}

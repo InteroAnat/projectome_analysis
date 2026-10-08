@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-10-08T16:04:49.840176+00:00",
+  "geometry_mode": "folded-mm",
+  "reference_csv": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\reference\\251637_subregion_bboxes_folded.csv",
+  "reference_sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997",
+  "quantiles": [
+    0.005,
+    0.995
+  ],
+  "midline_nii_x": 128.0,
+  "nii_voxel_mm": 0.25,
+  "padding_mm": 2.0,
+  "bbox_units": "physical_mm",
+  "reference_frame_declaration": "validated_folded_metadata",
+  "sample_ids": [
+    "251730",
+    "252383",
+    "252384",
+    "252385",
+    "252527",
+    "252718",
+    "252790",
+    "250432",
+    "252714"
+  ],
+  "step1_dir": "D:\\projectome_analysis\\group_analysis\\step1_results",
+  "source_selection": "latest lexicographic matching historical step1 workbook, exact sample prefix; no portal refresh",
+  "candidate_lower_bound": 179,
+  "candidate_total": 179,
+  "yield_status": "complete_bounded_source_screen",
+  "candidate_gate_threshold": 30,
+  "anatomical_acceptance": "not_assessed",
+  "scanner_sha256": "eeeb9d6c5ccb70850b8c1e836af21202da893dee9782a7598c4b2ec0e062a2f4",
+  "outputs": {
+    "discovery_scan_per_neuron.csv": "866be8227f399f73de0d721b3bb1ef7317d4069b53ce86d558b85acf65ca4fb4",
+    "discovery_scan_summary.csv": "d7167fd6804420746a2a41ca2c44461a697e4e3a58ad5b7cc8cd1a6e78dd4991"
+  }
+}

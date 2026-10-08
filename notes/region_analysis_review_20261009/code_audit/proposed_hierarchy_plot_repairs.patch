@@ -1,0 +1,357 @@
+--- main_scripts/region_analysis/population.py
++++ main_scripts/region_analysis/population.py
+@@ -176,10 +176,10 @@
+         """
+         from region_analysis.hierarchy_table import HierarchyTable
+ 
+-        paths = [path] if isinstance(path, str) else list(path) if isinstance(path, (list, tuple)) else []
+-        valid = [p for p in paths if os.path.exists(p)]
+-        if valid:
+-            self.hierarchy_table = HierarchyTable.from_files(*valid)
++        paths = [path] if isinstance(path, (str, Path)) else list(path)
++        if not paths:
++            raise ValueError("At least one hierarchy file is required")
++        self.hierarchy_table = HierarchyTable.from_files(*paths)
+ 
+     def load_hierarchy_csv(self, path):
+         """
+@@ -190,12 +190,13 @@
+             path: Single file path (str) or list of paths.
+         """
+         from region_analysis.hierarchy_table import HierarchyTable
+-        paths = [path] if isinstance(path, str) else list(path) if isinstance(path, (list, tuple)) else []
+-        if self.hierarchy_table is None:
+-            self.hierarchy_table = HierarchyTable()
+-        for p in paths:
+-            if os.path.exists(p):
+-                self.hierarchy_table.load_file(p)
++        paths = [path] if isinstance(path, (str, Path)) else list(path)
++        if not paths:
++            raise ValueError("At least one hierarchy file is required")
++        loaded = HierarchyTable.from_files(*paths)
++        if self.hierarchy_table is not None:
++            loaded = HierarchyTable(pd.concat([self.hierarchy_table.df, loaded.df], ignore_index=True))
++        self.hierarchy_table = loaded
+ 
+     def _load_dual_hierarchy(self, cortex_paths=None, subcortical_paths=None):
+         """Load separate hierarchy tables for cortex and subcortical regions."""
+--- main_scripts/region_analysis/hierarchy_table.py
++++ main_scripts/region_analysis/hierarchy_table.py
+@@ -50,67 +50,61 @@
+         return level_cols
+     
+     def _parse_df(self):
+-        """Parse DataFrame to build region and index paths."""
++        """Keep explicit level positions and reject conflicting identity paths."""
+         df = self.df
+-        
+-        # Detect level columns
+         level_cols = self._detect_level_columns(df)
+         if not level_cols:
+-            return
+-        
+-        self.max_level = max(level_cols.keys())
+-        
+-        # Check for v2 format with _abbr columns
+-        has_abbr_cols = any('_abbr' in str(c) for c in df.columns)
+-        has_index_cols = any('_index' in str(c) for c in df.columns)
+-        
+-
+-        
+-        # Build paths for each row
+-        for idx, row in df.iterrows():
+-            row_path = []
+-            
+-            for lv in sorted(level_cols.keys()):
+-                level_col = level_cols[lv]
+-                
+-                if has_abbr_cols:
+-                    # v2 format: use _abbr column for abbreviation
+-                    abbr_col = f"Level_{lv}_abbr"
+-                    if abbr_col in df.columns:
+-                        abbrev = str(row[abbr_col]).strip()
+-                        if abbrev and abbrev.lower() not in ('nan', 'none', ''):
+-                            row_path.append(abbrev)
+-                            continue
+-                
+-                # Fallback: use main column, strip prefix
+-                full_name = str(row[level_col]).strip()
+-                if full_name and full_name.lower() not in ('nan', 'none', ''):
+-                    abbrev = self._strip_prefix(full_name)
+-                    row_path.append(abbrev)
++            raise ValueError("Hierarchy table has no level columns")
++        if min(level_cols) < 0 or max(level_cols) > 6:
++            raise ValueError("Hierarchy levels must be between 0 and 6")
++        self.max_level = max(level_cols)
++        self._level_start = 0 if 0 in level_cols else 1
++        levels = list(range(self._level_start, self.max_level + 1))
++
++        def register(mapping, key, path):
++            if key in mapping:
++                previous = mapping[key]
++                for old, new in zip(previous, path):
++                    if old is not None and new is not None and old != new:
++                        raise ValueError(f"Conflicting hierarchy paths for {key}")
++                mapping[key] = [old if old is not None else new
++                                for old, new in zip(previous, path)]
++            else:
++                mapping[key] = path
++
++        for _, row in df.iterrows():
++            row_path, indices = [], []
++            for lv in levels:
++                abbr = row.get(f"Level_{lv}_abbr")
++                if pd.isna(abbr) or not str(abbr).strip():
++                    abbr = row.get(level_cols.get(lv))
++                    abbr = self._strip_prefix(str(abbr).strip()) if pd.notna(abbr) else None
++                row_path.append(str(abbr).strip() if pd.notna(abbr) and str(abbr).strip() else None)
++                index = row.get(f"Level_{lv}_index")
++                if pd.isna(index):
++                    indices.append(None)
+                 else:
+-                    row_path.append(None)
+-            
+-            # Store by abbreviation (last non-None level)
+-            if row_path and row_path[-1]:
+-                self.region_paths[row_path[-1]] = row_path
+-            
+-            # Store by index if available - store ALL level indices for this row
+-            if has_index_cols:
+-                for lv in sorted(level_cols.keys()):
+-                    idx_col = f"Level_{lv}_index"
+-                    if idx_col in df.columns:
+-                        try:
+-                            region_idx = int(row[idx_col])
+-                            if region_idx > 0 and region_idx not in self.index_paths:
+-                                # Store path for this index - use the path up to this level
+-                                path_to_level = [p for p in row_path[:lv] if p is not None]
+-                                if path_to_level:
+-                                    self.index_paths[region_idx] = row_path
+-                        except (ValueError, TypeError):
+-                            continue
+-        
+-
+-    
++                    numeric = float(index)
++                    if not np.isfinite(numeric) or not numeric.is_integer() or numeric <= 0:
++                        raise ValueError(f"Invalid hierarchy index {index}")
++                    indices.append(int(numeric))
++            for pos, name in enumerate(row_path):
++                if name is not None:
++                    last = max(i for i, value in enumerate(row_path) if value == name)
++                    register(self.region_paths, name, row_path[:last+1] + [None]*(len(row_path)-last-1))
++            for pos, index in enumerate(indices):
++                if index is not None:
++                    last = max(i for i, value in enumerate(indices) if value == index)
++                    register(self.index_paths, index, row_path[:last+1] + [None]*(len(row_path)-last-1))
++
++    @classmethod
++    def from_files(cls, *paths):
++        """Load and merge requested files; missing/conflicting inputs fail closed."""
++        if not paths:
++            raise ValueError("At least one hierarchy file is required")
++        tables = [cls.load_file(path) for path in paths]
++        return cls(pd.concat([table.df for table in tables], ignore_index=True))
++
+     @staticmethod
+     def _strip_prefix(name: str) -> str:
+         """Strip CL_/CR_/SL_/SR_ prefix."""
+@@ -166,14 +160,8 @@
+         if path is None:
+             return None
+         
+-        # Handle Level_0 in CSV - if path has 7 elements (0-6), level 1 = index 1 (skip Level_0)
+-        if len(path) == 7 and self.max_level == 6:
+-            # Path includes Level_0, so adjust: level 1 = index 1
+-            level_idx = level
+-        else:
+-            # Standard: level 1 = index 0
+-            level_idx = level - 1
+-        
++        level_idx = level - self._level_start
++
+         if level_idx < 0 or level_idx >= len(path):
+             return None
+         
+@@ -197,19 +185,15 @@
+         if level is None:
+             return path
+         
+-        # Handle Level_0 in CSV - if path has 7 elements (0-6), level 1 = index 1 (skip Level_0)
+-        if len(path) == 7 and self.max_level == 6:
+-            level_idx = level
+-        else:
+-            level_idx = level - 1
+-        
++        level_idx = level - self._level_start
++
+         if level_idx < 0 or level_idx >= len(path):
+             return None
+         
+         return path[level_idx]
+     
+     def aggregate_to_level(self, region_lengths: Dict[str, float], 
+-                           target_level: int) -> Dict[str, float]:
++                           target_level: int, strip_prefixes: bool = False) -> Tuple[Dict[str, float], List[str]]:
+         """
+         Aggregate region lengths to target hierarchy level using index-based lookup.
+         
+@@ -224,27 +208,14 @@
+         unmapped = []
+         
+         for region_key, length in region_lengths.items():
+-            # Try direct lookup first
+             target = self.get_at_level(region_key, target_level)
+-            
+-            if target is not None:
+-                result[target] = result.get(target, 0) + length
+-            else:
+-                # Try numeric index lookup
+-                try:
+-                    idx = int(region_key)
+-                    if idx in self.index_paths:
+-                        path = self.index_paths[idx]
+-                        level_idx = target_level - 1
+-                        if 0 <= level_idx < len(path) and path[level_idx]:
+-                            result[path[level_idx]] = result.get(path[level_idx], 0) + length
+-                        else:
+-                            unmapped.append(region_key)
+-                    else:
+-                        unmapped.append(region_key)
+-                except ValueError:
+-                    unmapped.append(region_key)
+-        
++            if target is None:
++                unmapped.append(region_key)
++                continue
++            if strip_prefixes:
++                target = self._strip_prefix(target)
++            result[target] = result.get(target, 0) + length
++
+         return result, unmapped
+     
+     @classmethod
+--- main_scripts/region_analysis/plotting.py
++++ main_scripts/region_analysis/plotting.py
+@@ -206,6 +206,7 @@
+         "=" * 60,
+         "",
+         "--- Known vs Unknown Statistics ---",
++        "  Entries are distinct target regions per neuron, not biological terminal/bouton counts.",
+         "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+         f"  Total projection sites: {total_sites}",
+         f"  Known sites: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
+@@ -272,7 +273,7 @@
+         align="left",
+         color="steelblue",
+     )
+-    axes[0].set_xlabel("Projection Sites (Known Only)")
++    axes[0].set_xlabel("Distinct target-region count (known only)")
+     axes[0].set_ylabel("Number of Neurons")
+     axes[0].set_title("Distribution (Excl. Unknown)")
+     m = df["_psc"].mean()
+@@ -297,7 +298,7 @@
+         axes[1].tick_params(axis="x", rotation=45)
+     else:
+         axes[1].boxplot(df["_psc"])
+-    axes[1].set_ylabel("Projection Sites (Known)")
++    axes[1].set_ylabel("Distinct target-region count (known)")
+     axes[1].set_title("By Neuron Type")
+ 
+     plt.suptitle(title, fontsize=12, fontweight="bold")
+@@ -316,6 +317,7 @@
+     lines = [
+         "=" * 60,
+         "PROJECTION SITES STATISTICS (KNOWN REGIONS ONLY)",
++        "Entries are distinct target regions per neuron, not biological terminal/bouton counts.",
+         "=" * 60,
+         "",
+         f"Total neurons analyzed: {total_n}",
+@@ -374,16 +376,14 @@
+     save_path: str = None,
+     show: bool = True,
+ ):
+-    if "Soma_Region_Hierarchy" in df.columns:
+-        from region_analysis.hierarchy import extract_soma_level
+-
++    from region_analysis.hierarchy import extract_soma_level
++    if f"Soma_Level_{level}" in df.columns or "Soma_Region_Hierarchy" in df.columns:
+         data = extract_soma_level(df, level)
++    elif f"Region_L{level}" in df.columns:
++        data = df[f"Region_L{level}"]
+     else:
+-        col = f"Region_L{level}"
+-        if col not in df.columns:
+-            print(f"Error: no hierarchy data for level {level}.")
+-            return None
+-        data = df[col]
++        print(f"Error: no hierarchy data for level {level}.")
++        return None
+ 
+     data = data.dropna()
+     if data.empty:
+@@ -443,7 +443,7 @@
+     # Filter to valid levels
+     valid_levels = []
+     for lv in levels:
+-        if "Soma_Region_Hierarchy" in df.columns:
++        if f"Soma_Level_{lv}" in df.columns or "Soma_Region_Hierarchy" in df.columns:
+             from region_analysis.hierarchy import extract_soma_level
+             test_data = extract_soma_level(df, lv)
+             if not test_data.dropna().empty:
+@@ -471,7 +471,7 @@
+     for idx, level in enumerate(valid_levels):
+         ax = axes[idx]
+ 
+-        if "Soma_Region_Hierarchy" in df.columns:
++        if f"Soma_Level_{level}" in df.columns or "Soma_Region_Hierarchy" in df.columns:
+             from region_analysis.hierarchy import extract_soma_level
+             data = extract_soma_level(df, level)
+         else:
+@@ -540,15 +540,25 @@
+         labs.append(f"Unknown\n({total_unk})")
+         cols.append("#9E9E9E")
+ 
+-    axes[0].pie(
+-        vals,
++    if sum(vals) == 0:
++        axes[0].text(0.5, 0.5, "No target regions", ha="center", va="center")
++        axes[0].set_axis_off()
++    else:
++        axes[0].pie(
++            vals,
+         labels=labs,
+         autopct="%1.1f%%",
+         startangle=90,
+         colors=cols,
+         explode=[0.02] * len(vals),
+     )
+-    axes[0].set_title("Terminal Laterality", fontsize=12, fontweight="bold")
++    axes[0].set_title("Distinct target-region laterality", fontsize=12, fontweight="bold")
++    units = (df["Length_Unit"].dropna().astype(str).str.strip()
++             if "Length_Unit" in df else pd.Series(dtype=str))
++    units = sorted(set(units[units.ne("")]))
++    unit_label = units[0] if len(units) == 1 else "unspecified source units"
++    if len(units) > 1:
++        raise ValueError("Cannot pool reconstruction lengths with mixed Length_Unit values")
+ 
+     if has_length and "Neuron_Type" in df.columns:
+         valid = df.dropna(subset=["Laterality_Index"])
+@@ -606,7 +616,7 @@
+             )
+             axes[2].set_xticks(list(x))
+             axes[2].set_xticklabels(grp.index, rotation=45)
+-            axes[2].set_ylabel("Total Axon Length (mm)")
++            axes[2].set_ylabel(f"Retained reconstruction length ({unit_label})")
+             axes[2].set_title(
+                 "Length by Laterality", fontsize=12, fontweight="bold"
+             )
+@@ -621,7 +631,7 @@
+                 color=["#4CAF50", "#F44336"],
+                 alpha=0.7,
+             )
+-            axes[2].set_ylabel("Total Axon Length (mm)")
++            axes[2].set_ylabel(f"Retained reconstruction length ({unit_label})")
+             axes[2].set_title("Length", fontsize=12, fontweight="bold")
+ 
+     plt.tight_layout()

@@ -1,0 +1,27 @@
+test_actual_key_conflicts_flagged_and_official_names_domain_side_retained (test_arm_projection_tables.ARMTableTests) ... ok
+test_changed_artifact_rejected_before_output (test_arm_projection_tables.ARMTableTests) ... ok
+test_common_sheets_expose_official_source_and_target_metadata (test_arm_projection_tables.ARMTableTests) ... ok
+test_distinct_neuron_presence_and_equal_animal_eligible_denominators (test_arm_projection_tables.ARMTableTests) ... ok
+test_fabricated_source_names_and_groups_rejected_before_output (test_arm_projection_tables.ARMTableTests) ... ok
+test_integral_nullable_csv_label_notation_and_invalid_numbers (test_arm_projection_tables.ARMTableTests) ... ok
+test_one_raster_per_neuron_and_all_actual_levels_reconciled (test_arm_projection_tables.ARMTableTests) ... ok
+test_output_bound_to_sources_and_no_overwrite (test_arm_projection_tables.ARMTableTests) ... ok
+test_swapped_positive_source_side_rejected_but_zero_mask_side_preserved (test_arm_projection_tables.ARMTableTests) ... ERROR
+test_unassessed_endpoints_na_but_axon_observed_and_outside_explicit (test_arm_projection_tables.ARMTableTests) ... ok
+
+======================================================================
+ERROR: test_swapped_positive_source_side_rejected_but_zero_mask_side_preserved (test_arm_projection_tables.ARMTableTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_arm_projection_tables.py", line 135, in test_swapped_positive_source_side_rejected_but_zero_mask_side_preserved
+    self.assertEqual(exporter.validate_source_labels(bad,targets,'unused','unused').Hemisphere.tolist(),['R'])
+  File "D:\projectome_analysis\group_analysis\scripts\export_arm_projection_tables.py", line 181, in validate_source_labels
+    require(row['ARMFullName'] == expected_name and row['ARMAbbreviation'] == metadata.Abbreviation and (row['SourceARMStatus'] == metadata.TargetStatus),
+  File "D:\projectome_analysis\group_analysis\scripts\export_arm_projection_tables.py", line 39, in require
+    raise ValueError(message)
+ValueError: Source official ARM metadata differs from key/resource
+
+----------------------------------------------------------------------
+Ran 10 tests in 1.140s
+
+FAILED (errors=1)

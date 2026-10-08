@@ -1,0 +1,164 @@
+{
+  "status": "software_verified_candidate_refinement",
+  "generated_utc": "2026-10-08T16:56:24.898479+00:00",
+  "geometry_mode": "folded-mm",
+  "padding_mm": 2.0,
+  "padding_vox": 8.0,
+  "midline_nii_x": 128.0,
+  "nii_voxel_mm": 0.25,
+  "quantiles": [
+    0.005,
+    0.995
+  ],
+  "reference_inputs": {
+    "bbox": {
+      "path": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\reference\\251637_subregion_bboxes_folded.csv",
+      "sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997"
+    },
+    "anchors": {
+      "path": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\reference\\251637_subregion_anchors_folded.csv",
+      "sha256": "4741a3284ac85f9b72f1daae46623152ecd71add8675166fa5e2b9636814a52e"
+    },
+    "reference_neurons": {
+      "path": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\reference\\251637_subregion_neurons.csv",
+      "sha256": "65380be00affb587b53edcb9ee540fbe9b15fc674be8347d6e00c10ba0480a5a"
+    }
+  },
+  "sources": [
+    {
+      "sample_id": "251730",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx",
+      "sha256": "16a9512b048d236ad2af5f56698ba0a085718b9870cca4f24d4f6e1bf79f102d",
+      "rows": 79
+    },
+    {
+      "sample_id": "252383",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx",
+      "sha256": "d0b8afa611026a3232293f1beea9e5cb64bc6e5bccce8c06033b4860c52f3c07",
+      "rows": 127
+    },
+    {
+      "sample_id": "252384",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx",
+      "sha256": "7cee63610b05f52a51f1691497d8f9beca1b075ed98e38e6ec05b2b7a5ff8132",
+      "rows": 99
+    },
+    {
+      "sample_id": "252385",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx",
+      "sha256": "cd86f1a34b75376de8e7e917361e727b280c764ed390698d1a764138ed9a790f",
+      "rows": 128
+    },
+    {
+      "sample_id": "252527",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx",
+      "sha256": "3f285cdc48671f9140e2a17c13c384bb0efd90efa97d3e73537b27d8fd337a78",
+      "rows": 99
+    },
+    {
+      "sample_id": "252718",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx",
+      "sha256": "4513d515137c149a18e9cbcd8f9e6680b475f69e136fc7769eb5cdee6dd04d99",
+      "rows": 190
+    },
+    {
+      "sample_id": "252790",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx",
+      "sha256": "02a7f0bd7609d288b195e961b20e48aaa5430566656952cd21be77839b09b31b",
+      "rows": 123
+    },
+    {
+      "sample_id": "250432",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx",
+      "sha256": "1153b8d53693ae00171758a8b9abbf8532508211fceae22703ae990794f9b218",
+      "rows": 234
+    },
+    {
+      "sample_id": "252714",
+      "status": "read",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx",
+      "sha256": "dc0e5e04116a3627dc0a839bc4db82eb22f3662b3b4b934ebd3153dfe65e9094",
+      "rows": 144
+    }
+  ],
+  "sample_ids": [
+    "251730",
+    "252383",
+    "252384",
+    "252385",
+    "252527",
+    "252718",
+    "252790",
+    "250432",
+    "252714"
+  ],
+  "source_selection": "latest lexicographic matching historical step1 workbook; exact sample prefix; no portal refresh",
+  "yield_status": "complete_selected_sources",
+  "candidate_keeper_count": 164,
+  "refinement_policy": "existing atlas keep labels; eligible rescue labels with unique strict/padded box; nearest-reference distance is a soft flag",
+  "distance_threshold_factor": 3.0,
+  "anatomical_acceptance": "not_assessed",
+  "canonical_promotion": false,
+  "policy_source_sha256": {
+    "D:\\projectome_analysis\\group_analysis\\scripts\\04_refine_soma_region_by_coords.py": "bed5ca9ea619f46ff8d3306a5315b75a61d5088634d2c5dd57d18acb2073db68",
+    "D:\\projectome_analysis\\group_analysis\\scripts\\cohort.py": "6170aa9c51a6f41623cc5e7539feb1aec14de06d80149c36e2b5e7e117b52e14",
+    "D:\\projectome_analysis\\group_analysis\\scripts\\insula_label_set.py": "34e32c0516068ff985fd6cb419b42c03c7ae0a00aebcdad1eafe262b444dc667",
+    "D:\\projectome_analysis\\main_scripts\\region_labels.py": "ffb122830f6ecf9f4fe4c315d768319af62779be09b34961e37d9ccb455f9521",
+    "D:\\projectome_analysis\\atlas\\ARM_key_all.txt": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+  },
+  "label_sets": {
+    "insula": [
+      "IA",
+      "IA/ID",
+      "IAI",
+      "IAL",
+      "IAM",
+      "IAM/IAPM",
+      "IAPL",
+      "IAPM",
+      "ID",
+      "IDD",
+      "IDD5",
+      "IDI",
+      "IDM",
+      "IDV",
+      "IG",
+      "INS",
+      "INS/PI",
+      "LAT_IA",
+      "PI"
+    ],
+    "rescue": [
+      "",
+      "INSULAUNKNOWN",
+      "PRCO",
+      "UNKNOWN",
+      "UNKNOWN_0",
+      "_UNMAPPED"
+    ],
+    "atlas_keep": [
+      "G"
+    ]
+  },
+  "script_sha256": "bed5ca9ea619f46ff8d3306a5315b75a61d5088634d2c5dd57d18acb2073db68",
+  "outputs": {
+    "250432_INS_HE_coord_inferred.xlsx": "707751baa11393c2c199dff70effbdfe338bb9bf49db4d548793e6c4b3628282",
+    "251730_INS_HE_coord_inferred.xlsx": "e3311c5239be0149064f3cfff0288b0f63a144b851cd9cc425f36b969cccae9b",
+    "252383_INS_HE_coord_inferred.xlsx": "23a6e46fd1d51ccfc8dff46c43a0dc519b49ba28b0f5887bc79e61a9d48b3eb3",
+    "252384_INS_HE_coord_inferred.xlsx": "9759328b20c791da2936c76c0947808fee339fc28e036c346250b78100c0d01b",
+    "252385_INS_HE_coord_inferred.xlsx": "be49bb74d70ea4cc545cf85579cea50863f90275addd7b06449c38677d319df6",
+    "252527_INS_HE_coord_inferred.xlsx": "db9ad6a563c99c3cdcacf111df6b3c7305f3517e06d2ce9d5c96c78b5eb69ab3",
+    "252714_INS_HE_coord_inferred.xlsx": "816de5788c06c7fb95ea59fa354611492733bf936cb9e5f6e9a678f23bb1072c",
+    "252718_INS_HE_coord_inferred.xlsx": "3ec8dd0d22aaefca3c5c491207898ece484c71ecd7e9b2d0afc160fad5a32e05",
+    "252790_INS_HE_coord_inferred.xlsx": "a98da063df055b02fc68f96dd5abd383d956af0df38ca85326e760dcc53ab544",
+    "all_refined_neurons.csv": "3a89b9579fd0d9fe181b8d07275a3582700060670165253b6fd7daf269ac083d"
+  }
+}

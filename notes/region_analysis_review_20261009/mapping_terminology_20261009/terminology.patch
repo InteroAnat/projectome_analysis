@@ -1,0 +1,209 @@
+--- a/group_analysis/scripts/build_projection_maps.py
++++ b/group_analysis/scripts/build_projection_maps.py
+@@ -1,11 +1,18 @@
+-"""Build isolated descriptive NMT axon-length maps from an explicit CSV manifest.
+-
+-The manifest records AnimalID, SampleID, NeuronID, Subregion, SWCPath,
+-SWCSHA256, ReferenceSHA256, CoordinateFrame, IndexScaleUm (three semicolon-separated values for
+-atlas_index_um), AnatomyStatus and RegistrationStatus. Relative SWC paths are
+-resolved against --input-root. Identity, labels and coordinate provenance are
+-never inferred from filenames. No source download, warp, smoothing or t test is
+-performed. The destination must be new; legacy outputs are left intact.
++"""Build descriptive maps of axon-labelled segment length in NMT reference space.
++
++Within each animal and selected source group, each voxel shows length summed
++over selected neurons divided by their number. Density additionally divides
++by reference voxel volume. Across animals, average the contributing animal
++maps equally; a missing source group is not an observed zero. These are
++descriptive physical measurements. Axon labels come from SWC node types and
++still require compartment and registration review.
++
++The manifest records AnimalID, SampleID, NeuronID, Subregion (the declared
++source group), SWCPath, SWCSHA256, ReferenceSHA256, CoordinateFrame,
++IndexScaleUm, AnatomyStatus and RegistrationStatus. atlas_index_um uses
++three semicolon-separated scales; relative SWC paths use --input-root.
++Exact identities and coordinate provenance must be supplied. The output
++directory must be new. Source data and previous results remain preserved.
+ """
+ from __future__ import annotations
+ 
+@@ -237,12 +244,12 @@
+ 
+ if __name__ == "__main__":
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("--manifest", type=Path, required=True)
+-    parser.add_argument("--reference", type=Path, required=True)
+-    parser.add_argument("--brain-mask", type=Path)
+-    parser.add_argument("--input-root", type=Path, default=ROOT)
+-    parser.add_argument("--space", default="NMTv2p1")
+-    parser.add_argument("--output", type=Path, required=True)
++    parser.add_argument("--manifest", type=Path, required=True, help='CSV of exact neuron identities, source groups, SWC paths/hashes and coordinate provenance.')
++    parser.add_argument("--reference", type=Path, required=True, help='Pinned NMT reference image bound by every manifest row.')
++    parser.add_argument("--brain-mask", type=Path, help='Optional matching mask for coverage accounting; it does not trim the map.')
++    parser.add_argument("--input-root", type=Path, default=ROOT, help='Base directory for relative SWC paths in the manifest.')
++    parser.add_argument("--space", default="NMTv2p1", help='Existing reference-space name used in output filenames; this does not register data.')
++    parser.add_argument("--output", type=Path, required=True, help='New destination directory for descriptive length maps and provenance.')
+     args = parser.parse_args()
+     result = build(args.manifest, args.reference, args.output,
+                    input_root=args.input_root, brain_mask=args.brain_mask, space=args.space)
+--- a/group_analysis/scripts/build_endpoint_maps.py
++++ b/group_analysis/scripts/build_endpoint_maps.py
+@@ -1,9 +1,17 @@
+-"""Isolated, descriptive candidate endpoint maps and actual ARM-level labels.
+-
+-All selected neurons and all complete-graph leaves remain auditable. Maps are
+-conditional on neurons with at least one candidate axonal leaf anywhere; empty
+-candidate observations are unassessed proxy contributions, not biological zero.
+-No image review, registration, smoothing, t test or synapse inference occurs.
++"""Build descriptive maps of candidate axon ends and actual ARM-level labels.
++
++A candidate axon end is a non-root axon-labelled (SWC type 2) node with no
++children in the complete stored reconstruction. This graph rule does not
++verify an image-reviewed terminal arbor, synapse or termination site.
++An endpoint-eligible neuron has at least one such end anywhere, including
++outside the reference field of view. Neurons without one remain unassessed.
++
++For each animal and declared source group, endpoint count/density is the
++candidate count per eligible neuron (density also divides by reference voxel
++volume). Occupancy is the fraction of eligible neurons with at least one end
++in a voxel; multiple ends from one neuron count once. Across animals, average
++contributing animal maps equally. All selected neurons remain auditable;
++no image review, registration or statistical inference occurs here.
+ """
+ 
+ from __future__ import annotations
+@@ -353,10 +361,17 @@
+ if __name__ == "__main__":
+     parser = argparse.ArgumentParser(description=__doc__)
+     for option in ("manifest", "reference", "atlas-path", "atlas-key", "hemisphere-mask", "output"):
+-        parser.add_argument("--" + option, type=Path, required=True)
+-    parser.add_argument("--brain-mask", type=Path)
+-    parser.add_argument("--input-root", type=Path, default=ROOT)
+-    parser.add_argument("--space", default="NMTv2p1")
++        parser.add_argument("--" + option, type=Path, required=True, help={
++            "manifest": "CSV of exact neuron identities, source groups, hashes and coordinate provenance.",
++            "reference": "Pinned reference image bound by the manifest.",
++            "atlas-path": "Actual aligned ARM label volumes for direct voxel lookup.",
++            "atlas-key": "Official ARM label names and indices.",
++            "hemisphere-mask": "Matching mask with verified hemisphere label semantics.",
++            "output": "New destination for candidate axon-end maps and audit records.",
++        }[option])
++    parser.add_argument("--brain-mask", type=Path, help='Optional coverage mask; endpoints inside the reference are retained even outside this mask.')
++    parser.add_argument("--input-root", type=Path, default=ROOT, help='Base directory for relative SWC paths.')
++    parser.add_argument("--space", default="NMTv2p1", help='Reference-space name for output filenames; no registration is performed.')
+     args = parser.parse_args()
+     result = build(args.manifest, args.reference, args.output, atlas_path=args.atlas_path, atlas_key=args.atlas_key,
+                    hemisphere_mask=args.hemisphere_mask, brain_mask=args.brain_mask, input_root=args.input_root, space=args.space)
+--- a/group_analysis/scripts/render_projection_slices.py
++++ b/group_analysis/scripts/render_projection_slices.py
+@@ -1,9 +1,16 @@
+-"""Render matched MRI/map slices from a previously verified descriptive run.
+-
+-This changes display only. Each MRI plane and its map overlay use the same
+-voxel index. Per-map slice choices maximize summed values along each axis;
+-they are disclosed display selections, not anatomical or statistical findings.
+-Original maps and MIP figures are never modified.
++"""Display matched population MRI/map slices from an existing verified run.
++
++Choose axon-labelled length density, candidate axon-end density, or the
++fraction of endpoint-eligible neurons with an end in each voxel (occupancy).
++Eligible means at least one non-root axon-labelled leaf anywhere in the
++complete graph, including outside the reference field of view. Candidate
++ends are not image-reviewed biological terminals.
++
++Animal maps average within the selected source group. Group maps give equal
++weight to contributing animals. Density color is log10(1 + density);
++occupancy color is linear 0–1. Slice choices describe a display selection,
++not full-volume anatomy or statistical significance. Source map values and
++previous figures remain unchanged; the figure destination must be new.
+ """
+ import argparse
+ from datetime import datetime, timezone
+@@ -32,11 +39,11 @@
+     readback = json.loads(readback_path.read_text(encoding="utf-8"))
+     definitions = {
+         "axon-density": ("software_verified_descriptive", "density", "axonLengthDensity",
+-                         "mean template axon length density [mm/mm³/selected neuron]"),
++                         "Axon-labelled length (mm/reference mm³/selected neuron)"),
+         "endpoint-density": ("software_verified_candidate_endpoints", "density", "candidateEndpointDensity",
+-                             "candidate endpoints/mm³/computable neuron"),
++                             "Candidate axon ends/reference mm³/eligible neuron"),
+         "endpoint-occupancy": ("software_verified_candidate_endpoints", "occupancy", "candidateEndpointOccupancy",
+-                               "fraction of computable neurons with candidate endpoints"),
++                               "Fraction of eligible neurons with ≥1 candidate axon end in the voxel"),
+     }
+     if (metric not in definitions or scope not in ("animal", "group", "both")
+             or cut_policy not in ("per-map", "shared", "fixed")):
+@@ -137,10 +144,10 @@
+         for row, (entry, indices, planes) in enumerate(prepared[start:start + count]):
+             selected = entry.get("n_selected", entry.get("selected_neurons", entry.get("n_neurons")))
+             identity = (f"animal {entry['AnimalID']}" if "AnimalID" in entry
+-                        else f"mean of {entry['n_animals']} animals")
+-            denominator = f"selected={selected}"
++                        else f"equal mean of {entry['n_animals']} animals")
++            denominator = f"selected neurons={selected}"
+             if endpoint:
+-                denominator += f"; computable={entry['n_computable']}"
++                denominator += f"; eligible neurons={entry['n_computable']}"
+             for column, axis in enumerate((2, 1, 0)):
+                 panel = axes[row, column]
+                 in_plane = [a for a in range(3) if a != axis]
+@@ -166,14 +173,15 @@
+                 panel.tick_params(labelsize=7)
+         color_label = units if metric == "endpoint-occupancy" else f"log10(1 + {units})"
+         figure.colorbar(plotted, ax=axes, shrink=.7, label=color_label)
+-        measurement = ("candidate graph endpoints; biological terminals unverified" if endpoint
+-                       else "all-axon length, including arbors")
++        measurement = ("candidate axon ends; biological terminals unverified" if endpoint
++                       else "axon-labelled segment length; includes branches")
+         cuts = ("Fixed common XYZ cuts" if cut_policy == "fixed" else
+                 "Shared cuts maximize summed displayed-map values per axis" if cut_policy == "shared" else
+                 "Cuts maximize summed values per axis; cuts differ by row")
+-        figure.suptitle("Matched anatomical MRI/map slices · NMT v2.1 symmetric\n"
++        figure.suptitle("Maps on population MRI slices · NMT v2.1 symmetric\n"
+                         f"{cuts}; {measurement}\n"
+-                        "Shared MRI contrast/color scale; coordinate origin and anatomy provisional; no t test", fontsize=10)
++                        "Descriptive values; registration and coordinate origin unverified\n"
++                        f"{'Eligible: ≥1 non-root axon-labelled leaf anywhere (including outside view).' if endpoint else 'Mean per selected neuron within each animal/source group.'}", fontsize=10)
+         figure.canvas.draw()
+         canvas = figure.canvas.get_renderer()
+         title_boxes = [panel.title.get_window_extent(canvas) for panel in axes.flat]
+@@ -220,13 +228,13 @@
+ 
+ if __name__ == "__main__":
+     parser = argparse.ArgumentParser(description=__doc__)
+-    parser.add_argument("--run", type=Path, required=True)
+-    parser.add_argument("--readback", type=Path, required=True)
+-    parser.add_argument("--output", type=Path, required=True)
+-    parser.add_argument("--metric", choices=("axon-density", "endpoint-density", "endpoint-occupancy"), default="axon-density")
+-    parser.add_argument("--scope", choices=("animal", "group", "both"), default="animal")
+-    parser.add_argument("--cut-policy", choices=("per-map", "shared", "fixed"), default="per-map")
+-    parser.add_argument("--slice-voxels", type=int, nargs=3, metavar=("X", "Y", "Z"))
++    parser.add_argument("--run", type=Path, required=True, help='Existing verified map run; source map values will not be changed.')
++    parser.add_argument("--readback", type=Path, required=True, help='Successful matching map-run review receipt.')
++    parser.add_argument("--output", type=Path, required=True, help='New destination for a separate figure variant.')
++    parser.add_argument("--metric", choices=("axon-density", "endpoint-density", "endpoint-occupancy"), default="axon-density", help='Display axon-labelled length density, candidate axon-end density, or endpoint occupancy (eligible-neuron fraction).')
++    parser.add_argument("--scope", choices=("animal", "group", "both"), default="animal", help='Animal maps or the equal average of contributing animal maps.')
++    parser.add_argument("--cut-policy", choices=("per-map", "shared", "fixed"), default="per-map", help='Choose separate cuts per map, shared data-selected cuts, or fixed common voxel indices.')
++    parser.add_argument("--slice-voxels", type=int, nargs=3, metavar=("X", "Y", "Z"), help='Explicit common X Y Z voxel indices when --cut-policy=fixed; these are not millimetres.')
+     args = parser.parse_args()
+     result = render(args.run, args.readback, args.output, metric=args.metric, scope=args.scope,
+                     cut_policy=args.cut_policy, slice_voxels=args.slice_voxels)
+--- a/group_analysis/evolution_20261008/figures/multimonkey_coarse_20261009_layout-v2/README.md
++++ b/group_analysis/evolution_20261008/figures/multimonkey_coarse_20261009_layout-v2/README.md
+@@ -1,4 +1,6 @@
+ # Multi-monkey maps: current matched-slice figures
++
++[Plain-language map terminology](../../../../docs/region_analysis_terminology.md). A candidate axon end is a non-root axon-labelled graph leaf, not a verified biological terminal. Endpoint-eligible neurons have at least one such leaf anywhere, including outside the reference field of view. Within each animal/source group, density is per eligible neuron (endpoints) or per selected neuron (axon length), and per reference mm³. Across animals, each contributing animal map has equal weight. Occupancy is the fraction of eligible neurons with at least one candidate end in a voxel, counting each neuron once.
+ 
+ 436 unique neurons across eight established animals. HumanINS, AtlasINS, Candidate and G_exploratory remain separate, each split by source hemisphere. These are unsmoothed descriptive maps; graph endpoints are not verified biological terminals. [Status report](../../reports/evolution_status_20261009.md) · [reproduction workflow](../../reports/mapping_workflow_20261009.md) · [separate additional candidates](../additional_candidates_20261009/README.md).
+ 
+--- a/group_analysis/evolution_20261008/figures/additional_candidates_20261009/README.md
++++ b/group_analysis/evolution_20261008/figures/additional_candidates_20261009/README.md
+@@ -1,4 +1,6 @@
+ # Additional Unknown/near-INS candidate previews
++
++[Plain-language map terminology](../../../../docs/region_analysis_terminology.md). A candidate axon end is a non-root axon-labelled graph leaf, not a verified biological terminal. Endpoint-eligible neurons have at least one such leaf anywhere, including outside the reference field of view. Within each animal/source group, density is per eligible neuron (endpoints) or per selected neuron (axon length), and per reference mm³. Across animals, each contributing animal map has equal weight. Occupancy is the fraction of eligible neurons with at least one candidate end in a voxel, counting each neuron once.
+ 
+ 26 unique neurons across five established animals, with no neuron or source-path overlap with the [main 436](../multimonkey_coarse_20261009_layout-v2/README.md). **OriginCandidate** contains 15 neurons whose INS lookup changes between coordinate-origin policies. **NearINS** contains 11 neurons with two non-INS lookups but a corrected distance within 2 mm of another established INS anchor. Nearby numeric IDs alone do not select a neuron. These are retrieval classifications; original labels remain unchanged and no new INS anatomy is accepted.
+ 

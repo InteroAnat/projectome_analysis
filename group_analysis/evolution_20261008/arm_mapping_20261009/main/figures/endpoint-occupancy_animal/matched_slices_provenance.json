@@ -1,0 +1,1094 @@
+{
+  "status": "rendered_and_png_decoded",
+  "created_utc": "2026-10-08T23:22:09.683621+00:00",
+  "renderer_sha256": "06cf9007744286fc222ef5e4d18ca931f08ef1ce90817a62b0681b9bc461a836",
+  "run_provenance_sha256": "4007fe92d5e8d96471779110530052e4920183849a0a195eed12263980444b0a",
+  "readback_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints_review\\endpoint_run_readback.json",
+  "readback_sha256": "89f063fabcfefeeb27cd4854ab6d21e444fec85a8e640e9a8ba6ebb13c8ec3dd",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "background": "matching individual NMT MRI slice; no depth projection",
+  "grayscale_window": {
+    "brain_mask_percentiles": [
+      1,
+      99.5
+    ],
+    "vmin": 75.0,
+    "vmax": 920.0
+  },
+  "metric": "endpoint-occupancy",
+  "scope": "animal",
+  "units": "Fraction of eligible neurons with \u22651 candidate axon end in the voxel",
+  "cut_policy": "fixed",
+  "source_region_labels": {
+    "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\main\\label_map.csv",
+    "sha256": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "atlas": "ARM",
+    "level": 6,
+    "atlas_sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+    "atlas_key_sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+    "atlas_path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+    "atlas_key_path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+    "names": [
+      {
+        "Subregion": "ARM6_0_L",
+        "ARMLevel": "6",
+        "ARMIndex": "0",
+        "ARMAbbreviation": "",
+        "ARMFullName": "Atlas background",
+        "Hemisphere": "L",
+        "DisplayLabel": "Atlas background (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "zero_unassigned"
+      },
+      {
+        "Subregion": "ARM6_0_R",
+        "ARMLevel": "6",
+        "ARMIndex": "0",
+        "ARMAbbreviation": "",
+        "ARMFullName": "Atlas background",
+        "Hemisphere": "R",
+        "DisplayLabel": "Atlas background (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "zero_unassigned"
+      },
+      {
+        "Subregion": "ARM6_1004_L",
+        "ARMLevel": "6",
+        "ARMIndex": "1004",
+        "ARMAbbreviation": "SL_Cl",
+        "ARMFullName": "SL_claustrum",
+        "Hemisphere": "L",
+        "DisplayLabel": "SL_claustrum (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_1504_R",
+        "ARMLevel": "6",
+        "ARMIndex": "1504",
+        "ARMAbbreviation": "SR_Cl",
+        "ARMFullName": "SR_claustrum",
+        "Hemisphere": "R",
+        "DisplayLabel": "SR_claustrum (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_228_L",
+        "ARMLevel": "6",
+        "ARMIndex": "228",
+        "ARMAbbreviation": "CL_Ia/Id",
+        "ARMFullName": "CL_agranular_and_dysgranular_insula",
+        "Hemisphere": "L",
+        "DisplayLabel": "CL_agranular_and_dysgranular_insula (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_229_L",
+        "ARMLevel": "6",
+        "ARMIndex": "229",
+        "ARMAbbreviation": "CL_Ig",
+        "ARMFullName": "CL_granular_insula",
+        "Hemisphere": "L",
+        "DisplayLabel": "CL_granular_insula (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_41_L",
+        "ARMLevel": "6",
+        "ARMIndex": "41",
+        "ARMAbbreviation": "CL_Iai",
+        "ARMFullName": "CL_intermediate_agranular_insula_area",
+        "Hemisphere": "L",
+        "DisplayLabel": "CL_intermediate_agranular_insula_area (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_42_L",
+        "ARMLevel": "6",
+        "ARMIndex": "42",
+        "ARMAbbreviation": "CL_Ial",
+        "ARMFullName": "CL_lateral_agranular_insula_area",
+        "Hemisphere": "L",
+        "DisplayLabel": "CL_lateral_agranular_insula_area (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_43_L",
+        "ARMLevel": "6",
+        "ARMIndex": "43",
+        "ARMAbbreviation": "CL_Iapl",
+        "ARMFullName": "CL_posterior_lateral_agranular_insula_area",
+        "Hemisphere": "L",
+        "DisplayLabel": "CL_posterior_lateral_agranular_insula_area (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_48_L",
+        "ARMLevel": "6",
+        "ARMIndex": "48",
+        "ARMAbbreviation": "CL_G",
+        "ARMFullName": "CL_gustatory_cortex",
+        "Hemisphere": "L",
+        "DisplayLabel": "CL_gustatory_cortex (Left)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_541_R",
+        "ARMLevel": "6",
+        "ARMIndex": "541",
+        "ARMAbbreviation": "CR_Iai",
+        "ARMFullName": "CR_intermediate_agranular_insula_area",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_intermediate_agranular_insula_area (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_542_R",
+        "ARMLevel": "6",
+        "ARMIndex": "542",
+        "ARMAbbreviation": "CR_Ial",
+        "ARMFullName": "CR_lateral_agranular_insula_area",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_lateral_agranular_insula_area (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_548_R",
+        "ARMLevel": "6",
+        "ARMIndex": "548",
+        "ARMAbbreviation": "CR_G",
+        "ARMFullName": "CR_gustatory_cortex",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_gustatory_cortex (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_549_R",
+        "ARMLevel": "6",
+        "ARMIndex": "549",
+        "ARMAbbreviation": "CR_PrCO",
+        "ARMFullName": "CR_precentral_operular_area",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_precentral_operular_area (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_595_R",
+        "ARMLevel": "6",
+        "ARMIndex": "595",
+        "ARMAbbreviation": "CR_SII",
+        "ARMFullName": "CR_secondary_somatosensory_cortex",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_secondary_somatosensory_cortex (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_728_R",
+        "ARMLevel": "6",
+        "ARMIndex": "728",
+        "ARMAbbreviation": "CR_Ia/Id",
+        "ARMFullName": "CR_agranular_and_dysgranular_insula",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_agranular_and_dysgranular_insula (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      },
+      {
+        "Subregion": "ARM6_729_R",
+        "ARMLevel": "6",
+        "ARMIndex": "729",
+        "ARMAbbreviation": "CR_Ig",
+        "ARMFullName": "CR_granular_insula",
+        "Hemisphere": "R",
+        "DisplayLabel": "CR_granular_insula (Right)",
+        "AtlasSHA256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "AtlasKeySHA256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "AtlasPath": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "AtlasKeyPath": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "SourceARMStatus": "mapped"
+      }
+    ]
+  },
+  "unresolved_source_locations": "Separate QC sheets; never treated as anatomical ARM regions",
+  "map_display": "linear 0\u20131",
+  "smoothing": "none; source maps unchanged",
+  "common_display_vmax": 1.0,
+  "display_upper_percentile": 99.5,
+  "slice_selection": "explicit common XYZ voxel indices",
+  "fixed_slice_voxels_xyz": [
+    56,
+    200,
+    87
+  ],
+  "selection_limit": "Display-selected slices do not establish full-volume targets or biological absence",
+  "slices": [
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_0_L",
+      "source_display_label": "Atlas background (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_0_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "61fc01f388202e79522dff8f6584f55333e6c3983eb24d52ad6d163249635e3b",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_1004_L",
+      "source_display_label": "SL_claustrum (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_1004_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "8029e47977173e64bc37371c95ff1ca92016269e2dd40c996e6a4003bde717f8",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_228_L",
+      "source_display_label": "CL_agranular_and_dysgranular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_228_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "aa8c14f0558a37e4a9f550fc9a8301d699cd110681bd51803a4dce674c60145a",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_42_L",
+      "source_display_label": "CL_lateral_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_42_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "19c804bac65f9f0e81c376d8c48112b872efaa532f91826ed69d3e80129d4bb6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_48_L",
+      "source_display_label": "CL_gustatory_cortex (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_48_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "c9ddf18223a8868873c610876b5a9dae4ad527ec807e1cefa3216a7cd73b573d",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_542_R",
+      "source_display_label": "CR_lateral_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_542_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "543ce861a082a6fc0edb4795599a790828581e6b345a12e877fe0969efd6f86d",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_549_R",
+      "source_display_label": "CR_precentral_operular_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_549_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "d31d41a68116d0d6b7d1cfd03b8b8dfccee076084406d792ea7ebe51625a0ea6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_729_R",
+      "source_display_label": "CR_granular_insula (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_729_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "634e14f913ddff5cd95d6400c05803ab1ce1097628913b9c8ede166412c96bd1",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_229_L",
+      "source_display_label": "CL_granular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-605_space-NMTv2p1_region-ARM6_229_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "50a2c838412832583330502a2af5e8280242afa92267d2e9a09b047dd85f5196",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_729_R",
+      "source_display_label": "CR_granular_insula (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-605_space-NMTv2p1_region-ARM6_729_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "3e651d82e034ac00e4ec33bfb966ae6e53ca7664346577ce0d1ff0caf075cf4e",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_228_L",
+      "source_display_label": "CL_agranular_and_dysgranular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_228_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "0ea789639739fe25d1979d5286685714b2c62ce4e0dee37ec406824d7f250362",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_48_L",
+      "source_display_label": "CL_gustatory_cortex (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_48_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "f069a71dd0f9be7935f42e43373925e66949dd460ccb9cf720493a20cfac8ece",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_548_R",
+      "source_display_label": "CR_gustatory_cortex (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_548_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "e4eb4d214c68fafdebb674d955aeab1bc5fdea021698a97451a5c33f3e8d23ab",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_728_R",
+      "source_display_label": "CR_agranular_and_dysgranular_insula (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_728_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "f69bed52e8be7f5bc278fad57491dc293470412acee4336d16f42dc23b8a9858",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_0_L",
+      "source_display_label": "Atlas background (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_0_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "cb2602bcf29e80140c2aae316d2abb8bd197cb273adb923976673c6bf05479b4",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_0_R",
+      "source_display_label": "Atlas background (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_0_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "3079016d7aa8ceac9e232f9987c0b978531f55aeb92db0fb45d727b0e9bbfea6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_1004_L",
+      "source_display_label": "SL_claustrum (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_1004_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "50bf4ce25e7e62ac1cdfc17fd9fda3b013ff87bf24b60632832c6f8b34537ee3",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_1504_R",
+      "source_display_label": "SR_claustrum (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_1504_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "cf131d417fa065d33c6ba748f303fc4973ba15e395cc4c0fe63ad1d6da82ab06",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_229_L",
+      "source_display_label": "CL_granular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_229_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "e9aa00c3ff88447461fc40adcd26e40b63e440c444eabc54af25c55e0915c3c6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_41_L",
+      "source_display_label": "CL_intermediate_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_41_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "87ea21b345255c8ee1a9297292a1fecf75022e53028bff378c8f02101e665941",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_42_L",
+      "source_display_label": "CL_lateral_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_42_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "f8d96edbf7b1863ba61c563094b96666f9896572f307045db8ae4ed06736bd12",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_541_R",
+      "source_display_label": "CR_intermediate_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_541_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "e337a3b4a335f8b56fa9e085b5f0e2c714f0375ceeafebc2335e1c38f06e355a",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_542_R",
+      "source_display_label": "CR_lateral_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_542_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "4cb5ae0d8ddb889f6296b1754612d9b07125f11cda8000c76966745c0e028421",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_595_R",
+      "source_display_label": "CR_secondary_somatosensory_cortex (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_595_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "382c8e3ee9a26c65cbf33fe59b3b0d1a1f155018112cabf2b67557960e0fed59",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_229_L",
+      "source_display_label": "CL_granular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_229_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "d21e09d7f26bd4bf6fdc1f835882aea3b94054231af4981239f5b2e3b2f2ace0",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_48_L",
+      "source_display_label": "CL_gustatory_cortex (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_48_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "a91d8d5dbeff56c950d1fbde0fbf8101db3a77ec838df5d40c058b1652b831ad",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_548_R",
+      "source_display_label": "CR_gustatory_cortex (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_548_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "17ded5b0d9291b46dd1de7e99fa78fb927d342cb7941fcd998b5d72bf8c4589b",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_0_L",
+      "source_display_label": "Atlas background (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_0_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "50a89753a3ae461577a8f6f53defafad8fda060e230db0bf2928b053562abfd7",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_0_R",
+      "source_display_label": "Atlas background (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_0_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "3ceeb125b6efe6bbfecd8af612be68c34ccde2931b9b71c19bd73018663a9cd1",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_228_L",
+      "source_display_label": "CL_agranular_and_dysgranular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_228_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "1380e6e8790687e028d8c1e3545280b0c8566b89372742ed3c393bcf61679d1f",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_229_L",
+      "source_display_label": "CL_granular_insula (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_229_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "3683edec145edcd96cfe7854fc68b2a3e324e8c66b2bfdb113373636da90ae48",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_41_L",
+      "source_display_label": "CL_intermediate_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_41_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "69a709473755ed7db268ee5afa30d916ef70a3081e374d81593714e6c8bd4805",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_42_L",
+      "source_display_label": "CL_lateral_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_42_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "456e81475f1c84acffcf93ee909d294149e5825b7fa9a3bff723a45c59b54453",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_541_R",
+      "source_display_label": "CR_intermediate_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_541_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "d4130a705d72443f7878ab2f059aa254164f090e0d7ed97bf1a433a29daf0453",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_542_R",
+      "source_display_label": "CR_lateral_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_542_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "e2f892ce84f30765e33649b3dc3b663d5aeea362d2e91f4e86d9fc669886bbdc",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_549_R",
+      "source_display_label": "CR_precentral_operular_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_549_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "4907d15c4adb61b2e06679c95b00d72d0e658923e5769347259791b06c92b8df",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_728_R",
+      "source_display_label": "CR_agranular_and_dysgranular_insula (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_728_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "84647547252a668bd4eaf0a380df29fcc3a819996083966afce73fbf7f252385",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_42_L",
+      "source_display_label": "CL_lateral_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_42_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "e8a8a3dbc51508ee5a5a8153d9ddcd3547c478ed4d11d5e10f1c6ebd84c5e6c4",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_43_L",
+      "source_display_label": "CL_posterior_lateral_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_43_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "3aab7aad5835859f4ff28033e2e0e1a8b856edf8eb7c27bb2018f736414ccb6b",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_541_R",
+      "source_display_label": "CR_intermediate_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_541_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "26c9e5fc6985f9912dab8daed4916ce4bcb29ac9e2798a46e553f3dc619398fa",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_549_R",
+      "source_display_label": "CR_precentral_operular_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_549_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "d08efd4f1a41ef6a5332fbd5db4b7b0ed075efa304c6e1dc2eab0012505978c7",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_0_L",
+      "source_display_label": "Atlas background (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_0_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "ce34f3baf19356a3092e258b2c87b4642677531ffe74990c01d751cfa71b76fd",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_0_R",
+      "source_display_label": "Atlas background (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_0_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "200e746e087c0f73aa6b4d2b60e56f1a5963b65409f9ca276c10fc23ec8fe6ad",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_1004_L",
+      "source_display_label": "SL_claustrum (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_1004_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "a738270212e05ae009d1f633c122d4f3d473c7a5147348d5480caf70f6864c87",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_1504_R",
+      "source_display_label": "SR_claustrum (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_1504_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "65bc365854347e0e80009ff2501f128ec6216e25e35a0aff5cae61d449e7aea6",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_42_L",
+      "source_display_label": "CL_lateral_agranular_insula_area (Left)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_42_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "a9fcd5a5231e467329435aa661da05cd782d906c6cc1760bd0d3e1e5a3586e45",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_542_R",
+      "source_display_label": "CR_lateral_agranular_insula_area (Right)",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_542_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "map_sha256": "c977d85e3f2303e670a168c84d9e7bba41cd7f4a744b55baa17a932807948be0",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-01.png",
+      "sha256": "a86679f4f0f4de6438584c7d9cb6e5288e127652425aba2857b63252c5b5e2ca",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_1004_L",
+        "ARM6_228_L",
+        "ARM6_42_L",
+        "ARM6_48_L"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-02.png",
+      "sha256": "84a90584fb65842741d4c2c4c42a7c414d01e7381e90e9d1181610cdc3fa2892",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_542_R",
+        "ARM6_549_R",
+        "ARM6_729_R",
+        "ARM6_229_L"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-03.png",
+      "sha256": "1f1734c088d2faae7240e061d9b44fac72574743aba28aafcc3be9f05afd4ee2",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_729_R",
+        "ARM6_228_L",
+        "ARM6_48_L",
+        "ARM6_548_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-04.png",
+      "sha256": "58a1e1009103f2708193d0e39482f9343b0dc33daf8b8c178945e3d5d5b6b44a",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_728_R",
+        "ARM6_1004_L",
+        "ARM6_1504_R",
+        "ARM6_229_L"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-05.png",
+      "sha256": "127f489bd29eb50436009037e3ccc9aea4a9e143f404629f67a8a5c43e4b2aff",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_41_L",
+        "ARM6_42_L",
+        "ARM6_541_R",
+        "ARM6_542_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-06.png",
+      "sha256": "f48cd8c21a45d5aab970f206a5744239624753a5ed803b95b8efb197d4ec228d",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_595_R",
+        "ARM6_229_L",
+        "ARM6_48_L",
+        "ARM6_548_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-07.png",
+      "sha256": "a075ac4833228cec4114c170cb01d725debd8d4b38fa90cfaebdb2301d2b9859",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_228_L",
+        "ARM6_229_L",
+        "ARM6_41_L",
+        "ARM6_42_L"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-08.png",
+      "sha256": "757ec4c0662bb8cdbcbb24c6aa79cdb3d74eaac9de11ad0908e497927931f643",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_541_R",
+        "ARM6_542_R",
+        "ARM6_549_R",
+        "ARM6_728_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-09.png",
+      "sha256": "8ab1f08952378d16f8f2a5814843a850fdc1753635706960efd5494391689238",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_42_L",
+        "ARM6_43_L",
+        "ARM6_541_R",
+        "ARM6_549_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_matchedSlices_page-10.png",
+      "sha256": "fd2882f2d58520cf10c8b9e9faa23fbfea55a69d16aa52514f15b530a0d30541",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "mapped",
+      "source_groups": [
+        "ARM6_1004_L",
+        "ARM6_1504_R",
+        "ARM6_42_L",
+        "ARM6_542_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_sourceLocation-unresolvedQC_matchedSlices_page-01.png",
+      "sha256": "4a12f85b88c150cdf5c4f96c0453c4bc3213bb88b7637cc7445c6667e29aa61b",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "source_location_status": "unresolved",
+      "source_groups": [
+        "ARM6_0_L",
+        "ARM6_0_L",
+        "ARM6_0_R",
+        "ARM6_0_L"
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointOccupancy_sourceLocation-unresolvedQC_matchedSlices_page-02.png",
+      "sha256": "3bc51d5c5561c47493314e807a11005ca689d8585292fa7b5a631d4afa5ae33d",
+      "pixels": [
+        1690,
+        1248
+      ],
+      "source_location_status": "unresolved",
+      "source_groups": [
+        "ARM6_0_R",
+        "ARM6_0_L",
+        "ARM6_0_R"
+      ],
+      "panel_title_overlap_check": "passed"
+    }
+  ],
+  "source_data_modified": false,
+  "anatomical_acceptance": "not established",
+  "terminal_site_measurement": "candidate graph endpoints only"
+}

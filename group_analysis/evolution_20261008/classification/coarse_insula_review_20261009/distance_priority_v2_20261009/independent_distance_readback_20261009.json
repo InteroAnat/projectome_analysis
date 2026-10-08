@@ -1,0 +1,128 @@
+{
+  "observed_at": "2026-10-09T01:04:14.518334+08:00",
+  "status": "passed",
+  "scope": "Independent scalar Euclidean OTHER-anchor and numeric-ID retrieval readback; exact old-row/source/map flag preservation; no graph recomputation or scientific acceptance.",
+  "rows_checked": 8746,
+  "established_anchors": 358,
+  "self_anchors_after_correction": 0,
+  "prior_queue": 563,
+  "corrected_queue": 559,
+  "removed_exact_UIDs": [
+    "252385|019.swc",
+    "252790|030.swc",
+    "252790|100.swc",
+    "252790|101.swc"
+  ],
+  "map_membership_changed": false,
+  "protected_source_and_group_fields": [
+    "atlas_INS",
+    "atlas_G",
+    "potential_INS_candidate",
+    "Henry_coarse_INS_visual_evidence",
+    "exclusive_map_group",
+    "map_ready",
+    "map_selected_source",
+    "map_selected_sha256",
+    "registry_animal",
+    "animal_aggregation_eligible",
+    "original_manual_rows",
+    "reviewed_region",
+    "reviewed_status",
+    "portal_region"
+  ],
+  "prior_bound_delivery_files": [
+    {
+      "file": "all_neuron_review_manifest.csv",
+      "match": true
+    },
+    {
+      "file": "case_and_source_qc_supplement_20261009.json",
+      "match": true
+    },
+    {
+      "file": "graph_source_readback.csv",
+      "match": true
+    },
+    {
+      "file": "independent_readback_20261009.json",
+      "match": true
+    },
+    {
+      "file": "map_ready_sources.csv",
+      "match": true
+    },
+    {
+      "file": "native_case_pair_supplement_20261009.csv",
+      "match": true
+    },
+    {
+      "file": "priority_review_manifest.csv",
+      "match": true
+    },
+    {
+      "file": "priority_shortlist_20261009.md",
+      "match": true
+    },
+    {
+      "file": "provenance.json",
+      "match": true
+    },
+    {
+      "file": "README.md",
+      "match": true
+    },
+    {
+      "file": "review_protocol_20261009.md",
+      "match": true
+    }
+  ],
+  "bound_map_inputs": [
+    {
+      "directory": "multimonkey_coarse_20261009",
+      "file": "projection_manifest.csv",
+      "match": true
+    },
+    {
+      "directory": "multimonkey_coarse_20261009",
+      "file": "selection_ledger.csv",
+      "match": true
+    },
+    {
+      "directory": "multimonkey_coarse_20261009",
+      "file": "preparation_provenance.json",
+      "match": true
+    },
+    {
+      "directory": "multimonkey_coarse_20261009_v2",
+      "file": "projection_manifest.csv",
+      "match": true
+    },
+    {
+      "directory": "multimonkey_coarse_20261009_v2",
+      "file": "selection_ledger.csv",
+      "match": true
+    },
+    {
+      "directory": "multimonkey_coarse_20261009_v2",
+      "file": "preparation_provenance.json",
+      "match": true
+    }
+  ],
+  "cached_source_files_rehashed": 2480,
+  "cached_source_byte_changes": [],
+  "canonical_matches": {
+    "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx": true,
+    "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined.xlsx": true,
+    "D:\\projectome_analysis\\R_analysis\\tables\\somainfo_Henry_2026.04.03.xlsx": true,
+    "D:\\projectome_analysis\\neuron_tables\\251637_INS_HE.xlsx": true
+  },
+  "errors": [],
+  "scientific_acceptance": false,
+  "source_graph_recomputations": 0,
+  "outputs": {
+    "all_neuron_review_manifest_distance_corrected.csv": "4145991757fae32a820de4294fa3073c94371708dc170aca42382b0a299d5533",
+    "correction_provenance.json": "400c812278c6726e3eaa1cbcf94d5d56dcf4afd19a7c90a7f14daa89fb5e65b9",
+    "priority_review_manifest_distance_corrected.csv": "bb30713940c6934a5ad06870676e3eac6d07997a80cb2a09ecf4345d18d01e13",
+    "README.md": "b470e5142f5744526d2766daf9cae6119ef5f5e4597c56cfdcc735e7c745dff0"
+  }
+}

@@ -1,0 +1,879 @@
+--- a/group_analysis/R_analysis/v2_combined_primary_pipeline.R
++++ b/group_analysis/R_analysis/v2_combined_primary_pipeline.R
+@@ -1,5 +1,17 @@
++# Metric names (2026-10-09): retained length is the legacy reconstruction
++# measurement in its declared source units, with compartment/terminal-target
++# semantics unverified. Display strength = log10(retained length + 1).
++# A log-scaled length share divides that strength by the sum over selected
++# features; hybrid L3/L6 features overlap and are not a raw-length budget.
++# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++# hemisphere index. Zero-denominator individual balances are unavailable.
++# Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
+ # Methods audit 2026-10-09: labels corrected; numerical operations unchanged.
+-# prop = normalized log-strength share; hybrid L3/L6 features overlap.
++# prop = share of log-scaled length; hybrid L3/L6 features overlap.
+ # _balanced IDs denote region restrictions, not animal balancing.
+ # OLS slope p-values are ordinary t-test p-values; animal dependence is unmodeled.
+ inp <- knitr::current_input()
+@@ -168,10 +180,10 @@
+ metric_spec <- tibble::tribble(
+   ~metric,                    ~description,
+   "frac_projecting",          "fraction of source-side neurons with prop > 0 (Fisher's exact)",
+-  "mean_prop",                "mean normalized ipsi log-strength share (neuron-level Wilcoxon; animal dependence unmodeled)",
++  "mean_prop",                "mean ipsilateral share of log-scaled length (neuron-level Wilcoxon; animal dependence unmodeled)",
+   "cliffs_delta",             "rank-based effect size",
+   "log_odds_presence",        "log-odds ratio of presence",
+-  "regression_slope",         "OLS slope of normalized log-strength share ~ soma_pos; ordinary t-test p, animal dependence unmodeled"
++  "regression_slope",         "OLS slope of share of log-scaled length ~ soma_pos; ordinary t-test p, animal dependence unmodeled"
+ )
+ write.csv(strata_spec, file.path(OUT_SPEC, "strata_spec.csv"), row.names = FALSE)
+ write.csv(metric_spec, file.path(OUT_SPEC, "metric_spec.csv"), row.names = FALSE)
+@@ -362,10 +374,10 @@
+     label = ifelse(mean_combined > 0.005,
+                    sprintf("%.2f\nn=%d", mean_combined, n_total), sprintf("n=%d", n_total))
+   ), size = 2.6, color = "black") +
+-  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean log-strength share\n(L+R)") +
++  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean log-scaled length share\n(L+R)") +
+   labs(
+     title = "F1A. Functional-domain projection (Gou 6 panels, L+R)",
+-    subtitle = "Normalized ipsi log-strength shares; overlapping L3/L6 features; cells sum assigned feature shares.",
++    subtitle = "Ipsilateral shares of log-scaled length; overlapping L3/L6 features; cells sum assigned feature shares.",
+     caption = "Domain→column map: stats/01_gou_domain_column_map.csv (v3 table, Gou ontology, L6 interoceptive→Sensory).",
+     x = NULL, y = "Source (All insula pooled, then sub-region)"
+   ) +
+@@ -496,7 +508,7 @@
+   geom_text(aes(
+     label = ifelse(mean_combined > 0.005, sprintf("%.2f", mean_combined), "")
+   ), size = 2.4, color = "black") +
+-  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean log-strength share\n(L+R)") +
++  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean log-scaled length share\n(L+R)") +
+   labs(
+     title = "F2. Sub-region x key target (L+R combined)",
+     subtitle = "L3 extrinsic targets, then L6 intra-insula; rows IAL→IDV.",
+@@ -628,7 +640,7 @@
+                    sprintf("%.2f\nn=%d", mean_prop_combined, n_with_proj),
+                    "")
+   ), size = 2.4, color = "black") +
+-  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean log-strength share\n(L+R)") +
++  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean log-scaled length share\n(L+R)") +
+   scale_alpha_manual(values = c(`TRUE` = 1, `FALSE` = 0.25), guide = "none") +
+   labs(
+     title = "F3A. Intra-insula source x target (L+R combined)",
+@@ -741,7 +753,7 @@
+       title = "F4. Interoceptive-gradient regressions (per-side fits)",
+       subtitle = "OLS lines per facet; slopes and p in stats/04_interoceptive_gradient_regressions.csv",
+       x = ap_axis_lbl,
+-      y = "Normalized log-strength share to target (L6)"
++      y = "Normalized log-scaled length share to target (L6)"
+     ) +
+     theme_minimal(base_size = 10)
+   ggsave(file.path(OUT_FIGS, "F4_interoceptive_gradient.png"), fig4,
+@@ -749,8 +761,8 @@
+ }
+ 
+ # ------------------------------------------------------------
+-# P8 - F5 continuous per-neuron Ibias on projection STRENGTH
+-# Use Projection_Length_ipsi vs contra; if both zero we treat as bias = -1 (all ipsi by default)
++# P8 - F5 continuous per-neuron Ibias on retained regional lengths
++# Use Projection_Length_ipsi vs contra; if both totals are zero, Ibias is unavailable (NA)
+ # ------------------------------------------------------------
+ cat("[v2] F5 per-neuron Ibias (continuous)\n")
+ len_ipsi  <- rowSums(m_len_l6, na.rm = TRUE)
+@@ -793,9 +805,9 @@
+   scale_color_manual(values = c(L = "#0072b2", R = "#c1272d"), name = "Side") +
+   ylim(-1.05, 1.05) +
+   labs(
+-    title = "F5. Per-neuron continuous legacy voxel-length hemispheric bias",
++    title = "F5. Individual ipsi/contra balance of retained length",
+     subtitle = "Ibias = (contra−ipsi)/(contra+ipsi) on legacy regional voxel lengths (unverified compartments/terminal-target selection); −1 = purely ipsilateral.",
+-    x = ap_axis_lbl, y = "Hemispheric bias (Ibias)"
++    x = ap_axis_lbl, y = "Retained length balance (Ibias)\n-1 ipsi; +1 contra"
+   ) +
+   theme_minimal(base_size = 10)
+ ggsave(file.path(OUT_FIGS, "F5_per_neuron_ibias.png"), fig5,
+@@ -915,11 +927,11 @@
+     coord_flip() +
+     facet_grid(stratum ~ ., scales = "free_y", space = "free_y", switch = "y") +
+     scale_x_discrete(labels = function(x) sub("^.*__", "", x)) +
+-    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Dir") +
++    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Higher source-group mean") +
+     labs(
+       title = title_txt,
+       subtitle = "BH across targets within each stratum; nL/nR in stats CSV.",
+-      x = "Target (region@layer)", y = "Laterality index (L−R)/(L+R)"
++      x = "Target (region@layer)", y = "Left vs right SOURCE contrast\n(mean_L-mean_R)/(mean_L+mean_R+eps)"
+     ) +
+     theme_minimal(base_size = 10) +
+     theme(
+@@ -931,11 +943,11 @@
+ 
+ g6b <- make_li_bars(
+   dplyr::filter(li_sig, receipt_class == "bilateral_receiving"),
+-  "F6. Bilateral-receiving targets (preferred LI interpretation)"
++  "F6. Targets with evidence from both source groups"
+ )
+ g6c <- make_li_bars(
+   dplyr::filter(li_sig, receipt_class == "one_side_only_or_extreme"),
+-  "F6 supplement. One-sided / extreme receipt (QC; not symmetric sampling)"
++  "F6 supplement. Evidence from one source group only (sampling QC)"
+ )
+ ggsave(
+   file.path(OUT_FIGS, "F6_projection_LI_bilateral_receiving.png"),
+@@ -959,9 +971,9 @@
+   geom_boxplot(width = 0.18, outlier.size = 0.5, alpha = 0.9) +
+   geom_hline(yintercept = 0, linetype = 2, linewidth = 0.35) +
+   labs(
+-    title = "F6. Target-level LI distributions by stratum family",
++    title = "F6. Left vs right source contrast across targets",
+     subtitle = "Includes all-neurons and per-subregion strata with both L and R somas.",
+-    x = NULL, y = "Laterality index"
++    x = NULL, y = "Left vs right SOURCE contrast"
+   ) +
+   theme_minimal(base_size = 10) +
+   theme(legend.position = "none")
+@@ -1025,10 +1037,10 @@
+       fig10 <- ggplot(f10_long, aes(target, ap_label, fill = mean_prop)) +
+         geom_tile(color = "grey85") +
+         geom_text(aes(label = sprintf("%.2f", mean_prop)), size = 2.8, color = "grey15") +
+-        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nlog-strength share") +
++        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nlog-scaled length share") +
+         labs(
+           title = "F10. Interoceptive targets vs soma AP (octiles)",
+-          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); L6 row-normalized mean prop.",
++          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); Mean ipsilateral log-scaled length shares at L6.",
+           x = "Target", y = "Soma AP (posterior ↑ anterior)"
+         ) +
+         theme_minimal(base_size = 9) +
+@@ -1698,7 +1710,7 @@
+     nrow(summ)
+   ),
+   "",
+-  "**`p_combo` policy.** Extra-insula targets from L3; intra-insula from L6 (L3 insula fallback if no L6 column). Row-normalized log-strength shares per neuron; overlapping spatial features.",
++  "**`p_combo` policy.** Extra-insula targets from L3; intra-insula from L6 (L3 insula fallback if no L6 column). Row-share of log-scaled lengths per neuron; overlapping spatial features.",
+   "",
+   mantel_txt,
+   "",
+@@ -1706,7 +1718,7 @@
+   "",
+   "## F1A — `F1A_subregion_x_gou_panels_combined.png`",
+   "",
+-  "**What.** Mean summed normalized log-strength share (L+R pooled) assigned to each Gou *functional domain* (six columns), by insula source sub-region and **All_insula** row.",
++  "**What.** Mean summed share of log-scaled length (L+R pooled) assigned to each Gou *functional domain* (six columns), by insula source sub-region and **All_insula** row.",
+   "**Stats.** `01_subregion_x_gou_panels.csv`, `01_gou_domain_column_map.csv` (column→domain mapping). Cliff's *d* (L vs R) with BH within row.",
+   "",
+   "## F1B — `F1B_subregion_x_gou_panels_LRcontrast.png`",
+@@ -1724,7 +1736,7 @@
+   "",
+   "## F3A–C — intra-insula heatmaps",
+   "",
+-  "**What.** Normalized L6 log-strength share (A), prevalence (B), Cliff's *d* L vs R (C, inferential rows). Column order: Ward.D2 on prevalence.",
++  "**What.** Normalized L6 log-scaled length share (A), prevalence (B), Cliff's *d* L vs R (C, inferential rows). Column order: Ward.D2 on prevalence.",
+   "**Stats.** `03_intra_insula_meanprop.csv`, `03_intra_insula_prevalence.csv`, `03_intra_insula_full.csv`.",
+   "",
+   "## F4 — `F4_interoceptive_gradient.png`",
+@@ -1734,12 +1746,12 @@
+   "",
+   "## F5 — `F5_per_neuron_ibias.png`",
+   "",
+-  "**What.** Ibias = (contra − ipsi)/(contra + ipsi) **total axon length** (L6 length sheets) vs soma AP.",
++  "**What.** Ibias = (contra − ipsi)/(contra + ipsi) retained regional length (L6 length sheets; source units) vs soma AP.",
+   "**Stats.** `05_per_neuron_ibias.csv`.",
+   "",
+-  "## F6 — projection laterality index",
+-  "",
+-  "**What.** Target-level **composition LI** = (mean_L − mean_R)/(mean_L + mean_R) on group-mean `p_combo` proportions; Wilcoxon L vs R per target, BH within stratum.",
++  "## F6 — left vs right source contrast",
++  "",
++  "**What.** Target-level **left vs right source contrast (LI)** = (mean_L − mean_R)/(mean_L + mean_R) on group means of normalized log-scaled retained length shares; Wilcoxon L vs R per target, BH within stratum.",
+   "**Panels.** `F6_projection_LI_bilateral_receiving.png` (both sides receive); `F6_projection_LI_one_side_or_extreme.png` (QC); `F6_projection_LI_violin_by_stratum_family.png` (distribution).",
+   "**Stats.** `06b_projection_laterality_index_all_targets.csv` (`n_L`, `n_R` per stratum); BH-significant subset in `06b_projection_laterality_index_BH_significant.csv` when non-empty.",
+   "",
+@@ -1769,7 +1781,7 @@
+   "",
+   "## F10 — `F10_interoceptive_AP_octile_heatmap.png`",
+   "",
+-  "**What.** Mean normalized L6 log-strength share to interoceptive targets by soma AP octile (NII-Y).",
++  "**What.** Mean normalized L6 log-scaled length share to interoceptive targets by soma AP octile (NII-Y).",
+   "**Stats.** `10_ap_octile_interoceptive_profile.csv`.",
+   "",
+   "## P13 flatmap — `../flatmap_overlays/P13_flatmap_with_LR_context_strip.png`",
+--- a/group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
++++ b/group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
+@@ -19,6 +19,20 @@
+     df_print: paged
+ ---
+ 
++
++> Metric names (2026-10-09): retained length is the legacy reconstruction
++> measurement in its declared source units, with compartment/terminal-target
++> semantics unverified. Display strength = log10(retained length + 1).
++> A log-scaled length share divides that strength by the sum over selected
++> features; hybrid L3/L6 features overlap and are not a raw-length budget.
++> Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++> Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++> Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++> higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++> hemisphere index. Zero-denominator individual balances are unavailable.
++> Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
++
+ # 0 · Overview
+ 
+ > **Methods audit (2026-10-09).** Numeric calculations and legacy column/stratum
+@@ -75,7 +89,7 @@
+                   →           row-normalized per neuron
+ ```
+ 
+-This single per-neuron proportion vector is then used as the workhorse for F1 (Gou panels), F6 (laterality index), F9 (Mantel) and F10 (AP octiles). Where a target appears at both levels, we use the level marked in the column suffix `@L3` or `@L6`. F2 (key targets), F3 (intra-insula matrix) and F7 (headline endpoints) test specific targets at their resolved hierarchy without going through `p_combo`.
++This single per-neuron proportion vector is then used as the workhorse for F1 (Gou panels), F6 (left vs right source contrast), F9 (Mantel) and F10 (AP octiles). Where a target appears at both levels, we use the level marked in the column suffix `@L3` or `@L6`. F2 (key targets), F3 (intra-insula matrix) and F7 (headline endpoints) test specific targets at their resolved hierarchy without going through `p_combo`.
+ 
+ ## 0.4 Pipeline at a glance
+ 
+@@ -157,7 +171,7 @@
+ | **Wilcoxon (`safe_wilcox`)** | non-parametric L vs R for *magnitude* (continuous proportion). |
+ | **Fisher (`safe_fisher`)** | 2×2 test for *presence* (any vs none). |
+ | **BH** | Benjamini-Hochberg FDR (`p.adjust(., "BH")`). Each chunk states the BH family. |
+-| **LI** | Laterality index `(mean_L − mean_R) / (mean_L + mean_R + ε)`; ±1 = exclusive, 0 = symmetric. |
++| **LI** | Left vs right **source-group** contrast `(mean_L − mean_R) / (mean_L + mean_R + ε)`; positive means a higher left-source mean. Zero with both means zero does not establish bilateral innervation. |
+ | **Mantel ρ** | matrix correlation between FNT morphological distance and Bray-Curtis projection dissimilarity (999 permutations). |
+ | **`receipt_class`** | F6 QC flag: `bilateral_receiving` = both sides have non-zero mean (interpret); `one_side_only_or_extreme` = LI driven by absent-on-one-side targets (do **not** interpret as laterality). |
+ 
+@@ -169,7 +183,7 @@
+ | **F2 / F2B** | Does projection to a **curated set of key targets** (caudal_OFC, OFC subdomains, pallidum, claustrum, autonomic columns, Ig/Pi/Iam) show L/R asymmetry? | per-row Wilcoxon BH in inferential rows | `F2_subregion_x_key_targets.png`, `F2B_…_LRcontrast.png` |
+ | **F3A/B/C** | What is the intra-insula sub-region × sub-region projection structure, and does any edge show L vs R? (Gehrlach 2020 mouse → primate) | IDD5/IDM rows | `F3A_intra_insula_combined.png`, `F3B_…_prevalence.png`, `F3C_…_LRcontrast.png` |
+ | **F4** | Does projection to interoceptive targets (Ig, Pi, Ial, Iam/Iapm, Ia/Id) show a per-side gradient along soma AP? (EPIC) | OLS slope per side, per target | `F4_interoceptive_gradient.png` |
+-| **F5** | Per-neuron continuous **Ibias** = (contra−ipsi)/(contra+ipsi) on **axon length** vs soma AP | descriptive (insula has sparse contra) | `F5_per_neuron_ibias.png` |
++| **F5** | Per-neuron continuous **Ibias** = (contra−ipsi)/(contra+ipsi) on retained regional length vs soma AP | descriptive (insula has sparse contra) | `F5_per_neuron_ibias.png` |
+ | **F6 + supp** | Composition **laterality index** per target × stratum | BH within stratum, `bilateral_receiving` only | `F6_projection_LI_bilateral_receiving.png` (+ `…_one_side_or_extreme.png`, `…_violin_…`, `F6_supplement_rank_based_receivers.png`) |
+ | **F7** | Cliff *d* of headline endpoints (Ig, Cl, LPal, VPal, PAG-proxy, caudal_OFC) under resolved L3/L6 hierarchy across 4 strata | IDD5_balanced primary | `F7_hierarchy_sensitivity.png` |
+ | **F8** | Leave-one-SampleID-out sensitivity for the headline endpoints | full data vs each drop | `F8_loso_sensitivity.png` |
+@@ -330,7 +344,7 @@
+ 
+ **Purpose.** Read the harmonized workbook (one row per neuron in `Summary`; matching ipsi / contra / length matrices in the four projection sheets). The intersection of `NeuronUID` across `Summary`, `Projection_Strength_L3_ipsi`, and `Projection_Strength_ipsi` (L6) is taken so every downstream matrix indexes the same neurons. We coalesce `Soma_Side_Final` (post-harmonization) over `Soma_Side` and use `Soma_Region_Refined` as `Region` (the harmonized 5-class scheme `IAL/IAPM/IDD5/IDM/IDV`).
+ 
+-**`p_combo` policy.** `m_l3`, `m_l6` and `m_l6_contra` contain log10(legacy regional voxel length + 1); `m_len_l6` and `m_len_l6_contra` contain the corresponding untransformed legacy voxel lengths. `p_l3` and `p_l6` are row-normalized log-strength shares. The hybrid retains L3 ancestors and adds L6 insular leaves, so its spatial features overlap rather than forming an exclusive partition. `@L3`/`@L6` suffixes disclose feature levels. `p_combo` normalizes this overlapping transformed-strength profile once per neuron; it is not a raw-length or terminal-arbor budget.
++**`p_combo` policy.** `m_l3`, `m_l6` and `m_l6_contra` contain log10(legacy regional voxel length + 1); `m_len_l6` and `m_len_l6_contra` contain the corresponding untransformed legacy voxel lengths. `p_l3` and `p_l6` are row-share of log-scaled lengths. The hybrid retains L3 ancestors and adds L6 insular leaves, so its spatial features overlap rather than forming an exclusive partition. `@L3`/`@L6` suffixes disclose feature levels. `p_combo` normalizes this overlapping transformed-strength profile once per neuron; it is not a raw-length or terminal-arbor budget.
+ 
+ **Hypothesis (implicit).** Combining **extrinsic L3 + intrinsic L6** yields a single per-neuron profile that stays aligned with Gou et al.’s functional-domain mapping for cortex/brainstem while recovering **separate insula sub-regions**, which collapsed at L3 alone — matching the methodological argument in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §4.
+ 
+@@ -417,10 +431,10 @@
+ metric_spec <- tibble::tribble(
+   ~metric,                    ~description,
+   "frac_projecting",          "fraction of source-side neurons with prop > 0 (Fisher's exact)",
+-  "mean_prop",                "mean normalized ipsi log-strength share (neuron-level Wilcoxon; animal dependence unmodeled)",
++  "mean_prop",                "mean ipsilateral share of log-scaled length (neuron-level Wilcoxon; animal dependence unmodeled)",
+   "cliffs_delta",             "rank-based effect size",
+   "log_odds_presence",        "log-odds ratio of presence",
+-  "regression_slope",         "OLS slope of normalized log-strength share ~ soma_pos; ordinary t-test p, animal dependence unmodeled"
++  "regression_slope",         "OLS slope of share of log-scaled length ~ soma_pos; ordinary t-test p, animal dependence unmodeled"
+ )
+ write.csv(strata_spec, file.path(OUT_SPEC, "strata_spec.csv"), row.names = FALSE)
+ write.csv(metric_spec, file.path(OUT_SPEC, "metric_spec.csv"), row.names = FALSE)
+@@ -630,10 +644,10 @@
+     label = ifelse(mean_combined > 0.005,
+                    sprintf("%.2f\nn=%d", mean_combined, n_total), sprintf("n=%d", n_total))
+   ), size = 2.6, color = "black") +
+-  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean log-strength share\n(L+R)") +
++  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean log-scaled length share\n(L+R)") +
+   labs(
+     title = "F1A. Functional-domain projection (Gou 6 panels, L+R combined)",
+-    subtitle = "Hybrid p_combo (L3 extrinsic + L6 intra-insula); cell = mean summed prop per domain. n_total annotated.",
++    subtitle = "Mean shares of log-scaled length, summed by domain; overlapping L3/L6 features; n_total shown.",
+     caption = paste(
+       "Domain map: stats/01_gou_domain_column_map.csv. IAPM is L-only (n_R=0); IDV n=3 — non-inferential.",
+       sep = "\n"
+@@ -785,7 +799,7 @@
+   geom_text(aes(
+     label = ifelse(mean_combined > 0.005, sprintf("%.2f", mean_combined), "")
+   ), size = 2.4, color = "black") +
+-  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean log-strength share\n(L+R)") +
++  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean log-scaled length share\n(L+R)") +
+   labs(
+     title = "F2. Sub-region × key target (L+R combined)",
+     subtitle = "Hybrid policy: extra-insula targets at @L3, intra-insula leaves at @L6. Rows IAL→IDV.",
+@@ -936,7 +950,7 @@
+                    sprintf("%.2f\nn=%d", mean_prop_combined, n_with_proj),
+                    ifelse(n_with_proj > 0, sprintf("n=%d", n_with_proj), ""))
+   ), size = 2.4, color = "black") +
+-  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean log-strength share\n(L+R)") +
++  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean log-scaled length share\n(L+R)") +
+   labs(
+     title = "F3A. Intra-insula source x target (L+R combined)",
+     subtitle = "Columns: Ward.D2 on prevalence; dotted outline = same-subregion “self” edge.",
+@@ -1071,7 +1085,7 @@
+       ),
+       caption = "Slopes and BH p in stats/04_interoceptive_gradient_regressions.csv (per target, per side).",
+       x = ap_axis_lbl,
+-      y = "Normalized log-strength share to target (L6)"
++      y = "Normalized log-scaled length share to target (L6)"
+     ) +
+     theme_minimal(base_size = 10) +
+     theme(plot.subtitle = element_text(size = 8.5))
+@@ -1081,11 +1095,11 @@
+ ```
+ 
+ 
+-## 2.5 Figure 5 — Ibias (axon length) {#08-fig5-ibias}
+-
+-**Question.** Replicating Gou et al. 2025 *Cell*'s per-neuron hemispheric bias index, where does each insula neuron sit on the ipsi-vs-contra axis when measured by **total axon length** (not by branch-tip count)?
+-
+-**Hypothesis.** **H5:** Insula **Ibias ≈ −1** for most neurons (**purely ipsilateral length**) — predicting **sparse callosal output** versus PFC ITc in Gou et al. (same metric, different anatomical nucleus). Biological **positive finding** (structure of insula efferents), not a “failed” L vs R test.
++## 2.5 Figure 5 — Individual retained length balance (Ibias) {#08-fig5-ibias}
++
++**Question.** Using a signed retained-length balance, distinct from Gou et al.'s segmented-arbor measurements, where does each neuron sit on the ipsi-vs-contra axis for retained reconstruction length (not candidate endpoint count or segmented arbor count)?
++
++**Historical description.** **Ibias ≈ −1** means predominantly ipsilateral retained length under the legacy measurement. It does not by itself establish sparse biological callosal output or replicate a segmented-arbor measurement.
+ 
+ **References (supplementary).** Gou et al. (2025) *Cell* Methods / Fig. 5F Ibias; review §5 SQ3e + §8 C.3; Hayama & Ogawa (2001) rat insula callosal projections (sparse).
+ 
+@@ -1093,12 +1107,12 @@
+ 
+ **Outputs.** `F5_per_neuron_ibias.png` (scatter, faceted by sub-region; jittered with side colour), stats: `05_per_neuron_ibias.csv` (one row per neuron) + `05_per_neuron_ibias_summary.csv` (per-region summary).
+ 
+-> ⚠️ **Caveat — insula has sparse contra projection.** In our dataset only ~2% of insula neurons have any contralateral axon (consistent with the rodent insula literature; see §5 SQ3e + §8 C.3 of [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md)), so `Ibias` collapses to ≈ −1 for almost every neuron. The figure visually flat-lines at -1 with a few outliers in IAL near +218 µm (anterior). This is the **biological story** (insula is not a major callosal source, unlike Gou's PFC ITc neurons), not a null result; report as a qualitative confirmation rather than a quantitative laterality test.
++> **Measurement caveat.** The historical tables reported only ~2% of neurons with a nonzero contralateral retained-length entry, so many Ibias values lie near -1. This is sampled reconstruction evidence under unverified compartment, terminal-target and registration semantics. It is not acceptance of biological absence, sparse callosal anatomy or a current-cohort result. Soma_NII_Y is an index coordinate; an index near 218 is not a distance of 218 micrometres.
+ 
+ ```{r 08-fig5-ibias}
+ # ------------------------------------------------------------
+-# P8 - F5 continuous per-neuron Ibias on projection STRENGTH
+-# Use Projection_Length_ipsi vs contra; if both zero we treat as bias = -1 (all ipsi by default)
++# P8 - F5 continuous per-neuron Ibias on retained regional lengths
++# Use Projection_Length_ipsi vs contra; if both totals are zero, Ibias is unavailable (NA)
+ # ------------------------------------------------------------
+ cat("[v2] F5 per-neuron Ibias (continuous)\n")
+ len_ipsi  <- rowSums(m_len_l6, na.rm = TRUE)
+@@ -1160,10 +1174,10 @@
+   scale_color_manual(values = c(L = "#0072b2", R = "#c1272d"), name = "Side") +
+   ylim(-1.05, 1.05) +
+   labs(
+-    title = "F5. Per-neuron continuous legacy voxel-length hemispheric bias",
++    title = "F5. Individual ipsi/contra balance of retained length",
+     subtitle = fig5_subtitle,
+     caption = "Insula is not a major callosal source - this is a biological property, not a null result.",
+-    x = ap_axis_lbl, y = "Hemispheric bias (Ibias)"
++    x = ap_axis_lbl, y = "Retained length balance (Ibias)\n-1 ipsi; +1 contra"
+   ) +
+   theme_minimal(base_size = 10) +
+   theme(plot.subtitle = element_text(size = 8.5))
+@@ -1172,7 +1186,7 @@
+ ```
+ 
+ 
+-## 2.6 Figure 6 — Composition laterality index {#09-fig6-composition-li}
++## 2.6 Figure 6 — Left vs right source contrast {#09-fig6-composition-li}
+ 
+ **Question.** Across the 67 + 8 hybrid `p_combo` columns, which targets show the largest L vs R group-mean composition difference, and which of those survive BH within stratum?
+ 
+@@ -1302,12 +1316,12 @@
+     coord_flip() +
+     facet_wrap(~ stratum, scales = "free_y", ncol = 1, strip.position = "top") +
+     scale_x_discrete(labels = function(x) sub("^.*__", "", x)) +
+-    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Dir") +
++    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Higher source-group mean") +
+     expand_limits(y = c(-1.25, 1.25)) +
+     labs(
+       title = title_txt,
+       subtitle = "BH across targets within each stratum. Bars labelled with nL, nR, and BH q.",
+-      x = "Target (region@layer)", y = "Laterality index (L-R)/(L+R)"
++      x = "Target (region@layer)", y = "Left vs right SOURCE contrast\n(mean_L-mean_R)/(mean_L+mean_R+eps)"
+     ) +
+     theme_minimal(base_size = 10) +
+     theme(
+@@ -1320,11 +1334,11 @@
+ 
+ g6b <- make_li_bars(
+   dplyr::filter(li_sig, receipt_class == "bilateral_receiving"),
+-  "F6. Bilateral-receiving targets (preferred LI interpretation)"
++  "F6. Targets with evidence from both source groups"
+ )
+ g6c <- make_li_bars(
+   dplyr::filter(li_sig, receipt_class == "one_side_only_or_extreme"),
+-  "F6 supplement. One-sided / extreme receipt (QC; not symmetric sampling)"
++  "F6 supplement. Evidence from one source group only (sampling QC)"
+ )
+ ggsave(
+   file.path(OUT_FIGS, "F6_projection_LI_bilateral_receiving.png"),
+@@ -1348,9 +1362,9 @@
+   geom_boxplot(width = 0.18, outlier.size = 0.5, alpha = 0.9) +
+   geom_hline(yintercept = 0, linetype = 2, linewidth = 0.35) +
+   labs(
+-    title = "F6. Target-level LI distributions by stratum family",
++    title = "F6. Left vs right source contrast across targets",
+     subtitle = "Includes all-neurons and per-subregion strata with both L and R somas.",
+-    x = NULL, y = "Laterality index"
++    x = NULL, y = "Left vs right SOURCE contrast"
+   ) +
+   theme_minimal(base_size = 10) +
+   theme(legend.position = "none")
+@@ -1431,10 +1445,10 @@
+       fig10 <- ggplot(f10_long, aes(target, ap_label, fill = mean_prop)) +
+         geom_tile(color = "grey85") +
+         geom_text(aes(label = sprintf("%.2f", mean_prop)), size = 2.8, color = "grey15") +
+-        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nlog-strength share") +
++        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nlog-scaled length share") +
+         labs(
+           title = "F10. Interoceptive targets vs soma AP (octiles)",
+-          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); L6 row-normalized mean prop.",
++          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); Mean ipsilateral log-scaled length shares at L6.",
+           x = "Target", y = "Soma AP (posterior ↑ anterior)"
+         ) +
+         theme_minimal(base_size = 9) +
+@@ -2072,7 +2086,7 @@
+   "| F3B | Intra-insula prevalence (% projecting) | `03_intra_insula_prevalence.csv` |",
+   "| F3C | Intra-insula L vs R Cliff's d, BH within source row | `03_intra_insula_full.csv` |",
+   "| F4  | Interoceptive prop ~ Soma_NII_Y per side (per target OLS) — descriptive due to sub-region/side confound | `04_interoceptive_gradient_regressions.csv` |",
+-  "| F5  | Per-neuron Ibias = (contra-ipsi)/(contra+ipsi) on axon length | `05_per_neuron_ibias.csv` |",
++  "| F5  | Per-neuron Ibias = (contra-ipsi)/(contra+ipsi) on retained regional length | `05_per_neuron_ibias.csv` |",
+   "| F6 LI | Composition LI per target × stratum (`bilateral_receiving` panel preferred) | `06b_projection_laterality_index_all_targets.csv` |",
+   "| F6 supplement | Top BH-significant rank-based receivers across region-restricted neuron strata | `06_asymmetric_receivers_BH.csv` |",
+   "| F7  | Headline endpoints (Ig, Cl, LPal, VPal, PAG-proxy, caudal_OFC) across 4 strata | `07_hierarchy_sensitivity_per_target.csv` |",
+@@ -2277,7 +2291,7 @@
+   "## F1A — `F1A_subregion_x_gou_panels_combined.png`",
+   "",
+   "**Question.** How does each insula sub-region's normalized log-strength profile map across the six Gou et al. 2025 functional domains?",
+-  "**What is shown.** Mean summed normalized log-strength share (L+R combined) per (sub-region × Gou domain). The `All_insula` row pools the selected neurons; preserved quoted values refer to the historical 306-neuron cohort. Each cell is annotated with the value and `n_total`.",
++  "**What is shown.** Mean summed share of log-scaled length (L+R combined) per (sub-region × Gou domain). The `All_insula` row pools the selected neurons; preserved quoted values refer to the historical 306-neuron cohort. Each cell is annotated with the value and `n_total`.",
+   "**Anchor stats.** `../stats/01_subregion_x_gou_panels.csv` (one row per `Region × panel`); column-to-domain provenance in `../stats/01_gou_domain_column_map.csv`.",
+   "**How to interpret.** F1A is descriptive structure. Dysgranular IDD5/IDM are sensory-dominant (Ia/Id and Ig in p_combo at L6); IAL (anterior agranular) loads Emotional/Reward via caudal_OFC. Read F1B for the L vs R contrast.",
+   "",
+@@ -2394,7 +2408,7 @@
+   "## F10 — `F10_interoceptive_AP_octile_heatmap.png`",
+   "",
+   "**Question.** Sub-region-agnostic AP gradient: how do interoceptive target proportions track soma Y in 8 octiles?",
+-  "**What is shown.** Mean normalized L6 log-strength share per (octile × target) for {Ig, Pi, Ial, Iam/Iapm, Ia/Id}; rows sorted by median Y (posterior bottom).",
++  "**What is shown.** Mean normalized L6 log-scaled length share per (octile × target) for {Ig, Pi, Ial, Iam/Iapm, Ia/Id}; rows sorted by median Y (posterior bottom).",
+   "**Anchor stats.** `../stats/10_ap_octile_interoceptive_profile.csv`.",
+   "**How to interpret.** Posterior octiles (Y ~170–185) are Ia/Id-dominant with secondary Ig (up to 0.31); transition octile (Y ~210) loses Ia/Id and gains Ial; anterior octiles (Y ~218) are Ial-dominant. The macaque counterpart of Gehrlach 2020 mouse posterior-to-anterior intra-insula flow.",
+   "",
+--- a/group_analysis/R_analysis/combined_lr_primary_analysis.R
++++ b/group_analysis/R_analysis/combined_lr_primary_analysis.R
+@@ -1,3 +1,15 @@
++# Metric names (2026-10-09): retained length is the legacy reconstruction
++# measurement in its declared source units, with compartment/terminal-target
++# semantics unverified. Display strength = log10(retained length + 1).
++# A log-scaled length share divides that strength by the sum over selected
++# features; hybrid L3/L6 features overlap and are not a raw-length budget.
++# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++# hemisphere index. Zero-denominator individual balances are unavailable.
++# Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
+ # Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+ # Historical inputs/results are not accepted terminal fields or animal-population inference.
+ # Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
+@@ -179,10 +191,10 @@
+     aes(label = ifelse(mean_prop >= 0.01, sprintf("%.2f", mean_prop), "")),
+     size = 2.8
+   ) +
+-  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "mean\nlog-strength share") +
++  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "mean\nlog-scaled length share") +
+   labs(
+     title = "Whole-insula interoceptive gradient (L+R pooled)",
+-    subtitle = "Pooled mean normalized ipsi log-strength share from each source sub-region to insula targets",
++    subtitle = "Pooled mean ipsilateral share of log-scaled length from each source sub-region to insula targets",
+     x = "Target insula sub-region",
+     y = "Source soma sub-region"
+   ) +
+@@ -224,9 +236,9 @@
+   geom_text(aes(label = sprintf("nT=%d", n_targets)), vjust = -0.35, size = 3) +
+   labs(
+     title = "Whole-insula functional domain overview (L+R pooled)",
+-    subtitle = "Mean pooled normalized log-strength share by Gou domain (L3 mapping)",
++    subtitle = "Mean pooled share of log-scaled length by Gou domain (L3 mapping)",
+     x = "Functional domain",
+-    y = "Mean normalized log-strength share"
++    y = "Mean share of log-scaled length"
+   ) +
+   theme_minimal(base_size = 10)
+ ggsave(file.path(OUT_FIGS, "combined_functional_domain_overview.png"), fig_dom, width = 8.2, height = 5.4, dpi = 220)
+--- a/group_analysis/R_analysis/functional_hubs_analysis.R
++++ b/group_analysis/R_analysis/functional_hubs_analysis.R
+@@ -1,3 +1,15 @@
++# Metric names (2026-10-09): retained length is the legacy reconstruction
++# measurement in its declared source units, with compartment/terminal-target
++# semantics unverified. Display strength = log10(retained length + 1).
++# A log-scaled length share divides that strength by the sum over selected
++# features; hybrid L3/L6 features overlap and are not a raw-length budget.
++# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++# hemisphere index. Zero-denominator individual balances are unavailable.
++# Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
+ # Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+ # Historical inputs/results are not accepted terminal fields or animal-population inference.
+ # Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
+@@ -226,7 +238,7 @@
+     facet_wrap(~ stratum, ncol = 1, scales = "free_y") +
+     scale_fill_manual(values = side_cols) +
+     labs(title = sprintf("Hub: %s", hub_name),
+-         x = "target region", y = "mean normalized ipsi log-strength share") +
++         x = "target region", y = "mean ipsilateral share of log-scaled length") +
+     theme_minimal(base_size = 10) +
+     theme(axis.text.x = element_text(angle = 45, hjust = 1),
+           legend.position = "bottom")
+--- a/group_analysis/R_analysis/functional_hubs_L6.R
++++ b/group_analysis/R_analysis/functional_hubs_L6.R
+@@ -1,3 +1,15 @@
++# Metric names (2026-10-09): retained length is the legacy reconstruction
++# measurement in its declared source units, with compartment/terminal-target
++# semantics unverified. Display strength = log10(retained length + 1).
++# A log-scaled length share divides that strength by the sum over selected
++# features; hybrid L3/L6 features overlap and are not a raw-length budget.
++# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++# hemisphere index. Zero-denominator individual balances are unavailable.
++# Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
+ # Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+ # Historical inputs/results are not accepted terminal fields or animal-population inference.
+ # Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
+@@ -222,7 +234,7 @@
+     facet_wrap(~ stratum, ncol = 1, scales = "free_y") +
+     scale_fill_manual(values = side_cols) +
+     labs(title = sprintf("Hub L6: %s", h),
+-         x = "target region", y = "mean normalized ipsi log-strength share") +
++         x = "target region", y = "mean ipsilateral share of log-scaled length") +
+     theme_minimal(base_size = 9) +
+     theme(axis.text.x = element_text(angle = 45, hjust = 1, size = 7),
+           legend.position = "bottom")
+--- a/group_analysis/R_analysis/intra_insula_connectivity.R
++++ b/group_analysis/R_analysis/intra_insula_connectivity.R
+@@ -1,3 +1,15 @@
++# Metric names (2026-10-09): retained length is the legacy reconstruction
++# measurement in its declared source units, with compartment/terminal-target
++# semantics unverified. Display strength = log10(retained length + 1).
++# A log-scaled length share divides that strength by the sum over selected
++# features; hybrid L3/L6 features overlap and are not a raw-length budget.
++# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++# hemisphere index. Zero-denominator individual balances are unavailable.
++# Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
+ # Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+ # Historical inputs/results are not accepted terminal fields or animal-population inference.
+ # Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
+@@ -213,10 +225,10 @@
+   geom_text(aes(label = ifelse(self_proj, "*", "")),
+             size = 3.8, color = "red", nudge_y = 0.30) +
+   scale_fill_gradient(low = "white", high = "#1976d2",
+-                      name = "mean log-strength share ipsi") +
++                      name = "mean log-scaled length share ipsi") +
+   facet_wrap(~ side, ncol = 2, labeller = labeller(side = function(x) paste("Soma side:", x))) +
+   labs(title = "Intra-insula ipsilateral projection: source soma sub-region -> target insula sub-region",
+-       subtitle = "Cells = mean normalized ipsi log-strength share; * = self/within-sub-region (auto-projection back to soma sub-region)",
++       subtitle = "Cells = mean ipsilateral share of log-scaled length; * = self/within-sub-region (auto-projection back to soma sub-region)",
+        x = "Target insula sub-region", y = "Source soma sub-region") +
+   theme_minimal(base_size = 9) +
+   theme(axis.text.x = element_text(angle = 45, hjust = 1))
+@@ -331,9 +343,9 @@
+   geom_boxplot(width = 0.18, alpha = 0.85, outlier.size = 0.6,
+                position = position_dodge(width = 0.9)) +
+   scale_fill_manual(values = side_cols, name = "Soma side") +
+-  labs(title = "Legacy intra-insula normalized log-strength share per neuron, by source soma sub-region",
++  labs(title = "Legacy intra-insula share of log-scaled length per neuron, by source soma sub-region",
+        subtitle = sprintf("intra_frac = (insula_ipsi + insula_contra) / total_projection;  n_total = %d", nrow(df_for_test)),
+-       x = "Source sub-region", y = "Legacy intra-insula log-strength share") +
++       x = "Source sub-region", y = "Legacy intra-insula log-scaled length share") +
+   theme_minimal(base_size = 11)
+ ggsave(file.path(FIG_DIR, "intra_frac_by_subregion_LR.png"),
+        fig_intra, width = 11, height = 6, dpi = 200)
+--- a/group_analysis/R_analysis/improved_panel_figures.R
++++ b/group_analysis/R_analysis/improved_panel_figures.R
+@@ -1,3 +1,15 @@
++# Metric names (2026-10-09): retained length is the legacy reconstruction
++# measurement in its declared source units, with compartment/terminal-target
++# semantics unverified. Display strength = log10(retained length + 1).
++# A log-scaled length share divides that strength by the sum over selected
++# features; hybrid L3/L6 features overlap and are not a raw-length budget.
++# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
++# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
++# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
++# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
++# hemisphere index. Zero-denominator individual balances are unavailable.
++# Names, columns, thresholds, stratum IDs and output filenames are preserved.
++
+ # Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+ # Historical inputs/results are not accepted terminal fields or animal-population inference.
+ # Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
+@@ -206,7 +218,7 @@
+   facet_wrap(~ stratum, ncol = 1) +
+   scale_fill_manual(values = side_cols, name = "Soma side") +
+   labs(title = "Gou 6-category L/R projection scores across strata",
+-       subtitle = "Bars = mean normalized ipsi log-strength share; error bars = SEM; *=p<0.05, **=p<0.01, ***=p<0.001 (Wilcoxon, uncorrected)",
++       subtitle = "Bars = mean ipsilateral share of log-scaled length; error bars = SEM; *=p<0.05, **=p<0.01, ***=p<0.001 (Wilcoxon, uncorrected)",
+        x = "Gou functional category (Table S2C)",
+        y = "Mean proportion of ipsi projection") +
+   theme_minimal(base_size = 11) +
+@@ -274,7 +286,7 @@
+   facet_wrap(~ stratum, ncol = 3) +
+   scale_fill_manual(values = side_cols) +
+   labs(title = "Caudal-OFC R>L asymmetry collapses with bilateral sampling",
+-       subtitle = "Per-neuron proportion of ipsi projection going to caudal_OFC. The R>L signal in 251637 (p=5.4e-9) was driven by IAL imbalance (7L:95R). When 252385 contributes 14 L-IAL neurons, the asymmetry vanishes (p=0.49 in IAL_combined; ns in IAL_252385 alone).",
++       subtitle = "Per-neuron ipsilateral share of log-scaled retained length assigned to caudal_OFC. The R>L signal in 251637 (p=5.4e-9) was driven by IAL imbalance (7L:95R). When 252385 contributes 14 L-IAL neurons, the asymmetry vanishes (p=0.49 in IAL_combined; ns in IAL_252385 alone).",
+        x = "Soma side", y = "Proportion of ipsi projection to caudal_OFC") +
+   theme_minimal(base_size = 11) +
+   theme(legend.position = "none",
+@@ -410,9 +422,9 @@
+              labeller = labeller(side = c(L = "Soma side: LEFT",
+                                             R = "Soma side: RIGHT"))) +
+   scale_fill_gradient(low = "white", high = "#1976d2",
+-                      name = "mean prop\nipsi") +
++                      name = "Mean ipsilateral\nlog-scaled length share") +
+   labs(title = "Intra-insula projection at finest atlas level (L6)",
+-       subtitle = "Each cell = mean fraction of ipsi projection from source soma sub-region (rows) to target insula sub-region (cols). 96.4% of insula neurons project to other insula sub-regions.",
++       subtitle = "Each cell = mean ipsilateral share of log-scaled retained length from source (rows) to target (columns). 96.4% of insula neurons project to other insula sub-regions.",
+        x = "Target insula sub-region", y = "Source soma sub-region") +
+   theme_minimal(base_size = 10) +
+   theme(strip.background = element_rect(fill = "grey90", color = NA),
+--- a/R_analysis/Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/Projectome_Analysis_Tutorial.Rmd
+@@ -16,6 +16,14 @@
+     fig_height: 8
+ ---
+ 
++
++> Imported Summary metric: the repository producer defines Laterality_Index
++> as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
++> These labels assume that producer contract; verify an older workbook's source
++> before reuse. This is retained reconstruction length, not accepted terminal
++> arbors/synapses. It differs from signed Ibias and from source-group LI.
++
++
+ ```{r setup, include=FALSE}
+ knitr::opts_chunk$set(
+   echo = TRUE,
+@@ -232,14 +240,14 @@
+ ## 4.3 侧向性指数分析
+ 
+ ```{r laterality-analysis}
+-# 侧向性指数分布 (1=纯同侧, -1=纯对侧)
++# Imported Summary: Contra/(Ipsi+Contra), 0=ipsi and 1=contra.
+ p2 <- ggplot(df_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
+   geom_histogram(bins = 20, alpha = 0.7) +
+   scale_fill_manual(values = type_colors) +
+   labs(
+-    title = "Laterality Index Distribution",
+-    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+-    x = "Laterality Index",
++    title = "Contralateral retained length share",
++    subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
++    x = "Contralateral retained length share (0 to 1)",
+     y = "Count"
+   ) +
+   geom_vline(xintercept = 0, linetype = "dashed", color = "red")
+--- a/R_analysis/scripts/Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/scripts/Projectome_Analysis_Tutorial.Rmd
+@@ -16,6 +16,14 @@
+     fig_height: 8
+ ---
+ 
++
++> Imported Summary metric: the repository producer defines Laterality_Index
++> as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
++> These labels assume that producer contract; verify an older workbook's source
++> before reuse. This is retained reconstruction length, not accepted terminal
++> arbors/synapses. It differs from signed Ibias and from source-group LI.
++
++
+ ```{r setup, include=FALSE}
+ knitr::opts_chunk$set(
+   echo = TRUE,
+@@ -232,14 +240,14 @@
+ ## 4.3 侧向性指数分析
+ 
+ ```{r laterality-analysis}
+-# 侧向性指数分布 (1=纯同侧, -1=纯对侧)
++# Imported Summary: Contra/(Ipsi+Contra), 0=ipsi and 1=contra.
+ p2 <- ggplot(df_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
+   geom_histogram(bins = 20, alpha = 0.7) +
+   scale_fill_manual(values = type_colors) +
+   labs(
+-    title = "Laterality Index Distribution",
+-    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+-    x = "Laterality Index",
++    title = "Contralateral retained length share",
++    subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
++    x = "Contralateral retained length share (0 to 1)",
+     y = "Count"
+   ) +
+   geom_vline(xintercept = 0, linetype = "dashed", color = "red")
+--- a/R_analysis/scripts/Projectome_Tutorials/Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/scripts/Projectome_Tutorials/Projectome_Analysis_Tutorial.Rmd
+@@ -16,6 +16,14 @@
+     fig_height: 8
+ ---
+ 
++
++> Imported Summary metric: the repository producer defines Laterality_Index
++> as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
++> These labels assume that producer contract; verify an older workbook's source
++> before reuse. This is retained reconstruction length, not accepted terminal
++> arbors/synapses. It differs from signed Ibias and from source-group LI.
++
++
+ ```{r setup, include=FALSE}
+ knitr::opts_chunk$set(
+   echo = TRUE,
+@@ -232,14 +240,14 @@
+ ## 4.3 侧向性指数分析
+ 
+ ```{r laterality-analysis}
+-# 侧向性指数分布 (1=纯同侧, -1=纯对侧)
++# Imported Summary: Contra/(Ipsi+Contra), 0=ipsi and 1=contra.
+ p2 <- ggplot(df_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
+   geom_histogram(bins = 20, alpha = 0.7) +
+   scale_fill_manual(values = type_colors) +
+   labs(
+-    title = "Laterality Index Distribution",
+-    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+-    x = "Laterality Index",
++    title = "Contralateral retained length share",
++    subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
++    x = "Contralateral retained length share (0 to 1)",
+     y = "Count"
+   ) +
+   geom_vline(xintercept = 0, linetype = "dashed", color = "red")
+--- a/R_analysis/01_针对251637数据的完整分析.R
++++ b/R_analysis/01_针对251637数据的完整分析.R
+@@ -1,3 +1,9 @@
++# Imported Summary metric: the repository producer defines Laterality_Index
++# as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
++# These labels assume that producer contract; verify an older workbook's source
++# before reuse. This is retained reconstruction length, not accepted terminal
++# arbors/synapses. It differs from signed Ibias and from source-group LI.
++
+ # ============================================================================
+ # 针对251637数据的完整R分析脚本
+ # 
+@@ -359,9 +365,9 @@
+         "ITs" = "#4DAF4A", "ITi" = "#984EA3", 
+         "ITc" = "#377EB8", "CT" = "#FF7F00"
+     )) +
+-    labs(title = "Laterality Index Distribution",
+-         subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+-         x = "Laterality Index",
++    labs(title = "Contralateral retained length share",
++         subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
++         x = "Contralateral retained length share (0 to 1)",
+          y = "Count") +
+     theme_minimal()
+ 
+--- a/R_analysis/tutorials/01_针对251637数据的完整分析.R
++++ b/R_analysis/tutorials/01_针对251637数据的完整分析.R
+@@ -1,3 +1,9 @@
++# Imported Summary metric: the repository producer defines Laterality_Index
++# as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
++# These labels assume that producer contract; verify an older workbook's source
++# before reuse. This is retained reconstruction length, not accepted terminal
++# arbors/synapses. It differs from signed Ibias and from source-group LI.
++
+ # ============================================================================
+ # 针对251637数据的完整R分析脚本
+ # 
+@@ -359,9 +365,9 @@
+         "ITs" = "#4DAF4A", "ITi" = "#984EA3", 
+         "ITc" = "#377EB8", "CT" = "#FF7F00"
+     )) +
+-    labs(title = "Laterality Index Distribution",
+-         subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+-         x = "Laterality Index",
++    labs(title = "Contralateral retained length share",
++         subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
++         x = "Contralateral retained length share (0 to 1)",
+          y = "Count") +
+     theme_minimal()
+ 
+--- a/R_analysis/tables/251637_single_neuron_analysis.Rmd
++++ b/R_analysis/tables/251637_single_neuron_analysis.Rmd
+@@ -13,6 +13,14 @@
+   pdf_document:
+     toc: true
+ ---
++
++
++> Imported Summary metric: the repository producer defines Laterality_Index
++> as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
++> These labels assume that producer contract; verify an older workbook's source
++> before reuse. This is retained reconstruction length, not accepted terminal
++> arbors/synapses. It differs from signed Ibias and from source-group LI.
++
+ 
+ ```{r setup, include=FALSE}
+ knitr::opts_chunk$set(
+@@ -352,7 +360,7 @@
+ 
+ # 5. Laterality Analysis
+ 
+-## 5.1 Laterality Index Distribution
++## 5.1 Contralateral retained length share
+ 
+ ```{r laterality-index}
+ ggplot(df_summary, aes(x = Neuron_Type, y = Laterality_Index, fill = Neuron_Type)) +
+@@ -361,10 +369,10 @@
+   scale_fill_manual(values = type_colors) +
+   geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
+   labs(
+-    title = "Laterality Index by Neuron Type",
+-    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
++    title = "Contralateral retained length share by neuron type",
++    subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
+     x = "Neuron Type",
+-    y = "Laterality Index"
++    y = "Contralateral retained length share (0 to 1)"
+   ) +
+   theme_classic(base_size = 14) +
+   theme(legend.position = "none")
+--- a/R_analysis/Novel_Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/Novel_Projectome_Analysis_Tutorial.Rmd
+@@ -15,6 +15,17 @@
+     fig_width: 12
+     fig_height: 10
+ ---
++
++
++> Historical tutorial metrics: Length_Asymmetry actually sums Projection_Strength
++> (log10(retained length + 1)), then computes (ipsi-contra)/(ipsi+contra+eps).
++> Count_Asymmetry uses counts of targets with positive strength. Asymmetry_Score
++> averages those two balances. Their positive sign means ipsilateral, the
++> opposite sign to Ibias. Imported Summary Laterality_Index is a separate
++> 0..1 contralateral share; abs(Laterality_Index) is not a signed bias magnitude.
++> Calculations and historical variable IDs are preserved; no biological
++> terminal-arbor or independent-animal acceptance follows from this tutorial.
++
+ 
+ ```{r setup, include=FALSE}
+ knitr::opts_chunk$set(
+@@ -727,8 +738,8 @@
+   labs(
+     title = "Bilateral Projection Asymmetry",
+     subtitle = "Positive = ipsilateral bias, Negative = contralateral bias",
+-    x = "Length Asymmetry Index",
+-    y = "Target Count Asymmetry Index"
++    x = "Log-scaled length balance (ipsi-contra)/(ipsi+contra+eps)",
++    y = "Target-count balance (ipsi-contra)/(ipsi+contra+eps)"
+   ) +
+   annotate("rect", xmin = 0.5, xmax = 1, ymin = 0.5, ymax = 1, 
+            alpha = 0.1, fill = "blue") +
+@@ -744,8 +755,8 @@
+   scale_fill_manual(values = type_colors) +
+   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
+   labs(
+-    title = "Asymmetry Score by Neuron Type",
+-    y = "Asymmetry Score (-1 to 1)"
++    title = "Average of log-scaled length and target-count balances",
++    y = "Mean balance: positive ipsi; negative contra"
+   ) +
+   theme(legend.position = "none")
+ 

@@ -1,0 +1,176 @@
+{
+  "status": "rendered_and_png_decoded",
+  "created_utc": "2026-10-08T17:23:49.948446+00:00",
+  "renderer_sha256": "189e681d5cb8224d006aa907aa3c9571772831162251800f6801ee09441efb82",
+  "run_provenance_sha256": "28fb32f1db2c25a061d1c045d8e272c45992d19f196ecf540cae5b18cefc6b3b",
+  "readback_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+  "readback_sha256": "558985494334f3b4e3ee3bb904f5f1ced3ee4a653a50aa5f756e1581bada0a83",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "background": "matching individual NMT MRI slice; no depth projection",
+  "grayscale_window": {
+    "brain_mask_percentiles": [
+      1,
+      99.5
+    ],
+    "vmin": 75.0,
+    "vmax": 920.0
+  },
+  "metric": "endpoint-density",
+  "scope": "animal",
+  "units": "candidate endpoints/mm\u00b3/computable neuron",
+  "cut_policy": "fixed",
+  "map_display": "log10(1 + density)",
+  "smoothing": "none; source maps unchanged",
+  "common_display_vmax": 1.9677050605441788,
+  "display_upper_percentile": 99.5,
+  "slice_selection": "explicit common XYZ voxel indices",
+  "fixed_slice_voxels_xyz": [
+    56,
+    200,
+    87
+  ],
+  "selection_limit": "Display-selected slices do not establish full-volume targets or biological absence",
+  "slices": [
+    {
+      "AnimalID": "331",
+      "Subregion": "NearINS_L",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-331_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "34319e9681e0ae8e7f11d3a1cd722adef263ff655d785bc5a12860df51ec0b9c",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "NearINS_L",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-605_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "2b87280478809d0a02d555335ecb902aa55cf5d828e73747e53c4de8749512a3",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "NearINS_R",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-605_space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "497f7377290f1796a83dc3b52a5d82ab9ab9635f17c4e5d8cf013941471cad17",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "OriginCandidate_L",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "398d5f343687ddc1c39070558d48d9df875c3e0dd323555db3a852ef0d686f29",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "OriginCandidate_R",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "949660a200ff12e45e984eabd4b6689636858d1b776b25399b2023a08d2b62a4",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "NearINS_L",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "ff0b23f961841959012298c4cfe1464623d7adda2457faa4c6f86e04146d1c89",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "OriginCandidate_L",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-797_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "1cc53e6083cd45473794efe87e7b413d8fbfa755105ea471fcc7d9fdad10a523",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "OriginCandidate_L",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-900_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "43c4e54a8b2c0f0f50e7b4aab16fa43e16c566905d7da60a65bc622bf92831ab",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "NearINS_R",
+      "contributing_animals": null,
+      "map_path": "animal_maps\\animal-948_space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "8e5895d7036b8b3ce98603ea86047201a52b1a91e1baf72dac0cb19a95cc5207",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointDensity_matchedSlices_page-01.png",
+      "sha256": "d1e2a3cf0675002cc84cd5bc9c7630b3aaec86bab52b4a310115fccf08b55437",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointDensity_matchedSlices_page-02.png",
+      "sha256": "639d7b518cbfbbe4559611346654ebb75e9e36b1b00e3fd80de8b155f8c00b0d",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "panel_title_overlap_check": "passed"
+    },
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointDensity_matchedSlices_page-03.png",
+      "sha256": "90397d13d319b101afc702449ad79477f4f8d3870fa9572ed31401ac935ecf7f",
+      "pixels": [
+        1690,
+        416
+      ],
+      "panel_title_overlap_check": "passed"
+    }
+  ],
+  "source_data_modified": false,
+  "anatomical_acceptance": "not established",
+  "terminal_site_measurement": "candidate graph endpoints only"
+}

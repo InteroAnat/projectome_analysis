@@ -1,0 +1,46 @@
+test_destination_created_during_build_is_never_replaced (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_duplicate_missing_and_reordered_full_identities_are_rejected (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_existing_destination_refused_before_input_read_or_enrichment (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_post_enrichment_membership_change_never_publishes (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_same_input_output_is_rejected (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_success_preserves_curated_and_distant_rows_all_sheet_membership_and_metadata (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 0.645s
+
+OK
+[06] auto_atlas_insula rows to consider: 1
+[06] rows with refined label changed: 1 (ambiguous: 0)
+[06] Soma_Region_Refined per sample after harmonization:
+SampleID  Soma_Region_Refined
+251637    IDD5                   1
+252385    IAL                    2
+[06] Soma_Region_Source per sample after harmonization:
+SampleID  Soma_Region_Source                       
+251637    curated_251637                               1
+252385    atlas_to_manual_harmonized_251637_rule       1
+          coord_inferred_from_251637_strict_distant    1
+[06] auto_atlas_insula rows to consider: 1
+[06] rows with refined label changed: 1 (ambiguous: 0)
+[06] Soma_Region_Refined per sample after harmonization:
+SampleID  Soma_Region_Refined
+251637    IDD5                   1
+252385    IAL                    2
+[06] Soma_Region_Source per sample after harmonization:
+SampleID  Soma_Region_Source                       
+251637    curated_251637                               1
+252385    atlas_to_manual_harmonized_251637_rule       1
+          coord_inferred_from_251637_strict_distant    1
+[06] auto_atlas_insula rows to consider: 1
+[06] rows with refined label changed: 1 (ambiguous: 0)
+[06] Soma_Region_Refined per sample after harmonization:
+SampleID  Soma_Region_Refined
+251637    IDD5                   1
+252385    IAL                    2
+[06] Soma_Region_Source per sample after harmonization:
+SampleID  Soma_Region_Source                       
+251637    curated_251637                               1
+252385    atlas_to_manual_harmonized_251637_rule       1
+          coord_inferred_from_251637_strict_distant    1
+[06] wrote C:\Users\laika_yan\AppData\Local\Temp\tmpe4uim9eg\derivative.xlsx
+[06] done

@@ -1,0 +1,321 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-08T17:15:31.355015+00:00",
+  "reviewer_version": "2.0",
+  "reviewer_sha256": "2d2f6d308caf9d9409539b0b857957d61cdd4785dc856616eb7236b46da6ad75",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "versions": {
+    "numpy": "1.26.4",
+    "nibabel": "5.4.2"
+  },
+  "run_provenance_sha256": "28fb32f1db2c25a061d1c045d8e272c45992d19f196ecf540cae5b18cefc6b3b",
+  "manifest_sha256": "a7e9eb01cc50e20fe5bb62c395a08014f80cdccc6206e23718025fad50558be3",
+  "selected_neurons": 26,
+  "computable_neurons": 26,
+  "full_graph_leaves": 4981,
+  "candidate_axonal_leaves": 4063,
+  "outside_reference_candidates": 0,
+  "map_files": [
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-331_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "0c240a9d60ba8ae3630ac8ba164688afdfb941c4e153732835fa1ec66d8bf1a2",
+      "voxels": 15974400,
+      "nonzero_voxels": 374,
+      "sum": 221.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-331_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "34319e9681e0ae8e7f11d3a1cd722adef263ff655d785bc5a12860df51ec0b9c",
+      "voxels": 15974400,
+      "nonzero_voxels": 374,
+      "sum": 14144.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-331_space-NMTv2p1_region-NearINS_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "c368e61ea47ba590a48a834622c1ea5a2eb9863db84caade21c060e7120b0d98",
+      "voxels": 15974400,
+      "nonzero_voxels": 374,
+      "sum": 187.5
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "310dd9fbbfb56f2a6c01dc6bf49d5178768f08cd544737cd1983e344ee75e74f",
+      "voxels": 15974400,
+      "nonzero_voxels": 19,
+      "sum": 13.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "2b87280478809d0a02d555335ecb902aa55cf5d828e73747e53c4de8749512a3",
+      "voxels": 15974400,
+      "nonzero_voxels": 19,
+      "sum": 832.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-NearINS_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "b7ba5b7f735ef63cf9ad5361ec0f0bfac64f62b102c5963642ac784700ad1d12",
+      "voxels": 15974400,
+      "nonzero_voxels": 19,
+      "sum": 9.5
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "1ea87fec9679f7b1ac41008247e597677d48d7237b5ab0d65c3df07967567702",
+      "voxels": 15974400,
+      "nonzero_voxels": 227,
+      "sum": 123.75
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "497f7377290f1796a83dc3b52a5d82ab9ab9635f17c4e5d8cf013941471cad17",
+      "voxels": 15974400,
+      "nonzero_voxels": 227,
+      "sum": 7920.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-NearINS_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "b6228278dcb416595b59e516a83fd295b09f22d79dfd428ff618f64fbb7913ac",
+      "voxels": 15974400,
+      "nonzero_voxels": 227,
+      "sum": 59.75
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "b1034b6d4595a9ed0aff5370424eb2e4b5742985214c2b4ecf4de13a5ed73852",
+      "voxels": 15974400,
+      "nonzero_voxels": 65,
+      "sum": 75.00000077486038
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "398d5f343687ddc1c39070558d48d9df875c3e0dd323555db3a852ef0d686f29",
+      "voxels": 15974400,
+      "nonzero_voxels": 65,
+      "sum": 4800.000049591064
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "85d87b0ecd2b7adea2bba572bed2457f6660d6fdefbfe87004a8b2a5a1faecbd",
+      "voxels": 15974400,
+      "nonzero_voxels": 65,
+      "sum": 24.000000715255737
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_R_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "af99db79cafd99f257e4baafb2d29434b6de5769eea9927997ed41dab9b1d9f7",
+      "voxels": 15974400,
+      "nonzero_voxels": 299,
+      "sum": 76.66666834056377
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "949660a200ff12e45e984eabd4b6689636858d1b776b25399b2023a08d2b62a4",
+      "voxels": 15974400,
+      "nonzero_voxels": 299,
+      "sum": 4906.6667737960815
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-605_space-NMTv2p1_region-OriginCandidate_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "89a49ab1f32fb2d0cd32fd034bd52d6ba0c601f7d67938ad230b727065924d28",
+      "voxels": 15974400,
+      "nonzero_voxels": 299,
+      "sum": 53.16666825115681
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-797_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "a02b72628df7921bcdc9e6adccc1282dc20bd404c5e7cb9dc9e0c3283833c7fa",
+      "voxels": 15974400,
+      "nonzero_voxels": 178,
+      "sum": 142.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-797_space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "ff0b23f961841959012298c4cfe1464623d7adda2457faa4c6f86e04146d1c89",
+      "voxels": 15974400,
+      "nonzero_voxels": 178,
+      "sum": 9088.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-797_space-NMTv2p1_region-NearINS_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "5c2f200d459c71324e3945b36576d06810d98ca2178cf0f9bcee0da4bc3f8624",
+      "voxels": 15974400,
+      "nonzero_voxels": 178,
+      "sum": 89.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-797_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "883d8030e9d18ccbeec473faefbf8834df68a045cd8e48fc9352ecd24b33cd20",
+      "voxels": 15974400,
+      "nonzero_voxels": 1294,
+      "sum": 384.4000062942505
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-797_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "1cc53e6083cd45473794efe87e7b413d8fbfa755105ea471fcc7d9fdad10a523",
+      "voxels": 15974400,
+      "nonzero_voxels": 1294,
+      "sum": 24601.60040283203
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-797_space-NMTv2p1_region-OriginCandidate_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "fb6dca5bcb2e89c99db1e7052e94e0e1dc2fd28c0a14b554fd142b7f23c91a7d",
+      "voxels": 15974400,
+      "nonzero_voxels": 1294,
+      "sum": 280.80000436306
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-900_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "8e90de84124cf086f9b0a250be58ddec2197934472ce626752ed8945ee7fd0a9",
+      "voxels": 15974400,
+      "nonzero_voxels": 2,
+      "sum": 3.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-900_space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "43c4e54a8b2c0f0f50e7b4aab16fa43e16c566905d7da60a65bc622bf92831ab",
+      "voxels": 15974400,
+      "nonzero_voxels": 2,
+      "sum": 192.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-900_space-NMTv2p1_region-OriginCandidate_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "98c988b4172baf9d494263c5c880f547e117307cbce537d4a81bfd195de23af3",
+      "voxels": 15974400,
+      "nonzero_voxels": 2,
+      "sum": 2.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-948_space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "e35503c961df8745db2ee8f3bbd9368c10c0af91216c9c409ae24e8f02ef462a",
+      "voxels": 15974400,
+      "nonzero_voxels": 205,
+      "sum": 206.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-948_space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "8e5895d7036b8b3ce98603ea86047201a52b1a91e1baf72dac0cb19a95cc5207",
+      "voxels": 15974400,
+      "nonzero_voxels": 205,
+      "sum": 13184.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\animal_maps\\animal-948_space-NMTv2p1_region-NearINS_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "c52dae2ac044b1ea6101cf397adf387f64637e08f9cf670e5f1365e4ee44fffb",
+      "voxels": 15974400,
+      "nonzero_voxels": 205,
+      "sum": 205.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "476ddc25fab01d33a72c0053b0951a4c340ce926de0c66b5e1c325963838fade",
+      "voxels": 15974400,
+      "nonzero_voxels": 571,
+      "sum": 125.33333642780781
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "29b7a883523b9c0c3a582e0764dd12cd2eff90f6311df687d251ccb9ec6c1162",
+      "voxels": 15974400,
+      "nonzero_voxels": 571,
+      "sum": 8021.3335313797
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-NearINS_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "8c6cbb3b1063e28a39bfd6cae367a07022276d69142510c054368531c75784ef",
+      "voxels": 15974400,
+      "nonzero_voxels": 571,
+      "sum": 95.33333617448807
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "7b4d574e256ac35132877da8f83b68390631773ce6eb6e23d45902a9346c7d03",
+      "voxels": 15974400,
+      "nonzero_voxels": 432,
+      "sum": 164.875
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "894e9df0867d798dae93ae43581dd300e59eb3539ae3c754fd4db6f1e4bd96ee",
+      "voxels": 15974400,
+      "nonzero_voxels": 432,
+      "sum": 10552.0
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-NearINS_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "3a6d72927199b0b9fd4d072c6e7962b965d1298331420b7c15239488a01993be",
+      "voxels": 15974400,
+      "nonzero_voxels": 432,
+      "sum": 132.375
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "ff9b9df90484325f32c445c65380411cb170af132d1f0d47fd054013eed9ac9a",
+      "voxels": 15974400,
+      "nonzero_voxels": 1361,
+      "sum": 154.13333922624588
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "46b86ce45fe20a9277081faacd6cf3a1de672fbb49a7a37a12da88ab1fa6ce3d",
+      "voxels": 15974400,
+      "nonzero_voxels": 1361,
+      "sum": 9864.533710479736
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-OriginCandidate_L_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "d67e8ae65998481397fcd3abc52c53584d4d6b2e1f4269a1a65410fc613eb52a",
+      "voxels": 15974400,
+      "nonzero_voxels": 1361,
+      "sum": 102.26667153835297
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-OriginCandidate_R_desc-meanCandidateEndpointCount_map.nii.gz",
+      "sha256": "af99db79cafd99f257e4baafb2d29434b6de5769eea9927997ed41dab9b1d9f7",
+      "voxels": 15974400,
+      "nonzero_voxels": 299,
+      "sum": 76.66666834056377
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-OriginCandidate_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "sha256": "949660a200ff12e45e984eabd4b6689636858d1b776b25399b2023a08d2b62a4",
+      "voxels": 15974400,
+      "nonzero_voxels": 299,
+      "sum": 4906.6667737960815
+    },
+    {
+      "file": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\group_maps\\space-NMTv2p1_region-OriginCandidate_R_desc-candidateEndpointOccupancy_map.nii.gz",
+      "sha256": "89a49ab1f32fb2d0cd32fd034bd52d6ba0c601f7d67938ad230b727065924d28",
+      "voxels": 15974400,
+      "nonzero_voxels": 299,
+      "sum": 53.16666825115681
+    }
+  ],
+  "full_saved_voxels_read": 623001600,
+  "independence": "Raw parent-ID leaf sets and voxel-face search; detector and atlas sampler not imported",
+  "scope": "Full source leaf identity/coordinates, all atlas-level targets, hemisphere/mask, QC/regional CSVs, map pixels/units, conditional denominators, equal-animal aggregation",
+  "coordinate_contract": "Declared source frame/scale only; physical export origin and anatomical registration remain unverified",
+  "not_independently_reconstructed": [
+    "runtime/version history and timestamps",
+    "free-text policy descriptions and CSV column declarations"
+  ],
+  "atlas_target_readback": "all leaves at all six actual atlas levels",
+  "hemisphere_contingency": {
+    "1": {
+      "L": 0,
+      "R": 1891157
+    },
+    "2": {
+      "L": 1891157,
+      "R": 0
+    }
+  },
+  "table_checks": {
+    "qc_neurons": 26,
+    "per_neuron_target_rows": 625,
+    "animal_region_rows": 346,
+    "unavailable_groups": 0
+  },
+  "anatomical_acceptance": "not established",
+  "biological_terminal_acceptance": "not established",
+  "statistical_inference": "none"
+}

@@ -1,0 +1,111 @@
+{
+  "status": "rendered_and_png_decoded",
+  "created_utc": "2026-10-08T17:24:25.606327+00:00",
+  "renderer_sha256": "189e681d5cb8224d006aa907aa3c9571772831162251800f6801ee09441efb82",
+  "run_provenance_sha256": "0f94540d0eaed010f43a9dd722cedb0aaad266bf0338a9632c35e8871a841720",
+  "readback_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009_review\\projection_run_readback.json",
+  "readback_sha256": "42ac1bf3dea556112508eea9b327d3ac5f41a2e123d99aae75ded639a132d176",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "background": "matching individual NMT MRI slice; no depth projection",
+  "grayscale_window": {
+    "brain_mask_percentiles": [
+      1,
+      99.5
+    ],
+    "vmin": 75.0,
+    "vmax": 920.0
+  },
+  "metric": "axon-density",
+  "scope": "group",
+  "units": "mean template axon length density [mm/mm\u00b3/selected neuron]",
+  "cut_policy": "fixed",
+  "map_display": "log10(1 + density)",
+  "smoothing": "none; source maps unchanged",
+  "common_display_vmax": 1.1315199535113547,
+  "display_upper_percentile": 99.5,
+  "slice_selection": "explicit common XYZ voxel indices",
+  "fixed_slice_voxels_xyz": [
+    56,
+    200,
+    87
+  ],
+  "selection_limit": "Display-selected slices do not establish full-volume targets or biological absence",
+  "slices": [
+    {
+      "AnimalID": null,
+      "Subregion": "NearINS_L",
+      "contributing_animals": [
+        "331",
+        "605",
+        "797"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-NearINS_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "94ae133a69e638849341dac48ddf22698ab02a9b2c7c9687fa7e8746eadecbde",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "NearINS_R",
+      "contributing_animals": [
+        "605",
+        "948"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-NearINS_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "9b5f03b817215c8ebeb0ba02332bbc340f4ace1363861245491d7013fb1016a7",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "OriginCandidate_L",
+      "contributing_animals": [
+        "605",
+        "797",
+        "900"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-OriginCandidate_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "32fce1737726e7db11a6c92e58dcd2a24cbc8d465eaba0b472ffdcc0128d0f35",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "OriginCandidate_R",
+      "contributing_animals": [
+        "605"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-OriginCandidate_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "map_sha256": "1c8cba1cb19ba37b4a1d3241b89ab790d60a03b123b0fb5067709e57f2dadeff",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-01.png",
+      "sha256": "693b762ed878ca4d03f9dfe6f06b577394592d212513d78b87aae57aa9afa68c",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "panel_title_overlap_check": "passed"
+    }
+  ],
+  "source_data_modified": false,
+  "anatomical_acceptance": "not established",
+  "terminal_site_measurement": "not measured"
+}

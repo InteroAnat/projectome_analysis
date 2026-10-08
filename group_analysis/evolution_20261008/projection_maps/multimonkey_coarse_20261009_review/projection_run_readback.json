@@ -1,0 +1,541 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-08T17:06:44.225249+00:00",
+  "reviewer": {
+    "version": "2.0",
+    "source": "D:\\projectome_analysis\\group_analysis\\scripts\\review_projection_run.py",
+    "sha256": "5965b151e83d877f47bb7d930a03e46d562fb1bd940977a56cc50217c862ceb9",
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "nibabel": "5.4.2",
+    "pandas": "2.3.3"
+  },
+  "run_provenance_sha256": "c1dad5d36b07119f1d539a06cc279bee49abb1ecd49ecadf1de5ccf9cfced024",
+  "manifest_sha256": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2",
+  "neurons": 436,
+  "per_neuron_measurements_sha256": "b711a5b7b8b585f49e428bd85c8d2c89b78428e7e5189063a9b4833c79896c42",
+  "animal_subregions": 28,
+  "animals": [
+    "936",
+    "605",
+    "948",
+    "331",
+    "945",
+    "631",
+    "900",
+    "797"
+  ],
+  "all_map_files": [
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "9aeaa91c7c6cb9233422da555b4ec1f98216ad53956e8d69756114485172930e",
+      "voxels": 15974400,
+      "sum": 243.9738492463066,
+      "maximum": 0.5500775575637817
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "24d6fdf1eefa7107d2526829e30aa8a07b3c4949096c86f90808e7ede36d51ab",
+      "voxels": 15974400,
+      "sum": 15614.326351763622,
+      "maximum": 35.20496368408203
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "f050bc84237f2aa77e2e22221935d2004c7e1f5c74852586a2e7a104123cb61d",
+      "voxels": 15974400,
+      "sum": 79.78857288268046,
+      "maximum": 2.17683482170105
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "cdc215471df70f525ad9e3568a2aef14cbccf56ec76e51377fe93576106765ef",
+      "voxels": 15974400,
+      "sum": 5106.468664491549,
+      "maximum": 139.3174285888672
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-Candidate_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "637ebf7f16da839e23379078c4d3f24f8c65ba71e480bcdc7de5ac656576aa8d",
+      "voxels": 15974400,
+      "sum": 116.24117088095295,
+      "maximum": 1.0120939016342163
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-Candidate_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "f898548490caaa1e3089f5ed5c4fd4b2d711d5b3626058d6a759583eb77e5742",
+      "voxels": 15974400,
+      "sum": 7439.434936380989,
+      "maximum": 64.77400970458984
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-Candidate_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "278c56ae6a0cc03620acedc8a64df8b1a1f5246c4bf0b70602e44e8a87785f76",
+      "voxels": 15974400,
+      "sum": 58.92331099460512,
+      "maximum": 0.5332679152488708
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-Candidate_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "c22552be6d5ec68ffe7a6b378c31e3588c732a792d479338187fd7df713f6541",
+      "voxels": 15974400,
+      "sum": 3771.0919036547275,
+      "maximum": 34.129146575927734
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-G_exploratory_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "8aa89d8dd597760d386da1c44f10239554a5062df82ffe86aec5622cb7451f3d",
+      "voxels": 15974400,
+      "sum": 73.84357877375442,
+      "maximum": 1.9137768745422363
+    },
+    {
+      "file": "animal_maps\\animal-331_space-NMTv2p1_region-G_exploratory_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "c2760b0c1f81da3b5107d11959d1af78188cbfb45328de0a0920d3723c7cce5f",
+      "voxels": 15974400,
+      "sum": 4725.989041520283,
+      "maximum": 122.48171997070312
+    },
+    {
+      "file": "animal_maps\\animal-605_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "b4b3b9f07d5fd49968878fda28fae00843952e6a9c6692a320cbe05df8b992a7",
+      "voxels": 15974400,
+      "sum": 85.4878546941327,
+      "maximum": 2.603816032409668
+    },
+    {
+      "file": "animal_maps\\animal-605_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "9e11e27a2123b4d6795e3df092dc916fbe6fcb83d7813b9b61c5a2f25ea18502",
+      "voxels": 15974400,
+      "sum": 5471.222700424492,
+      "maximum": 166.64422607421875
+    },
+    {
+      "file": "animal_maps\\animal-605_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "5732777e3d9b2ad632f1cc92e24ffbde37aaf8976d8be682497630b3d2be75e1",
+      "voxels": 15974400,
+      "sum": 63.14014669486096,
+      "maximum": 0.8596495389938354
+    },
+    {
+      "file": "animal_maps\\animal-605_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "bb7ebf26d3ec18467e1fdd68e0367d7e04b4b824840e8fe1f297f0d3ab793e1b",
+      "voxels": 15974400,
+      "sum": 4040.9693884711014,
+      "maximum": 55.01757049560547
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "6f33077a5903f845c3767fb58c531ef91cacdc0cf943384811eaeda854fa6c4e",
+      "voxels": 15974400,
+      "sum": 545.0979853003628,
+      "maximum": 4.458762168884277
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "011520f29d85ab4fb5943fd5fdc9196f726bec0286ef7832dd0f0bbc83976aeb",
+      "voxels": 15974400,
+      "sum": 34886.27105922322,
+      "maximum": 285.36077880859375
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "3852c664e42b7d9be6372a167069bb6c11de6b7f31fb8ae98e898be11ce64da5",
+      "voxels": 15974400,
+      "sum": 667.309382922791,
+      "maximum": 3.728191614151001
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "c78ab5f239e13db2fe7cd380ada384ff13e8f4bb41d2ae50a7ef677dd2060f16",
+      "voxels": 15974400,
+      "sum": 42707.80050705862,
+      "maximum": 238.60426330566406
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-G_exploratory_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "35b007919d481fe5da01f3f248e521b6e925fc81a442d634a4cbb5f4f9c690af",
+      "voxels": 15974400,
+      "sum": 582.3324331981371,
+      "maximum": 1.91201913356781
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-G_exploratory_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "cc0531a3168a0ac923a7a4dbe5e3cc8128b7f3ca900f184118fa3512120bf93f",
+      "voxels": 15974400,
+      "sum": 37269.275724680774,
+      "maximum": 122.36922454833984
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-G_exploratory_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "5d51e7f229fcb115c2240be2bf309c05d9cbb711f210ee9a2616a61e8da961bd",
+      "voxels": 15974400,
+      "sum": 264.5828393833972,
+      "maximum": 1.2715479135513306
+    },
+    {
+      "file": "animal_maps\\animal-631_space-NMTv2p1_region-G_exploratory_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "4a4ab02591f09d08f1a0c2b39f6734cd5f1caca935a7b33c00034da4e00ed7ed",
+      "voxels": 15974400,
+      "sum": 16933.30172053742,
+      "maximum": 81.37906646728516
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "68120b4482e5ed38a34b7033b08d1a7f9b8215b7be79807a8a830e1eaf83af68",
+      "voxels": 15974400,
+      "sum": 335.88142485194896,
+      "maximum": 0.49666959047317505
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "b3f97ccb96fe29454409690df9c37ea6b4ad85a688e98a38fabf1499dc275e40",
+      "voxels": 15974400,
+      "sum": 21496.411190524734,
+      "maximum": 31.786853790283203
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "0ded19e389a911cf8c6518c30320cebe525b510c0b00619a430666fee3fa50ef",
+      "voxels": 15974400,
+      "sum": 340.90094263866365,
+      "maximum": 0.6125472187995911
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "93d15cab158fc6b13295e2b8429c5d4518ef9b09fa7465459924742a6428313b",
+      "voxels": 15974400,
+      "sum": 21817.660328874474,
+      "maximum": 39.20302200317383
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-Candidate_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "4ede482038e347c86275e7dd6970aac50eff49870f4ab4b806d4658d3f8d3820",
+      "voxels": 15974400,
+      "sum": 214.82842345074823,
+      "maximum": 1.3740921020507812
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-Candidate_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "1e4d58f86798782f2edbf7792dd84fa598ad0b03380b5efb4c1d54e9f46949f2",
+      "voxels": 15974400,
+      "sum": 13749.019100847887,
+      "maximum": 87.94189453125
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-Candidate_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "7bfb6c9ef3e210915de692f0f61cb8644a41dabe1b7b334841255918f67d755b",
+      "voxels": 15974400,
+      "sum": 689.6730761178096,
+      "maximum": 1.510511040687561
+    },
+    {
+      "file": "animal_maps\\animal-797_space-NMTv2p1_region-Candidate_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "7cad6f105de0b864f327e04090e9e7f5afdae55c17ce76e6ee5fc0e8608ce7d4",
+      "voxels": 15974400,
+      "sum": 44139.076871539815,
+      "maximum": 96.6727066040039
+    },
+    {
+      "file": "animal_maps\\animal-900_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "3d948229e1f86df733ddcc8c2bee9cd756cab8c8b7e6525864970beb803d40a4",
+      "voxels": 15974400,
+      "sum": 101.45760833747318,
+      "maximum": 2.064673900604248
+    },
+    {
+      "file": "animal_maps\\animal-900_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "f1360ced65120ed1eac4aa9c981f6faa9862b1db2a9c0acc387a6cc79687a8b5",
+      "voxels": 15974400,
+      "sum": 6493.286933598283,
+      "maximum": 132.13912963867188
+    },
+    {
+      "file": "animal_maps\\animal-900_space-NMTv2p1_region-G_exploratory_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "b4a93a15520dd5fe0f48cdc8dc3bf897adf93bc9fa2d98f0037001c98697df0d",
+      "voxels": 15974400,
+      "sum": 55.7721632435381,
+      "maximum": 0.6985762119293213
+    },
+    {
+      "file": "animal_maps\\animal-900_space-NMTv2p1_region-G_exploratory_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "6faa57d72c6a50499b68e475f568a14693d92cb54aaa241cad0fdce6f4aeca85",
+      "voxels": 15974400,
+      "sum": 3569.4184475864386,
+      "maximum": 44.70887756347656
+    },
+    {
+      "file": "animal_maps\\animal-900_space-NMTv2p1_region-G_exploratory_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "f270088bcac3016f272743b29b2a371e9f200387aff41cb54e45eb5986a7d5f7",
+      "voxels": 15974400,
+      "sum": 25.387080705258995,
+      "maximum": 1.1669120788574219
+    },
+    {
+      "file": "animal_maps\\animal-900_space-NMTv2p1_region-G_exploratory_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "0eb13f611d0a562aba38cbb136fad05aee162a343a30d4ef062ee0c00a7a3f70",
+      "voxels": 15974400,
+      "sum": 1624.7731651365757,
+      "maximum": 74.682373046875
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-Candidate_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "bdde9bf7d22cff69228a39787b1bf5c456698409ff372388ed3234d7f6ecd37f",
+      "voxels": 15974400,
+      "sum": 81.04839914576587,
+      "maximum": 1.3324787616729736
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-Candidate_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "2d6d43ce6a44335081404fef5c0c7603b68abea4664985a521199f6579613051",
+      "voxels": 15974400,
+      "sum": 5187.097545329016,
+      "maximum": 85.27864074707031
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-HumanINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "1049fc4e70bb731217589fcb82cab15360a2229c541a77028a4d783b8709f409",
+      "voxels": 15974400,
+      "sum": 144.0165169063053,
+      "maximum": 0.08849496394395828
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-HumanINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "b40a62aa970709bdba688a012c41142289a13d193f8d15f25c15ef36791fe6de",
+      "voxels": 15974400,
+      "sum": 9217.05708200354,
+      "maximum": 5.66367769241333
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-HumanINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "134c96a8bcf190be96f54a117f74088eefb195a37875955723f10738e1ad4298",
+      "voxels": 15974400,
+      "sum": 115.79789916302371,
+      "maximum": 0.05594785138964653
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-HumanINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "fab7e514debc614b13f6f429e5acc29ecc1adbe697ab1dff8350ae0ee10169f6",
+      "voxels": 15974400,
+      "sum": 7411.065546433518,
+      "maximum": 3.580662488937378
+    },
+    {
+      "file": "animal_maps\\animal-945_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "dd1133ffe33fd89110f7b250993fb29c789c762e5f0d62b3b894eff979091c29",
+      "voxels": 15974400,
+      "sum": 133.67437007723493,
+      "maximum": 0.8068978190422058
+    },
+    {
+      "file": "animal_maps\\animal-945_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "493615e3d67281722a0ed1c7aab7949a055ecc49dfb4dc1d83d0c9708edfed32",
+      "voxels": 15974400,
+      "sum": 8555.159684943035,
+      "maximum": 51.64146041870117
+    },
+    {
+      "file": "animal_maps\\animal-945_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "a7abe1a0a9d6ae7a2f7b90cc9974e99da0ef6554562ec5369b088c8c79afd2ae",
+      "voxels": 15974400,
+      "sum": 71.48362311854726,
+      "maximum": 1.2312525510787964
+    },
+    {
+      "file": "animal_maps\\animal-945_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "a30566116c64c19a9d89f37d48771ec90588e8c1c0f85859d44f46a33dbc6595",
+      "voxels": 15974400,
+      "sum": 4574.951879587024,
+      "maximum": 78.80016326904297
+    },
+    {
+      "file": "animal_maps\\animal-945_space-NMTv2p1_region-Candidate_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "5b3114180804906e9de61e97de71af64e7ba04331a4b70eae70d5e406336b60f",
+      "voxels": 15974400,
+      "sum": 188.59474767193205,
+      "maximum": 0.9809569716453552
+    },
+    {
+      "file": "animal_maps\\animal-945_space-NMTv2p1_region-Candidate_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "c5a54632dd78f06542f49a9ecb7fb30e888c19afe50a159c7ad484260df22899",
+      "voxels": 15974400,
+      "sum": 12070.063851003652,
+      "maximum": 62.781246185302734
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "582c943f364f4fca79e6b07ba8e7c225633761867be377b573bc50c85a17ee1d",
+      "voxels": 15974400,
+      "sum": 122.48741059788154,
+      "maximum": 0.6228861212730408
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-AtlasINS_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "3122685abdd71bc6538de8335443344d7fc9f9e3297b5c2ea39e066a0789ae1c",
+      "voxels": 15974400,
+      "sum": 7839.194278264418,
+      "maximum": 39.86471176147461
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "5687fec949510da5234c2485cbdf61b8ad03ac7b7420e73be14c8876be1f0dc5",
+      "voxels": 15974400,
+      "sum": 20.44330245134188,
+      "maximum": 0.5513392090797424
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-AtlasINS_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "3dd6ea5d0f355821d90673ccfb4e391bb2cb24ad817a4a1ac2bb52fc9cabae3d",
+      "voxels": 15974400,
+      "sum": 1308.3713568858802,
+      "maximum": 35.285709381103516
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-Candidate_L_desc-meanAxonLength_map.nii.gz",
+      "sha256": "c52623d7e182aa2f983a7db2f1bbcb3cd5159a5fde80d26fcd160edfc42195cd",
+      "voxels": 15974400,
+      "sum": 177.51841206257996,
+      "maximum": 1.6100307703018188
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-Candidate_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "9e1a1aaa0f35b9ab0c1cb370001ff8daace1dbc0e8ad4cd0734ff879d49b7cff",
+      "voxels": 15974400,
+      "sum": 11361.178372005117,
+      "maximum": 103.0419692993164
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-Candidate_R_desc-meanAxonLength_map.nii.gz",
+      "sha256": "65e3d2d3e2e41dc3a76adcdbaefcce33ee4fc406baf9ed4beb059f38c09b4fab",
+      "voxels": 15974400,
+      "sum": 349.7400843356918,
+      "maximum": 1.0179699659347534
+    },
+    {
+      "file": "animal_maps\\animal-948_space-NMTv2p1_region-Candidate_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "3a959009b107d41cfc875063685f20fcb4be5ee0ea57faf71dc53b5484ff02d3",
+      "voxels": 15974400,
+      "sum": 22383.365397484275,
+      "maximum": 65.15007781982422
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-AtlasINS_L_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "20ff24c5b92be7f51d5d278e2e96dbef6d3405b54a0652aff856e875e2ec870f",
+      "voxels": 15974400,
+      "sum": 224.00864332672109,
+      "maximum": 0.6369660496711731
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-AtlasINS_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "2b5c16c58266bf254ae801840cf39fba9cceeb038e6f30d61d15d44a59e49ae4",
+      "voxels": 15974400,
+      "sum": 14336.553169155057,
+      "maximum": 40.76582717895508
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-AtlasINS_R_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "bca5e5f2579b54da26a9e2d72d23737bfe2219b4a076cea71753e52c49c229c9",
+      "voxels": 15974400,
+      "sum": 207.17766185050567,
+      "maximum": 0.6213652491569519
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-AtlasINS_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "75f391777e1be1b7bf15a59dcbc553524c8f5726ec0d214000cc7165b2deee46",
+      "voxels": 15974400,
+      "sum": 13259.370354438852,
+      "maximum": 39.76737594604492
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-Candidate_L_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "4e3bbc1624eff61a10f9634bebffc553dc7a138b330291a48bed9c5cf99ff20b",
+      "voxels": 15974400,
+      "sum": 169.52933538035796,
+      "maximum": 0.5499364733695984
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-Candidate_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "16d02dcce1452e12b358af86094eccf1acdcb83f3d1bf6ffd1d1454fb8a8fae6",
+      "voxels": 15974400,
+      "sum": 10849.87746177991,
+      "maximum": 35.1959342956543
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-Candidate_R_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "b903dbf56a4a5208698cc6de79cefbb5ed10f481825b3043d055825cd60835cb",
+      "voxels": 15974400,
+      "sum": 273.59592371563144,
+      "maximum": 0.3021022081375122
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-Candidate_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "90a3898d9f4fa77b21f02fc39976f9cf0d5e31393d8517c25587d9886434245c",
+      "voxels": 15974400,
+      "sum": 17510.139115282116,
+      "maximum": 19.33454132080078
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-G_exploratory_L_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "82ec16eaf91d15dcd77b382129cf7d2b99165c56dee7ed3775a2996b1ac53530",
+      "voxels": 15974400,
+      "sum": 237.31605844491702,
+      "maximum": 0.6379256248474121
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-G_exploratory_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "134cc9d175ce34a942178a04827e5bd5183b9439622e6052c44bd7128993dab7",
+      "voxels": 15974400,
+      "sum": 15188.227739163387,
+      "maximum": 40.827239990234375
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-G_exploratory_R_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "32bb073e6a91afdd5e387d0faf2f88de06231fab5f3a2acc7e5b64a6b868d3ca",
+      "voxels": 15974400,
+      "sum": 144.98496002139427,
+      "maximum": 0.8730219602584839
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-G_exploratory_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "5291aa031240b37ec9f12540948c3e94e249e68cf33cb98d473fc3e1958ab726",
+      "voxels": 15974400,
+      "sum": 9279.037432786165,
+      "maximum": 55.87340545654297
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-HumanINS_L_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "1049fc4e70bb731217589fcb82cab15360a2229c541a77028a4d783b8709f409",
+      "voxels": 15974400,
+      "sum": 144.0165169063053,
+      "maximum": 0.08849496394395828
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-HumanINS_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "b40a62aa970709bdba688a012c41142289a13d193f8d15f25c15ef36791fe6de",
+      "voxels": 15974400,
+      "sum": 9217.05708200354,
+      "maximum": 5.66367769241333
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-HumanINS_R_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "134c96a8bcf190be96f54a117f74088eefb195a37875955723f10738e1ad4298",
+      "voxels": 15974400,
+      "sum": 115.79789916302371,
+      "maximum": 0.05594785138964653
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-HumanINS_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "fab7e514debc614b13f6f429e5acc29ecc1adbe697ab1dff8350ae0ee10169f6",
+      "voxels": 15974400,
+      "sum": 7411.065546433518,
+      "maximum": 3.580662488937378
+    }
+  ],
+  "full_saved_voxels_read": 1150156800,
+  "total_template_axon_length_mm": 72340.11766910242,
+  "outside_reference_length_mm": 4.966707959293192,
+  "brain_mask_coverage_status": "assessed",
+  "outside_brain_mask_in_FOV_length_mm": 100.94203575333879,
+  "anatomical_acceptance": "not established",
+  "statistical_inference": "none"
+}

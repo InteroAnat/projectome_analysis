@@ -1,0 +1,29 @@
+{
+  "status": "passed_independent_saved_display_readback_software_and_visual_only",
+  "display_provenance_SHA256": "aeba75609b271eaad3e3e4303e5dc1c9be63735b0971dc59c84f7de3407af76f",
+  "source_table_SHA256": "df055ce8c82d3d0cce169c309fdd791072b61e10c49e01f2a8821a2c7ef26de3",
+  "primary_provenance_SHA256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+  "primary_outputs_unchanged": true,
+  "numerical_rerun": false,
+  "checks": [
+    {
+      "file": "all_axon_hellinger_target_profiles.png",
+      "SHA256": "a03e62671b49bf71a9ce355503c2bba4352bf5d6064b4a5ed3cd6987cb92e5fe",
+      "dimensions": [
+        2561,
+        872
+      ],
+      "actual_visual_inspection": "readable title, complete wrapped target labels, full colorbar label and caption within image bounds"
+    },
+    {
+      "file": "all_endpoint_hellinger_target_profiles.png",
+      "SHA256": "b818041c22c698c98e84710b4f0e60555efaeb1fe5565ef17f6ce943180f0a27",
+      "dimensions": [
+        2561,
+        951
+      ],
+      "actual_visual_inspection": "readable title, complete wrapped target labels, full colorbar label and caption within image bounds"
+    }
+  ],
+  "anatomical_acceptance": false
+}

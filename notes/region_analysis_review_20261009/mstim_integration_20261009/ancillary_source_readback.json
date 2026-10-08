@@ -1,0 +1,75 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-08T23:44:54.161505+00:00",
+  "script_sha256": "e39bb602ca60bea5d7fc4b4912997efdf9926ad8400c93e62ff5497cd5c3a55c",
+  "readiness_sha256": "b7589c79781ea90ac47e2f67a997c4a236654840b5ac02e5015fd0304ce392ad",
+  "sources": [
+    {
+      "kind": "science_project_note",
+      "path": "D:\\multimodal_fmri\\docs\\project_note.md",
+      "sha256": "f1d3958902360ea0c31ee56a6f2a053e98c216ef53f2051b21e4aa6704d00d26",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "linked_pipeline_project_note",
+      "path": "D:\\deb_fmri\\docs\\project_note.md",
+      "sha256": "087758b95574af872b18276b877e7c1f6d913e04ae5f48f44de849b3953529a3",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "registry",
+      "path": "D:\\multimodal_fmri\\registry\\subjects.tsv",
+      "sha256": "2c80445a09255ff971e46914348cd2821a964b31b33d46adac490448367853f7",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "cm032_stimulation_ontology",
+      "path": "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm032.yaml",
+      "sha256": "600d4457e1feacf83d0a4a4afa10a3736b16a70c62e7aa723d5b354577ae96ed",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "cm033_stimulation_ontology",
+      "path": "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm033.yaml",
+      "sha256": "ecb70fa576f387094fdcf8f6fa8bdb591e54bc6be5b33378e594688958d2ef25",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "pipeline_template_config",
+      "path": "D:\\multimodal_fmri\\code\\tools\\norm\\_qst\\config\\pipeline_tools.json",
+      "sha256": "518308a5408e064841b366f5fcfcbc07f10d7fa9ee63cd56a152093cd3134ad0",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "cm032_normalization_moving_image",
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-brainInEpiNativeRes.nii",
+      "sha256": "b5384295ceac4393219fb9c17a2ebc9fde815a431e8e5a3742fb01ae8d752d6a",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "cm033_staged_moving_image",
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\sub-cm033_ses-20160120_desc-brainInEpiNativeRes.nii",
+      "sha256": "d81b503209a2e9731e6fd42685a279ef933bf283ec984e3b4510cb94585217e3",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "fmri_reference",
+      "path": "D:\\multimodal_fmri\\derivatives\\templates\\NMT_v2.0_sym\\NMT_v2.0_sym_SS.nii.gz",
+      "sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "matches_readiness_capture": true
+    },
+    {
+      "kind": "projectome_reference",
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+      "matches_readiness_capture": true
+    }
+  ],
+  "reference_grid_and_scaled_values_identical": true,
+  "transform_correction": "Actual CM032 chain uses identity from EPI to its already EPI-aligned moving image, followed by CMT and NMT affine/warp pairs. Exact saved contrast reproduction supersedes the older generic inverse-affine chain description.",
+  "registration_acceptance": false,
+  "stimulation_coordinate_acceptance": false,
+  "T_image_transform_independently_reproduced": false,
+  "visual_readback": "Readable QC text fits; anatomy display contour follows the brain boundary at three declared cuts. This limited visual check does not establish regional registration accuracy or laterality.",
+  "source_writes": false
+}

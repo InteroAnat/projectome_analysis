@@ -1,0 +1,60 @@
+{
+  "status": "final_live_software_methods_validation_pass",
+  "R_syntax": {
+    "sources": 63,
+    "by_kind": {
+      "R": 36,
+      "Rmd": 24,
+      "r": 3
+    },
+    "R_chunks": 417,
+    "parse_failures": 0,
+    "purl_failures": 0,
+    "runtime": [
+      "R version 4.6.1 (2026-06-24 ucrt)",
+      "knitr_available=TRUE"
+    ],
+    "receipt": "R_syntax_validation_final_live_20261009.json",
+    "sha256": "d1a5c42cdb9a950d045abf504cad95d61aefac7cb42f065271b564097325319d"
+  },
+  "F6_selector": {
+    "tests": 4,
+    "failures": 0,
+    "receipt": "F6_selector_regression_final_live_20261009.json",
+    "sha256": "8a44563a79447db5dc64e1374f3466168707b305afbab0672ecb9d188f8184a8",
+    "source_Rmd_sha256": "ed07324520de72727e42391426dfb3e5137ec05263f6ae115c2987d5c347a035",
+    "new_pvalues_computed": false,
+    "established_commit": "d27c855b82a280989850d71f9f1eb994f70df58e"
+  },
+  "live_consumer_counterexamples": {
+    "tests": 7,
+    "failures": 0,
+    "receipt": "consumer_regressions_final_live_20261009.json",
+    "sha256": "1a12d7d79c7ca44300ebd5dac8707f83774374e535491a88f3b75706a9269787"
+  },
+  "readable_label_static_tests": {
+    "tests": 5,
+    "failures": 0,
+    "numeric_code_unchanged": true
+  },
+  "verified_prior_review": {
+    "path": "notes/code_review_20260926.md",
+    "sha256": "6c729c0229f0e692c1aea83bdf88ce8f566d9ec2ecb52b58fe8250d5eabf04a1",
+    "anchors": [
+      19,
+      20,
+      63
+    ]
+  },
+  "source_R_sha256": "3b83907486983ae57a68b26cccb38dbf0d4beec88c8efc4eb1c21a5052404a4a",
+  "historical_F6_table_sha256": "05ff60ad389dcb1543c3a28b3d6a60125f1a122bac13e132a6fb0512d8b69421",
+  "full_analysis_rerun": false,
+  "historical_figures_or_stats_regenerated": false,
+  "scientific_acceptance": false,
+  "remaining_limits": [
+    "Collision-safe R namespace/exact-cohort preflight needed before new full analysis",
+    "Animal/injection dependence not resolved by existing neuron-level tests",
+    "Legacy length/terminal/registration semantics remain unaccepted",
+    "Historical Chinese full tutorial overloads the imported Laterality_Index; not reused or reclassified"
+  ]
+}

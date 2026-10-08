@@ -1,0 +1,1010 @@
+{
+  "reviewed_utc": "2026-10-08T16:30:41.908251+00:00",
+  "review_date_local": "2026-10-09",
+  "scope": "Read-only full Methods review of four specified Zotero primary papers; no analysis or library changes",
+  "text_hash_definition": "SHA256 of exact Zotero API fulltext content encoded UTF-8. Page text hashes are PyMuPDF page.get_text(sort=True) encoded UTF-8; anchor hashes use newline-joined splitlines ranges. Raw full texts and PDFs retained only in temporary storage.",
+  "extraction": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+    "pymupdf": "1.28.0"
+  },
+  "retrieval": [
+    {
+      "item_key": "529F8UAX",
+      "attachment_key": "DX3VKLUS",
+      "title": "Modular architectonic organization of the insula in the macaque monkey",
+      "DOI": "10.1002/cne.23436",
+      "date": "01/2014",
+      "indexed_text_sha256": "601bd4155609b1bd9d0201c5c343e3089a8b06709007bc0b5fe5c11697bb30c1",
+      "indexed_pages": 34,
+      "total_pages": 34,
+      "pdf_error": "Zotero-provided local PDF path does not exist; full indexed text available, no page-image inspection possible.",
+      "full_methods_available": true,
+      "source": "Zotero local API, read-only"
+    },
+    {
+      "item_key": "2NZNENNT",
+      "attachment_key": "DZAU4B4N",
+      "title": "Cytoarchitectonic and connection stripes in the dysgranular insular cortex in the macaque monkey",
+      "DOI": "10.1002/cne.25571",
+      "date": "2023",
+      "indexed_text_sha256": "33c40b39fb1f311d475019d0cf2bb27914a88fb98aaa00dbfa4b3915b6d64aa4",
+      "indexed_pages": 25,
+      "total_pages": 25,
+      "pdf_sha256": "31a9c2205d7c2aaed3e48d6a8ab50d123617150b36babd47e701ae4c82a327ef",
+      "paged_text_sha256": "d7f094d7f666bd84e81cf68fa9813539abcfd23213c3ca5cc8af01396b19e37e",
+      "pages": [
+        {
+          "pdf_page_1based": 1,
+          "text_sha256": "9734545fd00dfd0db7625e1ae045a8defb9bee1ba09ce030ac559bab03579629",
+          "characters": 4903
+        },
+        {
+          "pdf_page_1based": 2,
+          "text_sha256": "0b961a8c2ae1555f736f112954e7fe80907d7e1b73e060b1bc6d022925267200",
+          "characters": 22736
+        },
+        {
+          "pdf_page_1based": 3,
+          "text_sha256": "ee24c0948dc9178e4b6b466fdec81074f56f30de54efee228c94337fb1c81042",
+          "characters": 22527
+        },
+        {
+          "pdf_page_1based": 4,
+          "text_sha256": "ca64c149a4d2dc5d1436e61b430f5771aad2e53fdb7207cb88f4bb7d152f1e6f",
+          "characters": 19283
+        },
+        {
+          "pdf_page_1based": 5,
+          "text_sha256": "2032d7ae068972f767e485891f435ab5958fe0a81640965ece6cb1ebb7c8038c",
+          "characters": 19282
+        },
+        {
+          "pdf_page_1based": 6,
+          "text_sha256": "e7ca748e3130af2789bbf531034e83251973ca5865434c343037e9bafb9f3a63",
+          "characters": 20776
+        },
+        {
+          "pdf_page_1based": 7,
+          "text_sha256": "80a8ec3d7ba6e721e474c4c011c5abc6ad3d552411c26c014ad6a82d3b5dc452",
+          "characters": 20407
+        },
+        {
+          "pdf_page_1based": 8,
+          "text_sha256": "9ddc68bcc69ea91aeb1ef476f650affb201b2dad4073d587d6190f7eb9dd5edb",
+          "characters": 19145
+        },
+        {
+          "pdf_page_1based": 9,
+          "text_sha256": "c76832937e456685e48d1ae8cada0d0674a5bfd5d6b9693dbe9ced153cd79f42",
+          "characters": 21593
+        },
+        {
+          "pdf_page_1based": 10,
+          "text_sha256": "212a444f7e62a5dea90f6deafd306abe03ec79001625452bcc22335a6213061d",
+          "characters": 22638
+        },
+        {
+          "pdf_page_1based": 11,
+          "text_sha256": "77ae8a49a8498a4e704533ff9139974ca026926fd1d537715be21346b18d0445",
+          "characters": 23843
+        },
+        {
+          "pdf_page_1based": 12,
+          "text_sha256": "e43a1b1c629022de6083a231f3786192964fb18a7fb1c5445a93e41ef3015c2b",
+          "characters": 18902
+        },
+        {
+          "pdf_page_1based": 13,
+          "text_sha256": "5bcfd31a6e059fa49e3a823a4f2bc12f58338e3ae202e32f44f28aa9efbded47",
+          "characters": 21230
+        },
+        {
+          "pdf_page_1based": 14,
+          "text_sha256": "e5ac5096075da515376d04fa198f72e152db1a1646fbde8161b5b5f8c6a33e06",
+          "characters": 16806
+        },
+        {
+          "pdf_page_1based": 15,
+          "text_sha256": "6fe2583bb5b8e29c9c2493b72c6a059b16ff5bd24994ca303c606e9820324992",
+          "characters": 23392
+        },
+        {
+          "pdf_page_1based": 16,
+          "text_sha256": "80201128bc2994429af0bf4c9a5db528eb26a557a9b0feb9cf147f7b30c1774c",
+          "characters": 23737
+        },
+        {
+          "pdf_page_1based": 17,
+          "text_sha256": "b177edc0d29acbfd959f88fe8bac2b1a122f4c69f9ef9bb3451067426e4e5d7e",
+          "characters": 20503
+        },
+        {
+          "pdf_page_1based": 18,
+          "text_sha256": "045d1e32f6bd853749043be9ad494b3d31020377644aafcab84c0bee7b57e137",
+          "characters": 20188
+        },
+        {
+          "pdf_page_1based": 19,
+          "text_sha256": "4aad0d0d47fc0ee70706e76bb727f314ac794b56e80c40e1f80cfb856eeff6b9",
+          "characters": 25431
+        },
+        {
+          "pdf_page_1based": 20,
+          "text_sha256": "85f910927ebbbba7d39f4de7ff817aaf6941b9d31ae57c2b00dd2d6e328f64a2",
+          "characters": 22470
+        },
+        {
+          "pdf_page_1based": 21,
+          "text_sha256": "e6cab9c44ca9d403f06d7b0b759cf8e87151c49a5a4583bc2d05de840642626d",
+          "characters": 20529
+        },
+        {
+          "pdf_page_1based": 22,
+          "text_sha256": "62b5402f27159757ca1f0ba1cdd0716cfc46d7ff1fb17e27d418b15fb3477d1f",
+          "characters": 21353
+        },
+        {
+          "pdf_page_1based": 23,
+          "text_sha256": "83c9f8069b919f70e1cae2170d2e38b162794359a54339b4c7f7255be01e6eb1",
+          "characters": 23921
+        },
+        {
+          "pdf_page_1based": 24,
+          "text_sha256": "6554cc298cc39a343381c533c84bc3d8c97eb7ed4fd6850d4d970b020104ecbb",
+          "characters": 22499
+        },
+        {
+          "pdf_page_1based": 25,
+          "text_sha256": "c182e585e22ac5ef4a5d33d6b0c25f0dcfa5428affcce6654f2ba047f09148e0",
+          "characters": 23073
+        }
+      ],
+      "full_methods_available": true,
+      "source": "Zotero local API, read-only"
+    },
+    {
+      "item_key": "UA24ZU9V",
+      "attachment_key": "VPPUUD5U",
+      "title": "Insular Cortical Projections to Functional Regions of the Striatum Correlate with Cortical Cytoarchitectonic Organization in the Primate",
+      "DOI": "10.1523/JNEUROSCI.17-24-09686.1997",
+      "date": "1997/12/15",
+      "indexed_text_sha256": "9f93981382e85fb4d28207235286da5b1d0062737c9e741e419a6cdc84329f1a",
+      "indexed_pages": 20,
+      "total_pages": 20,
+      "pdf_sha256": "ab397ac0483d396adf07e5a1ece71d6c533900251ad54e90dfc97e32e0cf6e67",
+      "paged_text_sha256": "b860a71abd6b699d440a84e19b3d4e609a3d12d37ea1f257f95a34406ee7ec7d",
+      "pages": [
+        {
+          "pdf_page_1based": 1,
+          "text_sha256": "17d6f02fce5ddf024c27e354d7fdc49a17a49aae99bfc504b0f4752577b8846e",
+          "characters": 6617
+        },
+        {
+          "pdf_page_1based": 2,
+          "text_sha256": "2f5f696bf1eb5779b66e99ba2b0d22c913bea5c6bce08b9ab2746237b6232c22",
+          "characters": 7664
+        },
+        {
+          "pdf_page_1based": 3,
+          "text_sha256": "a8c5243d6a95c4e3acb368ff34bcd571e2b00a3f6574bf2ddbccc51970fd72d7",
+          "characters": 10247
+        },
+        {
+          "pdf_page_1based": 4,
+          "text_sha256": "d7de7f2eb11dfda3e901528f05bef473039c1310b5df5f4c18f35d4b8f1f15cf",
+          "characters": 2902
+        },
+        {
+          "pdf_page_1based": 5,
+          "text_sha256": "3cec14b00d153e111fe5aed3ac7bbf88f4a450bdfb33a090a7e1461665024626",
+          "characters": 1167
+        },
+        {
+          "pdf_page_1based": 6,
+          "text_sha256": "193c3d5801dcc7a32eae4bf29aea63ca8e0e0dc8345ae0a6573bc27cd8d0dc9b",
+          "characters": 6655
+        },
+        {
+          "pdf_page_1based": 7,
+          "text_sha256": "7826e0932cd8a294864dfc1fe5e2d716001fb9c9b49eb0ccd3277144249c436c",
+          "characters": 657
+        },
+        {
+          "pdf_page_1based": 8,
+          "text_sha256": "6d4d2f8f3cb4f74aeee991c88324400289b6d23a45117071f070a87126ba9fae",
+          "characters": 5144
+        },
+        {
+          "pdf_page_1based": 9,
+          "text_sha256": "bf6b0733f9df49ab95fc6d0abf4ca03f88b3c8caa8be064e7cba27f152c5bb33",
+          "characters": 612
+        },
+        {
+          "pdf_page_1based": 10,
+          "text_sha256": "8603499ad508698aab3767c714e2a621a474fea680aebaf8d6c63ee2b133b4a6",
+          "characters": 8303
+        },
+        {
+          "pdf_page_1based": 11,
+          "text_sha256": "b22eda7fa1c60db861c6ceb34fb09673eecfe1f732f1a42f1d7fbd299cc466a5",
+          "characters": 1202
+        },
+        {
+          "pdf_page_1based": 12,
+          "text_sha256": "772b2255d119da18d1440137508c89ff11ed9a022bfdaa3547e1c32e9b4acd1e",
+          "characters": 3455
+        },
+        {
+          "pdf_page_1based": 13,
+          "text_sha256": "72a3614a18ed3d6ef55d8c5965444560b4dcc65eeada14c9b8ab6d471a42738d",
+          "characters": 1125
+        },
+        {
+          "pdf_page_1based": 14,
+          "text_sha256": "fd273c0402d4c897644d8c990e97a0586206d3e09fd3d93c56c76767495a15bd",
+          "characters": 1277
+        },
+        {
+          "pdf_page_1based": 15,
+          "text_sha256": "d01ea101e4c7e418ce1aece79eba9ccc0ac1ec1a47543b901b6f115bf9b8c448",
+          "characters": 1140
+        },
+        {
+          "pdf_page_1based": 16,
+          "text_sha256": "3ac8849723fc5a0fbacff62510266ca918ee6c7e97b363ee39fd2340bd7f4dad",
+          "characters": 621
+        },
+        {
+          "pdf_page_1based": 17,
+          "text_sha256": "81fab03ac02007602d8b1f9415fe83d64af5a404829976cea235b69bfdcaa2b5",
+          "characters": 1193
+        },
+        {
+          "pdf_page_1based": 18,
+          "text_sha256": "342a2826be1bbd42514b44cf474966fe02070b728d1aff7937f140ca02664fea",
+          "characters": 1484
+        },
+        {
+          "pdf_page_1based": 19,
+          "text_sha256": "271af8da4d65f561a0639b6356d4da8add7f60ef6cbf5d1c3b97d29e0e548471",
+          "characters": 10153
+        },
+        {
+          "pdf_page_1based": 20,
+          "text_sha256": "ee8eb7c168907b3c9683fe20d8cea6065a472b2a9b01bfa273822427d19be63b",
+          "characters": 4757
+        }
+      ],
+      "full_methods_available": true,
+      "source": "Zotero local API, read-only"
+    },
+    {
+      "item_key": "DFH77L3E",
+      "attachment_key": "JUAS5RLT",
+      "title": "An atlas of primate insular cortex reveals a signal-processing strategy in von Economo neurons",
+      "DOI": "10.1038/s41556-026-02009-4",
+      "date": "2026-07-02",
+      "indexed_text_sha256": "7b690fcf3450f5ab44c346f1e05018480f220dc3d2cc513263cbe0f9f4831fe9",
+      "indexed_pages": 47,
+      "total_pages": 47,
+      "pdf_sha256": "ffacc6546626a73db9a88a79393861917d003d39498b9fe1d88bbf07742c9e2f",
+      "paged_text_sha256": "a69f9a9315104a946042f13b4f10fd084cc05fee17698c6b503258223eeb859e",
+      "pages": [
+        {
+          "pdf_page_1based": 1,
+          "text_sha256": "c9d49017886919fe11fafc4f9840f9746375e0ceb3d9ede0f773c79205972d80",
+          "characters": 4516
+        },
+        {
+          "pdf_page_1based": 2,
+          "text_sha256": "00199525c4e74a1148065f7e5fa523ed157514621b6136ff0209abaa47c04b39",
+          "characters": 6253
+        },
+        {
+          "pdf_page_1based": 3,
+          "text_sha256": "d46c9e3f1148c1ec20d1bfda5d8f89657381aa38e223156773bb827adbefd6e4",
+          "characters": 9254
+        },
+        {
+          "pdf_page_1based": 4,
+          "text_sha256": "d532b0ec8174c564162ccee221829c3e6deb999e11b3446a196d5ad941da9b53",
+          "characters": 16908
+        },
+        {
+          "pdf_page_1based": 5,
+          "text_sha256": "aea07bffd1f4929f2f87f471498b728e222be157eaa131403b1659c18b58bee0",
+          "characters": 12007
+        },
+        {
+          "pdf_page_1based": 6,
+          "text_sha256": "c058ecf06fa22e8fc0c49c49d3e1ac8bf6757bea10731127a95572e8746e8d51",
+          "characters": 9326
+        },
+        {
+          "pdf_page_1based": 7,
+          "text_sha256": "0c8d651c401b61b772bcab80ffbf7281cbffb854575e9efc490c49b344f435c7",
+          "characters": 10721
+        },
+        {
+          "pdf_page_1based": 8,
+          "text_sha256": "0bbcf217b7c063c2623440300e424e03592f7c3d3763be23e74b4a2a16aa81f7",
+          "characters": 7350
+        },
+        {
+          "pdf_page_1based": 9,
+          "text_sha256": "dc43ca79828c60333517e0201135869bb6dd06c1a9cea1ec19bfa5d737f75f28",
+          "characters": 9301
+        },
+        {
+          "pdf_page_1based": 10,
+          "text_sha256": "d66714af6bb3437fee9c59de9d1c7a5fdf49d602b138f3ac4269756c0b77fdf6",
+          "characters": 9839
+        },
+        {
+          "pdf_page_1based": 11,
+          "text_sha256": "eaaa0e052da510a848a55d3a8b423b2830d9321101e9ed47d7076815b8aebdde",
+          "characters": 9553
+        },
+        {
+          "pdf_page_1based": 12,
+          "text_sha256": "13a709e5a1cd074eb7a20a817d1a005fdc499e523c325583c31c12bd6cc06297",
+          "characters": 9100
+        },
+        {
+          "pdf_page_1based": 13,
+          "text_sha256": "432e21ae4344f84135ec766e0ce8e72bef98cb4fe27a41ead5075e5cf2debc89",
+          "characters": 21917
+        },
+        {
+          "pdf_page_1based": 14,
+          "text_sha256": "7aff5862ac0e795de949b9d62f2403e2caa017aee8e374934fd0ef58c7f9329d",
+          "characters": 8402
+        },
+        {
+          "pdf_page_1based": 15,
+          "text_sha256": "40ffad6721a78416a8f0774fb5bd9c8f3e88bc4fc0c61ecf540d4a11e0b9ed25",
+          "characters": 8800
+        },
+        {
+          "pdf_page_1based": 16,
+          "text_sha256": "d371e3199b41add8daf9bace4bb648765796b3d911ab74e2d28c15e51a2ba32d",
+          "characters": 3840
+        },
+        {
+          "pdf_page_1based": 17,
+          "text_sha256": "666725413338a668bfa2fef8dd4d69bcf4f4a4721ca832beb8b754928174e2ff",
+          "characters": 8769
+        },
+        {
+          "pdf_page_1based": 18,
+          "text_sha256": "2e83c207a349404bc366734dfd8e1fac0a5da8f03252b66d37aa651cf32596c6",
+          "characters": 8526
+        },
+        {
+          "pdf_page_1based": 19,
+          "text_sha256": "36e1f9ca9cacec3738ee093ac031d1ee39f5ab20f0961d841c2b58521c4d208f",
+          "characters": 8930
+        },
+        {
+          "pdf_page_1based": 20,
+          "text_sha256": "97c9e09a00f9a5c5a262e33c7f23544d2644aa150eacd3eb8e55f0954e02a9fb",
+          "characters": 8819
+        },
+        {
+          "pdf_page_1based": 21,
+          "text_sha256": "4872ec80b52edc5b50531b05fb0d5b3834ff50a2b5b8d98d6cdd8e91dd263380",
+          "characters": 8820
+        },
+        {
+          "pdf_page_1based": 22,
+          "text_sha256": "fecbe327a48af5ca02df3eea08706e7363025be8f32221d008d1efb35748361d",
+          "characters": 8895
+        },
+        {
+          "pdf_page_1based": 23,
+          "text_sha256": "7ab05544c59f649c328357ba9aea02ac321369e4de2ac6ce9bef07a155f24de5",
+          "characters": 8463
+        },
+        {
+          "pdf_page_1based": 24,
+          "text_sha256": "26de0308045ae9b7e34a5bf10c419169a2575f260c5ca97ed743fc233b450aab",
+          "characters": 8186
+        },
+        {
+          "pdf_page_1based": 25,
+          "text_sha256": "065c2bc70a6806b75d99e28d3d169e860e145bf458183be6248c69a03059f261",
+          "characters": 2429
+        },
+        {
+          "pdf_page_1based": 26,
+          "text_sha256": "2090e701b28b3e1680bbb62961ce39f2651aa69887febc49a2f194b3af4c407b",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 27,
+          "text_sha256": "e0695b7617b0cf7a4c721010ea6742176ba26952aca739b6f5038a1de0f6e3cb",
+          "characters": 2831
+        },
+        {
+          "pdf_page_1based": 28,
+          "text_sha256": "7518b73eed6e24bcbfe3955954a57dd0dbbbe22877e6d13569fa52a11e759bba",
+          "characters": 1820
+        },
+        {
+          "pdf_page_1based": 29,
+          "text_sha256": "bb3c1aefd4d0f67e0e40f4946cae525d73df07e3514f4d45b05dd2e29cd2c558",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 30,
+          "text_sha256": "8c12c0ced71130fae7309f94a4219f2d6e838cc9b98c649f09b074c364b970f0",
+          "characters": 1452
+        },
+        {
+          "pdf_page_1based": 31,
+          "text_sha256": "2f6e78a595e72a12407b6eeb394a706e5310afc1dfc29e13fa1f2ff719205e46",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 32,
+          "text_sha256": "18f53f77bd43ea2fd8407edd429dae3b6170be1a92a61a3036a207f53e5460c0",
+          "characters": 1210
+        },
+        {
+          "pdf_page_1based": 33,
+          "text_sha256": "f50ca001a757a0b02f29b4d3195091a55188d06687be5d848b666ebe57297a76",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 34,
+          "text_sha256": "9e1587e62296965e0051c1800c4757abd676c0843214b29b79b15df39b52bbe7",
+          "characters": 1112
+        },
+        {
+          "pdf_page_1based": 35,
+          "text_sha256": "7c02c493df10afbc233b6e210682d2b4ae743d13912b59cea251aa519f9b1c34",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 36,
+          "text_sha256": "86adb9006683d494d94b4b710b7b30bae49fd9c0a56b89a6994b1d552b30690e",
+          "characters": 1664
+        },
+        {
+          "pdf_page_1based": 37,
+          "text_sha256": "c45b4c01aa8394bc54b669e0f15546b541b1f5e5ea706dd9d709ac588e5074e8",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 38,
+          "text_sha256": "707cf825fb1c9226dd91e51c64c04e1f00e50eed6115ef3e9774e4e12cc7b8b4",
+          "characters": 5146
+        },
+        {
+          "pdf_page_1based": 39,
+          "text_sha256": "8c401a7a0ee2b8cdcb931c1e7457d76f988ecac89c34eaa13a0ad36ebf8b709f",
+          "characters": 204
+        },
+        {
+          "pdf_page_1based": 40,
+          "text_sha256": "339d5ac338cadbb8b38568b9a97ff45ba4b1093742db0d9bc4e3253a88ffc16b",
+          "characters": 1155
+        },
+        {
+          "pdf_page_1based": 41,
+          "text_sha256": "13916c6840548b9f09428b7dd902883af249cf013949febbf1275a19e4fd24eb",
+          "characters": 2239
+        },
+        {
+          "pdf_page_1based": 42,
+          "text_sha256": "52561c29bcb2edfaac891fcff6b65859e7e8c84f3c713377fe731db11a80e0ab",
+          "characters": 205
+        },
+        {
+          "pdf_page_1based": 43,
+          "text_sha256": "1eb1309e3c168b8fe2f31951fee799e74fba7b134671ab0eb572954e976d44af",
+          "characters": 1616
+        },
+        {
+          "pdf_page_1based": 44,
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page_1based": 45,
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page_1based": 46,
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        },
+        {
+          "pdf_page_1based": 47,
+          "text_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+          "characters": 0
+        }
+      ],
+      "full_methods_available": true,
+      "source": "Zotero local API, read-only"
+    },
+    {
+      "item_key": "DFH77L3E",
+      "attachment_key": "VGQI34KC",
+      "title": "An atlas of primate insular cortex reveals a signal-processing strategy in von Economo neurons",
+      "DOI": "10.1038/s41556-026-02009-4",
+      "date": "2026-07-02",
+      "indexed_text_sha256": "ac15dfacb01ee9f8c0de4f6de4350e67347cb24df828296523a9dd165c667554",
+      "indexed_pages": 41,
+      "total_pages": 41,
+      "pdf_sha256": "2e4dc0242fee3b60aa0e989dadbee7374e58a94feb094a824d1b1e19be49ddbd",
+      "paged_text_sha256": "28294ed17dd6be411d5834a630d6f46214d5f43a56b530f29cd9b900698c8e9b",
+      "pages": [
+        {
+          "pdf_page_1based": 1,
+          "text_sha256": "3aac5dbeb4a0bbb9970193343ec0bfc0b12cad24c4b0f1dc2c4434e31b4e94c6",
+          "characters": 298
+        },
+        {
+          "pdf_page_1based": 2,
+          "text_sha256": "75e052e5140c159e7743f5ca11de57cf07def8686b81b01ca6b9657b1eafdcb3",
+          "characters": 1549
+        },
+        {
+          "pdf_page_1based": 3,
+          "text_sha256": "c8d2bebe4c50384766cb38454de274f0917ea0ba1da97a10455fa9f1f5bcd20a",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 4,
+          "text_sha256": "da7fcf821b323efd321720e437e5b7bbc0f948001ad552d18fb811d892567775",
+          "characters": 1337
+        },
+        {
+          "pdf_page_1based": 5,
+          "text_sha256": "6a26e108c998d851699160f664c505c0730c921cb70e8ccfc88df563d96f1468",
+          "characters": 85
+        },
+        {
+          "pdf_page_1based": 6,
+          "text_sha256": "9e0f936d533040673a47f96aeffde70fd272439a0de4a89294b31dffa4316960",
+          "characters": 1147
+        },
+        {
+          "pdf_page_1based": 7,
+          "text_sha256": "14a2b146942a1eaec35c714ed799bbe8742278dfe77cb8aa8b4e45763ac6b78e",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 8,
+          "text_sha256": "6f20b62b97050154fcfcd4234e59b0c06214ea41e0c511c616dc2cfd8eee4094",
+          "characters": 1230
+        },
+        {
+          "pdf_page_1based": 9,
+          "text_sha256": "0803cb9ea5e5979d055f53f0eebdaf1dcb390f9aaa1227cda6d3a9aa80c111d4",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 10,
+          "text_sha256": "f8f97bade51a8465c761f7917d14ff08620edec079de90406b873513a7785c71",
+          "characters": 687
+        },
+        {
+          "pdf_page_1based": 11,
+          "text_sha256": "933d1ed23ec7ddf888e26ac51f79b79fc02a5e73a1e2974840e300913a162030",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 12,
+          "text_sha256": "ae13125d89b6098a63a0ebdb7661a358a6cda4ce2ad4566e65612295e78d563f",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 13,
+          "text_sha256": "b3747ab0f0e97efbeb0bcacad934c705ece66af028d75c1f921530c84d1a8e43",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 14,
+          "text_sha256": "2cda6a5bf865ad40f6374b44b5243f48461ca21ac0c6202a21b651e2dbbc006a",
+          "characters": 1919
+        },
+        {
+          "pdf_page_1based": 15,
+          "text_sha256": "c13da5e4d412acb8eb5c4146024ee62c56d6b34fc3ffb9e08f36ac8e40a99cc4",
+          "characters": 87
+        },
+        {
+          "pdf_page_1based": 16,
+          "text_sha256": "93ee77c5c10e398ff9f484837b98c5499b31a0b53128214241270c4033d986ab",
+          "characters": 761
+        },
+        {
+          "pdf_page_1based": 17,
+          "text_sha256": "aa6a1881e454886b3b159e67aeb7e18a0236c4897e1e730943ac186ac7766e6c",
+          "characters": 91
+        },
+        {
+          "pdf_page_1based": 18,
+          "text_sha256": "6ccadefb3619c2111a6beb25f81097005b8c9b97d6304840737417527635a83f",
+          "characters": 1520
+        },
+        {
+          "pdf_page_1based": 19,
+          "text_sha256": "bb82b6f12494aad7856dfe2263df86f1385aca3e5c1ca6b9a6cffcc813c85a8b",
+          "characters": 515
+        },
+        {
+          "pdf_page_1based": 20,
+          "text_sha256": "756fc70562b974c2a0e985ad5d4c57ac02c83555850e15b91545861a369b6e7e",
+          "characters": 93
+        },
+        {
+          "pdf_page_1based": 21,
+          "text_sha256": "a8b0dde90d89f5b7fe468a8a9a238d2f1022ad25eddf704f9977743fb855b6fa",
+          "characters": 2336
+        },
+        {
+          "pdf_page_1based": 22,
+          "text_sha256": "8f2cf60ab1d23971fa860dfe42f9951c116c192b77ebbf4f484c69aa7431a3c9",
+          "characters": 91
+        },
+        {
+          "pdf_page_1based": 23,
+          "text_sha256": "becd66c207009275428d6a9051cd8c6e96a1e20723fe77e96b2a819b3b5b77d6",
+          "characters": 1495
+        },
+        {
+          "pdf_page_1based": 24,
+          "text_sha256": "4d21f75cae88d182b881741f4153a57b0c42c03970f774c143779851982c6ac4",
+          "characters": 91
+        },
+        {
+          "pdf_page_1based": 25,
+          "text_sha256": "c53e3382285c111ee0f0e63d7373034a257ba3eaad49d004c25c5fe8b3cb6e22",
+          "characters": 91
+        },
+        {
+          "pdf_page_1based": 26,
+          "text_sha256": "9e01e09056d91677c2f62150ed2f060d9452928310dc96ae3cc54a63d5fc2a97",
+          "characters": 314
+        },
+        {
+          "pdf_page_1based": 27,
+          "text_sha256": "26fbcba798838f4c9c36da192322353749fece6e7b34723101dde76447385be6",
+          "characters": 96
+        },
+        {
+          "pdf_page_1based": 28,
+          "text_sha256": "a1daddea7f642a66fab53cabad94877c8b4122c2b8f7d157bab5f163176c54bf",
+          "characters": 871
+        },
+        {
+          "pdf_page_1based": 29,
+          "text_sha256": "7fc8d0715b0398cc87b9cd3f1657707a34538039d85811059ecb990b3ab0e3c1",
+          "characters": 91
+        },
+        {
+          "pdf_page_1based": 30,
+          "text_sha256": "81d780009e10af88fe9337e528fa1ee702203a4c40baa5ceeff9d6af97348f54",
+          "characters": 320
+        },
+        {
+          "pdf_page_1based": 31,
+          "text_sha256": "0b8aa5fd2f2bc3685ed26908c2431a18c60ec07194dd07d8353d406d79ea657c",
+          "characters": 91
+        },
+        {
+          "pdf_page_1based": 32,
+          "text_sha256": "da59d3f08fedfa45b4d943788d317b16f8578e6db05ed972ad8b208e6022410f",
+          "characters": 95
+        },
+        {
+          "pdf_page_1based": 33,
+          "text_sha256": "f033ab5e5718efe187243732d59eb70ac5af7b52c8aaeb7a5566bb2279717056",
+          "characters": 854
+        },
+        {
+          "pdf_page_1based": 34,
+          "text_sha256": "97cdecaa550b283cdcef8b59f5605b712144f25303b7da374120640c85f566f7",
+          "characters": 89
+        },
+        {
+          "pdf_page_1based": 35,
+          "text_sha256": "ee683e4f5b8b02c06722b9eade42aa3221c0a208e7196c35dc0c5eb4c966e455",
+          "characters": 1032
+        },
+        {
+          "pdf_page_1based": 36,
+          "text_sha256": "fda3490b2af6e1bfde275133ef7036ca47ae4eba1f75fde8475661cdaeda099f",
+          "characters": 88
+        },
+        {
+          "pdf_page_1based": 37,
+          "text_sha256": "151528996b872ad1c61668c3939f1f6e56d86176306f9f3e4794f9b7aadd2475",
+          "characters": 663
+        },
+        {
+          "pdf_page_1based": 38,
+          "text_sha256": "67bac59f69dedb76af8f7be1859bd6da5493b5f6505f70d8fd091ba035e1a0aa",
+          "characters": 2545
+        },
+        {
+          "pdf_page_1based": 39,
+          "text_sha256": "75e45d4ece7a2649a9d7a0bfa85701319cf6ae60df98d426dc17e846df3f8cac",
+          "characters": 153
+        },
+        {
+          "pdf_page_1based": 40,
+          "text_sha256": "9dbe27aee9d1bc48cb8b1b8eb89be3cbb683df635c5a10183541d23184ea38fa",
+          "characters": 140
+        },
+        {
+          "pdf_page_1based": 41,
+          "text_sha256": "8d8114095d05a2dcbf9b0ab0c8404155bcfc8fd935680fc2b34128385537ae1e",
+          "characters": 141
+        }
+      ],
+      "full_methods_available": false,
+      "source": "Zotero local API, read-only"
+    }
+  ],
+  "claims": [
+    {
+      "id": "evrard_area_criteria",
+      "attachment_key": "DX3VKLUS",
+      "indexed_line_start": 21,
+      "indexed_line_end": 36,
+      "anchor_text_sha256": "3da92654a6135e789b3ac387883402d9280e1163be21e9feda2511b9c4a20778",
+      "section": "Materials and Methods: Subjects; Histological processing; Architectonic analysis",
+      "pdf_pages_1based": null,
+      "journal_pages": "65-66",
+      "literature_paraphrase": "Ten adult M.fascicularis; serial 50/60µm sections, Nissl and Gallyas; repeated independent two-observer mapping; area adoption requires >=300µm width across sections, abrupt multiple features, consistency across stains and cases.",
+      "project_interpretation": "Histological area criterion, not coordinate-distance threshold or NMT registration tolerance."
+    },
+    {
+      "id": "evrard_flatmap",
+      "attachment_key": "DX3VKLUS",
+      "indexed_line_start": 36,
+      "indexed_line_end": 39,
+      "anchor_text_sha256": "c4db40c3381fc750a4bcaf742e83990da27ae772814598076d193b445affb2cc",
+      "section": "Architectonic analysis; Construction of the flat maps",
+      "pdf_pages_1based": null,
+      "journal_pages": "66",
+      "literature_paraphrase": "Gross sulcal boundaries; flat maps use layerIV or III/V widths, actual section spacing and superior-limiting-sulcus reference; MRI assists sulcus positioning in five cases.",
+      "project_interpretation": "Case-specific histological map, not a NMT/ARM volumetric crosswalk."
+    },
+    {
+      "id": "evrard_fine_subareas",
+      "attachment_key": "DX3VKLUS",
+      "indexed_line_start": 139,
+      "indexed_line_end": 153,
+      "anchor_text_sha256": "3b5b14ef8b448a838104b2b4b8f8e43c34628a2be355aa1102c6ab565b7594cb",
+      "section": "Results: possible subdivisions; Figs21-26",
+      "pdf_pages_1based": null,
+      "journal_pages": "79-81",
+      "literature_paraphrase": "Numbered IDD/IDM/IDV subdivisions are tentative, based on subtle laminar/myelin transitions, with insufficient evidence then for distinct areas versus modules.",
+      "project_interpretation": "Fine curated labels need explicit boundary uncertainty; cannot be accepted from a template coordinate box alone."
+    },
+    {
+      "id": "krockenberger_injections",
+      "attachment_key": "DZAU4B4N",
+      "indexed_line_start": 175,
+      "indexed_line_end": 214,
+      "anchor_text_sha256": "a24fda143469ff9b67d916a2ac0acd48f17b289ecb5c01786643a6e6cf8d1f2a",
+      "section": "2.1 Tracer injection and histological processing",
+      "pdf_pages_1based": [
+        4
+      ],
+      "journal_pages": "2022",
+      "literature_paraphrase": "Five adult M.mulatta; secondary tracing material; BDA/LY/FR5/10%,0.3-1.2µl,about14days survival;50µm coronal sections in alternating one-in-ten series, Nissl and two cases Gallyas.",
+      "project_interpretation": "Restricted source/injection sampling is not a full insular projectome or a validated fine-parcel crosswalk."
+    },
+    {
+      "id": "krockenberger_independence",
+      "attachment_key": "DZAU4B4N",
+      "indexed_line_start": 215,
+      "indexed_line_end": 270,
+      "anchor_text_sha256": "bd7b65ea3a71dda81d552a3623d818e147a943d731486f567a51bddfe203ad94",
+      "section": "2.2 Data analysis",
+      "pdf_pages_1based": [
+        4,
+        5
+      ],
+      "journal_pages": "2022-2023",
+      "literature_paraphrase": "Serial ipsilateral mapping then selected high-resolution21-level zstacks; independent >=2-examiner histological mapping without consulting adjacent tracer labeling, followed by overlay.",
+      "project_interpretation": "Review soma/parcel assignments independently of desired projection patterns."
+    },
+    {
+      "id": "krockenberger_terminal_evidence",
+      "attachment_key": "DZAU4B4N",
+      "indexed_line_start": 273,
+      "indexed_line_end": 314,
+      "anchor_text_sha256": "438045423673f13ce811330c21b056b30328f66d7ab6a0cb4d89710ed8d65c08",
+      "section": "3.1 General observations",
+      "pdf_pages_1based": [
+        5
+      ],
+      "journal_pages": "2023",
+      "literature_paraphrase": "Injection core/halo and spread inspected; anterograde terminal labeling recognized as stained fibers with beaded varicosities interpreted as presumptive boutons; distinct bearing fibers charted as lines; retrograde label recognized in soma/proximal dendrites.",
+      "project_interpretation": "Varicosities along fibers differ from graph leaves; light microscopy does not ultrastructurally verify each synapse; no SWC passage-fiber algorithm supplied."
+    },
+    {
+      "id": "krockenberger_limitations",
+      "attachment_key": "DZAU4B4N",
+      "indexed_line_start": 822,
+      "indexed_line_end": 853,
+      "anchor_text_sha256": "640f64bc90874f1fd4ff587da51264ea2a57682b625478089eed83ec67629715",
+      "section": "4.4 Limitations of the present study and future perspectives",
+      "pdf_pages_1based": [
+        21,
+        22
+      ],
+      "journal_pages": "2039-2040",
+      "literature_paraphrase": "No objective quantification; fine divisions may combine IDD4/IDD5 or IDM2/IDM3 into single mildly topographic entities; fine map is not definitive.",
+      "project_interpretation": "Fine-parcel sensitivity and retained provenance are warranted; fixed universal stripe assignments are unsupported."
+    },
+    {
+      "id": "chikama_tracing",
+      "attachment_key": "VPPUUD5U",
+      "indexed_line_start": 21,
+      "indexed_line_end": 46,
+      "anchor_text_sha256": "36b0bb27e850c50bf0ba2c5adff4a63f1250aebfecde9366902a7cee5025fb47",
+      "section": "Materials and Methods: Retrograde tracing study",
+      "pdf_pages_1based": [
+        2
+      ],
+      "journal_pages": "9687",
+      "literature_paraphrase": "Eleven adult M.nemestrina/M.mulatta; striatal WGA-HRP/LY microinjection aided by physiology; post-injection syringe dwell limits track leakage.",
+      "project_interpretation": "Actual injection extent and independent anatomical evidence matter."
+    },
+    {
+      "id": "chikama_anterograde",
+      "attachment_key": "VPPUUD5U",
+      "indexed_line_start": 100,
+      "indexed_line_end": 148,
+      "anchor_text_sha256": "b257890cfe576b0df918c75bc4dc2ec0ce81bb173ddcf009df47f21b6357a158",
+      "section": "Materials and Methods: shell double staining; Anterograde tracing study",
+      "pdf_pages_1based": [
+        3
+      ],
+      "journal_pages": "9688",
+      "literature_paraphrase": "Calbindin/tracer double staining identifies shell; five adult M.fascicularis anterograde experiments use atlas/physiology-assisted insular tritiated amino-acid injections and autoradiography.",
+      "project_interpretation": "Tracer-defined striatal fields are different measurements from SWC leaf/bouton counts."
+    },
+    {
+      "id": "chikama_boundaries",
+      "attachment_key": "VPPUUD5U",
+      "indexed_line_start": 149,
+      "indexed_line_end": 169,
+      "anchor_text_sha256": "a4d49a0a4159b2da3587377bb450e5ce048bf7dead2f0ce44699b79e5898b1f6",
+      "section": "Materials and Methods: Charting",
+      "pdf_pages_1based": [
+        3
+      ],
+      "journal_pages": "9688",
+      "literature_paraphrase": "Somata charted by light microscopy; silver grain deposits charted under dark field; Nissl-defined broad Ia/Id/Ig scheme; difficult posterior orbital/anterior insular boundary explicitly retained.",
+      "project_interpretation": "Broad scheme cannot be silently treated as exact Evrard fine labels or ARM equivalence; no implementable SWC terminal/passage separation supplied."
+    },
+    {
+      "id": "liu_cell_annotation",
+      "attachment_key": "JUAS5RLT",
+      "indexed_line_start": 1255,
+      "indexed_line_end": 1257,
+      "anchor_text_sha256": "2c54c9183e9aba4c51748219a7ab9306ec11948810e9dacfc320ecf7fb37f2bc",
+      "section": "Methods: Cell cluster annotation and name assignment",
+      "pdf_pages_1based": [
+        18
+      ],
+      "journal_pages": null,
+      "literature_paraphrase": "Excitatory subclasses assigned from markers and dataset homology, with selected layer-marker validation; VENs map to molecular ET/CT subclasses.",
+      "project_interpretation": "Molecular subclass annotations cannot validate our numerical parcel-presence PT/CT classifier."
+    },
+    {
+      "id": "liu_local_synapses",
+      "attachment_key": "JUAS5RLT",
+      "indexed_line_start": 1272,
+      "indexed_line_end": 1274,
+      "anchor_text_sha256": "073903cc7bfa1d49374a1850ce93bff55d0584e98f6f956a8d4b06a10e0497f3",
+      "section": "Methods: Electrophysiological recording",
+      "pdf_pages_1based": [
+        19
+      ],
+      "journal_pages": null,
+      "literature_paraphrase": "Up to eight simultaneous whole-cell recordings test presynaptic-evoked unitary postsynaptic potentials; spontaneous/miniature currents and stimulation responses have explicit pharmacology/response criteria.",
+      "project_interpretation": "Local physiological connectivity evidence is distinct from complete long-range axon target maps or reconstruction leaf counts."
+    },
+    {
+      "id": "liu_morphology_annotation",
+      "attachment_key": "JUAS5RLT",
+      "indexed_line_start": 1296,
+      "indexed_line_end": 1302,
+      "anchor_text_sha256": "00969086a0811434065068115a07522368e5b46b0e36376efe356cb27eb9f637",
+      "section": "Methods: Biocytin staining and morphological reconstruction; Anatomical annotation; Extraction of morphological features",
+      "pdf_pages_1based": [
+        21
+      ],
+      "journal_pages": null,
+      "literature_paraphrase": "Manual x100 Neurolucida reconstructions in acute-slice material; soma-origin/pia-y coordinates;30 AP-level histological slices with Nissl/layer markers support normalized soma depth;20x20x300µm dendritic-density bins and2D smoothing.",
+      "project_interpretation": "Local laminar/morphology procedures and smoothing are not NMT whole-brain terminal-map parameters or a fine-parcel crosswalk."
+    },
+    {
+      "id": "liu_projection_limit",
+      "attachment_key": "JUAS5RLT",
+      "indexed_line_start": 1201,
+      "indexed_line_end": 1201,
+      "anchor_text_sha256": "525506faa9518099a85c97434cff26818881147c09421682f9951abc4e6caf8b",
+      "section": "Discussion: final limitation paragraph",
+      "pdf_pages_1based": [
+        14
+      ],
+      "journal_pages": null,
+      "literature_paraphrase": "Subcerebral targets not directly identified; actual VEN-L/VEN-S projections remain unknown despite molecular ET/CT similarity; future tracing needed.",
+      "project_interpretation": "Do not convert molecular labels into target ground truth or use this atlas as proof of biological terminals."
+    }
+  ],
+  "project_source_sha256": {
+    "atlas/ARM_key_all.txt": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+    "main_scripts/neuro_tracer.py": "2f11cc1675bb9217d5665f7df8bccc5e1fd2cd1dfa717443548d275e30556d6f",
+    "main_scripts/region_analysis/neuron_analysis.py": "19a9c769ef0e827243e6ad5465aebcb42181484c4ff0fcdb30c0290716594123",
+    "main_scripts/region_analysis/population.py": "a5939e76cea844e092df6d03808d15cc6ca2a537c0ff01c65f454192e354f371",
+    "group_analysis/scripts/06_harmonize_atlas_to_manual.py": "c44391e3e54592cebdd3f10007536b8206a5210db969cf182987cb55b600a932"
+  },
+  "project_source_anchors": {
+    "atlas/ARM_key_all.txt": [
+      40,
+      44,
+      217,
+      222,
+      277,
+      281,
+      454,
+      459
+    ],
+    "main_scripts/neuro_tracer.py": [
+      195,
+      206
+    ],
+    "main_scripts/region_analysis/neuron_analysis.py": [
+      77,
+      103
+    ],
+    "main_scripts/region_analysis/population.py": [
+      326,
+      356
+    ],
+    "group_analysis/scripts/06_harmonize_atlas_to_manual.py": [
+      1,
+      40,
+      81,
+      90
+    ]
+  },
+  "unsupported_or_unavailable": [
+    "Evrard local PDF and unprovided supplementary figures unavailable; indexed full Methods34/34pages available.",
+    "No reviewed paper establishes one-to-one NMT ARM to IDD5/IDM/IDV crosswalk.",
+    "No reviewed Methods validates bare SWC leaf as bouton/synapse or a universal soma-distance/length terminal threshold.",
+    "2023 authors explicitly retain fine-map ambiguity;2026 authors explicitly lack direct long-range target identification."
+  ],
+  "primary_metadata_checks": [
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/full/10.1002/cne.25571",
+      "role": "Publisher full-text/DOI metadata confirmation; main Methods evidence from local Zotero attachment."
+    },
+    {
+      "url": "https://onlinelibrary.wiley.com/doi/abs/10.1002/cne.23436",
+      "role": "Publisher citation confirmation; local PDF unavailable but indexed Methods complete."
+    },
+    {
+      "url": "https://www.jneurosci.org/content/17/24/9686",
+      "role": "Publisher page could not be opened through web tool; complete Zotero PDF available."
+    },
+    {
+      "url": "https://crossmark.crossref.org/dialog/?doi=10.1038%2Fs41556-026-02009-4",
+      "role": "Crossmark confirmed current document and online date2026-07-02; main Methods from Zotero PDF."
+    }
+  ],
+  "methods_note_sha256": "850613c8c1d98ad162083d5df1d12de7a7e31e37ebc51754e534ae1c12574dff"
+}

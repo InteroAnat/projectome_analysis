@@ -1,0 +1,103 @@
+{
+  "date": "2026-10-09",
+  "status": "integrated_production_guards_focused_tests_passed",
+  "files": {
+    "group_analysis/scripts/05a_build_combined_table.py": "d92369a1d71b79dd321d318f22c88be2ce7fa24e4e07d75994001a99a4e0d83f",
+    "group_analysis/scripts/05b_audit_coord_frames.py": "14403b75915f0d6c047462770e417b1670e5491f1c6ffcdbbe6aeee91127a916",
+    "main_scripts/region_analysis/neuron_analysis.py": "6c5435c85d142b6b01eab6df6a6029f1ecddbf52133f0cbe39497b4258cde750",
+    "group_analysis/scripts/06_harmonize_atlas_to_manual.py": "5d5b0773d56bd26a108de3afda9833ae884093071275e377a7d09cb4c8b3800a",
+    "tests/test_region_export_contracts.py": "5bfea46bd83b89fe94b001cefe69d82d5fbfe3efbf1afc1f6ef11524a3bc28de",
+    "notes/region_analysis_review_20261009/code_audit/test_harmonizer_preservation.py": "3922f4db29717df9914eb6aafc5ef8cce1cad16e852771f4bd99840d82385cd9",
+    "tests/test_harmonization_safety.py": "326a38627893fc751d40cc1095658f80e0f00e771156ac188bcea3d0675eeba5"
+  },
+  "tests": {
+    "export_contracts_after.log": {
+      "count": 16,
+      "status": "passed",
+      "sha256": "ea4ee1d42e3716ede41612d49c84c4819455594ce02d43bb123e3df5e1712386"
+    },
+    "export_contracts_harmonization_safety.log": {
+      "count": 6,
+      "status": "passed",
+      "sha256": "417db8a071f3babc819086c7fe3991883c0b8af6a39f0c19c151eb64827ee32c"
+    },
+    "export_contracts_harmonizer_preservation_corrected_fixture.log": {
+      "count": 1,
+      "status": "passed",
+      "sha256": "2e921c370212ac70f7da3ef98d6df1c6330755ac30b7d900f4a7d575220be301"
+    }
+  },
+  "source_workbooks": [
+    {
+      "path": "neuron_tables_new\\251637_INS_HE_inferred.xlsx",
+      "sha256": "e230985cb218f78577d099a33801e4b68cf7d17f0eb3b055416788b11f7a6cc3",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\combined\\multi_monkey_INS_combined.xlsx",
+      "sha256": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx",
+      "sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx",
+      "sha256": "1153b8d53693ae00171758a8b9abbf8532508211fceae22703ae990794f9b218",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx",
+      "sha256": "16a9512b048d236ad2af5f56698ba0a085718b9870cca4f24d4f6e1bf79f102d",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx",
+      "sha256": "d0b8afa611026a3232293f1beea9e5cb64bc6e5bccce8c06033b4860c52f3c07",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx",
+      "sha256": "7cee63610b05f52a51f1691497d8f9beca1b075ed98e38e6ec05b2b7a5ff8132",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx",
+      "sha256": "cd86f1a34b75376de8e7e917361e727b280c764ed390698d1a764138ed9a790f",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx",
+      "sha256": "3f285cdc48671f9140e2a17c13c384bb0efd90efa97d3e73537b27d8fd337a78",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx",
+      "sha256": "dc0e5e04116a3627dc0a839bc4db82eb22f3662b3b4b934ebd3153dfe65e9094",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx",
+      "sha256": "4513d515137c149a18e9cbcd8f9e6680b475f69e136fc7769eb5cdee6dd04d99",
+      "matches_prior_inventory": true
+    },
+    {
+      "path": "group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx",
+      "sha256": "02a7f0bd7609d288b195e961b20e48aaa5430566656952cd21be77839b09b31b",
+      "matches_prior_inventory": true
+    }
+  ],
+  "all_12_inventoried_source_workbooks_unchanged": true,
+  "focused_tests_passed": 23,
+  "fixture_correction": "Old preservation fixture used unsplit L2/L3/L5/L6 sheets; corrected only sheet-name generation to actual8required finest/L3 ipsi/contra sheets. Every preservation assertion retained. Initial obsolete-fixture rejection log retained.",
+  "preserved_numerical_policy": [
+    "Whole-edge proximal-voxel assignment",
+    "Per-edge0.001 rounding",
+    "All-compartment leaf-region retention",
+    "Existing classifier/category/laterality rules",
+    "Existing target-column union and zero fill"
+  ],
+  "prior_status_superseded": "Earlier staged-only and automatic-production-write-block statuses in the audit report are historical; ROOT integrated earlier repairs and this authorized four-file guard patch is now live."
+}

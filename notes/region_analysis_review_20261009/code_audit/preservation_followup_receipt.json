@@ -1,0 +1,57 @@
+{
+  "status": "staged_only_no_production_writes_by_auditor",
+  "purpose": "Current-source follow-up; earlier hierarchy/graph repairs were integrated by parent",
+  "files": {
+    "main_scripts/region_analysis/population.py": {
+      "source_sha256": "cf4c52b7b06df4cf4a2092d9461c5433bcc4d13e16f6c75dfbfc6c379f8ee4c4",
+      "staged_sha256": "bafe57583bc75c6b792c322563974f24bad29475246cbe430058ff5b9ba4aaa8"
+    },
+    "main_scripts/region_analysis/hierarchy_table.py": {
+      "source_sha256": "3fbcda26b528e610e1bc51dc78c1ec7da795099fc703eef71d06fe925d44b4aa",
+      "staged_sha256": "3fbcda26b528e610e1bc51dc78c1ec7da795099fc703eef71d06fe925d44b4aa"
+    },
+    "group_analysis/scripts/06_harmonize_atlas_to_manual.py": {
+      "source_sha256": "c44391e3e54592cebdd3f10007536b8206a5210db969cf182987cb55b600a932",
+      "staged_sha256": "cbff401c5f8a92e15a527ca7ea2b6e7af1c7e52905212d6bc645a8981fc0f1b4"
+    }
+  },
+  "population_method_scope": [
+    "_generate_all_plots"
+  ],
+  "hierarchy_xlsx_status": "already identical in current production and staged; independent public API regression added",
+  "harmonizer_scope": "Original workbook objects retained; only documented harmonization columns and generated rule/provenance sheets are changed; existing Phase6a scoped enrichment remains",
+  "historical_formula_incidence": {
+    "workbooks": 12,
+    "formula_cells": 0,
+    "inventory": "actual_source_formula_inventory.json"
+  },
+  "production_snapshot_unchanged_during_preparation": true,
+  "patch_sha256": "fa048a51807da8b417f2baf89b9a9dd6212199b5d078fb38ab7e223723106c3a",
+  "tests": {
+    "hierarchy_graph_plot": {
+      "count": 16,
+      "status": "passed",
+      "exit_code": 0,
+      "log": "hierarchy_plot_expanded_staged_delivery.log",
+      "log_sha256": "2f300c97fa9abae92548f128643e314242a96f27ed7a58c23805cf4d5f603e14"
+    },
+    "harmonizer": {
+      "count": 1,
+      "status": "passed",
+      "exit_code": 0,
+      "log": "harmonizer_preservation_staged_delivery.log",
+      "log_sha256": "5c82b7358a482adf1bfe7b1414fe19a61379c584ab1cf654a25b6270cae3c3fd"
+    }
+  },
+  "test_source_hashes": {
+    "test_hierarchy_and_plots.py": "d0d41a3546dd5da3a44ee904eaabcf951a404368b536e670342b37b9b92c54fe",
+    "test_harmonizer_preservation.py": "7e0442dba614065cbee3b04401dde9536e9f084857c37ab7884563feb432af8e"
+  },
+  "validation_scope": "Software contracts on synthetic/temp inputs; no canonical rebuild or anatomical acceptance",
+  "production_snapshot_unchanged_through_validation": true,
+  "baseline_logs": [
+    "hierarchy_plot_expanded_before.log",
+    "harmonizer_preservation_before.log"
+  ],
+  "approval_note": "One staged test command timed out during automatic approval review; the tool explicitly permitted one retry, which succeeded. No production write attempted."
+}

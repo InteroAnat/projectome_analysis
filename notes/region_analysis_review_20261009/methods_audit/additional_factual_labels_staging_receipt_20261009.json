@@ -1,0 +1,52 @@
+{
+  "status": "staged_only_not_applied",
+  "patch_sha256": "257f744fe6acbbd385ff93b4b73dc5edeefc7434cfefe70182df0ef740be9d44",
+  "requires_first": "proposed_methods_label_corrections_v2.patch",
+  "numeric_operations_changed": false,
+  "historical_outputs_changed": false,
+  "files": [
+    {
+      "path": "R_analysis/Projectome_Analysis_Tutorial.Rmd",
+      "base_path": "notes\\region_analysis_review_20261009\\methods_audit\\additional_factual_labels_base_20261009\\R_analysis\\Projectome_Analysis_Tutorial.Rmd",
+      "base_sha256": "e2da6607abdad4cd6affc061d3b2f7be1e1e9015b25ef3a343567b906ecad790",
+      "proposed_sha256": "20ecb38f4731c9548933ff5da0cfc3cce0bd9a616c0b23ac4c9c481585ed308e"
+    },
+    {
+      "path": "R_analysis/scripts/Projectome_Analysis_Tutorial.Rmd",
+      "base_path": "notes\\region_analysis_review_20261009\\methods_audit\\additional_factual_labels_base_20261009\\R_analysis\\scripts\\Projectome_Analysis_Tutorial.Rmd",
+      "base_sha256": "ee415d12d948ce5bbb519622846d412e6c49ec1f6e94b37ca09b9d39408f57b8",
+      "proposed_sha256": "a400cc8049b0eccc3aabbfa47e2ce5b1b4df180203fbefe56592dd80632c0593"
+    },
+    {
+      "path": "R_analysis/scripts/Projectome_Tutorials/Projectome_Analysis_Tutorial.Rmd",
+      "base_path": "notes\\region_analysis_review_20261009\\methods_audit\\additional_factual_labels_base_20261009\\R_analysis\\scripts\\Projectome_Tutorials\\Projectome_Analysis_Tutorial.Rmd",
+      "base_sha256": "5006c7d1d1d55f1f46e9a3a9df16d875ec44e5f48d84d2c97c482914ddc63c02",
+      "proposed_sha256": "f59e997bd7ad17f2f8b0b206a378bd6b0f714012d9125158789b8fb4a780d3a2"
+    },
+    {
+      "path": "notes/hemispheric_asymmetry_methods_comparison.md",
+      "base_path": "notes\\region_analysis_review_20261009\\methods_audit\\additional_factual_labels_base_20261009\\notes\\hemispheric_asymmetry_methods_comparison.md",
+      "base_sha256": "7e796b628ec15ded6188480a33e9664c0a3b136b6244fb97ca2fcd22e6784c59",
+      "proposed_sha256": "62bcd0b6cefc5164cd018ae38730bee9f84c916e26aaf97e9b85dd17ad3c85c7"
+    },
+    {
+      "path": "group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd",
+      "base_path": "notes\\region_analysis_review_20261009\\methods_audit\\proposed_label_corrections_v2\\group_analysis\\R_analysis\\v2_combined_primary_pipeline.Rmd",
+      "base_sha256": "c79ef5ce2c95bdf8c4c3cbfb1396dc552e68b3350634e3d1266e7108ea43c24a",
+      "proposed_sha256": "8528926e1c6c3d2220be0a08c1ae7d4285e21e91b2238c205b6868f8549eacd6"
+    }
+  ],
+  "cohort_readback": {
+    "unique_UIDs": 353,
+    "SampleIDs": {
+      "251637": 260,
+      "252385": 47,
+      "252527": 23,
+      "252718": 13,
+      "252383": 5,
+      "252384": 5
+    },
+    "animal_count_asserted": false
+  },
+  "base_freeze_method": "Inverse of recorded string-only substitutions, accepted only on exact prepatch SHA256 match; production never changed"
+}

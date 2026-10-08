@@ -1,0 +1,188 @@
+{
+  "status": "software_verified_inventory_manifest",
+  "created_utc": "2026-10-08T16:53:56.722160+00:00",
+  "inputs": {
+    "audited_sources": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\map_ready_sources.csv",
+      "sha256": "8e6d85347b5bf4866da61ccacdea41928f0c70572887c995613261293608414d"
+    },
+    "inventory_provenance": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\provenance.json",
+      "sha256": "1d11d015414df614aedebeee521f340301936f4b289dec45eed6874b59abe3c7"
+    },
+    "animal_registry": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d"
+    },
+    "reference": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    }
+  },
+  "preparer_sha256": "3c945905cb00be35b9bd2395db77917a89cd97c447eed66d9c907ee99b24df13",
+  "source_inventory_rows": 1912,
+  "selection_ledger_rows": 465,
+  "selected_neurons": 436,
+  "selected_animals": [
+    "331",
+    "605",
+    "631",
+    "797",
+    "900",
+    "936",
+    "945",
+    "948"
+  ],
+  "groups": [
+    {
+      "AnimalID": "331",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 14
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "AtlasINS_R",
+      "n_selected": 4
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "Candidate_L",
+      "n_selected": 11
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "Candidate_R",
+      "n_selected": 21
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "G_exploratory_L",
+      "n_selected": 3
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 1
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "AtlasINS_R",
+      "n_selected": 5
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 3
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "AtlasINS_R",
+      "n_selected": 1
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "G_exploratory_L",
+      "n_selected": 7
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "G_exploratory_R",
+      "n_selected": 5
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 21
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "AtlasINS_R",
+      "n_selected": 17
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "Candidate_L",
+      "n_selected": 3
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "Candidate_R",
+      "n_selected": 4
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 4
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "G_exploratory_L",
+      "n_selected": 7
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "G_exploratory_R",
+      "n_selected": 2
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "Candidate_R",
+      "n_selected": 1
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "HumanINS_L",
+      "n_selected": 103
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "HumanINS_R",
+      "n_selected": 157
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 12
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "AtlasINS_R",
+      "n_selected": 2
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "Candidate_R",
+      "n_selected": 11
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "AtlasINS_L",
+      "n_selected": 3
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "AtlasINS_R",
+      "n_selected": 2
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "Candidate_L",
+      "n_selected": 5
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "Candidate_R",
+      "n_selected": 7
+    }
+  ],
+  "manifest_sha256": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2",
+  "selection_ledger_sha256": "af19709a17ef9732975342d53f8112307d2faf481eaf8ac36f05cbbdbf1bc506",
+  "selection_policy": "disjoint evidence strata and hemisphere; each exact identity once; no coordinate relabeling",
+  "coordinate_policy": "current cached XYZ/250 center encoding; export origin and registration unresolved",
+  "terminal_policy": "candidate graph leaves and all-axon length only; reviewed terminal fields unavailable",
+  "animal_policy": "exact human registry mapping; missing identities excluded from animal aggregation",
+  "source_policy": "audited deterministic source after equal complete seven-column numeric graphs across variants",
+  "canonical_promotion": false,
+  "anatomical_acceptance": "no new acceptance",
+  "source_files_mutated": false
+}

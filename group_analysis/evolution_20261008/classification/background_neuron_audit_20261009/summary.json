@@ -1,0 +1,166 @@
+{
+  "observed_at": "2026-10-09T07:20:24.924976+08:00",
+  "primary_scope": "52existing_selected_ARM6_background_soma_cases",
+  "selected52_evidence_partition": {
+    "HumanINS": 13,
+    "Candidate": 13,
+    "OriginCandidate": 15,
+    "NearINS": 11
+  },
+  "selected_Henry_reviewed_coarse_INS": 13,
+  "selected_potential_only": 39,
+  "selected_by_sample": {
+    "251637": 14,
+    "252384": 8,
+    "252385": 3,
+    "252790": 11,
+    "252718": 1,
+    "252383": 15
+  },
+  "selected_by_animal": {
+    "936": 14,
+    "948": 8,
+    "331": 3,
+    "797": 11,
+    "900": 1,
+    "605": 15
+  },
+  "selected_mask_sides": {
+    "R": 19,
+    "L": 33
+  },
+  "selected_current_tissue": {
+    "CSF": 3,
+    "WM": 49
+  },
+  "selected_edge_tissue": {
+    "GM": 31,
+    "WM": 19,
+    "scGM": 2
+  },
+  "selected_tissue_policy": {
+    "CSF_to_GM": 3,
+    "origin_sensitive_GM_WM_transition": 30,
+    "persistent_WM": 19
+  },
+  "selected_edge_full_ARM_labels": {
+    "CR_agranular_and_dysgranular_insula": 3,
+    "CL_agranular_and_dysgranular_insula": 8,
+    "Atlas background": 19,
+    "SL_claustrum": 2,
+    "CR_lateral_agranular_insula_area": 1,
+    "CL_granular_insula": 9,
+    "CR_granular_insula": 6,
+    "CR_secondary_somatosensory_cortex": 1,
+    "CL_gustatory_cortex": 2,
+    "CR_parietal_operculum": 1
+  },
+  "selected_halfopen_label_differences": 0,
+  "selected_halfopen_voxel_differences": 1,
+  "selected_Henry_UIDs": [
+    "251637|112.swc",
+    "251637|114.swc",
+    "251637|422.swc",
+    "251637|423.swc",
+    "251637|438.swc",
+    "251637|439.swc",
+    "251637|440.swc",
+    "251637|444.swc",
+    "251637|458.swc",
+    "251637|459.swc",
+    "251637|460.swc",
+    "251637|461.swc",
+    "251637|469.swc"
+  ],
+  "selected_native_atlas_pairs": 38,
+  "selected_visual_manifest_present": 38,
+  "selected_visual_context_coverage": {
+    "not_recorded": 25,
+    "derived_highres": 3,
+    "derived_partial": 24
+  },
+  "selected_reviewed_soma_decisions": {
+    "251637|112.swc": {
+      "region": "R-IDM",
+      "status": "hemisphere corrected by user NeuronView confirmation; supplied IDM retained",
+      "effective_status": "reviewed_hash_bound"
+    },
+    "251637|114.swc": {
+      "region": "R-IDM",
+      "status": "provisional IDM selected by user; anatomical parcel not independently verified",
+      "effective_status": "reviewed_hash_bound"
+    }
+  },
+  "supplementary_complete_UIDs": 8746,
+  "supplementary_own_roots": 1912,
+  "supplementary_missing_local_SWC": 6834,
+  "supplementary_missing_portal_coordinates": 337,
+  "supplementary_own_ARM6_positive": 1617,
+  "supplementary_own_ARM6_background": 295,
+  "supplementary_unselected_background": 243,
+  "supplementary_unselected_current_tissue": {
+    "WM": 200,
+    "CSF": 43
+  },
+  "supplementary_unselected_within2mm_UIDs": [
+    "250432|121.swc",
+    "250432|125.swc",
+    "250432|127.swc",
+    "250432|129.swc",
+    "250432|130.swc",
+    "250432|182.swc",
+    "250432|183.swc"
+  ],
+  "supplementary_unselected_distance_unknown": 84,
+  "primary_policy": "ARM6 [...,0,5], np.rint(SWC XYZ/250), zero-based; no inverse affine",
+  "origin_acceptance": "unresolved; ceil(index)-1 and floor(index+.5) sensitivity only",
+  "official_segmentation_classes": {
+    "1": "CSF",
+    "2": "GM",
+    "3": "scGM",
+    "4": "WM",
+    "5": "BV"
+  },
+  "reference_shape": [
+    256,
+    312,
+    200
+  ],
+  "reference_affine": [
+    [
+      0.25,
+      -0.0,
+      -0.0,
+      -31.875
+    ],
+    [
+      -0.0,
+      0.25,
+      -0.0,
+      -27.75
+    ],
+    [
+      0.0,
+      0.0,
+      0.25,
+      -8.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "saved_folded_candidate_rule": "portal um/1000; folded X=abs(X_mm-32); folded reference q0.005-q0.995 NII bounds*0.25 + padding_mm",
+  "saved_folded_padding_mm": 2.0,
+  "fresh_selected_atlas_source_hashes": 52,
+  "fresh_selected_root_reads": 52,
+  "fresh_selected_native_source_hashes": 38,
+  "fresh_nearest_OTHER_anchor_checks": 52,
+  "network_requests": 0,
+  "image_reads": 0,
+  "map_or_canonical_writes": 0,
+  "automatic_relabeling": false,
+  "new_scientific_acceptance": false
+}

@@ -1,0 +1,53 @@
+{
+  "source_hashes": {
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\classifier.py": "6eaddadf5350121e087c7e41b327ebf8d9d5496a7e4cdde3f8137a0669eaedb9",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\getNeuronListByRegion.py": "10dd04f125efefe395a6661bec929c6ac02b9b0eb22e870d5133c962b0aec520",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\hemisphere.py": "62ce2b1969796bf11f55b8b5d7317d31a1b93ec0e093072ba2a2092317d9ae91",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\hierarchy.py": "55f87d391db0995ff8cfc3f4026b1c1f694f9948cc53f7b1ce770958a50dcdf4",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\hierarchy_table.py": "39380e2e342e1878edb0055d75fd24c1f6d00185699d1c482e3198d5322858c7",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\laterality.py": "8c53a3475aa17990d8ac7b482ab2c07621944d6d69e68242f383bbba85207a6f",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\laterality_projection_analysis.py": "8d5b779b9ca86ebbcee4bff7dc3b6906f330d4a3224148c4697bedd946825d0e",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\neuron_analysis.py": "19a9c769ef0e827243e6ad5465aebcb42181484c4ff0fcdb30c0290716594123",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\output_manager.py": "17cc493d7ffe49db95ff465580032dcf01ec1bd20c97cc12c4d0d74783d8b7e2",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\plotting.py": "34662bd5e0474c099ef6a1bb6a7d56c772bb38d857ef93832c766e7fea4e0838",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\population.py": "4658d2d48cb73389c0dae5e71628e4bdda241817a469f18229566fbb755af47f",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\utils.py": "b3a0530be1b0b2ed0c5fe193acaf684a1fe7a2ff181380c897855f7765e4d50d",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\__init__.py": "3342b4f8f720bbee9d89a469ee4ac2145f6f15ed0081631916fdad7076fcc013"
+  },
+  "stale_precomputed_only": {
+    "ipsi": [
+      {
+        "NeuronID": "001.swc",
+        "Neuron_Type": "ITi",
+        "Soma_Region": "Unknown_0",
+        "Soma_Side": "R",
+        "ipsilateral_total_length": 9.0,
+        "ipsilateral_n_regions": 1,
+        "A_length": 9.0,
+        "A_strength": 1.0
+      }
+    ],
+    "contra": [],
+    "expected": "CL_A relative to explicit R soma is contralateral"
+  },
+  "duplicate_neuron_rows_accepted": 2,
+  "split_only_workbook": {
+    "returned_columns": [
+      "NeuronID",
+      "Soma_Region",
+      "Soma_Side",
+      "Neuron_Type"
+    ],
+    "has_absolute_lengths": false
+  },
+  "foreign_sample_terminal_accepted": [
+    [
+      "CL_A"
+    ]
+  ],
+  "generated_namespace_collision": {
+    "CL_Pi": "C_Pi",
+    "SL_Pi": "S_Pi",
+    "C_Pi": "C_Pi"
+  }
+}

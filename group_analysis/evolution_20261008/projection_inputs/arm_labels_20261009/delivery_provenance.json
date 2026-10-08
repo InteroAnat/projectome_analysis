@@ -1,0 +1,30 @@
+{
+  "status": "ARM_only_manifest_delivery_readback_passed",
+  "source_selection": "exact436main_plus26preview_unchanged",
+  "primary_policy": "current_rint_zero_center",
+  "maps_computed_by_preparer": false,
+  "tests": {
+    "passed": 13,
+    "failed": 0,
+    "test_file": "tests/test_arm_projection_manifest.py",
+    "test_sha256": "f17c70a6c874cf18fe4ac8febc507585cf81047844bf2f5f15cbebd8ed666cc2"
+  },
+  "preparer_sha256": "3c4271c6d35e4b1e3594dde523e4986a220cf51432439db12d27ae3636cdaae7",
+  "artifacts": {
+    "independent_origin_readback.py": "0ced7ad5370f9a1583fe2609f3ee46f1eb6ae643b94f2bef2f1ab2ba541e3407",
+    "independent_readback.json": "98978ed5d2346e1f75d10791fa931286b3454423699eecdfefcffdd9640a169d",
+    "independent_readback.py": "0199c85bb1a46a9d10cc7386400e8b0fd6f95167db3a8dbc1ea0db5d3ef02660",
+    "independent_readback_v2.json": "6f3cecfcc99ef651fa9f7ab4ed686fffe0f4ac3c9601c93c9d9746dabcb4a528",
+    "label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "preparation_provenance.json": "981857a17995d32aa5f5f697b19c6431e359ff57ab73aa10002e129ee37bdede",
+    "README.md": "335c01836021fd971fd04e1a2265546db9eaf0c6d8a2dc665bf2edd18fbfba5c",
+    "root_readback.csv": "d2e58bd826fe8e07056ba03064338311bcd088520e006f5638099b555cff2903",
+    "combined/label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "combined/projection_manifest.csv": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+    "main/label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "main/projection_manifest.csv": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+    "preview/label_map.csv": "0e8f710af7ff1afe1609220866b5dafe0a0b3da85061058141830de62441715b",
+    "preview/projection_manifest.csv": "5f8e32654f6f08c2656d55d35190735351982ce8d8e560f0e06a400daf5f7743"
+  },
+  "anatomical_acceptance": false
+}

@@ -1,0 +1,31 @@
+{
+  "status": "required_primary_stages_completed_optional_work_stopped",
+  "observed_utc": "2026-10-08T23:29:18.0023629Z",
+  "reason": "User requested fewer cohorts and redundant outputs; only primary ARM map delivery is required",
+  "required_stages": [
+    "main_endpoints_build",
+    "main_endpoints_review",
+    "main_endpoint-density_group",
+    "main_endpoint-occupancy_group",
+    "main_axons_build",
+    "main_axons_review",
+    "main_axon-density_group"
+  ],
+  "completed_stages": [
+    "main_endpoints_build",
+    "main_endpoints_review",
+    "main_endpoint-density_group",
+    "main_endpoint-density_animal",
+    "main_endpoint-occupancy_group",
+    "main_endpoint-occupancy_animal",
+    "main_axons_build",
+    "main_axons_review",
+    "main_axon-density_group"
+  ],
+  "stopped_runner_pid": 43376,
+  "stopped_optional_child_pids": [
+    51316
+  ],
+  "source_selection_changed": false,
+  "scientific_acceptance": false
+}

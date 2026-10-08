@@ -1,0 +1,48 @@
+{
+  "status": "staged_only",
+  "files": {
+    "plotting.py": {
+      "source_sha256": "5e9cdd9d10b1c7538fb85d9fddd929961c8da97ebc04c1496c1cae2f294d695c",
+      "staged_sha256": "9d10307546aef51bf948cee013b1596c4bad56e37dbe854a2e2bb8a278a20626"
+    },
+    "population.py": {
+      "source_sha256": "e61b2391fc29756ee0c846c013479aa3e54e949470b5315c1c30b82c13ecb04c",
+      "staged_sha256": "db9d5c286cd54dbda6a218b36eccd3429ca2576e062f579f0f21a8042f07c282"
+    },
+    "laterality_projection_analysis.py": {
+      "source_sha256": "c353b65bb3da80f3090a619843a01804365c5766039cd81f69588e571aca7acf",
+      "staged_sha256": "44ee9e4983ff2156648163f1c0cd13839591e6fde66126af34d06ee72f6fd0a8"
+    }
+  },
+  "scope": "User-facing strings/docstrings only; API names, data keys, file names and calculations unchanged",
+  "tests": {
+    "count": 6,
+    "status": "passed",
+    "exit_code": 0,
+    "log": "terminology_tests.log"
+  },
+  "production_hashes_unchanged_through_validation": true,
+  "ast_check": "After removing docstrings and masking string literals, code ASTs are identical; subscript/dictionary/schema/filename/sheet tokens match exactly",
+  "numerical_contract": "Laterality_Index remains Contra/(Ipsi+Contra),0..1. Signed contrast (Contra-Ipsi)/(Contra+Ipsi),-1..1 is explanatory only and is not computed here.",
+  "length_contract": "Regional values: retained reconstruction lengths in source units. Total_Length: total computed reconstruction-edge length. Display strength: source-unit-dependent log10(length+1).",
+  "terminal_contract": "Terminal_Count: distinct endpoint-target regions per neuron from legacy all-compartment leaves, not verified terminal or bouton counts",
+  "preserved_guards": [
+    "Current plotting indentation",
+    "Partial-missing/mixed Length_Unit rejection"
+  ],
+  "patch_sha256": "1c4123cd7dece8e93407085909836e56b180d62971f48b44e163737b52c8a354",
+  "test_sha256": "33f1e373fc0759781c42cbd51b9b0ee764dc10062195603519877685e1db4716",
+  "test_log_sha256": "5204971c3b4f61bc2f76e484dee249087952e58ff0728494186d990c6b4f9b44",
+  "compatibility_tests": {
+    "count": 8,
+    "status": "passed",
+    "numeric_expectations_unchanged": true,
+    "source_test_sha256": "29d0389064a41fe3b1634a80903e36d1296d45b8c4eaa8487f84739ba9ef4ae7",
+    "staged_test_sha256": "0971c0f490f65072d8638a91fb28093679866dbeadaae931174f4f2e1258d10f",
+    "log": "terminal_label_compatibility_tests.log",
+    "log_sha256": "d7d4101e8292cad5d06c9d58dcf137fe42be9f2654e34295448e1a32135d16a2",
+    "label_patch_sha256": "6cc2ecb26fc251d4e2f4f1cc4191a4e0b4a71fc112757b09e47dc9c97c6ee91d"
+  },
+  "combined_focused_tests_passed": 14,
+  "readback_complete": true
+}

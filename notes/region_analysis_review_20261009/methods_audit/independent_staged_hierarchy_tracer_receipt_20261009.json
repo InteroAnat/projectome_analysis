@@ -1,0 +1,59 @@
+{
+  "status": "read_only_independent_staged_review_pass",
+  "production_edits": false,
+  "tests_run": 3,
+  "test_exit_code": 0,
+  "test_script": "notes/region_analysis_review_20261009/methods_audit/independent_staged_hierarchy_tracer_review.py",
+  "test_sha256": "477e4bd9376eeaba6c9a428eeca879cca8cdeb0838e6ebaac16b2557b2e9b3df",
+  "reviewed_staged_sources": [
+    {
+      "path": "notes/region_analysis_review_20261009/code_audit/staged/main_scripts/region_analysis/hierarchy_table.py",
+      "sha256": "01a79008054a0a21013c6009f9516179addc3d600f70ed7327d2120ea23acb71"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/code_audit/staged/main_scripts/neuro_tracer.py",
+      "sha256": "9cb11a77b8a1beb52707df35d2d301a545375576c73b8fa2132309a9d4d5e78b"
+    }
+  ],
+  "atlas_tables": [
+    {
+      "path": "atlas/CHARM_key_table_v2.csv",
+      "sha256": "7b9d100848b44074e760739aa0cc304723881bfbf70c0fda3254746eded5da3a"
+    },
+    {
+      "path": "atlas/SARM_key_table_v2.csv",
+      "sha256": "fe006216e2c16b29415b08d2574a4750df45aab49821353989fa21fbe212888f"
+    }
+  ],
+  "hierarchy_oracle": {
+    "definition": "For every explicit name and index in each real CSV row, expected ancestors come from the row up to the finest explicit occurrence of that identity; finer unspecified descendants are unavailable. Expectations merge only compatible row facts.",
+    "levels_checked": "0 through 6",
+    "results": "All real name/index ancestors and unavailable descendant queries match",
+    "prefix_test": "Default dual aggregation retains CL_Pi/CR_Pi/SL_Pi/SR_Pi separately; explicit strip_prefixes=True merges them into Pi as documented"
+  },
+  "branch_oracle": {
+    "definition": "Independently enumerate maximal edge chains between graph degree changes; derive node order from branching ancestors and DFS order from child ordinal paths",
+    "valid_trees": 259,
+    "seed": 20261009,
+    "cases": [
+      "root-only graph",
+      "unary chain with 3001 nodes",
+      "comb with 1200 fork levels and 2401 nodes",
+      "256 random valid trees with unsorted noncontiguous IDs and shuffled source order"
+    ],
+    "results": "Exact branch lists, DFS order and node orders match; every source edge appears exactly once"
+  },
+  "prefix_callsite_review": {
+    "production_strip_prefixes_true_calls_found": 0,
+    "main_scripts/region_analysis/hierarchy.py:326": "Explicit strip_prefixes=False for hierarchy output columns",
+    "main_scripts/region_analysis/hierarchy.py:424": "False default for projection aggregation",
+    "scope": "Python files outside notes/tests/neuron-vis scanned for explicit strip_prefixes=True and strip-prefix helper callers",
+    "remaining_scope": "Old split-export stripping/log-before-aggregation defects are separately parent-owned; this review does not accept their old behavior or amend them"
+  },
+  "remaining_material_defects_in_two_reviewed_changes": [],
+  "limitations": [
+    "Valid graph software behavior does not establish terminal arbors, anatomy or registration acceptance",
+    "Explicit prefix-stripping API remains lossy and must not precede laterality/domain split",
+    "No source data or numeric/statistical design changed"
+  ]
+}

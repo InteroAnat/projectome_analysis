@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "method": "Independent scalar Python round/math.ceil/math.floor and fresh direct local ARM6/LR indexing; no sensitivity-script helper reuse",
+  "exact_identities": 8746,
+  "counts": {
+    "own_root_missing": 6834,
+    "portal_coordinate_current_rint_zero_center_independent_matches": 8409,
+    "portal_coordinate_published_ceil_edge_one_based_to_zero_independent_matches": 8409,
+    "portal_coordinate_halfopen_floor_zero_center_independent_matches": 8409,
+    "portal_coordinate_published_ceil_edge_one_based_to_zero_label_changes": 819,
+    "portal_coordinate_halfopen_floor_zero_center_label_changes": 1,
+    "portal_coordinate_missing": 337,
+    "own_root_current_rint_zero_center_independent_matches": 1912,
+    "own_root_published_ceil_edge_one_based_to_zero_independent_matches": 1912,
+    "own_root_halfopen_floor_zero_center_independent_matches": 1912,
+    "own_root_published_ceil_edge_one_based_to_zero_label_changes": 227,
+    "own_root_halfopen_floor_zero_center_label_changes": 1
+  },
+  "scientific_acceptance": "export-origin and transform/version unverified; sensitivity only"
+}

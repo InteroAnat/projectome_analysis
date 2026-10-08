@@ -1,0 +1,26 @@
+{
+  "status": "staged_sync_of_established_workflow_not_applied",
+  "patch_sha256": "ffa70864ef198b86f272dc20e9124424d09bcc4227425f2c9db65de887c75b69",
+  "target": "group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd",
+  "base_path": "notes\\region_analysis_review_20261009\\methods_audit\\proposed_readable_metric_labels_20261009\\group_analysis\\R_analysis\\v2_combined_primary_pipeline.Rmd",
+  "base_sha256": "a098b1bb4c7028b4ae6bbf7fdf1721475d09c2e97d09cdd1120aca0ba7c66635",
+  "proposed_sha256": "6158c071df4a0c5b1739de9f739773f5b2db80627761793429c27751c18f7bb6",
+  "fixed_R_source": "notes\\region_analysis_review_20261009\\methods_audit\\proposed_readable_metric_labels_20261009\\group_analysis\\R_analysis\\v2_combined_primary_pipeline.R",
+  "fixed_R_sha256": "8f3644898b1573af5aa6663296459f649c42554de6b041da055e1432091d8348",
+  "recovered_F6_block_exactly_identical_to_existing_fixed_R": true,
+  "prior_decision_commit": "d27c855b82a280989850d71f9f1eb994f70df58e",
+  "prior_commit_show_sha256": "d815810ede2b06a0cc16202143617b2d9fdac885e33f0803c6f8808d76fd4be9",
+  "supporting_anchors": [
+    "docs/project_note.md:238",
+    "notes/whole_insula_lr_continuation_plan_v2.md:15",
+    "notes/whole_insula_lr_continuation_plan_v2.md:88",
+    "notes/code_review_20260926.md:19",
+    "notes/code_review_20260926.md:20",
+    "notes/code_review_20260926.md:63"
+  ],
+  "requires_first": "proposed_readable_metric_labels_20261009.patch",
+  "new_statistical_design": false,
+  "inferential_pvalues_recomputed": false,
+  "historical_outputs_changed": false,
+  "scope": "Synchronize stale canonical Rmd with preexisting family-specific q<0.05 selector and plot block; animal-independent inference remains unsupported"
+}

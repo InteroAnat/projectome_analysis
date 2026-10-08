@@ -1,0 +1,115 @@
+--- a/group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
++++ b/group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
+@@ -1470,15 +1470,15 @@
+ 
+ **Question.** Restated F6, but now asking **which targets are ranked most asymmetric by direct non-parametric tests** (Cliff's *δ* + Fisher), with BH correction within (`stratum × hierarchy × family`) — separating intra-insula edges from extra-insula targets — to avoid inflating the family size.
+ 
+-**Hypothesis.** **H6′:** BH within **family** (intra vs extra-insula) recovers **`Ig`, `LPal`** aligned with **`Ia/Id`** as the strongest asymmetric **receivers** in **`IDD5_balanced`** — **cross-validation** of the composition-LI narrative without assuming a single distance metric.
++**Scope.** This supplementary ranking uses the same sampled neurons as the composition contrast. Presence and magnitude are reported as separate test families; this is not independent cross-validation or animal-level inference.
+ 
+ **References (supplementary).** Cliff (1993) *Psychol Bull*; Benjamini & Hochberg (1995); Neuhauser *Nonparametric Statistical Tests*; review §11B.3 (hurdle decomposition).
+ 
+-**Method.** Iterate over region-restricted neuron strata (`IDD5_plus_IDM_balanced`, `IDD5_balanced`, `IDM_balanced`) and `all_combined`. Each target is tested **once at its policy hierarchy** (`L6` if it's an insula leaf with an L6 column; otherwise `L3`). Each row is tagged `family ∈ {intra_insula, extra_insula}` and BH is applied within `(stratum × hierarchy × family)`. The bar chart selects targets with `best_q < 0.05` in any region-restricted neuron stratum, takes the top 18, and labels each bar with the strongest `q`, the stratum that gave it, and the family.
+-
+-**Outputs.** `F6_supplement_rank_based_receivers.png`, stats: `06_asymmetric_receivers_BH.csv` (all rows, with `p_pres_BH`, `p_mag_BH`, `best_q`, `direction`).
+-
+-**How to read.** This run yields three bars: `Ig@L6` (L>R, intra-insula, q ≈ 8 × 10⁻¹⁰ in IDD5_balanced), `Ia/Id@L6` (R>L, intra-insula, q ≈ 8 × 10⁻⁴), `LPal@L3` (L>R, extra-insula, q ≈ 0.01) — exactly the two pillars of [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §11C reproduced from the harmonized data. The three bars are sparse because every other Cliff-asymmetric target either fails BH (small effect) or sits in a non-region-restricted neuron stratum.
++**Method.** Iterate over region-restricted neuron strata (`IDD5_plus_IDM_balanced`, `IDD5_balanced`, `IDM_balanced`) and `all_combined`. Each target is tested **once at its policy hierarchy** (`L6` if it's an insula leaf with an L6 column; otherwise `L3`). Each row is tagged `family ∈ {intra_insula, extra_insula}` and BH is applied within `(stratum × hierarchy × family)`. Following the established workflow in commit `d27c855b82a280989850d71f9f1eb994f70df58e`, create separate presence and magnitude rows and retain `q < 0.05` within each test family. Rank at most 18 targets per family and facet the display by test family. Do not take a minimum across presence/magnitude q-values. Selecting a best stratum for display does not establish correction across strata or independent animal replication.
++
++**Outputs.** `F6_supplement_rank_based_receivers.png`; `06_asymmetric_receivers_BH.csv` keeps the separate adjusted p-value columns; `06_asymmetric_receivers_BH_long.csv` adds the established `test_family` and `q` representation. Old saved outputs are preserved until a separate versioned rerun.
++
++**Historical selector readback.** Applying the established selector to the saved 306-neuron statistics gives presence targets `Ig@L6` and `LPal@L3`, and magnitude targets `Ia/Id@L6`, `Ig@L6` and `LPal@L3`. These are five family-specific display rows for three distinct targets, not a fresh 353-neuron result. The original p-values are unchanged; this audit does not establish a valid animal-level model.
+ 
+ ```{r 11-fig6-rank-supplement}
+ # ------------------------------------------------------------
+@@ -1533,50 +1533,52 @@
+   mutate(
+     p_pres_BH = p.adjust(p_pres, method = "BH"),
+     p_mag_BH  = p.adjust(p_mag,  method = "BH"),
+-    best_q = pmin(p_pres_BH, p_mag_BH, na.rm = TRUE),
+     direction = ifelse(mean_L > mean_R, "L>R", "R>L")
+   ) %>%
+-  ungroup() %>%
+-  arrange(best_q, desc(abs(cliffs_delta)))
++  ungroup()
+ write.csv(f6_df, file.path(OUT_STATS, "06_asymmetric_receivers_BH.csv"), row.names = FALSE)
+ 
+-# Top asymmetric receivers in any region-restricted neuron stratum, ranked by best_q.
+-# Group by target_id (region@hierarchy) so LPal@L3 is distinct from L6 pallidal sub-leaves.
+-# Threshold widened to BH<0.10 to surface near-significant targets in this partial cohort.
++# Top targets that survive BH<0.05 — report presence and magnitude separately
++# (never pmin across families; BH already within stratum × hier × family).
+ balanced_strata <- c("IDD5_plus_IDM_balanced", "IDD5_balanced", "IDM_balanced")
+-top_targets <- f6_df %>%
+-  filter(stratum %in% balanced_strata, best_q < 0.10) %>%
+-  group_by(target_id) %>%
++f6_long <- bind_rows(
++  f6_df %>% mutate(test_family = "presence",  q = p_pres_BH),
++  f6_df %>% mutate(test_family = "magnitude", q = p_mag_BH)
++)
++write.csv(f6_long, file.path(OUT_STATS, "06_asymmetric_receivers_BH_long.csv"),
++          row.names = FALSE)
++
++top_targets <- f6_long %>%
++  filter(stratum %in% balanced_strata, !is.na(q), q < 0.05) %>%
++  group_by(test_family, target_id) %>%
+   summarise(
+-    best_q = min(best_q, na.rm = TRUE),
+-    best_stratum = stratum[which.min(best_q)],
+-    direction_at_best = direction[which.min(best_q)],
++    best_q = min(q, na.rm = TRUE),
++    best_stratum = stratum[which.min(q)],
++    direction_at_best = direction[which.min(q)],
+     abs_delta = max(abs(cliffs_delta), na.rm = TRUE),
+-    n_L_at_best = n_L[which.min(best_q)],
+-    n_R_at_best = n_R[which.min(best_q)],
+-    family = first(family),
++    spatial_family = first(family),
+     .groups = "drop"
+   ) %>%
+-  arrange(best_q, desc(abs_delta)) %>%
+-  slice_head(n = 18)
++  group_by(test_family) %>%
++  arrange(best_q, desc(abs_delta), .by_group = TRUE) %>%
++  slice_head(n = 18) %>%
++  ungroup()
+ if (nrow(top_targets)) {
+   top_targets <- top_targets %>%
+-    mutate(target_id = factor(target_id, levels = rev(target_id)))
++    mutate(target_id = factor(target_id, levels = rev(unique(target_id))))
+   fig6 <- ggplot(top_targets, aes(target_id, abs_delta, fill = direction_at_best)) +
+     geom_col() +
+-    geom_text(aes(label = sprintf(
+-      "q=%.2g | %s | %s | nL=%d nR=%d",
+-      best_q, best_stratum, family, n_L_at_best, n_R_at_best
+-    )),
++    geom_text(aes(label = sprintf("q=%.2g\n%s\n%s", best_q, best_stratum, spatial_family)),
+               hjust = -0.05, size = 2.2, lineheight = 0.95) +
++    facet_wrap(~test_family, scales = "free_y") +
+     coord_flip() +
+-    expand_limits(y = max(top_targets$abs_delta, na.rm = TRUE) * 1.85) +
++    expand_limits(y = max(top_targets$abs_delta, na.rm = TRUE) * 1.55) +
+     scale_fill_manual(values = c(`L>R` = "#0072b2", `R>L` = "#c1272d"), name = "Direction") +
+     labs(
+-      title = "F6 supplement. Top asymmetric receiver targets (rank-based)",
+-      subtitle = "BH within (stratum x layer x family). Threshold widened to BH q<.10 in partial cohort.",
+-      caption = "Each bar = best result for that target across region-restricted neuron strata. See F6_projection_LI_*.png for composition LI.",
+-      x = "Target (region@layer)", y = "max |Cliff's d|"
++      title = "F6 supplement. Top asymmetric receiver targets (by test family)",
++      subtitle = "BH within stratum × layer × spatial family; presence and magnitude ranked separately.",
++      caption = "Composition LI: F6_projection_LI_*.png",
++      x = "Target (region@layer)", y = "max |Cliff's δ|"
+     ) +
+     theme_minimal(base_size = 10) +
+     theme(plot.caption = element_text(size = 7.5, hjust = 0))
+@@ -1585,8 +1587,8 @@
+     annotate("text", x = 0.5, y = 0.5, label = "No rank-based BH hits in region-restricted neuron strata") +
+     theme_void() +
+     labs(
+-      title = "F6 supplement. Top asymmetric receiver targets (rank-based)",
+-      subtitle = "No BH hits in region-restricted neuron strata at q<.10.",
++      title = "F6 supplement. Top asymmetric receiver targets (by test family)",
++      subtitle = "No BH hits in region-restricted neuron strata at q<.05 (presence or magnitude).",
+       caption = "Composition LI: F6_projection_LI_*.png"
+     ) +
+     theme(plot.caption = element_text(size = 7.5, hjust = 0))

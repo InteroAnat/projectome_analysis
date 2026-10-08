@@ -1,0 +1,80 @@
+{
+  "status": "software_verified_feature_transformation_sensitivity",
+  "primary_run": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\clustering_20261009\\arm_L6_relative_profiles_selected462",
+  "primary_provenance_SHA256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+  "export_provenance": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\export_provenance.json",
+  "export_provenance_SHA256": "0f5c8e46b13cd96aec12ff5b415f1bdee498d5a10330bfb0cb7761243d446df6",
+  "manifest": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\combined\\projection_manifest.csv",
+  "manifest_SHA256": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+  "code_SHA256": "1b1d7e88291f6c305326e73ce7a6913ddbc6ad5828a3bb5665533c0c52104d53",
+  "seed": 42,
+  "repeats": 100,
+  "fraction": 0.8,
+  "k_values": [
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "official_bilateral_pairs": 342,
+  "analyses": {
+    "axon": {
+      "scope": "source_relative_sensitivity",
+      "representation": "hellinger",
+      "n_profiles": 428,
+      "n_animals": 8,
+      "n_targets": 684,
+      "display_cut_k": 8,
+      "display_cut_status": "balanced_size_diagnostic_cut",
+      "animal_replication_status": "remaining_cohort_holdout_sensitivity_not_prediction",
+      "linkage": "average",
+      "k_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "fit_weighting": "one row per neuron; fitted partition is neuron-weighted"
+    },
+    "endpoint": {
+      "scope": "source_relative_sensitivity",
+      "representation": "hellinger",
+      "n_profiles": 425,
+      "n_animals": 8,
+      "n_targets": 684,
+      "display_cut_k": 3,
+      "display_cut_status": "no_balanced_size_cut_silhouette_only_for_display",
+      "animal_replication_status": "remaining_cohort_holdout_sensitivity_not_prediction",
+      "linkage": "average",
+      "k_values": [
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "fit_weighting": "one row per neuron; fitted partition is neuron-weighted"
+    }
+  },
+  "transformation": "per-source ipsilateral/contralateral permutation of actual342same-domain bilateral ARM6 pairs",
+  "source_side_basis": "current pinned hemisphere mask; original origin/registration uncertainty remains",
+  "primary_results_and_source_ledger_unchanged": true,
+  "atlas_reassignment": false,
+  "new_maps_or_figures_or_workbooks": false,
+  "anatomical_or_statistical_acceptance": false,
+  "output_hashes": {
+    "absolute_vs_relative_comparison.csv": "6833ec900ab5f79ae209e6f4c21d93e7f45e56337e11032fb9d6ae584a2b64ca",
+    "official_ARM_homolog_feature_mapping.csv": "2559e790236cd944e3d98fd7c648ad2b8bf1b44a0fd1b2a7088ee2dd04980c2b",
+    "source_relative_assignments.csv": "a8ad6e02db0a03973e9a5820b8ea1a535d832d137a64378b242e656c788f174b",
+    "source_relative_diagnostics.csv": "57cd7288a45b64d30213dbd21b4a8e68caddb9425d02cb9a045d3d988c051f2e",
+    "source_relative_stability.csv": "52aef8bf61cf581a12d7d55bd4a9b254e54b779d4352c15bbf4aee07e64f776f"
+  }
+}

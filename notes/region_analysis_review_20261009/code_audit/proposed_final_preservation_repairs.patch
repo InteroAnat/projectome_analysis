@@ -1,0 +1,88 @@
+--- a/main_scripts/region_analysis/population.py
++++ b/main_scripts/region_analysis/population.py
+@@ -1771,7 +1771,7 @@
+                 print(f"  [WARN] laterality_summary failed: {e}")
+ 
+         # 6. Stacked region distribution (all levels in one plot)
+-        if "Soma_Region_Hierarchy" in df.columns:
++        if "Soma_Region_Hierarchy" in df.columns or any(f"Soma_Level_{level}" in df.columns for level in range(1, 7)):
+             try:
+                 s = str(self.output.get_plot_path("region_dist_stacked"))
+                 plot_region_distribution_stacked(df, save_path=s, show=self.show_plots)
+--- a/group_analysis/scripts/06_harmonize_atlas_to_manual.py
++++ b/group_analysis/scripts/06_harmonize_atlas_to_manual.py
+@@ -49,7 +49,11 @@
+              updates `Soma_Region_Refined` and `Soma_Region_Source`.
+   - Mapping_Rule (new): documents the empirical crosstab and applied rule.
+   - Provenance (regenerated): updated counts.
+-All other sheets are preserved verbatim from the input.
++Untouched workbook cells retain their values, formulas and formatting through
++openpyxl. Existing Phase 6a enrichment still updates its documented Henry
++Summary annotation fields and Henry_Layer_Provenance sheet. The derivative
++XLSX archive is reserialized; byte-for-byte equality is promised only for the
++unchanged source file.
+ 
+ The original `multi_monkey_INS_combined.xlsx` is left untouched. Once
+ verified, the user can swap names manually.
+@@ -63,6 +67,8 @@
+ from numbers import Real
+ 
+ import pandas as pd
++from openpyxl import load_workbook
++from openpyxl.utils.dataframe import dataframe_to_rows
+ 
+ PROJECT_ROOT = r"D:\projectome_analysis"
+ GROUP_DIR = os.path.join(PROJECT_ROOT, "group_analysis")
+@@ -197,7 +203,8 @@
+     if not source.is_file():
+         raise FileNotFoundError(source)
+ 
+-    # Read every sheet so we can rewrite the file with all of them preserved.
++    # Read tabular values for label decisions and complete membership checks.
++    # The write below starts from the original workbook, not these dataframes.
+     with pd.ExcelFile(source) as xl:
+         original_sheet_names = list(xl.sheet_names)
+         sheets = {name: pd.read_excel(xl, sheet_name=name) for name in xl.sheet_names}
+@@ -297,22 +304,32 @@
+         .reset_index(name="n")
+     )
+ 
+-    # Write everything back, preserving sheet order from the original file
+-    # then appending new sheets at the end.
+-    new_sheet_names = original_sheet_names + [
+-        s for s in ("Provenance", "Mapping_Rule", "Mapping_Rule_Crosstab")
+-        if s not in original_sheet_names
+-    ]
+-
+     out_dir = str(destination.parent)
+     fd, temp_out = tempfile.mkstemp(
+         prefix=".harmonized_build_", suffix=".xlsx", dir=out_dir
+     )
+     os.close(fd)
+     try:
+-        with pd.ExcelWriter(temp_out, engine="openpyxl") as writer:
+-            for name in new_sheet_names:
+-                sheets[name].to_excel(writer, sheet_name=name, index=False)
++        # Preserve source workbook objects, formulas and formatting. Only the
++        # documented Summary fields and generated rule/provenance sheets change.
++        workbook = load_workbook(source)
++        summary_ws = workbook["Summary"]
++        headers = {cell.value: cell.column for cell in summary_ws[1] if cell.value is not None}
++        for column in ("Soma_Region_Refined_PreHarmonize", "Soma_Region_Refined", "Soma_Region_Source"):
++            if column not in headers:
++                headers[column] = summary_ws.max_column + 1
++                summary_ws.cell(1, headers[column], column)
++            for row_number, value in enumerate(summ[column], start=2):
++                summary_ws.cell(row_number, headers[column]).value = None if pd.isna(value) else value
++        for name in ("Provenance", "Mapping_Rule", "Mapping_Rule_Crosstab"):
++            position = workbook.sheetnames.index(name) if name in workbook.sheetnames else len(workbook.sheetnames)
++            if name in workbook:
++                del workbook[name]
++            sheet = workbook.create_sheet(name, position)
++            for row in dataframe_to_rows(sheets[name], index=False, header=True):
++                sheet.append([None if pd.isna(value) else value for value in row])
++        workbook.save(temp_out)
++        workbook.close()
+ 
+         # The canonical harmonized workbook must include Henry's 251637 layer
+         # annotations. Enrich every rebuild so Phase 6 cannot erase Phase 6a.

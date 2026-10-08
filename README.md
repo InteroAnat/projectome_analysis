@@ -2,12 +2,16 @@
 
 A comprehensive toolkit for analyzing macaque brain neuron morphology data, including visualization, clustering, and distance analysis workflows.
 
+Current insula evolution work: [dated evidence index](group_analysis/evolution_20261008/README.md) and [terminal-first goal](group_analysis/evolution_20261008/terminal_projection_goal_20261008.md). Descriptive mapping and software verification remain separate from anatomical acceptance.
+
+The [region/table audit](notes/region_analysis_review_20261009/README.md) records validated repairs, corrected diagnostic workbooks and scientific dependencies. Use the [measurement guide](docs/region_analysis_terminology.md), [primary ARM map index](group_analysis/evolution_20261008/arm_mapping_20261009/README.md), [six-level projection tables](notes/region_analysis_review_20261009/hierarchy_tables_20261009/README.md), [projection-profile clustering](notes/region_analysis_review_20261009/clustering_20261009/README.md) and [MSTIM integration record](notes/region_analysis_review_20261009/mstim_integration_20261009/README.md). Earlier display variants remain archived.
+
 ## Overview
 
 This repository contains tools for processing and analyzing fMOST (fluorescence Micro-Optical Sectioning Tomography) neuron data, with a focus on:
 
 - **Neuron Visualization**: High and low-resolution visualization of neuron morphology
-- **Clustering Analysis**: FNT (Functional Neuroanatomy Toolbox) distance-based clustering
+- **Clustering Analysis**: Fast Neurite Tracer (FNT) morphology dissimilarities with identity and stability diagnostics
 - **Region Analysis**: Anatomical region-based neuron classification
 - **Data Conversion**: SWC to FNT format conversion and processing
 
@@ -83,10 +87,12 @@ See `main_scripts/PIPELINE_MINDMAP.md` for detailed flowcharts and dependencies.
 A unified tool for retrieving and visualizing Macaque brain data from mixed sources.
 
 **Features:**
-- **High Resolution (0.65µm)**: Block-based data acquisition via HTTP
-- **Low Resolution (5.0µm)**: Slice-based data acquisition via SSH
-- **SWC Overlay**: Overlay neuron traces on anatomical images
-- **Export Formats**: NIfTI (.nii.gz) and TIFF (.tif) support
+- **High Resolution**: Own-sample HTTP cubes; nominal XYZ spacing `[0.65, 0.65, 3]` µm
+- **Low Resolution**: Own-sample copied overview sections or explicitly configured SSH series; nominal XYZ spacing `[5, 5, 3]` µm
+- **SWC Overlay**: Native microscopy traces with explicit crop geometry and missing-source provenance
+- **Export Formats**: XYZ NIfTI volumes with micron units and YX TIFF planes, each with a JSON sidecar
+
+Crop centers come from validated own-sample **raw SWC roots** in declared native microscopy µm. Portal/template NMT soma coordinates belong to a different frame. The acquisition API returns `(volume_zyx, origin_xyz_um, spacing_xyz_um)`. Spacing and axes are repository declarations; physical calibration, laterality and anatomical acceptance require independent evidence. Partial acquisition requires explicit `allow_partial=True` and valid central source data.
 
 **Usage:**
 ```python
@@ -100,6 +106,7 @@ from Visual_toolkit import Visual_toolkit
 toolkit = Visual_toolkit('251637')
 
 # Get high-resolution soma block
+# Replace these example coordinates with the validated own-sample raw SWC root.
 volume, origin, resolution = toolkit.get_high_res_block(
     center_um=[18000, 18000, 1000], 
     grid_radius=2
@@ -124,6 +131,30 @@ toolkit = Visual_toolkit('251637')
 # ... use toolkit ...
 toolkit.close()
 ```
+
+**Native review batches on the current branch:**
+
+`group_analysis/scripts/visual_review_20261002.py` builds the candidate manifest, native panels, gallery and editable correction table. Selection includes INS/PrCO, atlas Unknown and potential nearby regions while retaining portal, historical, harmonized and coordinate-inference origins. Copied-overview availability, accessible soma components and production coverage are separate states. Canonical cohorts and human labels retain their own review gates.
+
+Run one production batch at a time and resume from the recorded package state:
+
+```bash
+python -B group_analysis/scripts/visual_review_20261002.py manifest
+python -B group_analysis/scripts/visual_review_20261002.py render
+python -B group_analysis/scripts/visual_review_20261002.py render-soma
+python -B group_analysis/scripts/visual_review_20261002.py gallery
+python -B group_analysis/scripts/visual_review_20261002.py verify
+```
+
+`render` uses copied overview sources; `render-soma` extends soma-detail production into overview-pending samples. Both accept repeatable `--sample` selectors. Human region/subregion/layer and reviewer columns are merged by UID, with conflicts preserved for resolution. The repaired derived-context sampler has source-grid, missing-center, artifact-preservation and bounded-download regressions; one real-source pilot passed pixel/affine/hash readback with partial field coverage (249 of 324 tiles loaded). Derived fields use nominal 5.2 x 5.2 x 3 um point decimation and retain full-section locators as unavailable components. See the [repair validation](notes/bulk_visual_review_20261002/derived_context_repair_validation_20261003.json). Soma-detail completion is a milestone; all-nine regional-context production and final verification remain part of the active goal. See the [living project note](docs/project_note.md), [visual methods](notes/bulk_visual_review_20261002/visual_methods.md), and [current review findings](notes/bulk_visual_review_20261002/CURSOR_STAGE2_REVIEW_ADDENDUM.md).
+
+After soma production is terminal, regional contexts for the five monkeys without copied overview sections use a separate resumable command:
+
+```bash
+python -B group_analysis/scripts/regional_context_batch_20261003.py --cache-gib 300 --min-free-gib 50 --max-requests 60000 --max-seconds 28800
+```
+
+The driver prioritizes insula candidates, keeps every selected UID, and records per-identity source failures and resource stops. It uses a declared 2.8 mm fallback when a 4 mm field exceeds the per-context bounds. Cached complete fields and partial fields with observed HTTP-404 gaps can resume; resource/transient partials are retried. `--retry-missing` rechecks previously missing source tiles. A live process lock prevents overlapping regional runs. Coverage panels distinguish acquired zero intensity from unavailable source pixels; the actual FOV, spacing and acquired fraction remain in the review artifacts. The [99-test snapshot](notes/bulk_visual_review_20261002/regional_driver_validation_20261003.json) and [real saved-pilot resume check](notes/bulk_visual_review_20261002/independent_regional_resume_validation_20261003.json) validate these software contracts; Cursor regional production is active for 252790; remaining monkeys and final verification stay in scope.
 
 ### 2. Visual Toolkit GUI (`main_scripts/Visual_toolkit_gui.py`)
 
@@ -164,7 +195,17 @@ Note: Run from project root directory where the script is located.
 
 ### 4. Clustering Analysis (`main_scripts/fnt_dist_clustering.py`)
 
-Distance-based clustering of neurons using FNT distance matrices.
+Exploratory clustering of neurons using validated FNT dissimilarities. The
+default is raw scores with average linkage and no biological-type penalty.
+Joined-FNT markers define the neuron order. Missing pairs, missing annotations,
+invalid distances and unsupported Ward geometry fail explicitly.
+
+`--mode spearman-profile` compares distance-to-cohort rank profiles;
+`--mode log1p` compresses score magnitude. `--supervised-penalty` is an explicit
+type-guided sensitivity mode whose type agreement cannot independently validate
+type enrichment. Inspect candidate-k curves, clusterwise stability and animal
+sensitivity before accepting any taxonomy. See
+[the current clustering review](notes/clustering_review_20261002/README.md).
 
 ### 4. Region Analysis (`main_scripts/region_analysis/`)
 
@@ -276,16 +317,16 @@ projectome_analysis/
 
 ## Configuration
 
-### SSH Configuration (for Low-Res Data)
+### Low-resolution source configuration
 
-Edit `main_scripts/Visual_toolkit.py` to configure SSH access:
+Pass the requested sample's copied directory explicitly, or use its existing own-sample directory mapping:
 ```python
-SSH_HOST = "your.server.ip"
-SSH_PORT = 22
-SSH_USER = "username"
-SSH_PASS = "password"  # Consider using environment variables
-SSH_REMOTE_BASE = "/path/to/resampled/data"
+toolkit = Visual_toolkit(sample_id, low_res_dir=own_sample_directory)
 ```
+
+For an own-sample SSH series, pass `low_res_ssh_base` and configure the connection separately. The legacy 251637 directory belongs to 251637. An absent copied overview is recorded as a missing component while its raw SWC and high-resolution source routes are evaluated independently.
+
+Optional SSH reads its password from `PROJECTOME_SSH_PASSWORD`; keep credentials outside source files. [Validation requirements](requirements-validation.txt) pin the observed Python packages for the dated audit, while atlas/source files and external tools remain separately provisioned.
 
 ### HTTP Configuration (for High-Res Data)
 
@@ -344,30 +385,39 @@ sbatch fnt_dist_on_cluster/fnt_dist.slurm
 
 ### 3. Run Clustering Analysis
 
-```python
-import sys
-sys.path.insert(0, 'main_scripts')
-from fnt_dist_clustering import run_clustering
-
-run_clustering(
-    distance_matrix_file='dist.txt',
-    n_clusters=5,
-    output_dir='clustering_results/'
-)
+```powershell
+# Historical 306-neuron matrix: review only; it does not cover the 353/420 cohorts.
+python -B main_scripts/fnt_dist_clustering.py `
+    --dist-file group_analysis/fnt/multi_monkey_INS_dist.txt `
+    --joined-fnt group_analysis/fnt/multi_monkey_INS_joined.fnt `
+    --type-file group_analysis/combined/multi_monkey_INS_combined.xlsx `
+    --sheet Summary --mode raw --linkage average `
+    --max-k 20 --repeats 100 --seed 42 --no-plots `
+    --output-dir output/clustering_review
 ```
 
-Note: The `run_clustering` function may need to be called from within the script or imported depending on the current implementation. Check `fnt_dist_clustering.py` for the latest API.
+Use the projectome Python environment. Add `--k 9` only for an explicit
+exploratory cut; otherwise the silhouette suggestion is recorded as exploratory.
+Output includes every candidate partition, requested/realized cluster count,
+silhouette/C-index, subset ARI, clusterwise Jaccard, animal-removal sensitivity,
+input/source hashes and software versions. Singleton stability is unassessed.
+These diagnostics do not establish biological subtypes or new-animal prediction.
+The historical R clustering scripts retain their old settings and are separate
+analysis paths; they were not rerun by this review.
 
 ## Output Files
 
 ### Visualization Outputs
-- `.nii.gz` - 3D volume files (NIfTI format)
-- `.tif` - 2D maximum intensity projection images
+- `.nii.gz` - Persisted XYZ volumes with micron units; source arrays are ZYX
+- `.tif` - YX planes or caller-prepared projections
+- `.json` sidecars - Crop origin, spacing, raw root when supplied, matching acquisition and explicit missing coverage
 - `_Plot.png` - Annotated visualization plots
 
 ### Analysis Outputs
 - `.fnt` - FNT format neuron files
-- `_clusters.csv` - Cluster assignment results
+- `cluster_assignments.csv` / `candidate_cluster_assignments.csv` - Exploratory selected/all-candidate assignments
+- `clustering_diagnostics.csv`, `cluster_stability_k*.csv`, `group_holdout_diagnostics.csv` - Separation and stability diagnostics
+- `clustering_metadata.json` - Cohort identity, settings, hashes, software versions and interpretation limits
 - `dist.txt` - Distance matrices
 
 ## Notes
@@ -407,7 +457,7 @@ Note: The `run_clustering` function may need to be called from within the script
 
 ---
 
-**Last Updated:** August 2026
+**Last Updated:** October 9, 2026
 
 ## Changelog
 

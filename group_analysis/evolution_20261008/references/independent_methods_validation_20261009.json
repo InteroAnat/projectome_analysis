@@ -1,0 +1,94 @@
+{
+  "reviewed_at": "2026-10-09T00:49:27.168159+08:00",
+  "reviewer_scope": "Independent read-only factual Methods and project interpretation review; original cached source passages crosschecked; no scientific acceptance inferred",
+  "documents": {
+    "multimodal_full_methods_20261009.md": "2824ee6c993dbca3d89366d027aabc0a2faedb65bfa744728d5085aaef28375b",
+    "multimodal_full_methods_20261009.json": "52e1779de944513c9040a82638d9cc56b895cbe2d02d2ff5215c4c1416a4ecc9",
+    "insula_full_methods_20261009.md": "4d9273201ae93e3643f917589c5573e6d8f1882dfcb33728e0d0f600ae06999b",
+    "insula_full_methods_20261009_evidence.json": "defa0f2544aca1f0e7fa2e9bec8ffac3a79a980db8890ca562f20b3cf7a61582",
+    "scientific_basis_20261009.md": "1831434bd2a128a2beae4b7201d8ad0f7a809941577a51a49a81ee56a882c257"
+  },
+  "multimodal_source_cache_byte_checks": [
+    {
+      "attachment_key": "FYH7NL8F",
+      "saved_bytes_sha256": "98434e1d91620663c8a8d0eaace22da52cfb6e3736758dbf879e37bd0c561b2b",
+      "expected_sha256": "98434e1d91620663c8a8d0eaace22da52cfb6e3736758dbf879e37bd0c561b2b",
+      "hash_match": true
+    },
+    {
+      "attachment_key": "C9M3SMAE",
+      "saved_bytes_sha256": "cf1ea8cc8723332e89fbc69726d2f9bded93853a841ba019995146aef5e23c9b",
+      "expected_sha256": "cf1ea8cc8723332e89fbc69726d2f9bded93853a841ba019995146aef5e23c9b",
+      "hash_match": true
+    },
+    {
+      "attachment_key": "JKMYTA8J",
+      "saved_bytes_sha256": "b884cad3cd0988cc3ae36ce9b4fc6ad6e77d63d2e918f9c084399264019cca96",
+      "expected_sha256": "b884cad3cd0988cc3ae36ce9b4fc6ad6e77d63d2e918f9c084399264019cca96",
+      "hash_match": true
+    },
+    {
+      "attachment_key": "I249FQTR",
+      "saved_bytes_sha256": "fe1bab4d6c25150f18e96743d91edcbb323a37e530afeb6408e09a488c2fe971",
+      "expected_sha256": "fe1bab4d6c25150f18e96743d91edcbb323a37e530afeb6408e09a488c2fe971",
+      "hash_match": true
+    },
+    {
+      "attachment_key": "7974HUDI",
+      "saved_bytes_sha256": "f0466adbaff23026199a88b9550edffb42dc64f6de568cfe161b8ad801f75384",
+      "expected_sha256": "f0466adbaff23026199a88b9550edffb42dc64f6de568cfe161b8ad801f75384",
+      "hash_match": true
+    },
+    {
+      "attachment_key": "YMUVA6N8",
+      "saved_bytes_sha256": "d76d1c6ffbcad1b89c681cd0faf0d903a90928c6f78a934a9f4dd6d25c701118",
+      "expected_sha256": "d76d1c6ffbcad1b89c681cd0faf0d903a90928c6f78a934a9f4dd6d25c701118",
+      "hash_match": true
+    },
+    {
+      "attachment_key": "UFYL9BGY",
+      "saved_bytes_sha256": "ae1e90adae7a2a9c9df15980f6e5788789647b41c7e8911ffe56ffae6f959c05",
+      "expected_sha256": "ae1e90adae7a2a9c9df15980f6e5788789647b41c7e8911ffe56ffae6f959c05",
+      "hash_match": true
+    }
+  ],
+  "Liu_corrected_cell_annotation_anchor": {
+    "lines": [
+      1255,
+      1257
+    ],
+    "sha256": "2c54c9183e9aba4c51748219a7ab9306ec11948810e9dacfc320ecf7fb37f2bc",
+    "fresh_match": true,
+    "status": "Earlier endpoint1256 omitted annotation body; corrected to1257 and independently rechecked."
+  },
+  "Zhou_2022": {
+    "attachment_key": "UFYL9BGY",
+    "sections_read": [
+      "2.14",
+      "2.15",
+      "3.5"
+    ],
+    "confirmed": [
+      "10x acquisition sampling0.65x0.65x3um;20x0.32x0.32x10um",
+      "Bead optical-resolution assessment is separate from acquisition voxel sampling",
+      "GreenGFP and redPI channels have distinct tracing/cytoarchitectural roles",
+      "Stripe correction/stitching then16bit LZW TIFF;PI co-registered to individual presurgical MRI usingBrainsMapi",
+      "Passage fibers distinguished from local branches and image-resolved giant terminals; SWC tips are not automatically biological terminals"
+    ],
+    "local_acquisition_or_NMT_registration_acceptance": false
+  },
+  "coordinate_origin_review": {
+    "own_root_changed_ARM6_labels": 227,
+    "portal_coordinate_changed_ARM6_labels": 819,
+    "halfopen_vs_rint_changed_own_labels": 1,
+    "case112_114": "Both currentUnknown0 becomeCR_Ia/Id under literal published ceil-1 sensitivity; manual visual decisions remain separate",
+    "published_code": "Gou deposited zz0atlas declaresNMTv2.0CHARM/SARM andceil(XYZ/res)Julia1based; currentclientNMTv2.1ARM6rint semantics are distinct. Export convention unresolved.",
+    "status": "Sensitivity counts and central-basis wording compatible with independently checked audit; no coordinate convention changed"
+  },
+  "material_unresolved_defects": [],
+  "scientific_acceptance": false,
+  "limitations": [
+    "Citation correctness and software tests do not validate registration, fine anatomy, VEN identity or biological axon terminals.",
+    "No original transform/export-origin receipts or current native calibration established by these sources."
+  ]
+}

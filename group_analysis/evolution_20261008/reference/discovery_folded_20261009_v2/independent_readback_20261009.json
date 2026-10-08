@@ -1,0 +1,109 @@
+{
+  "checked_at": "2026-10-08T16:06:17.565887+00:00",
+  "source_scope": "historical latest step1 workbooks, not current portal identities",
+  "n_samples": 9,
+  "n_source_rows": 1223,
+  "n_output_rows": 1223,
+  "n_unique_output_identities": 1223,
+  "folded_candidate_total": 179,
+  "raw_legacy_unpadded_candidate_total_same_sources": 115,
+  "independent_inventory_rule_membership_differences": [],
+  "source_identity_membership_differences": [],
+  "reference_quantiles_recomputed_from_saved_neurons_max_abs_error_nii": 1.4210854715202004e-14,
+  "reference_sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997",
+  "sources": [
+    {
+      "sample": "251730",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx",
+      "sha256": "16a9512b048d236ad2af5f56698ba0a085718b9870cca4f24d4f6e1bf79f102d",
+      "n_rows": 79
+    },
+    {
+      "sample": "252383",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx",
+      "sha256": "d0b8afa611026a3232293f1beea9e5cb64bc6e5bccce8c06033b4860c52f3c07",
+      "n_rows": 127
+    },
+    {
+      "sample": "252384",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx",
+      "sha256": "7cee63610b05f52a51f1691497d8f9beca1b075ed98e38e6ec05b2b7a5ff8132",
+      "n_rows": 99
+    },
+    {
+      "sample": "252385",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx",
+      "sha256": "cd86f1a34b75376de8e7e917361e727b280c764ed390698d1a764138ed9a790f",
+      "n_rows": 128
+    },
+    {
+      "sample": "252527",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx",
+      "sha256": "3f285cdc48671f9140e2a17c13c384bb0efd90efa97d3e73537b27d8fd337a78",
+      "n_rows": 99
+    },
+    {
+      "sample": "252718",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx",
+      "sha256": "4513d515137c149a18e9cbcd8f9e6680b475f69e136fc7769eb5cdee6dd04d99",
+      "n_rows": 190
+    },
+    {
+      "sample": "252790",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx",
+      "sha256": "02a7f0bd7609d288b195e961b20e48aaa5430566656952cd21be77839b09b31b",
+      "n_rows": 123
+    },
+    {
+      "sample": "250432",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx",
+      "sha256": "1153b8d53693ae00171758a8b9abbf8532508211fceae22703ae990794f9b218",
+      "n_rows": 234
+    },
+    {
+      "sample": "252714",
+      "path": "D:\\projectome_analysis\\group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx",
+      "sha256": "dc0e5e04116a3627dc0a839bc4db82eb22f3662b3b4b934ebd3153dfe65e9094",
+      "n_rows": 144
+    }
+  ],
+  "interpretation": "Synthetic tests and exact historical source-coordinate readback establish software/geometry consistency, not anatomical membership or fresh scientific acceptance.",
+  "comparison_method": "Read original source workbook coordinates; convert NII to portal-equivalent physical um; compare independent inventory.spatial_screen output directly with stored discovery bbox_match_subregion for every exact sample/neuron identity.",
+  "output_sha256": {
+    "discovery_scan_per_neuron.csv": "866be8227f399f73de0d721b3bb1ef7317d4069b53ce86d558b85acf65ca4fb4",
+    "discovery_scan_summary.csv": "d7167fd6804420746a2a41ca2c44461a697e4e3a58ad5b7cc8cd1a6e78dd4991"
+  },
+  "software_evidence": {
+    "group_analysis\\scripts\\01_build_insula_coord_reference.py": "d60b11c852c5de1dc58e77d9768ee5fef369aa64f840ef8d18d62ea89db70c69",
+    "group_analysis\\scripts\\03_scan_insula_recovery_candidates.py": "eeeb9d6c5ccb70850b8c1e836af21202da893dee9782a7598c4b2ec0e062a2f4",
+    "group_analysis\\scripts\\04_refine_soma_region_by_coords.py": "add93345c27ee73e5f2a666c231798360141256e1cc13846642b1f2a4e0f6bdc",
+    "group_analysis\\scripts\\audit_insula_inventory.py": "becf015e90851168d483381a23ba61afaa71c4719bc57597870f3b5d6ce7a8a7",
+    "group_analysis\\scripts\\cohort.py": "6170aa9c51a6f41623cc5e7539feb1aec14de06d80149c36e2b5e7e117b52e14"
+  },
+  "reference_inputs": [
+    {
+      "path": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\reference\\251637_subregion_bboxes_folded.csv",
+      "sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997"
+    },
+    {
+      "path": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\reference\\251637_subregion_neurons.csv",
+      "sha256": "65380be00affb587b53edcb9ee540fbe9b15fc674be8347d6e00c10ba0480a5a"
+    },
+    {
+      "path": "D:\\projectome_analysis\\group_analysis\\reference\\251637_subregion_bboxes.csv",
+      "sha256": "619f53ba4acabd4089505f5fa34b224ffe77ec4cbaf42bb98bcb25e1736d16f5"
+    },
+    {
+      "path": "D:\\projectome_analysis\\neuron_tables_new\\251637_INS_HE_inferred.xlsx",
+      "sha256": "e230985cb218f78577d099a33801e4b68cf7d17f0eb3b055416788b11f7a6cc3"
+    }
+  ],
+  "current_reference_input_readback": {
+    "current_curated_workbook_rows": 260,
+    "saved_reference_neuron_rows": 260,
+    "exact_neuron_id_sets_match": true,
+    "scope": "Current input readback; does not invent a historical generation receipt",
+    "max_abs_coordinate_difference_nii": 0.0,
+    "source_region_strings_match": true
+  }
+}

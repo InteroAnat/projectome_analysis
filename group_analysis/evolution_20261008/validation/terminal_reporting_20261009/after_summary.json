@@ -1,0 +1,40 @@
+{
+  "mode": "after",
+  "source_sha256": "508cea4b5c6ba8e1401e55302c2adcb9e319d6842cffe6d0d5f57e0c5080f282",
+  "frozen_input_sha256": "65a3b8acb63bfd8ee309dc9c6a436fbf72bdc2aacdbd419320f82cdfd65e0800",
+  "code_sha256": {
+    "main_scripts\\region_analysis\\utils.py": "1698035bd2ce31e8694a5d14b66f0882641615998b6c03a804b369e85dac3cd2",
+    "main_scripts\\region_analysis\\plotting.py": "34662bd5e0474c099ef6a1bb6a7d56c772bb38d857ef93832c766e7fea4e0838",
+    "main_scripts\\region_analysis\\population.py": "a5939e76cea844e092df6d03808d15cc6ca2a537c0ff01c65f454192e354f371"
+  },
+  "neurons": 562,
+  "unique_target_entries": 2408,
+  "independent_status_counts": {
+    "known": 1947,
+    "unknown": 459,
+    "outside": 2
+  },
+  "actual_known": 1947,
+  "actual_unresolved": 461,
+  "affected_neurons": 2,
+  "changed_rows": [
+    {
+      "NeuronID": "157.swc",
+      "old_known": 6,
+      "new_known": 5,
+      "reclassified_targets": [
+        "Out_of_Bounds"
+      ]
+    },
+    {
+      "NeuronID": "320.swc",
+      "old_known": 11,
+      "new_known": 10,
+      "reclassified_targets": [
+        "Out_of_Bounds"
+      ]
+    }
+  ],
+  "semantics": "Terminal_Count remains unique target regions across all reconstruction leaf types; no detector, biological terminal verification, classification, laterality or membership change",
+  "source_and_frozen_input_unchanged": true
+}

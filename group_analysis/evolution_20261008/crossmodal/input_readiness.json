@@ -1,0 +1,1333 @@
+{
+  "checked_at": "2026-10-08T15:36:27.547185+00:00",
+  "audit_type": "read_only_crossmodal_input_readiness",
+  "scope": "Existing CM032/CM033 MSTIM pos1-family native/NMT maps and provenance; no overlap, correlation, resampling, normalization, anatomical acceptance or external writes.",
+  "projectome_reference": {
+    "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+    "exists": true,
+    "checked_at": "2026-10-08T15:36:27.547185+00:00",
+    "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "bytes": 8078887,
+    "modified_at": "2021-03-08T12:40:55+00:00",
+    "shape": [
+      256,
+      312,
+      200
+    ],
+    "voxel_sizes": [
+      0.25,
+      0.25,
+      0.25
+    ],
+    "spatial_unit": "mm",
+    "temporal_unit": "unknown",
+    "affine": [
+      [
+        0.25,
+        -0.0,
+        -0.0,
+        -31.875
+      ],
+      [
+        -0.0,
+        0.25,
+        -0.0,
+        -27.75
+      ],
+      [
+        0.0,
+        0.0,
+        0.25,
+        -8.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "qform_code": 5,
+    "sform_code": 5,
+    "dtype": "int16",
+    "description": ""
+  },
+  "projectome_reference_matches_supplied_sha256": true,
+  "fmri_normalization_template": {
+    "path": "D:\\multimodal_fmri\\derivatives\\templates\\NMT_v2.0_sym\\NMT_v2.0_sym_SS.nii.gz",
+    "exists": true,
+    "checked_at": "2026-10-08T15:36:27.547185+00:00",
+    "sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+    "bytes": 8078888,
+    "modified_at": "2020-09-28T20:29:02+00:00",
+    "shape": [
+      256,
+      312,
+      200
+    ],
+    "voxel_sizes": [
+      0.25,
+      0.25,
+      0.25
+    ],
+    "spatial_unit": "mm",
+    "temporal_unit": "unknown",
+    "affine": [
+      [
+        0.25,
+        -0.0,
+        -0.0,
+        -31.875
+      ],
+      [
+        -0.0,
+        0.25,
+        -0.0,
+        -27.75
+      ],
+      [
+        0.0,
+        0.0,
+        0.25,
+        -8.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "qform_code": 5,
+    "sform_code": 5,
+    "dtype": "int16",
+    "description": "",
+    "grid_identical_to_projectome": true,
+    "byte_hash_identical_to_projectome": false
+  },
+  "sources": {
+    "science_project_note": {
+      "path": "D:\\multimodal_fmri\\docs\\project_note.md",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "f1d3958902360ea0c31ee56a6f2a053e98c216ef53f2051b21e4aa6704d00d26",
+      "bytes": 61577,
+      "modified_at": "2026-10-08T06:40:32.237965+00:00"
+    },
+    "linked_pipeline_project_note": {
+      "path": "D:\\deb_fmri\\docs\\project_note.md",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "087758b95574af872b18276b877e7c1f6d913e04ae5f48f44de849b3953529a3",
+      "bytes": 39166,
+      "modified_at": "2026-10-08T06:40:32.233102+00:00"
+    },
+    "registry": {
+      "path": "D:\\multimodal_fmri\\registry\\subjects.tsv",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "2c80445a09255ff971e46914348cd2821a964b31b33d46adac490448367853f7",
+      "bytes": 387,
+      "modified_at": "2026-09-30T03:13:06.686237+00:00"
+    },
+    "warp_actuator": {
+      "path": "D:\\multimodal_fmri\\code\\tools\\norm\\_qst\\bash\\warp_epi_to_nmt.sh",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "41c3c3fe898e3bfd8553fc103fb00f53a9edd0e43da391cbec1969a6f28052c6",
+      "bytes": 3877,
+      "modified_at": "2026-07-22T06:06:00.596902+00:00"
+    },
+    "warp_orchestrator": {
+      "path": "D:\\multimodal_fmri\\code\\tools\\norm\\run_nmt_warp.py",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "af6ae053813547e8ddb864eec1f290a084799f42f85e4ade302878669894f494",
+      "bytes": 11387,
+      "modified_at": "2026-07-22T06:03:16.473099+00:00"
+    },
+    "normalization_actuator": {
+      "path": "D:\\multimodal_fmri\\code\\tools\\norm\\_qst\\bash\\ants_anat_to_nmt.sh",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "1c9cea4c8fe35326f0751c0ef9fcb3bb62119cc5f50314f2af89e477323fc568",
+      "bytes": 4852,
+      "modified_at": "2026-07-19T06:20:36.376332+00:00"
+    },
+    "pipeline_template_config": {
+      "path": "D:\\multimodal_fmri\\code\\tools\\norm\\_qst\\config\\pipeline_tools.json",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "518308a5408e064841b366f5fcfcbc07f10d7fa9ee63cd56a152093cd3134ad0",
+      "bytes": 4004,
+      "modified_at": "2026-07-13T08:48:47.698785+00:00"
+    },
+    "cm032_stimulation_ontology": {
+      "path": "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm032.yaml",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "600d4457e1feacf83d0a4a4afa10a3736b16a70c62e7aa723d5b354577ae96ed",
+      "bytes": 5306,
+      "modified_at": "2026-07-13T08:07:07.793557+00:00"
+    },
+    "cm033_stimulation_ontology": {
+      "path": "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm033.yaml",
+      "exists": true,
+      "checked_at": "2026-10-08T15:36:27.547185+00:00",
+      "sha256": "ecb70fa576f387094fdcf8f6fa8bdb591e54bc6be5b33378e594688958d2ef25",
+      "bytes": 2128,
+      "modified_at": "2026-08-19T04:09:56.924606+00:00"
+    }
+  },
+  "models": {
+    "cm032": {
+      "subject": "cm032",
+      "session_label": "20160309",
+      "source_acquisition_date": "2016-03-09",
+      "model": "glm-mstim-pos1",
+      "run_ids_from_saved_glm_summary": [
+        38,
+        39,
+        40,
+        41
+      ],
+      "TR_seconds": 2,
+      "smoothed_model_input": false,
+      "smoothing_FWHM_mm": 0,
+      "primary_contrast": {
+        "idx": 1,
+        "name": "stimulus_gt_baseline",
+        "label": "stimulus > implicit baseline - All Sessions",
+        "type": "t",
+        "stat": "T",
+        "map": "maps/spmT_0001.nii",
+        "present": true
+      },
+      "contrast_qc_historical_ok": true,
+      "model_sources": {
+        "SPM.mat": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\SPM.mat",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "433fda9bf22b7442478836498559605a58be730d155fa832f4a80a7db40583aa",
+          "bytes": 169171903,
+          "modified_at": "2026-07-22T04:50:52.291628+00:00"
+        },
+        "contrasts.json": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\contrasts.json",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "a000c52a3b28633bba2b0281b7b03e2980fafbbcd214dc8ef6b41eba7dcb489e",
+          "bytes": 656,
+          "modified_at": "2026-07-22T04:50:59.767810+00:00"
+        },
+        "contrast_qc.json": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\contrast_qc.json",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "c317c21e02765a19ff96a7950a36009aa1265c7e41e26a07f6f23ab1b9e11f2e",
+          "bytes": 2784,
+          "modified_at": "2026-07-22T04:51:06.951296+00:00"
+        },
+        "glm_config_summary.txt": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\glm_config_summary.txt",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "2518148a7fd3ccfd5c06e7e2dc035667733fb14fc8cc4fd7b7601cb797e36a1c",
+          "bytes": 2783,
+          "modified_at": "2026-07-22T04:49:51.653611+00:00"
+        }
+      },
+      "native_maps": {
+        "con_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps\\con_0001.nii",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "cabe90b7791f2c1b46731557e79f997a890e0832f1f3a5650e58c0cb8404f3ed",
+          "bytes": 1311072,
+          "modified_at": "2026-07-22T04:50:39+00:00",
+          "shape": [
+            128,
+            128,
+            20
+          ],
+          "voxel_sizes": [
+            0.75,
+            0.75,
+            2.0
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "sec",
+          "affine": [
+            [
+              -0.75,
+              0.0,
+              0.0,
+              48.0
+            ],
+            [
+              0.0,
+              -0.75,
+              0.0,
+              -2.3950936794281006
+            ],
+            [
+              0.0,
+              0.0,
+              2.0,
+              -59.423580169677734
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 2,
+          "sform_code": 2,
+          "dtype": "float32",
+          "description": "Contrast 1: stimulus > implicit baseline - All Sessions"
+        },
+        "spmT_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps\\spmT_0001.nii",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "5616c07bfe2f3e8db347c171007d3a6ff92453b424fd563f05a6a1f757ce984f",
+          "bytes": 1311072,
+          "modified_at": "2026-07-22T04:50:39+00:00",
+          "shape": [
+            128,
+            128,
+            20
+          ],
+          "voxel_sizes": [
+            0.75,
+            0.75,
+            2.0
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "sec",
+          "affine": [
+            [
+              -0.75,
+              0.0,
+              0.0,
+              48.0
+            ],
+            [
+              0.0,
+              -0.75,
+              0.0,
+              -2.3950936794281006
+            ],
+            [
+              0.0,
+              0.0,
+              2.0,
+              -59.423580169677734
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 2,
+          "sform_code": 2,
+          "dtype": "float32",
+          "description": "SPM{T_[1676.0]} - contrast 1: stimulus > implicit baseline - All Sessions"
+        }
+      },
+      "NMT_maps": {
+        "con_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps-NMT\\con_0001_in_NMT.nii.gz",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "1d0b18a216659de2fc85ba2f733b19ebe466675e30b89b25442f34616d9e1685",
+          "bytes": 45772841,
+          "modified_at": "2026-07-22T06:21:58.436905+00:00",
+          "shape": [
+            256,
+            312,
+            200
+          ],
+          "voxel_sizes": [
+            0.25,
+            0.25,
+            0.25
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "unknown",
+          "affine": [
+            [
+              0.25,
+              0.0,
+              -0.0,
+              -31.875
+            ],
+            [
+              0.0,
+              0.25,
+              -0.0,
+              -27.75
+            ],
+            [
+              0.0,
+              0.0,
+              0.25,
+              -8.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 1,
+          "sform_code": 1,
+          "dtype": "float64",
+          "description": "",
+          "grid_identical_to_projectome": true
+        },
+        "spmT_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps-NMT\\spmT_0001_in_NMT.nii.gz",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "34d033fc431669a29e5f422e85f87abd46b1cb3373a06f2ab6844728f7152c33",
+          "bytes": 45935684,
+          "modified_at": "2026-07-22T06:21:06.210282+00:00",
+          "shape": [
+            256,
+            312,
+            200
+          ],
+          "voxel_sizes": [
+            0.25,
+            0.25,
+            0.25
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "unknown",
+          "affine": [
+            [
+              0.25,
+              0.0,
+              -0.0,
+              -31.875
+            ],
+            [
+              0.0,
+              0.25,
+              -0.0,
+              -27.75
+            ],
+            [
+              0.0,
+              0.0,
+              0.25,
+              -8.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 1,
+          "sform_code": 1,
+          "dtype": "float64",
+          "description": "",
+          "grid_identical_to_projectome": true
+        }
+      },
+      "NMT_map_directory_exists": true,
+      "current_preproc_refmean": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-refmean_epi.nii",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "ad3f6352ca7dce38acd49c87fd33292509aa213a6a277564878804be5d423e2b",
+        "bytes": 1314384,
+        "modified_at": "2026-07-15T08:17:56.017228+00:00",
+        "shape": [
+          128,
+          128,
+          20
+        ],
+        "voxel_sizes": [
+          0.75,
+          0.75,
+          2.0
+        ],
+        "spatial_unit": "mm",
+        "temporal_unit": "unknown",
+        "affine": [
+          [
+            -0.75,
+            0.0,
+            0.0,
+            48.0
+          ],
+          [
+            0.0,
+            -0.75,
+            0.0,
+            -2.3950936794281006
+          ],
+          [
+            0.0,
+            0.0,
+            2.0,
+            -59.423580169677734
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "qform_code": 2,
+        "sform_code": 2,
+        "dtype": "float32",
+        "description": ""
+      },
+      "native_contrast_grid_matches_current_refmean": true,
+      "forward_transform_files": {
+        "CMT_0GenericAffine.mat": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_CMT_0GenericAffine.mat",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "d77d873e67611dcde5f1bb9083ccec30d88ce0d9e16389b9a5fde7cb2ea94dd8",
+          "bytes": 193,
+          "modified_at": "2026-07-19T06:28:01+00:00"
+        },
+        "CMT_1Warp.nii.gz": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_CMT_1Warp.nii.gz",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "73f13d1ce76f42aadcdba5e83572f17eb2aacce57c87b3ad6d46be5527cc37ea",
+          "bytes": 304939743,
+          "modified_at": "2026-07-19T06:28:07+00:00",
+          "shape": [
+            241,
+            320,
+            190,
+            1,
+            3
+          ],
+          "voxel_sizes": [
+            0.24999994039535522,
+            0.2500000298023224,
+            0.2499999701976776,
+            0.0,
+            0.0
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "unknown",
+          "affine": [
+            [
+              -0.24995550513267517,
+              -7.65841221550545e-08,
+              -0.0047131795436143875,
+              29.995559692382812
+            ],
+            [
+              0.0005906419828534126,
+              0.2480286955833435,
+              -0.0313277393579483,
+              -27.86192512512207
+            ],
+            [
+              -0.004676023498177528,
+              0.0313333123922348,
+              0.24798455834388733,
+              -12.6658353805542
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 1,
+          "sform_code": 1,
+          "dtype": "float64",
+          "description": ""
+        },
+        "NMT_0GenericAffine.mat": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_NMT_0GenericAffine.mat",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "6849fe6523667bf6694910f5724950e3c6694433e5402d6cae49b4d16f6ee217",
+          "bytes": 193,
+          "modified_at": "2026-07-19T06:29:07+00:00"
+        },
+        "NMT_1Warp.nii.gz": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_NMT_1Warp.nii.gz",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "29e460aecf8f2aa7a35dcdf6dfd049435cb5f03f01a27ae461869d0db4123470",
+          "bytes": 335905057,
+          "modified_at": "2026-07-19T06:29:14+00:00",
+          "shape": [
+            256,
+            312,
+            200,
+            1,
+            3
+          ],
+          "voxel_sizes": [
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "unknown",
+          "affine": [
+            [
+              0.25,
+              0.0,
+              -0.0,
+              -31.875
+            ],
+            [
+              0.0,
+              0.25,
+              -0.0,
+              -27.75
+            ],
+            [
+              0.0,
+              0.0,
+              0.25,
+              -8.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 1,
+          "sform_code": 1,
+          "dtype": "float64",
+          "description": ""
+        }
+      },
+      "ana_based_chain_application_order": [
+        "EPI to native via inverse anat-to-EPI affine converted to ITK",
+        "native anatomical brain to CMT affine and warp",
+        "CMT to NMT affine and warp"
+      ],
+      "normalization_target_variant_from_script_and_template_paths": "NMT_v2.0_sym",
+      "fresh_anatomical_acceptance": "not_established_by_this_audit",
+      "same_animal_fMOST_pairing": "unavailable_registry_TBD",
+      "warp_record": {
+        "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps-NMT\\cm032_20160309_ana_warp_glm_to_nmt.log",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "0984d0e9508fad380688bc86c643edf4eb60c776899c0675e12b71e6294b098e",
+        "bytes": 338,
+        "modified_at": "2026-07-22T06:22:06.006958+00:00"
+      },
+      "warp_record_text": "[2026-07-22T14:21:58+08:00] warp_glm_to_nmt cm032_20160309_ana approach=ana_based\n  warp: /mnt/d/multimodal_fmri/derivatives/glm/sub-cm032/ses-20160309/glm-mstim-pos1/mask/sub-cm032_ses-20160309_desc-brainmaskEpi_aligned.nii\nDone: /mnt/d/multimodal_fmri/derivatives/glm/sub-cm032/ses-20160309/glm-mstim-pos1/maps-NMT (approach=ana_based)\n",
+      "converted_epi_to_native_transform": {
+        "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps-NMT\\.cm032_20160309_ana_epi_to_native.txt",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "e08b0c05a18f0600610a99c7a3b40b7d6fac6bd65b4a615a264db1fdb95b869b",
+        "bytes": 317,
+        "modified_at": "2026-07-22T06:00:20.903082+00:00"
+      },
+      "anat_to_epi_affine": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-anatToEpiAffine.aff12.1D",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "685b53eaea01306c9abb3f4b49999bd65446b43345560cbaacd9bc4458468b11",
+        "bytes": 222,
+        "modified_at": "2026-07-15T08:12:42.044079+00:00"
+      },
+      "normalization_run_log": {
+        "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\norm_run.log",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "f9b9b9d37f8ec7636dc405e4ca9db8a8ec488d9ad240ab3cc2948434b504645a",
+        "bytes": 202502,
+        "modified_at": "2026-07-19T06:42:24.868638+00:00"
+      },
+      "moving_image_current_file": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-brainInEpiNativeRes.nii",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "b5384295ceac4393219fb9c17a2ebc9fde815a431e8e5a3742fb01ae8d752d6a",
+        "bytes": 5828352,
+        "modified_at": "2026-07-15T10:04:09.320114+00:00",
+        "shape": [
+          155,
+          188,
+          50
+        ],
+        "voxel_sizes": [
+          0.3654448091983795,
+          0.3721752464771271,
+          1.000359058380127
+        ],
+        "spatial_unit": "mm",
+        "temporal_unit": "sec",
+        "affine": [
+          [
+            -0.3651833236217499,
+            0.003839501179754734,
+            0.010696880519390106,
+            27.707735061645508
+          ],
+          [
+            0.01323974784463644,
+            -0.3721551299095154,
+            -0.010760673321783543,
+            -14.777226448059082
+          ],
+          [
+            0.003969028126448393,
+            0.0004913696320727468,
+            1.000243902206421,
+            -67.51502227783203
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "qform_code": 1,
+        "sform_code": 1,
+        "dtype": "float32",
+        "description": ""
+      },
+      "historical_anat_epi_qc_source": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-anatEpiOverlay_qc.json",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "382058b839e5db11a790307ae6ac7c4f7991b1c252498368322b5addb1d3febe",
+        "bytes": 1784,
+        "modified_at": "2026-07-16T06:15:56.073893+00:00"
+      },
+      "historical_anat_epi_qc": {
+        "label": "sub-cm032 ses-20160309 anat->EPI",
+        "epi_ref": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-refmean_epi.nii",
+        "head_in_epi": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-headInEpi.nii",
+        "brain_in_epi": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-brainEpi.nii",
+        "overlay_png": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-anatEpiOverlay_qc.png",
+        "dice_qc": {
+          "label": "cm032_ses-20160309_anat2epi",
+          "dice": 0.9917316593748019,
+          "threshold_a": 8.306801028084017e-05,
+          "threshold_b": 22046.015625,
+          "voxels_a": 79507,
+          "voxels_b": 78203,
+          "voxels_intersection": 78203,
+          "same_grid": true,
+          "same_shape": true,
+          "affine_match": true,
+          "min_dice": 0.85,
+          "pass": true,
+          "restrict_anat_to_mask": true,
+          "mask_epi": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-brainEpi.nii",
+          "anat_epi": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-headInEpi.nii",
+          "notes": "A=brain/mask B=head/anat; head/anat restricted to brain/mask support"
+        },
+        "visual_com_offset": {
+          "offset_mm": 5.568,
+          "delta_vox": [
+            -1.01,
+            6.03,
+            -1.58
+          ],
+          "voxel_size_mm": [
+            0.75,
+            0.75,
+            2.0
+          ],
+          "note": ""
+        },
+        "visual_warning": true,
+        "visual_warn_mm_threshold": 3.0,
+        "policy": "DICE gate is hard-fail in run_preproc_anat_epi; visual_warning is report-only (inspect PNG, re-run --force if needed)"
+      },
+      "historical_native_res_qc_source": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-nativeResVsBrainEpi_qc.json",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "70f92326376ac3bc27690c13ecf538ede9db9d762e8bad03930eebf3b48288b4",
+        "bytes": 982,
+        "modified_at": "2026-07-15T10:04:09.385375+00:00"
+      },
+      "historical_native_res_qc": {
+        "native_res": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-brainInEpiNativeRes.nii",
+        "resliced_epi": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-brainEpi.nii",
+        "native_res_shape": [
+          155,
+          188,
+          50
+        ],
+        "resliced_shape": [
+          128,
+          128,
+          20
+        ],
+        "native_res_zooms_mm": [
+          0.3654,
+          0.3722,
+          1.0004
+        ],
+        "resliced_zooms_mm": [
+          0.75,
+          0.75,
+          2.0
+        ],
+        "com_world_native_res_mm": [
+          1.628,
+          -58.904,
+          -47.513
+        ],
+        "com_world_resliced_mm": [
+          0.986,
+          -58.614,
+          -47.517
+        ],
+        "com_delta_mm": 0.704,
+        "pass_com_3mm": true,
+        "pass_com_5mm": true,
+        "affine_apply_method": "D@inv(M_dicom)@D (multimodal; not QST M@A)",
+        "affine": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm032\\ses-20160309\\anat\\sub-cm032_ses-20160309_desc-anatToEpiAffine.aff12.1D"
+      },
+      "NMT_map_directory_names": [
+        ".cm032_20160309_ana_epi_to_native.txt",
+        "cm032_20160309_ana_warp_glm_to_nmt.log",
+        "con_0001_in_NMT.nii.gz",
+        "spmF_0002_in_NMT.nii.gz",
+        "spmF_0003_in_NMT.nii.gz",
+        "spmF_0004_in_NMT.nii.gz",
+        "spmF_0005_in_NMT.nii.gz",
+        "spmF_0006_in_NMT.nii.gz",
+        "spmT_0001_in_NMT.nii.gz",
+        "sub-cm032_ses-20160309_desc-brainmaskEpi_aligned_in_NMT.nii.gz"
+      ],
+      "lineage_caveats": [
+        "July 22 warp log is overwritten by final mask pass and does not retain per-stat-map input hashes or complete invocation.",
+        "Declared target is NMT_v2.0_sym, while projectome reference is named v2.1_sym. This audit verified exact equality of actual SS template voxel payloads and grids; declared version and atlas-label provenance remain separate fields.",
+        "maps-NMT retains spmF_0006 although current contrast metadata lists only indices 1..5; directory contains residual products and is not a clean current-model manifest.",
+        "Normalization log contains ses-20160309_ana_drvfs_test paths while audited transforms live in ses-20160309_ana; no persisted hash-pinned copy receipt was identified.",
+        "Native-res moving image and its QC date July 15, earlier than July 16 brain-to-head correction. July 16 notes say regenerating the normalization moving image is optional; no fresh reconciliation acceptance identified.",
+        "Historical automated Dice 0.9917 compares brain support with head/anatomical support, not an independently accepted EPI-to-anatomy registration; visual COM warning 5.568 mm remains."
+      ],
+      "readiness": "historical_NMT_maps_available_with_identical_reference_grid_and_SS_voxel_payload; conditional_across_cohort_exploration_after_registration_and_map_lineage_review"
+    },
+    "cm033": {
+      "subject": "cm033",
+      "session_label": "20160120",
+      "source_acquisition_date": "2016-01-20",
+      "model": "glm-mstim-pos1-short-tr3-smooth2mm",
+      "run_ids_from_saved_glm_summary": [
+        57,
+        58,
+        60,
+        61,
+        64
+      ],
+      "TR_seconds": 3,
+      "smoothed_model_input": true,
+      "smoothing_FWHM_mm": 2,
+      "primary_contrast": {
+        "idx": 1,
+        "name": "stimulus_gt_baseline",
+        "label": "stimulus > implicit baseline - All Sessions",
+        "type": "t",
+        "stat": "T",
+        "map": "maps/spmT_0001.nii",
+        "present": true
+      },
+      "contrast_qc_historical_ok": true,
+      "model_sources": {
+        "SPM.mat": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+          "bytes": 120497816,
+          "modified_at": "2026-07-25T06:09:13.980632+00:00"
+        },
+        "contrasts.json": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\contrasts.json",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "24180738fd9e65ff0ef9078dc2b1d5fd3d7ab501c59853978163de930094e4a4",
+          "bytes": 780,
+          "modified_at": "2026-07-25T06:09:18.245525+00:00"
+        },
+        "contrast_qc.json": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\contrast_qc.json",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "356083b213c1011ee480214760134c4467b305104ef80a17d09ca1e85ac100d5",
+          "bytes": 3603,
+          "modified_at": "2026-07-25T06:09:22.463773+00:00"
+        },
+        "glm_config_summary.txt": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\glm_config_summary.txt",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "181f01ebbda3106473f0cd5f5a8589b6f823dc4de9c8c3ca80a232538a1d026f",
+          "bytes": 3501,
+          "modified_at": "2026-07-25T06:08:32.154785+00:00"
+        }
+      },
+      "native_maps": {
+        "con_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+          "bytes": 1180000,
+          "modified_at": "2026-07-25T06:09:06+00:00",
+          "shape": [
+            128,
+            128,
+            18
+          ],
+          "voxel_sizes": [
+            0.75,
+            0.75,
+            1.999999761581421
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "sec",
+          "affine": [
+            [
+              0.75,
+              0.0,
+              0.0,
+              -48.0
+            ],
+            [
+              0.0,
+              -0.75,
+              0.0,
+              -5.022499084472656
+            ],
+            [
+              0.0,
+              0.0,
+              -1.999999761581421,
+              63.351417541503906
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 2,
+          "sform_code": 2,
+          "dtype": "float32",
+          "description": "Contrast 1: stimulus > implicit baseline - All Sessions"
+        },
+        "spmT_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+          "bytes": 1180000,
+          "modified_at": "2026-07-25T06:09:06+00:00",
+          "shape": [
+            128,
+            128,
+            18
+          ],
+          "voxel_sizes": [
+            0.75,
+            0.75,
+            1.999999761581421
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "sec",
+          "affine": [
+            [
+              0.75,
+              0.0,
+              0.0,
+              -48.0
+            ],
+            [
+              0.0,
+              -0.75,
+              0.0,
+              -5.022499084472656
+            ],
+            [
+              0.0,
+              0.0,
+              -1.999999761581421,
+              63.351417541503906
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 2,
+          "sform_code": 2,
+          "dtype": "float32",
+          "description": "SPM{T_[1364.0]} - contrast 1: stimulus > implicit baseline - All Sessions"
+        }
+      },
+      "NMT_maps": {
+        "con_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps-NMT\\con_0001_in_NMT.nii.gz",
+          "exists": false,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "grid_identical_to_projectome": null
+        },
+        "spmT_0001": {
+          "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps-NMT\\spmT_0001_in_NMT.nii.gz",
+          "exists": false,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "grid_identical_to_projectome": null
+        }
+      },
+      "NMT_map_directory_exists": false,
+      "current_preproc_refmean": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+        "bytes": 1183600,
+        "modified_at": "2026-09-07T06:06:24.926877+00:00",
+        "shape": [
+          128,
+          128,
+          18
+        ],
+        "voxel_sizes": [
+          0.75,
+          0.75,
+          1.999999761581421
+        ],
+        "spatial_unit": "mm",
+        "temporal_unit": "unknown",
+        "affine": [
+          [
+            -0.75,
+            0.0,
+            0.0,
+            -48.0
+          ],
+          [
+            0.0,
+            -0.75,
+            0.0,
+            -5.022499084472656
+          ],
+          [
+            0.0,
+            0.0,
+            1.999999761581421,
+            63.351417541503906
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "qform_code": 2,
+        "sform_code": 2,
+        "dtype": "float32",
+        "description": ""
+      },
+      "native_contrast_grid_matches_current_refmean": false,
+      "forward_transform_files": {
+        "CMT_0GenericAffine.mat": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_CMT_0GenericAffine.mat",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "c5d35af08062d903ae47ebe78039a176c2e3dbd613f74d334c0cdc5e591a0a29",
+          "bytes": 193,
+          "modified_at": "2026-07-25T06:40:17.555204+00:00"
+        },
+        "CMT_1Warp.nii.gz": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_CMT_1Warp.nii.gz",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "701d84e7d6b38ba5499f7cdea00c328c1e55303b100e0acb6064f2b12e4dc160",
+          "bytes": 308989339,
+          "modified_at": "2026-07-25T06:40:29.313001+00:00",
+          "shape": [
+            241,
+            320,
+            190,
+            1,
+            3
+          ],
+          "voxel_sizes": [
+            0.24999994039535522,
+            0.2500000298023224,
+            0.2499999701976776,
+            0.0,
+            0.0
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "unknown",
+          "affine": [
+            [
+              -0.24995550513267517,
+              -7.65841221550545e-08,
+              -0.0047131795436143875,
+              29.995559692382812
+            ],
+            [
+              0.0005906419828534126,
+              0.2480286955833435,
+              -0.0313277393579483,
+              -27.86192512512207
+            ],
+            [
+              -0.004676023498177528,
+              0.0313333123922348,
+              0.24798455834388733,
+              -12.6658353805542
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 1,
+          "sform_code": 1,
+          "dtype": "float64",
+          "description": ""
+        },
+        "NMT_0GenericAffine.mat": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_NMT_0GenericAffine.mat",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "e28db7262f5497439825a23b85362b65ca66a35c8490167e4b51c66decea42b3",
+          "bytes": 193,
+          "modified_at": "2026-07-25T06:44:06.156133+00:00"
+        },
+        "NMT_1Warp.nii.gz": {
+          "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_NMT_1Warp.nii.gz",
+          "exists": true,
+          "checked_at": "2026-10-08T15:36:27.547185+00:00",
+          "sha256": "b624b4051ce60c0d0c853eb1ca99d0854bdd7dc4ba7b0c2892d5d89b4e4ad94d",
+          "bytes": 336277689,
+          "modified_at": "2026-07-25T06:44:17.482460+00:00",
+          "shape": [
+            256,
+            312,
+            200,
+            1,
+            3
+          ],
+          "voxel_sizes": [
+            0.25,
+            0.25,
+            0.25,
+            0.0,
+            0.0
+          ],
+          "spatial_unit": "mm",
+          "temporal_unit": "unknown",
+          "affine": [
+            [
+              0.25,
+              0.0,
+              -0.0,
+              -31.875
+            ],
+            [
+              0.0,
+              0.25,
+              -0.0,
+              -27.75
+            ],
+            [
+              0.0,
+              0.0,
+              0.25,
+              -8.0
+            ],
+            [
+              0.0,
+              0.0,
+              0.0,
+              1.0
+            ]
+          ],
+          "qform_code": 1,
+          "sform_code": 1,
+          "dtype": "float64",
+          "description": ""
+        }
+      },
+      "ana_based_chain_application_order": [
+        "EPI to native via inverse anat-to-EPI affine converted to ITK",
+        "native anatomical brain to CMT affine and warp",
+        "CMT to NMT affine and warp"
+      ],
+      "normalization_target_variant_from_script_and_template_paths": "NMT_v2.0_sym",
+      "fresh_anatomical_acceptance": "not_established_by_this_audit",
+      "same_animal_fMOST_pairing": "unavailable_registry_TBD",
+      "normalization_staged_moving_image": {
+        "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\sub-cm033_ses-20160120_desc-brainInEpiNativeRes.nii",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "d81b503209a2e9731e6fd42685a279ef933bf283ec984e3b4510cb94585217e3",
+        "bytes": 3473760,
+        "modified_at": "2026-07-25T06:36:17+00:00",
+        "shape": [
+          128,
+          128,
+          53
+        ],
+        "voxel_sizes": [
+          0.75,
+          0.75,
+          1.0
+        ],
+        "spatial_unit": "mm",
+        "temporal_unit": "unknown",
+        "affine": [
+          [
+            0.75,
+            0.0,
+            0.0,
+            -52.834564208984375
+          ],
+          [
+            0.0,
+            0.75,
+            0.0,
+            -109.99242401123047
+          ],
+          [
+            0.0,
+            0.0,
+            1.0,
+            17.964405059814453
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "qform_code": 1,
+        "sform_code": 1,
+        "dtype": "float32",
+        "description": "Orientation reset using MATLAB.                                                 "
+      },
+      "current_expected_moving_image": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-brainInEpiNativeRes.nii",
+        "exists": false,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00"
+      },
+      "current_anat_to_epi_affine": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-anatToEpiAffine.aff12.1D",
+        "exists": true,
+        "checked_at": "2026-10-08T15:36:27.547185+00:00",
+        "sha256": "d21f0535592bedf2737997f6138a795e3e653a94ee677ef1f2b908f61ac8aaec",
+        "bytes": 222,
+        "modified_at": "2026-09-07T06:53:03.998775+00:00"
+      },
+      "lineage_caveats": [
+        "GLM and normalization date July 25, before production preprocessing rewrite September 7.",
+        "Native contrast grid differs from current preprocessed refmean, consistent with stale geometry; matching later products by filename is unsafe.",
+        "Latest scientific project note records COM about 7.1 mm and September 26 human rejection of an isolated review montage; it explicitly says old GLM/norm remain stale.",
+        "Native-res moving image survives only as July staged normalization input; expected current production filename is absent.",
+        "No maps-NMT exists for this model; rejected/stale inputs were not normalized in this audit."
+      ],
+      "readiness": "not_ready_for_current_crossmodal_map_combination; repair_and_accept_orientation_registration_then_rebuild_GLM_and_normalization",
+      "earlier_failed_normalization_attempt": {
+        "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033_norm_run.log",
+        "sha256": "d7a37882bf7affb45a7629a72414f3f8f4254c7804b1a7e94e13f02d69d9d1f1",
+        "modified_at": "2026-07-24T23:34:10.235928+00:00",
+        "summary": "Earlier July 25 ana_based moving-header gate rejected offdiagonal 0.1662 and exited 1; this precedes later July 25 transform files and is not a final successful registration receipt."
+      }
+    }
+  },
+  "registry_rows": [
+    {
+      "monkey_id": "cm032",
+      "fmri_sub": "cm032",
+      "fmri_ses": "20160309",
+      "fmost_animal_id": "TBD",
+      "fmost_id": "TBD",
+      "projectome_cohort": "TBD",
+      "injection_sites": "TBD",
+      "link_status": "pending",
+      "notes": "fMRI ses = scan day 2016-03-09; map to projectome when ID known"
+    },
+    {
+      "monkey_id": "cm033",
+      "fmri_sub": "cm033",
+      "fmri_ses": "NOT_STARTED",
+      "fmost_animal_id": "TBD",
+      "fmost_id": "TBD",
+      "projectome_cohort": "TBD",
+      "injection_sites": "TBD",
+      "link_status": "not_started",
+      "notes": "no BIDS session yet; prior ses-20240516 placeholder was wrong \u00e2\u20ac\u201d Bruker raw (zJ1, scan day 2016-01-20) not converted"
+    }
+  ],
+  "registry_findings": [
+    "Both fMOST animal/sample identity fields remain TBD; same-animal pairing cannot be claimed.",
+    "CM033 registry says NOT_STARTED/no BIDS session, contradicted by current ses-20160120 files and scientific notes; registry is stale and was not edited."
+  ],
+  "acceptance_evidence": {
+    "CM032_present": "July numerical QC, contrast QC, transforms, historical warp artifacts/logs; no fresh anatomy/normalization acceptance established.",
+    "CM032_missing": "Hash-linked per-stat-map warp receipt and current human registration acceptance; actual SS reference grid/voxel equivalence has been verified by this audit.",
+    "CM033_present": "Historical contrast QC true; July transforms/native maps; September 7 failure and September 26 rejection documented.",
+    "CM033_missing": "Accepted orientation/anat-EPI registration, rebuilt GLM/norm using current inputs, model maps-NMT."
+  },
+  "across_cohort_interpretation": "Unmatched animals preclude paired or same-animal structure-function claims, but need not preclude separately labeled across-cohort atlas-space exploratory visualization once spatial/contrast/registration provenance is accepted.",
+  "contrast_comparability_caveats": [
+    "Both audited contrast 1 maps are stimulus > implicit baseline, not MSTIM > OPTO or a between-subject contrast.",
+    "CM032 model is unsmoothed TR=2 with runs 38..41; CM033 model is smooth2mm TR=3 with runs 57,58,60,61,64. These are different models and acquisitions.",
+    "CM033 legacy pos1 is not the CM032 pos1 ontology; saved CM033 chronology assigns these late MSTIM runs to left_aic."
+  ],
+  "grid_conclusion": "CM032 normalized contrast/T maps and projectome reference have identical shape, voxel size, mm units and numeric affine. The actual legacy-v2.0-named SS reference and projectome-v2.1-named SS reference have exactly equal int16 voxel payloads despite different compressed file hashes. No inter-template resampling/warp is justified by these actual references. Map sform/qform codes are 1 versus template 5; numerical grid equality and reference equality do not establish accepted subject registration. Declared template/atlas version provenance is retained.",
+  "actions_performed": [
+    "Read notes/registry/metadata and NIfTI headers",
+    "Streamed SHA-256 of exact models, maps, references and forward transforms",
+    "Compared the two reference-template voxel payloads only; exact equality verified",
+    "Wrote this readiness JSON only"
+  ],
+  "scientific_acceptance": "not_performed",
+  "template_payload_comparison": {
+    "scope": "reference templates only; no fMRI overlap or resampling",
+    "exact_scaled_voxel_values_equal": true,
+    "projectome_loaded_dtype": "int16",
+    "fmri_template_loaded_dtype": "int16",
+    "projectome_loaded_voxel_sha256": "73231c5b87707d306356a97c4e42d6137407590de52c821653b66d3be0b22935",
+    "fmri_loaded_voxel_sha256": "73231c5b87707d306356a97c4e42d6137407590de52c821653b66d3be0b22935",
+    "file_hash_difference_is_not_itself_proof_of_voxel_or_anatomical_difference": true,
+    "interpretation": "For these actual skull-stripped reference files, grid and voxel data are identical; differing compressed file hashes and nominal version paths do not imply a spatial bridge is needed. This does not equate all v2.0/v2.1 atlases or validate subject registration."
+  }
+}

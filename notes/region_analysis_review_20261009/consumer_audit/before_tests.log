@@ -1,0 +1,221 @@
+test_atlas_namespace_is_stable_when_only_one_homonym_is_observed (test_region_table_consumers.RegionTableConsumerTests) ... ERROR
+test_cortical_and_subcortical_homonyms_remain_distinct (test_region_table_consumers.RegionTableConsumerTests) ... ERROR
+test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) ... test_multisheet_identity_mismatch_is_rejected (test_region_table_consumers.RegionTableConsumerTests) ... D:\projectome_analysis\tests\test_region_table_consumers.py:74: FutureWarning: Starting with pandas version 3.0 all arguments of to_excel except for the argument 'excel_writer' will be keyword-only.
+  neuron_frame().drop(columns=["Terminal_Regions", "Region_projection_length"]).to_excel(writer, "Summary", index=False)
+D:\projectome_analysis\tests\test_region_table_consumers.py:75: FutureWarning: Starting with pandas version 3.0 all arguments of to_excel except for the argument 'excel_writer' will be keyword-only.
+  pd.DataFrame({"NeuronID": ["different.swc"], "Neuron_Type": ["ITi"], "CL_A": [9.]}).to_excel(writer, "Projection_Length_all", index=False)
+ERROR
+test_multisheet_roundtrip_restores_absolute_lengths_and_targets (test_region_table_consumers.RegionTableConsumerTests) ... ERROR
+test_serialized_lengths_survive_dataframe_and_csv_reload (test_region_table_consumers.RegionTableConsumerTests) ... ERROR
+test_standalone_cli_can_import_and_exposes_unsupported_levels (test_region_table_consumers.RegionTableConsumerTests) ... FAIL
+test_standalone_does_not_trust_stale_precomputed_splits (test_region_table_consumers.RegionTableConsumerTests) ... FAIL
+test_standalone_export_has_unique_headers_and_preserves_existing_file (test_region_table_consumers.RegionTableConsumerTests) ... FAIL
+test_standalone_uses_reference_side_and_arbitrary_dataframe_index (test_region_table_consumers.RegionTableConsumerTests) ... ERROR
+
+======================================================================
+ERROR: test_atlas_namespace_is_stable_when_only_one_homonym_is_observed (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 94, in test_atlas_namespace_is_stable_when_only_one_homonym_is_observed
+    self.assertEqual(ipsi.C_Pi.iloc[0], 3.)
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\pandas\core\generic.py", line 6321, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'C_Pi'
+
+======================================================================
+ERROR: test_cortical_and_subcortical_homonyms_remain_distinct (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\pandas\core\indexes\base.py", line 3812, in get_loc
+    return self._engine.get_loc(casted_key)
+  File "pandas/_libs/index.pyx", line 167, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/index.pyx", line 196, in pandas._libs.index.IndexEngine.get_loc
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7088, in pandas._libs.hashtable.PyObjectHashTable.get_item
+  File "pandas/_libs/hashtable_class_helper.pxi", line 7096, in pandas._libs.hashtable.PyObjectHashTable.get_item
+KeyError: 'C_PM'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 84, in test_cortical_and_subcortical_homonyms_remain_distinct
+    self.assertEqual(ipsi[f"C_{name}"].iloc[0], 3.)
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\pandas\core\frame.py", line 4113, in __getitem__
+    indexer = self.columns.get_loc(key)
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\pandas\core\indexes\base.py", line 3819, in get_loc
+    raise KeyError(key) from err
+KeyError: 'C_PM'
+
+======================================================================
+ERROR: test_multisheet_identity_mismatch_is_rejected (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 77, in test_multisheet_identity_mismatch_is_rejected
+    population(pd.DataFrame()).load_processed_dataframe(path)
+  File "D:\projectome_analysis\main_scripts\region_analysis\population.py", line 557, in load_processed_dataframe
+    raise TypeError("Expected DataFrame or file path")
+TypeError: Expected DataFrame or file path
+
+======================================================================
+ERROR: test_multisheet_roundtrip_restores_absolute_lengths_and_targets (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 64, in test_multisheet_roundtrip_restores_absolute_lengths_and_targets
+    loaded.load_processed_dataframe(path)
+  File "D:\projectome_analysis\main_scripts\region_analysis\population.py", line 557, in load_processed_dataframe
+    raise TypeError("Expected DataFrame or file path")
+TypeError: Expected DataFrame or file path
+
+======================================================================
+ERROR: test_serialized_lengths_survive_dataframe_and_csv_reload (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 41, in test_serialized_lengths_survive_dataframe_and_csv_reload
+    self.assertEqual(pop.get_projection_matrix().CL_A.iloc[0], 9.0)
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\pandas\core\generic.py", line 6321, in __getattr__
+    return object.__getattribute__(self, name)
+AttributeError: 'DataFrame' object has no attribute 'CL_A'
+
+======================================================================
+ERROR: test_standalone_uses_reference_side_and_arbitrary_dataframe_index (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 99, in test_standalone_uses_reference_side_and_arbitrary_dataframe_index
+    result = LateralityProjectionAnalyzer(frame).analyze()
+  File "D:\projectome_analysis\main_scripts\region_analysis\laterality_projection_analysis.py", line 99, in analyze
+    return self._analyze_fallback(length_col)
+  File "D:\projectome_analysis\main_scripts\region_analysis\laterality_projection_analysis.py", line 184, in _analyze_fallback
+    if idx < 3:
+TypeError: '<' not supported between instances of 'str' and 'int'
+
+======================================================================
+FAIL: test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) (value=None)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 53, in test_missing_or_invalid_lengths_never_become_silent_zero
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) (value='not a dictionary')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 53, in test_missing_or_invalid_lengths_never_become_silent_zero
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) (value="{'CL_A': -1}")
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 53, in test_missing_or_invalid_lengths_never_become_silent_zero
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) (value={'CL_A': nan})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 53, in test_missing_or_invalid_lengths_never_become_silent_zero
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) (value={'CL_A': True})
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 53, in test_missing_or_invalid_lengths_never_become_silent_zero
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_standalone_cli_can_import_and_exposes_unsupported_levels (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 127, in test_standalone_cli_can_import_and_exposes_unsupported_levels
+    self.assertEqual(result.returncode, 0, result.stderr)
+AssertionError: 1 != 0 : Traceback (most recent call last):
+  File "D:\projectome_analysis\main_scripts\region_analysis\laterality_projection_analysis.py", line 23, in <module>
+    from region_analysis.laterality import LateralityParser
+ModuleNotFoundError: No module named 'region_analysis'
+
+
+======================================================================
+FAIL: test_standalone_does_not_trust_stale_precomputed_splits (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 108, in test_standalone_does_not_trust_stale_precomputed_splits
+    self.assertTrue(result["ipsilateral"].empty)
+AssertionError: False is not true
+
+======================================================================
+FAIL: test_standalone_export_has_unique_headers_and_preserves_existing_file (test_region_table_consumers.RegionTableConsumerTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\tests\test_region_table_consumers.py", line 117, in test_standalone_export_has_unique_headers_and_preserves_existing_file
+    self.assertNotIn("ipsilateral_total_length.1", exported)
+AssertionError: 'ipsilateral_total_length.1' unexpectedly found in   NeuronID Neuron_Type  ... ipsilateral_total_length.1 A_length
+0  001.swc         ITi  ...                          9        9
+
+[1 rows x 8 columns]
+
+----------------------------------------------------------------------
+Ran 10 tests in 0.898s
+
+FAILED (failures=8, errors=6)
+Loaded 1 neurons
+Loaded 1 neurons
+Loaded 1 neurons
+Loaded 1 neurons
+Loaded 1 neurons
+
+[EXCEL] Writing: C:\Users\LAIKA_~1\AppData\Local\Temp\tmplq130bq2\export.xlsx
+  [Sheet] Summary: 1 rows x 7 cols
+  [Sheet] Soma_Hierarchy: 1 rows x 2 cols
+  [Sheet] Terminal_Sites: 2 rows
+  [Sheet] Laterality: 1 rows x 4 cols
+  [Sheet] Outliers: 0 events (clean!)
+  [Sheet] Projection_Length_ipsi: 1 neurons x 1 regions
+  [Sheet] Projection_Length_contra: 1 neurons x 1 regions
+  [Sheet] Projection_Strength_ipsi: 1 neurons x 1 regions
+  [Sheet] Projection_Strength_contra: 1 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmplq130bq2\export.xlsx
+Loaded 1 neurons
+[WARN] Empty matrix for level='finest'
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length', 'Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using pre-computed ipsi/contra columns
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  With ipsilateral projections: 1
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='CL_A', side='L'
+    -> 1 projection regions
+    -> Sample region 'CL_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 1
+  With contralateral projections: 0
+  [Sheet] Ipsilateral_Length: 1 neurons x 2 regions
+  [Sheet] Ipsilateral_Strength: 1 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmploomp6p2\laterality.xlsx
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons

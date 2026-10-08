@@ -1,0 +1,136 @@
+test_atlas_namespace_is_stable_when_only_one_homonym_is_observed (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_cortical_and_subcortical_homonyms_remain_distinct (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_duplicate_exact_identity_is_rejected_before_matrix_export (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_finest_only_source_splits_and_strengths_agree (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_foreign_subject_in_terminal_sheet_is_rejected (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_generated_namespace_cannot_collide_with_literal_input (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_missing_or_invalid_lengths_never_become_silent_zero (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_multisample_repeated_ids_survive_roundtrip_with_exact_identity (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_multisheet_identity_mismatch_is_rejected (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_multisheet_roundtrip_restores_absolute_lengths_and_targets (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_outlier_details_survive_multisheet_roundtrip (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_serialized_lengths_survive_dataframe_and_csv_reload (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_soma_hierarchy_export_does_not_duplicate_or_hide_conflicting_levels (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_split_only_workbook_requires_original_absolute_source (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_standalone_cli_can_import_and_exposes_unsupported_levels (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_standalone_does_not_trust_stale_precomputed_splits (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_standalone_export_has_unique_headers_and_preserves_existing_file (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_standalone_uses_reference_side_and_arbitrary_dataframe_index (test_region_table_consumers.RegionTableConsumerTests) ... ok
+test_unknown_hemisphere_is_excluded_from_both_splits_but_retained_absolute (test_region_table_consumers.RegionTableConsumerTests) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 2.579s
+
+OK
+
+[EXCEL] Writing: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpg7_hrv1z\two_animals.xlsx
+  [Sheet] Summary: 2 rows x 8 cols
+  [Sheet] Soma_Hierarchy: 2 rows x 4 cols
+  [Sheet] Terminal_Sites: 2 rows
+  [Sheet] Laterality: 2 rows x 6 cols
+  [Sheet] Outliers: 0 events (clean!)
+  [Sheet] Projection_Length_ipsi: 2 neurons x 3 regions
+  [Sheet] Projection_Length_contra: 2 neurons x 2 regions
+  [Sheet] Projection_Strength_ipsi: 2 neurons x 3 regions
+  [Sheet] Projection_Strength_contra: 2 neurons x 2 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmpg7_hrv1z\two_animals.xlsx
+
+[EXCEL] Writing: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpe60dh624\export.xlsx
+  [Sheet] Summary: 1 rows x 7 cols
+  [Sheet] Soma_Hierarchy: 1 rows x 3 cols
+  [Sheet] Terminal_Sites: 2 rows
+  [Sheet] Laterality: 1 rows x 5 cols
+  [Sheet] Outliers: 0 events (clean!)
+  [Sheet] Projection_Length_ipsi: 1 neurons x 1 regions
+  [Sheet] Projection_Length_contra: 1 neurons x 1 regions
+  [Sheet] Projection_Strength_ipsi: 1 neurons x 1 regions
+  [Sheet] Projection_Strength_contra: 1 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmpe60dh624\export.xlsx
+Loaded 1 neurons
+
+[EXCEL] Writing: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpdcxkmm9w\outliers.xlsx
+  [Sheet] Summary: 1 rows x 7 cols
+  [Sheet] Soma_Hierarchy: 1 rows x 3 cols
+  [Sheet] Terminal_Sites: 1 rows
+  [Sheet] Laterality: 1 rows x 5 cols
+  [Sheet] Outliers: 1 events
+  [Sheet] Projection_Length_ipsi: 1 neurons x 1 regions
+  [Sheet] Projection_Length_contra: 1 neurons x 0 regions
+  [Sheet] Projection_Strength_ipsi: 1 neurons x 1 regions
+  [Sheet] Projection_Strength_contra: 1 neurons x 0 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmpdcxkmm9w\outliers.xlsx
+Loaded 1 neurons
+Loaded 1 neurons
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length', 'Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='CL_A', side='Unknown'
+    -> Unknown soma side
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 1
+  Empty projections: 0
+  With ipsilateral projections: 0
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='CL_A', side='L'
+    -> 1 projection regions
+    -> Sample region 'CL_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 1
+  With contralateral projections: 0
+  [Sheet] Ipsilateral_Length: 1 neurons x 1 regions
+  [Sheet] Ipsilateral_Strength: 1 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmp_lurnx74\laterality.xlsx
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='CL_A', side='L'
+    -> 1 projection regions
+    -> Sample region 'CL_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 1
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 1
+  With contralateral projections: 0

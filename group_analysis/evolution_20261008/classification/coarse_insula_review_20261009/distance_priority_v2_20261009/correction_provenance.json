@@ -1,0 +1,34 @@
+{
+  "observed_at": "2026-10-09T01:02:53.419204+08:00",
+  "generator_sha256": "7006259977e35b11f3965af8291d5e71d1db531dbe17c597bacfe1d1e7cd3fad",
+  "input_delivery": {
+    "path": "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/delivery_provenance_20261009.json",
+    "sha256": "12d1d98050458215fd80ba757556e1053337668c2594b5836af0600caafee612"
+  },
+  "protected_prior_file_sha256": {
+    "all_neuron_review_manifest.csv": "822d184e83869f4b78516a8b1ac5e2439ed1fc2bb21d0cc1fa0606269fb8e781",
+    "priority_review_manifest.csv": "5393beb7acc90dd60f8280f8a6bd26e9510d34b8fddef70c4df7fd13861a62ea",
+    "map_ready_sources.csv": "8e6d85347b5bf4866da61ccacdea41928f0c70572887c995613261293608414d",
+    "provenance.json": "1d11d015414df614aedebeee521f340301936f4b289dec45eed6874b59abe3c7"
+  },
+  "exact_identity_rows": 8746,
+  "established_anchor_count": 358,
+  "prior_queue_rows": 563,
+  "corrected_queue_rows": 559,
+  "changes": {
+    "prior_self_anchor_rows": 379,
+    "removed": 4
+  },
+  "map_membership_changed": false,
+  "map_group_flags_changed": false,
+  "anchor_policy": "Nearest OTHER exact UID in same sample/channel; only exact Henry coarse INS visual rows or original portal INS labels. Alternative-policy INS is sensitivity only, never anchor or neighbor-anchor basis.",
+  "coordinate_metric": "Stored portal XYZ/250 indices times0.25mm; relative retrieval distance, not accepted native registration.",
+  "source_graph_recomputations": 0,
+  "network_requests": 0,
+  "prior_delivery_writes": false,
+  "scientific_acceptance": false,
+  "outputs": {
+    "all_neuron_review_manifest_distance_corrected.csv": "4145991757fae32a820de4294fa3073c94371708dc170aca42382b0a299d5533",
+    "priority_review_manifest_distance_corrected.csv": "bb30713940c6934a5ad06870676e3eac6d07997a80cb2a09ecf4345d18d01e13"
+  }
+}

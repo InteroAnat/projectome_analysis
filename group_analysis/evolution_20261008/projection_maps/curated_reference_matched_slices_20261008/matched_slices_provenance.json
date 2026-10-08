@@ -1,0 +1,135 @@
+{
+  "status": "rendered_and_png_decoded",
+  "created_utc": "2026-10-08T15:53:14.647741+00:00",
+  "renderer_sha256": "ad15df0cbee733a686937404533f2e6620ee4b10cdb193fc83f748af2b720076",
+  "run_provenance_sha256": "c43b7d23d16950958428849f33dc29e421dc0ad2ab6ead5ffbfa83f90aea966a",
+  "readback_path": "group_analysis\\evolution_20261008\\projection_maps\\curated_reference_review\\projection_run_readback.json",
+  "readback_sha256": "9533e0307c9ee72ad0711c7e42ccd09d1e3f19d3b8c3a01e9b61e84245184086",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "background": "matching individual NMT MRI slice; no depth projection",
+  "grayscale_window": {
+    "brain_mask_percentiles": [
+      1,
+      99.5
+    ],
+    "vmin": 75.0,
+    "vmax": 920.0
+  },
+  "map_display": "log10(1 + density); no map smoothing or modification",
+  "common_display_vmax": 1.3814622327288806,
+  "display_upper_percentile": 99.5,
+  "slice_selection": "argmax of summed per-map density along each axis; first index breaks ties",
+  "selection_limit": "Cuts differ by map; a selected slice is not a full-volume target/absence summary",
+  "slices": [
+    {
+      "AnimalID": "936",
+      "Subregion": "L-IAL",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-L-IAL_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "6554d69470f90831a1e9612dabc528ba694ee2f2eecb396183ac5496c6b6f951",
+      "slice_voxels_xyz": [
+        75,
+        211,
+        77
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "L-IAPM",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-L-IAPM_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "b70281a2436b80d370012a668ab2558264052b1e2bb89911a4c194634547c78b",
+      "slice_voxels_xyz": [
+        82,
+        211,
+        83
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "L-IDD5",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDD5_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "422fe3cf3170d8028e7dc7e338168ee1efd17735128f38dbd98999ad55186637",
+      "slice_voxels_xyz": [
+        54,
+        171,
+        101
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "L-IDM",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDM_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "6d69df4c4d29eed26d4e524d7b50a12aa896a6eb256cff34990c6b5c45385a70",
+      "slice_voxels_xyz": [
+        51,
+        171,
+        91
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "L-IDV",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDV_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "333d811eb1f67302a0e849334304da873757e8a135236b6e2881bc9193d2aa18",
+      "slice_voxels_xyz": [
+        52,
+        171,
+        88
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "R-IAL",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-R-IAL_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "56004aa7cf31db84a4058378eccddfc00bdc8fb19e88ed7e08d48028571f7936",
+      "slice_voxels_xyz": [
+        200,
+        215,
+        94
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "R-IDD5",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-R-IDD5_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "2441a76845d06d224958ab845b623cfc71aa0c4954e2e5115c1176480ab586f9",
+      "slice_voxels_xyz": [
+        208,
+        182,
+        97
+      ]
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "R-IDM",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-R-IDM_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "17d08842c9430181452664904b38d95fd2a34af04ab33c4dd75bf3773074af9c",
+      "slice_voxels_xyz": [
+        208,
+        182,
+        94
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-01.png",
+      "sha256": "f522cb9a3faf8a4ec4d565292342a31c326d367b59d2ebe9c7028c4a1df169e6",
+      "pixels": [
+        1690,
+        1664
+      ]
+    },
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-02.png",
+      "sha256": "5c7c14dd606ea991099b3624c6ce81bc114c2978c607f47ff117bf543c8fa512",
+      "pixels": [
+        1690,
+        1664
+      ]
+    }
+  ],
+  "source_data_modified": false,
+  "anatomical_acceptance": "not established",
+  "terminal_site_measurement": "not implemented in this pilot"
+}

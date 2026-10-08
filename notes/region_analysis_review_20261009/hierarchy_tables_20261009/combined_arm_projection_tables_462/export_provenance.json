@@ -1,0 +1,109 @@
+{
+  "status": "software_verified_descriptive_tables",
+  "created_utc": "2026-10-08T23:36:35.250074+00:00",
+  "manifest": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\combined\\projection_manifest.csv",
+  "manifest_sha256": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "atlas_sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+  "atlas_key_sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+  "source_bindings": {
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\combined\\projection_manifest.csv": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\main\\projection_manifest.csv": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+    "D:\\projectome_analysis\\atlas\\ARM_key_all.txt": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\supplemental_masks\\NMT_v2.1_sym_LR_plane.nii.gz": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_brainmask.nii.gz": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\run_provenance.json": "4007fe92d5e8d96471779110530052e4920183849a0a195eed12263980444b0a",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\run_provenance.json": "a807362fee392b15bfc218a84e7093c5f4807e34c339a15dc2904b7ac27530bd",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\per_neuron_measurements.csv": "bdc049f22ff2ad51e1e01291807767fb4180bbfee971f414acd4f10693756188",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\additional_candidates_20261009\\projection_manifest.csv": "a7e9eb01cc50e20fe5bb62c395a08014f80cdccc6206e23718025fad50558be3",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\run_provenance.json": "28fb32f1db2c25a061d1c045d8e272c45992d19f196ecf540cae5b18cefc6b3b",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009\\run_provenance.json": "0f94540d0eaed010f43a9dd722cedb0aaad266bf0338a9632c35e8871a841720",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009\\per_neuron_measurements.csv": "853ba76ecb596f34b2b3bf00351d49d4d5e205dda97334ded66651d94ef8e706"
+  },
+  "exporter_sha256": "01216c76c599301cb77eb0ed10601687278c70bd6c3d498af7786dc78bafb695",
+  "n_selected": 462,
+  "n_endpoint_eligible": 429,
+  "scientific_anatomical_acceptance": false,
+  "atlas_policy": "six actual ARM volumes; no inferred parent pooling",
+  "endpoint_policy": "candidate counts and distinct neuron presence; ineligible NA; per-animal/source eligible denominator",
+  "axon_policy": "all selected child-type2 template length mm; not legacy retained length",
+  "group_policy": "equal available-animal means; no absent animal/source imputation",
+  "versions": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "nibabel": "5.4.2"
+  },
+  "regional_cache_key": "fbfdb6d997fab2757637e50c4a429c71392f552a26725335f5c592539882ac5f",
+  "regional_cache_parameters": {
+    "manifest": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+    "atlas": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+    "atlas_key": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+    "exporter": "01216c76c599301cb77eb0ed10601687278c70bd6c3d498af7786dc78bafb695",
+    "reference": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "kernel": "e47a54bfe5e8159c8e4a4f70d687b845a0810f073189a26f60c5945a65aa90da",
+    "frame_and_scales": "exact per-neuron manifest",
+    "measurement": "child_type2_reference_mm_six_actual_volumes"
+  },
+  "finished_utc": "2026-10-08T23:42:56.654854+00:00",
+  "regional_reconciliation_maps": 154,
+  "key_level_conflicts": [
+    {
+      "TargetID": "L4:key_level_conflict:45",
+      "Level": 4,
+      "ARMIndex": 45.0,
+      "OfficialFullName": "CL_anterior_olfactory_cortex",
+      "Abbreviation": "CL_AON/TTv",
+      "Domain": "Cortex",
+      "Hemisphere": "L",
+      "TargetStatus": "key_level_conflict",
+      "ActualVolumeMm3": 25.64062500000001,
+      "KeyRangeConflict": true
+    },
+    {
+      "TargetID": "L4:key_level_conflict:545",
+      "Level": 4,
+      "ARMIndex": 545.0,
+      "OfficialFullName": "CR_anterior_olfactory_cortex",
+      "Abbreviation": "CR_AON/TTv",
+      "Domain": "Cortex",
+      "Hemisphere": "R",
+      "TargetStatus": "key_level_conflict",
+      "ActualVolumeMm3": 25.64062500000001,
+      "KeyRangeConflict": true
+    },
+    {
+      "TargetID": "L5:key_level_conflict:45",
+      "Level": 5,
+      "ARMIndex": 45.0,
+      "OfficialFullName": "CL_anterior_olfactory_cortex",
+      "Abbreviation": "CL_AON/TTv",
+      "Domain": "Cortex",
+      "Hemisphere": "L",
+      "TargetStatus": "key_level_conflict",
+      "ActualVolumeMm3": 25.64062500000001,
+      "KeyRangeConflict": true
+    },
+    {
+      "TargetID": "L5:key_level_conflict:545",
+      "Level": 5,
+      "ARMIndex": 545.0,
+      "OfficialFullName": "CR_anterior_olfactory_cortex",
+      "Abbreviation": "CR_AON/TTv",
+      "Domain": "Cortex",
+      "Hemisphere": "R",
+      "TargetStatus": "key_level_conflict",
+      "ActualVolumeMm3": 25.64062500000001,
+      "KeyRangeConflict": true
+    }
+  ],
+  "artifacts": {
+    "arm_projection_hierarchy_tables.xlsx": "3cdd33427635a2a2c2b9a898909a519fa7192a446d71e7ab141a6ff0f4b3d257",
+    "map_regional_reconciliation.csv": "73d8fbf1ab62f45e59946b0cdca981486584e9ad4b315424398b13982d3e5a64",
+    "neuron_summary.csv": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+    "per_neuron_regional_measures.csv": "cbac598e196626310bfde117003a1c2d34a46afc0f9f03d0efb732fb53981aa0",
+    "targets.csv": "632da1c6e92b0f28bb7d94cb598752abe74a9277b83e50d526c2b84568d57547"
+  }
+}

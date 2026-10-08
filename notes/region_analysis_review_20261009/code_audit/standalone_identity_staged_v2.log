@@ -1,0 +1,137 @@
+test_all_lengths_conserved_and_unknown_export_is_explicit (__main__.StandaloneIdentityTests) ... ok
+test_cross_sample_same_bare_id_remains_distinct_in_export (__main__.StandaloneIdentityTests) ... ok
+test_missing_duplicate_or_mismatched_exact_identity_fails (__main__.StandaloneIdentityTests) ... ok
+test_missing_projection_source_fails (__main__.StandaloneIdentityTests) ... ok
+test_mixed_units_fail_before_export (__main__.StandaloneIdentityTests) ... ok
+test_precomputed_overlap_and_nonabsolute_anatomy_rejected (__main__.StandaloneIdentityTests) ... ok
+test_stale_precomputed_only_reclassified_by_explicit_side (__main__.StandaloneIdentityTests) ... ok
+test_uid_only_identity_and_unknown_lengths_preserved (__main__.StandaloneIdentityTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.282s
+
+OK
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 4 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 1
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 1
+  With contralateral projections: 1
+  [Sheet] Ipsilateral_Length: 1 neurons x 1 regions
+  [Sheet] Ipsilateral_Strength: 1 neurons x 1 regions
+  [Sheet] Contralateral_Length: 1 neurons x 1 regions
+  [Sheet] Contralateral_Strength: 1 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmp5k62n_pz\unknown.xlsx
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 2 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 2
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 2
+  With contralateral projections: 0
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 2 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CR_A': laterality='Ipsilateral'
+    -> Ipsi: 1, Contra: 0
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 2
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 2
+  With contralateral projections: 0
+  [Sheet] Ipsilateral_Length: 2 neurons x 1 regions
+  [Sheet] Ipsilateral_Strength: 2 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmpj7cnomy_\exact.xlsx
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: []
+[LATERALITY ANALYSIS] Using fallback classification
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Region_projection_length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='R'
+    -> 1 projection regions
+    -> Sample region 'CL_A': laterality='Contralateral'
+    -> Ipsi: 0, Contra: 1
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 0
+  Empty projections: 0
+  With ipsilateral projections: 0
+  With contralateral projections: 1
+[LATERALITY ANALYSIS] Available columns:
+  Soma_Side: True
+  Terminal_Laterality: False
+  Projection columns: ['Ipsilateral_Projection_Length', 'Contralateral_Projection_Length']
+[LATERALITY ANALYSIS] Using column: Region_projection_length
+[LATERALITY ANALYSIS] Processing 1 neurons
+  [DEBUG] Neuron 001.swc: soma='Unknown_0', side='Unknown'
+    -> Unknown soma side
+[LATERALITY ANALYSIS] Results:
+  Total neurons: 1
+  Unknown soma side: 1
+  Empty projections: 0
+  With ipsilateral projections: 0
+  With contralateral projections: 0

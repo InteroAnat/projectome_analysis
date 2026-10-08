@@ -1,0 +1,80 @@
+test_conflicting_paths_fail (__main__.HierarchyPublicTests) ... FAIL
+test_domain_routing_and_real_complete_table_baseline (__main__.HierarchyPublicTests) ... ok
+test_parent_has_no_arbitrary_descendant (__main__.HierarchyPublicTests) ... ok
+test_single_aggregation_and_sparse_levels (__main__.HierarchyPublicTests) ... FAIL
+test_single_file_initial_and_incremental_load (__main__.HierarchyPublicTests) ... ERROR
+test_current_producer_hierarchy_columns_render (__main__.PlotContractTests) ... FAIL
+test_length_plot_declares_observed_units_and_reconstruction_semantics (__main__.PlotContractTests) ... D:\projectome_analysis\main_scripts\region_analysis\plotting.py:561: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[1].boxplot(
+FAIL
+test_zero_laterality_targets_render (__main__.PlotContractTests) ... C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\axes\_axes.py:3368: RuntimeWarning: invalid value encountered in divide
+  x = x / sx
+ERROR
+
+======================================================================
+ERROR: test_single_file_initial_and_incremental_load (__main__.HierarchyPublicTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_hierarchy_and_plots.py", line 32, in test_single_file_initial_and_incremental_load
+    self.assertEqual(p.hierarchy_table.get_at_level('CL_A',3),'CL_A')
+AttributeError: 'PopulationRegionAnalysis' object has no attribute 'hierarchy_table'
+
+======================================================================
+ERROR: test_zero_laterality_targets_render (__main__.PlotContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_hierarchy_and_plots.py", line 93, in test_zero_laterality_targets_render
+    self.assertIsNotNone(plot_laterality_summary_df(df,show=False))
+  File "D:\projectome_analysis\main_scripts\region_analysis\plotting.py", line 543, in plot_laterality_summary_df
+    axes[0].pie(
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\_api\deprecation.py", line 453, in wrapper
+    return func(*args, **kwargs)
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\__init__.py", line 1524, in inner
+    return func(
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\axes\_axes.py", line 3412, in pie
+    w = mpatches.Wedge((x, y), radius, 360. * min(theta1, theta2),
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\patches.py", line 1252, in __init__
+    self._recompute_path()
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\patches.py", line 1264, in _recompute_path
+    arc = Path.arc(theta1, theta2)
+  File "C:\Users\laika_yan\miniconda3\envs\projectome\lib\site-packages\matplotlib\path.py", line 1002, in arc
+    n = int(2 ** np.ceil((eta2 - eta1) / halfpi))
+ValueError: cannot convert float NaN to integer
+
+======================================================================
+FAIL: test_conflicting_paths_fail (__main__.HierarchyPublicTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_hierarchy_and_plots.py", line 65, in test_conflicting_paths_fail
+    with self.assertRaises(ValueError):
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_single_aggregation_and_sparse_levels (__main__.HierarchyPublicTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_hierarchy_and_plots.py", line 42, in test_single_aggregation_and_sparse_levels
+    self.assertIsNone(t.get_at_level('CL_A',2))
+AssertionError: 'CL_A' is not None
+
+======================================================================
+FAIL: test_current_producer_hierarchy_columns_render (__main__.PlotContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_hierarchy_and_plots.py", line 76, in test_current_producer_hierarchy_columns_render
+Error: no hierarchy data for level 3.
+    self.assertIsNotNone(f)
+AssertionError: unexpectedly None
+
+======================================================================
+FAIL: test_length_plot_declares_observed_units_and_reconstruction_semantics (__main__.PlotContractTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_hierarchy_and_plots.py", line 87, in test_length_plot_declares_observed_units_and_reconstruction_semantics
+    self.assertIn('voxel',f.axes[2].get_ylabel())
+AssertionError: 'voxel' not found in 'Total Axon Length (mm)'
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.188s
+
+FAILED (failures=4, errors=2)

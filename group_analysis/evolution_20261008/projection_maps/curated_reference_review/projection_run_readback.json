@@ -1,0 +1,269 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-08T15:38:29.657929+00:00",
+  "run_provenance_sha256": "c43b7d23d16950958428849f33dc29e421dc0ad2ab6ead5ffbfa83f90aea966a",
+  "manifest_sha256": "caf7126f8515ef4b0ce8d1a36816526907f59e1efa617f6d3adf5062293ca89a",
+  "neurons": 260,
+  "animal_subregions": 8,
+  "animals": [
+    "936"
+  ],
+  "all_map_files": [
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IAL_desc-meanAxonLength_map.nii.gz",
+      "sha256": "a0291850157194d7a157e6f9c8b62fcd2cbcae9a923a1c4e8a455dc02e3bcc6c",
+      "voxels": 15974400,
+      "sum": 92.93284077185672,
+      "maximum": 0.4831365942955017
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IAL_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "6554d69470f90831a1e9612dabc528ba694ee2f2eecb396183ac5496c6b6f951",
+      "voxels": 15974400,
+      "sum": 5947.70180939883,
+      "maximum": 30.92074203491211
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IAPM_desc-meanAxonLength_map.nii.gz",
+      "sha256": "89eae2940a993b51c666b493c1d852fff92faebf7a0c06eb8b52d721c5f06a22",
+      "voxels": 15974400,
+      "sum": 249.0580971968725,
+      "maximum": 0.5562662482261658
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IAPM_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "b70281a2436b80d370012a668ab2558264052b1e2bb89911a4c194634547c78b",
+      "voxels": 15974400,
+      "sum": 15939.71822059984,
+      "maximum": 35.60103988647461
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDD5_desc-meanAxonLength_map.nii.gz",
+      "sha256": "a16b446dfcdd05dd02ee41095c4e8d8bee43196b8316970ff37d4307d4e0057d",
+      "voxels": 15974400,
+      "sum": 147.93555321227012,
+      "maximum": 0.23655839264392853
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDD5_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "422fe3cf3170d8028e7dc7e338168ee1efd17735128f38dbd98999ad55186637",
+      "voxels": 15974400,
+      "sum": 9467.875405585288,
+      "maximum": 15.139737129211426
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDM_desc-meanAxonLength_map.nii.gz",
+      "sha256": "f95775585369143de0840f726edb36da26137b14e6ef07e1eb9349c9a2f0d8b7",
+      "voxels": 15974400,
+      "sum": 102.57380189882724,
+      "maximum": 0.2071586549282074
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDM_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "6d69df4c4d29eed26d4e524d7b50a12aa896a6eb256cff34990c6b5c45385a70",
+      "voxels": 15974400,
+      "sum": 6564.7233215249435,
+      "maximum": 13.258153915405273
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDV_desc-meanAxonLength_map.nii.gz",
+      "sha256": "92a885fae735758a987ac54046424777f54d95ebcf87e723fbd298952b979e76",
+      "voxels": 15974400,
+      "sum": 267.70708721653136,
+      "maximum": 1.177176833152771
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-L-IDV_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "333d811eb1f67302a0e849334304da873757e8a135236b6e2881bc9193d2aa18",
+      "voxels": 15974400,
+      "sum": 17133.253581858007,
+      "maximum": 75.33931732177734
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-R-IAL_desc-meanAxonLength_map.nii.gz",
+      "sha256": "a4f75cd1197221f223e4aa9e88c19c97a6547b10ea6d696a6a21a5357abb9238",
+      "voxels": 15974400,
+      "sum": 106.3450773460803,
+      "maximum": 0.062136948108673096
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-R-IAL_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "56004aa7cf31db84a4058378eccddfc00bdc8fb19e88ed7e08d48028571f7936",
+      "voxels": 15974400,
+      "sum": 6806.084950149139,
+      "maximum": 3.976764678955078
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-R-IDD5_desc-meanAxonLength_map.nii.gz",
+      "sha256": "696d348239961e9b233f98e1e75b18b9ddff16eef26b59fea120ad278ec2bc08",
+      "voxels": 15974400,
+      "sum": 169.80585556938217,
+      "maximum": 0.2668048143386841
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-R-IDD5_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "2441a76845d06d224958ab845b623cfc71aa0c4954e2e5115c1176480ab586f9",
+      "voxels": 15974400,
+      "sum": 10867.57475644046,
+      "maximum": 17.07550811767578
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-R-IDM_desc-meanAxonLength_map.nii.gz",
+      "sha256": "8d2207aaeb938b445206eda9ceff4eac4ab4311327cfd8cecdb79a30e60512b3",
+      "voxels": 15974400,
+      "sum": 95.54903068138765,
+      "maximum": 0.26362335681915283
+    },
+    {
+      "file": "animal_maps\\animal-936_space-NMTv2p1_region-R-IDM_desc-meanAxonLengthDensity_map.nii.gz",
+      "sha256": "17d08842c9430181452664904b38d95fd2a34af04ab33c4dd75bf3773074af9c",
+      "voxels": 15974400,
+      "sum": 6115.1379636088095,
+      "maximum": 16.87189483642578
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IAL_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "a0291850157194d7a157e6f9c8b62fcd2cbcae9a923a1c4e8a455dc02e3bcc6c",
+      "voxels": 15974400,
+      "sum": 92.93284077185672,
+      "maximum": 0.4831365942955017
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IAL_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "6554d69470f90831a1e9612dabc528ba694ee2f2eecb396183ac5496c6b6f951",
+      "voxels": 15974400,
+      "sum": 5947.70180939883,
+      "maximum": 30.92074203491211
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IAPM_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "89eae2940a993b51c666b493c1d852fff92faebf7a0c06eb8b52d721c5f06a22",
+      "voxels": 15974400,
+      "sum": 249.0580971968725,
+      "maximum": 0.5562662482261658
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IAPM_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "b70281a2436b80d370012a668ab2558264052b1e2bb89911a4c194634547c78b",
+      "voxels": 15974400,
+      "sum": 15939.71822059984,
+      "maximum": 35.60103988647461
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IDD5_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "a16b446dfcdd05dd02ee41095c4e8d8bee43196b8316970ff37d4307d4e0057d",
+      "voxels": 15974400,
+      "sum": 147.93555321227012,
+      "maximum": 0.23655839264392853
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IDD5_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "422fe3cf3170d8028e7dc7e338168ee1efd17735128f38dbd98999ad55186637",
+      "voxels": 15974400,
+      "sum": 9467.875405585288,
+      "maximum": 15.139737129211426
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IDM_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "f95775585369143de0840f726edb36da26137b14e6ef07e1eb9349c9a2f0d8b7",
+      "voxels": 15974400,
+      "sum": 102.57380189882724,
+      "maximum": 0.2071586549282074
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IDM_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "6d69df4c4d29eed26d4e524d7b50a12aa896a6eb256cff34990c6b5c45385a70",
+      "voxels": 15974400,
+      "sum": 6564.7233215249435,
+      "maximum": 13.258153915405273
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IDV_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "92a885fae735758a987ac54046424777f54d95ebcf87e723fbd298952b979e76",
+      "voxels": 15974400,
+      "sum": 267.70708721653136,
+      "maximum": 1.177176833152771
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-L-IDV_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "333d811eb1f67302a0e849334304da873757e8a135236b6e2881bc9193d2aa18",
+      "voxels": 15974400,
+      "sum": 17133.253581858007,
+      "maximum": 75.33931732177734
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-R-IAL_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "a4f75cd1197221f223e4aa9e88c19c97a6547b10ea6d696a6a21a5357abb9238",
+      "voxels": 15974400,
+      "sum": 106.3450773460803,
+      "maximum": 0.062136948108673096
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-R-IAL_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "56004aa7cf31db84a4058378eccddfc00bdc8fb19e88ed7e08d48028571f7936",
+      "voxels": 15974400,
+      "sum": 6806.084950149139,
+      "maximum": 3.976764678955078
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-R-IDD5_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "696d348239961e9b233f98e1e75b18b9ddff16eef26b59fea120ad278ec2bc08",
+      "voxels": 15974400,
+      "sum": 169.80585556938217,
+      "maximum": 0.2668048143386841
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-R-IDD5_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "2441a76845d06d224958ab845b623cfc71aa0c4954e2e5115c1176480ab586f9",
+      "voxels": 15974400,
+      "sum": 10867.57475644046,
+      "maximum": 17.07550811767578
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-R-IDM_desc-animalMeanAxonLength_map.nii.gz",
+      "sha256": "8d2207aaeb938b445206eda9ceff4eac4ab4311327cfd8cecdb79a30e60512b3",
+      "voxels": 15974400,
+      "sum": 95.54903068138765,
+      "maximum": 0.26362335681915283
+    },
+    {
+      "file": "group_maps\\space-NMTv2p1_region-R-IDM_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "sha256": "17d08842c9430181452664904b38d95fd2a34af04ab33c4dd75bf3773074af9c",
+      "voxels": 15974400,
+      "sum": 6115.1379636088095,
+      "maximum": 16.87189483642578
+    }
+  ],
+  "full_saved_voxels_read": 511180800,
+  "total_template_axon_length_mm": 33018.938129441914,
+  "outside_reference_length_mm": 4.966707959289687,
+  "outside_brain_mask_in_FOV_length_mm": 63.14464007409865,
+  "anatomical_acceptance": "not established",
+  "statistical_inference": "none",
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_mip_page-01.png",
+      "sha256": "6cf38c0e65648f4bd9af6895ff3febbd0584fc938b90a74258a5311a80e558ee",
+      "pixels": [
+        1560,
+        1560
+      ],
+      "display_transform": "log10(1 + maximum density along declared voxel axis)",
+      "common_display_vmax": 1.2246508933938065,
+      "upper_percentile_clipping": 99.5,
+      "data_maps_modified": false
+    },
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_mip_page-02.png",
+      "sha256": "908389740d1fadbd8bbeec9c8c5fa44a07538733593fa55c2ce6a47847c56df4",
+      "pixels": [
+        1560,
+        1560
+      ],
+      "display_transform": "log10(1 + maximum density along declared voxel axis)",
+      "common_display_vmax": 1.2246508933938065,
+      "upper_percentile_clipping": 99.5,
+      "data_maps_modified": false
+    }
+  ]
+}

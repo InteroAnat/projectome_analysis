@@ -1,0 +1,26 @@
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/build_endpoint_maps.py", "--manifest", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\additional_candidates_20261009\\projection_manifest.csv", "--reference", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "--brain-mask", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_brainmask.nii.gz", "--atlas-path", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz", "--atlas-key", "atlas/ARM_key_all.txt", "--hemisphere-mask", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_plane.nii.gz", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009"], "started_utc": "2026-10-08T17:14:30.306029+00:00"}
+animal=331 subregion=NearINS_L selected=2 computable=2
+animal=605 subregion=NearINS_L selected=2 computable=2
+animal=605 subregion=NearINS_R selected=4 computable=4
+animal=605 subregion=OriginCandidate_L selected=3 computable=3
+animal=605 subregion=OriginCandidate_R selected=6 computable=6
+animal=797 subregion=NearINS_L selected=2 computable=2
+animal=797 subregion=OriginCandidate_L selected=5 computable=5
+animal=900 subregion=OriginCandidate_L selected=1 computable=1
+animal=948 subregion=NearINS_R selected=1 computable=1
+software_verified_candidate_endpoints: selected=26 computable=26
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/review_endpoint_run.py", "--run", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review"], "started_utc": "2026-10-08T17:15:02.695062+00:00"}
+passed: 26 sources, 4063 candidates
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/build_projection_maps.py", "--manifest", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\additional_candidates_20261009\\projection_manifest.csv", "--reference", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "--brain-mask", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_brainmask.nii.gz", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009"], "started_utc": "2026-10-08T17:15:31.440569+00:00"}
+animal=331 region=NearINS_L neurons=2
+animal=605 region=NearINS_L neurons=2
+animal=605 region=NearINS_R neurons=4
+animal=605 region=OriginCandidate_L neurons=3
+animal=605 region=OriginCandidate_R neurons=6
+animal=797 region=NearINS_L neurons=2
+animal=797 region=OriginCandidate_L neurons=5
+animal=900 region=OriginCandidate_L neurons=1
+animal=948 region=NearINS_R neurons=1
+software_verified_descriptive: 26 neurons; 9 animal/subregion maps
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/review_projection_run.py", "--run", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009_review"], "started_utc": "2026-10-08T17:15:59.340948+00:00"}
+passed: 26 neurons; 26 complete map files

@@ -1,0 +1,164 @@
+{
+  "observed_at": "2026-10-09T01:15:22.382937+08:00",
+  "status": "passed",
+  "scope": "Independent software-only actual candidate-preview manifest/ledger UID, spatial-retrieval and source/hash readback; no map computation, canonical edits or anatomical promotion.",
+  "selected_neurons": 26,
+  "registry_animals": [
+    "331",
+    "605",
+    "797",
+    "900",
+    "948"
+  ],
+  "selected_exact_UIDs": [
+    "252383|036.swc",
+    "252383|090.swc",
+    "252383|094.swc",
+    "252383|095.swc",
+    "252383|096.swc",
+    "252383|097.swc",
+    "252383|117.swc",
+    "252383|118.swc",
+    "252383|119.swc",
+    "252383|120.swc",
+    "252383|121.swc",
+    "252383|123.swc",
+    "252383|124.swc",
+    "252383|126.swc",
+    "252383|127.swc",
+    "252384|080.swc",
+    "252385|021.swc",
+    "252385|022.swc",
+    "252718|162.swc",
+    "252790|031.swc",
+    "252790|032.swc",
+    "252790|035.swc",
+    "252790|036.swc",
+    "252790|037.swc",
+    "252790|115.swc",
+    "252790|116.swc"
+  ],
+  "group_counts": {
+    "OriginCandidate_L": 9,
+    "OriginCandidate_R": 6,
+    "NearINS_R": 5,
+    "NearINS_L": 6
+  },
+  "selected_by_animal": {
+    "797": 7,
+    "900": 1,
+    "605": 15,
+    "948": 1,
+    "331": 2
+  },
+  "main436_UID_overlap": 0,
+  "main436_source_path_overlap": 0,
+  "selected_source_hashes_verified": 26,
+  "all_cached_atlas_source_files_rehashed": 2480,
+  "cached_source_byte_changes": [],
+  "priority_five_present": [
+    "252790|032.swc",
+    "252718|162.swc",
+    "252383|121.swc",
+    "252383|118.swc",
+    "252790|035.swc"
+  ],
+  "unmapped_priority_excluded": "250432|129.swc",
+  "ledger_rows": 559,
+  "distant_ID_only_excluded_UIDs": [
+    "251637|390.swc",
+    "251637|391.swc",
+    "252383|092.swc",
+    "252383|093.swc",
+    "252527|046.swc",
+    "252527|047.swc",
+    "252714|097.swc",
+    "252718|145.swc",
+    "252718|146.swc",
+    "252718|149.swc",
+    "252718|164.swc",
+    "252718|165.swc",
+    "252790|013.swc",
+    "252790|046.swc",
+    "252790|122.swc"
+  ],
+  "prepared_input_hash_checks": {
+    "audited_sources": true,
+    "inventory_delivery": true,
+    "corrected_triage": true,
+    "triage_provenance": true,
+    "main_manifest": true,
+    "animal_registry": true,
+    "reference": true
+  },
+  "audited_dependency_hash_checks": {
+    "inventory_provenance": true,
+    "atlas_audit": true,
+    "sources": true,
+    "policies": true,
+    "visual_table": true,
+    "raw_graph_readback": true,
+    "Henry": true,
+    "animal_registry": true,
+    "segmentation": true,
+    "reference": true,
+    "label_key": true,
+    "protected_all_neuron_review_manifest.csv": true,
+    "protected_priority_review_manifest.csv": true,
+    "protected_map_ready_sources.csv": true,
+    "protected_provenance.json": true
+  },
+  "main_bound_file_hash_checks": {
+    "projection_manifest.csv": true,
+    "selection_ledger.csv": true,
+    "preparation_provenance.json": true
+  },
+  "prior_delivery_hash_checks": {
+    "all_neuron_review_manifest.csv": true,
+    "case_and_source_qc_supplement_20261009.json": true,
+    "graph_source_readback.csv": true,
+    "independent_readback_20261009.json": true,
+    "map_ready_sources.csv": true,
+    "native_case_pair_supplement_20261009.csv": true,
+    "priority_review_manifest.csv": true,
+    "priority_shortlist_20261009.md": true,
+    "provenance.json": true,
+    "README.md": true,
+    "review_protocol_20261009.md": true
+  },
+  "canonical_hash_checks": {
+    "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx": true,
+    "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined.xlsx": true,
+    "D:\\projectome_analysis\\R_analysis\\tables\\somainfo_Henry_2026.04.03.xlsx": true,
+    "D:\\projectome_analysis\\neuron_tables\\251637_INS_HE.xlsx": true
+  },
+  "adapter_sha256": "e2b91a81fc7faaa51b9c65f90cb452ebb3eb277a546da146656b7945e05d2f0e",
+  "artifact_hashes": {
+    "projection_manifest.csv": "a7e9eb01cc50e20fe5bb62c395a08014f80cdccc6206e23718025fad50558be3",
+    "selection_ledger.csv": "c854fea8f69cd59d3fa67eaf07ec059a32d906d9548382bae24c22e7ea04cb8a",
+    "preparation_provenance.json": "7557e782966adec22db1c506fc3abbce9fd9260159ebe7693f8728910acc79fb"
+  },
+  "tissue_policy_counts": {
+    "origin_sensitive_GM_WM_transition": 19,
+    "persistent_WM": 7
+  },
+  "fresh_graph_availability_readback": {
+    "numeric_graph_reads": 26,
+    "all_have_type2_axon_nodes": true,
+    "total_type2_nodes": 337277,
+    "total_type2_graph_leaf_candidates": 4063,
+    "definition": "type2 nodes having no child of anytype in the complete seven-column graph; fresh read-only check immediately before preparation; not accepted biological terminals"
+  },
+  "computational_blockers": [],
+  "readiness": "No source/identity/hash/registry blocker for separate descriptive candidate-preview endpoint/all-axon maps.",
+  "scientific_limits": [
+    "OriginCandidate is current-vs-edge INS lookup sensitivity; NearINS is distance retrieval, neither accepted insular anatomy.",
+    "All26remainWM/boundaryuncertain by existing atlas segmentation policies:19GM/WMtransitions and7persistentWM, software-only atlas tissue evidence.",
+    "CachedSWCexport origin and raw-fMOST-to-NMT transform/anatomical acceptance unresolved.",
+    "Graph endpoint candidates are not reviewed terminal arbors; all-axon length includes passage fibers.",
+    "Preview must stay disjoint from main436; no pooling with its humanINS or atlasINS evidence strata. AtlasINS alone is not human anatomical acceptance."
+  ],
+  "scientific_acceptance": false,
+  "network_requests": 0,
+  "canonical_writes": false
+}

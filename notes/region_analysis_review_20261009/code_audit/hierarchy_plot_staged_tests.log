@@ -1,0 +1,15 @@
+test_conflicting_paths_fail (__main__.HierarchyPublicTests) ... ok
+test_domain_routing_and_real_complete_table_baseline (__main__.HierarchyPublicTests) ... ok
+test_parent_has_no_arbitrary_descendant (__main__.HierarchyPublicTests) ... ok
+test_single_aggregation_and_sparse_levels (__main__.HierarchyPublicTests) ... ok
+test_single_file_initial_and_incremental_load (__main__.HierarchyPublicTests) ... ok
+test_current_producer_hierarchy_columns_render (__main__.PlotContractTests) ... ok
+test_length_plot_declares_observed_units_and_reconstruction_semantics (__main__.PlotContractTests) ... D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\staged\main_scripts\region_analysis\plotting.py:571: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[1].boxplot(
+ok
+test_zero_laterality_targets_render (__main__.PlotContractTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.335s
+
+OK

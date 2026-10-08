@@ -1,0 +1,171 @@
+{
+  "status": "software_verified_candidate_preview_manifest",
+  "created_utc": "2026-10-08T17:13:36.429197+00:00",
+  "input_root": "D:\\projectome_analysis",
+  "preparer_sha256": "e2b91a81fc7faaa51b9c65f90cb452ebb3eb277a546da146656b7945e05d2f0e",
+  "inputs": {
+    "audited_sources": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\map_ready_sources.csv",
+      "sha256": "8e6d85347b5bf4866da61ccacdea41928f0c70572887c995613261293608414d"
+    },
+    "inventory_delivery": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\delivery_provenance_20261009.json",
+      "sha256": "12d1d98050458215fd80ba757556e1053337668c2594b5836af0600caafee612"
+    },
+    "corrected_triage": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\distance_priority_v2_20261009\\priority_review_manifest_distance_corrected.csv",
+      "sha256": "bb30713940c6934a5ad06870676e3eac6d07997a80cb2a09ecf4345d18d01e13"
+    },
+    "triage_provenance": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\distance_priority_v2_20261009\\correction_provenance.json",
+      "sha256": "400c812278c6726e3eaa1cbcf94d5d56dcf4afd19a7c90a7f14daa89fb5e65b9"
+    },
+    "main_manifest": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\multimonkey_coarse_20261009_v2\\projection_manifest.csv",
+      "sha256": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2"
+    },
+    "animal_registry": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d"
+    },
+    "reference": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    }
+  },
+  "audited_dependency_inputs": {
+    "inventory_provenance": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\provenance.json",
+      "sha256": "1d11d015414df614aedebeee521f340301936f4b289dec45eed6874b59abe3c7"
+    },
+    "atlas_audit": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\atlas_locations\\soma_audit_20261009\\validated_atlas_lookup\\neuron_soma_locations.csv",
+      "sha256": "1a069b4db16249f0ebee55fe1052258ebaf510d8abd13b7ab53a090733021e08"
+    },
+    "sources": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\atlas_locations\\soma_audit_20261009\\validated_atlas_lookup\\source_inventory.csv",
+      "sha256": "1eb5cf89c191f7f64baf4a7936431d59f97c85f9613b51637afbbff5d9600bd8"
+    },
+    "policies": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\atlas_locations\\soma_audit_20261009\\coordinate_origin_sensitivity\\per_neuron_origin_sensitivity.csv",
+      "sha256": "8f9aea947ec3ed7e989ad179e9c30971598169efdc1335941b2129a351535b78"
+    },
+    "visual_table": {
+      "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\tables\\correction_table.csv",
+      "sha256": "f3897d2e069ae1ce29a90bb6d9cc08371761829316ade504d38dc6f71855840b"
+    },
+    "raw_graph_readback": {
+      "path": "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\all_raw_swc_graph_readback_20261004.json",
+      "sha256": "cc08bbcb90cd561de033f746f8414c85b63a96d87306a1d4a25d61c1dda75acc"
+    },
+    "Henry": {
+      "path": "D:\\projectome_analysis\\R_analysis\\tables\\somainfo_Henry_2026.04.03.xlsx",
+      "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6"
+    },
+    "animal_registry": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d"
+    },
+    "segmentation": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_segmentation.nii.gz",
+      "sha256": "48004cc0f85198f0d78126e1bea44018fd4f3d0cbc26d0005da646de0876be9c"
+    },
+    "reference": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    "label_key": {
+      "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    "protected_all_neuron_review_manifest.csv": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\all_neuron_review_manifest.csv",
+      "sha256": "822d184e83869f4b78516a8b1ac5e2439ed1fc2bb21d0cc1fa0606269fb8e781"
+    },
+    "protected_priority_review_manifest.csv": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\priority_review_manifest.csv",
+      "sha256": "5393beb7acc90dd60f8280f8a6bd26e9510d34b8fddef70c4df7fd13861a62ea"
+    },
+    "protected_map_ready_sources.csv": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\map_ready_sources.csv",
+      "sha256": "8e6d85347b5bf4866da61ccacdea41928f0c70572887c995613261293608414d"
+    },
+    "protected_provenance.json": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\provenance.json",
+      "sha256": "1d11d015414df614aedebeee521f340301936f4b289dec45eed6874b59abe3c7"
+    }
+  },
+  "selected_neurons": 26,
+  "selected_animals": [
+    "331",
+    "605",
+    "797",
+    "900",
+    "948"
+  ],
+  "main_selected_neurons": 436,
+  "main_overlap_neurons": 0,
+  "selection_ledger_rows": 559,
+  "selection_ledger_status_counts": {
+    "already_in_main_manifest": 412,
+    "missing_established_animal_identity": 106,
+    "selected_candidate_preview_only": 26,
+    "no_spatial_selection_evidence_ID_cue_not_sufficient": 15
+  },
+  "groups": [
+    {
+      "AnimalID": "331",
+      "Subregion": "NearINS_L",
+      "n_selected": 2
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "NearINS_L",
+      "n_selected": 2
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "NearINS_R",
+      "n_selected": 4
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "OriginCandidate_L",
+      "n_selected": 3
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "OriginCandidate_R",
+      "n_selected": 6
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "NearINS_L",
+      "n_selected": 2
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "OriginCandidate_L",
+      "n_selected": 5
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "OriginCandidate_L",
+      "n_selected": 1
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "NearINS_R",
+      "n_selected": 1
+    }
+  ],
+  "manifest_sha256": "a7e9eb01cc50e20fe5bb62c395a08014f80cdccc6206e23718025fad50558be3",
+  "selection_ledger_sha256": "c854fea8f69cd59d3fa67eaf07ec059a32d906d9548382bae24c22e7ea04cb8a",
+  "selection_policy": "origin-policy INS disagreement; otherwise both non-INS plus corrected other established same-sample anchor distance <=2 mm; ID-only proximity excluded",
+  "coordinate_policy": "cached current XYZ/250 center encoding retained; alternative origin is retrieval sensitivity only",
+  "terminal_policy": "candidate graph endpoints and all-axon length only; reviewed terminal fields unavailable",
+  "anatomical_acceptance": "none; candidate preview only",
+  "canonical_promotion": false,
+  "main_manifest_modified": false,
+  "source_files_mutated": false
+}

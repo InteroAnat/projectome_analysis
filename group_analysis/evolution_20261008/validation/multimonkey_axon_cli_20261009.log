@@ -1,0 +1,32 @@
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/build_projection_maps.py", "--manifest", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\multimonkey_coarse_20261009_v2\\projection_manifest.csv", "--reference", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "--brain-mask", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_brainmask.nii.gz", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009"], "started_utc": "2026-10-08T17:01:59.531302+00:00"}
+animal=331 region=AtlasINS_L neurons=14
+animal=331 region=AtlasINS_R neurons=4
+animal=331 region=Candidate_L neurons=11
+animal=331 region=Candidate_R neurons=21
+animal=331 region=G_exploratory_L neurons=3
+animal=605 region=AtlasINS_L neurons=1
+animal=605 region=AtlasINS_R neurons=5
+animal=631 region=AtlasINS_L neurons=3
+animal=631 region=AtlasINS_R neurons=1
+animal=631 region=G_exploratory_L neurons=7
+animal=631 region=G_exploratory_R neurons=5
+animal=797 region=AtlasINS_L neurons=21
+animal=797 region=AtlasINS_R neurons=17
+animal=797 region=Candidate_L neurons=3
+animal=797 region=Candidate_R neurons=4
+animal=900 region=AtlasINS_L neurons=4
+animal=900 region=G_exploratory_L neurons=7
+animal=900 region=G_exploratory_R neurons=2
+animal=936 region=Candidate_R neurons=1
+animal=936 region=HumanINS_L neurons=103
+animal=936 region=HumanINS_R neurons=157
+animal=945 region=AtlasINS_L neurons=12
+animal=945 region=AtlasINS_R neurons=2
+animal=945 region=Candidate_R neurons=11
+animal=948 region=AtlasINS_L neurons=3
+animal=948 region=AtlasINS_R neurons=2
+animal=948 region=Candidate_L neurons=5
+animal=948 region=Candidate_R neurons=7
+software_verified_descriptive: 436 neurons; 28 animal/subregion maps
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/review_projection_run.py", "--run", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review"], "started_utc": "2026-10-08T17:05:41.502659+00:00"}
+passed: 436 neurons; 72 complete map files

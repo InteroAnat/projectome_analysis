@@ -1,0 +1,210 @@
+{
+  "status": "read_only_schema_and_entrypoint_consistency_audit",
+  "production_edits": false,
+  "cohort_readback": [
+    {
+      "sheet": "Summary",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": null
+    },
+    {
+      "sheet": "Projection_Length_ipsi",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 240
+    },
+    {
+      "sheet": "Projection_Length_contra",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 66
+    },
+    {
+      "sheet": "Projection_Strength_ipsi",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 240
+    },
+    {
+      "sheet": "Projection_Strength_contra",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 66
+    },
+    {
+      "sheet": "Projection_Length_L3_ipsi",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 65
+    },
+    {
+      "sheet": "Projection_Length_L3_contra",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 33
+    },
+    {
+      "sheet": "Projection_Strength_L3_ipsi",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 65
+    },
+    {
+      "sheet": "Projection_Strength_L3_contra",
+      "rows": 353,
+      "unique_UIDs": 353,
+      "duplicates": 0,
+      "missing_from_summary": [],
+      "summary_missing_from_sheet": [],
+      "numeric_target_columns_assumed": 33
+    }
+  ],
+  "active_consumer_scan": [
+    {
+      "path": "group_analysis\\R_analysis\\v2_combined_primary_pipeline.R",
+      "sha256": "74a943b9a56f870a45b2257f58696ccb466b2d43f12c7f1120b83e0d635396b7",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    },
+    {
+      "path": "group_analysis\\R_analysis\\v2_combined_primary_pipeline.Rmd",
+      "sha256": "d1dc9bfb1507d621b8bf6e60efc22a51492ac9cc0560c253d26dbb13fb2d025b",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    },
+    {
+      "path": "group_analysis\\R_analysis\\combined_lr_primary_analysis.R",
+      "sha256": "5d1a28c4a37d6d7dc5e4fc79ffafd9d8388c62e60f00df7b84e418e483a387ec",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    },
+    {
+      "path": "group_analysis\\R_analysis\\functional_hubs_analysis.R",
+      "sha256": "58033aaa2e87ee52f4009d3302afc3092d5c121de25c01ca2cce569dd2430a9b",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    },
+    {
+      "path": "group_analysis\\R_analysis\\functional_hubs_L6.R",
+      "sha256": "59f005ca8c8ea6c24cd1b2966ee851c176b44ffcdb214949dd376b422ac3ef53",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    },
+    {
+      "path": "group_analysis\\R_analysis\\intra_insula_connectivity.R",
+      "sha256": "026f2bb3df1efe34991c65b23be54aa74df3c1bd9527617d6d766dfbcd6be2fe",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    },
+    {
+      "path": "group_analysis\\R_analysis\\improved_panel_figures.R",
+      "sha256": "d5e4da91d254591e67aac7402c281f62a427cff57c1492a0e2032f0871a60552",
+      "has_intersection_selection": true,
+      "exact_UID_set_guard_found": false,
+      "all_non_four_metadata_columns_are_targets": true
+    }
+  ],
+  "planned_schema_from_parent": {
+    "homonyms": [
+      "PM",
+      "CM",
+      "RM",
+      "R",
+      "Pi"
+    ],
+    "split_target_keys": "C_<base> and S_<base>; all other names retained",
+    "absolute_length_keys": "CL_/CR_/SL_/SR_ retained",
+    "additional_numeric_matrix_metadata_columns": false,
+    "units": "existing atlas-voxel length; log10 after aggregation"
+  },
+  "namespace_selection_oracle": {
+    "old_INSULA_TARGETS": [
+      "Ial",
+      "Iai",
+      "Iapl",
+      "Iam/Iapm",
+      "Ia/Id",
+      "Ig",
+      "Pi",
+      "Ri"
+    ],
+    "new_columns_example": [
+      "Ig",
+      "C_Pi",
+      "S_Pi"
+    ],
+    "old_intersection_result": [
+      "Ig"
+    ],
+    "cortical_target_silently_dropped": "C_Pi",
+    "subcortical_target_must_never_promote_to_INS": "S_Pi",
+    "old_thalamic_CM_query_does_not_match": "S_CM"
+  },
+  "entrypoint_divergence": {
+    "canonical_Rmd": "pmin(p_pres_BH,p_mag_BH), select min q<0.10, lose explicit selected test family",
+    "R_script": "separate presence/magnitude rows, select q<0.05 by test family",
+    "canonical_Rmd_selected_target_ids_on_saved_stats": [
+      "Ia/Id@L6",
+      "Ig@L6",
+      "LPal@L3",
+      "Rh@L3",
+      "TE@L3",
+      "vlPFC@L3"
+    ],
+    "R_script_selected_target_families_on_saved_stats": [
+      {
+        "test_family": "presence",
+        "target_id": "Ig@L6"
+      },
+      {
+        "test_family": "presence",
+        "target_id": "LPal@L3"
+      },
+      {
+        "test_family": "magnitude",
+        "target_id": "Ia/Id@L6"
+      },
+      {
+        "test_family": "magnitude",
+        "target_id": "Ig@L6"
+      },
+      {
+        "test_family": "magnitude",
+        "target_id": "LPal@L3"
+      }
+    ],
+    "new_inference_computed": false
+  },
+  "recommendation": "Fail closed until schema/units/atlas binding and full exact UID sets across all consumed sheets are explicit; choose canonical source and reconcile F6 separately without inventing inference"
+}

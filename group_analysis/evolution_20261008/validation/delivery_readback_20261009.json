@@ -1,0 +1,138 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-08T17:35:33.177593+00:00",
+  "checker_sha256": "1361ff4f717c7374b7b295704e3d5a93340ab3b4a702707d37d5e7440588971b",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "branch": "codex/insula-pipeline-evolution-20261008",
+  "head": "78008cbaab71bf737dc7129c72e5fe284c3ba40f",
+  "cached_source_files_rehashed": 2480,
+  "source_table_sha256": "3b84a688c9af8e94f81262e365c67354741c347a0b8f3dfc45019051b5d95cb2",
+  "protected_canonical_workbooks_unchanged": 4,
+  "partitions": {
+    "main": {
+      "rows": 436,
+      "animals": [
+        "331",
+        "605",
+        "631",
+        "797",
+        "900",
+        "936",
+        "945",
+        "948"
+      ],
+      "evidence_counts": {
+        "HumanINS": 260,
+        "Candidate": 63,
+        "AtlasINS": 89,
+        "G_exploratory": 24
+      }
+    },
+    "preview": {
+      "rows": 26,
+      "animals": [
+        "331",
+        "605",
+        "797",
+        "900",
+        "948"
+      ],
+      "evidence_counts": {
+        "OriginCandidate": 15,
+        "NearINS": 11
+      }
+    }
+  },
+  "neuron_and_source_path_overlap": 0,
+  "independent_review_receipts": [
+    {
+      "path": "group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2\\endpoint_run_readback.json",
+      "sha256": "7c961f9ab269623e6aad7695378b3fa959dbfd493109e72269b3ffa9b9f9e5f4",
+      "maps_unchanged_since_review": 108,
+      "prior_full_saved_voxels_read": 1725235200
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review\\projection_run_readback.json",
+      "sha256": "c4a137a0b8b327728cd3e835ea8d035d1c064d3ae382922709f964ba1d9a4b3f",
+      "maps_unchanged_since_review": 72,
+      "prior_full_saved_voxels_read": 1150156800
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+      "sha256": "558985494334f3b4e3ee3bb904f5f1ced3ee4a653a50aa5f756e1581bada0a83",
+      "maps_unchanged_since_review": 39,
+      "prior_full_saved_voxels_read": 623001600
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009_review\\projection_run_readback.json",
+      "sha256": "42ac1bf3dea556112508eea9b327d3ac5f41a2e123d99aae75ded639a132d176",
+      "maps_unchanged_since_review": 26,
+      "prior_full_saved_voxels_read": 415334400
+    }
+  ],
+  "saved_map_files_rehashed": 245,
+  "figure_families": [
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\axon_density_animals\\matched_slices_provenance.json",
+      "sha256": "845bc4be63e4c9b51ada3c5adc2c6b6fe9528f6a5cac5318f536e51ea4665631",
+      "figure_count": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\axon_density_groups\\matched_slices_provenance.json",
+      "sha256": "1d027507efd697cec05961a305c5bc945fb8e5eeab0126208303df99d414f491",
+      "figure_count": 2
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_density_animals\\matched_slices_provenance.json",
+      "sha256": "531ef10663fd9c961f0444fc65ef35e8bcf5da68cb00d6b26e6043f41647770b",
+      "figure_count": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_density_groups\\matched_slices_provenance.json",
+      "sha256": "3c006dcbf20a98717ac3393ea29b7de3b91cba9dbbe2d958b80164c5685a30ba",
+      "figure_count": 2
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_occupancy_animals\\matched_slices_provenance.json",
+      "sha256": "544f1ac9c06844a06aa1081002f3dfcba212082965bcded40b92812dde7b1953",
+      "figure_count": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\axon_density_animals\\matched_slices_provenance.json",
+      "sha256": "df001930425395bb2b0f30fbb56cd68887f72ae665359baeac14800153ccd42c",
+      "figure_count": 3
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\axon_density_groups\\matched_slices_provenance.json",
+      "sha256": "d3157d2673f0f2a26bb21d3f93c69615988330043237fa2569dde6d0e8024905",
+      "figure_count": 1
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\endpoint_density_animals\\matched_slices_provenance.json",
+      "sha256": "8bcd2c4c2cb1c54bcbe4f08a09402dbe4c4ba3b80593830015340309efcdda34",
+      "figure_count": 3
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\endpoint_density_groups\\matched_slices_provenance.json",
+      "sha256": "8fc31ea6a4ead94610ce223fd9b36d2688ee3c26466ab2f378ce8544c13eb152",
+      "figure_count": 1
+    }
+  ],
+  "saved_png_files_rehashed": 33,
+  "current_document_sha256": {
+    "group_analysis\\evolution_20261008\\README.md": "e796b86a5896aa9123031b784d875a8c893ad442df3092828b4364d91739cd9c",
+    "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md": "d0693ef540fafd1c9f9ae79920169fd88e1b473bb892a395b20b4983cc4ae08f",
+    "group_analysis\\evolution_20261008\\reports\\evolution_status_20261009.md": "78cc08ee09b9bcaf9b8d7d551a14d7c54fe5ac910a99732109b7921a5ac94523",
+    "group_analysis\\evolution_20261008\\reports\\mapping_workflow_20261009.md": "860958324af2d6d6df9f3dd110a799f6bdea1f4a43a4c1bbe50a9ebe62ede867",
+    "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\README.md": "dfa5660bd3990176c0dd924c26e9223ad8ebe8ac33aa519878a51745b730374b",
+    "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\README.md": "5b8e4927eb23ddde915dd0c1c939777b97a331e22e6f9e187ef6099d1be88cad",
+    "group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\README.md": "2dc9aa5a1fe8d772cd6fc66142bb0242875ce907cb77c1f040277faaa61c06b3"
+  },
+  "relative_links_checked": 95,
+  "unittest_log_sha256": "3f21bf6c9110d08bf5ef4f2980d4ffaeb06841fb5e7546a46f0a877f49798589",
+  "tests_passed": 283,
+  "scope": "Fresh hashes/identities/links; prior independent numerical reviews not rerun",
+  "scientific_acceptance": "not established by these checks",
+  "source_writes": false,
+  "errors": []
+}

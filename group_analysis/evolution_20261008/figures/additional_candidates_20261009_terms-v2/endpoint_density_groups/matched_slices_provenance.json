@@ -1,0 +1,111 @@
+{
+  "status": "rendered_and_png_decoded",
+  "created_utc": "2026-10-08T22:58:59.271203+00:00",
+  "renderer_sha256": "53036ca7e35490439f733981a731a28efb6f841fea51932e8137ef9620f818ba",
+  "run_provenance_sha256": "28fb32f1db2c25a061d1c045d8e272c45992d19f196ecf540cae5b18cefc6b3b",
+  "readback_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+  "readback_sha256": "558985494334f3b4e3ee3bb904f5f1ced3ee4a653a50aa5f756e1581bada0a83",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "background": "matching individual NMT MRI slice; no depth projection",
+  "grayscale_window": {
+    "brain_mask_percentiles": [
+      1,
+      99.5
+    ],
+    "vmin": 75.0,
+    "vmax": 920.0
+  },
+  "metric": "endpoint-density",
+  "scope": "group",
+  "units": "Candidate axon ends/reference mm\u00b3/eligible neuron",
+  "cut_policy": "fixed",
+  "map_display": "log10(1 + density)",
+  "smoothing": "none; source maps unchanged",
+  "common_display_vmax": 1.58176471900438,
+  "display_upper_percentile": 99.5,
+  "slice_selection": "explicit common XYZ voxel indices",
+  "fixed_slice_voxels_xyz": [
+    56,
+    200,
+    87
+  ],
+  "selection_limit": "Display-selected slices do not establish full-volume targets or biological absence",
+  "slices": [
+    {
+      "AnimalID": null,
+      "Subregion": "NearINS_L",
+      "contributing_animals": [
+        "331",
+        "605",
+        "797"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-NearINS_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "29b7a883523b9c0c3a582e0764dd12cd2eff90f6311df687d251ccb9ec6c1162",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "NearINS_R",
+      "contributing_animals": [
+        "605",
+        "948"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-NearINS_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "894e9df0867d798dae93ae43581dd300e59eb3539ae3c754fd4db6f1e4bd96ee",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "OriginCandidate_L",
+      "contributing_animals": [
+        "605",
+        "797",
+        "900"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-OriginCandidate_L_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "46b86ce45fe20a9277081faacd6cf3a1de672fbb49a7a37a12da88ab1fa6ce3d",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    },
+    {
+      "AnimalID": null,
+      "Subregion": "OriginCandidate_R",
+      "contributing_animals": [
+        "605"
+      ],
+      "map_path": "group_maps\\space-NMTv2p1_region-OriginCandidate_R_desc-meanCandidateEndpointDensity_map.nii.gz",
+      "map_sha256": "949660a200ff12e45e984eabd4b6689636858d1b776b25399b2023a08d2b62a4",
+      "slice_voxels_xyz": [
+        56,
+        200,
+        87
+      ]
+    }
+  ],
+  "figures": [
+    {
+      "file": "space-NMTv2p1_desc-candidateEndpointDensity_matchedSlices_page-01.png",
+      "sha256": "e5e0dea3580e9c654134e2b9f00db3d3ac53a0b64ce7f6133d10f8d248e9d9e8",
+      "pixels": [
+        1690,
+        1664
+      ],
+      "panel_title_overlap_check": "passed"
+    }
+  ],
+  "source_data_modified": false,
+  "anatomical_acceptance": "not established",
+  "terminal_site_measurement": "candidate graph endpoints only"
+}

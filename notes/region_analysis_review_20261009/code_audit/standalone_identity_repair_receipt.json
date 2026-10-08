@@ -1,0 +1,15 @@
+{
+  "status": "staged-only; production unchanged by auditor",
+  "focused_tests": 8,
+  "result": "passed",
+  "root_consumer_tests": "18 passed,1 staged CLI dependency failure (missing staged region_labels.py)",
+  "hashes": {
+    "main_scripts\\region_analysis\\laterality_projection_analysis.py": "53cd19e57196b239d9ddd08c86597d00caedbed9c30a6e1fded1c69d925e5e76",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\laterality_projection_analysis.py": "bc964fb741732759f508a9209cdaf13ddaf203eae378eb30a780fec5bf3e5e6c",
+    "notes\\region_analysis_review_20261009\\consumer_audit\\staged\\main_scripts\\region_analysis\\utils.py": "b7b14ec9a3a78b1e4727686006fbc5e2ecc1b9c9023046dee9968322015ba9f1",
+    "notes\\region_analysis_review_20261009\\code_audit\\test_standalone_identity.py": "95b81e5c2f205f20698174102b45b9124e1a95f97d1f4044866c44cc671559ea",
+    "notes\\region_analysis_review_20261009\\code_audit\\standalone_identity_before.log": "57bf02cc15e544cf800e809d514d437aaea526b0912fbf358fd2d2386bf64dde",
+    "notes\\region_analysis_review_20261009\\code_audit\\standalone_identity_staged_v2.log": "97bc7eccabc29995d0ffc3ed135ec51dbef3e38b589377834fe6ce342f2d7fd9"
+  },
+  "contract": "requires UID or SampleID+NeuronID; validates identity consistency; precomputed absolute union reclassified; unknown lengths returned/exported separately; units preserved with mixed-unit pooling refused"
+}

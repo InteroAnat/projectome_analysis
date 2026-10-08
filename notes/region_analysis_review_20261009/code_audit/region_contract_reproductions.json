@@ -1,0 +1,1022 @@
+{
+  "dendrite_leaf_is_classification_target": {
+    "terminal_regions": [
+      {
+        "region": "SL_PrC",
+        "coords": [
+          2,
+          0,
+          0
+        ]
+      }
+    ],
+    "retained_lengths": {},
+    "total_voxels": 2.0
+  },
+  "per_edge_rounding_zeroes_nonzero_edge": {
+    "true_voxel_length": 0.0004,
+    "reported": 0.0
+  },
+  "root_only_leaf": {
+    "terminal_count": 1,
+    "root_id": 1
+  },
+  "duplicate_abbreviation_loses_length": {
+    "total_length": 2.0,
+    "retained": {
+      "CL_X": 1.0
+    }
+  },
+  "deep_fork_tree": "RecursionError: maximum recursion depth exceeded while calling a Python object",
+  "duplicate_cross_sample_entry": {
+    "rows": [
+      {
+        "SampleID": "sampleA",
+        "NeuronID": "001.swc"
+      },
+      {
+        "SampleID": "sampleA",
+        "NeuronID": "001.swc"
+      }
+    ],
+    "neuron_objects": 1
+  },
+  "invalid_level_zero": "accepted (selects last volume through -1 indexing)",
+  "debug_dual": "AttributeError: 'DualHierarchyTable' object has no attribute 'debug_region'",
+  "debug_resolution": "ImportError: cannot import name '_strip_prefix' from 'region_analysis.hierarchy_table' (D:\\projectome_analysis\\main_scripts\\region_analysis\\hierarchy_table.py)",
+  "real_numeric_parent_descendant": {
+    "name": null,
+    "index": "CL_area_32"
+  },
+  "public_projection_hierarchy_ignores_dual": {
+    "before_L3": {
+      "CL_caudal_OFC": 2.0
+    },
+    "after_L3": {}
+  },
+  "diagnostic_category_case": "KeyError: 'Cortical'",
+  "harmonizer_metadata_formula": {
+    "source_formula": "=1+1",
+    "derivative_value": null,
+    "source_unchanged": true
+  },
+  "cached_legacy_CT_range": {
+    "scope": "nine existing step1 workbooks only; reference251637 not included",
+    "total_neurons": 1223,
+    "affected_neurons": 27,
+    "bad_target_counts": {
+      "SR_ZI-H": 10,
+      "SR_p1Rt": 7,
+      "SR_PCom_MCPC": 3,
+      "SL_p1Rt": 7,
+      "SL_pc": 1,
+      "SL_PrC": 2,
+      "SL_ZI-H": 7,
+      "SR_Hb": 1,
+      "SL_PCom_MCPC": 2,
+      "SL_Hb": 1
+    },
+    "records": [
+      {
+        "SampleID": "250432",
+        "NeuronID": "002.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_PCom_MCPC"
+        ],
+        "other_thalamic_targets": []
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "015.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SR_VLPV",
+          "SR_VLA",
+          "SR_VM"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "045.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_ZI-H",
+          "SR_p1Rt",
+          "SR_PCom_MCPC"
+        ],
+        "other_thalamic_targets": [
+          "SR_VM",
+          "SR_VLPV",
+          "SR_APul"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "076.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_ZI-H",
+          "SR_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SR_VLA",
+          "SR_MD",
+          "SR_CMn-PF",
+          "SR_CL-PC",
+          "SR_VM",
+          "SR_PVP",
+          "SL_CMn-PF"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "118.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_ZI-H",
+          "SR_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SR_Rt",
+          "SR_MD",
+          "SR_CL-PC",
+          "SR_CMn-PF",
+          "SR_VM",
+          "SR_VMPo-VMB",
+          "SR_SPFPC"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "123.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SR_VMPo-VMB",
+          "SR_CL-PC",
+          "SR_APul"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "124.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SR_Rt",
+          "SR_VLPV",
+          "SR_VLA",
+          "SR_VM",
+          "SR_VPI",
+          "SR_SPFPC"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "128.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SR_Rt",
+          "SR_VMPo-VMB",
+          "SR_CMn-PF",
+          "SR_APul",
+          "SR_SPFPC"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "211.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SL_p1Rt",
+          "SL_pc",
+          "SL_PrC"
+        ],
+        "other_thalamic_targets": [
+          "SL_CL-PC",
+          "SR_CMn-PF",
+          "SL_Re-Rh-Xi",
+          "SL_PVP",
+          "SL_CMn-PF",
+          "SL_CM",
+          "SR_CM",
+          "SL_MD",
+          "SR_IMD",
+          "SR_MD",
+          "SR_PT-PV-sm",
+          "SL_IMD"
+        ]
+      },
+      {
+        "SampleID": "250432",
+        "NeuronID": "220.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_ZI-H"
+        ],
+        "other_thalamic_targets": []
+      },
+      {
+        "SampleID": "252383",
+        "NeuronID": "075.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SL_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SL_VLPV",
+          "SL_VPI",
+          "SL_APul",
+          "SL_Rt",
+          "SL_MG"
+        ]
+      },
+      {
+        "SampleID": "252384",
+        "NeuronID": "010.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SL_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SL_APul",
+          "SL_Lim",
+          "SL_MG"
+        ]
+      },
+      {
+        "SampleID": "252384",
+        "NeuronID": "016.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SL_p1Rt",
+          "SL_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SL_Rt",
+          "SL_VLPV",
+          "SL_VMPo-VMB",
+          "SL_CMn-PF",
+          "SL_VLA",
+          "SL_VM",
+          "SL_VLX"
+        ]
+      },
+      {
+        "SampleID": "252384",
+        "NeuronID": "034.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SL_p1Rt",
+          "SL_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SL_VLPD"
+        ]
+      },
+      {
+        "SampleID": "252527",
+        "NeuronID": "052.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_Hb"
+        ],
+        "other_thalamic_targets": [
+          "SR_VM",
+          "SR_MD",
+          "SR_VA",
+          "SR_Re-Rh-Xi",
+          "SR_CMn-PF",
+          "SR_IMD"
+        ]
+      },
+      {
+        "SampleID": "252714",
+        "NeuronID": "034.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SR_VLPV",
+          "SR_VM",
+          "SR_CMn-PF"
+        ]
+      },
+      {
+        "SampleID": "252714",
+        "NeuronID": "105.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_PCom_MCPC"
+        ],
+        "other_thalamic_targets": [
+          "SR_VLA",
+          "SR_VM",
+          "SR_VLX",
+          "SR_SPFPC",
+          "SR_CMn-PF"
+        ]
+      },
+      {
+        "SampleID": "252714",
+        "NeuronID": "106.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SR_MD",
+          "SR_VA",
+          "SR_CMn-PF",
+          "SR_Lim",
+          "SR_bsc"
+        ]
+      },
+      {
+        "SampleID": "252714",
+        "NeuronID": "108.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_ZI-H",
+          "SR_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SR_CMn-PF",
+          "SR_Lim",
+          "SR_bsc"
+        ]
+      },
+      {
+        "SampleID": "252714",
+        "NeuronID": "135.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SR_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SR_MG",
+          "SR_Rt",
+          "SR_Lim",
+          "SR_APul",
+          "SR_VPI"
+        ]
+      },
+      {
+        "SampleID": "252714",
+        "NeuronID": "137.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SL_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SL_CMn-PF",
+          "SL_SPFPC",
+          "SL_VM"
+        ]
+      },
+      {
+        "SampleID": "252718",
+        "NeuronID": "190.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SL_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SL_CMn-PF",
+          "SL_VMPo-VMB",
+          "SL_SPFPC"
+        ]
+      },
+      {
+        "SampleID": "252790",
+        "NeuronID": "013.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SL_ZI-H",
+          "SL_PCom_MCPC",
+          "SL_p1Rt"
+        ],
+        "other_thalamic_targets": [
+          "SL_CMn-PF",
+          "SL_SPFPC",
+          "SL_CL-PC",
+          "SL_VA"
+        ]
+      },
+      {
+        "SampleID": "252790",
+        "NeuronID": "020.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SL_Hb"
+        ],
+        "other_thalamic_targets": [
+          "SL_VA",
+          "SR_CM",
+          "SR_IMD",
+          "SL_Re-Rh-Xi",
+          "SL_IMD",
+          "SR_PT-PV-sm",
+          "SL_PT-PV-sm",
+          "SR_MD",
+          "SL_PVP"
+        ]
+      },
+      {
+        "SampleID": "252790",
+        "NeuronID": "078.swc",
+        "saved_type": "CT",
+        "bad_targets": [
+          "SR_ZI-H",
+          "SL_ZI-H"
+        ],
+        "other_thalamic_targets": [
+          "SR_Rt",
+          "SR_VM",
+          "SR_VMPo-VMB",
+          "SR_Re-Rh-Xi",
+          "SR_LP",
+          "SR_APul",
+          "SR_VPM-VPL",
+          "SR_CMn-PF",
+          "SR_SPFPC",
+          "SL_Re-Rh-Xi",
+          "SL_CMn-PF",
+          "SL_SPFPC",
+          "SL_VM"
+        ]
+      },
+      {
+        "SampleID": "252790",
+        "NeuronID": "105.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SL_ZI-H",
+          "SL_PrC",
+          "SL_PCom_MCPC"
+        ],
+        "other_thalamic_targets": [
+          "SL_VM",
+          "SL_CL-PC",
+          "SL_CMn-PF"
+        ]
+      },
+      {
+        "SampleID": "252790",
+        "NeuronID": "116.swc",
+        "saved_type": "PT",
+        "bad_targets": [
+          "SL_ZI-H"
+        ],
+        "other_thalamic_targets": []
+      }
+    ],
+    "source_hashes": {
+      "group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx": "1153b8d53693ae00171758a8b9abbf8532508211fceae22703ae990794f9b218",
+      "group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx": "16a9512b048d236ad2af5f56698ba0a085718b9870cca4f24d4f6e1bf79f102d",
+      "group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx": "d0b8afa611026a3232293f1beea9e5cb64bc6e5bccce8c06033b4860c52f3c07",
+      "group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx": "7cee63610b05f52a51f1691497d8f9beca1b075ed98e38e6ec05b2b7a5ff8132",
+      "group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx": "cd86f1a34b75376de8e7e917361e727b280c764ed390698d1a764138ed9a790f",
+      "group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx": "3f285cdc48671f9140e2a17c13c384bb0efd90efa97d3e73537b27d8fd337a78",
+      "group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx": "dc0e5e04116a3627dc0a839bc4db82eb22f3662b3b4b934ebd3153dfe65e9094",
+      "group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx": "4513d515137c149a18e9cbcd8f9e6680b475f69e136fc7769eb5cdee6dd04d99",
+      "group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx": "02a7f0bd7609d288b195e961b20e48aaa5430566656952cd21be77839b09b31b"
+    }
+  },
+  "cached_table_membership_checks": [
+    {
+      "path": "group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx",
+      "rows": 234,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 1487,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx",
+      "rows": 79,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 415,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx",
+      "rows": 127,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 600,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx",
+      "rows": 99,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 636,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx",
+      "rows": 128,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 606,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx",
+      "rows": 99,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 381,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx",
+      "rows": 144,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 1262,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx",
+      "rows": 190,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 964,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx",
+      "rows": 123,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 1191,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    }
+  ]
+}

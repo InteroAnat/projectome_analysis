@@ -1,0 +1,491 @@
+{
+  "status": "software_and_source_readback_passed",
+  "observed_at": "2026-10-09T07:20:25.216658+08:00",
+  "audit_script_sha256": "95d1c1e4d298a27d8439920bf581e9060da5ca52cf5f54d973b5e6b1ed8aa638",
+  "inputs_and_selected_sources": {
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/distance_priority_v2_20261009/correction_provenance.json": {
+      "sha256": "400c812278c6726e3eaa1cbcf94d5d56dcf4afd19a7c90a7f14daa89fb5e65b9",
+      "role": "input"
+    },
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/distance_priority_v2_20261009/all_neuron_review_manifest_distance_corrected.csv": {
+      "sha256": "4145991757fae32a820de4294fa3073c94371708dc170aca42382b0a299d5533",
+      "role": "input"
+    },
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/delivery_provenance_20261009.json": {
+      "sha256": "12d1d98050458215fd80ba757556e1053337668c2594b5836af0600caafee612",
+      "role": "input"
+    },
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/all_neuron_review_manifest.csv": {
+      "sha256": "822d184e83869f4b78516a8b1ac5e2439ed1fc2bb21d0cc1fa0606269fb8e781",
+      "role": "protected_prior_audit"
+    },
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/priority_review_manifest.csv": {
+      "sha256": "5393beb7acc90dd60f8280f8a6bd26e9510d34b8fddef70c4df7fd13861a62ea",
+      "role": "protected_prior_audit"
+    },
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/map_ready_sources.csv": {
+      "sha256": "8e6d85347b5bf4866da61ccacdea41928f0c70572887c995613261293608414d",
+      "role": "protected_prior_audit"
+    },
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/provenance.json": {
+      "sha256": "1d11d015414df614aedebeee521f340301936f4b289dec45eed6874b59abe3c7",
+      "role": "protected_prior_audit"
+    },
+    "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/validated_atlas_lookup/neuron_soma_locations.csv": {
+      "sha256": "1a069b4db16249f0ebee55fe1052258ebaf510d8abd13b7ab53a090733021e08",
+      "role": "atlas_audit"
+    },
+    "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/coordinate_origin_sensitivity/per_neuron_origin_sensitivity.csv": {
+      "sha256": "8f9aea947ec3ed7e989ad179e9c30971598169efdc1335941b2129a351535b78",
+      "role": "policies"
+    },
+    "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx": {
+      "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+      "role": "Henry"
+    },
+    "group_analysis/docs/dataset_status_manifest.csv": {
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d",
+      "role": "animal_registry"
+    },
+    "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_segmentation.nii.gz": {
+      "sha256": "48004cc0f85198f0d78126e1bea44018fd4f3d0cbc26d0005da646de0876be9c",
+      "role": "segmentation"
+    },
+    "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz": {
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+      "role": "reference"
+    },
+    "atlas/ARM_key_all.txt": {
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+      "role": "key"
+    },
+    "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/validated_atlas_lookup/provenance.json": {
+      "sha256": "f57748f6e9de005854ec99f9d75bd5c2d5f82a5e73ebec79e595f75e7d2be155",
+      "role": "input"
+    },
+    "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz": {
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+      "role": "ARM6"
+    },
+    "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_plane.nii.gz": {
+      "sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea",
+      "role": "LR_plane"
+    },
+    "notes/region_analysis_review_20261004/case_112_114_20261004/idm_assignment_20261008/reviewed_soma_assignments.json": {
+      "sha256": "c10dff6ff78d03b9ec5e20ef4cc1b1be2c61befacd1143bcfa088476d286d8b1",
+      "role": "reviewed"
+    },
+    "group_analysis/evolution_20261008/inventory/live_inventory_20261008/neuron_inventory.csv": {
+      "sha256": "ac417e8a49d3c4a96b6cb421e3dc86127b923e0008bf821e8cef35bd7b898ba5",
+      "role": "complete_inventory"
+    },
+    "group_analysis/evolution_20261008/inventory/live_inventory_20261008/provenance.json": {
+      "sha256": "d73d83223aa703bb2a88fc2bcbe46ef8bd21d30c04af7f88cd2bd7c550a16411",
+      "role": "input"
+    },
+    "group_analysis/staging_20260926/reference/251637_subregion_bboxes_folded.csv": {
+      "sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997",
+      "role": "existing_folded_rule"
+    },
+    "group_analysis/evolution_20261008/projection_inputs/arm_labels_20261009/delivery_provenance.json": {
+      "sha256": "1a1c817252e8f003c01c816e3bb8a8490473c6c323b859715233f566294cb6d8",
+      "role": "input"
+    },
+    "group_analysis/evolution_20261008/projection_inputs/arm_labels_20261009/combined/projection_manifest.csv": {
+      "sha256": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+      "role": "protected_selected_input"
+    },
+    "group_analysis/evolution_20261008/projection_inputs/arm_labels_20261009/main/projection_manifest.csv": {
+      "sha256": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+      "role": "protected_selected_input"
+    },
+    "group_analysis/evolution_20261008/projection_inputs/arm_labels_20261009/preview/projection_manifest.csv": {
+      "sha256": "5f8e32654f6f08c2656d55d35190735351982ce8d8e560f0e06a400daf5f7743",
+      "role": "protected_selected_input"
+    },
+    "group_analysis/evolution_20261008/projection_inputs/arm_labels_20261009/preparation_provenance.json": {
+      "sha256": "981857a17995d32aa5f5f697b19c6431e359ff57ab73aa10002e129ee37bdede",
+      "role": "protected_selected_input"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/112.swc": {
+      "sha256": "418ff7b32448e71023321672218339b5a6dc37dfc1442f559ecf611362fc9bac",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/114.swc": {
+      "sha256": "7beb8f314de649c6d310d7ec042b039ceeca197f456fe6f6384cac16856e2213",
+      "role": "selected_background_atlas_SWC"
+    },
+    "main_scripts/processed_neurons/251637/115.swc": {
+      "sha256": "3861a0a0381a10d8059a46362798aff0798eccac1cce11d82f728604911503f2",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/422.swc": {
+      "sha256": "c84dfae7549b6b27947938e5fb2b9b1060f611ef58159994826970697ba2d4db",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/423.swc": {
+      "sha256": "48cd2c99b43618cfa8443f5a5b990e1997dff78083f932e767f7783ebb1e09af",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/438.swc": {
+      "sha256": "79d48ef516eaddc67099a57df4b1ed4bf983bb935e3cd0ddedee14e6716390e0",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/439.swc": {
+      "sha256": "c78e86ebee9255e92633b032f093cb5268d505d27acb6673de605e77b61e6587",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/440.swc": {
+      "sha256": "8b1199450f2ba9924f24249f190bb7dce7bab5328a852e5b430992f06ef203bb",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/444.swc": {
+      "sha256": "2cbdd74c64db01b71b12c3b1446facaa227986818d4b85a5cc487c1140d0b577",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/458.swc": {
+      "sha256": "7cb10580fc2520638ef615a0dcb35ae1c58aa398052abd7226f5d09ecbb832ba",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/459.swc": {
+      "sha256": "25d32a1384a4efa006e5724a8c7b5f62cd96b107e9a14a3a04a0638f85cbf7a3",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/460.swc": {
+      "sha256": "b741339ff2306ea9ef6b6d19ac45d48668ad8e127fdb800a4405d7dda1ac46e4",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/461.swc": {
+      "sha256": "c684851a8bf902f703a537f06bdf9a6c154c8bdc049204f7c18ea005487ff3b9",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/fnt/nmt_swcs/251637/469.swc": {
+      "sha256": "dba435e8b33ef6349c00e8dcb47f37135e3c8fb250324f457d5bd2810def5b0c",
+      "role": "selected_background_atlas_SWC"
+    },
+    "neuron-vis/resource/swc/252384/047.swc": {
+      "sha256": "9d83804fb337e16eedf1761e4506fadc3491ad78b72d0b0b4bb6172dd46a0739",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/047.swc": {
+      "sha256": "fa8411f43e20af4260a22eb01c80deb56bebab30bc010200f8ce025efd5b9778",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/050.swc": {
+      "sha256": "8228daf717b19186422134271e30b82051c1aa68fb92546766cc662d07925522",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/050.swc": {
+      "sha256": "1eaad9f086eed066383a8cc69c3a1164fb82c8cefcaa4958d681249510a49031",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/051.swc": {
+      "sha256": "1e0ad58346eb5d7b576493adb9c47ac8e6457e39080f7aacff8030570f570ff5",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/051.swc": {
+      "sha256": "e424ec56a4a03b8201f4953cea44535d6285de298db1cfc9c2b1e6e195b0fcda",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/052.swc": {
+      "sha256": "491c31d167f433345d200da2f3f1ddf08d5bb8822d5890a08c8fd7880fdf1949",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/052.swc": {
+      "sha256": "89b689542d6127854ca881ede02f82d39fecea464f130026a868f18e475ec30e",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/076.swc": {
+      "sha256": "73dc1b86b1693f7721ed939ccf3c11c7c6bee551c39bf37593cd96e0d4a4add0",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/076.swc": {
+      "sha256": "2c3cd0e4678b416fdec449e3507c77c12d798a9b222a2dbd12a74ddb7160d13f",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/078.swc": {
+      "sha256": "cf07c0c4fd9ed560780c795e7bc0f566d6ecb564661fd18b0279c2bfecc8a16f",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/078.swc": {
+      "sha256": "0921a08069f0750939701788721c271d238912fe47274945f84dae57db121cc4",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/081.swc": {
+      "sha256": "92cc8f3a2e9adf61a73dda370fa0620092ed837bca3672c24b0c57f10c696597",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/081.swc": {
+      "sha256": "f9b6254e77d3c9506945a60792994c51f5a67552b6ac60dd54de91d502db84fd",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252385/048.swc": {
+      "sha256": "593bdef3c6ec54fb30eda8c6ff89ad1f9fec1268afdfd5be20c2f418b92628e5",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252385/048.swc": {
+      "sha256": "2e5a1b9f6be19545cc6d659b68e9acf57584c01b95732ac494c156d93da31ddf",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/102.swc": {
+      "sha256": "1f4b7033487ba0f6ef597dee6dda95a817675175792a5c522740a81337ea1c5a",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/102.swc": {
+      "sha256": "8b98b45f2bdad46fec3feb6b22354bf5a638ee7743933fcc433cda688527f1d5",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/103.swc": {
+      "sha256": "98f45ac26aaa1bd465a995ee967c6e5e2974a30eb048c969770af6b3c38ca178",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/103.swc": {
+      "sha256": "d6dc114d54b7704dd036dcf290aa5197ba81e8fd2ac9b37f309639c1f792fa37",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/117.swc": {
+      "sha256": "0e3690bce1d562b8824188bd32ffc2321fa985562dc8c1656952a4e7b5e9b0be",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/117.swc": {
+      "sha256": "7f8fc22ec5610d99934824de687c97d6759598e3e773f27b5d1342fe1c3d86de",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/121.swc": {
+      "sha256": "44632a973783dd56e38adda88b10daa108d6d28ade7b647303f701f780159865",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/121.swc": {
+      "sha256": "3f497eda6b9c762f6d0c42a9da335b673ee3183de6248df4da96f637d683934a",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/032.swc": {
+      "sha256": "163a1c84c95339a1bf091ab7ce1aefe496dcf030b92e690f946af26770ce5ae6",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/032.swc": {
+      "sha256": "eff282b992e38e92f3948bb7e4e38599eb39f72bf6c97cfd6b5b5542ae811d00",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252718/162.swc": {
+      "sha256": "429a726f5346febd1fa7ad2613b3e2893b0ad517a20691516b083143ff04b775",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252718/162.swc": {
+      "sha256": "8105ad9f4aef938479e3248f839102963421201c556867328c85740c242815e7",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/121.swc": {
+      "sha256": "32b7bb7b3a369ee34f550c9dfa094c2e0cb21b54c1acc5bb26a6ceefb0c9d7e0",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/121.swc": {
+      "sha256": "dd09bdfe9afa408d21e5f2644b3495790e632b242e31e75061f07be97e866a58",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/035.swc": {
+      "sha256": "a2e29f5bad8c5ea8f33029b034d8c18195c470b2bc5cbb1a98b5c4cfac1a93ce",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/035.swc": {
+      "sha256": "d9f5c2ebe1f632f43571e9ddf390c40600b6074bf3e06c2266d26a42100cae58",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/120.swc": {
+      "sha256": "ade14ef69664f86aa79ef92a3d3247cfb944a69ba90bc9d6122e35f1d7a14eb3",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/120.swc": {
+      "sha256": "eeb8dbd14387c1ca434d473f8c5fb48d007fbe68999ed6883f13cda050933fc5",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/031.swc": {
+      "sha256": "62858fd5fb4cccad1f527538fe899622e69701bb6dd23d0735d0b8cccd9771dd",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/031.swc": {
+      "sha256": "cce0d860f56e63636a6fc4e9e84d14337265a44b86cc4eeae8656e375e8e5f22",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/036.swc": {
+      "sha256": "2de49b3514d5cf3689a8e5ccf42959ee177c810c2a2ee21a0c34c2c09272a7fb",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/036.swc": {
+      "sha256": "eabacc3434731c97d6ed740742e4b571d8051eff205a622c5dd76ff368dbca05",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/126.swc": {
+      "sha256": "00b5a1f6ec86217aaa2560818ce024522f42a0baa73c7a4b9722af4ac417ed1c",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/126.swc": {
+      "sha256": "81ed0f7b7101feb9c0894337de443dde5f114b2067d21d490f5a9b4314594520",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/127.swc": {
+      "sha256": "f7738bc36803607a3603eb9c88d1344ac6d6b5d78a56105330d67e9a177aa18e",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/127.swc": {
+      "sha256": "f9b3f6c43dc9822e0684d1b9c31d3eda32a33f85f514536c15de257f56f60296",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/090.swc": {
+      "sha256": "51c75044a725e7c24467e7bdbc681ae1cebbdb25cac9b2be7118673931aa540d",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/090.swc": {
+      "sha256": "764e92d0785dbabbb2e8e0eb21f7f5ffb44f42adad3c5ff31739f3b61ec7031b",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/037.swc": {
+      "sha256": "cc0c284f722f366ee2613c894c76b75e598b979178f6616bf10132ed2fdbf48d",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/037.swc": {
+      "sha256": "cbbeeaf0f8f60d115a103fd261c1f9a3c8c18bf5a2582168be18d14e68ec784c",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/118.swc": {
+      "sha256": "e8aa8f1aa46785af0a778aa1ab3536008e4ac47a5b16e532f7f9a904d4661e4e",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/118.swc": {
+      "sha256": "d88cca3af3e257627ace4bf0e1a151be1e231a55f790b47266b5145798d4caae",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/119.swc": {
+      "sha256": "207cec24602ecbba1e94f39d4ff7990a24a76f843327dd42691c19a39b53296d",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/119.swc": {
+      "sha256": "b5ffd90bbeab41aa4ee02e84edbba1d3f38e734677b2b9a0e976ee780a910a12",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/094.swc": {
+      "sha256": "e6e8569fc589b50f6aa3f33943d39234886a3829fd16f37437a0db8e32547c7a",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/094.swc": {
+      "sha256": "0cab1923c8ece65e21591a3401a6c6188172de5a239afec9217e7d8d6e57edad",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/097.swc": {
+      "sha256": "ccb8a6e85fe616606226d0ecd24708be385c2545b8933f6301fe00debc8c21dc",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/097.swc": {
+      "sha256": "00d00aa6984caedac089a70e5ca4759ea16fd8a471138c28bbbb26b3a190e122",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/123.swc": {
+      "sha256": "069a335dbb7fb8c75c4dfd3912e89f80941f066779ed580c9ac4cbc8435e02f5",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/123.swc": {
+      "sha256": "df8687fb550c3f8b338805873628e25304c9a33a2c7caaaf89ba861f930081c4",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/116.swc": {
+      "sha256": "20dd01ec087fa9f49019ad3a15bf90b6c9b874ca790fcdc4b24b8406d72b15dc",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/116.swc": {
+      "sha256": "d33cd2586e4a0d12f66c9182c03f47744858d960fac2e007cb891f94c8d81890",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252790/115.swc": {
+      "sha256": "edb6398d9f70feedeab0ef6da2be6679347dd8e85c9a330cbd3776b903250d43",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252790/115.swc": {
+      "sha256": "f0ed0c2f23ef47472ff99e15b40e390e843c52826b7504f8006a9c740fa03dfe",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/124.swc": {
+      "sha256": "7d473f7fb784501c6b8b3c7342a68cabe09a992c1361d581246a3e4b26d209f5",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/124.swc": {
+      "sha256": "a5144b7d73fb1ff27e5d543e591b020ed4a912d892032711aacaafc76ccfee1a",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252384/080.swc": {
+      "sha256": "c3fbab8f63803e5284a2d347056616ceb8c6474675fbbc869faeee4bf62fd6ee",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252384/080.swc": {
+      "sha256": "7a5757225dfdf9fc9236645113607ca943524eee88413044705a8cdfd6bba3b6",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/117.swc": {
+      "sha256": "f2ab40d8850201d3e54a85f2931fcf13f08c5d681a5bbb695192c32b3e683652",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/117.swc": {
+      "sha256": "a7291396bc56f07ad5feadf6a27ac53349478ee26b570163ae1978f40ffb4783",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252385/021.swc": {
+      "sha256": "aff241b868d65fea3ad1c11a31f35a976f5966ac9ba887e6a34b2fd3cc6bb7a2",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252385/021.swc": {
+      "sha256": "a924507f31079879fb58add740e5f31f60ba508a4c0578835f544457f568d817",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/095.swc": {
+      "sha256": "fef97953b470145a16b4baf0638c73a2bb8e0dd7ffc624bad04cb720ab425dad",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/095.swc": {
+      "sha256": "b1eb50753d389b3dafbc8d2b8aa86f3168cde418b34c7633859ab07ad7a9aa8d",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/036.swc": {
+      "sha256": "e938558942e660308d9f514abb1ea057c693e0eebb9e1a14948c632e92770843",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/036.swc": {
+      "sha256": "b0a7cf1051f9d95649babdd5ac8bcfd5a9770abd3242d46f04b7765216bd30fe",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252385/022.swc": {
+      "sha256": "e6b7ce31ec2d2c583f659b907ac383196c67595c394d87796f0d73f8d9f0fa98",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252385/022.swc": {
+      "sha256": "66a9c4f6571732fef7c26d90b3164d6ff4459e3d721946cf1f811c89b8710609",
+      "role": "selected_background_native_SWC"
+    },
+    "neuron-vis/resource/swc/252383/096.swc": {
+      "sha256": "c138aeae79915b97cf401ca468e43b3589c47252587d96fc19e0607f12529610",
+      "role": "selected_background_atlas_SWC"
+    },
+    "group_analysis/visual_review_20261002/swc_raw/252383/096.swc": {
+      "sha256": "5fb3e6496704c9a9cc5dc9bc19f56883b8f3518a8752931cee461ab83702e738",
+      "role": "selected_background_native_SWC"
+    }
+  },
+  "outputs": {
+    "selected_52_background_cases.csv": "c2cb0ab18018fbe2f6b33c48665f847552d6ef051495ee7e1256c40adc06fa71",
+    "source_root_readback.csv": "49873eff33065c76de3bb2a64870c2967a3f0683bc0a08df79c97130f8aada6f",
+    "sample_coverage.csv": "ddd9a715cd02893534db49e737534448a2f355e7bd7099782ac0748e822f8b5c",
+    "supplementary_unselected_background_queue.csv": "15adf082bc04c7eab4be1421107d46734d39fedd54d23b433d8a0ac0bce43cf6",
+    "summary.json": "3ecccbbf9ee98febdd571c06e829fe4cf1b7bae1940c6d202dbd38e80b37b538"
+  },
+  "fresh_selected_source_hashes": 52,
+  "fresh_root_reads": 52,
+  "fresh_nearest_OTHER_anchor_checks": 52,
+  "saved_primary_unique_UIDs": 52,
+  "all_protected_inputs_and_selected_sources_unchanged": true,
+  "scope_conservation": "52selected+243unselected=295background;1617positive+295background=1912own;1912own+6834missing=8746",
+  "prior_full_graph_equivalence": "reuse hash-bound prior full2480source/1912UID readback; no new full graph comparison",
+  "fresh_broad_unselected_graph_reads": 0,
+  "image_reads": 0,
+  "network_requests": 0,
+  "map_writes": 0,
+  "canonical_writes": 0,
+  "scientific_acceptance": false
+}

@@ -1,0 +1,14 @@
+test_preserves_source_formulas_styles_notes_and_exact_membership (__main__.HarmonizerPreservationTests) ... FAIL
+
+======================================================================
+FAIL: test_preserves_source_formulas_styles_notes_and_exact_membership (__main__.HarmonizerPreservationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_harmonizer_preservation.py", line 59, in test_preserves_source_formulas_styles_notes_and_exact_membership
+    self.assertEqual(new['Notes']['A2'].value,'=1+1')
+AssertionError: None != '=1+1'
+
+----------------------------------------------------------------------
+Ran 1 test in 0.306s
+
+FAILED (failures=1)

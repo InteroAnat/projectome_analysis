@@ -1,0 +1,197 @@
+{
+  "status": "software_verified_ARM_only_source_group_manifests",
+  "created_utc": "2026-10-08T23:06:24.217410+00:00",
+  "inputs": {
+    "main_manifest": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\multimonkey_coarse_20261009_v2\\projection_manifest.csv",
+      "sha256": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2"
+    },
+    "preview_manifest": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\additional_candidates_20261009\\projection_manifest.csv",
+      "sha256": "a7e9eb01cc50e20fe5bb62c395a08014f80cdccc6206e23718025fad50558be3"
+    },
+    "main_run": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009\\run_provenance.json",
+      "sha256": "b8617e2b0aa45a992571da1100e8b5c376e82b4f423e72fbc6a361536469f6d2"
+    },
+    "main_readback": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2\\endpoint_run_readback.json",
+      "sha256": "7c961f9ab269623e6aad7695378b3fa959dbfd493109e72269b3ffa9b9f9e5f4"
+    },
+    "preview_run": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\run_provenance.json",
+      "sha256": "28fb32f1db2c25a061d1c045d8e272c45992d19f196ecf540cae5b18cefc6b3b"
+    },
+    "preview_readback": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+      "sha256": "558985494334f3b4e3ee3bb904f5f1ced3ee4a653a50aa5f756e1581bada0a83"
+    },
+    "reference": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    "atlas": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    "atlas_key": {
+      "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    "hemisphere_mask": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\supplemental_masks\\NMT_v2.1_sym_LR_plane.nii.gz",
+      "sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea"
+    }
+  },
+  "preparer_sha256": "3c4271c6d35e4b1e3594dde523e4986a220cf51432439db12d27ae3636cdaae7",
+  "helper_code_sha256": {
+    "checked_manifest": "c758d2daa427276436e07c1745daad00574e7e392a6f71516f179653ae623145",
+    "ARM_lookup": "fee7d46004b9599079b1c50371a8e276847c33e6de0e0876cc579b80d5ea7b97",
+    "SWC_validation": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64"
+  },
+  "coordinate_policy": {
+    "primary": "current_rint_zero_center",
+    "formula": "np.rint(declared source XYZ / IndexScaleUm); ties to even",
+    "world_coordinate_sources": "inverse reference affine before voxel assignment",
+    "alternatives": "same ARM6 only; published ceil(index)-1 and half-open floor(index+.5) are sensitivity metadata, never primary groups",
+    "export_origin_and_registration_acceptance": "unverified"
+  },
+  "atlas_policy": "Only actual pinned NMT ARM6 data/key used for primary source lookup; no other atlas file or hierarchy inference.",
+  "label_schema": [
+    "Subregion",
+    "ARMLevel",
+    "ARMIndex",
+    "ARMAbbreviation",
+    "ARMFullName",
+    "Hemisphere",
+    "DisplayLabel",
+    "AtlasSHA256",
+    "AtlasKeySHA256",
+    "AtlasPath",
+    "AtlasKeyPath",
+    "SourceARMStatus"
+  ],
+  "hemisphere_mask_value_to_side": {
+    "1": "R",
+    "2": "L"
+  },
+  "hemisphere_contingency": {
+    "1": {
+      "L": 0,
+      "R": 1891157
+    },
+    "2": {
+      "L": 1891157,
+      "R": 0
+    }
+  },
+  "selection": {
+    "main": {
+      "neurons": 436,
+      "animals": [
+        "331",
+        "605",
+        "631",
+        "797",
+        "900",
+        "936",
+        "945",
+        "948"
+      ],
+      "groups": {
+        "ARM6_542_R": 71,
+        "ARM6_549_R": 67,
+        "ARM6_541_R": 12,
+        "ARM6_728_R": 61,
+        "ARM6_0_R": 8,
+        "ARM6_229_L": 34,
+        "ARM6_228_L": 51,
+        "ARM6_0_L": 18,
+        "ARM6_42_L": 38,
+        "ARM6_41_L": 26,
+        "ARM6_729_R": 7,
+        "ARM6_1004_L": 4,
+        "ARM6_1504_R": 5,
+        "ARM6_48_L": 25,
+        "ARM6_43_L": 1,
+        "ARM6_548_R": 7,
+        "ARM6_595_R": 1
+      },
+      "lookup_status": {
+        "mapped": 410,
+        "zero_unassigned": 26
+      }
+    },
+    "preview": {
+      "neurons": 26,
+      "animals": [
+        "331",
+        "605",
+        "797",
+        "900",
+        "948"
+      ],
+      "groups": {
+        "ARM6_0_L": 15,
+        "ARM6_0_R": 11
+      },
+      "lookup_status": {
+        "zero_unassigned": 26
+      }
+    },
+    "combined": {
+      "neurons": 462,
+      "animals": [
+        "331",
+        "605",
+        "631",
+        "797",
+        "900",
+        "936",
+        "945",
+        "948"
+      ],
+      "groups": {
+        "ARM6_542_R": 71,
+        "ARM6_549_R": 67,
+        "ARM6_541_R": 12,
+        "ARM6_728_R": 61,
+        "ARM6_0_R": 19,
+        "ARM6_229_L": 34,
+        "ARM6_228_L": 51,
+        "ARM6_0_L": 33,
+        "ARM6_42_L": 38,
+        "ARM6_41_L": 26,
+        "ARM6_729_R": 7,
+        "ARM6_1004_L": 4,
+        "ARM6_1504_R": 5,
+        "ARM6_48_L": 25,
+        "ARM6_43_L": 1,
+        "ARM6_548_R": 7,
+        "ARM6_595_R": 1
+      },
+      "lookup_status": {
+        "mapped": 410,
+        "zero_unassigned": 52
+      }
+    }
+  },
+  "published_origin_label_differences": 60,
+  "halfopen_tie_label_differences": 0,
+  "source_selection_changed": false,
+  "evidence_metadata_promoted": false,
+  "canonical_tables_modified": false,
+  "existing_map_or_figure_provenance_modified": false,
+  "source_graph_validation": "Every selected SWC hash reverified and full seven-column topology freshly validated; one exact root read.",
+  "outputs": {
+    "label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "root_readback.csv": "d2e58bd826fe8e07056ba03064338311bcd088520e006f5638099b555cff2903",
+    "combined/label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "combined/projection_manifest.csv": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+    "main/label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "main/projection_manifest.csv": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+    "preview/label_map.csv": "0e8f710af7ff1afe1609220866b5dafe0a0b3da85061058141830de62441715b",
+    "preview/projection_manifest.csv": "5f8e32654f6f08c2656d55d35190735351982ce8d8e560f0e06a400daf5f7743"
+  },
+  "maps_computed": false
+}

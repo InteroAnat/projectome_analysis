@@ -1,0 +1,43 @@
+--- a/tests/test_terminal_reporting.py
++++ b/tests/test_terminal_reporting.py
+@@ -82,14 +82,14 @@
+             return fn(*args, **kwargs)
+ 
+     def assert_terminal_totals(self, report):
+-        for text in ["Total projection sites: 15", "Known sites: 5 (",
+-                     "Unknown sites: 10 (", "Neurons with unknown regions: 3 (",
++        for text in ["Total endpoint-target entries: 15", "Known endpoint-target entries: 5 (",
++                     "Unresolved endpoint-target entries: 10 (", "Neurons with unknown regions: 3 (",
+                      "Neurons with only known regions: 1 (", "Neurons with no target entries: 1 ("]:
+             self.assertIn(text, report)
+ 
+     def assert_projection_totals(self, report):
+-        for text in ["Total known sites: 5", "Total unknown sites excluded: 10",
+-                     "Mean known sites per neuron: 1.00", "Neurons with unknown sites: 3 (",
++        for text in ["Total known endpoint-target entries: 5", "Total unresolved endpoint-target entries excluded: 10",
++                     "Mean known endpoint-target regions per neuron: 1.00", "Neurons with unresolved endpoint-target regions: 3 (",
+                      "Total outliers: 5"]:
+             self.assertIn(text, report)
+ 
+@@ -138,16 +138,16 @@
+         for values, total in [([["Out_of_Bounds", "Unknown_0", None]], 3), ([[], []], 0)]:
+             frame = pd.DataFrame({"Terminal_Regions": values})
+             report = self.call_quietly(plot_terminal_distribution_df, frame, show=False)
+-            self.assertIn(f"Total projection sites: {total}", report)
+-            self.assertIn("Known sites: 0 (", report)
+-            self.assertIn(f"Unknown sites: {total} (", report)
++            self.assertIn(f"Total endpoint-target entries: {total}", report)
++            self.assertIn("Known endpoint-target entries: 0 (", report)
++            self.assertIn(f"Unresolved endpoint-target entries: {total} (", report)
+             self.assertIn("Total projection entries (after filtering): 0", report)
+             self.assertIn("Neurons with only known regions: 0 (", report)
+             self.assertTrue(any("No target entries" in text.get_text()
+                                 for ax in plt.gcf().axes for text in ax.texts))
+             projection = self.call_quietly(plot_projection_sites_count_df, frame, show=False)
+-            self.assertIn("Total known sites: 0", projection)
+-            self.assertIn(f"Total unknown sites excluded: {total}", projection)
++            self.assertIn("Total known endpoint-target entries: 0", projection)
++            self.assertIn(f"Total unresolved endpoint-target entries excluded: {total}", projection)
+ 
+     def test_empty_dataframe_preserves_no_report_contract(self):
+         empty = pd.DataFrame(columns=["Terminal_Regions"])

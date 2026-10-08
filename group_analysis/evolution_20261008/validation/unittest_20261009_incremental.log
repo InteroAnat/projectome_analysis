@@ -1,0 +1,474 @@
+Command: python -X utf8 -B -m unittest discover -s tests -v
+Interpreter: C:\Users\laika_yan\miniconda3\envs\projectome\python.exe
+UTC: 2026-10-08T16:59:33.883781+00:00
+test_encoded_index_um_is_not_world_mm (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_fresh_root_does_not_assume_first_row_or_change_identity (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_half_voxel_ties_even_and_nearby_boundary (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_identity_hash_collisions_never_silently_select (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_missing_coordinates_and_sources_are_not_zero (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_official_mask_side_and_label_conflict (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_origin_and_tie_policies_are_explicit_sensitivity (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_reviewed_manual_status_requires_exact_sample_neuron_hash (test_atlas_soma_locations.AtlasSomaAuditTests) ... ok
+test_bad_sampling_parameters_and_group_identity_fail (test_clustering_validation.DiagnosticTests) ... ok
+test_group_holdout_reports_remaining_cohort_sensitivity (test_clustering_validation.DiagnosticTests) ... ok
+test_identical_distances_do_not_claim_requested_k_or_c_index_optimum (test_clustering_validation.DiagnosticTests) ... ok
+test_matrix_and_ward_geometry_checks (test_clustering_validation.DiagnosticTests) ... ok
+test_separated_groups_have_stable_reproducible_partition (test_clustering_validation.DiagnosticTests) ... ok
+test_singleton_stability_is_reported_as_unassessed (test_clustering_validation.DiagnosticTests) ... ok
+test_duplicate_pair_noninteger_and_bad_score_are_rejected (test_clustering_validation.FNTLoadingTests) ... ok
+test_index_name_count_and_duplicate_marker_mismatch_are_rejected (test_clustering_validation.FNTLoadingTests) ... ok
+test_missing_pair_is_rejected_instead_of_imputed_zero (test_clustering_validation.FNTLoadingTests) ... ok
+test_missing_self_pair_is_rejected (test_clustering_validation.FNTLoadingTests) ... ok
+test_reverse_direction_reduction_is_explicit (test_clustering_validation.FNTLoadingTests) ... ok
+test_triangular_scores_preserve_joined_marker_order (test_clustering_validation.FNTLoadingTests) ... ok
+test_coordinate_lookup_absence_and_bounds (test_coarse_insula_review.CoarseReviewTests) ... ok
+test_exact_identity_and_numeric_retrieval (test_coarse_insula_review.CoarseReviewTests) ... ok
+test_human_state_separate_from_candidates (test_coarse_insula_review.CoarseReviewTests) ... ok
+test_missing_parent_and_disconnected_cycle_fail (test_coarse_insula_review.CoarseReviewTests) ... ok
+test_serialization_graph_equal_but_coordinate_change_not_equal (test_coarse_insula_review.CoarseReviewTests) ... ok
+test_tissue_class_not_atlas_background (test_coarse_insula_review.CoarseReviewTests) ... ok
+test_cli_missing_source_is_incomplete_and_refuses_old_output (test_discovery_geometry.GeometryTests) ... ok
+test_duplicate_or_missing_ids_remain_rows_but_cannot_be_counted (test_discovery_geometry.GeometryTests) ... ok
+test_explicit_reference_and_mode_required_without_fallback (test_discovery_geometry.GeometryTests) ... ok
+test_folded_symmetry_and_two_mm_is_eight_voxels (test_discovery_geometry.GeometryTests) ... ok
+test_missing_coordinates_are_unknown_and_labels_do_not_promote (test_discovery_geometry.GeometryTests) ... ok
+test_missing_sources_are_not_zero_and_source_memberships_survive (test_discovery_geometry.GeometryTests) ... ok
+test_actual_levels_unknowns_hemisphere_conflicts_and_half_open_faces (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_bad_graph_records_failed_run_and_preserves_source (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_concurrent_map_publication_does_not_clobber (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_conditional_denominator_and_zero_computable_groups (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_equal_animal_weights_with_unequal_neuron_counts (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_every_endpoint_outside_still_has_computable_denominator (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_existing_run_and_long_paths_are_rejected_without_overwrite (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_fractional_occupancy_is_per_neuron_then_per_animal (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_hash_binding_and_output_collision_fail_before_destination (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_mask_geometry_semantics_units_and_atlas_shape_fail_closed (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_public_cli_runs_isolated_synthetic_manifest (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_saved_count_occupancy_density_and_full_leaf_audit (test_endpoint_maps.EndpointBuilderTests) ... ok
+test_all_input_and_saved_map_coded_mm_geometry_even_after_rehash (test_endpoint_review.EndpointReviewTests) ... ok
+test_changed_leaf_voxel_rejected_even_after_artifact_hash_updated (test_endpoint_review.EndpointReviewTests) ... ok
+test_changed_target_label_rejected_independently (test_endpoint_review.EndpointReviewTests) ... ok
+test_duplicate_missing_group_regions_and_run_bindings_rejected (test_endpoint_review.EndpointReviewTests) ... ok
+test_exact_faces_outside_and_mask_free_readback (test_endpoint_review.EndpointReviewTests) ... ok
+test_fractional_occupancy_and_equal_animal_weighting (test_endpoint_review.EndpointReviewTests) ... ok
+test_graph_branches_proximal_coincident_custom_types_and_soma_ambiguity (test_endpoint_review.EndpointReviewTests) ... ok
+test_group_counts_availability_and_animal_lists_fail_closed (test_endpoint_review.EndpointReviewTests) ... ok
+test_leaf_original_metadata_source_contract_and_metrics_after_rehash (test_endpoint_review.EndpointReviewTests) ... ok
+test_legacy_explicit_underscore_side_labels (test_endpoint_review.EndpointReviewTests) ... ok
+test_nullable_integral_decimal_indices_and_invalid_decimal_values (test_endpoint_review.EndpointReviewTests) ... ok
+test_optimized_python_rejects_fabricated_group_denominators (test_endpoint_review.EndpointReviewTests) ... ok
+test_per_neuron_target_metadata_labels_volumes_after_rehash (test_endpoint_review.EndpointReviewTests) ... ok
+test_qc_accounting_and_unresolved_unassessed_lists_after_rehash (test_endpoint_review.EndpointReviewTests) ... ok
+test_recorded_reference_geometry_and_units_binding (test_endpoint_review.EndpointReviewTests) ... ok
+test_saved_regional_summary_metadata_and_unavailable_values_after_rehash (test_endpoint_review.EndpointReviewTests) ... ok
+test_saved_sources_all_leaves_maps_tables_and_unassessed_group (test_endpoint_review.EndpointReviewTests) ... ok
+test_source_bom_and_independent_graph_validation (test_endpoint_review.EndpointReviewTests) ... ok
+test_unavailable_groups_cannot_have_map_fields_or_files (test_endpoint_review.EndpointReviewTests) ... ok
+test_wrong_group_map_rejected_even_after_map_hash_updated (test_endpoint_review.EndpointReviewTests) ... ok
+test_batch_lock_prevents_a_second_process (test_fmost_context_batch.ContextBatchTests) ... ok
+test_budget_stop_keeps_every_uid_in_run_ledger (test_fmost_context_batch.ContextBatchTests) ... ok
+test_changed_raw_swc_cannot_relabel_an_existing_soma_package (test_fmost_context_batch.ContextBatchTests) ... ok
+test_failed_replacement_preserves_existing_derived_report_and_artifact (test_fmost_context_batch.ContextBatchTests) ... ok
+test_larger_field_still_obeys_memory_and_source_admission (test_fmost_context_batch.ContextBatchTests) ... ok
+test_more_insula_candidates_are_prioritized_without_dropping_other_categories (test_fmost_context_batch.ContextBatchTests) ... ok
+test_resume_retries_resource_stops_but_can_reuse_observed_404_gaps (test_fmost_context_batch.ContextBatchTests) ... ok
+test_sampler_retains_full_field_across_two_z_blocks (test_fmost_context_batch.ContextBatchTests) ... ok
+test_z_boundary_retains_requested_field_with_same_working_memory (test_fmost_context_batch.ContextBatchTests) ... ok
+test_zero_intensity_and_missing_source_have_different_coverage_values (test_fmost_context_batch.ContextBatchTests) ... ok
+test_404_observation_is_dated_sample_specific_and_expires (test_fmost_context_batch.ContextBudgetTests) ... ok
+test_cache_and_request_admission_stop_before_network_or_write (test_fmost_context_batch.ContextBudgetTests) ... ok
+test_cached_zero_intensity_is_usable_even_when_network_budget_is_full (test_fmost_context_batch.ContextBudgetTests) ... ok
+test_disk_margin_and_runtime_stop_are_explicit (test_fmost_context_batch.ContextBudgetTests) ... ok
+test_replacement_accounts_for_actual_cache_growth (test_fmost_context_batch.ContextBudgetTests) ... ok
+test_all_missing_and_missing_root_cube_have_no_usable_array (test_fmost_derived_context.DerivedContextTests) ... ok
+test_coordinate_ramp_matches_affine_across_cube_boundary (test_fmost_derived_context.DerivedContextTests) ... ok
+test_copied_context_preserved_before_source_requests (test_fmost_derived_context.DerivedContextTests) ... ok
+test_http_size_and_header_guards_precede_pixel_decode (test_fmost_derived_context.DerivedContextTests) ... ok
+test_malformed_cube_is_rejected (test_fmost_derived_context.DerivedContextTests) ... ok
+test_missing_neighbor_has_explicit_partial_coverage (test_fmost_derived_context.DerivedContextTests) ... ok
+test_missing_plane_does_not_shift_later_array_slot_labels (test_fmost_derived_context.DerivedContextTests) ... ok
+test_pilot_exports_matching_pixels_axes_and_trace_planes (test_fmost_derived_context.DerivedContextTests) ... [WARN] no results.xlsx for absent
+[INFO] Connections closed.
+[context] not run 252790|014.swc: central source unavailable
+[INFO] Connections closed.
+[context] derived_highres 252790|014.swc cubes 1
+ok
+test_resource_bounds_reject_before_request_or_allocation (test_fmost_derived_context.DerivedContextTests) ... ok
+test_runtime_stop_retains_unattempted_source_list (test_fmost_derived_context.DerivedContextTests) ... ok
+test_2d_tiff_has_yx_pixels_and_metadata_without_nifti_axes (test_fmost_export_provenance.ExportProvenanceTests) ... ok
+test_generic_high_export_never_inherits_stale_low_coverage (test_fmost_export_provenance.ExportProvenanceTests) ... ok
+test_malformed_or_nonfinite_root_fails_before_creating_files (test_fmost_export_provenance.ExportProvenanceTests) ... ok
+test_matching_partial_acquisition_preserves_coverage_and_xyz_voxels (test_fmost_export_provenance.ExportProvenanceTests) ... ok
+test_mismatched_high_acquisition_is_unknown_or_rejected (test_fmost_export_provenance.ExportProvenanceTests) ... ok
+test_missing_root_and_acquisition_remain_unknown (test_fmost_export_provenance.ExportProvenanceTests) ... ok
+test_clipping_excludes_off_slab_edges_and_retains_crossings (test_fmost_image_loader.GeometryTests) ... ok
+test_constant_contrast_is_finite (test_fmost_image_loader.GeometryTests) ... ok
+test_depth_has_exact_slice_count_and_exclusive_stop (test_fmost_image_loader.GeometryTests) ... ok
+test_native_affine_agrees_with_overlay_and_preserves_z_spacing (test_fmost_image_loader.GeometryTests) ... ok
+test_bad_http_payload_never_becomes_cache (test_fmost_image_loader.LoaderTests) ... ok
+test_bad_http_payload_retries_are_bounded_and_uncached (test_fmost_image_loader.LoaderTests) ... ok
+test_copied_samples_use_own_series_and_never_legacy_ssh (test_fmost_image_loader.LoaderTests) ... ok
+test_export_persists_native_xyz_affine_micron_units_and_provenance (test_fmost_image_loader.LoaderTests) ... ok
+test_export_sidecar_keeps_raw_root_nifti_axes_and_coverage (test_fmost_image_loader.LoaderTests) ... ok
+test_high_cubes_have_correct_zyx_shape_and_required_center (test_fmost_image_loader.LoaderTests) ... ok
+test_image_boundary_is_cropped_not_synthetic_pixel_padding (test_fmost_image_loader.LoaderTests) ... ok
+test_low_crop_contains_soma_at_correct_native_pixel (test_fmost_image_loader.LoaderTests) ... ok
+test_low_res_section_cache_is_bounded (test_fmost_image_loader.LoaderTests) ... ok
+test_missing_sections_are_explicit_and_central_is_required (test_fmost_image_loader.LoaderTests) ... ok
+test_other_sample_never_uses_legacy_ssh_directory (test_fmost_image_loader.LoaderTests) ... ok
+test_partial_neighbor_cubes_stay_explicit (test_fmost_image_loader.LoaderTests) ... ok
+test_pil_fallback_reads_every_tiff_page (test_fmost_image_loader.LoaderTests) ... ok
+test_c_index_is_bounded_and_records_duplicate_realized_cuts (test_fnt_clustering.FntClusteringTests) ... ok
+test_constant_spearman_profile_is_not_imputed (test_fnt_clustering.FntClusteringTests) ... ok
+test_global_marker_alignment_uses_sample_and_neuron_identity (test_fnt_clustering.FntClusteringTests) ... ok
+test_joined_identity_order_beats_annotation_or_folder_order (test_fnt_clustering.FntClusteringTests) ... ok
+test_legacy_marker_stems_align_without_silent_relabeling (test_fnt_clustering.FntClusteringTests) ... ok
+test_missing_or_duplicate_annotation_is_error (test_fnt_clustering.FntClusteringTests) ... ok
+test_noninteractive_cli_exports_auditable_exploratory_result (test_fnt_clustering.FntClusteringTests) ... ok
+test_raw_default_has_no_type_penalty_and_ward_is_rejected (test_fnt_clustering.FntClusteringTests) ... ok
+test_destination_created_during_build_is_never_replaced (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_duplicate_missing_and_reordered_full_identities_are_rejected (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_existing_destination_refused_before_input_read_or_enrichment (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_post_enrichment_membership_change_never_publishes (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_same_input_output_is_rejected (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_success_preserves_curated_and_distant_rows_all_sheet_membership_and_metadata (test_harmonization_safety.HarmonizationSafetyTests) ... ok
+test_curated_labels_are_candidates_and_prco_is_separate (test_insula_candidate_rules.ExactCandidateTests) ... ok
+test_discovery_uses_same_exact_atlas_labels (test_insula_candidate_rules.ExactCandidateTests) ... ok
+test_refinement_keeps_explicit_unknown_and_distant_candidates (test_insula_candidate_rules.ExactCandidateTests) ... ok
+test_region_helper_exact_labels_curated_aliases_and_missing_metadata (test_insula_candidate_rules.ExactCandidateTests) ... ok
+test_source_specific_normalization_preserves_anatomical_numbers (test_insula_candidate_rules.ExactCandidateTests) ... ok
+test_unknown_is_explicit_and_blank_is_separate (test_insula_candidate_rules.ExactCandidateTests) ... ok
+test_adjacent_or_excluded_never_accepted (test_insula_inventory.ScreenTests) ... ok
+test_exact_sample_channel_and_neuron_names (test_insula_inventory.ScreenTests) ... ok
+test_fold_both_sides_and_phys_mm_padding (test_insula_inventory.ScreenTests) ... ok
+test_missing_or_nonfinite_coordinates_are_unassessed (test_insula_inventory.ScreenTests) ... ok
+test_stale_tracker_vs_dated_verified_series_and_exact_channel (test_insula_inventory.ScreenTests) ... ok
+test_unknown_zero_suffix_missing_region_and_no_promotion (test_insula_inventory.ScreenTests) ... ok
+test_all_sample_build_keeps_missing_counts_and_separate_injection_claim (test_insula_inventory.SnapshotTests) ... ok
+test_capture_bounded_and_failed_requests_persist_missing (test_insula_inventory.SnapshotTests) ... ok
+test_later_failure_replaces_old_success_without_zero_and_hash_drift_fails (test_insula_inventory.SnapshotTests) ... ok
+test_snapshot_timestamp_order_handles_timezone_offsets (test_insula_inventory.SnapshotTests) ... ok
+test_all_audited_input_hashes_are_enforced (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_changed_registry_and_invalid_animal_identity_fail (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_changed_swc_hash_fails_before_publication (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_delivery_binding_rejects_changed_inventory_provenance (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_delivery_binding_rejects_changed_selection_evidence (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_duplicate_exact_identity_fails_before_publication (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_human_unknown_prco_and_overlapping_atlas_evidence_stay_human_once (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_missing_animal_and_excluded_identity_remain_only_in_ledger (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_no_overwrite_preserves_prior_bytes (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_public_cli_creates_readable_bound_manifest (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_reused_source_path_cannot_create_second_neuron_identity (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_weaker_strata_cannot_overwrite_higher_evidence (test_inventory_projection_manifest.InventoryProjectionManifestTests) ... ok
+test_full_saved_maps_and_exact_scope_failures (test_projection_maps.BuilderContracts) ... ok
+test_anisotropic_sheared_affine_defines_physical_length (test_projection_maps.LineIntegralTests) ... ok
+test_axis_edge_conserves_length_and_includes_terminal_voxel (test_projection_maps.LineIntegralTests) ... ok
+test_bad_graph_and_unknown_reference_units_fail (test_projection_maps.LineIntegralTests) ... ok
+test_child_type_selects_transition_and_excludes_dendrite (test_projection_maps.LineIntegralTests) ... ok
+test_diagonal_is_reversal_and_resampling_invariant (test_projection_maps.LineIntegralTests) ... ok
+test_equal_animal_weights_are_independent_of_neuron_counts (test_projection_maps.LineIntegralTests) ... ok
+test_fov_upper_face_has_no_volume_and_lower_face_is_included (test_projection_maps.LineIntegralTests) ... ok
+test_reordered_graph_and_zero_edges_do_not_change_length (test_projection_maps.LineIntegralTests) ... ok
+test_segment_with_both_endpoints_outside_keeps_crossing_length (test_projection_maps.LineIntegralTests) ... ok
+test_world_and_index_frames_agree_after_explicit_transform (test_projection_maps.LineIntegralTests) ... ok
+test_concurrent_destination_creation_preserves_prior_bytes (test_projection_maps_independent.IndependentBuilderTests) ... ok
+test_unequal_neuron_counts_keep_equal_animal_weights (test_projection_maps_independent.IndependentBuilderTests) ... ok
+test_1016_segments_against_independent_voxel_box_oracle (test_projection_maps_independent.IndependentGeometryTests) ... ok
+test_mm_micron_meter_references_have_equivalent_lengths_and_densities (test_projection_maps_independent.IndependentGeometryTests) ... ok
+test_duplicate_and_replaced_metrics_identities_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_duplicate_animal_groups_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_exact_group_region_coverage_rejects_duplicate_and_extra (test_projection_review.SavedProjectionReviewTests) ... ok
+test_existing_destination_is_preserved (test_projection_review.SavedProjectionReviewTests) ... ok
+test_length_accounting_and_mask_coverage_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_map_hash_geometry_pixels_and_density_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_mask_free_run_reports_coverage_unassessed_and_render_fails_early (test_projection_review.SavedProjectionReviewTests) ... ok
+test_masked_builder_run_and_review_provenance (test_projection_review.SavedProjectionReviewTests) ... ok
+test_metrics_metadata_and_required_columns_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_missing_code_provenance_and_manifest_hash_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_pooled_neuron_group_map_is_not_equal_animal_mean (test_projection_review.SavedProjectionReviewTests) ... ok
+test_python_optimized_process_still_rejects_corrupt_manifest_hash (test_projection_review.SavedProjectionReviewTests) ... ok
+test_source_and_reference_hashes_fail (test_projection_review.SavedProjectionReviewTests) ... ok
+test_actual_cli_help_and_missing_arguments_do_not_create_default_outputs (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_existing_even_empty_output_is_refused_without_changes (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_explicit_raw_legacy_works_without_metadata_and_never_folds (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_folded_mirrors_padding_distance_and_original_labels_preserved (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_invalid_padding_and_source_directory_outputs_refused (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_missing_sources_are_explicit_and_malformed_sources_fail_before_output (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_no_raw_anchor_or_bbox_fallback_and_explicit_companions_supported (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_unique_box_and_ambiguous_rescue_policies_unchanged (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_wrong_frames_scale_bounds_and_region_coverage_fail_before_output (test_refinement_entrypoint.RefinementEntrypointTests) ... ok
+test_mask_values_are_calibrated_not_assumed (test_region_analysis.HemisphereReferenceTests) ... ok
+test_mixed_mask_hemispheres_are_rejected (test_region_analysis.HemisphereReferenceTests) ... ok
+test_population_refinement_recomputes_conflicting_type_and_splits (test_region_analysis.HemisphereReferenceTests) ... ok
+test_reference_grid_and_provenance_are_required (test_region_analysis.HemisphereReferenceTests) ... ok
+test_classifier_uses_the_same_refined_side_contract (test_region_analysis.LateralityRegressionTests) ... ok
+test_conflicting_reference_is_flagged_and_unclassified (test_region_analysis.LateralityRegressionTests) ... ok
+test_documented_112_114_do_not_flip_from_coordinate_distribution (test_region_analysis.LateralityRegressionTests) ... ok
+test_invalid_soma_side_never_becomes_contralateral (test_region_analysis.LateralityRegressionTests) ... ok
+test_reference_requires_alignment_provenance_and_valid_sides (test_region_analysis.LateralityRegressionTests) ... ok
+test_refined_labels_preserve_explicit_side (test_region_analysis.LateralityRegressionTests) ... ok
+test_unknown_side_is_invariant_to_other_neurons (test_region_analysis.LateralityRegressionTests) ... ok
+test_actual_workbook_export_preserves_corrected_sides_and_splits (test_region_analysis.RegionLookupTests) ... ok
+test_arm_first_last_levels_are_not_parent_labels (test_region_analysis.RegionLookupTests) ... ok
+test_invalid_atlas_selection_and_duplicate_keys_are_rejected (test_region_analysis.RegionLookupTests) ... ok
+test_shuffled_key_indices_and_outside_endpoints (test_region_analysis.RegionLookupTests) ... ok
+test_terminal_hierarchy_accepts_real_list_cells (test_region_analysis.RegionLookupTests) ... ok
+test_integer_ids_are_not_rounded_through_float (test_swc_validation.ParseSwcTests) ... ok
+test_invalid_numeric_fields_are_rejected_with_source_and_line (test_swc_validation.ParseSwcTests) ... ok
+test_invalid_topology_is_rejected (test_swc_validation.ParseSwcTests) ... ok
+test_long_chain_does_not_require_recursive_validation (test_swc_validation.ParseSwcTests) ... ok
+test_unsorted_custom_types_and_dendrite_to_axon_are_preserved (test_swc_validation.ParseSwcTests) ... ok
+test_failed_reload_preserves_complete_previous_graph (test_swc_validation.TracerLoaderTests) ... ok
+test_invalid_cache_is_rejected_without_fetch_or_overwrite (test_swc_validation.TracerLoaderTests) ... ok
+test_invalid_direct_input_creates_no_partial_state_or_csv (test_swc_validation.TracerLoaderTests) ... ok
+test_invalid_download_is_not_cached (test_swc_validation.TracerLoaderTests) ... ok
+test_invalid_explicit_file_is_rejected (test_swc_validation.TracerLoaderTests) ... ok
+test_public_process_valid_input_preserves_geometry_and_edges (test_swc_validation.TracerLoaderTests) ... ok
+test_successful_reload_replaces_old_graph (test_swc_validation.TracerLoaderTests) ... ok
+test_valid_download_is_cached_then_reusable_without_fetch (test_swc_validation.TracerLoaderTests) ... ok
+test_empty_dataframe_preserves_no_report_contract (test_terminal_reporting.TerminalReportConsumerTests) ... ok
+test_include_unresolved_plot_retains_every_entry (test_terminal_reporting.TerminalReportConsumerTests) ... ok
+test_only_unresolved_and_empty_target_lists_render (test_terminal_reporting.TerminalReportConsumerTests) ... ok
+test_projection_plot_and_population_reports_agree (test_terminal_reporting.TerminalReportConsumerTests) ... D:\projectome_analysis\main_scripts\region_analysis\plotting.py:290: MatplotlibDeprecationWarning: The 'labels' parameter of boxplot() has been renamed 'tick_labels' since Matplotlib 3.9; support for the old name will be dropped in 3.11.
+  bp = axes[1].boxplot(
+ok
+test_terminal_plot_filters_status_and_saves_report_and_figure (test_terminal_reporting.TerminalReportConsumerTests) ... ok
+test_counts_conserve_explicit_entries_without_empty_list_phantoms (test_terminal_reporting.TerminalTargetStatusTests) ... ok
+test_explicit_controls_and_nonstring_values_are_not_known (test_terminal_reporting.TerminalTargetStatusTests) ... ok
+test_literal_anatomical_names_and_digits_remain_known (test_terminal_reporting.TerminalTargetStatusTests) ... ok
+test_all_candidates_outside_is_distinct_from_no_candidates (test_terminal_sites.TerminalSiteTests) ... ok
+test_boundary_half_open_assignment_and_outside_accounting (test_terminal_sites.TerminalSiteTests) ... ok
+test_coordinate_contract_is_mandatory (test_terminal_sites.TerminalSiteTests) ... ok
+test_coordinate_equivalence_and_sheared_physical_geometry (test_terminal_sites.TerminalSiteTests) ... ok
+test_custom_compartments_preserved_and_axon_transition_retained (test_terminal_sites.TerminalSiteTests) ... ok
+test_densifying_terminal_branch_does_not_change_leaf_or_length (test_terminal_sites.TerminalSiteTests) ... ok
+test_full_graph_prevents_filter_induced_type_transition_tip (test_terminal_sites.TerminalSiteTests) ... ok
+test_immediately_adjacent_float_below_face_stays_in_lower_voxel (test_terminal_sites.TerminalSiteTests) ... ok
+test_invalid_graphs_fail_before_measurement (test_terminal_sites.TerminalSiteTests) ... ok
+test_repeated_tips_same_voxel_count_twice_occupancy_once (test_terminal_sites.TerminalSiteTests) ... ok
+test_root_only_never_becomes_endpoint_even_when_type2 (test_terminal_sites.TerminalSiteTests) ... ok
+test_soma_anchor_missing_or_ambiguous_is_explicit (test_terminal_sites.TerminalSiteTests) ... ok
+test_terminal_branch_stops_at_full_graph_bifurcation (test_terminal_sites.TerminalSiteTests) ... ok
+test_unsorted_ids_and_identity_are_preserved (test_terminal_sites.TerminalSiteTests) ... ok
+test_zero_length_and_coincident_tips_are_retained (test_terminal_sites.TerminalSiteTests) ... ok
+test_baseline_is_kept_and_a_mismatch_does_not_replace_it (test_visual_review_manifest.CanonicalBaselineTests) ... ok
+test_ortho_axes_keep_the_physical_aspect (test_visual_review_manifest.OrthoGeometryTests) ... ok
+test_xz_aspect_uses_physical_spacing (test_visual_review_manifest.OrthoGeometryTests) ... ok
+test_duplicate_rows_conflict_and_orphans_are_archived (test_visual_review_manifest.ReviewTableTests) ... ok
+test_oversized_human_note_fails_before_review_tables_are_replaced (test_visual_review_manifest.ReviewTableTests) ... ok
+test_oversized_source_errors_survive_csv_and_xlsx_readback (test_visual_review_manifest.ReviewTableTests) ... ok
+test_regeneration_preserves_either_table_and_rejects_conflicts (test_visual_review_manifest.ReviewTableTests) ... ok
+test_verify_does_not_rewrite_reviewer_tables (test_visual_review_manifest.ReviewTableTests) ... ok
+test_activated_extension_survives_default_regeneration_and_fails_on_drift (test_visual_review_manifest.SelectionTests) ... ok
+test_blank_portal_region_is_not_unknown (test_visual_review_manifest.SelectionTests) ... ok
+test_blank_portal_text_is_absent_not_nan (test_visual_review_manifest.SelectionTests) ... ok
+test_coordinate_screen_stays_unpadded (test_visual_review_manifest.SelectionTests) ... ok
+test_exact_project_id_ignores_channel_suffix_records (test_visual_review_manifest.SelectionTests) ... ok
+test_explicit_labels_and_numeric_suffixes (test_visual_review_manifest.SelectionTests) ... ok
+test_folded_bbox_uses_midline_distance (test_visual_review_manifest.SelectionTests) ... ok
+test_historical_area_44_keeps_its_anatomical_number (test_visual_review_manifest.SelectionTests) ... ok
+test_live_regional_lock_prevents_manifest_replacement (test_visual_review_manifest.SelectionTests) ... ok
+test_missing_neighbors_are_not_marked_ok (test_visual_review_manifest.SelectionTests) ... ok
+test_raw_swc_routes_stay_on_the_own_sample (test_visual_review_manifest.SelectionTests) ... ok
+test_source_status_does_not_treat_pending_samples_as_available (test_visual_review_manifest.SelectionTests) ... ok
+test_staging_keeper_and_missing_step1_are_retained (test_visual_review_manifest.SelectionTests) ... ok
+test_staging_origin_keeps_the_workbook_source (test_visual_review_manifest.SelectionTests) ... ok
+test_step1_empty_is_unknown_and_coordinate_screen_is_separate (test_visual_review_manifest.SelectionTests) ... ok
+test_unresolved_source_requires_unchanged_own_sample_graph (test_visual_review_manifest.SelectionTests) ... ok
+test_validated_blank_source_is_separate_from_atlas_unknown (test_visual_review_manifest.SelectionTests) ... ok
+test_highres_context_grid_is_bounded (test_visual_review_manifest.TraceSlabTests) ... ok
+test_off_plane_edges_stay_out_of_the_trace_slab (test_visual_review_manifest.TraceSlabTests) ... ok
+
+----------------------------------------------------------------------
+Ran 270 tests in 25.796s
+
+OK
+  > Exporting: C:\Users\LAIKA_~1\AppData\Local\Temp\tmp1186b25t\export\fixture_007.swc_SomaBlock.nii.gz
+  > Exporting: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpz7mkkrbl\export\fixture_007.swc_SomaBlock.nii.gz
+
+[ACTION] Acquiring High-Res Soma Block (Radius 1)
+  > Downloading Block 1/1
+  > High-Res Volume Built.
+
+[ACTION] Acquiring High-Res Soma Block (Radius 1)
+  > Downloading Block 1/1
+  > High-Res Volume Built.
+
+[ACTION] Acquiring Low-Res Wide Field (20x20 um)
+  > Low-res source: C:\Users\LAIKA_~1\AppData\Local\Temp\tmp21alx53c\sections
+  > Fetching Z-Slices: 10 to 10...
+
+[ACTION] Acquiring Low-Res Wide Field (20x20 um)
+  > Low-res source: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpcp_xc1vq\sections
+  > Fetching Z-Slices: 9 to 10...
+
+[ACTION] Acquiring Low-Res Wide Field (20x20 um)
+  > Low-res source: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpbqf960g8\sections
+  > Fetching Z-Slices: 9 to 10...
+
+[ACTION] Acquiring Low-Res Wide Field (20x20 um)
+  > Low-res source: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpbqf960g8\sections
+  > Fetching Z-Slices: 9 to 10...
+
+[ACTION] Acquiring Low-Res Wide Field (20x20 um)
+  > Low-res source: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpbqf960g8\sections
+  > Fetching Z-Slices: 9 to 10...
+
+[ACTION] Acquiring High-Res Soma Block (Radius 2)
+  > Downloading Block 1/27  > Downloading Block 2/27  > Downloading Block 3/27  > Downloading Block 4/27  > Downloading Block 5/27  > Downloading Block 6/27  > Downloading Block 7/27  > Downloading Block 8/27  > Downloading Block 9/27  > Downloading Block 10/27  > Downloading Block 11/27  > Downloading Block 12/27  > Downloading Block 13/27  > Downloading Block 14/27  > Downloading Block 15/27  > Downloading Block 16/27  > Downloading Block 17/27  > Downloading Block 18/27  > Downloading Block 19/27  > Downloading Block 20/27  > Downloading Block 21/27  > Downloading Block 22/27  > Downloading Block 23/27  > Downloading Block 24/27  > Downloading Block 25/27  > Downloading Block 26/27  > Downloading Block 27/27
+  > High-Res Volume Built.
+
+[ACTION] Acquiring High-Res Soma Block (Radius 2)
+  > Downloading Block 1/27  > Downloading Block 2/27  > Downloading Block 3/27  > Downloading Block 4/27  > Downloading Block 5/27  > Downloading Block 6/27  > Downloading Block 7/27  > Downloading Block 8/27  > Downloading Block 9/27  > Downloading Block 10/27  > Downloading Block 11/27  > Downloading Block 12/27  > Downloading Block 13/27  > Downloading Block 14/27  > Downloading Block 15/27  > Downloading Block 16/27  > Downloading Block 17/27  > Downloading Block 18/27  > Downloading Block 19/27  > Downloading Block 20/27  > Downloading Block 21/27  > Downloading Block 22/27  > Downloading Block 23/27  > Downloading Block 24/27  > Downloading Block 25/27  > Downloading Block 26/27  > Downloading Block 27/27
+  > High-Res Volume Built.
+Exported exploratory clustering: n=8, selected k=2, suggested k=2, output=C:\Users\LAIKA_~1\AppData\Local\Temp\tmpqs0k_19g\outputs
+[06] auto_atlas_insula rows to consider: 1
+[06] rows with refined label changed: 1 (ambiguous: 0)
+[06] Soma_Region_Refined per sample after harmonization:
+SampleID  Soma_Region_Refined
+251637    IDD5                   1
+252385    IAL                    2
+[06] Soma_Region_Source per sample after harmonization:
+SampleID  Soma_Region_Source                       
+251637    curated_251637                               1
+252385    atlas_to_manual_harmonized_251637_rule       1
+          coord_inferred_from_251637_strict_distant    1
+[06] auto_atlas_insula rows to consider: 1
+[06] rows with refined label changed: 1 (ambiguous: 0)
+[06] Soma_Region_Refined per sample after harmonization:
+SampleID  Soma_Region_Refined
+251637    IDD5                   1
+252385    IAL                    2
+[06] Soma_Region_Source per sample after harmonization:
+SampleID  Soma_Region_Source                       
+251637    curated_251637                               1
+252385    atlas_to_manual_harmonized_251637_rule       1
+          coord_inferred_from_251637_strict_distant    1
+[06] auto_atlas_insula rows to consider: 1
+[06] rows with refined label changed: 1 (ambiguous: 0)
+[06] Soma_Region_Refined per sample after harmonization:
+SampleID  Soma_Region_Refined
+251637    IDD5                   1
+252385    IAL                    2
+[06] Soma_Region_Source per sample after harmonization:
+SampleID  Soma_Region_Source                       
+251637    curated_251637                               1
+252385    atlas_to_manual_harmonized_251637_rule       1
+          coord_inferred_from_251637_strict_distant    1
+[06] wrote C:\Users\laika_yan\AppData\Local\Temp\tmp1weow4ks\derivative.xlsx
+[06] done
+
+[Phase 4] 252385  ←  C:\Users\laika_yan\AppData\Local\Temp\tmp7atmv2y_\source.xlsx
+  source breakdown: {'coord_inferred_from_251637_strict_distant': 2, 'not_rescue_candidate': 1}
+  kept sub-region counts: {'IAL': 2}
+  kept side counts: {'Unknown': 2}
+  [saved] C:\Users\laika_yan\AppData\Local\Temp\tmp7atmv2y_\refinement\252385_INS_HE_coord_inferred.xlsx
+
+[saved] C:\Users\laika_yan\AppData\Local\Temp\tmp7atmv2y_\refinement\all_refined_neurons.csv
+
+Combined refined table:
+  total = 2 neurons
+  by sample x sub-region:
+Soma_Region_Refined  IAL
+SampleID                
+252385                 2
+  by sample x soma side:
+Soma_Side_Inferred  Unknown
+SampleID                   
+252385                    2
+[LATERALITY] 1 neurons: 0 with ipsi targets, 0 with contra targets (reference for soma side: 0; conflicts: 1)
+
+[EXCEL] Writing: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpjji3wt2d\conflict.xlsx
+  [Sheet] Summary: 1 rows x 21 cols
+  [Sheet] Soma_Hierarchy: 1 rows x 2 cols
+  [Sheet] Terminal_Sites: 1 rows
+  [Sheet] Laterality: 1 rows x 17 cols
+  [Sheet] Outliers: 0 events (clean!)
+  [Sheet] Projection_Length_ipsi: 1 neurons x 0 regions
+  [Sheet] Projection_Length_contra: 1 neurons x 0 regions
+  [Sheet] Projection_Strength_ipsi: 1 neurons x 0 regions
+  [Sheet] Projection_Strength_contra: 1 neurons x 0 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmpjji3wt2d\conflict.xlsx
+[LATERALITY] No projection-length column — length columns skipped.
+[LATERALITY] 1 neurons: 0 with ipsi targets, 0 with contra targets (reference for soma side: 0; conflicts: 1)
+[LATERALITY] 5 neurons: 1 with ipsi targets, 3 with contra targets (reference for soma side: 0; conflicts: 0)
+[LATERALITY] No projection-length column — length columns skipped.
+[LATERALITY] 1 neurons: 1 with ipsi targets, 0 with contra targets (reference for soma side: 1; conflicts: 0)
+[LATERALITY] No projection-length column — length columns skipped.
+[LATERALITY] 1 neurons: 0 with ipsi targets, 0 with contra targets (reference for soma side: 0; conflicts: 0)
+[LATERALITY] No projection-length column — length columns skipped.
+[LATERALITY] 3 neurons: 1 with ipsi targets, 1 with contra targets (reference for soma side: 0; conflicts: 0)
+[LATERALITY] 1 neurons: 0 with ipsi targets, 1 with contra targets (reference for soma side: 0; conflicts: 0)
+
+[EXCEL] Writing: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpzpt9oa2t\results.xlsx
+  [Sheet] Summary: 1 rows x 16 cols
+  [Sheet] Soma_Hierarchy: 1 rows x 3 cols
+  [Sheet] Terminal_Sites: 1 rows
+  [Sheet] Laterality: 1 rows x 17 cols
+  [Sheet] Outliers: 0 events (clean!)
+  [Sheet] Projection_Length_ipsi: 1 neurons x 0 regions
+  [Sheet] Projection_Length_contra: 1 neurons x 1 regions
+  [Sheet] Projection_Strength_ipsi: 1 neurons x 0 regions
+  [Sheet] Projection_Strength_contra: 1 neurons x 1 regions
+
+[SAVED] C:\Users\LAIKA_~1\AppData\Local\Temp\tmpzpt9oa2t\results.xlsx
+Parse swc as string
+Parse swc as string
+Loading SWC from local file: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpojdae7vv\007.swc
+Parse swc as string
+Fetching SWC data via iondata
+Parse swc as file
+Parse swc as string
+there are 1 terminal nodes
+
+Constructing branches, assigning orders 
+ 
+
+
+Finished with 1 branches
+Parse swc as string
+there are 1 terminal nodes
+
+Constructing branches, assigning orders 
+ 
+
+
+Finished with 1 branches
+Parse swc as string
+there are 2 terminal nodes
+
+Constructing branches, assigning orders 
+ 
+
+
+Finished with 2 branches
+Fetching SWC data via iondata
+Saved SWC to: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpcqjfbb00\007.swc
+Loading SWC from local file: C:\Users\LAIKA_~1\AppData\Local\Temp\tmpcqjfbb00\007.swc
+{
+  "identities": 1,
+  "available": 0,
+  "pending": 1,
+  "ok": 0,
+  "partial": 0,
+  "error": 0,
+  "not_started": 0,
+  "coverage": {},
+  "png_decoded": 0,
+  "canonical_hashes_unchanged": true
+}
+[verify] passed
+{
+  "identities": 1,
+  "available": 0,
+  "pending": 1,
+  "ok": 0,
+  "partial": 0,
+  "error": 0,
+  "not_started": 0,
+  "coverage": {},
+  "png_decoded": 0,
+  "canonical_hashes_unchanged": true
+}
+[verify] 1 problems; first: ['Human annotation conflict; review tables were not rewritten:']

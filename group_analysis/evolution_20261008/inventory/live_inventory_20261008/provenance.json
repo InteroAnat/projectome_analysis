@@ -1,0 +1,848 @@
+{
+  "generated_at": "2026-10-08T15:30:30.907111+00:00",
+  "mode": "saved_snapshot_audit",
+  "n_samples": 49,
+  "n_macaque_catalog_samples": 47,
+  "n_channel_variants": 15,
+  "n_samples_with_full_neuron_snapshot": 47,
+  "n_samples_aggregate_only": 0,
+  "n_historical_tracker_aliases_absent_current_catalog": 2,
+  "n_neuron_identity_rows": 8746,
+  "n_verified_copied_series": 5,
+  "padding_mm": 2.0,
+  "coordinate_rule": "portal um/1000; folded X=abs(X_mm-32); folded reference q0.005-q0.995 NII bounds*0.25 + padding_mm",
+  "source_files": {
+    "catalog": {
+      "file": "group_analysis/portal_audit_20260926/portal_macaque_samples.csv",
+      "sha256": "ce98dfe1fb18c6cfdbe783d3c5531403b28ef11867b1fef895bf341886864f07",
+      "checked_at": "",
+      "url": ""
+    },
+    "aggregate": {
+      "file": "group_analysis/portal_audit_20260928/portal_refresh_vs_20260926.csv",
+      "sha256": "3abc3255a5913a9bb18c3945c3f883c628c6d8ddfb42572dff15f03a69ea4a98",
+      "checked_at": "",
+      "url": ""
+    },
+    "tracker": {
+      "file": "group_analysis/docs/dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d",
+      "checked_at": "",
+      "url": ""
+    },
+    "visual_manifest": {
+      "file": "group_analysis/visual_review_20261002/manifest/identity_manifest.csv",
+      "sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+      "checked_at": "",
+      "url": ""
+    },
+    "boxes": {
+      "file": "group_analysis/staging_20260926/reference/251637_subregion_bboxes_folded.csv",
+      "sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997",
+      "checked_at": "",
+      "url": ""
+    },
+    "series": {
+      "file": "notes/bulk_visual_review_20261002/server_inventory.md",
+      "sha256": "8052d00638cb8c548775860d97f9e635ad7b5d9b8f6b9305a2d72e3a3a001f9e",
+      "checked_at": "",
+      "url": ""
+    },
+    "labels": {
+      "file": "group_analysis/scripts/insula_label_set.py",
+      "sha256": "34e32c0516068ff985fd6cb419b42c03c7ae0a00aebcdad1eafe262b444dc667",
+      "checked_at": "",
+      "url": ""
+    },
+    "atlas_key": {
+      "file": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+      "checked_at": "",
+      "url": ""
+    },
+    "cohort_constants": {
+      "file": "group_analysis/scripts/cohort.py",
+      "sha256": "6170aa9c51a6f41623cc5e7539feb1aec14de06d80149c36e2b5e7e117b52e14",
+      "checked_at": "",
+      "url": ""
+    },
+    "portal_normalizer": {
+      "file": "main_scripts/region_labels.py",
+      "sha256": "ffb122830f6ecf9f4fe4c315d768319af62779be09b34961e37d9ccb455f9521",
+      "checked_at": "",
+      "url": ""
+    },
+    "directory_observation": {
+      "file": "group_analysis/evolution_20261008/inventory/source_root_observation_20261008.json",
+      "sha256": "382ed69079a9eebf6c3694a772036b67b887382b035071519320f97d15d9ccb0",
+      "checked_at": "2026-10-08T23:18:43.0847828+08:00",
+      "url": ""
+    },
+    "snapshot_manifests": [
+      {
+        "file": "notes/bulk_visual_review_20261002/portal_snapshot/manifest.json",
+        "sha256": "f41c355891eebe41c0a2acea694361f537d500eb73d056f2e956ea6386fd04b3",
+        "checked_at": "",
+        "url": ""
+      },
+      {
+        "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/manifest.json",
+        "sha256": "f8580f6dc26beedfb12acb10243595437cff96bd920c99cadfaef13588f44bd3",
+        "checked_at": "",
+        "url": ""
+      }
+    ]
+  },
+  "source_root_observation": {
+    "checked_at": "2026-10-08T23:18:43.0847828+08:00",
+    "root": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets",
+    "scope": "complete shallow directory-name enumeration at root; no recursive scan or new slice validation",
+    "observer": "parent Codex runner; successful read-only shell listing supplied to inventory runner",
+    "directories": [
+      "251637-CH1_resample",
+      "252384_CH1_resample",
+      "252385-CH1_resample",
+      "252527_CH1_resample",
+      "252714-CH1_resample"
+    ],
+    "limitations": "Folder presence does not validate TIFF availability, channel biology, calibration, anatomy or registration. Channel suffixes are exact identities."
+  },
+  "snapshot_endpoints": [
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252790_sample_info.json",
+      "sha256": "110f9bf5be1f476daa47d3d77c16382b961d4a55ab9c0375b0000d6251ee0866",
+      "checked_at": "2026-10-02T22:44:59.935078+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252790",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252790_neurons.json",
+      "sha256": "291258515a55edf7ea2025704d62018dea9b30ba26c3151d4c4aa2b1672373df",
+      "checked_at": "2026-10-08T15:24:16.101937+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252790",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252790_soma.json",
+      "sha256": "dcc71ca825162570b671f2a0690cec04d70315d941d51bd894a210e43200dbe8",
+      "checked_at": "2026-10-08T15:24:16.126936+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252790",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252385_sample_info.json",
+      "sha256": "54520d91f7a7247d578420e7c888e1160c73fcd896fb14a9d98848555c95bfcc",
+      "checked_at": "2026-10-02T22:44:59.935078+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252385",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252385_neurons.json",
+      "sha256": "1b6af32622c6b4b25bc06f7f2e30f511514214f86cacdaf65c7d2d02455c1a92",
+      "checked_at": "2026-10-08T15:24:15.857905+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252385",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252385_soma.json",
+      "sha256": "1bfc63cb4c349f87c7a9f31cd137c9e32c957eca1921a84eac6679c3d687ff47",
+      "checked_at": "2026-10-08T15:24:15.897916+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252385",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252718_sample_info.json",
+      "sha256": "c2578e47478ab8164f637db4077eb9524dbd79edf4644c4d0e81e616d3b3040e",
+      "checked_at": "2026-10-02T22:44:59.936077+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252718",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252718_neurons.json",
+      "sha256": "a37bcdbae620049add8b9574e41bdd89d726366e01c2e6c8ceb8a9613a461f98",
+      "checked_at": "2026-10-08T15:24:16.051429+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252718",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252718_soma.json",
+      "sha256": "9c9a0cc16471ca0dc10442dda239d4694edcf285884a243707b3c9c53ef3cf7a",
+      "checked_at": "2026-10-08T15:24:16.067936+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252718",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252527_sample_info.json",
+      "sha256": "123e286b556566422f41fe777653d05c7c3c62349ff7bec274ff8263f613366f",
+      "checked_at": "2026-10-02T22:45:00.043231+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252527",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252527_neurons.json",
+      "sha256": "c5d4043eba8ae9f7bac3b1a259fce8750ee2f5d3fe108358fde214fc3adb86bf",
+      "checked_at": "2026-10-08T15:24:15.940916+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252527",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252527_soma.json",
+      "sha256": "e248a728aef17da96d5fceedbac7dcedf6e8b5ab80d6b9ce2a92eb98c480b945",
+      "checked_at": "2026-10-08T15:24:15.955912+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252527",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252714_sample_info.json",
+      "sha256": "20d06f977e9e74b98c6cecf2dbea4723ef3397f5860751341ac78a939e2d1ae0",
+      "checked_at": "2026-10-02T22:45:00.053814+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252714",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252714_neurons.json",
+      "sha256": "861b8446ea059a86be34542f9250a10daf75e219079d9f8df22c968997d41e6a",
+      "checked_at": "2026-10-08T15:24:15.991419+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252714",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252714_soma.json",
+      "sha256": "bbcbdd33c37c2936b763314fbcaf9a38cb47556f94b8d30c4b58b59173e3e81a",
+      "checked_at": "2026-10-08T15:24:16.022418+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252714",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/250432_sample_info.json",
+      "sha256": "f445b734dd26e2b6a397fa1fdf1b700e0e07f1fc9319eabf2e5b1cd320009c76",
+      "checked_at": "2026-10-02T22:45:00.060707+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=250432",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250432_neurons.json",
+      "sha256": "4180a6c318d96465d171b6a44604edce94c6c5bf77195b2925c09902ec8f1666",
+      "checked_at": "2026-10-08T15:24:15.091828+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250432",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250432_soma.json",
+      "sha256": "ea7cad8c6b7b040b5ef3a779b80c2159b487ef160adaf6d43da1feeb070483a8",
+      "checked_at": "2026-10-08T15:24:15.109853+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250432",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252383_sample_info.json",
+      "sha256": "db77faa94eeaae59c96ea065890074766ced2b8e20764c8270d27fef116cacaf",
+      "checked_at": "2026-10-02T22:45:00.109679+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252383",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252383_neurons.json",
+      "sha256": "a4648647d2e79c3f0d0afb151ecfa22c7017ad2b347e96a3cb5b2a2be94f7ef3",
+      "checked_at": "2026-10-08T15:24:15.776385+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252383",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252383_soma.json",
+      "sha256": "67e54451a41099a3994952a5770cbb445c583f38bd258174deb4ea4020cc2b31",
+      "checked_at": "2026-10-08T15:24:15.792385+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252383",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252384_sample_info.json",
+      "sha256": "0840e7552bd7af671098d27ed2f39760f667b031f81bbede81d7cb90eb1a3484",
+      "checked_at": "2026-10-02T22:45:00.120217+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252384",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252384_neurons.json",
+      "sha256": "65cb60dbab36c1644f6d2cc150b8502f6c2e47137eb83e18cc306644c245eeab",
+      "checked_at": "2026-10-08T15:24:15.822387+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252384",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/252384_soma.json",
+      "sha256": "e91580a797afa94acb392fc70ee69d0457251da6d0aaa1140fed381f254359d9",
+      "checked_at": "2026-10-08T15:24:15.840386+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252384",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/251730_sample_info.json",
+      "sha256": "122d1a3606ee7bfc21009aa01d6c7a5e1adbbdd24248d5c1ea4e4cfcea7b4192",
+      "checked_at": "2026-10-02T22:45:00.140437+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=251730",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251730_neurons.json",
+      "sha256": "98980bfdd44d21b93f257588ef912d7946ea4b07d2c6b79ad0f6dbc5f57d1058",
+      "checked_at": "2026-10-08T15:24:15.636619+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=251730",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251730_soma.json",
+      "sha256": "371dfafc6c0a1d8cb19559592ad0764b4de61d633a5d7b9197f3bd2f86cd23be",
+      "checked_at": "2026-10-08T15:24:15.676169+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=251730",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/catalog_sample_info.json",
+      "sha256": "53d1e798f409d4cbc10a4c91f1701d84579a0bd988bad4392a59c18aa13061fc",
+      "checked_at": "2026-10-08T15:24:13.562354+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/221747_neurons.json",
+      "sha256": "ff6e517ed637a8bdd6cd9305934dc32d7468a1c46956c918e397800586479d20",
+      "checked_at": "2026-10-08T15:24:13.752870+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=221747",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/221747_soma.json",
+      "sha256": "28f90fb02b8182c7d8fc6fa9056fddca4dceef9330ab3992736ef5a05fe25759",
+      "checked_at": "2026-10-08T15:24:13.788373+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=221747",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/231623_neurons.json",
+      "sha256": "4b0a2ee1855395aedc4e5ea282f9ad600bdc2322a934380832ed606d3d834660",
+      "checked_at": "2026-10-08T15:24:13.837381+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=231623",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/231623_soma.json",
+      "sha256": "c3af763e7570f8a5226db54e86964eb15cdc88355d4992689697e17a0292a52a",
+      "checked_at": "2026-10-08T15:24:13.874898+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=231623",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/231623ch2_neurons.json",
+      "sha256": "3f7dcd21bafb41eb9a596f59bc290002e52eaf10a3ed66046c3df51c5018e2d7",
+      "checked_at": "2026-10-08T15:24:13.916891+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=231623ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/231623ch2_soma.json",
+      "sha256": "e254868d71885d4048e1d5ee46d8829829038c17b2c59c120b35fe7dfc429b01",
+      "checked_at": "2026-10-08T15:24:13.940894+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=231623ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/232717_neurons.json",
+      "sha256": "e02bc55c55ed778f1a2d5d6c8cf7bea770c518fa3efe30052373fcdc19f4cc69",
+      "checked_at": "2026-10-08T15:24:13.976416+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=232717",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/232717_soma.json",
+      "sha256": "1cedbbda6cb0cb4e4d5aac90b2528b5306b5803027708f81712154bb43a8d469",
+      "checked_at": "2026-10-08T15:24:14.017418+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=232717",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/232717ch2_neurons.json",
+      "sha256": "2536b66326dce017f56b556a5db122c1ada7b541f3a79b7bf4efd98b94071dc6",
+      "checked_at": "2026-10-08T15:24:14.038409+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=232717ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/232717ch2_soma.json",
+      "sha256": "2f3156b8af0f24bdacccbc74b580e71b853e51a1c86a77e18576a9f20c88d723",
+      "checked_at": "2026-10-08T15:24:14.088508+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=232717ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/233001_neurons.json",
+      "sha256": "294c75097a31176ef2f59e39eadf200f3a7f122bd9881cbdd8d03c0735e1aa56",
+      "checked_at": "2026-10-08T15:24:14.125501+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=233001",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/233001_soma.json",
+      "sha256": "46880aad5696ee119773beec9cbebc60b604efea534f8dc3f7a30b444b38d949",
+      "checked_at": "2026-10-08T15:24:14.138500+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=233001",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/233001ch2_neurons.json",
+      "sha256": "be7d787b50be88905562da908c67103c7b0dac378ef60138cd9ef03298723b7e",
+      "checked_at": "2026-10-08T15:24:14.149511+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=233001ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/233001ch2_soma.json",
+      "sha256": "8dc299682b2b0b1e5e051169de0f60375760539216f745d50ed7b1e19326c367",
+      "checked_at": "2026-10-08T15:24:14.161896+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=233001ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/234162_neurons.json",
+      "sha256": "c5d794e83bfe88d9a2e666cdf24b80cb03da9eb23f510c393976335799f5bc46",
+      "checked_at": "2026-10-08T15:24:14.173897+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=234162",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/234162_soma.json",
+      "sha256": "c740a21743124bc349776da3be01b52bdb9977cc3d72bd02378ea0b85fe3384c",
+      "checked_at": "2026-10-08T15:24:14.201889+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=234162",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/234162ch2_neurons.json",
+      "sha256": "5586830ca56655d1330608209c608f38193e5a2e5457b6f8167fb57f8f77f886",
+      "checked_at": "2026-10-08T15:24:14.221896+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=234162ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/234162ch2_soma.json",
+      "sha256": "a730cfced560eadb21307a34f08a64909b39abc3461799b70d7f29937a01d304",
+      "checked_at": "2026-10-08T15:24:14.234889+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=234162ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/234197_neurons.json",
+      "sha256": "d08c205af036887d9338fc0bcfe46a639f1a8c0f83f998868daf7d52cb3cd241",
+      "checked_at": "2026-10-08T15:24:14.269910+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=234197",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/234197_soma.json",
+      "sha256": "e3803f7a21bc9a9b0137d37340be32a687b1ad70d30712d618b5250b4a3f990b",
+      "checked_at": "2026-10-08T15:24:14.318431+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=234197",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/240025_neurons.json",
+      "sha256": "d5c3fdafaec7cbf11a82866d7dbf34dcbd30250133921825b7ac573263637933",
+      "checked_at": "2026-10-08T15:24:14.366944+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=240025",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/240025_soma.json",
+      "sha256": "732192766c1dce40dd1c89b98bf77a59e52e26ef32051a769a23aab5bb6d0760",
+      "checked_at": "2026-10-08T15:24:14.406943+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=240025",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/240025ch2_neurons.json",
+      "sha256": "6a55d744535187d1d88124d654ab52513ec9b7b54f7b66e240fcc0aa6f7ae9a0",
+      "checked_at": "2026-10-08T15:24:14.452109+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=240025ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/240025ch2_soma.json",
+      "sha256": "0c9c2ff53bdc02f7c72f2338ce2537f7ff32569a740adbd67b540f548f8a19dd",
+      "checked_at": "2026-10-08T15:24:14.470847+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=240025ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/240901_neurons.json",
+      "sha256": "6340201cf884fd026c67e2fd396ea799a974f05a8fcf97faa9a05f16f626f01e",
+      "checked_at": "2026-10-08T15:24:14.490840+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=240901",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/240901_soma.json",
+      "sha256": "92bc0fb51769d26e82b04eeb9e8dd1472b54acd547832117edbb47777715fdd6",
+      "checked_at": "2026-10-08T15:24:14.528547+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=240901",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241334_neurons.json",
+      "sha256": "5ed6b07f5f466d43e5a0406ea94e007cad22e0bb2cd192a8f0b9b8f132507267",
+      "checked_at": "2026-10-08T15:24:14.571063+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=241334",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241334_soma.json",
+      "sha256": "7c8f0403601431f55f70db4b6d8b6c505536d32687ccb840fbadb67982786d75",
+      "checked_at": "2026-10-08T15:24:14.585071+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=241334",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241334ch2_neurons.json",
+      "sha256": "350b3ae3b8b0eb4c47f5ee62619cfbae1b0de625dd161afeaab93f4646f0f3f6",
+      "checked_at": "2026-10-08T15:24:14.616064+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=241334ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241334ch2_soma.json",
+      "sha256": "8dc1ec8a719e51c803b8c55fdcbd9eacbaab74d7e59978d67a81ff5428e84503",
+      "checked_at": "2026-10-08T15:24:14.628062+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=241334ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241349_neurons.json",
+      "sha256": "1ac80144e3e2f020510571f8fed6f6c0d8b3ced23a8d0f3dd87a0905cabbb662",
+      "checked_at": "2026-10-08T15:24:14.652067+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=241349",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241349_soma.json",
+      "sha256": "7a02dc7493e9ff7b6d1f0c5d34b0e14df9424e534b8f1f77dca6b421f62afeb2",
+      "checked_at": "2026-10-08T15:24:14.668305+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=241349",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241349ch2_neurons.json",
+      "sha256": "83a8049cd124fb9443e622789f2d7e0b3a4d45a124dc686d7368008b580dcdec",
+      "checked_at": "2026-10-08T15:24:14.697305+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=241349ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/241349ch2_soma.json",
+      "sha256": "b7335f72fd30d3c50c65972e77a52a77b0188ad3c0cd08840cdd133e54f378cd",
+      "checked_at": "2026-10-08T15:24:14.727304+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=241349ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242161_neurons.json",
+      "sha256": "72dbde4abcfefee353ebacc8a57f8f3b5c061c96f1c2bcc3d5c2ace6bd41d671",
+      "checked_at": "2026-10-08T15:24:14.779776+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=242161",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242161_soma.json",
+      "sha256": "b858644e3cd74864be56ac505be6237f2016b5b76630ad317a65a9d15c3fbfce",
+      "checked_at": "2026-10-08T15:24:14.808865+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=242161",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242161ch2_neurons.json",
+      "sha256": "3c133a45b3c7f591cd8655166534b79ac41b20e456b55b75399a86ef30d5f93c",
+      "checked_at": "2026-10-08T15:24:14.843148+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=242161ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242161ch2_soma.json",
+      "sha256": "9f56c92d4ce6beb0370f0fab9649a177521deaf67d5c10d2d2a998f099645c0e",
+      "checked_at": "2026-10-08T15:24:14.857670+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=242161ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242443_neurons.json",
+      "sha256": "0e419385c2663519077c04d84277c6a578350264ea6d269ef1166c1456277d6c",
+      "checked_at": "2026-10-08T15:24:14.884670+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=242443",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242443_soma.json",
+      "sha256": "9eb129385a1e2ca6578d95e49813d7226d992acd8a03c979c9c6a3e8c3ab004c",
+      "checked_at": "2026-10-08T15:24:14.902670+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=242443",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242443ch2_neurons.json",
+      "sha256": "a5a0ca12fad120e19a0223f56ee74788c60e94326b3fdb9631e8f3706918a522",
+      "checked_at": "2026-10-08T15:24:14.925670+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=242443ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242443ch2_soma.json",
+      "sha256": "b7a4cf41081aae81cdfc0a29d117a49aac9206d61c54640d1388018e0f2aa3d0",
+      "checked_at": "2026-10-08T15:24:14.938678+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=242443ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242521_neurons.json",
+      "sha256": "361cd8da0609f5289a3904803bde43d072d0cd1756af7f5df0d277fee63d8e70",
+      "checked_at": "2026-10-08T15:24:14.980213+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=242521",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242521_soma.json",
+      "sha256": "167e272973ac5bfb8b165076aa31971f29fda979295a72f294709d5b0f347b95",
+      "checked_at": "2026-10-08T15:24:15.023205+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=242521",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242521ch2_neurons.json",
+      "sha256": "81b2df73ad4f42ea11211023c2d5a944e7f234d52c7570d859c0966461dcaed7",
+      "checked_at": "2026-10-08T15:24:15.059820+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=242521ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/242521ch2_soma.json",
+      "sha256": "89a9ba90023118985f25069d67dfa98e69cdc5848e6f934d42e4c00e9da91e5b",
+      "checked_at": "2026-10-08T15:24:15.075820+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=242521ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250432ch2_neurons.json",
+      "sha256": "c9f1712234122f60f45a08a6eb239904e112beb689ceb0501b4767860fea81f7",
+      "checked_at": "2026-10-08T15:24:15.149326+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250432ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250432ch2_soma.json",
+      "sha256": "d3abfcbe3bce0220375f6cb2fbbf3d3ee7242086a5c404dca10064b09a61c657",
+      "checked_at": "2026-10-08T15:24:15.171855+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250432ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250433_neurons.json",
+      "sha256": "e3aa9ab867c20e396fac2ddf95190163ea6b88613d77629ab42c70c0f157da27",
+      "checked_at": "2026-10-08T15:24:15.189847+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250433",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250433_soma.json",
+      "sha256": "41b9d8f3ce4089a8d549816a63b4945d9127aa4ce16c0b8ea297ffa672554210",
+      "checked_at": "2026-10-08T15:24:15.203854+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250433",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250433ch2_neurons.json",
+      "sha256": "f50969b2e1a585e6b5931c1da15da6df4b1be3b67e02b11703898ef97e557993",
+      "checked_at": "2026-10-08T15:24:15.234855+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250433ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250433ch2_soma.json",
+      "sha256": "46db2854a420e62f29383799dbc166ddc60a5d87385cf9cabbb86f1b992cf9ed",
+      "checked_at": "2026-10-08T15:24:15.261366+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250433ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250442L_neurons.json",
+      "sha256": "e85dba81ea40c8ec37ed15f9f09ea17f02699e7c3eb4f2e9ddc383d8417db1a9",
+      "checked_at": "2026-10-08T15:24:15.283366+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250442L",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250442L_soma.json",
+      "sha256": "e466a67c6cd166fdf4c23085349449df71c3035240ac163743ff6eef318cbbd6",
+      "checked_at": "2026-10-08T15:24:15.295367+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250442L",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250442R_neurons.json",
+      "sha256": "416f6c8bfc7a849b904cbd2e1c29a387a7e986c2bb18567b0631fe5b85c3871c",
+      "checked_at": "2026-10-08T15:24:15.309374+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250442R",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/250442R_soma.json",
+      "sha256": "da03e8bef94378d4bb68bd8c59fe2cac596101a26d312ef73dc30bec82999e98",
+      "checked_at": "2026-10-08T15:24:15.338379+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250442R",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/2514401_neurons.json",
+      "sha256": "5ffc55ffb74ecaf04d7039ca9f83d521f355c4f1a933ecd6aa38753dab473734",
+      "checked_at": "2026-10-08T15:24:15.379891+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=2514401",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/2514401_soma.json",
+      "sha256": "0e034d2bc7c67fd27eed0060cf15b7720f6b560ccdae91a32389655521ef48dc",
+      "checked_at": "2026-10-08T15:24:15.425883+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=2514401",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/2514401ch2_neurons.json",
+      "sha256": "e689cfce0ae1542afa395cbe65380270877e4ae2319e799db00ad344c80de888",
+      "checked_at": "2026-10-08T15:24:15.451896+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=2514401ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/2514401ch2_soma.json",
+      "sha256": "ddf5435d545ab106d3fffc8df34924b6e04b10dba6964d5b034fa824188d05e2",
+      "checked_at": "2026-10-08T15:24:15.480599+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=2514401ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251636_neurons.json",
+      "sha256": "1c52aa424c11f203770975e2463d2ba5bafd3d2c8503367590ef35b7d15667a0",
+      "checked_at": "2026-10-08T15:24:15.509943+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=251636",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251636_soma.json",
+      "sha256": "28e555f310f2b79fe16f723eb82cb1bc2c691238a6128f92bf850a48a0ed070f",
+      "checked_at": "2026-10-08T15:24:15.527943+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=251636",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251636ch2_neurons.json",
+      "sha256": "2e3f9e46112d9860228201afd891955af42ee934492b7e91f8255ef0248814e1",
+      "checked_at": "2026-10-08T15:24:15.546950+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=251636ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251636ch2_soma.json",
+      "sha256": "8b9bf1a7df7f46dc5ee58a0c94193318669eb541c0f5d12b7310bc98b865f43a",
+      "checked_at": "2026-10-08T15:24:15.561459+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=251636ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251637_neurons.json",
+      "sha256": "0bae0be6290156f3b135031ff1381a5eee9ada4aa3ea7207c62058bda2b8fc01",
+      "checked_at": "2026-10-08T15:24:15.576619+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=251637",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251637_soma.json",
+      "sha256": "8726bb27cac39611d163f53574467f40fd0128d64645369f8ae4d580fece967b",
+      "checked_at": "2026-10-08T15:24:15.603619+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=251637",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251730ch2_neurons.json",
+      "sha256": "3380c8e86063f3a039ddd259d6121c2d5c58741ac72c54b786d59cce85631ab3",
+      "checked_at": "2026-10-08T15:24:15.739163+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=251730ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/251730ch2_soma.json",
+      "sha256": "52db5cbcc7a94a30cfc08860926cea8036355e6ee1b60d8074948e6eb771e185",
+      "checked_at": "2026-10-08T15:24:15.756303+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=251730ch2",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260208_neurons.json",
+      "sha256": "495d82fb097d74f364f874143a5a8e8ce50c0b1635aaae5b037601608790ca17",
+      "checked_at": "2026-10-08T15:24:16.154946+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=260208",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260208_soma.json",
+      "sha256": "651fc7c73d4eb1cd5acb41618880ad1835526d0b21eff69d60dcbe96e5be9049",
+      "checked_at": "2026-10-08T15:24:16.169465+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=260208",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260209_neurons.json",
+      "sha256": "3cbc2fb6802c51f5d70cd8493bc6e723630c4ee20ee5330d74c760464e691b6e",
+      "checked_at": "2026-10-08T15:24:16.200466+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=260209",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260209_soma.json",
+      "sha256": "1af0b5b37c08522adfba0dda61b6f0951d8fa354fa5b28ae60e85de5dd8586e1",
+      "checked_at": "2026-10-08T15:24:16.231458+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=260209",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260212_neurons.json",
+      "sha256": "5dcb1095635602528b274739b3cffafe59de862e444f87049d23ea058d76ff19",
+      "checked_at": "2026-10-08T15:24:16.272977+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=260212",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260212_soma.json",
+      "sha256": "201bafdaccdd4fc2f9981e3afc7c2a866835a706d017eb22ceadc6550636c893",
+      "checked_at": "2026-10-08T15:24:16.308977+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=260212",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260213_neurons.json",
+      "sha256": "adc34ec27f1c0234d12839b8042bc076e41f65009f3d669418cf9a7aeb2664ea",
+      "checked_at": "2026-10-08T15:24:16.339978+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=260213",
+      "status": "ok"
+    },
+    {
+      "file": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/live_snapshots/20261008T152413Z/260213_soma.json",
+      "sha256": "0855872fc56a79b814bd3a60080b188ce4c10d063b4291d64b8d2d2d77afa38b",
+      "checked_at": "2026-10-08T15:24:16.367508+00:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=260213",
+      "status": "ok"
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    "All outputs are candidates only; no anatomical, layer, laterality, injection-site or VEN acceptance.",
+    "Reconstruction-list entries are not proof of complete reconstruction; metadata tracing_cell_number is a separate field.",
+    "Missing or failed per-neuron/soma endpoints remain unassessed; aggregate-only INS counts use historical vocabulary.",
+    "CH1 slice evidence is dated 2026-10-02. Any later shallow folder observation has its own date and does not validate slices or PI/cytoarchitecture.",
+    "Excluded identities remain visible and cannot enter potential counts; exact sample/channel identity is preserved."
+  ]
+}

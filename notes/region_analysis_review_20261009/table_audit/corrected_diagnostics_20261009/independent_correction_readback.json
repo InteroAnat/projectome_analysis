@@ -1,0 +1,85 @@
+{
+  "status": "passed",
+  "workbooks": [
+    {
+      "derivative": "notes/region_analysis_review_20261009/table_audit/corrected_diagnostics_20261009/source-main_scripts_subset_multisheets_desc-523_unknownpartition.xlsx",
+      "source_and_derivative_hashes_match": true,
+      "unique_headers": true,
+      "unknown_partitions": [
+        {
+          "sheet": "Projection_Length_unknown",
+          "sum": 1164.5799999999863,
+          "M1_strength": 3.0316
+        },
+        {
+          "sheet": "Projection_Length_L3_unknown",
+          "sum": 1164.579999999986,
+          "M1_strength": 3.0316
+        }
+      ],
+      "historical_unknown_preserved": true
+    },
+    {
+      "derivative": "notes/region_analysis_review_20261009/table_audit/corrected_diagnostics_20261009/source-neuron_tables_FULL_desc-523_unknownpartition.xlsx",
+      "source_and_derivative_hashes_match": true,
+      "unique_headers": true,
+      "unknown_partitions": [
+        {
+          "sheet": "Projection_Length_unknown",
+          "sum": 1164.5799999999863,
+          "M1_strength": 3.0316
+        },
+        {
+          "sheet": "Projection_Length_L3_unknown",
+          "sum": 1164.579999999986,
+          "M1_strength": 3.0316
+        }
+      ],
+      "historical_unknown_preserved": true
+    },
+    {
+      "derivative": "notes/region_analysis_review_20261009/table_audit/corrected_diagnostics_20261009/source-neuron_tables_subset_desc-523_unknownpartition.xlsx",
+      "source_and_derivative_hashes_match": true,
+      "unique_headers": true,
+      "unknown_partitions": [
+        {
+          "sheet": "Projection_Length_unknown",
+          "sum": 1164.5799999999863,
+          "M1_strength": 3.0316
+        },
+        {
+          "sheet": "Projection_Length_L3_unknown",
+          "sum": 1164.579999999986,
+          "M1_strength": 3.0316
+        }
+      ],
+      "historical_unknown_preserved": true
+    },
+    {
+      "derivative": "notes/region_analysis_review_20261009/table_audit/corrected_diagnostics_20261009/source-neuron_tables_Unknown_desc-523_unknownpartition.xlsx",
+      "source_and_derivative_hashes_match": true,
+      "unique_headers": true,
+      "unknown_partitions": [
+        {
+          "sheet": "Projection_Length_unknown",
+          "sum": 1164.5799999999863,
+          "M1_strength": 3.0316
+        },
+        {
+          "sheet": "Projection_Length_L3_unknown",
+          "sum": 1164.579999999986,
+          "M1_strength": 3.0316
+        }
+      ],
+      "historical_unknown_preserved": true
+    },
+    {
+      "derivative": "notes/region_analysis_review_20261009/table_audit/corrected_diagnostics_20261009/source-laterality_projections_desc-unique_total_columns.xlsx",
+      "source_and_derivative_hashes_match": true,
+      "unique_headers": true,
+      "unknown_partitions": []
+    }
+  ],
+  "source_and_canonical_tables_written": false,
+  "software_only": true
+}

@@ -1,0 +1,126 @@
+{
+  "status": "passed_independent_arithmetic_and_hash_readback_software_only",
+  "sensitivity_provenance": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\clustering_20261009\\ARM6_source_relative_sensitivity\\sensitivity_provenance.json",
+  "sensitivity_provenance_SHA256": "dd8291819914a81e0240d89626c41e164c1487b7c493db587ff46773d902f6c2",
+  "code_SHA256": "0e465eac50f631b6369eed0573f062935da16ba6b7b9993c3a1c31309b2f923c",
+  "exact_selected_UIDs": 462,
+  "official_same_domain_bilateral_pairs": 342,
+  "actual_positive_ARM6_features": 684,
+  "fresh_source_hashes_verified": 462,
+  "primary_numeric_outputs_unchanged": true,
+  "checks": [
+    {
+      "family": "axon",
+      "requested_k": 2,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 5.551115123125783e-17,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "axon",
+      "requested_k": 3,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 0.0,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "axon",
+      "requested_k": 4,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 6.938893903907228e-17,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "axon",
+      "requested_k": 5,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 0.0,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "axon",
+      "requested_k": 6,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 8.326672684688674e-17,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "axon",
+      "requested_k": 7,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 8.326672684688674e-17,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "axon",
+      "requested_k": 8,
+      "n_profiles": 428,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 1.3877787807814457e-16,
+      "maximum_total_conservation_error": 2.2737367544323206e-13
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 2,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 8.326672684688674e-17,
+      "maximum_total_conservation_error": 0.0
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 3,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 5.551115123125783e-17,
+      "maximum_total_conservation_error": 0.0
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 4,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 6.938893903907228e-17,
+      "maximum_total_conservation_error": 0.0
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 5,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 1.3877787807814457e-17,
+      "maximum_total_conservation_error": 0.0
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 6,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 4.163336342344337e-17,
+      "maximum_total_conservation_error": 0.0
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 7,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 4.163336342344337e-17,
+      "maximum_total_conservation_error": 0.0
+    },
+    {
+      "family": "endpoint",
+      "requested_k": 8,
+      "n_profiles": 425,
+      "independent_partition_ARI": 1.0,
+      "silhouette_error": 8.326672684688674e-17,
+      "maximum_total_conservation_error": 0.0
+    }
+  ],
+  "anatomical_acceptance": false
+}

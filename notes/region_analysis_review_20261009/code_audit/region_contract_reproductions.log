@@ -1,0 +1,604 @@
+{
+  "dendrite_leaf_is_classification_target": {
+    "terminal_regions": [
+      {
+        "region": "SL_PrC",
+        "coords": [
+          2,
+          0,
+          0
+        ]
+      }
+    ],
+    "retained_lengths": {},
+    "total_voxels": 2.0
+  },
+  "per_edge_rounding_zeroes_nonzero_edge": {
+    "true_voxel_length": 0.0004,
+    "reported": 0.0
+  },
+  "root_only_leaf": {
+    "terminal_count": 1,
+    "root_id": 1
+  },
+  "duplicate_abbreviation_loses_length": {
+    "total_length": 2.0,
+    "retained": {
+      "CL_X": 1.0
+    }
+  },
+  "deep_fork_tree": "RecursionError: maximum recursion depth exceeded while calling a Python object",
+  "duplicate_cross_sample_entry": {
+    "rows": [
+      {
+        "SampleID": "sampleA",
+        "NeuronID": "001.swc"
+      },
+      {
+        "SampleID": "sampleA",
+        "NeuronID": "001.swc"
+      }
+    ],
+    "neuron_objects": 1
+  },
+  "invalid_level_zero": "accepted (selects last volume through -1 indexing)",
+  "debug_dual": "AttributeError: 'DualHierarchyTable' object has no attribute 'debug_region'",
+  "debug_resolution": "ImportError: cannot import name '_strip_prefix' from 'region_analysis.hierarchy_table' (D:\\projectome_analysis\\main_scripts\\region_analysis\\hierarchy_table.py)",
+  "real_numeric_parent_descendant": {
+    "name": null,
+    "index": "CL_area_32"
+  },
+  "public_projection_hierarchy_ignores_dual": {
+    "before_L3": {
+      "CL_caudal_OFC": 2.0
+    },
+    "after_L3": {}
+  },
+  "diagnostic_category_case": "KeyError: 'Cortical'",
+  "harmonizer_metadata_formula": {
+    "source_formula": "=1+1",
+    "derivative_value": null,
+    "source_unchanged": true
+  },
+  "cached_table_membership_checks": [
+    {
+      "path": "group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx",
+      "rows": 234,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 1487,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 234,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx",
+      "rows": 79,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 415,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 79,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx",
+      "rows": 127,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 600,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 127,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx",
+      "rows": 99,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 636,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx",
+      "rows": 128,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 606,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 128,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx",
+      "rows": 99,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 381,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 99,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx",
+      "rows": 144,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 1262,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 144,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx",
+      "rows": 190,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 964,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 190,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    },
+    {
+      "path": "group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx",
+      "rows": 123,
+      "duplicate_neurons": 0,
+      "missing_Length_Unit": true,
+      "terminal_L3_nonnull": 0,
+      "terminal_rows": 1191,
+      "projection_sheets": {
+        "Projection_Length_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Length_L3_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_ipsi": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        },
+        "Projection_Strength_L3_contra": {
+          "rows": 123,
+          "missing_neurons": 0,
+          "extra_neurons": 0,
+          "duplicate_neurons": 0
+        }
+      }
+    }
+  ]
+}
+{
+  "scope": "nine existing step1 workbooks only; reference251637 not included",
+  "total_neurons": 1223,
+  "affected_neurons": 27,
+  "bad_target_counts": {
+    "SR_ZI-H": 10,
+    "SR_p1Rt": 7,
+    "SR_PCom_MCPC": 3,
+    "SL_p1Rt": 7,
+    "SL_pc": 1,
+    "SL_PrC": 2,
+    "SL_ZI-H": 7,
+    "SR_Hb": 1,
+    "SL_PCom_MCPC": 2,
+    "SL_Hb": 1
+  }
+}

@@ -1,0 +1,35 @@
+{
+  "argv": [
+    "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+    "-X",
+    "utf8",
+    "-B",
+    "D:\\projectome_analysis\\group_analysis\\scripts\\review_endpoint_run.py",
+    "--run",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009",
+    "--output",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2"
+  ],
+  "started_utc": "2026-10-08T17:05:03.087719+00:00",
+  "reviewer_sha256": "2d2f6d308caf9d9409539b0b857957d61cdd4785dc856616eb7236b46da6ad75",
+  "run_provenance_sha256_before": "b8617e2b0aa45a992571da1100e8b5c376e82b4f423e72fbc6a361536469f6d2",
+  "input_manifest_sha256_before": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2",
+  "finished_utc": "2026-10-08T17:08:52.780971+00:00",
+  "exit_code": 0,
+  "log_sha256": "7460ea69dd1b1723418d0a439f59ae0b7e9b0b6dae9fb4699fdbf712b203c2c8",
+  "run_provenance_sha256_after": "b8617e2b0aa45a992571da1100e8b5c376e82b4f423e72fbc6a361536469f6d2",
+  "input_manifest_sha256_after": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2",
+  "report_sha256": "7c961f9ab269623e6aad7695378b3fa959dbfd493109e72269b3ffa9b9f9e5f4",
+  "summary": {
+    "status": "passed",
+    "selected_neurons": 436,
+    "computable_neurons": 403,
+    "full_graph_leaves": 91084,
+    "candidate_axonal_leaves": 71562,
+    "outside_reference_candidates": 1,
+    "full_saved_voxels_read": 1725235200,
+    "anatomical_acceptance": "not established",
+    "biological_terminal_acceptance": "not established",
+    "map_files_checked": 108
+  }
+}

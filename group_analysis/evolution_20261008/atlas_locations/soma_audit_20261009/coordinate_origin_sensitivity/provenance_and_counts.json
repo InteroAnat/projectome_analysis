@@ -1,0 +1,247 @@
+{
+  "observed_at": "2026-10-09T00:28:09.221860+08:00",
+  "status": "sensitivity_only_no_convention_change",
+  "exact_neuron_identities": 8746,
+  "source_hashes_freshly_reverified": 2480,
+  "user_described_registration_direction": "raw fMOST brain and neurons warped into NMT; original transform/version receipts pending",
+  "policies": {
+    "current_rint_zero_center": "np.rint(XYZ/250), zero-based centers; exact halves ties to even (existing client)",
+    "published_ceil_edge_one_based_to_zero": "literal deposited pos2idx ceil(XYZ/res) Julia1-based, converted to zero-based ceil(XYZ/250)-1; idx2pos=(index-0.5)*res; right boundary included",
+    "halfopen_floor_zero_center": "floor(XYZ/250+0.5), zero-based centers, half-open center cells; differs from rint at exact half ties"
+  },
+  "numeric_evaluation": "Float64 current stored coordinates; original exporter numeric precision and origin unknown",
+  "atlas_scope": "All policies applied to the SAME local NMTv2.1 symmetric ARM6 and LR plane to isolate coordinate-policy sensitivity. Published code declares NMTv2.0 CHARM+SARM; this is NOT reproduction of its atlas labels.",
+  "published_source_lines": {
+    "NMTv2.0_CHARM_SARM_references": "207-213",
+    "pos2idx_idx2pos": "289-294"
+  },
+  "unknowns": [
+    "Whether these SWC/getSoma exports use deposited zz0atlas edge-origin positions",
+    "Original registration transforms/landmark acceptance",
+    "Server atlas/reference version and label-generation implementation"
+  ],
+  "counts": {
+    "own_root": {
+      "missing_unassessed": 6834
+    },
+    "portal_coordinate:current_rint_zero_center": {
+      "atlas_background": 1032,
+      "INS_label_set_candidate": 310,
+      "atlas_label": 7377
+    },
+    "portal_coordinate:current_rint_zero_center:side": {
+      "L": 4660,
+      "R": 3749
+    },
+    "portal_coordinate:published_ceil_edge_one_based_to_zero": {
+      "atlas_background": 1006,
+      "INS_label_set_candidate": 347,
+      "atlas_label": 7403
+    },
+    "portal_coordinate:published_ceil_edge_one_based_to_zero:side": {
+      "L": 4660,
+      "R": 3749
+    },
+    "portal_coordinate:halfopen_floor_zero_center": {
+      "atlas_background": 1033,
+      "INS_label_set_candidate": 310,
+      "atlas_label": 7376
+    },
+    "portal_coordinate:halfopen_floor_zero_center:side": {
+      "L": 4660,
+      "R": 3749
+    },
+    "portal_coordinate:vs:published_ceil_edge_one_based_to_zero": {
+      "same_background_unknown": 757,
+      "voxel_changed": 7334,
+      "same_known_side": 8409,
+      "same_nonbackground_label": 6833,
+      "nonbackground_label_to_background": 249,
+      "different_nonbackground_labels": 295,
+      "background_to_nonbackground_label": 275
+    },
+    "portal_coordinate:vs:halfopen_floor_zero_center": {
+      "same_background_unknown": 1032,
+      "voxel_changed": 13,
+      "same_known_side": 8409,
+      "same_nonbackground_label": 7376,
+      "nonbackground_label_to_background": 1
+    },
+    "portal_coordinate": {
+      "missing_unassessed": 337
+    },
+    "own_root:current_rint_zero_center": {
+      "atlas_label": 1617,
+      "INS_label_set_candidate": 309,
+      "atlas_background": 295
+    },
+    "own_root:current_rint_zero_center:side": {
+      "R": 1165,
+      "L": 747
+    },
+    "own_root:published_ceil_edge_one_based_to_zero": {
+      "atlas_label": 1708,
+      "INS_label_set_candidate": 346,
+      "atlas_background": 204
+    },
+    "own_root:published_ceil_edge_one_based_to_zero:side": {
+      "R": 1165,
+      "L": 747
+    },
+    "own_root:halfopen_floor_zero_center": {
+      "atlas_label": 1616,
+      "INS_label_set_candidate": 309,
+      "atlas_background": 296
+    },
+    "own_root:halfopen_floor_zero_center:side": {
+      "R": 1165,
+      "L": 747
+    },
+    "own_root:vs:published_ceil_edge_one_based_to_zero": {
+      "same_nonbackground_label": 1506,
+      "voxel_changed": 1682,
+      "same_known_side": 1912,
+      "different_nonbackground_labels": 86,
+      "nonbackground_label_to_background": 25,
+      "same_background_unknown": 179,
+      "background_to_nonbackground_label": 116
+    },
+    "own_root:vs:halfopen_floor_zero_center": {
+      "same_nonbackground_label": 1616,
+      "voxel_changed": 6,
+      "same_known_side": 1912,
+      "same_background_unknown": 295,
+      "nonbackground_label_to_background": 1
+    }
+  },
+  "reviewed_cases": [
+    {
+      "sample": "251637",
+      "neuron_id": "112.swc",
+      "reviewed_region": "R-IDM",
+      "reviewed_status": "hemisphere corrected by user NeuronView confirmation; supplied IDM retained",
+      "own_swc_status": "own_atlas_root_consensus_multiple_source_hashes",
+      "own_source_hashes": "[\"1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99\", \"1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99\", \"418ff7b32448e71023321672218339b5a6dc37dfc1442f559ecf611362fc9bac\", \"418ff7b32448e71023321672218339b5a6dc37dfc1442f559ecf611362fc9bac\"]",
+      "portal_supplied_region": "",
+      "scientific_acceptance": "origin_export_transform_unverified_sensitivity_only",
+      "own_root_status": "coordinate_assessed_sensitivity_only",
+      "own_root_current_rint_zero_center_voxel": "[212, 178, 96]",
+      "own_root_current_rint_zero_center_status": "atlas_background",
+      "own_root_current_rint_zero_center_label": "Unknown_0",
+      "own_root_current_rint_zero_center_side": "R",
+      "own_root_current_rint_zero_center_insula_candidate": false,
+      "own_root_published_ceil_edge_one_based_to_zero_voxel": "[211, 178, 95]",
+      "own_root_published_ceil_edge_one_based_to_zero_status": "atlas_label",
+      "own_root_published_ceil_edge_one_based_to_zero_label": "CR_Ia/Id",
+      "own_root_published_ceil_edge_one_based_to_zero_side": "R",
+      "own_root_published_ceil_edge_one_based_to_zero_insula_candidate": true,
+      "own_root_halfopen_floor_zero_center_voxel": "[212, 178, 96]",
+      "own_root_halfopen_floor_zero_center_status": "atlas_background",
+      "own_root_halfopen_floor_zero_center_label": "Unknown_0",
+      "own_root_halfopen_floor_zero_center_side": "R",
+      "own_root_halfopen_floor_zero_center_insula_candidate": false,
+      "own_root_vs_published_ceil_edge_one_based_to_zero_comparison": "background_to_nonbackground_label",
+      "own_root_vs_published_ceil_edge_one_based_to_zero_side_comparison": "same_known_side",
+      "own_root_vs_halfopen_floor_zero_center_comparison": "same_background_unknown",
+      "own_root_vs_halfopen_floor_zero_center_side_comparison": "same_known_side",
+      "portal_coordinate_status": "coordinate_assessed_sensitivity_only",
+      "portal_coordinate_current_rint_zero_center_voxel": "[212, 178, 96]",
+      "portal_coordinate_current_rint_zero_center_status": "atlas_background",
+      "portal_coordinate_current_rint_zero_center_label": "Unknown_0",
+      "portal_coordinate_current_rint_zero_center_side": "R",
+      "portal_coordinate_current_rint_zero_center_insula_candidate": false,
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_voxel": "[211, 178, 95]",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_status": "atlas_label",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_label": "CR_Ia/Id",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_side": "R",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_insula_candidate": true,
+      "portal_coordinate_halfopen_floor_zero_center_voxel": "[212, 178, 96]",
+      "portal_coordinate_halfopen_floor_zero_center_status": "atlas_background",
+      "portal_coordinate_halfopen_floor_zero_center_label": "Unknown_0",
+      "portal_coordinate_halfopen_floor_zero_center_side": "R",
+      "portal_coordinate_halfopen_floor_zero_center_insula_candidate": false,
+      "portal_coordinate_vs_published_ceil_edge_one_based_to_zero_comparison": "background_to_nonbackground_label",
+      "portal_coordinate_vs_published_ceil_edge_one_based_to_zero_side_comparison": "same_known_side",
+      "portal_coordinate_vs_halfopen_floor_zero_center_comparison": "same_background_unknown",
+      "portal_coordinate_vs_halfopen_floor_zero_center_side_comparison": "same_known_side"
+    },
+    {
+      "sample": "251637",
+      "neuron_id": "114.swc",
+      "reviewed_region": "R-IDM",
+      "reviewed_status": "provisional IDM selected by user; anatomical parcel not independently verified",
+      "own_swc_status": "own_atlas_root_consensus_multiple_source_hashes",
+      "own_source_hashes": "[\"faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602\", \"faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602\", \"7beb8f314de649c6d310d7ec042b039ceeca197f456fe6f6384cac16856e2213\", \"7beb8f314de649c6d310d7ec042b039ceeca197f456fe6f6384cac16856e2213\"]",
+      "portal_supplied_region": "",
+      "scientific_acceptance": "origin_export_transform_unverified_sensitivity_only",
+      "own_root_status": "coordinate_assessed_sensitivity_only",
+      "own_root_current_rint_zero_center_voxel": "[210, 185, 98]",
+      "own_root_current_rint_zero_center_status": "atlas_background",
+      "own_root_current_rint_zero_center_label": "Unknown_0",
+      "own_root_current_rint_zero_center_side": "R",
+      "own_root_current_rint_zero_center_insula_candidate": false,
+      "own_root_published_ceil_edge_one_based_to_zero_voxel": "[209, 185, 97]",
+      "own_root_published_ceil_edge_one_based_to_zero_status": "atlas_label",
+      "own_root_published_ceil_edge_one_based_to_zero_label": "CR_Ia/Id",
+      "own_root_published_ceil_edge_one_based_to_zero_side": "R",
+      "own_root_published_ceil_edge_one_based_to_zero_insula_candidate": true,
+      "own_root_halfopen_floor_zero_center_voxel": "[210, 185, 98]",
+      "own_root_halfopen_floor_zero_center_status": "atlas_background",
+      "own_root_halfopen_floor_zero_center_label": "Unknown_0",
+      "own_root_halfopen_floor_zero_center_side": "R",
+      "own_root_halfopen_floor_zero_center_insula_candidate": false,
+      "own_root_vs_published_ceil_edge_one_based_to_zero_comparison": "background_to_nonbackground_label",
+      "own_root_vs_published_ceil_edge_one_based_to_zero_side_comparison": "same_known_side",
+      "own_root_vs_halfopen_floor_zero_center_comparison": "same_background_unknown",
+      "own_root_vs_halfopen_floor_zero_center_side_comparison": "same_known_side",
+      "portal_coordinate_status": "coordinate_assessed_sensitivity_only",
+      "portal_coordinate_current_rint_zero_center_voxel": "[210, 185, 98]",
+      "portal_coordinate_current_rint_zero_center_status": "atlas_background",
+      "portal_coordinate_current_rint_zero_center_label": "Unknown_0",
+      "portal_coordinate_current_rint_zero_center_side": "R",
+      "portal_coordinate_current_rint_zero_center_insula_candidate": false,
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_voxel": "[209, 185, 97]",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_status": "atlas_label",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_label": "CR_Ia/Id",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_side": "R",
+      "portal_coordinate_published_ceil_edge_one_based_to_zero_insula_candidate": true,
+      "portal_coordinate_halfopen_floor_zero_center_voxel": "[210, 185, 98]",
+      "portal_coordinate_halfopen_floor_zero_center_status": "atlas_background",
+      "portal_coordinate_halfopen_floor_zero_center_label": "Unknown_0",
+      "portal_coordinate_halfopen_floor_zero_center_side": "R",
+      "portal_coordinate_halfopen_floor_zero_center_insula_candidate": false,
+      "portal_coordinate_vs_published_ceil_edge_one_based_to_zero_comparison": "background_to_nonbackground_label",
+      "portal_coordinate_vs_published_ceil_edge_one_based_to_zero_side_comparison": "same_known_side",
+      "portal_coordinate_vs_halfopen_floor_zero_center_comparison": "same_background_unknown",
+      "portal_coordinate_vs_halfopen_floor_zero_center_side_comparison": "same_known_side"
+    }
+  ],
+  "input_audit": {
+    "path": "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/validated_atlas_lookup",
+    "neuron_rows_sha256": "1a069b4db16249f0ebee55fe1052258ebaf510d8abd13b7ab53a090733021e08",
+    "source_inventory_sha256": "1eb5cf89c191f7f64baf4a7936431d59f97c85f9613b51637afbbff5d9600bd8"
+  },
+  "references": {
+    "ARM6": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    "LR_plane": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_plane.nii.gz",
+      "sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea"
+    },
+    "key": {
+      "path": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    "published_code": {
+      "path": "references/analysis-code_gou_etal_2025/monkeyrec/zz0atlas/src/zz0atlas.jl",
+      "sha256": "0d0916b4f7fb9e0effd16aef09cd70d93bcce476e1a2f247cd700411dfc2df48"
+    }
+  },
+  "code_sha256": "cd81c468e465b3bc162f8a41f9343a70f6e49c549e8f06f2a4086c5f7ab6ba2c",
+  "no_external_writes": true,
+  "network_requests": 0,
+  "no_automatic_relabeling": true,
+  "endpoint_projection_maps_generated": false
+}

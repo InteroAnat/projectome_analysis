@@ -1,0 +1,44 @@
+{
+  "source_hashes": {
+    "main_scripts\\region_analysis\\classifier.py": "6eaddadf5350121e087c7e41b327ebf8d9d5496a7e4cdde3f8137a0669eaedb9",
+    "main_scripts\\region_analysis\\getNeuronListByRegion.py": "10dd04f125efefe395a6661bec929c6ac02b9b0eb22e870d5133c962b0aec520",
+    "main_scripts\\region_analysis\\hemisphere.py": "62ce2b1969796bf11f55b8b5d7317d31a1b93ec0e093072ba2a2092317d9ae91",
+    "main_scripts\\region_analysis\\hierarchy.py": "55f87d391db0995ff8cfc3f4026b1c1f694f9948cc53f7b1ce770958a50dcdf4",
+    "main_scripts\\region_analysis\\hierarchy_table.py": "39380e2e342e1878edb0055d75fd24c1f6d00185699d1c482e3198d5322858c7",
+    "main_scripts\\region_analysis\\laterality.py": "8c53a3475aa17990d8ac7b482ab2c07621944d6d69e68242f383bbba85207a6f",
+    "main_scripts\\region_analysis\\laterality_projection_analysis.py": "53cd19e57196b239d9ddd08c86597d00caedbed9c30a6e1fded1c69d925e5e76",
+    "main_scripts\\region_analysis\\neuron_analysis.py": "19a9c769ef0e827243e6ad5465aebcb42181484c4ff0fcdb30c0290716594123",
+    "main_scripts\\region_analysis\\output_manager.py": "17cc493d7ffe49db95ff465580032dcf01ec1bd20c97cc12c4d0d74783d8b7e2",
+    "main_scripts\\region_analysis\\plotting.py": "34662bd5e0474c099ef6a1bb6a7d56c772bb38d857ef93832c766e7fea4e0838",
+    "main_scripts\\region_analysis\\population.py": "a5939e76cea844e092df6d03808d15cc6ca2a537c0ff01c65f454192e354f371",
+    "main_scripts\\region_analysis\\utils.py": "1698035bd2ce31e8694a5d14b66f0882641615998b6c03a804b369e85dac3cd2",
+    "main_scripts\\region_analysis\\__init__.py": "3342b4f8f720bbee9d89a469ee4ac2145f6f15ed0081631916fdad7076fcc013",
+    "main_scripts\\region_analysis.py": "59955638243c97f91828eae27710c5f89714e9eeb9322befc68224b81cd1955c",
+    "main_scripts\\step1.run_region_analysis.py": "92f6cc5abf4e072d93c9dd4aa925a2e6e28635bd2de18846c8fb59c700530116",
+    "main_scripts\\neuro_tracer.py": "2f11cc1675bb9217d5665f7df8bccc5e1fd2cd1dfa717443548d275e30556d6f",
+    "main_scripts\\region_labels.py": "ffb122830f6ecf9f4fe4c315d768319af62779be09b34961e37d9ccb455f9521",
+    "group_analysis\\scripts\\01_build_insula_coord_reference.py": "d60b11c852c5de1dc58e77d9768ee5fef369aa64f840ef8d18d62ea89db70c69",
+    "group_analysis\\scripts\\02a_probe_iondata.py": "a17c406516f13da1c2f06d9b2ea62d3279456c81ef032ec1f5a9ec8fb2d7d36c",
+    "group_analysis\\scripts\\02_run_step1_multi.py": "772c46acb98fc00edc5402cf38de319807d3baa5109dc8d87c945ef550e2b402",
+    "group_analysis\\scripts\\05a_build_combined_table.py": "1cefb8c0e448cb47327b047b01b2ee76242903d535b4010f44da06b7bff09542",
+    "group_analysis\\scripts\\05b_audit_coord_frames.py": "b9bfcae8a681b270166452d4d9f44fed9b9a22a2acb9a077bf26ab5fa44efb5f",
+    "group_analysis\\scripts\\05c_run_global_fnt.py": "2bbe6b1d6871818bb3b0266aa75cf18b8e6b63e3288a9c15e07f6a37c7741a1e",
+    "group_analysis\\scripts\\05d_fnt_sanity_check.py": "7aaf81926851c48a425fb3de35c16b9ca350621734fd80f2bf660d7f16bfe63f",
+    "group_analysis\\scripts\\06a_merge_henry_layers.py": "2a4bf68cc2a34f754ee86c3f2482eac8822ae740f65e929651daa5e817748b7f",
+    "group_analysis\\scripts\\06_harmonize_atlas_to_manual.py": "c44391e3e54592cebdd3f10007536b8206a5210db969cf182987cb55b600a932"
+  },
+  "reproductions": {
+    "sparse_levels": {
+      "lookup_level2": "CL_A",
+      "lookup_level3": null,
+      "parent_level3": null
+    },
+    "single_aggregate_keyword": {
+      "error": "TypeError: HierarchyTable.aggregate_to_level() got an unexpected keyword argument 'strip_prefixes'"
+    },
+    "single_load_api": {
+      "error": "AttributeError: type object 'HierarchyTable' has no attribute 'from_files'"
+    },
+    "incremental_load_regions": 0
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "started_utc": "2026-10-08T17:01:59.530302+00:00",
+  "steps": [
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/build_projection_maps.py",
+        "--manifest",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\multimonkey_coarse_20261009_v2\\projection_manifest.csv",
+        "--reference",
+        "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+        "--brain-mask",
+        "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_brainmask.nii.gz",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009"
+      ],
+      "started_utc": "2026-10-08T17:01:59.531302+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-08T17:05:41.501662+00:00"
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/review_projection_run.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review"
+      ],
+      "started_utc": "2026-10-08T17:05:41.502659+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-08T17:06:44.333775+00:00"
+    }
+  ],
+  "scope": "descriptive template-space all-axon length; coordinate origin and anatomy unaccepted",
+  "status": "passed_build_and_independent_review"
+}

@@ -1,0 +1,21 @@
+test_concurrently_created_destination_is_preserved_and_temporary_cleaned (__main__.CombinedContracts) ... ok
+test_existing_destination_refused_before_reading_inputs (__main__.CombinedContracts) ... ok
+test_keeper_requires_sample_identity (__main__.CombinedContracts) ... ok
+test_missing_configured_input_files_fail_closed (__main__.CombinedContracts) ... ok
+test_missing_duplicate_foreign_selected_identities_fail_closed (__main__.CombinedContracts) ... ok
+test_missing_required_sheet_never_publishes (__main__.CombinedContracts) ... ok
+test_reference_extra_missing_and_duplicate_projection_identities_rejected (__main__.CombinedContracts) ... ok
+test_source_selection_reorders_explicitly_to_keeper_identity_order (__main__.CombinedContracts) ... ok
+test_valid_combined_derivative_preserves_inputs_full_membership_and_values (__main__.CombinedContracts) ... ok
+test_actual_atlas_key_passes_without_mutating_source_table (__main__.CoordinateAndAtlasContracts) ... ok
+test_duplicate_anatomical_labels_cannot_overwrite_lengths (__main__.CoordinateAndAtlasContracts) ... ok
+test_invalid_root_topology_and_nonfinite_coordinates_are_rejected (__main__.CoordinateAndAtlasContracts) ... ok
+test_malformed_atlas_index_and_label_values_rejected (__main__.CoordinateAndAtlasContracts) ... ok
+test_root_selected_by_parent_marker_not_row_order (__main__.CoordinateAndAtlasContracts) ... ok
+test_valid_key_preserves_proximal_rounding_total_and_leaf_gate (__main__.CoordinateAndAtlasContracts) ... ok
+test_summary_only_or_missing_quantitative_sheet_rejected_before_enrichment (__main__.HarmonizerSchemaContracts) ... ok
+
+----------------------------------------------------------------------
+Ran 16 tests in 3.062s
+
+OK

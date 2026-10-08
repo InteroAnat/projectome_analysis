@@ -1,0 +1,201 @@
+{
+  "status": "independent_CM032_saved_regional_readback_passed",
+  "reader_sha256": "907795aef717a90a07d493df4fce73eb1987ad4be92c45bf4d2fe099a17c650d",
+  "integration_provenance_sha256": "2ca71635955dfb80ba2be324447d5251d7cf86cd6b92ac539fbfdebb3f15e8ba",
+  "production_imports": false,
+  "fmri_rows": 1676,
+  "joint_rows": 25140,
+  "saved_group_maps": 30,
+  "source_groups": 15,
+  "source_neuron_denominators": {
+    "endpoint": 410,
+    "endpoint_eligible": 378,
+    "axon": 410
+  },
+  "coverage_by_level": [
+    {
+      "level": 1,
+      "all_covered_voxels": 5015104,
+      "positive_ARM_voxels": 3782314,
+      "positive_ARM_covered_voxels": 2965635,
+      "positive_ARM_coverage_fraction": 0.7840795343802762
+    },
+    {
+      "level": 2,
+      "all_covered_voxels": 5015104,
+      "positive_ARM_voxels": 3782314,
+      "positive_ARM_covered_voxels": 2965635,
+      "positive_ARM_coverage_fraction": 0.7840795343802762
+    },
+    {
+      "level": 3,
+      "all_covered_voxels": 5015104,
+      "positive_ARM_voxels": 3782314,
+      "positive_ARM_covered_voxels": 2965635,
+      "positive_ARM_coverage_fraction": 0.7840795343802762
+    },
+    {
+      "level": 4,
+      "all_covered_voxels": 5015104,
+      "positive_ARM_voxels": 3782314,
+      "positive_ARM_covered_voxels": 2965635,
+      "positive_ARM_coverage_fraction": 0.7840795343802762
+    },
+    {
+      "level": 5,
+      "all_covered_voxels": 5015104,
+      "positive_ARM_voxels": 3782314,
+      "positive_ARM_covered_voxels": 2965635,
+      "positive_ARM_coverage_fraction": 0.7840795343802762
+    },
+    {
+      "level": 6,
+      "all_covered_voxels": 5015104,
+      "positive_ARM_voxels": 3782314,
+      "positive_ARM_covered_voxels": 2965635,
+      "positive_ARM_coverage_fraction": 0.7840795343802762
+    }
+  ],
+  "targets_without_coverage": [
+    "L3:mapped:1108",
+    "L3:mapped:1318",
+    "L3:mapped:1608",
+    "L3:mapped:1818",
+    "L4:mapped:1108",
+    "L4:mapped:1315",
+    "L4:mapped:1319",
+    "L4:mapped:1322",
+    "L4:mapped:1608",
+    "L4:mapped:1815",
+    "L4:mapped:1819",
+    "L4:mapped:1822",
+    "L5:mapped:155",
+    "L5:mapped:652",
+    "L5:mapped:655",
+    "L5:mapped:1081",
+    "L5:mapped:1109",
+    "L5:mapped:1110",
+    "L5:mapped:1239",
+    "L5:mapped:1241",
+    "L5:mapped:1297",
+    "L5:mapped:1303",
+    "L5:mapped:1309",
+    "L5:mapped:1313",
+    "L5:mapped:1314",
+    "L5:mapped:1316",
+    "L5:mapped:1317",
+    "L5:mapped:1320",
+    "L5:mapped:1321",
+    "L5:mapped:1323",
+    "L5:mapped:1325",
+    "L5:mapped:1581",
+    "L5:mapped:1609",
+    "L5:mapped:1610",
+    "L5:mapped:1739",
+    "L5:mapped:1741",
+    "L5:mapped:1792",
+    "L5:mapped:1797",
+    "L5:mapped:1803",
+    "L5:mapped:1809",
+    "L5:mapped:1811",
+    "L5:mapped:1814",
+    "L5:mapped:1816",
+    "L5:mapped:1817",
+    "L5:mapped:1820",
+    "L5:mapped:1821",
+    "L5:mapped:1823",
+    "L5:mapped:1825",
+    "L6:mapped:156",
+    "L6:mapped:157",
+    "L6:mapped:651",
+    "L6:mapped:652",
+    "L6:mapped:656",
+    "L6:mapped:657",
+    "L6:mapped:1081",
+    "L6:mapped:1109",
+    "L6:mapped:1110",
+    "L6:mapped:1239",
+    "L6:mapped:1241",
+    "L6:mapped:1246",
+    "L6:mapped:1298",
+    "L6:mapped:1299",
+    "L6:mapped:1300",
+    "L6:mapped:1303",
+    "L6:mapped:1309",
+    "L6:mapped:1313",
+    "L6:mapped:1314",
+    "L6:mapped:1316",
+    "L6:mapped:1317",
+    "L6:mapped:1320",
+    "L6:mapped:1321",
+    "L6:mapped:1323",
+    "L6:mapped:1325",
+    "L6:mapped:1581",
+    "L6:mapped:1609",
+    "L6:mapped:1610",
+    "L6:mapped:1739",
+    "L6:mapped:1741",
+    "L6:mapped:1745",
+    "L6:mapped:1746",
+    "L6:mapped:1792",
+    "L6:mapped:1798",
+    "L6:mapped:1799",
+    "L6:mapped:1800",
+    "L6:mapped:1803",
+    "L6:mapped:1809",
+    "L6:mapped:1811",
+    "L6:mapped:1814",
+    "L6:mapped:1816",
+    "L6:mapped:1817",
+    "L6:mapped:1820",
+    "L6:mapped:1821",
+    "L6:mapped:1823",
+    "L6:mapped:1825"
+  ],
+  "key_level_conflicts_retained": [
+    {
+      "level": 4,
+      "ARMIndex": 45,
+      "voxels": 1641
+    },
+    {
+      "level": 4,
+      "ARMIndex": 545,
+      "voxels": 1641
+    },
+    {
+      "level": 5,
+      "ARMIndex": 45,
+      "voxels": 1641
+    },
+    {
+      "level": 5,
+      "ARMIndex": 545,
+      "voxels": 1641
+    }
+  ],
+  "native_sampling_mm": [
+    0.75,
+    0.75,
+    2.0
+  ],
+  "NMT_sampling_mm": [
+    0.25,
+    0.25,
+    0.25
+  ],
+  "checks": [
+    "All source/output hashes",
+    "All six direct ARM level labels and official key metadata",
+    "Covered and total voxel counts, means, contrast medians and descriptive T medians",
+    "All saved endpoint count and axon length values over exactly the same coverage",
+    "All source labels, selected/eligible/animal counts and copied fMRI metadata"
+  ],
+  "limits": [
+    "Numerical NMT spatial summaries only; registration and stimulation coordinates unaccepted",
+    "Saved group maps average animals equally; metric labels are not pooled-neuron estimates",
+    "Existing T image transform not independently reproduced here; median T is not a regional t test",
+    "No source-sample pairing, biological terminal, independent-voxel or causal claim",
+    "NMT upsampling does not establish native fMRI spatial resolution; no new ANTs run"
+  ]
+}

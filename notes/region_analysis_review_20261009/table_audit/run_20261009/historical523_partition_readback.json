@@ -1,0 +1,424 @@
+{
+  "records": [
+    {
+      "file": "main_scripts/neuron_tables/251637_subset_multisheets.xlsx",
+      "sha256": "30e54f503b74a3ea61f05314d4d65a7b374c6eff0f78e1f9cf0c234a662e7cb6",
+      "readback": {
+        "Summary": {
+          "NeuronID": "523.swc",
+          "Soma_Side": "Unknown",
+          "N_Ipsilateral": 0,
+          "N_Contralateral": 0,
+          "N_Laterality_Unknown": 6
+        },
+        "Projection_Length_ipsi": {
+          "NeuronID": "523.swc",
+          "Pu": 69.26100000000017,
+          "ic": 2.737999999999997,
+          "CdH": 5.092999999999998,
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "SMA": 12.08800000000001
+        },
+        "Projection_Length_contra": {
+          "NeuronID": "523.swc",
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "ic": 2.737999999999997,
+          "Pu": 69.26100000000017,
+          "SMA": 12.08800000000001,
+          "CdH": 5.092999999999998
+        },
+        "Projection_Length_L3_ipsi": {
+          "NeuronID": "523.swc",
+          "Str": 77.09200000000016,
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "SMA/preSMA": 12.08800000000001
+        },
+        "Projection_Length_L3_contra": {
+          "NeuronID": "523.swc",
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "Str": 77.09200000000016,
+          "SMA/preSMA": 12.08800000000001
+        }
+      },
+      "source_preserving_diagnostic": {
+        "finest": {
+          "historical_both_side_nonzero_lengths": {
+            "Pu": 69.26100000000017,
+            "ic": 2.737999999999997,
+            "CdH": 5.092999999999998,
+            "areas_1-2": 0.8790000000000003,
+            "M1": 1074.520999999986,
+            "SMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.5799999999863,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Pu": 69.26100000000017,
+              "ic": 2.737999999999997,
+              "CdH": 5.092999999999998,
+              "areas_1-2": 0.8790000000000003,
+              "M1": 1074.520999999986,
+              "SMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Pu": 1.8467,
+              "ic": 0.5726,
+              "CdH": 0.7848,
+              "areas_1-2": 0.2739,
+              "M1": 3.0316,
+              "SMA": 1.1169
+            }
+          }
+        },
+        "L3": {
+          "historical_both_side_nonzero_lengths": {
+            "Str": 77.09200000000016,
+            "M1/PM": 1074.520999999986,
+            "SI": 0.8790000000000003,
+            "SMA/preSMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.579999999986,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Str": 77.09200000000016,
+              "M1/PM": 1074.520999999986,
+              "SI": 0.8790000000000003,
+              "SMA/preSMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Str": 1.8926,
+              "M1/PM": 3.0316,
+              "SI": 0.2739,
+              "SMA/preSMA": 1.1169
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "neuron_tables/251637_FULL.xlsx",
+      "sha256": "9230890cb128942c6397e58e8853750b2693199bec6169206c82a8024e19281a",
+      "readback": {
+        "Summary": {
+          "NeuronID": "523.swc",
+          "Soma_Side": "Unknown",
+          "N_Ipsilateral": 0,
+          "N_Contralateral": 0,
+          "N_Laterality_Unknown": 6
+        },
+        "Projection_Length_ipsi": {
+          "NeuronID": "523.swc",
+          "Pu": 69.26100000000017,
+          "ic": 2.737999999999997,
+          "CdH": 5.092999999999998,
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "SMA": 12.08800000000001
+        },
+        "Projection_Length_contra": {
+          "NeuronID": "523.swc",
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "ic": 2.737999999999997,
+          "Pu": 69.26100000000017,
+          "SMA": 12.08800000000001,
+          "CdH": 5.092999999999998
+        },
+        "Projection_Length_L3_ipsi": {
+          "NeuronID": "523.swc",
+          "Str": 77.09200000000016,
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "SMA/preSMA": 12.08800000000001
+        },
+        "Projection_Length_L3_contra": {
+          "NeuronID": "523.swc",
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "Str": 77.09200000000016,
+          "SMA/preSMA": 12.08800000000001
+        }
+      },
+      "source_preserving_diagnostic": {
+        "finest": {
+          "historical_both_side_nonzero_lengths": {
+            "Pu": 69.26100000000017,
+            "ic": 2.737999999999997,
+            "CdH": 5.092999999999998,
+            "areas_1-2": 0.8790000000000003,
+            "M1": 1074.520999999986,
+            "SMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.5799999999863,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Pu": 69.26100000000017,
+              "ic": 2.737999999999997,
+              "CdH": 5.092999999999998,
+              "areas_1-2": 0.8790000000000003,
+              "M1": 1074.520999999986,
+              "SMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Pu": 1.8467,
+              "ic": 0.5726,
+              "CdH": 0.7848,
+              "areas_1-2": 0.2739,
+              "M1": 3.0316,
+              "SMA": 1.1169
+            }
+          }
+        },
+        "L3": {
+          "historical_both_side_nonzero_lengths": {
+            "Str": 77.09200000000016,
+            "M1/PM": 1074.520999999986,
+            "SI": 0.8790000000000003,
+            "SMA/preSMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.579999999986,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Str": 77.09200000000016,
+              "M1/PM": 1074.520999999986,
+              "SI": 0.8790000000000003,
+              "SMA/preSMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Str": 1.8926,
+              "M1/PM": 3.0316,
+              "SI": 0.2739,
+              "SMA/preSMA": 1.1169
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "neuron_tables/251637_subset.xlsx",
+      "sha256": "eff9eb548faf74b769d6759b0ee71c68977597401fae54460bb72b25483a793f",
+      "readback": {
+        "Summary": {
+          "NeuronID": "523.swc",
+          "Soma_Side": "Unknown",
+          "N_Ipsilateral": 0,
+          "N_Contralateral": 0,
+          "N_Laterality_Unknown": 6
+        },
+        "Projection_Length_ipsi": {
+          "NeuronID": "523.swc",
+          "Pu": 69.26100000000017,
+          "ic": 2.737999999999997,
+          "CdH": 5.092999999999998,
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "SMA": 12.08800000000001
+        },
+        "Projection_Length_contra": {
+          "NeuronID": "523.swc",
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "ic": 2.737999999999997,
+          "Pu": 69.26100000000017,
+          "SMA": 12.08800000000001,
+          "CdH": 5.092999999999998
+        },
+        "Projection_Length_L3_ipsi": {
+          "NeuronID": "523.swc",
+          "Str": 77.09200000000016,
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "SMA/preSMA": 12.08800000000001
+        },
+        "Projection_Length_L3_contra": {
+          "NeuronID": "523.swc",
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "Str": 77.09200000000016,
+          "SMA/preSMA": 12.08800000000001
+        }
+      },
+      "source_preserving_diagnostic": {
+        "finest": {
+          "historical_both_side_nonzero_lengths": {
+            "Pu": 69.26100000000017,
+            "ic": 2.737999999999997,
+            "CdH": 5.092999999999998,
+            "areas_1-2": 0.8790000000000003,
+            "M1": 1074.520999999986,
+            "SMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.5799999999863,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Pu": 69.26100000000017,
+              "ic": 2.737999999999997,
+              "CdH": 5.092999999999998,
+              "areas_1-2": 0.8790000000000003,
+              "M1": 1074.520999999986,
+              "SMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Pu": 1.8467,
+              "ic": 0.5726,
+              "CdH": 0.7848,
+              "areas_1-2": 0.2739,
+              "M1": 3.0316,
+              "SMA": 1.1169
+            }
+          }
+        },
+        "L3": {
+          "historical_both_side_nonzero_lengths": {
+            "Str": 77.09200000000016,
+            "M1/PM": 1074.520999999986,
+            "SI": 0.8790000000000003,
+            "SMA/preSMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.579999999986,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Str": 77.09200000000016,
+              "M1/PM": 1074.520999999986,
+              "SI": 0.8790000000000003,
+              "SMA/preSMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Str": 1.8926,
+              "M1/PM": 3.0316,
+              "SI": 0.2739,
+              "SMA/preSMA": 1.1169
+            }
+          }
+        }
+      }
+    },
+    {
+      "file": "neuron_tables/251637_Unknown.xlsx",
+      "sha256": "7516a2dc3ddd7b8d4349d29ad04ab74c754b5c6f3a11efd39e457817c01b191a",
+      "readback": {
+        "Summary": {
+          "NeuronID": "523.swc",
+          "Soma_Side": "Unknown",
+          "N_Ipsilateral": 0,
+          "N_Contralateral": 0,
+          "N_Laterality_Unknown": 6
+        },
+        "Projection_Length_ipsi": {
+          "NeuronID": "523.swc",
+          "Pu": 69.26100000000017,
+          "ic": 2.737999999999997,
+          "CdH": 5.092999999999998,
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "SMA": 12.08800000000001
+        },
+        "Projection_Length_contra": {
+          "NeuronID": "523.swc",
+          "areas_1-2": 0.8790000000000003,
+          "M1": 1074.520999999986,
+          "ic": 2.737999999999997,
+          "Pu": 69.26100000000017,
+          "SMA": 12.08800000000001,
+          "CdH": 5.092999999999998
+        },
+        "Projection_Length_L3_ipsi": {
+          "NeuronID": "523.swc",
+          "Str": 77.09200000000016,
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "SMA/preSMA": 12.08800000000001
+        },
+        "Projection_Length_L3_contra": {
+          "NeuronID": "523.swc",
+          "M1/PM": 1074.520999999986,
+          "SI": 0.8790000000000003,
+          "Str": 77.09200000000016,
+          "SMA/preSMA": 12.08800000000001
+        }
+      },
+      "source_preserving_diagnostic": {
+        "finest": {
+          "historical_both_side_nonzero_lengths": {
+            "Pu": 69.26100000000017,
+            "ic": 2.737999999999997,
+            "CdH": 5.092999999999998,
+            "areas_1-2": 0.8790000000000003,
+            "M1": 1074.520999999986,
+            "SMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.5799999999863,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Pu": 69.26100000000017,
+              "ic": 2.737999999999997,
+              "CdH": 5.092999999999998,
+              "areas_1-2": 0.8790000000000003,
+              "M1": 1074.520999999986,
+              "SMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Pu": 1.8467,
+              "ic": 0.5726,
+              "CdH": 0.7848,
+              "areas_1-2": 0.2739,
+              "M1": 3.0316,
+              "SMA": 1.1169
+            }
+          }
+        },
+        "L3": {
+          "historical_both_side_nonzero_lengths": {
+            "Str": 77.09200000000016,
+            "M1/PM": 1074.520999999986,
+            "SI": 0.8790000000000003,
+            "SMA/preSMA": 12.08800000000001
+          },
+          "historical_single_partition_sum": 1164.579999999986,
+          "expected_preserved_unknown_partition": {
+            "ipsi": {},
+            "contra": {},
+            "unknown_length": {
+              "Str": 77.09200000000016,
+              "M1/PM": 1074.520999999986,
+              "SI": 0.8790000000000003,
+              "SMA/preSMA": 12.08800000000001
+            },
+            "unknown_strength_after_aggregation": {
+              "Str": 1.8926,
+              "M1/PM": 3.0316,
+              "SI": 0.2739,
+              "SMA/preSMA": 1.1169
+            }
+          }
+        }
+      }
+    }
+  ],
+  "fresh_current_rule_total_retained_projection": 1156.748999999979,
+  "historical_stored_single_partition_sum": 1164.5799999999863,
+  "historical_minus_fresh_non_M1_target_difference": {
+    "ic": 2.738,
+    "CdH": 5.093,
+    "sum": 7.831
+  },
+  "interpretation": "M1 and its L3 ancestor match fresh reconstruction; exact all-target original run lineage is not established. Retain original target values when correcting unknown partition; fresh current-rule source allocation is separate. No anatomical acceptance or canonical edit."
+}

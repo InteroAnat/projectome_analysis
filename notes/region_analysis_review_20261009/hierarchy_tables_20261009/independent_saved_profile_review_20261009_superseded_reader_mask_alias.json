@@ -1,0 +1,667 @@
+{
+  "status": "independent_saved_profile_readback_passed",
+  "producer_provenance_sha256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+  "producer_code_sha256_recorded": "1c0b0a4ea28d1f2d731062e3c76584b012d74c17cb0e558f80a17a3089ce56bc",
+  "reader_sha256": "9c3b1bb4304cd20e1d5edc63d0ad718abdc3b152a48f2b0c8a88abba4199b220",
+  "production_imports": false,
+  "n_selected": 462,
+  "n_endpoint_eligible": 429,
+  "n_axon_profiles": 227,
+  "n_endpoint_profiles": 224,
+  "source_ARM0": {
+    "selected": 52,
+    "axon_profiles": 12,
+    "endpoint_profiles": 12
+  },
+  "partitions": [
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 2,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        229,
+        199
+      ]
+    },
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 3,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        229,
+        198,
+        1
+      ]
+    },
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 4,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        229,
+        197,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 5,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        17,
+        212,
+        197,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 6,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        17,
+        3,
+        209,
+        197,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 7,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        17,
+        3,
+        209,
+        68,
+        129,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_axon_hellinger",
+      "k": 8,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        17,
+        3,
+        7,
+        202,
+        68,
+        129,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 2,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        200,
+        228
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 3,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        200,
+        12,
+        216
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 4,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        129,
+        71,
+        12,
+        216
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 5,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        129,
+        71,
+        12,
+        5,
+        211
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 6,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        129,
+        70,
+        1,
+        12,
+        5,
+        211
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 7,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        129,
+        62,
+        8,
+        1,
+        12,
+        5,
+        211
+      ]
+    },
+    {
+      "analysis": "all_axon_logrelative",
+      "k": 8,
+      "n_profiles": 428,
+      "partition_ARI": 1.0,
+      "sizes": [
+        129,
+        62,
+        8,
+        1,
+        12,
+        5,
+        83,
+        128
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 2,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        90,
+        137
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 3,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        90,
+        3,
+        134
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 4,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        19,
+        71,
+        3,
+        134
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 5,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        19,
+        71,
+        3,
+        63,
+        71
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 6,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        19,
+        71,
+        3,
+        63,
+        70,
+        1
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 7,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        19,
+        2,
+        69,
+        3,
+        63,
+        70,
+        1
+      ]
+    },
+    {
+      "analysis": "Henry_only_axon_hellinger",
+      "k": 8,
+      "n_profiles": 227,
+      "partition_ARI": 1.0,
+      "sizes": [
+        19,
+        2,
+        69,
+        3,
+        63,
+        16,
+        54,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 2,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        424,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 3,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        228,
+        196,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 4,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        228,
+        195,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 5,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        228,
+        194,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 6,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        228,
+        2,
+        192,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 7,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        2,
+        226,
+        2,
+        192,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_hellinger",
+      "k": 8,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        2,
+        7,
+        219,
+        2,
+        192,
+        1,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 2,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        424,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 3,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        229,
+        195,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 4,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        229,
+        2,
+        193,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 5,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        229,
+        2,
+        192,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 6,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        14,
+        215,
+        2,
+        192,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 7,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        14,
+        3,
+        212,
+        2,
+        192,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_logrelative",
+      "k": 8,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        14,
+        3,
+        212,
+        2,
+        2,
+        190,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 2,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        424,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 3,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        195,
+        229,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 4,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        195,
+        228,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 5,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        195,
+        220,
+        8,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 6,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        195,
+        220,
+        6,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 7,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        2,
+        193,
+        220,
+        6,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "all_endpoint_presence_jaccard",
+      "k": 8,
+      "n_profiles": 425,
+      "partition_ARI": 1.0,
+      "sizes": [
+        2,
+        193,
+        6,
+        214,
+        6,
+        2,
+        1,
+        1
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 2,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        221
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 3,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        90,
+        131
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 4,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        90,
+        2,
+        129
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 5,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        2,
+        88,
+        2,
+        129
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 6,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        2,
+        88,
+        2,
+        128,
+        1
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 7,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        2,
+        67,
+        21,
+        2,
+        128,
+        1
+      ]
+    },
+    {
+      "analysis": "Henry_only_endpoint_hellinger",
+      "k": 8,
+      "n_profiles": 224,
+      "partition_ARI": 1.0,
+      "sizes": [
+        3,
+        2,
+        67,
+        21,
+        2,
+        2,
+        126,
+        1
+      ]
+    }
+  ],
+  "verified_target_profile_values": 55404,
+  "singleton_endpoint_example": {
+    "uid": "252790::121.swc",
+    "count": 1,
+    "official_target": "SL_reticular_thalamus"
+  },
+  "limits": [
+    "No repeated-subset stability rerun here; producer resampling receipts reviewed separately",
+    "All fits remain neuron weighted, conditional on mapped positive L6 composition",
+    "Absolute-side partitions largely reflect source hemisphere, not validated neuronal types",
+    "Graph leaves are candidate endpoint proxies; atlas assignment and registration remain unaccepted"
+  ]
+}

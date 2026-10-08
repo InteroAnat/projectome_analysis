@@ -1,0 +1,303 @@
+{
+  "generated_at": "2026-10-08T15:31:11.144305+00:00",
+  "mode": "saved_snapshot_audit",
+  "n_samples": 46,
+  "n_macaque_catalog_samples": 44,
+  "n_channel_variants": 15,
+  "n_samples_with_full_neuron_snapshot": 9,
+  "n_samples_aggregate_only": 37,
+  "n_historical_tracker_aliases_absent_current_catalog": 0,
+  "n_neuron_identity_rows": 1922,
+  "n_verified_copied_series": 5,
+  "padding_mm": 2.0,
+  "coordinate_rule": "portal um/1000; folded X=abs(X_mm-32); folded reference q0.005-q0.995 NII bounds*0.25 + padding_mm",
+  "source_files": {
+    "catalog": {
+      "file": "group_analysis/portal_audit_20260926/portal_macaque_samples.csv",
+      "sha256": "ce98dfe1fb18c6cfdbe783d3c5531403b28ef11867b1fef895bf341886864f07",
+      "checked_at": "",
+      "url": ""
+    },
+    "aggregate": {
+      "file": "group_analysis/portal_audit_20260928/portal_refresh_vs_20260926.csv",
+      "sha256": "3abc3255a5913a9bb18c3945c3f883c628c6d8ddfb42572dff15f03a69ea4a98",
+      "checked_at": "",
+      "url": ""
+    },
+    "tracker": {
+      "file": "group_analysis/docs/dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d",
+      "checked_at": "",
+      "url": ""
+    },
+    "visual_manifest": {
+      "file": "group_analysis/visual_review_20261002/manifest/identity_manifest.csv",
+      "sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+      "checked_at": "",
+      "url": ""
+    },
+    "boxes": {
+      "file": "group_analysis/staging_20260926/reference/251637_subregion_bboxes_folded.csv",
+      "sha256": "f1c3e4df3afba966bed7b04b51059abed02fdd0dfe890add35052415276ab997",
+      "checked_at": "",
+      "url": ""
+    },
+    "series": {
+      "file": "notes/bulk_visual_review_20261002/server_inventory.md",
+      "sha256": "8052d00638cb8c548775860d97f9e635ad7b5d9b8f6b9305a2d72e3a3a001f9e",
+      "checked_at": "",
+      "url": ""
+    },
+    "labels": {
+      "file": "group_analysis/scripts/insula_label_set.py",
+      "sha256": "34e32c0516068ff985fd6cb419b42c03c7ae0a00aebcdad1eafe262b444dc667",
+      "checked_at": "",
+      "url": ""
+    },
+    "atlas_key": {
+      "file": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+      "checked_at": "",
+      "url": ""
+    },
+    "cohort_constants": {
+      "file": "group_analysis/scripts/cohort.py",
+      "sha256": "6170aa9c51a6f41623cc5e7539feb1aec14de06d80149c36e2b5e7e117b52e14",
+      "checked_at": "",
+      "url": ""
+    },
+    "portal_normalizer": {
+      "file": "main_scripts/region_labels.py",
+      "sha256": "ffb122830f6ecf9f4fe4c315d768319af62779be09b34961e37d9ccb455f9521",
+      "checked_at": "",
+      "url": ""
+    },
+    "directory_observation": {
+      "file": "group_analysis/evolution_20261008/inventory/source_root_observation_20261008.json",
+      "sha256": "382ed69079a9eebf6c3694a772036b67b887382b035071519320f97d15d9ccb0",
+      "checked_at": "2026-10-08T23:18:43.0847828+08:00",
+      "url": ""
+    },
+    "snapshot_manifests": [
+      {
+        "file": "notes/bulk_visual_review_20261002/portal_snapshot/manifest.json",
+        "sha256": "f41c355891eebe41c0a2acea694361f537d500eb73d056f2e956ea6386fd04b3",
+        "checked_at": "",
+        "url": ""
+      }
+    ]
+  },
+  "source_root_observation": {
+    "checked_at": "2026-10-08T23:18:43.0847828+08:00",
+    "root": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets",
+    "scope": "complete shallow directory-name enumeration at root; no recursive scan or new slice validation",
+    "observer": "parent Codex runner; successful read-only shell listing supplied to inventory runner",
+    "directories": [
+      "251637-CH1_resample",
+      "252384_CH1_resample",
+      "252385-CH1_resample",
+      "252527_CH1_resample",
+      "252714-CH1_resample"
+    ],
+    "limitations": "Folder presence does not validate TIFF availability, channel biology, calibration, anatomy or registration. Channel suffixes are exact identities."
+  },
+  "snapshot_endpoints": [
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252790_sample_info.json",
+      "sha256": "110f9bf5be1f476daa47d3d77c16382b961d4a55ab9c0375b0000d6251ee0866",
+      "checked_at": "2026-10-02T22:44:59.935078+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252790",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252790_neurons.json",
+      "sha256": "61291cd61781868e70f90b2e55ea5b4f8a188c4a25ff3c102f00878b04045b92",
+      "checked_at": "2026-10-02T22:44:59.969911+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252790",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252790_soma.json",
+      "sha256": "9c504e988e07485a3e9f209734cc94fcc1776f83081240bdf90d6f185d69a2aa",
+      "checked_at": "2026-10-02T22:45:00.002349+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252790",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252385_sample_info.json",
+      "sha256": "54520d91f7a7247d578420e7c888e1160c73fcd896fb14a9d98848555c95bfcc",
+      "checked_at": "2026-10-02T22:44:59.935078+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252385",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252385_neurons.json",
+      "sha256": "14a12dc9a2ec46bd35b0a17cab74ac319dcadadb7d39922ae657823beabfcfd7",
+      "checked_at": "2026-10-02T22:45:00.002349+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252385",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252385_soma.json",
+      "sha256": "e525f8bd034c2b23cd46226af669036c3fc20bb85842c1232a2073cacfa5ddf7",
+      "checked_at": "2026-10-02T22:45:00.034140+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252385",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252718_sample_info.json",
+      "sha256": "c2578e47478ab8164f637db4077eb9524dbd79edf4644c4d0e81e616d3b3040e",
+      "checked_at": "2026-10-02T22:44:59.936077+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252718",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252718_neurons.json",
+      "sha256": "52f8afe6dd554a6a10d57c448a2dd690fee752ec0d7fa0464ae243c73afa2872",
+      "checked_at": "2026-10-02T22:44:59.970912+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252718",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252718_soma.json",
+      "sha256": "ec9916ed905f62abb044d6dac44abdc5a53c406474c783127a9dfad9c642e185",
+      "checked_at": "2026-10-02T22:45:00.012523+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252718",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252527_sample_info.json",
+      "sha256": "123e286b556566422f41fe777653d05c7c3c62349ff7bec274ff8263f613366f",
+      "checked_at": "2026-10-02T22:45:00.043231+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252527",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252527_neurons.json",
+      "sha256": "8147e6dbf3d59156006703a019702bd7970e759348889f9d0b53d590c1e04b8d",
+      "checked_at": "2026-10-02T22:45:00.086108+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252527",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252527_soma.json",
+      "sha256": "269420bbf7c088db422640fb1df27d0a71a7e84edcf24b90d0e48402748681a2",
+      "checked_at": "2026-10-02T22:45:00.111680+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252527",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252714_sample_info.json",
+      "sha256": "20d06f977e9e74b98c6cecf2dbea4723ef3397f5860751341ac78a939e2d1ae0",
+      "checked_at": "2026-10-02T22:45:00.053814+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252714",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252714_neurons.json",
+      "sha256": "460466438da4118222a9c9cf53d29aef5f5c1f4acf388e68fb5dc80785f1132d",
+      "checked_at": "2026-10-02T22:45:00.073155+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252714",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252714_soma.json",
+      "sha256": "45330049eb0121037d6bdc2de6d70ee099140223308009da305866cd07ff60d6",
+      "checked_at": "2026-10-02T22:45:00.086108+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252714",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/250432_sample_info.json",
+      "sha256": "f445b734dd26e2b6a397fa1fdf1b700e0e07f1fc9319eabf2e5b1cd320009c76",
+      "checked_at": "2026-10-02T22:45:00.060707+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=250432",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/250432_neurons.json",
+      "sha256": "44cdcf8d7ffef8ff3f2f322fdb2fe2f53f0f6249d10f3c193238c4d22637fecc",
+      "checked_at": "2026-10-02T22:45:00.076155+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=250432",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/250432_soma.json",
+      "sha256": "2db38ff33069e547f321220bded56a55d27dacb591e4a009e99b76f567468c61",
+      "checked_at": "2026-10-02T22:45:00.096089+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=250432",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252383_sample_info.json",
+      "sha256": "db77faa94eeaae59c96ea065890074766ced2b8e20764c8270d27fef116cacaf",
+      "checked_at": "2026-10-02T22:45:00.109679+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252383",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252383_neurons.json",
+      "sha256": "ccf75a0878c22f9a720cb8c49d57dab51867eb3a7c55c8d7cc8eb6c52788a313",
+      "checked_at": "2026-10-02T22:45:00.128343+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252383",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252383_soma.json",
+      "sha256": "63849a040c07d8c8325bcfaaa87528893ec66b51083206024ba596b52c612920",
+      "checked_at": "2026-10-02T22:45:00.146447+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252383",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252384_sample_info.json",
+      "sha256": "0840e7552bd7af671098d27ed2f39760f667b031f81bbede81d7cb90eb1a3484",
+      "checked_at": "2026-10-02T22:45:00.120217+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=252384",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252384_neurons.json",
+      "sha256": "eacac38c44401c8f272534b613b9846e90429a573b2b0b03deccbf813e922ef6",
+      "checked_at": "2026-10-02T22:45:00.159227+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=252384",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/252384_soma.json",
+      "sha256": "cdbcc6df539bb9ef682198b4864bf686bf668ae133d4438b8d164ffd5b8214f9",
+      "checked_at": "2026-10-02T22:45:00.168930+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=252384",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/251730_sample_info.json",
+      "sha256": "122d1a3606ee7bfc21009aa01d6c7a5e1adbbdd24248d5c1ea4e4cfcea7b4192",
+      "checked_at": "2026-10-02T22:45:00.140437+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo?project_id=&fMOST_id=251730",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/251730_neurons.json",
+      "sha256": "5e51782688858658fb2d96a773715e5a67d1dda076705c22c6764616b765d812",
+      "checked_at": "2026-10-02T22:45:00.158226+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/selectNeurons?id=251730",
+      "status": "ok"
+    },
+    {
+      "file": "notes/bulk_visual_review_20261002/portal_snapshot/251730_soma.json",
+      "sha256": "5d46583bca1314014d32d1194fc1f4395c6903dc8a15676b85b89d29c39ec10b",
+      "checked_at": "2026-10-02T22:45:00.195800+08:00",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma?fMOST_id=251730",
+      "status": "ok"
+    }
+  ],
+  "issues": [],
+  "limitations": [
+    "All outputs are candidates only; no anatomical, layer, laterality, injection-site or VEN acceptance.",
+    "Reconstruction-list entries are not proof of complete reconstruction; metadata tracing_cell_number is a separate field.",
+    "Missing or failed per-neuron/soma endpoints remain unassessed; aggregate-only INS counts use historical vocabulary.",
+    "CH1 slice evidence is dated 2026-10-02. Any later shallow folder observation has its own date and does not validate slices or PI/cytoarchitecture.",
+    "Excluded identities remain visible and cannot enter potential counts; exact sample/channel identity is preserved."
+  ]
+}

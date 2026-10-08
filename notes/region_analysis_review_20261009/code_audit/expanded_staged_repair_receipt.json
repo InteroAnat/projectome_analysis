@@ -1,0 +1,37 @@
+{
+  "status": "staged_only_no_production_changes_by_auditor",
+  "tests": "14 focused staged regressions passed",
+  "files": {
+    "main_scripts\\region_analysis\\population.py": {
+      "source_sha256": "a5939e76cea844e092df6d03808d15cc6ca2a537c0ff01c65f454192e354f371",
+      "staged_sha256": "c5146f50e640f191d9c4a6569009fe03d6c50426175e0f1aedcc5b59e7fbb39b"
+    },
+    "main_scripts\\region_analysis\\hierarchy_table.py": {
+      "source_sha256": "39380e2e342e1878edb0055d75fd24c1f6d00185699d1c482e3198d5322858c7",
+      "staged_sha256": "01a79008054a0a21013c6009f9516179addc3d600f70ed7327d2120ea23acb71"
+    },
+    "main_scripts\\region_analysis\\plotting.py": {
+      "source_sha256": "34662bd5e0474c099ef6a1bb6a7d56c772bb38d857ef93832c766e7fea4e0838",
+      "staged_sha256": "5a78b3f2925a9a87a77c33d2f74f5946514206b2232029578cc4a99ebc1bcfaf"
+    },
+    "main_scripts\\neuro_tracer.py": {
+      "source_sha256": "2f11cc1675bb9217d5665f7df8bccc5e1fd2cd1dfa717443548d275e30556d6f",
+      "staged_sha256": "9cb11a77b8a1beb52707df35d2d301a545375576c73b8fa2132309a9d4d5e78b"
+    }
+  },
+  "population_method_scope": [
+    "_load_hierarchy_csv",
+    "load_hierarchy_csv",
+    "process",
+    "add_hierarchy_columns",
+    "add_projection_hierarchy_columns",
+    "diagnose_projection_regions",
+    "check_projection_column_names",
+    "debug_hierarchy",
+    "debug_region_resolution",
+    "_generate_all_plots"
+  ],
+  "patch_sha256": "3dc0b285c72be63d697b5fd803ca82e54bbd78461f7b953053f491517993ddc9",
+  "followup_receipt": "preservation_followup_receipt.json",
+  "snapshot_note": "Original 14-test hashes are retained as historical; follow-up receipt binds current-source narrow proposal and 17 regressions."
+}

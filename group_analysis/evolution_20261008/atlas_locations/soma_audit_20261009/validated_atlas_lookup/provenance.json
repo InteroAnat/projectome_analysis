@@ -1,0 +1,191 @@
+{
+  "observed_at": "2026-10-09T00:21:51.806988+08:00",
+  "scope_exact_live_identities": 8746,
+  "unique_exact_identities": 8746,
+  "source_files_checked": 2480,
+  "source_status_counts": {
+    "root_checked": 2480
+  },
+  "own_neuron_status_counts": {
+    "missing_unassessed": 6834,
+    "own_atlas_root_checked": 1606,
+    "own_atlas_root_consensus_multiple_source_hashes": 306
+  },
+  "portal_coordinates_present": 8409,
+  "portal_coordinates_missing": 337,
+  "discrepancy_neurons": 1744,
+  "coordinate_encoding": "atlas SWC and portal physical index um / 250 = NMT voxel; affine maps index to world only for physical display, never inverse-applied to encoded SWC",
+  "lookup_policy": "ARM level 6 (5D volume [...,0,5]); np.rint ties to even; rounded bounds; half-voxel boundaries recorded",
+  "mask_values": {
+    "1": "R",
+    "2": "L",
+    "0": "Unknown"
+  },
+  "mask_label_contingency": {
+    "1": {
+      "L": 0,
+      "R": 1891157
+    },
+    "2": {
+      "L": 1891157,
+      "R": 0
+    }
+  },
+  "reference_grid": {
+    "shape": [
+      256,
+      312,
+      200
+    ],
+    "affine": [
+      [
+        0.25,
+        -0.0,
+        -0.0,
+        -31.875
+      ],
+      [
+        -0.0,
+        0.25,
+        -0.0,
+        -27.75
+      ],
+      [
+        0.0,
+        0.0,
+        0.25,
+        -8.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "units": [
+      "mm",
+      "unknown"
+    ]
+  },
+  "inputs": {
+    "template": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    "ARM6": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    "LR_plane": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_plane.nii.gz",
+      "sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea"
+    },
+    "LR_brainmask": {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_brainmask.nii.gz",
+      "sha256": "fa12c333697632bc6fbb1297070b1c5513b47e2b454d106afcce161f0095faf1"
+    },
+    "key": {
+      "path": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    "reviewed": {
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/idm_assignment_20261008/reviewed_soma_assignments.json",
+      "sha256": "c10dff6ff78d03b9ec5e20ef4cc1b1be2c61befacd1143bcfa088476d286d8b1"
+    },
+    "original_manual": {
+      "path": "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx",
+      "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6"
+    },
+    "prior_source_inventory": {
+      "path": "notes/region_analysis_review_20261004/actual_rerun_inventory.json",
+      "sha256": "65217c80afa33baa62acf03e7a69f865a24b1c40fc432d93ec78eb12934596da"
+    },
+    "recovery": {
+      "path": "notes/region_analysis_review_20261004/missing_atlas_source_recovery.json",
+      "sha256": "b36dcb41456372e7a9a253f7de18b3a939d6b8f140e681a02cdee502e84f9386"
+    },
+    "coordinate_code": {
+      "path": "main_scripts/neuro_tracer.py",
+      "sha256": "2f11cc1675bb9217d5665f7df8bccc5e1fd2cd1dfa717443548d275e30556d6f"
+    },
+    "IONData_client": {
+      "path": "neuron-vis/neuronVis/IONData.py",
+      "sha256": "59f3c9df2e31e50068d159b4699f7e33959ba99fc289b5a1d88b009da9428989"
+    },
+    "unmirrored_FNT_cache_code": {
+      "path": "group_analysis/scripts/05c_run_global_fnt.py",
+      "sha256": "2bbe6b1d6871818bb3b0266aa75cf18b8e6b63e3288a9c15e07f6a37c7741a1e"
+    },
+    "audit_code": {
+      "path": "group_analysis/scripts/audit_atlas_soma_locations.py",
+      "sha256": "5f9c7dc75f523d0759e2a71d3297d21b95607578b93c02592a0a3a2950faed2a"
+    }
+  },
+  "inventory": {
+    "path": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/neuron_inventory.csv",
+    "sha256": "ac417e8a49d3c4a96b6cb421e3dc86127b923e0008bf821e8cef35bd7b898ba5"
+  },
+  "source_roots": [
+    [
+      "neuron-vis/resource/swc",
+      "atlas cache declared by Oct4 actual_rerun_inventory and rerun_actual_region_tables"
+    ],
+    [
+      "main_scripts/processed_neurons/251637",
+      "ION atlas getNeuronByID cache; neuro_tracer monkey XYZ/250; 112/114 hash-bound reviewed evidence"
+    ],
+    [
+      "notes/region_analysis_review_20261004/recovered_atlas_swcs",
+      "Oct4 bounded getSWC recovery with same-sample graph-matched anchors and per-identity source hashes"
+    ],
+    [
+      "group_analysis/fnt/nmt_swcs",
+      "05c_run_global_fnt fetch_nmt_swc getNeuronByID cache; unmirrored NMT SWC source, not mirrored derivative"
+    ]
+  ],
+  "excluded_sources": [
+    {
+      "sample": "221043",
+      "neuron_id": "001.swc",
+      "source_path": "neuron-vis/resource/swc/221043/001.swc",
+      "coordinate_declaration": "atlas cache declared by Oct4 actual_rerun_inventory and rerun_actual_region_tables",
+      "reason": "exact identity absent from live inventory; no alias mapping"
+    }
+  ],
+  "explicitly_excluded_locations": [
+    "main_scripts/processed_neurons/251637_b (no exact sample alias)",
+    "group_analysis/visual_review_20261002/swc_raw (native)",
+    "raw_swcs descendants (native)",
+    "mirrored_swcs/FNT graphs (not unmodified atlas source SWC)"
+  ],
+  "manual_original_source_hash_matches_review": true,
+  "portal_supplied_label_lineage": "unknown server label-generation; working user chain raw fMOST brain/neurons warped to NMT, transform/version receipts not recovered",
+  "acceptance": "computational atlas-space lookup only; no native transform/landmark acceptance; no source or manual labels overwritten",
+  "network_requests": 0,
+  "cached_result_reuse": true,
+  "source_root_records_reused_after_hash_reverification": 2480,
+  "reused_source_readback": {
+    "path": "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/source_inventory.csv",
+    "sha256": "dc5330d713b192adc0435d85f3fee66822096220d3673b8b68f8560d530685f0"
+  },
+  "source_selection_policy": "No source graph silently selected; different byte hashes with exact root/lookup consensus yield a separate consensus status; graph equivalence unadjudicated",
+  "strata": {
+    "atlas_INS": {
+      "denominator": 310,
+      "own_roots_checked": 309
+    },
+    "atlas_G": {
+      "denominator": 32,
+      "own_roots_checked": 32
+    },
+    "potential_INS_candidate": {
+      "denominator": 500,
+      "own_roots_checked": 441
+    },
+    "atlasINS_or_G_or_foldedBox_candidate": {
+      "denominator": 524,
+      "own_roots_checked": 465
+    }
+  }
+}

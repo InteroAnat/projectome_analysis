@@ -1,0 +1,55 @@
+{
+  "status": "software_verified_manifest",
+  "created_utc": "2026-10-08T15:30:00.670146+00:00",
+  "source_table": "D:\\projectome_analysis\\neuron_tables_new\\251637_INS_HE_inferred.xlsx",
+  "source_table_sha256": "e230985cb218f78577d099a33801e4b68cf7d17f0eb3b055416788b11f7a6cc3",
+  "source_sheet": "Summary",
+  "source_label_column": "Soma_Region",
+  "animal_registry": "D:\\projectome_analysis\\group_analysis\\docs\\dataset_status_manifest.csv",
+  "animal_registry_sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d",
+  "animal_identity_status": "existing human tracker mapping; acquisition/reconstruction counts not used",
+  "reviewed_assignments": "D:\\projectome_analysis\\notes\\region_analysis_review_20261004\\case_112_114_20261004\\idm_assignment_20261008\\reviewed_soma_assignments.json",
+  "reviewed_assignments_sha256": "c10dff6ff78d03b9ec5e20ef4cc1b1be2c61befacd1143bcfa088476d286d8b1",
+  "n_overrides": 2,
+  "reference": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "source_coordinate_declaration": "D:\\projectome_analysis\\main_scripts\\neuro_tracer.py",
+  "source_coordinate_declaration_sha256": "2f11cc1675bb9217d5665f7df8bccc5e1fd2cd1dfa717443548d275e30556d6f",
+  "coordinate_mapping": "cached atlas SWC XYZ micrometres / 250 -> NMT v2.1 voxel index; no warp or mirroring",
+  "grid_shape": [
+    256,
+    312,
+    200
+  ],
+  "affine_mm": [
+    [
+      0.25,
+      -0.0,
+      -0.0,
+      -31.875
+    ],
+    [
+      -0.0,
+      0.25,
+      -0.0,
+      -27.75
+    ],
+    [
+      0.0,
+      0.0,
+      0.25,
+      -8.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "registration_acceptance": "not established by code declaration, source hashes or this manifest",
+  "canonical_promotion": false,
+  "neurons": 260,
+  "manifest_sha256": "caf7126f8515ef4b0ce8d1a36816526907f59e1efa617f6d3adf5062293ca89a",
+  "source_files_mutated": false
+}

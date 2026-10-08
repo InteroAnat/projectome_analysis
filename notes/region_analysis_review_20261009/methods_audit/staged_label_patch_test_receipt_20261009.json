@@ -1,0 +1,47 @@
+{
+  "status": "staged_patch_verified_not_applied",
+  "production_files_modified_by_this_task": false,
+  "historical_outputs_modified": false,
+  "numeric_outputs_regenerated": false,
+  "patch": {
+    "path": "notes/region_analysis_review_20261009/methods_audit/proposed_methods_label_corrections_v2.patch",
+    "sha256": "dda80bc8f4429c82b6edf441987e9a84a16f5b31deb6bb5e507e5e7a6662cb04",
+    "proposed_files": 8,
+    "git_apply_check_exit_code": 0
+  },
+  "regression_tests": {
+    "path": "notes/region_analysis_review_20261009/methods_audit/test_staged_label_patch.py",
+    "sha256": "64794062ddc310c7f3e0f7bf8bd391b332eae5993380c7efd264c294f04aaec5",
+    "runner": "C:/Users/laika_yan/miniconda3/envs/projectome/python.exe -X utf8 -B",
+    "tests_run": 4,
+    "failures": 0,
+    "exit_code": 0,
+    "R_execution": false,
+    "checks": [
+      "R code tokens outside comments and string literals identical",
+      "output references and quoted stratum identifiers preserved",
+      "factual specifications corrected while existing OLS calculation preserved",
+      "living report original bytes preserved as prefix",
+      "source, proposed file and patch hashes match"
+    ]
+  },
+  "schema_readback": {
+    "path": "notes/region_analysis_review_20261009/methods_audit/schema_and_entrypoint_readback_20261009.json",
+    "sha256": "7f4927b2dbfedda7cfe8deccd63c517edfeb197123cf4119b66b03e954a54351",
+    "active_consumers_checked": 7,
+    "exact_UID_set_guard_found": 0,
+    "current_workbook_sheets_checked": 9,
+    "current_unique_UIDs_each_sheet": 353,
+    "actual_duplicate_or_missing_UIDs": 0,
+    "F6_entrypoint_divergence": "Material existing difference, separately reported and not changed"
+  },
+  "preflight_note": {
+    "path": "notes/region_analysis_review_20261009/methods_audit/label_patch_review_and_preflight_20261009.md",
+    "sha256": "1c4a8334096f6d204dadc041ce16aec9a237d68800958d758f890262d8b6120d"
+  },
+  "limitations": [
+    "Static validation does not establish R execution or biological/inferential acceptance",
+    "Label-only patch does not reconcile differing F6 implementations",
+    "Collision-safe C_/S_ target schema requires coordinated consumer changes before rerun"
+  ]
+}

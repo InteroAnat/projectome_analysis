@@ -1,0 +1,134 @@
+{
+  "status": "software_reproduction_passed_registration_unaccepted",
+  "checked_utc": "2026-10-08T23:33:15.133708+00:00",
+  "script_sha256": "b1f14c0b44e46214214a24fac740082c894cf654bd5e39fa1f26ba0cf68892ba",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "ants_version": "ANTs Version: 2.5.1-gb909304\nCompiled: Jan 24 2024 20:11:58",
+  "source_sha256": {
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps\\con_0001.nii": "cabe90b7791f2c1b46731557e79f997a890e0832f1f3a5650e58c0cb8404f3ed",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps\\mask.nii": "b13fc603a016870f87073dcac7a4adce19a1fed22afbad6ef75c5107f9f87a44",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps-NMT\\con_0001_in_NMT.nii.gz": "1d0b18a216659de2fc85ba2f733b19ebe466675e30b89b25442f34616d9e1685",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\SPM.mat": "433fda9bf22b7442478836498559605a58be730d155fa832f4a80a7db40583aa",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\contrasts.json": "a000c52a3b28633bba2b0281b7b03e2980fafbbcd214dc8ef6b41eba7dcb489e",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\glm_config_summary.txt": "2518148a7fd3ccfd5c06e7e2dc035667733fb14fc8cc4fd7b7601cb797e36a1c",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\norm_run.log": "f9b9b9d37f8ec7636dc405e4ca9db8a8ec488d9ad240ab3cc2948434b504645a",
+    "D:\\multimodal_fmri\\code\\tools\\norm\\run_nmt_warp.py": "af6ae053813547e8ddb864eec1f290a084799f42f85e4ade302878669894f494",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_NMT_1Warp.nii.gz": "29e460aecf8f2aa7a35dcdf6dfd049435cb5f03f01a27ae461869d0db4123470",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_NMT_0GenericAffine.mat": "6849fe6523667bf6694910f5724950e3c6694433e5402d6cae49b4d16f6ee217",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_CMT_1Warp.nii.gz": "73f13d1ce76f42aadcdba5e83572f17eb2aacce57c87b3ad6d46be5527cc37ea",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_CMT_0GenericAffine.mat": "d77d873e67611dcde5f1bb9083ccec30d88ce0d9e16389b9a5fde7cb2ea94dd8"
+  },
+  "spm_contrast": {
+    "contrast_name": "stimulus > implicit baseline - All Sessions",
+    "nonzero_coefficients": [
+      {
+        "column": "Sn(1) stimulus",
+        "weight": 0.25
+      },
+      {
+        "column": "Sn(2) stimulus",
+        "weight": 0.25
+      },
+      {
+        "column": "Sn(3) stimulus",
+        "weight": 0.25
+      },
+      {
+        "column": "Sn(4) stimulus",
+        "weight": 0.25
+      }
+    ],
+    "residual_df": 1675.9999999951579,
+    "global_mean_target": 100.0,
+    "global_scaling_policy": "session specific",
+    "global_scale_factor_range": [
+      0.0006480460903562571,
+      0.0006564170637442905
+    ],
+    "contrast_units": "SPM globally scaled fitted contrast; percent signal change not established"
+  },
+  "outputs": {
+    "reproduced_contrast": {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\reproduced_contrast_space-NMTv2p1.nii.gz",
+      "sha256": "1d0b18a216659de2fc85ba2f733b19ebe466675e30b89b25442f34616d9e1685",
+      "interpolation": "Linear"
+    },
+    "analysis_coverage": {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\analysis_coverage_space-NMTv2p1.nii.gz",
+      "sha256": "45001689b3629f705e60eb492ee715b22f243748e0074087d04d79c9d9e67165",
+      "interpolation": "NearestNeighbor"
+    }
+  },
+  "commands": [
+    [
+      "wsl.exe",
+      "-d",
+      "Ubuntu-24.04",
+      "--",
+      "/home/binbin/ants-2.5.1/bin/antsApplyTransforms",
+      "-d",
+      "3",
+      "-i",
+      "/mnt/d/multimodal_fmri/derivatives/glm/sub-cm032/ses-20160309/glm-mstim-pos1/maps/con_0001.nii",
+      "-r",
+      "/mnt/d/projectome_analysis/atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+      "-n",
+      "Linear",
+      "-t",
+      "/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_NMT_1Warp.nii.gz",
+      "-t",
+      "[/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_NMT_0GenericAffine.mat,0]",
+      "-t",
+      "/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_CMT_1Warp.nii.gz",
+      "-t",
+      "[/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_CMT_0GenericAffine.mat,0]",
+      "-o",
+      "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/mstim_integration_20261009/cm032_warp_reproduction/reproduced_contrast_space-NMTv2p1.nii.gz"
+    ],
+    [
+      "wsl.exe",
+      "-d",
+      "Ubuntu-24.04",
+      "--",
+      "/home/binbin/ants-2.5.1/bin/antsApplyTransforms",
+      "-d",
+      "3",
+      "-i",
+      "/mnt/d/multimodal_fmri/derivatives/glm/sub-cm032/ses-20160309/glm-mstim-pos1/maps/mask.nii",
+      "-r",
+      "/mnt/d/projectome_analysis/atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+      "-n",
+      "NearestNeighbor",
+      "-t",
+      "/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_NMT_1Warp.nii.gz",
+      "-t",
+      "[/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_NMT_0GenericAffine.mat,0]",
+      "-t",
+      "/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_CMT_1Warp.nii.gz",
+      "-t",
+      "[/mnt/d/multimodal_fmri/derivatives/norm/sub-cm032/ses-20160309_ana/cm032_20160309_ana_CMT_0GenericAffine.mat,0]",
+      "-o",
+      "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/mstim_integration_20261009/cm032_warp_reproduction/analysis_coverage_space-NMTv2p1.nii.gz"
+    ]
+  ],
+  "comparison": {
+    "exact_values_equal": true,
+    "maximum_absolute_difference": 0.0,
+    "all_values_match_rtol_1e-7_atol_1e-9": true
+  },
+  "transform_application_order": [
+    "identity: EPI to already EPI-aligned moving image",
+    "CMT affine",
+    "CMT warp",
+    "NMT affine",
+    "NMT warp"
+  ],
+  "affine_caveat": "The existing converted inverse anat-to-EPI file is not used; its presence does not establish application",
+  "coverage": "Actual SPM estimation mask transformed with nearest-neighbor interpolation; no support inferred from zero statistics",
+  "source_writes": false,
+  "new_registration_fit": false,
+  "anatomical_acceptance": false,
+  "paired_fMOST_animal": "unknown",
+  "CM033": "Not integrated: rejected orientation and no accepted NMT model"
+}

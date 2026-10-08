@@ -1,0 +1,42 @@
+{
+  "recorded_at": "2026-10-09T00:53:55.940731+08:00",
+  "generator_current": {
+    "path": "group_analysis/scripts/build_coarse_insula_review.py",
+    "sha256": "24d65afec749f5fdfac6d74b3c0ecee303b983a6753115a4fc557b06949243ac"
+  },
+  "tests": {
+    "path": "tests/test_coarse_insula_review.py",
+    "sha256": "3df7243e742f00b65c786a7403e75a14d8b6381368e860fe3ae28357a9f36553",
+    "focused_tests_passed": 6
+  },
+  "primary_manifest_generated_before_final_native_case_fallback": true,
+  "no_clobber_native_case_overlay": "native_case_pair_supplement_20261009.csv",
+  "native_case_overlay_exact_identities": [
+    "251637|111.swc",
+    "251637|112.swc",
+    "251637|114.swc",
+    "251637|422.swc"
+  ],
+  "effective_available_native_full_graphs": 834,
+  "effective_review_queue_native_atlas_pairs": 235,
+  "preserved_primary_missing_native_fields_for_four_cases": "Use explicit supplement overlay; future fresh generator runs incorporate fallback directly.",
+  "all_source_graph_readback_independently_rehashed": 2480,
+  "reproducible_atlas_graphs": 1912,
+  "distinct_multi_byte_groups_equal_numeric_nodes": 306,
+  "source_modifications": false,
+  "network_requests": 0,
+  "scientific_acceptance": false,
+  "artifacts": {
+    "all_neuron_review_manifest.csv": "822d184e83869f4b78516a8b1ac5e2439ed1fc2bb21d0cc1fa0606269fb8e781",
+    "case_and_source_qc_supplement_20261009.json": "5e252f37f19399da69cd887dab46ba7c4757649743850a1cb835cbdf1273f37a",
+    "graph_source_readback.csv": "3b84a688c9af8e94f81262e365c67354741c347a0b8f3dfc45019051b5d95cb2",
+    "independent_readback_20261009.json": "e932986027ab0016f02319f2b9e4a0d2e422775c46663e981d982ff7b3433d79",
+    "map_ready_sources.csv": "8e6d85347b5bf4866da61ccacdea41928f0c70572887c995613261293608414d",
+    "native_case_pair_supplement_20261009.csv": "2682561c79048489e629e0059abde37420e5bba46b3a21b5a898ae405fe0346f",
+    "priority_review_manifest.csv": "5393beb7acc90dd60f8280f8a6bd26e9510d34b8fddef70c4df7fd13861a62ea",
+    "priority_shortlist_20261009.md": "d67d69e8346dba07babaa45e30b81afabd56c5b3b1eb32f42da9b14d7f9d41d4",
+    "provenance.json": "1d11d015414df614aedebeee521f340301936f4b289dec45eed6874b59abe3c7",
+    "README.md": "31aeffd1151e7adbfa37b292a3bee8208396fc7d5dcc66ace32dbd820eeb7003",
+    "review_protocol_20261009.md": "8830f02feb1e5ad73c3c295800116969401d0e8c34c9441fe27987bcb6202942"
+  }
+}

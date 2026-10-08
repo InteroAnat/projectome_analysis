@@ -1,0 +1,48 @@
+{
+  "started_utc": "2026-10-08T16:58:03.662132+00:00",
+  "steps": [
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/build_endpoint_maps.py",
+        "--manifest",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\multimonkey_coarse_20261009_v2\\projection_manifest.csv",
+        "--reference",
+        "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+        "--brain-mask",
+        "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_brainmask.nii.gz",
+        "--atlas-path",
+        "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz",
+        "--atlas-key",
+        "atlas/ARM_key_all.txt",
+        "--hemisphere-mask",
+        "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_plane.nii.gz",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009"
+      ],
+      "started_utc": "2026-10-08T16:58:03.662132+00:00",
+      "returncode": 0,
+      "finished_utc": "2026-10-08T17:01:10.326726+00:00"
+    },
+    {
+      "argv": [
+        "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+        "-X",
+        "utf8",
+        "-B",
+        "group_analysis/scripts/review_endpoint_run.py",
+        "--run",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009",
+        "--output",
+        "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review"
+      ],
+      "started_utc": "2026-10-08T17:01:10.327731+00:00",
+      "returncode": 1,
+      "finished_utc": "2026-10-08T17:01:37.671498+00:00"
+    }
+  ],
+  "scope": "descriptive endpoint candidates; coordinate origin and anatomy unaccepted"
+}

@@ -1,0 +1,37 @@
+{
+  "status": "software_only_saved_case_evidence_overlay_readback_passed",
+  "recorded_at": "2026-10-09T07:21:14.445827+08:00",
+  "primary_case_ledger": "group_analysis/evolution_20261008/classification/background_neuron_audit_20261009/selected_52_background_cases_with_case_overlays.csv",
+  "primary_case_ledger_sha256": "80f359844a84f608517fb4d7c2dad4937cfccf5ac853a0f1cc3b7c9decb35626",
+  "prior_source_root_receipt_sha256": "a7132d5b281cc5e45b71da6ab5465096bb44dabe1ee42e0c20f55e1cbada8c8d",
+  "case_overlay_script_sha256": "8306a99b3e6be9207ba925c7094b3a36a440bf50cef45eddbe59b533fb5a55fd",
+  "inputs": {
+    "group_analysis/evolution_20261008/classification/background_neuron_audit_20261009/selected_52_background_cases.csv": "c2cb0ab18018fbe2f6b33c48665f847552d6ef051495ee7e1256c40adc06fa71",
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/delivery_provenance_20261009.json": "12d1d98050458215fd80ba757556e1053337668c2594b5836af0600caafee612",
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/native_case_pair_supplement_20261009.csv": "2682561c79048489e629e0059abde37420e5bba46b3a21b5a898ae405fe0346f",
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/case_and_source_qc_supplement_20261009.json": "5e252f37f19399da69cd887dab46ba7c4757649743850a1cb835cbdf1273f37a",
+    "notes/region_analysis_review_20261004/case_112_114_20261004/raw_112.swc": "d80fc982cd7ba42e6b36ffc91fc296d9d7c589e02849759fe32e60aaba371298",
+    "notes/region_analysis_review_20261004/case_112_114_20261004/source_readback.json": "2e5d21dccddd7ecb9e7c4977b15ae3bcbb9338693e87c95751bbd58fb5dff516",
+    "notes/region_analysis_review_20261004/case_112_114_20261004/raw_114.swc": "7d14337d8e47ce7bae90ed7c07571939f8fa7b48c1ff9ed24e9d80951427dc1d",
+    "notes/region_analysis_review_20261004/case_112_114_20261004/control_raw_422.swc": "2017dae49b6c7e3e52aae27e676a5e03f6fddd4c2473ceb699c26d6216a8a721",
+    "notes/region_analysis_review_20261004/case_112_114_20261004/same_sample_native_controls.json": "21db0752c9cb7e2f7e3fb2193448a6d6de72bcc993bf2a70ea1572cee6bf786c"
+  },
+  "effective_native_atlas_pairs": 41,
+  "effective_cases_with_existing_visual_assets": 40,
+  "native_case_overlay_UIDs": [
+    "251637|112.swc",
+    "251637|114.swc",
+    "251637|422.swc"
+  ],
+  "additional_case_visual_UIDs": [
+    "251637|112.swc",
+    "251637|114.swc"
+  ],
+  "original_case52_source_roots_rehashes": 52,
+  "additional_native_source_rehashes": 3,
+  "image_files_read_or_opened": 0,
+  "external_historical_X_paths_reprobed": false,
+  "all_source_and_previous_files_preserved": true,
+  "scientific_acceptance": false,
+  "map_or_canonical_changes": false
+}

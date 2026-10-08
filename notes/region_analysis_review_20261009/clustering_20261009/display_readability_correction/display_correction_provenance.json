@@ -1,0 +1,19 @@
+{
+  "status": "software_verified_display_only_correction",
+  "primary_run": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\clustering_20261009\\arm_L6_relative_profiles_selected462",
+  "primary_provenance_SHA256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+  "source_table": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\clustering_20261009\\arm_L6_relative_profiles_selected462\\cluster_target_profiles.csv",
+  "source_table_SHA256": "df055ce8c82d3d0cce169c309fdd791072b61e10c49e01f2a8821a2c7ef26de3",
+  "code_SHA256": "916ac816dd344af9137cae38644bdb2f076164094b4652f1563b6809c0c46902",
+  "numerical_results_changed": false,
+  "primary_outputs_unchanged": true,
+  "display_changes": [
+    "wrapped full official names; underscores displayed as spaces",
+    "wrapped colorbar; tight output bounds",
+    "laterality and endpoint fallback/singleton limitations visible"
+  ],
+  "output_hashes": {
+    "all_axon_hellinger_target_profiles.png": "a03e62671b49bf71a9ce355503c2bba4352bf5d6064b4a5ed3cd6987cb92e5fe",
+    "all_endpoint_hellinger_target_profiles.png": "b818041c22c698c98e84710b4f0e60555efaeb1fe5565ef17f6ce943180f0a27"
+  }
+}

@@ -1,0 +1,215 @@
+{
+  "status": "independent_source_relative_saved_readback_passed",
+  "reader_sha256": "379ee51129697b97d1ae28f5078e78a3c2658f03b2a8044b62762a6203b63eb9",
+  "sensitivity_provenance_sha256": "dd8291819914a81e0240d89626c41e164c1487b7c493db587ff46773d902f6c2",
+  "primary_provenance_sha256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+  "official_same_domain_bilateral_pairs": 342,
+  "features": 684,
+  "saved_partitions_verified": 14,
+  "checks": [
+    {
+      "family": "axon",
+      "k": 2,
+      "n": 428,
+      "sizes": [
+        196,
+        232
+      ],
+      "side_NMI": 0.0267934511953352,
+      "absolute_vs_relative_ARI": 0.041967718251574
+    },
+    {
+      "family": "axon",
+      "k": 3,
+      "n": 428,
+      "sizes": [
+        196,
+        5,
+        227
+      ],
+      "side_NMI": 0.0417983297803076,
+      "absolute_vs_relative_ARI": 0.0484902395236217
+    },
+    {
+      "family": "axon",
+      "k": 4,
+      "n": 428,
+      "sizes": [
+        5,
+        191,
+        5,
+        227
+      ],
+      "side_NMI": 0.0412262414227245,
+      "absolute_vs_relative_ARI": 0.05463601585440375
+    },
+    {
+      "family": "axon",
+      "k": 5,
+      "n": 428,
+      "sizes": [
+        5,
+        55,
+        136,
+        5,
+        227
+      ],
+      "side_NMI": 0.0475056930196121,
+      "absolute_vs_relative_ARI": 0.10211758747182546
+    },
+    {
+      "family": "axon",
+      "k": 6,
+      "n": 428,
+      "sizes": [
+        5,
+        55,
+        136,
+        5,
+        169,
+        58
+      ],
+      "side_NMI": 0.0405619908078312,
+      "absolute_vs_relative_ARI": 0.07639511669458778
+    },
+    {
+      "family": "axon",
+      "k": 7,
+      "n": 428,
+      "sizes": [
+        5,
+        55,
+        136,
+        5,
+        169,
+        7,
+        51
+      ],
+      "side_NMI": 0.039832317993074,
+      "absolute_vs_relative_ARI": 0.16971588590492884
+    },
+    {
+      "family": "axon",
+      "k": 8,
+      "n": 428,
+      "sizes": [
+        5,
+        55,
+        25,
+        111,
+        5,
+        169,
+        7,
+        51
+      ],
+      "side_NMI": 0.0410112071481419,
+      "absolute_vs_relative_ARI": 0.177104552804989
+    },
+    {
+      "family": "endpoint",
+      "k": 2,
+      "n": 425,
+      "sizes": [
+        424,
+        1
+      ],
+      "side_NMI": 0.0050188879844991,
+      "absolute_vs_relative_ARI": 1.0
+    },
+    {
+      "family": "endpoint",
+      "k": 3,
+      "n": 425,
+      "sizes": [
+        2,
+        422,
+        1
+      ],
+      "side_NMI": 0.014497668278133,
+      "absolute_vs_relative_ARI": 0.01086792609937168
+    },
+    {
+      "family": "endpoint",
+      "k": 4,
+      "n": 425,
+      "sizes": [
+        2,
+        421,
+        1,
+        1
+      ],
+      "side_NMI": 0.01810830999849,
+      "absolute_vs_relative_ARI": 0.01000863169192943
+    },
+    {
+      "family": "endpoint",
+      "k": 5,
+      "n": 425,
+      "sizes": [
+        2,
+        420,
+        1,
+        1,
+        1
+      ],
+      "side_NMI": 0.0223624210805651,
+      "absolute_vs_relative_ARI": 0.019038890761312263
+    },
+    {
+      "family": "endpoint",
+      "k": 6,
+      "n": 425,
+      "sizes": [
+        2,
+        417,
+        3,
+        1,
+        1,
+        1
+      ],
+      "side_NMI": 0.0218495652896877,
+      "absolute_vs_relative_ARI": 0.042418311771566304
+    },
+    {
+      "family": "endpoint",
+      "k": 7,
+      "n": 425,
+      "sizes": [
+        2,
+        417,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "side_NMI": 0.0327221699401307,
+      "absolute_vs_relative_ARI": 0.060897392982992286
+    },
+    {
+      "family": "endpoint",
+      "k": 8,
+      "n": 425,
+      "sizes": [
+        2,
+        14,
+        403,
+        2,
+        1,
+        1,
+        1,
+        1
+      ],
+      "side_NMI": 0.0279648562732515,
+      "absolute_vs_relative_ARI": 0.11445340117469413
+    }
+  ],
+  "production_imports": false,
+  "primary_outputs_hashes_unchanged": true,
+  "limits": [
+    "Side is the existing current-mask declaration, not accepted anatomical registration",
+    "Permutation preserves every per-neuron value/total and all official ARM names",
+    "No repeated-subset rerun here; all fits remain neuron weighted",
+    "Absolute/source-relative discrepancy is representation sensitivity, not a cell-type validation"
+  ]
+}

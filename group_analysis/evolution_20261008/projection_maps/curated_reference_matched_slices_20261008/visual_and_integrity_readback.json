@@ -1,0 +1,120 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-08T15:55:52.507679+00:00",
+  "renderer_ast_valid": true,
+  "renderer_sha256": "ad15df0cbee733a686937404533f2e6620ee4b10cdb193fc83f748af2b720076",
+  "unchanged_validated_maps": 32,
+  "unchanged_original_mip_figures": 2,
+  "verified_new_slice_figures": [
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-01.png",
+      "sha256": "f522cb9a3faf8a4ec4d565292342a31c326d367b59d2ebe9c7028c4a1df169e6",
+      "pixels": [
+        1690,
+        1664
+      ]
+    },
+    {
+      "file": "space-NMTv2p1_desc-axonLengthDensity_matchedSlices_page-02.png",
+      "sha256": "5c7c14dd606ea991099b3624c6ce81bc114c2978c607f47ff117bf543c8fa512",
+      "pixels": [
+        1690,
+        1664
+      ]
+    }
+  ],
+  "resolved_local_document_links": [
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "terminal_projection_goal_20261008.md"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "inventory/live_inventory_20261008/README.md"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "projection_inputs/curated_reference/projection_manifest.csv"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "projection_maps/curated_reference/run_provenance.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "projection_maps/curated_reference_review/projection_run_readback.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "projection_maps/curated_reference_matched_slices_20261008/matched_slices_provenance.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "crossmodal/input_readiness.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "references/selected_library_evidence.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "validation/unittest_20261008.log"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "validation/terminal_leaf_source_audit_20261008.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\README.md",
+      "target": "references/terminal_site_measurement_plan_20261008.md"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "projection_maps/curated_reference/run_provenance.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "projection_maps/curated_reference_review/projection_run_readback.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "projection_maps/curated_reference_matched_slices_20261008/matched_slices_provenance.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "validation/terminal_leaf_source_audit_20261008.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "references/terminal_site_measurement_plan_20261008.md"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "inventory/live_inventory_20261008/README.md"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "validation/unittest_20261008.log"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "crossmodal/input_readiness.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "references/selected_library_evidence.json"
+    },
+    {
+      "document": "group_analysis\\evolution_20261008\\terminal_projection_goal_20261008.md",
+      "target": "references/selected_zotero_references.bib"
+    }
+  ],
+  "visual_inspection": {
+    "method": "Both complete PNG sheets viewed by the orchestrator",
+    "outcome": "Readable slice anatomy, source labels, exact cut coordinates, colorbar and limits; no clipping of titles or labels observed.",
+    "background": "Individual matched MRI slices; white depth-projection silhouette removed; normal bright white matter remains.",
+    "limits": "Cuts differ by row and are density-selected; all-axon length display only. No terminal or registration acceptance."
+  },
+  "anatomical_acceptance": "not established",
+  "terminal_site_detector": "not implemented"
+}

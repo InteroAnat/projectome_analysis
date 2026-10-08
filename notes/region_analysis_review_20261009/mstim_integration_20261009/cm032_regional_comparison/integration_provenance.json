@@ -1,0 +1,130 @@
+{
+  "status": "provisional_regional_integration_completed",
+  "created_utc": "2026-10-08T23:42:42.662626+00:00",
+  "source_sha256": {
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\warp_reproduction.json": "4c5b8d94b9a1688b8e5f461978f334b85dbe0033bcd674eea66756f7226e3626",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+    "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+    "D:\\projectome_analysis\\atlas\\ARM_key_all.txt": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\analysis_coverage_space-NMTv2p1.nii.gz": "45001689b3629f705e60eb492ee715b22f243748e0074087d04d79c9d9e67165",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\reproduced_contrast_space-NMTv2p1.nii.gz": "1d0b18a216659de2fc85ba2f733b19ebe466675e30b89b25442f34616d9e1685",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\maps-NMT\\spmT_0001_in_NMT.nii.gz": "34d033fc431669a29e5f422e85f87abd46b1cb3373a06f2ab6844728f7152c33",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm032\\ses-20160309_ana\\cm032_20160309_ana_NMT_Warped.nii.gz": "324f1a84bcfe52c3d1f2859e97629567fad51e2e70197a7d4e3cd26182216358",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\main\\label_map.csv": "e7ada68fc3c3f67147811efcde3708b541d7de38f843884eab3cfc75c0bc793b",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\run_provenance.json": "4007fe92d5e8d96471779110530052e4920183849a0a195eed12263980444b0a",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints_review\\endpoint_run_readback.json": "89f063fabcfefeeb27cd4854ab6d21e444fec85a8e640e9a8ba6ebb13c8ec3dd",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\input_manifest.csv": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\run_provenance.json": "a807362fee392b15bfc218a84e7093c5f4807e34c339a15dc2904b7ac27530bd",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons_review\\projection_run_readback.json": "5546b76a4881db5c8504d4f5d2a259ed31f997648d57f317ca8e99826d7f0d8c",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\input_manifest.csv": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_1004_L_desc-meanCandidateEndpointCount_map.nii.gz": "b3c158a030cea0b552af6c30884b562ac4ee518a363f6cfd149dfa6a1062cb22",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_1504_R_desc-meanCandidateEndpointCount_map.nii.gz": "265283e14ff359c4784b35fed59baf5af5678920c7336e04bfb6307601605ede",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_228_L_desc-meanCandidateEndpointCount_map.nii.gz": "9da1f5355c25b77d754906109d80863a86e3cbb914417bcb9fa7cb254bb017f3",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_229_L_desc-meanCandidateEndpointCount_map.nii.gz": "58bd46569a0f18636b34ebb2222e5949758c16a82cc0fcd3871af2889f746159",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_41_L_desc-meanCandidateEndpointCount_map.nii.gz": "16480ef7032ebb9dd9f6ef9fd4a896c158704da2c457d3044e48dc543ea0e581",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_42_L_desc-meanCandidateEndpointCount_map.nii.gz": "d54de95275ec7b0e183c3393593cbf5cad24b57a9e367d7ff06e3bd3149ff075",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_43_L_desc-meanCandidateEndpointCount_map.nii.gz": "3676b10f428d4807f49f086e5a45ccdaf509b4f84448f9a9e77fc0dbfb50c153",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_48_L_desc-meanCandidateEndpointCount_map.nii.gz": "53db07664bd9931bb71101a717771addd54253a6d597ac9fbb872632db4b9854",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_541_R_desc-meanCandidateEndpointCount_map.nii.gz": "0e11f4392cdf27ef627bde489f82aa4009f1d6068d0d73a5194d198f3c8e94c7",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_542_R_desc-meanCandidateEndpointCount_map.nii.gz": "9f20c3f95711036ecf4ce6352e2cd760bb1b4526c79619109977bd94f18734da",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_548_R_desc-meanCandidateEndpointCount_map.nii.gz": "45b52a315b0893f5db59abc1a075c4961017a4625bb9f93b239846333801d6a9",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_549_R_desc-meanCandidateEndpointCount_map.nii.gz": "093a2b7bbea9d0a215c66a072e3187cfff982dff3e533b9b6ac10977c8b31b18",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_595_R_desc-meanCandidateEndpointCount_map.nii.gz": "54f5028740f311df02f37fe7a228d8c3eada707c0e44b8a0c06a43d67a0ea39c",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_728_R_desc-meanCandidateEndpointCount_map.nii.gz": "80912e6f23ac8096a6ab944e3ae29513a0ce2bb9d9a3c98554a2f85b5575d8b7",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\group_maps\\space-NMTv2p1_region-ARM6_729_R_desc-meanCandidateEndpointCount_map.nii.gz": "23b23856a910eb937cdf9ca65d6c69c8cb6c10bb9d71369ec6c69f412d2b81d5",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_1004_L_desc-animalMeanAxonLength_map.nii.gz": "03d8446422ba782faecd46c9ad7f3ed46a2c2052883d37137331b3913f9fa7cf",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_1504_R_desc-animalMeanAxonLength_map.nii.gz": "7a357da7bed28663de64211dd878a5d3b181a9a103c8636386dd2004b7b0fe42",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_228_L_desc-animalMeanAxonLength_map.nii.gz": "8660bf97b2902668d812338aff6daa31cc87edc27e40cf28bed8ddb5539e4c1e",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_229_L_desc-animalMeanAxonLength_map.nii.gz": "37d22b599da5e31edd440ca1da071c7862d3b5c2a1597cca8f695b7d72ef37b5",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_41_L_desc-animalMeanAxonLength_map.nii.gz": "8496600a2002501dc5979911ec02251e4cd5a1094b50a0d854c2906922989ac4",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_42_L_desc-animalMeanAxonLength_map.nii.gz": "fcf273b6859937a7438d67a583bb37c2143bf189f5f2bd2b958566c49c0b682f",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_43_L_desc-animalMeanAxonLength_map.nii.gz": "3353d7836d1bb0d8e7b77d1f646ef1926784742618a15a3a94295475b8452d1d",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_48_L_desc-animalMeanAxonLength_map.nii.gz": "e9c63d68a6ca11654c26d6bae23a6fe4b209283d0a73ecb7dca8d92588d8269e",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_541_R_desc-animalMeanAxonLength_map.nii.gz": "82d854cd71234cf3cac075e033ebf34933bae36cd0cd165ab6666c458e9ea068",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_542_R_desc-animalMeanAxonLength_map.nii.gz": "5a2d321c2635b769d7f352ed97a8a6e61684e2ab25bd569aa0bb90279e04f815",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_548_R_desc-animalMeanAxonLength_map.nii.gz": "32bb073e6a91afdd5e387d0faf2f88de06231fab5f3a2acc7e5b64a6b868d3ca",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_549_R_desc-animalMeanAxonLength_map.nii.gz": "c0b2fecdef39713501cfe06e23b9bce405af61a30aac3543c0628417988cb5af",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_595_R_desc-animalMeanAxonLength_map.nii.gz": "d8f5057f514a0ca6876d621ddc7556f0d4f800ec5a0cad4435b6f415c2093728",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_728_R_desc-animalMeanAxonLength_map.nii.gz": "30abd0a6de70de333439d20a8c7a0ae157ff2c55c29c80e917d1f5609b0db423",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\axons\\group_maps\\space-NMTv2p1_region-ARM6_729_R_desc-animalMeanAxonLength_map.nii.gz": "7bdf97162c311a6fa5f6229b5e196c3fac4007edc656e72fe2195319c6c6eb3c"
+  },
+  "script_sha256": "12f8ea8699932ebfba5c9368c25259d594556c0c010b697ad016854cc81b98a0",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "atlas_levels": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "primary_comparison_level": 3,
+  "joint_rows": 25140,
+  "fmri_region_rows": 1676,
+  "spm_contrast": {
+    "contrast_name": "stimulus > implicit baseline - All Sessions",
+    "nonzero_coefficients": [
+      {
+        "column": "Sn(1) stimulus",
+        "weight": 0.25
+      },
+      {
+        "column": "Sn(2) stimulus",
+        "weight": 0.25
+      },
+      {
+        "column": "Sn(3) stimulus",
+        "weight": 0.25
+      },
+      {
+        "column": "Sn(4) stimulus",
+        "weight": 0.25
+      }
+    ],
+    "residual_df": 1675.9999999951579,
+    "global_mean_target": 100.0,
+    "global_scaling_policy": "session specific",
+    "global_scale_factor_range": [
+      0.0006480460903562571,
+      0.0006564170637442905
+    ],
+    "contrast_units": "SPM globally scaled fitted contrast; percent signal change not established"
+  },
+  "coverage_voxels": 5015104,
+  "native_fMRI_sampling_mm": [
+    0.75,
+    0.75,
+    2.0
+  ],
+  "NMT_sampling_mm": [
+    0.25,
+    0.25,
+    0.25
+  ],
+  "coverage_policy": "Same explicit warped SPM estimation mask for signed response and additive projection summaries; no zero-value support inference",
+  "endpoint_measure": "Additive mean candidate-end counts; not regional neuron frequency and not summed voxel occupancy",
+  "statistical_policy": "T values summarized descriptively only; no new threshold, regional t statistic, correlation p value or independent-voxel inference",
+  "spatial_policy": "No inter-template resampling: actual skull-stripped template grids/payload match; subject registrations remain unaccepted",
+  "stimulation_site": "CM032 pos1, runs38-41, recorded left ventral anterior insula/Ial; exact accepted NMT stimulation coordinates unavailable",
+  "source_selection_policy": "All named source ARM groups reported; no best-matching source selected",
+  "CM033": "Excluded from spatial comparison: recorded orientation rejection and no accepted NMT model",
+  "anatomical_acceptance": false,
+  "causal_or_monosynaptic_claim": false,
+  "source_writes": false,
+  "display": {
+    "cuts_xyz": [
+      56,
+      200,
+      87
+    ],
+    "contrast_abs_percentile": 99,
+    "contrast_color_limit": 2.6598263328968836,
+    "normalized_anatomy_display_threshold": 96269.84490010572,
+    "anatomical_acceptance": false
+  },
+  "outputs": {
+    "cm032_alignment_and_response_qc.png": "c13ebbe16f4b7cb108fee12f2331b815bb9e65882879b37d753ce53b3e356ead",
+    "cm032_projectome_common_coverage.csv": "0f1277b02b540403a5d5523c204b0d5bfd10e7c39213aa575435050753714995",
+    "cm032_signed_response_by_ARM_level.csv": "a08738c0cdd6606a7d56588b58b1f512e3be6b004e662bbf3e5ac7d215a758bc"
+  }
+}

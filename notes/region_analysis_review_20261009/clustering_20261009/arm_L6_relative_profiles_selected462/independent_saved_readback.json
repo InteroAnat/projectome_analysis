@@ -1,0 +1,105 @@
+{
+  "status": "independent_saved_profile_readback_passed",
+  "selected_UIDs": 462,
+  "unique_UIDs": 462,
+  "positive_exclusive_L6_targets": 684,
+  "sourceARM0_UIDs": 52,
+  "sourceARM0_axon_eligible": 50,
+  "sourceARM0_endpoint_eligible": 50,
+  "Henry_visual_UIDs": 260,
+  "candidate_end_eligible": 429,
+  "axon_profile_eligible": 428,
+  "endpoint_profile_eligible": 425,
+  "independent_Hellinger_cut_checks": [
+    {
+      "family": "axon",
+      "k": 2,
+      "n_eligible": 428,
+      "realized_k": 2
+    },
+    {
+      "family": "axon",
+      "k": 3,
+      "n_eligible": 428,
+      "realized_k": 3
+    },
+    {
+      "family": "axon",
+      "k": 4,
+      "n_eligible": 428,
+      "realized_k": 4
+    },
+    {
+      "family": "axon",
+      "k": 5,
+      "n_eligible": 428,
+      "realized_k": 5
+    },
+    {
+      "family": "axon",
+      "k": 6,
+      "n_eligible": 428,
+      "realized_k": 6
+    },
+    {
+      "family": "axon",
+      "k": 7,
+      "n_eligible": 428,
+      "realized_k": 7
+    },
+    {
+      "family": "axon",
+      "k": 8,
+      "n_eligible": 428,
+      "realized_k": 8
+    },
+    {
+      "family": "endpoint",
+      "k": 2,
+      "n_eligible": 425,
+      "realized_k": 2
+    },
+    {
+      "family": "endpoint",
+      "k": 3,
+      "n_eligible": 425,
+      "realized_k": 3
+    },
+    {
+      "family": "endpoint",
+      "k": 4,
+      "n_eligible": 425,
+      "realized_k": 4
+    },
+    {
+      "family": "endpoint",
+      "k": 5,
+      "n_eligible": 425,
+      "realized_k": 5
+    },
+    {
+      "family": "endpoint",
+      "k": 6,
+      "n_eligible": 425,
+      "realized_k": 6
+    },
+    {
+      "family": "endpoint",
+      "k": 7,
+      "n_eligible": 425,
+      "realized_k": 7
+    },
+    {
+      "family": "endpoint",
+      "k": 8,
+      "n_eligible": 425,
+      "realized_k": 8
+    }
+  ],
+  "source_hashes_reverified": 462,
+  "producer_and_saved_outputs_hashes_checked": true,
+  "input_manifest_SHA256": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+  "run_provenance_SHA256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+  "readback_code_SHA256": "273aa658764fa2c0903cde8cf560f798c0a255fa19bbbf08ae33ea55c1f6f886",
+  "statistical_or_anatomical_acceptance": false
+}

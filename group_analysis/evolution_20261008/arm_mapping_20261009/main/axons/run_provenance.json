@@ -1,0 +1,820 @@
+{
+  "status": "software_verified_descriptive",
+  "created_utc": "2026-10-08T23:22:12.191005+00:00",
+  "input_manifest": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\main\\projection_manifest.csv",
+  "manifest_sha256": "c65c6def23a0e46e46a0021f1a1acdc6e49991c1fa6809a35e7ad4c72f4d4b7e",
+  "reference": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "brain_mask": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_brainmask.nii.gz",
+  "brain_mask_sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d",
+  "shape": [
+    256,
+    312,
+    200
+  ],
+  "brain_mask_policy": "coverage accounting only; delivered maps retain all in-FOV edges",
+  "affine_mm": [
+    [
+      0.25,
+      -0.0,
+      -0.0,
+      -31.875
+    ],
+    [
+      -0.0,
+      0.25,
+      -0.0,
+      -27.75
+    ],
+    [
+      0.0,
+      0.0,
+      0.25,
+      -8.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "voxel_volume_mm3": 0.015625000000000007,
+  "space_entity": "NMTv2p1",
+  "selected_neurons": 436,
+  "measurement": "template-space child-type-2 edge length split at voxel faces",
+  "regional_aggregation": "mean length per selected neuron within animal and declared subregion",
+  "group_aggregation": "equal weights among contributing animals; absent subregions not zero-filled",
+  "hemisphere_policy": "unmirrored reference coordinates; manifest subregion labels retained",
+  "statistical_status": "descriptive; no t map, p value, or multiplicity inference",
+  "scientific_status": "exploratory; registration, compartment labeling and anatomy require review",
+  "source_code_sha256": {
+    "build_projection_maps.py": "c758d2daa427276436e07c1745daad00574e7e392a6f71516f179653ae623145",
+    "projection_maps.py": "e47a54bfe5e8159c8e4a4f70d687b845a0810f073189a26f60c5945a65aa90da",
+    "swc_validation.py": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64"
+  },
+  "versions": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "nibabel": "5.4.2"
+  },
+  "preserved_manifest": "input_manifest.csv",
+  "length_value_units": "mm per selected neuron",
+  "density_value_units": "mm per mm^3 per selected neuron",
+  "animal_maps": [
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "4abc2b3b2e1c1131ee51a7d124e76cf258733766e8a94d613b42e10bac9b74a5",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "cfbd639c705a97e4d3f3d1c15b760f31ac520316ff5a9d1be9c9b0b719df8f52",
+      "mean_in_reference_length_mm": 146.1006612981073,
+      "stored_float32_sum_mm": 146.10066119313706
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_1004_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "3a6b47713d18f995bbf25d8134d0c4bc7a9aedd3feaa0c74fe5545d7446750d7",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_1004_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "bd1fa2c6ed069086dce82912a56cc88fc34a10855671a711ab4d2577661163cc",
+      "mean_in_reference_length_mm": 196.17485957026955,
+      "stored_float32_sum_mm": 196.17485941530867
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 3,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_228_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "c2f45231072e8c6756a8e9fd2af61980c51343a6086cacedfa2d28645442d92f",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_228_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "5fda0982e740438b7225867400312adbc491246e42167220e266402c59044c99",
+      "mean_in_reference_length_mm": 432.4932753829946,
+      "stored_float32_sum_mm": 432.49327552689647
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 11,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "803440bc0bde1d7a98311fb001cfcd1684d039cba004c7e41d028eed1aa55fe0",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "39293c102665275bc00bce688b69868ae3910da550e9ef20679667d2a8e45121",
+      "mean_in_reference_length_mm": 192.55946022541332,
+      "stored_float32_sum_mm": 192.55946017679844
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 11,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_48_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "bcca2aa35b2ff0fd66d073ee929f49d5a8c3cb8d89676c6ec7c695134e0396f6",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_48_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "baa68be1e01689f27b71327262cf8d7079d0d0438c652be34065eb2c43d3a7c4",
+      "mean_in_reference_length_mm": 87.43029428586252,
+      "stored_float32_sum_mm": 87.43029419718187
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "a045c53cbfd83715d6db8ec0477354c7f3452607a4ede9ca709095130e807940",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "e83f7dcbfc063156523e1cd5bd0a07e03ae2de59cd2a1217ea04bef9933ee8d6",
+      "mean_in_reference_length_mm": 132.95510302333545,
+      "stored_float32_sum_mm": 132.95510258415015
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 21,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_549_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "278c56ae6a0cc03620acedc8a64df8b1a1f5246c4bf0b70602e44e8a87785f76",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_549_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "c22552be6d5ec68ffe7a6b378c31e3588c732a792d479338187fd7df713f6541",
+      "mean_in_reference_length_mm": 58.92331097336457,
+      "stored_float32_sum_mm": 58.92331099460512
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_729_R",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_729_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "3fec3dc38ee78cd441386762251c485bb33ab2d09432b4c1f6e04e2be941c95e",
+      "density_path": "animal_maps\\animal-331_space-NMTv2p1_region-ARM6_729_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "33f486ab8a756459c65928d4e9e1de55142fc9adb7f00cfec04ad6e6c1e279ff",
+      "mean_in_reference_length_mm": 26.622043317191594,
+      "stored_float32_sum_mm": 26.622043181210756
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-605_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "b4b3b9f07d5fd49968878fda28fae00843952e6a9c6692a320cbe05df8b992a7",
+      "density_path": "animal_maps\\animal-605_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "9e11e27a2123b4d6795e3df092dc916fbe6fcb83d7813b9b61c5a2f25ea18502",
+      "mean_in_reference_length_mm": 85.48785474791278,
+      "stored_float32_sum_mm": 85.4878546941327
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_729_R",
+      "selected_neurons": 5,
+      "length_path": "animal_maps\\animal-605_space-NMTv2p1_region-ARM6_729_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "5732777e3d9b2ad632f1cc92e24ffbde37aaf8976d8be682497630b3d2be75e1",
+      "density_path": "animal_maps\\animal-605_space-NMTv2p1_region-ARM6_729_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "bb7ebf26d3ec18467e1fdd68e0367d7e04b4b824840e8fe1f297f0d3ab793e1b",
+      "mean_in_reference_length_mm": 63.14014657855295,
+      "stored_float32_sum_mm": 63.14014669486096
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 3,
+      "length_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_228_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "6f33077a5903f845c3767fb58c531ef91cacdc0cf943384811eaeda854fa6c4e",
+      "density_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_228_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "011520f29d85ab4fb5943fd5fdc9196f726bec0286ef7832dd0f0bbc83976aeb",
+      "mean_in_reference_length_mm": 545.0979853934224,
+      "stored_float32_sum_mm": 545.0979853003628
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 7,
+      "length_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_48_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "35b007919d481fe5da01f3f248e521b6e925fc81a442d634a4cbb5f4f9c690af",
+      "density_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_48_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "cc0531a3168a0ac923a7a4dbe5e3cc8128b7f3ca900f184118fa3512120bf93f",
+      "mean_in_reference_length_mm": 582.3324335996668,
+      "stored_float32_sum_mm": 582.3324331981371
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_548_R",
+      "selected_neurons": 5,
+      "length_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_548_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "5d51e7f229fcb115c2240be2bf309c05d9cbb711f210ee9a2616a61e8da961bd",
+      "density_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_548_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "4a4ab02591f09d08f1a0c2b39f6734cd5f1caca935a7b33c00034da4e00ed7ed",
+      "mean_in_reference_length_mm": 264.58283931143313,
+      "stored_float32_sum_mm": 264.5828393833972
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_728_R",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_728_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "3852c664e42b7d9be6372a167069bb6c11de6b7f31fb8ae98e898be11ce64da5",
+      "density_path": "animal_maps\\animal-631_space-NMTv2p1_region-ARM6_728_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "c78ab5f239e13db2fe7cd380ada384ff13e8f4bb41d2ae50a7ef677dd2060f16",
+      "mean_in_reference_length_mm": 667.309383337836,
+      "stored_float32_sum_mm": 667.309382922791
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "14cc1834b2f7bada0c5007d35a26c56a597cf9e4b7ff80f51a9b37979d0459cb",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "f07b62c54d641cbc53f264e277de4e02c7eb4b98a9066ac4dce1653c7dd95e2d",
+      "mean_in_reference_length_mm": 37.13500713153886,
+      "stored_float32_sum_mm": 37.135007175966166
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_0_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "13a363f3af27425fcbf3d0371a15120c0f0644ff124f107081910656dc5c0b8c",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_0_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "50149b4caefc5c23eb3a7f2fd957a31a8c69e0c6e07e8be338a63b5c4e1601f1",
+      "mean_in_reference_length_mm": 323.06918005340015,
+      "stored_float32_sum_mm": 323.0691796768806
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_1004_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "08be9a3af2977407facc2ee34b70c41963a92ec611af879fe9ebca076b06e157",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_1004_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "c8c32f6ad23d9275cfee714b7b3fe072067950e45e1e1b3ca53299d737d42421",
+      "mean_in_reference_length_mm": 570.21525640228,
+      "stored_float32_sum_mm": 570.2152574219072
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_1504_R",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_1504_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "cd77bffbb26d978d9a3ba42b2b0bce39b91082f9e275d7553369c3bf44c78417",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_1504_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "923d8f9e9ccd0e4b73583da739819568e270ea1292b1c21198ef1735aeed0b7b",
+      "mean_in_reference_length_mm": 1105.0663012326588,
+      "stored_float32_sum_mm": 1105.066302428786
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 5,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "7809ba8c3c25d0f73d0cf688183b4e67b66b2726fe3b2df56b584c0d0b3d9bed",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "71dd7d07ed89f4fc1a0ea0d53a1be00b214ce176ad06250fb0d759622dbe1ad3",
+      "mean_in_reference_length_mm": 452.27820574102117,
+      "stored_float32_sum_mm": 452.2782059929151
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_41_L",
+      "selected_neurons": 15,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_41_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "c3fc288bab77db18a1faf372a34c8774d97a0433a33b70aa6b5d9fad00f488dc",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_41_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "3015f033f1fc501aa7257ebe5d841199840d378b22645a9ee32cb0905ed115b0",
+      "mean_in_reference_length_mm": 319.11349288733265,
+      "stored_float32_sum_mm": 319.1134929268204
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "bdc6ed369973267bb50ca88654ed85f5e4777d99463284c52d9ebfa5206549d4",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "9cad34344cd8c9f1432e067d953b4f8e175f108747528110dc97ad32bede471f",
+      "mean_in_reference_length_mm": 5.416496361282639,
+      "stored_float32_sum_mm": 5.416496358579025
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_541_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "a2fe7ebeb26c6386a3bf89a849f422eebf3651f493591cbc81918fcc62551454",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_541_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "6cc4728c191e7841acea655149c990fa3f82c965b201c2b10e3e34b0863cd86f",
+      "mean_in_reference_length_mm": 159.3307962310925,
+      "stored_float32_sum_mm": 159.33079606032697
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 16,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "e5c9203e571a25b39a1a78cd80a703c76a668894dc47457585bd5cda01bc0ea8",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "61e2e1aa6361ea264c2657a321fd401a305ad4aed0ee3798707dadd1e33865b6",
+      "mean_in_reference_length_mm": 352.24907667558176,
+      "stored_float32_sum_mm": 352.2490767284402
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_595_R",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_595_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "d8f5057f514a0ca6876d621ddc7556f0d4f800ec5a0cad4435b6f415c2093728",
+      "density_path": "animal_maps\\animal-797_space-NMTv2p1_region-ARM6_595_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "eb22af6f38bcb53761248fd4731812a102f70c938f17dca8bab1f7088205be27",
+      "mean_in_reference_length_mm": 1007.4876424013669,
+      "stored_float32_sum_mm": 1007.4876434495818
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 4,
+      "length_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "3d948229e1f86df733ddcc8c2bee9cd756cab8c8b7e6525864970beb803d40a4",
+      "density_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "f1360ced65120ed1eac4aa9c981f6faa9862b1db2a9c0acc387a6cc79687a8b5",
+      "mean_in_reference_length_mm": 101.45760828231046,
+      "stored_float32_sum_mm": 101.45760833747318
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 7,
+      "length_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_48_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "b4a93a15520dd5fe0f48cdc8dc3bf897adf93bc9fa2d98f0037001c98697df0d",
+      "density_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_48_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "6faa57d72c6a50499b68e475f568a14693d92cb54aaa241cad0fdce6f4aeca85",
+      "mean_in_reference_length_mm": 55.77216322610683,
+      "stored_float32_sum_mm": 55.7721632435381
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_548_R",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_548_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "f270088bcac3016f272743b29b2a371e9f200387aff41cb54e45eb5986a7d5f7",
+      "density_path": "animal_maps\\animal-900_space-NMTv2p1_region-ARM6_548_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "0eb13f611d0a562aba38cbb136fad05aee162a343a30d4ef062ee0c00a7a3f70",
+      "mean_in_reference_length_mm": 25.387080687438917,
+      "stored_float32_sum_mm": 25.387080705258995
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 11,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "8a20e1a9fe36a21929f0d868412feba6e2c4e10830698841bf080f4bda091307",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "5115491e315931c147a591a35beccfd07ac0b8a3ebe7bcb431b702944c211318",
+      "mean_in_reference_length_mm": 89.05965227197646,
+      "stored_float32_sum_mm": 89.05965224632928
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 3,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_0_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "1b69230df138fce157029b4fb338c49c27efd91e42ab2b2f55d135d5482c9d36",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_0_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "e1595699a08c8b71f756ddb154984a0a691247abc68b8a48e1d739e6682a76d0",
+      "mean_in_reference_length_mm": 76.01819063057552,
+      "stored_float32_sum_mm": 76.01819063450785
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 45,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_228_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "7a7a9e0c89c14bebb38f1723ce50a7335390f30c84aba9360c9b7ea31fbaa70a",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_228_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "b787bb5d087ba31e48ce0281752409de006f3cd70a00e45b77da35a199e5d4ad",
+      "mean_in_reference_length_mm": 137.4348448057639,
+      "stored_float32_sum_mm": 137.43484479321654
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 24,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "63bd99af292e8f7536946b38a22e3050735cf10b3abfa3e86cd6d0dd433ba416",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_229_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "afdaa34f7db3f1b6ab8928e496a23a624dc05cfd73de514409a5a18faa983173",
+      "mean_in_reference_length_mm": 126.41740050107421,
+      "stored_float32_sum_mm": 126.41740045233462
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_41_L",
+      "selected_neurons": 11,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_41_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "f602ccf9b4679d0b6f5521a2335db91fe45e08c2d04c39959bec23ea49dbb360",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_41_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "8da56abb9607dbe9b09c87b59e6d6c22bed1747b6701ec351c323fccbc921052",
+      "mean_in_reference_length_mm": 188.51999729411273,
+      "stored_float32_sum_mm": 188.51999742229327
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 12,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "fb16cac3f3bdbf5c9bc3b010af23e683a10595639ce3f88b4f6f76aa42cef18e",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "7e969e49ed977d4f99b74d5224a051571cc552eb84ef09afb593244c0484a540",
+      "mean_in_reference_length_mm": 213.47828935071757,
+      "stored_float32_sum_mm": 213.47828927253158
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 9,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_541_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "f834e727c5fc23dfdcb33813169ab1b009ba0bd818066f4e0ee1634aba3bb7ac",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_541_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "3c4f4b3e290247f4ad9dc12debd93c30c85b2b977deec6aac4a41d4bd0daab7d",
+      "mean_in_reference_length_mm": 234.62410392532917,
+      "stored_float32_sum_mm": 234.62410385073235
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 51,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "8236b7f1f20ecee29ceb31af17033f3b8f9b7f6ff106c7dba39c7d4b236a1da1",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "91e1393cbd79592892543d2eff73745fcff3f6a6dfb7798558aaf902b0fd8259",
+      "mean_in_reference_length_mm": 85.6515231289768,
+      "stored_float32_sum_mm": 85.65152311649456
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 35,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_549_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "0c0f06681da507ec330909dcf4bd3341e316277ba68dabf327fd87a83c19ef62",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_549_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "c260f570f554b7742fdc3e06f01b677a07011d340283b3f7cec0cfb4f12c13cb",
+      "mean_in_reference_length_mm": 103.51250675496779,
+      "stored_float32_sum_mm": 103.5125067563917
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_728_R",
+      "selected_neurons": 60,
+      "length_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_728_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "d91924447544a68f32785b85a5480f3b67088ec126a1cf2fb26a8d2f2ed7849d",
+      "density_path": "animal_maps\\animal-936_space-NMTv2p1_region-ARM6_728_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "4d4b5f09586b9461674be99931add1069b77941b55e69a693f0d8860bd08bf1b",
+      "mean_in_reference_length_mm": 132.1746941958363,
+      "stored_float32_sum_mm": 132.17469425104264
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 11,
+      "length_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "3664edc09d0b5225bf3cbaa9cf5516993a7b664ece19654b85f9a29b88976ff7",
+      "density_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "10f77de5dbe184f5eee3076dc0d44584423d6680805eb47ee65aabcb92f63d59",
+      "mean_in_reference_length_mm": 131.269612175174,
+      "stored_float32_sum_mm": 131.26961218645692
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_43_L",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_43_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "3353d7836d1bb0d8e7b77d1f646ef1926784742618a15a3a94295475b8452d1d",
+      "density_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_43_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "f29d609787821f0323e2c70b9356a3c8baea77cd4c20ec65b5b48aeae1eb882d",
+      "mean_in_reference_length_mm": 160.12670867038128,
+      "stored_float32_sum_mm": 160.12670871592127
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_541_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "a7abe1a0a9d6ae7a2f7b90cc9974e99da0ef6554562ec5369b088c8c79afd2ae",
+      "density_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_541_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "a30566116c64c19a9d89f37d48771ec90588e8c1c0f85859d44f46a33dbc6595",
+      "mean_in_reference_length_mm": 71.48362304956316,
+      "stored_float32_sum_mm": 71.48362311854726
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 11,
+      "length_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_549_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "5b3114180804906e9de61e97de71af64e7ba04331a4b70eae70d5e406336b60f",
+      "density_path": "animal_maps\\animal-945_space-NMTv2p1_region-ARM6_549_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "c5a54632dd78f06542f49a9ecb7fb30e888c19afe50a159c7ad484260df22899",
+      "mean_in_reference_length_mm": 188.5947474758643,
+      "stored_float32_sum_mm": 188.59474767193205
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 4,
+      "length_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "9fe241564154ccf217b359c9e7e9996c1eab99cf424f29eafa0e29e3cbc18e23",
+      "density_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_0_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "539223bf72c54237b6cd2ed87014511e85231faf8993793b7044a06d852fd327",
+      "mean_in_reference_length_mm": 138.16622683907926,
+      "stored_float32_sum_mm": 138.16622688129246
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 3,
+      "length_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_0_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "ccac1a8abf3039e830052a148f9dfd4c0381724de736ac2d42c25f70b1fc4425",
+      "density_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_0_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "ce21dc6d6794c139096c36272bcb03cac3c8791f2ffd0f818b3bb3ad90b43ed1",
+      "mean_in_reference_length_mm": 489.65232041592975,
+      "stored_float32_sum_mm": 489.65231997518276
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 1,
+      "length_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_1004_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "a6c2fa5962d50936214316197a8c29118cdde085258fec6232bad6c2b2f3b22b",
+      "density_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_1004_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "d3dfce432b36b6c562ef8922f719f7df7f6a094a96580993d7957176b27c10ec",
+      "mean_in_reference_length_mm": 334.927153519765,
+      "stored_float32_sum_mm": 334.92715274356306
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_1504_R",
+      "selected_neurons": 4,
+      "length_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_1504_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "6eb5d9e282f6911d4bd263cb5e458a718b5133098cdd8981fff6f2fa6ba3d039",
+      "density_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_1504_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "aac754c1e05147b216ac452b3784414a834b20ccff1a8a7b08e393138e635f8e",
+      "mean_in_reference_length_mm": 244.80590743557713,
+      "stored_float32_sum_mm": 244.80590739853142
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 3,
+      "length_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "582c943f364f4fca79e6b07ba8e7c225633761867be377b573bc50c85a17ee1d",
+      "density_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_42_L_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "3122685abdd71bc6538de8335443344d7fc9f9e3297b5c2ea39e066a0789ae1c",
+      "mean_in_reference_length_mm": 122.48741052025692,
+      "stored_float32_sum_mm": 122.48741059788154
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 2,
+      "length_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLength_map.nii.gz",
+      "length_sha256": "5687fec949510da5234c2485cbdf61b8ad03ac7b7420e73be14c8876be1f0dc5",
+      "density_path": "animal_maps\\animal-948_space-NMTv2p1_region-ARM6_542_R_desc-meanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "3dd6ea5d0f355821d90673ccfb4e391bb2cb24ad817a4a1ac2bb52fc9cabae3d",
+      "mean_in_reference_length_mm": 20.44330246806649,
+      "stored_float32_sum_mm": 20.44330245134188
+    }
+  ],
+  "group_maps": [
+    {
+      "Subregion": "ARM6_0_L",
+      "contributing_animals": [
+        "331",
+        "797",
+        "936",
+        "948"
+      ],
+      "n_animals": 4,
+      "n_neurons": 18,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_0_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "ccb26535f4c20eeb16b356ea75376e3bde408a6008d56019dc0b00144671c1f5",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_0_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "5c0a2fbb94776468197657eb8c6125067f98f492460f3892946b6d06951c5b32"
+    },
+    {
+      "Subregion": "ARM6_0_R",
+      "contributing_animals": [
+        "797",
+        "936",
+        "948"
+      ],
+      "n_animals": 3,
+      "n_neurons": 8,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_0_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "e2432db7ad9b301aa9315b1675a377dab52fc98400be35aab538fbdb1918d7f1",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_0_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "a232938c95848d7ed7c4ec8309f9b3d842ed0a4c05800a7772d5301933e59f6c"
+    },
+    {
+      "Subregion": "ARM6_1004_L",
+      "contributing_animals": [
+        "331",
+        "797",
+        "948"
+      ],
+      "n_animals": 3,
+      "n_neurons": 4,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_1004_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "03d8446422ba782faecd46c9ad7f3ed46a2c2052883d37137331b3913f9fa7cf",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_1004_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "16c9d08775fe3e3af99b6b3ae945bb857dd465090f85b1a1c4f3ff9b9d4a8b5f"
+    },
+    {
+      "Subregion": "ARM6_1504_R",
+      "contributing_animals": [
+        "797",
+        "948"
+      ],
+      "n_animals": 2,
+      "n_neurons": 5,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_1504_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "7a357da7bed28663de64211dd878a5d3b181a9a103c8636386dd2004b7b0fe42",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_1504_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "255d7b2b288a2c25061bf6664d9105de7c5bf1c84bb88f0a26214a3125de7559"
+    },
+    {
+      "Subregion": "ARM6_228_L",
+      "contributing_animals": [
+        "331",
+        "631",
+        "936"
+      ],
+      "n_animals": 3,
+      "n_neurons": 51,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_228_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "8660bf97b2902668d812338aff6daa31cc87edc27e40cf28bed8ddb5539e4c1e",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_228_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "900bda9b017744ff9527eda5b9e188980d09c11acd5aa690ebc9364871382392"
+    },
+    {
+      "Subregion": "ARM6_229_L",
+      "contributing_animals": [
+        "605",
+        "797",
+        "900",
+        "936"
+      ],
+      "n_animals": 4,
+      "n_neurons": 34,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_229_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "37d22b599da5e31edd440ca1da071c7862d3b5c2a1597cca8f695b7d72ef37b5",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_229_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "7454f44c040894992a536f8def7a399564f4dbc340f1cb391d9a98e43ed6e8a4"
+    },
+    {
+      "Subregion": "ARM6_41_L",
+      "contributing_animals": [
+        "797",
+        "936"
+      ],
+      "n_animals": 2,
+      "n_neurons": 26,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_41_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "8496600a2002501dc5979911ec02251e4cd5a1094b50a0d854c2906922989ac4",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_41_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "fe8154eac499bcce6d8088a4d28f822d78c34ee7bd1de01352fa1633a622be1d"
+    },
+    {
+      "Subregion": "ARM6_42_L",
+      "contributing_animals": [
+        "331",
+        "797",
+        "936",
+        "945",
+        "948"
+      ],
+      "n_animals": 5,
+      "n_neurons": 38,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_42_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "fcf273b6859937a7438d67a583bb37c2143bf189f5f2bd2b958566c49c0b682f",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_42_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "f3348424c34a28505588b222425a2a20eb18e063923d990ea4a218c167516244"
+    },
+    {
+      "Subregion": "ARM6_43_L",
+      "contributing_animals": [
+        "945"
+      ],
+      "n_animals": 1,
+      "n_neurons": 1,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_43_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "3353d7836d1bb0d8e7b77d1f646ef1926784742618a15a3a94295475b8452d1d",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_43_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "f29d609787821f0323e2c70b9356a3c8baea77cd4c20ec65b5b48aeae1eb882d"
+    },
+    {
+      "Subregion": "ARM6_48_L",
+      "contributing_animals": [
+        "331",
+        "631",
+        "900"
+      ],
+      "n_animals": 3,
+      "n_neurons": 25,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_48_L_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "e9c63d68a6ca11654c26d6bae23a6fe4b209283d0a73ecb7dca8d92588d8269e",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_48_L_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "64368dda68a25e9b93dc2a0a51e547275312ad7cdc986c07433653f4f16f78cb"
+    },
+    {
+      "Subregion": "ARM6_541_R",
+      "contributing_animals": [
+        "797",
+        "936",
+        "945"
+      ],
+      "n_animals": 3,
+      "n_neurons": 12,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_541_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "82d854cd71234cf3cac075e033ebf34933bae36cd0cd165ab6666c458e9ea068",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_541_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "b05a1d9a2e568f05f92bf992d830965ec4cf5e1e5022e8b6666c0669aeb8aeb3"
+    },
+    {
+      "Subregion": "ARM6_542_R",
+      "contributing_animals": [
+        "331",
+        "797",
+        "936",
+        "948"
+      ],
+      "n_animals": 4,
+      "n_neurons": 71,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_542_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "5a2d321c2635b769d7f352ed97a8a6e61684e2ab25bd569aa0bb90279e04f815",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_542_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "cb4f0f845d4e805b89cac17c35af10520edfdc14e51ca38c0aedb5217fcf275e"
+    },
+    {
+      "Subregion": "ARM6_548_R",
+      "contributing_animals": [
+        "631",
+        "900"
+      ],
+      "n_animals": 2,
+      "n_neurons": 7,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_548_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "32bb073e6a91afdd5e387d0faf2f88de06231fab5f3a2acc7e5b64a6b868d3ca",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_548_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "5291aa031240b37ec9f12540948c3e94e249e68cf33cb98d473fc3e1958ab726"
+    },
+    {
+      "Subregion": "ARM6_549_R",
+      "contributing_animals": [
+        "331",
+        "936",
+        "945"
+      ],
+      "n_animals": 3,
+      "n_neurons": 67,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_549_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "c0b2fecdef39713501cfe06e23b9bce405af61a30aac3543c0628417988cb5af",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_549_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "94264412aaafb5e468c0e52f7622a52e2895c6c7ed8b22673cdf5ce7ed6c7648"
+    },
+    {
+      "Subregion": "ARM6_595_R",
+      "contributing_animals": [
+        "797"
+      ],
+      "n_animals": 1,
+      "n_neurons": 1,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_595_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "d8f5057f514a0ca6876d621ddc7556f0d4f800ec5a0cad4435b6f415c2093728",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_595_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "eb22af6f38bcb53761248fd4731812a102f70c938f17dca8bab1f7088205be27"
+    },
+    {
+      "Subregion": "ARM6_728_R",
+      "contributing_animals": [
+        "631",
+        "936"
+      ],
+      "n_animals": 2,
+      "n_neurons": 61,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_728_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "30abd0a6de70de333439d20a8c7a0ae157ff2c55c29c80e917d1f5609b0db423",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_728_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "a3c99b9f0f98b25ab3ee1e05116388a90986e43bb2c5c42885888a573c143f0b"
+    },
+    {
+      "Subregion": "ARM6_729_R",
+      "contributing_animals": [
+        "331",
+        "605"
+      ],
+      "n_animals": 2,
+      "n_neurons": 7,
+      "length_path": "group_maps\\space-NMTv2p1_region-ARM6_729_R_desc-animalMeanAxonLength_map.nii.gz",
+      "length_sha256": "7bdf97162c311a6fa5f6229b5e196c3fac4007edc656e72fe2195319c6c6eb3c",
+      "density_path": "group_maps\\space-NMTv2p1_region-ARM6_729_R_desc-animalMeanAxonLengthDensity_map.nii.gz",
+      "density_sha256": "2dc3f93b781abcdb64959129fbca6bfb627eb34742d717aeb05ac0a811e2e8ff"
+    }
+  ],
+  "finished_utc": "2026-10-08T23:26:44.829646+00:00"
+}

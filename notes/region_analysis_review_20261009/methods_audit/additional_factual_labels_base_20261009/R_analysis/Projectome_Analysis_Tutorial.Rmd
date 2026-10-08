@@ -1,0 +1,861 @@
+---
+title: "猕猴脑岛神经投射组数据分析教程"
+subtitle: "Projectome Analysis Tutorial for Macaque Insula Neurons (251637)"
+author: "基于形态学聚类的神经投射组分析"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_float: true
+    code_folding: show
+    fig_width: 10
+    fig_height: 8
+  pdf_document:
+    toc: true
+    fig_width: 10
+    fig_height: 8
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.align = 'center',
+  fig.dpi = 150
+)
+```
+
+---
+
+# 1. 概述 (Overview)
+
+本教程基于 **251637号猕猴** 的脑岛(insula)神经元单细胞投射组数据，展示如何进行完整的神经投射组数据分析流程。
+
+## 1.1 数据特点
+
+| 特征 | 描述 |
+|------|------|
+| **神经元数量** | 212个 |
+| **胞体位置** | CR_Ial (右岛叶Ial区) |
+| **脑区数量** | 260+ (Level 1-3层次结构) |
+| **神经元类型** | ITi, ITs, CT, PT, ITc |
+| **聚类方法** | Spearman相关性 + Ward.D2 + Supervised Penalty |
+| **聚类数目** | k=12 (基于C-index优化) |
+
+## 1.2 分析流程
+
+```
+数据读取 → 质量控制 → 投射矩阵构建 → 形态学聚类 → 
+热图可视化 → 侧向性分析 → 脑岛特异性分析 → 统计检验
+```
+
+---
+
+# 2. 环境设置与包加载
+
+```{r load-packages}
+# ============================================================================
+# 第一部分: 包加载
+# ============================================================================
+
+# 基础数据处理包
+library(readxl)      # Excel文件读取
+library(dplyr)       # 数据操作
+library(tidyr)       # 数据整理
+
+# 可视化包
+library(ggplot2)     # 基础绘图
+library(ComplexHeatmap)  # 高级热图 (Bioconductor)
+library(circlize)    # 颜色映射
+library(grid)        # 图形系统
+
+# 聚类和统计分析
+library(pheatmap)    # 简单热图
+
+# 设置ggplot2主题
+theme_set(theme_minimal(base_size = 12))
+
+# 定义颜色方案
+cat("包加载完成\n")
+```
+
+---
+
+# 3. 数据读取与探索
+
+## 3.1 读取主要数据文件
+
+```{r read-data}
+# ============================================================================
+# 第二部分: 数据读取
+# ============================================================================
+
+# 设置数据路径 (根据实际路径修改)
+data_dir <- "tables"  # 或 "/path/to/your/data"
+file_results <- file.path(data_dir, "251637_results_v5.xlsx")
+file_clustering_rds <- file.path(data_dir, "clustering_results.rds")
+
+# 检查文件是否存在
+if (!file.exists(file_results)) {
+  stop("数据文件不存在，请检查路径: ", file_results)
+}
+
+# 读取各个Sheet
+cat("读取数据...\n")
+
+df_summary <- read_excel(file_results, sheet = "Summary")
+df_terminals <- read_excel(file_results, sheet = "Terminal_Sites")
+df_laterality <- read_excel(file_results, sheet = "Laterality")
+
+# 读取投射数据 (Level 3层次，已分组为同侧/对侧)
+proj_length_l3_ipsi <- read_excel(file_results, sheet = "Projection_Length_L3_ipsi")
+proj_length_l3_contra <- read_excel(file_results, sheet = "Projection_Length_L3_contra")
+proj_strength_l3_ipsi <- read_excel(file_results, sheet = "Projection_Strength_L3_ipsi")
+proj_strength_l3_contra <- read_excel(file_results, sheet = "Projection_Strength_L3_contra")
+
+# 读取聚类结果 (从RDS文件获取预计算的最佳聚类)
+cluster_info <- readRDS(file_clustering_rds)
+
+cat("数据读取完成\n")
+```
+
+## 3.2 数据结构探索
+
+```{r explore-structure}
+# ============================================================================
+# 数据概览
+# ============================================================================
+
+cat("=== 数据维度 ===\n")
+cat("Summary:", nrow(df_summary), "neurons x", ncol(df_summary), "columns\n")
+cat("Terminal Sites:", nrow(df_terminals), "terminals\n")
+cat("Projection L3 (ipsi):", nrow(proj_length_l3_ipsi), "x", ncol(proj_length_l3_ipsi), "\n")
+
+# 查看Summary表的关键列
+cat("\n=== 关键列信息 ===\n")
+print(colnames(df_summary))
+
+# 神经元类型分布
+cat("\n=== 神经元类型分布 ===\n")
+print(table(df_summary$Neuron_Type))
+```
+
+## 3.3 聚类结果整合
+
+```{r integrate-clustering}
+# ============================================================================
+# 整合预计算的聚类结果
+# ============================================================================
+
+cat("=== 聚类信息 ===\n")
+cat("聚类数目:", length(unique(cluster_info$clusters)), "\n")
+cat("聚类分布:\n")
+print(table(cluster_info$clusters))
+
+# 合并聚类信息到投射数据
+# cluster_df包含: NeuronID, Cluster, DendroOrder, BioType
+cluster_df <- cluster_info$cluster_df
+
+# 按DendroOrder排序投射数据
+proj_length_l3_ipsi_clustered <- proj_length_l3_ipsi %>%
+  left_join(cluster_df %>% select(-BioType), by = "NeuronID") %>%
+  relocate(c(Cluster, DendroOrder), .after = Neuron_Type) %>%
+  arrange(DendroOrder)
+
+proj_length_l3_contra_clustered <- proj_length_l3_contra %>%
+  left_join(cluster_df %>% select(-BioType), by = "NeuronID") %>%
+  relocate(c(Cluster, DendroOrder), .after = Neuron_Type) %>%
+  arrange(DendroOrder)
+
+cat("\n聚类信息整合完成\n")
+head(proj_length_l3_ipsi_clustered[, 1:6])
+```
+
+---
+
+# 4. 基础统计分析
+
+## 4.1 神经元类型统计
+
+```{r basic-stats}
+# ============================================================================
+# 基础统计
+# ============================================================================
+
+# 按神经元类型统计
+type_stats <- df_summary %>%
+  group_by(Neuron_Type) %>%
+  summarise(
+    n = n(),
+    mean_length = mean(Total_Length),
+    median_length = median(Total_Length),
+    sd_length = sd(Total_Length),
+    mean_terminals = mean(Terminal_Count),
+    mean_ipsi_regions = mean(N_Ipsilateral),
+    mean_contra_regions = mean(N_Contralateral),
+    mean_laterality_index = mean(Laterality_Index, na.rm = TRUE)
+  ) %>%
+  arrange(desc(n))
+
+print(type_stats)
+```
+
+## 4.2 投射长度分布可视化
+
+```{r length-distribution}
+# 神经元类型颜色
+type_colors <- c(
+  "ITc" = "#4DAF4A",  # 绿色
+  "ITs" = "#984EA3",  # 紫色
+  "CT"  = "#FF7F00",  # 橙色
+  "PT"  = "#E41A1C",  # 红色
+  "ITi" = "#377EB8"   # 蓝色
+)
+
+# 总投射长度分布
+p1 <- ggplot(df_summary, aes(x = Neuron_Type, y = Total_Length, fill = Neuron_Type)) +
+  geom_boxplot(alpha = 0.7) +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Total Axon Length by Neuron Type",
+    subtitle = paste("n =", nrow(df_summary), "neurons from CR_Ial"),
+    x = "Neuron Type",
+    y = "Total Length (um)"
+  ) +
+  theme(legend.position = "none")
+
+print(p1)
+```
+
+## 4.3 侧向性指数分析
+
+```{r laterality-analysis}
+# 侧向性指数分布 (1=纯同侧, -1=纯对侧)
+p2 <- ggplot(df_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
+  geom_histogram(bins = 20, alpha = 0.7) +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Laterality Index Distribution",
+    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+    x = "Laterality Index",
+    y = "Count"
+  ) +
+  geom_vline(xintercept = 0, linetype = "dashed", color = "red")
+
+print(p2)
+```
+
+## 4.4 投射长度 vs 终端数量
+
+```{r length-vs-terminals}
+# 投射长度与终端数量关系
+p3 <- ggplot(df_summary, aes(x = Total_Length, y = Terminal_Count, color = Neuron_Type)) +
+  geom_point(size = 3, alpha = 0.6) +
+  scale_color_manual(values = type_colors) +
+  labs(
+    title = "Axon Length vs Terminal Count",
+    x = "Total Axon Length (um)",
+    y = "Terminal Count"
+  )
+
+print(p3)
+```
+
+---
+
+# 5. 投射热图可视化
+
+## 5.1 准备投射矩阵
+
+```{r prepare-matrices}
+# ============================================================================
+# 构建投射矩阵
+# ============================================================================
+
+# 定义元数据列数
+meta_cols <- 4  # NeuronID, Neuron_Type, Cluster, DendroOrder
+
+# 构建同侧投射矩阵 (转置：行为脑区，列为神经元)
+mat_ipsi_t <- t(proj_length_l3_ipsi_clustered %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_ipsi_t) <- proj_length_l3_ipsi_clustered$NeuronID
+
+# 构建对侧投射矩阵
+mat_contra_t <- t(proj_length_l3_contra_clustered %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_contra_t) <- proj_length_l3_contra_clustered$NeuronID
+
+# 投射强度矩阵
+mat_strength_ipsi_t <- t(proj_strength_l3_ipsi_clustered %>%
+  select(-(1:meta_cols)) %>%
+  as.matrix())
+colnames(mat_strength_ipsi_t) <- proj_strength_l3_ipsi_clustered$NeuronID
+
+cat("矩阵维度:\n")
+cat("  同侧:", nrow(mat_ipsi_t), "regions x", ncol(mat_ipsi_t), "neurons\n")
+cat("  对侧:", nrow(mat_contra_t), "regions x", ncol(mat_contra_t), "neurons\n")
+```
+
+## 5.2 定义颜色方案
+
+```{r color-schemes}
+# ============================================================================
+# 定义颜色方案
+# ============================================================================
+
+# 投射强度颜色函数
+max_val <- max(rowMaxs(mat_strength_ipsi_t))
+colour_func <- colorRamp2(
+  c(0, max_val/2, max_val), 
+  c("#F7FBF0", "blue", "darkblue")
+)
+
+# 获取每个聚类的主要类型 (用于顶部注释着色)
+real_order <- unique(proj_length_l3_ipsi_clustered$Cluster)
+slice_types <- sapply(real_order, function(g) {
+  proj_length_l3_ipsi_clustered$Neuron_Type[proj_length_l3_ipsi_clustered$Cluster == g][1]
+})
+
+cat("聚类类型分布:\n")
+print(data.frame(Cluster = real_order, Type = slice_types))
+```
+
+## 5.3 构建高级热图
+
+```{r build-heatmap}
+# ============================================================================
+# 构建ComplexHeatmap热图
+# ============================================================================
+
+# 获取预计算的层次聚类树
+dend <- as.dendrogram(cluster_info$hclust_obj)
+n_clusters <- length(unique(cluster_info$clusters))
+
+# 创建顶部注释
+ha_top <- HeatmapAnnotation(
+  Type = anno_block(
+    gp = gpar(fill = type_colors[slice_types], col = "black"),
+    labels = slice_types,
+    labels_gp = gpar(fontsize = 8),
+    height = unit(0.6, "cm")
+  ),
+  Subtype = anno_block(
+    gp = gpar(fill = "grey90"),
+    labels = paste0("#", 1:n_clusters),
+    labels_gp = gpar(fontsize = 7),
+    height = unit(0.2, "cm")
+  )
+)
+
+# 设置热图全局选项
+ht_opt(
+  heatmap_row_names_gp = gpar(fontsize = 8),
+  heatmap_row_title_gp = gpar(fontsize = 11, fontface = "bold"),
+  TITLE_PADDING = unit(c(15, 15), "mm")
+)
+
+# 构建同侧热图
+ht_ipsi <- Heatmap(
+  mat_strength_ipsi_t,
+  name = "IPSI",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title = "Ipsilateral",
+  row_title_side = "right",
+  cluster_rows = FALSE,
+  cluster_columns = dend,          # 使用预计算的聚类树
+  show_column_dend = TRUE,
+  column_dend_height = unit(4, "mm"),
+  top_annotation = ha_top,
+  column_split = n_clusters,
+  column_title = NULL,
+  column_gap = unit(0.5, "mm"),
+  border = TRUE
+)
+
+# 构建对侧热图
+ht_contra <- Heatmap(
+  mat_strength_ipsi_t,  # 使用相同矩阵作为示例
+  name = "CONTRA",
+  col = colour_func,
+  show_column_names = FALSE,
+  row_title = "Contralateral",
+  row_title_side = "right",
+  cluster_rows = FALSE,
+  cluster_columns = dend,          # 同步聚类
+  show_column_dend = FALSE,        # 只在ipsi显示树
+  column_dend_height = unit(4, "mm"),
+  column_split = n_clusters,
+  column_gap = unit(0.5, "mm"),
+  border = TRUE
+)
+
+# 垂直拼接热图
+ht_list <- ht_ipsi %v% ht_contra
+
+# 绘制热图
+title_text <- paste0("Overview of 251637 Insular neuron (n=", 
+                     ncol(mat_ipsi_t), 
+                     ") projections (region hierarchy 3)")
+
+draw(ht_list,
+     column_title = title_text,
+     column_title_gp = gpar(fontsize = 16, fontface = "bold"),
+     show_heatmap_legend = FALSE,
+     padding = unit(c(15, 5, 0, 5), "mm")
+)
+
+# 添加装饰线
+decorate_row_title("IPSI", {
+  grid.lines(x = unit(0.1, "npc"),
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#377EB8"))
+})
+
+decorate_row_title("CONTRA", {
+  grid.lines(x = unit(0.1, "npc"),
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#E41A1C"))
+})
+```
+
+## 5.4 保存热图
+
+```{r save-heatmap, eval=FALSE}
+# 保存为PDF
+pdf("heatmap_251637_tutorial.pdf", width = 20, height = 15)
+draw(ht_list,
+     column_title = title_text,
+     column_title_gp = gpar(fontsize = 16, fontface = "bold"),
+     show_heatmap_legend = FALSE,
+     padding = unit(c(15, 5, 0, 5), "mm")
+)
+decorate_row_title("IPSI", {
+  grid.lines(x = unit(0.1, "npc"),
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#377EB8"))
+})
+decorate_row_title("CONTRA", {
+  grid.lines(x = unit(0.1, "npc"),
+             y = unit(c(0.02, 0.98), "npc"),
+             gp = gpar(lwd = 5, col = "#E41A1C"))
+})
+dev.off()
+```
+
+---
+
+# 6. 脑岛特异性分析
+
+## 6.1 识别脑岛相关投射
+
+```{r insula-projection}
+# ============================================================================
+# 脑岛投射分析
+# ============================================================================
+
+# 识别脑岛相关脑区 (基于命名规则)
+insula_pattern <- "I[agl]|FI|Iai|Ial|Iam|Iapm|Iapl|Id|Ig"
+
+# 获取所有投射区域名称
+all_regions <- rownames(mat_ipsi_t)
+insula_regions <- grep(insula_pattern, all_regions, value = TRUE, ignore.case = TRUE)
+
+# 区分左右脑岛
+left_insula <- grep("^CL_.*I", insula_regions, value = TRUE)
+right_insula <- grep("^CR_.*I", insula_regions, value = TRUE)
+
+cat("脑岛相关区域:", length(insula_regions), "\n")
+cat("  左脑岛:", length(left_insula), "\n")
+cat("  右脑岛:", length(right_insula), "\n")
+cat("  示例:", paste(head(insula_regions, 5), collapse = ", "), "\n")
+```
+
+## 6.2 脑岛投射比例计算
+
+```{r insula-proportion}
+# 计算每个神经元的脑岛投射比例
+insula_indices <- which(all_regions %in% insula_regions)
+
+# 同侧脑岛投射
+insula_proj_ipsi <- colSums(mat_ipsi_t[insula_indices, , drop = FALSE])
+total_proj_ipsi <- colSums(mat_ipsi_t)
+insula_prop_ipsi <- insula_proj_ipsi / (total_proj_ipsi + 0.001)
+
+# 合并统计
+df_insula_stats <- data.frame(
+  NeuronID = colnames(mat_ipsi_t),
+  Total_Ipsi = total_proj_ipsi,
+  Insula_Ipsi = insula_proj_ipsi,
+  Insula_Prop_Ipsi = insula_prop_ipsi
+) %>%
+  left_join(df_summary %>% select(NeuronID, Neuron_Type), by = "NeuronID")
+
+# 按类型分组的脑岛投射统计
+insula_by_type <- df_insula_stats %>%
+  group_by(Neuron_Type) %>%
+  summarise(
+    n = n(),
+    mean_insula_prop = mean(Insula_Prop_Ipsi),
+    median_insula_prop = median(Insula_Prop_Ipsi),
+    sd_insula_prop = sd(Insula_Prop_Ipsi)
+  )
+
+print(insula_by_type)
+```
+
+## 6.3 脑岛投射可视化
+
+```{r insula-viz}
+# 脑岛投射比例分布
+p4 <- ggplot(df_insula_stats, aes(x = Insula_Prop_Ipsi, fill = Neuron_Type)) +
+  geom_histogram(bins = 20, alpha = 0.7) +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Proportion of Projections to Insula",
+    subtitle = "Soma: CR_Ial (Right Insula Ial)",
+    x = "Proportion of Total Axon Length",
+    y = "Count"
+  )
+
+print(p4)
+
+# 按类型分组的箱线图
+p5 <- ggplot(df_insula_stats, aes(x = Neuron_Type, y = Insula_Prop_Ipsi, fill = Neuron_Type)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.2, alpha = 0.3) +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Insula Projection Proportion by Neuron Type",
+    x = "Neuron Type",
+    y = "Proportion"
+  ) +
+  theme(legend.position = "none")
+
+print(p5)
+```
+
+---
+
+# 7. 终端位点分析
+
+## 7.1 终端位点统计
+
+```{r terminal-analysis}
+# ============================================================================
+# 终端位点分析
+# ============================================================================
+
+# 按脑叶(L1)统计终端分布
+terminal_by_lobe <- df_terminals %>%
+  group_by(Terminal_L1) %>%
+  summarise(
+    n_sites = n(),
+    n_neurons = n_distinct(NeuronID)
+  ) %>%
+  arrange(desc(n_sites))
+
+print(terminal_by_lobe)
+
+# 脑岛内终端分布
+insula_terminals <- df_terminals %>%
+  filter(grepl(insula_pattern, Terminal_L6, ignore.case = TRUE))
+
+cat("\n脑岛内终端位点:", nrow(insula_terminals), "/", nrow(df_terminals), 
+    "(", round(100*nrow(insula_terminals)/nrow(df_terminals), 1), "%)\n")
+```
+
+## 7.2 终端位点可视化
+
+```{r terminal-viz}
+# 合并神经元类型信息
+terminals_with_type <- df_terminals %>%
+  left_join(df_summary %>% select(NeuronID, Neuron_Type), by = "NeuronID")
+
+# 按脑叶和类型统计
+p6 <- ggplot(terminals_with_type, aes(x = Terminal_L1, fill = Neuron_Type)) +
+  geom_bar() +
+  scale_fill_manual(values = type_colors) +
+  labs(
+    title = "Terminal Site Distribution by Brain Lobe",
+    x = "Brain Lobe (L1)",
+    y = "Number of Terminal Sites"
+  ) +
+  theme(axis.text.x = element_text(angle = 45, hjust = 1))
+
+print(p6)
+```
+
+---
+
+# 8. 统计检验
+
+## 8.1 神经元类型间差异检验
+
+```{r statistical-tests}
+# ============================================================================
+# 统计检验
+# ============================================================================
+
+# 比较ITi和ITs的投射长度差异
+it_data <- df_summary %>% filter(Neuron_Type %in% c("ITi", "ITs"))
+
+if (nrow(it_data) > 0) {
+  # Shapiro-Wilk正态性检验
+  shapiro_it <- shapiro.test(it_data$Total_Length)
+  cat("正态性检验 (投射长度): p =", shapiro_it$p.value, "\n")
+  
+  # 根据正态性选择检验方法
+  if (shapiro_it$p.value > 0.05) {
+    # t检验
+    t_test_result <- t.test(Total_Length ~ Neuron_Type, data = it_data)
+    cat("\nt检验结果:\n")
+    print(t_test_result)
+  } else {
+    # Wilcoxon秩和检验
+    wilcox_result <- wilcox.test(Total_Length ~ Neuron_Type, data = it_data)
+    cat("\nWilcoxon秩和检验结果:\n")
+    print(wilcox_result)
+  }
+}
+```
+
+## 8.2 相关性分析
+
+```{r correlation}
+# 投射长度与终端数量的相关性
+cor_test <- cor.test(df_summary$Total_Length, df_summary$Terminal_Count, 
+                     method = "spearman")
+cat("Spearman相关性检验:\n")
+cat("  rho =", cor_test$estimate, "\n")
+cat("  p-value =", cor_test$p.value, "\n")
+
+# 可视化
+p7 <- ggplot(df_summary, aes(x = Total_Length, y = Terminal_Count)) +
+  geom_point(aes(color = Neuron_Type), size = 3, alpha = 0.6) +
+  geom_smooth(method = "lm", se = TRUE, color = "black") +
+  scale_color_manual(values = type_colors) +
+  labs(
+    title = "Correlation: Axon Length vs Terminal Count",
+    subtitle = paste("Spearman rho =", round(cor_test$estimate, 3)),
+    x = "Total Axon Length (um)",
+    y = "Terminal Count"
+  )
+
+print(p7)
+```
+
+---
+
+# 9. 高级分析技巧
+
+## 9.1 热图包装函数
+
+```{r heatmap-functions}
+# ============================================================================
+# 可复用的热图函数
+# ============================================================================
+
+#' 构建投射热图
+#' 
+#' @param mat 投射矩阵 (行为脑区，列为神经元)
+#' @param name 热图名称
+#' @param title 行标题
+#' @param target_dend 预计算的聚类树
+#' @param order 顺序 (1=顶层显示树)
+#' @param n_split 聚类分割数
+#' @param colour_func 颜色函数
+#' @param ha_top 顶部注释
+#' @return ComplexHeatmap对象
+build_projection_ht <- function(mat, name, title, 
+                                target_dend = dend,
+                                order = 1,
+                                n_split = 12,
+                                colour_func = colour_func,
+                                ha_top = NULL) {
+  is_first <- (order == 1)
+  
+  Heatmap(
+    mat,
+    name = name,
+    row_title = title,
+    col = colour_func,
+    cluster_rows = FALSE,
+    row_title_side = "right",
+    cluster_columns = target_dend,
+    column_split = n_split,
+    show_column_dend = is_first,
+    column_dend_height = unit(4, "mm"),
+    top_annotation = if(is_first) ha_top else NULL,
+    column_title = NULL,
+    column_gap = unit(0.5, "mm"),
+    show_column_names = FALSE,
+    border = TRUE
+  )
+}
+
+# 示例使用
+h1 <- build_projection_ht(mat_strength_ipsi_t, "IPSI", "Ipsilateral", order = 1)
+h2 <- build_projection_ht(mat_strength_ipsi_t, "CONTRA", "Contralateral", order = 2)
+
+final_list <- h1 %v% h2
+```
+
+## 9.2 自动保存函数
+
+```{r save-function}
+#' 自动保存投射热图
+#' 
+#' @param ht_list 热图列表
+#' @param filename 输出文件名
+#' @param title 图标题
+#' @param w 宽度
+#' @param h 高度
+render_projection_plot <- function(ht_list, filename, title, w = 20, h = 15) {
+  pdf(filename, width = w, height = h)
+  
+  draw(ht_list,
+       column_title = title,
+       column_title_gp = gpar(fontsize = 16, fontface = "bold"),
+       show_heatmap_legend = FALSE,
+       padding = unit(c(15, 5, 25, 50), "mm"))
+  
+  # 侧边装饰线
+  side_colors <- c("IPSI" = "#377EB8", "CONTRA" = "#E41A1C")
+  for(nm in names(side_colors)) {
+    decorate_row_title(nm, {
+      grid.lines(x = unit(0.1, "npc"),
+                 y = unit(c(0.02, 0.98), "npc"),
+                 gp = gpar(lwd = 6, col = side_colors[nm]))
+    })
+  }
+  
+  dev.off()
+  message("Successfully saved: ", filename)
+}
+
+# 使用示例 (取消eval=FALSE运行)
+# render_projection_plot(final_list, "output.pdf", "My Analysis")
+```
+
+---
+
+# 10. 结论与导出
+
+## 10.1 分析总结
+
+```{r summary}
+# ============================================================================
+# 分析总结
+# ============================================================================
+
+cat("=== 251637脑岛投射组分析总结 ===\n\n")
+
+cat("1. 数据概览:\n")
+cat("   - 神经元总数:", nrow(df_summary), "\n")
+cat("   - 胞体位置: CR_Ial (右岛叶Ial区)\n")
+cat("   - 主要类型: ITi (", sum(df_summary$Neuron_Type == "ITi"), ") / ITs (", 
+    sum(df_summary$Neuron_Type == "ITs"), ")\n\n")
+
+cat("2. 形态学聚类:\n")
+cat("   - 聚类数目: k =", n_clusters, "\n")
+cat("   - 方法: Spearman + Ward.D2 + Supervised Penalty\n\n")
+
+cat("3. 投射特征:\n")
+cat("   - 平均侧向性指数:", round(mean(df_summary$Laterality_Index, na.rm = TRUE), 3), "\n")
+cat("   - 脑岛投射比例:", round(mean(df_insula_stats$Insula_Prop_Ipsi), 3), "\n")
+cat("   - 平均终端数:", round(mean(df_summary$Terminal_Count), 1), "\n")
+```
+
+## 10.2 导出结果
+
+```{r export, eval=FALSE}
+# ============================================================================
+# 导出分析结果
+# ============================================================================
+
+# 创建输出目录
+output_dir <- "analysis_output"
+if (!dir.exists(output_dir)) {
+  dir.create(output_dir)
+}
+
+# 1. 导出统计表
+write.csv(type_stats, file.path(output_dir, "stats_by_type.csv"), row.names = FALSE)
+write.csv(insula_by_type, file.path(output_dir, "insula_projection_stats.csv"), row.names = FALSE)
+write.csv(df_insula_stats, file.path(output_dir, "individual_neuron_insula_stats.csv"), row.names = FALSE)
+
+# 2. 保存ggplot图表
+ggsave(file.path(output_dir, "length_distribution.pdf"), p1, width = 7, height = 5)
+ggsave(file.path(output_dir, "laterality_distribution.pdf"), p2, width = 8, height = 5)
+ggsave(file.path(output_dir, "length_vs_terminals.pdf"), p3, width = 8, height = 6)
+ggsave(file.path(output_dir, "insula_proportion.pdf"), p4, width = 8, height = 5)
+
+# 3. 保存热图
+render_projection_plot(
+  final_list, 
+  file.path(output_dir, "main_projection_heatmap.pdf"),
+  "251637 Insular Neuron Projections"
+)
+
+cat("结果已导出到:", output_dir, "\n")
+```
+
+---
+
+# 附录: 参考信息
+
+## A. 神经元类型说明
+
+| 类型 | 全称 | 投射特征 |
+|------|------|---------|
+| ITi | Intratelencephalic, ipsilateral | 同侧皮层投射 |
+| ITs | Intratelencephalic, striatum-projecting | 投射到纹状体 |
+| ITc | Intratelencephalic, contralateral | 对侧皮层投射 |
+| CT | Corticothalamic | 皮层-丘脑投射 |
+| PT | Pyramidal Tract | 锥体束投射 |
+
+## B. 脑岛亚区说明
+
+基于 Evrard et al. 2012/2014 的脑岛分区方案：
+
+| 亚区 | 全称 | 细胞构筑 |
+|------|------|---------|
+| FI | Frontal Insula | Agranular |
+| Iai | Insula agranular anterior, intermediate | Agranular |
+| Ial | Insula agranular anterior, lateral | Agranular |
+| Iam | Insula agranular anterior, medial | Agranular |
+| Iapm | Insula agranular posterior, medial | Agranular |
+| Iapl | Insula agranular posterior, lateral | Agranular |
+| Id | Insula dysgranular | Dysgranular |
+| Ig | Insula granular | Granular |
+
+## C. 颜色方案参考
+
+```{r color-reference}
+# 显示颜色方案
+cat("神经元类型颜色:\n")
+print(type_colors)
+
+# 聚类颜色 (12色)
+cluster_colors <- c(
+  "1" = "#E41A1C", "2" = "#377EB8", "3" = "#4DAF4A",
+  "4" = "#984EA3", "5" = "#FF7F00", "6" = "#FFFF33",
+  "7" = "#A65628", "8" = "#F781BF", "9" = "#999999",
+  "10" = "#66C2A5", "11" = "#FC8D62", "12" = "#8DA0CB"
+)
+```
+
+## D. 参考文献
+
+1. Gou et al. (2025). Single-neuron projectomes of macaque prefrontal cortex reveal refined axon targeting and arborization. *Cell*.
+2. Evrard et al. (2012). Von Economo neurons in the anterior insula. *Journal of Comparative Neurology*.
+3. Evrard et al. (2014). Modular architectonic organization of the insula. *Journal of Comparative Neurology*.
+
+---
+
+**分析完成!** 本教程涵盖了神经投射组分析的核心流程，包括数据读取、质量控制、热图可视化、脑岛特异性分析和统计检验。根据实际需求，可以进一步扩展聚类比较、投射模式分类等高级分析。

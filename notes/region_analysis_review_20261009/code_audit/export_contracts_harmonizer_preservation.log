@@ -1,0 +1,18 @@
+test_preserves_source_formulas_styles_notes_and_exact_membership (__main__.HarmonizerPreservationTests) ... ERROR
+
+======================================================================
+ERROR: test_preserves_source_formulas_styles_notes_and_exact_membership (__main__.HarmonizerPreservationTests)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "D:\projectome_analysis\notes\region_analysis_review_20261009\code_audit\test_harmonizer_preservation.py", line 55, in test_preserves_source_formulas_styles_notes_and_exact_membership
+    harmonizer.harmonize(source,destination)
+  File "D:\projectome_analysis\group_analysis\scripts\06_harmonize_atlas_to_manual.py", line 217, in harmonize
+    input_membership = validate_workbook_membership(sheets)
+  File "D:\projectome_analysis\group_analysis\scripts\06_harmonize_atlas_to_manual.py", line 169, in validate_workbook_membership
+    raise ValueError(f"Workbook missing required quantitative sheets: {sorted(missing)}")
+ValueError: Workbook missing required quantitative sheets: ['Projection_Length_L3_contra', 'Projection_Length_L3_ipsi', 'Projection_Length_contra', 'Projection_Length_ipsi', 'Projection_Strength_L3_contra', 'Projection_Strength_L3_ipsi', 'Projection_Strength_contra', 'Projection_Strength_ipsi']
+
+----------------------------------------------------------------------
+Ran 1 test in 0.068s
+
+FAILED (errors=1)

@@ -1,0 +1,51 @@
+{
+  "original_snapshot_unchanged": true,
+  "additional_files": [
+    {
+      "file": "notes/region_analysis_review_20261009/methods_audit/historical306_logstrength_vs_legacy_voxellength.csv",
+      "sha256": "7e456f437947d8ca559acd55d48cf35e32cc12d825455510c27d99affe652000",
+      "schema": {
+        "sheets": [
+          {
+            "sheet": "__csv__",
+            "rows": 306,
+            "columns": [
+              "NeuronUID",
+              "normalized_log_strength_intra_INS_share",
+              "legacy_raw_voxel_length_intra_INS_share"
+            ],
+            "grain": "table",
+            "node_roots": null,
+            "node_ids": null,
+            "chunk_checks": [
+              {
+                "sheet": "__csv__",
+                "rows": 306,
+                "columns": [
+                  "NeuronUID",
+                  "normalized_log_strength_intra_INS_share",
+                  "legacy_raw_voxel_length_intra_INS_share"
+                ],
+                "identity_columns": [
+                  "NeuronUID"
+                ],
+                "missing_per_column": {
+                  "NeuronUID": 0,
+                  "normalized_log_strength_intra_INS_share": 0,
+                  "legacy_raw_voxel_length_intra_INS_share": 0
+                },
+                "numeric_metrics": {},
+                "identity_grain": "neuron_or_manifest",
+                "missing_identity_rows": 0,
+                "duplicate_identity_rows": 0
+              }
+            ]
+          }
+        ],
+        "full_content_read": true
+      },
+      "findings": []
+    }
+  ],
+  "anatomical_acceptance": false
+}

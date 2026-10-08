@@ -1,0 +1,270 @@
+{
+  "method": "independent raw JSON readback and exact-ID comparisons; no network requests",
+  "n_catalog_records": 1128,
+  "n_current_macaque_sample_ids": 47,
+  "n_requests": 95,
+  "http_status_counts": {
+    "200": 95
+  },
+  "request_kind_counts": {
+    "sample_info": 1,
+    "neurons": 47,
+    "soma": 47
+  },
+  "request_timestamp_first": "2026-10-08T15:24:13.562354+00:00",
+  "request_timestamp_last": "2026-10-08T15:24:16.367508+00:00",
+  "all_snapshot_hashes_match": true,
+  "n_raw_neuron_identities": 8746,
+  "n_unique_raw_neuron_identities": 8746,
+  "output_exact_identity_set_matches_raw_neuron_lists": true,
+  "sampleid_mismatches": [],
+  "duplicate_identities": [],
+  "neuron_soma_identity_set_differences": [],
+  "n_missing_soma_coordinates": 337,
+  "missing_coordinates_by_sample": {
+    "242521": 158,
+    "251637": 12,
+    "260208": 61,
+    "260209": 41,
+    "260212": 62,
+    "260213": 3
+  },
+  "sample_counts": {
+    "221747": {
+      "neuron_list_records": 257,
+      "soma_records": 257,
+      "missing_soma_coordinates": 0
+    },
+    "231623": {
+      "neuron_list_records": 96,
+      "soma_records": 96,
+      "missing_soma_coordinates": 0
+    },
+    "231623ch2": {
+      "neuron_list_records": 256,
+      "soma_records": 256,
+      "missing_soma_coordinates": 0
+    },
+    "232717": {
+      "neuron_list_records": 182,
+      "soma_records": 182,
+      "missing_soma_coordinates": 0
+    },
+    "232717ch2": {
+      "neuron_list_records": 423,
+      "soma_records": 423,
+      "missing_soma_coordinates": 0
+    },
+    "233001": {
+      "neuron_list_records": 12,
+      "soma_records": 12,
+      "missing_soma_coordinates": 0
+    },
+    "233001ch2": {
+      "neuron_list_records": 25,
+      "soma_records": 25,
+      "missing_soma_coordinates": 0
+    },
+    "234162": {
+      "neuron_list_records": 127,
+      "soma_records": 127,
+      "missing_soma_coordinates": 0
+    },
+    "234162ch2": {
+      "neuron_list_records": 28,
+      "soma_records": 28,
+      "missing_soma_coordinates": 0
+    },
+    "234197": {
+      "neuron_list_records": 576,
+      "soma_records": 576,
+      "missing_soma_coordinates": 0
+    },
+    "240025": {
+      "neuron_list_records": 275,
+      "soma_records": 275,
+      "missing_soma_coordinates": 0
+    },
+    "240025ch2": {
+      "neuron_list_records": 198,
+      "soma_records": 198,
+      "missing_soma_coordinates": 0
+    },
+    "240901": {
+      "neuron_list_records": 207,
+      "soma_records": 207,
+      "missing_soma_coordinates": 0
+    },
+    "241334": {
+      "neuron_list_records": 30,
+      "soma_records": 30,
+      "missing_soma_coordinates": 0
+    },
+    "241334ch2": {
+      "neuron_list_records": 28,
+      "soma_records": 28,
+      "missing_soma_coordinates": 0
+    },
+    "241349": {
+      "neuron_list_records": 99,
+      "soma_records": 99,
+      "missing_soma_coordinates": 0
+    },
+    "241349ch2": {
+      "neuron_list_records": 537,
+      "soma_records": 537,
+      "missing_soma_coordinates": 0
+    },
+    "242161": {
+      "neuron_list_records": 752,
+      "soma_records": 752,
+      "missing_soma_coordinates": 0
+    },
+    "242161ch2": {
+      "neuron_list_records": 98,
+      "soma_records": 98,
+      "missing_soma_coordinates": 0
+    },
+    "242443": {
+      "neuron_list_records": 251,
+      "soma_records": 251,
+      "missing_soma_coordinates": 0
+    },
+    "242443ch2": {
+      "neuron_list_records": 32,
+      "soma_records": 32,
+      "missing_soma_coordinates": 0
+    },
+    "242521": {
+      "neuron_list_records": 355,
+      "soma_records": 355,
+      "missing_soma_coordinates": 158
+    },
+    "242521ch2": {
+      "neuron_list_records": 107,
+      "soma_records": 107,
+      "missing_soma_coordinates": 0
+    },
+    "250432": {
+      "neuron_list_records": 234,
+      "soma_records": 234,
+      "missing_soma_coordinates": 0
+    },
+    "250432ch2": {
+      "neuron_list_records": 73,
+      "soma_records": 73,
+      "missing_soma_coordinates": 0
+    },
+    "250433": {
+      "neuron_list_records": 58,
+      "soma_records": 58,
+      "missing_soma_coordinates": 0
+    },
+    "250433ch2": {
+      "neuron_list_records": 1,
+      "soma_records": 1,
+      "missing_soma_coordinates": 0
+    },
+    "250442L": {
+      "neuron_list_records": 41,
+      "soma_records": 41,
+      "missing_soma_coordinates": 0
+    },
+    "250442R": {
+      "neuron_list_records": 50,
+      "soma_records": 50,
+      "missing_soma_coordinates": 0
+    },
+    "2514401": {
+      "neuron_list_records": 331,
+      "soma_records": 331,
+      "missing_soma_coordinates": 0
+    },
+    "2514401ch2": {
+      "neuron_list_records": 176,
+      "soma_records": 176,
+      "missing_soma_coordinates": 0
+    },
+    "251636": {
+      "neuron_list_records": 142,
+      "soma_records": 142,
+      "missing_soma_coordinates": 0
+    },
+    "251636ch2": {
+      "neuron_list_records": 68,
+      "soma_records": 68,
+      "missing_soma_coordinates": 0
+    },
+    "251637": {
+      "neuron_list_records": 574,
+      "soma_records": 574,
+      "missing_soma_coordinates": 12
+    },
+    "251730": {
+      "neuron_list_records": 764,
+      "soma_records": 764,
+      "missing_soma_coordinates": 0
+    },
+    "251730ch2": {
+      "neuron_list_records": 192,
+      "soma_records": 192,
+      "missing_soma_coordinates": 0
+    },
+    "252383": {
+      "neuron_list_records": 140,
+      "soma_records": 140,
+      "missing_soma_coordinates": 0
+    },
+    "252384": {
+      "neuron_list_records": 100,
+      "soma_records": 100,
+      "missing_soma_coordinates": 0
+    },
+    "252385": {
+      "neuron_list_records": 128,
+      "soma_records": 128,
+      "missing_soma_coordinates": 0
+    },
+    "252527": {
+      "neuron_list_records": 99,
+      "soma_records": 99,
+      "missing_soma_coordinates": 0
+    },
+    "252714": {
+      "neuron_list_records": 144,
+      "soma_records": 144,
+      "missing_soma_coordinates": 0
+    },
+    "252718": {
+      "neuron_list_records": 190,
+      "soma_records": 190,
+      "missing_soma_coordinates": 0
+    },
+    "252790": {
+      "neuron_list_records": 123,
+      "soma_records": 123,
+      "missing_soma_coordinates": 0
+    },
+    "260208": {
+      "neuron_list_records": 61,
+      "soma_records": 61,
+      "missing_soma_coordinates": 61
+    },
+    "260209": {
+      "neuron_list_records": 41,
+      "soma_records": 41,
+      "missing_soma_coordinates": 41
+    },
+    "260212": {
+      "neuron_list_records": 62,
+      "soma_records": 62,
+      "missing_soma_coordinates": 62
+    },
+    "260213": {
+      "neuron_list_records": 3,
+      "soma_records": 3,
+      "missing_soma_coordinates": 3
+    }
+  },
+  "scientific_acceptance": "not_assessed"
+}

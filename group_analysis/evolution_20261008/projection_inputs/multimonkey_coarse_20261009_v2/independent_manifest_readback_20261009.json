@@ -1,0 +1,92 @@
+{
+  "observed_at": "2026-10-09T00:58:36.571977+08:00",
+  "status": "passed",
+  "scope": "Independent software-only exact UID, evidence-partition, registry, delivery binding and source/canonical hash verification of actualv2preparedinputs; no maps, normalization, relabeling or source writes.",
+  "manifest_rows": 436,
+  "unique_exact_UIDs": 436,
+  "registry_animals": [
+    "331",
+    "605",
+    "631",
+    "797",
+    "900",
+    "936",
+    "945",
+    "948"
+  ],
+  "disjoint_evidence_counts": {
+    "HumanINS": 260,
+    "Candidate": 63,
+    "AtlasINS": 89,
+    "G_exploratory": 24
+  },
+  "ledger_rows": 465,
+  "unmapped_ledger_rows": 29,
+  "unmapped_sample": "250432",
+  "selected_hashes_verified": 436,
+  "selected_hash_changes": [],
+  "all_cached_atlas_source_files_rehashed": 2480,
+  "all_cached_source_changes": [],
+  "canonical_baseline_sha256": "5362cfbfb2d1e3a39fb6cc137eef93edcdea7decf72566da0e002b8908205ed5",
+  "canonical_checks": [
+    {
+      "path": "group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx",
+      "expected_sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178",
+      "actual_sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178",
+      "match": true
+    },
+    {
+      "path": "group_analysis\\combined\\multi_monkey_INS_combined.xlsx",
+      "expected_sha256": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3",
+      "actual_sha256": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3",
+      "match": true
+    },
+    {
+      "path": "R_analysis\\tables\\somainfo_Henry_2026.04.03.xlsx",
+      "expected_sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+      "actual_sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+      "match": true
+    },
+    {
+      "path": "neuron_tables\\251637_INS_HE.xlsx",
+      "expected_sha256": "b27898e8c1e56b1616b211c7ce1852fea1c864aa04d77e9665f50dc7f596b419",
+      "actual_sha256": "b27898e8c1e56b1616b211c7ce1852fea1c864aa04d77e9665f50dc7f596b419",
+      "match": true
+    }
+  ],
+  "prepared_input_hash_checks": {
+    "audited_sources": true,
+    "inventory_provenance": true,
+    "inventory_delivery": true,
+    "animal_registry": true,
+    "reference": true
+  },
+  "inventory_delivery_artifact_bindings": {
+    "map_ready_sources.csv": true,
+    "provenance.json": true
+  },
+  "v1_v2_exact_payload_equality": {
+    "projection_manifest.csv": true,
+    "selection_ledger.csv": true
+  },
+  "adapter_sha256": "65124d666e0e244336697c784e9324ebc69042cb77441cc3fb406fc7d92eb9f5",
+  "adapter_matches_preparation": true,
+  "artifact_hashes": {
+    "projection_manifest.csv": "28a45a452a017e8312a8e538b1a43b8bf333b55b1004d464882b4c43dd2a99f2",
+    "selection_ledger.csv": "af19709a17ef9732975342d53f8112307d2faf481eaf8ac36f05cbbdbf1bc506",
+    "preparation_provenance.json": "bdb48694a38428dfca09070a015272111fcf96327d79ceece620d82e5f7ce478"
+  },
+  "reference_sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee",
+  "reference_geometry": "NMTv2.1sym256x312x200;diag0.25mm,translation(-31.875,-27.75,-8);independentlycheckedv1referencehashidentical",
+  "computational_blockers": [],
+  "readiness": "No source/identity/hash/registry blocker for descriptive graph endpoint-candidate/all-axon maps under declared current index encoding.",
+  "scientific_limits": [
+    "Export coordinate origin and raw-fMOST-to-NMT transforms/registration acceptance unresolved; no silent coordinate shift.",
+    "Henry coarse visual evidence, atlasINS, strict spatial candidates and additionalG are distinct evidence strata.",
+    "Graph leaves are endpoint candidates, not verified terminal arbors or synaptic targets; all-axon length includes passage fibers.",
+    "No scientific anatomical/fineparcel/VEN/connectivity acceptance follows from hashes, citations or software checks."
+  ],
+  "network_requests": 0,
+  "canonical_writes": false,
+  "scientific_acceptance": false
+}

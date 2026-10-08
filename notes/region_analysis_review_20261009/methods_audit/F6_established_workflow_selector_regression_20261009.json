@@ -1,0 +1,59 @@
+{
+  "status": "pass",
+  "tests_run": 4,
+  "failures": 0,
+  "errors": 0,
+  "saved_table_sha256": "05ff60ad389dcb1543c3a28b3d6a60125f1a122bac13e132a6fb0512d8b69421",
+  "saved_table_path": "group_analysis\\R_analysis\\outputs\\combined_primary_v2\\stats\\06_asymmetric_receivers_BH.csv",
+  "new_inferential_pvalues": false,
+  "selected_rows": [
+    {
+      "test_family": "magnitude",
+      "target_id": "Ig@L6",
+      "best_q": "2.66428910045136e-07",
+      "best_stratum": "IDD5_balanced",
+      "direction_at_best": "L>R",
+      "abs_delta": "0.718954248366013",
+      "spatial_family": "intra_insula"
+    },
+    {
+      "test_family": "magnitude",
+      "target_id": "Ia/Id@L6",
+      "best_q": "0.000785313207319909",
+      "best_stratum": "IDD5_balanced",
+      "direction_at_best": "R>L",
+      "abs_delta": "0.464052287581699",
+      "spatial_family": "intra_insula"
+    },
+    {
+      "test_family": "magnitude",
+      "target_id": "LPal@L3",
+      "best_q": "0.0116304945443635",
+      "best_stratum": "IDD5_balanced",
+      "direction_at_best": "L>R",
+      "abs_delta": "0.363562091503268",
+      "spatial_family": "extra_insula"
+    },
+    {
+      "test_family": "presence",
+      "target_id": "Ig@L6",
+      "best_q": "7.88245550603664e-10",
+      "best_stratum": "IDD5_balanced",
+      "direction_at_best": "L>R",
+      "abs_delta": "0.718954248366013",
+      "spatial_family": "intra_insula"
+    },
+    {
+      "test_family": "presence",
+      "target_id": "LPal@L3",
+      "best_q": "0.0131935249025134",
+      "best_stratum": "IDD5_balanced",
+      "direction_at_best": "L>R",
+      "abs_delta": "0.363562091503268",
+      "spatial_family": "extra_insula"
+    }
+  ],
+  "historical_cohort": 306,
+  "animal_level_inference_supported": false,
+  "Rscript": "C:/Program Files/R/R-4.6.1/bin/Rscript.exe"
+}

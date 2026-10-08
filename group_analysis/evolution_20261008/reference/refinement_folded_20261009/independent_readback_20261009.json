@@ -1,0 +1,66 @@
+{
+  "status": "passed",
+  "reviewed_utc": "2026-10-08T16:58:21.476273+00:00",
+  "reader_sha256": "0f941a9f0f1a787770b25ce4ad7d8f6a495cfe789ee9b77326b00abd306372a0",
+  "refinement_provenance_sha256": "3d398c124be63ad09e2bc8891e0adb1c8cb65d975fd40cd3170d07e885099a86",
+  "discovery_csv_sha256": "866be8227f399f73de0d721b3bb1ef7317d4069b53ce86d558b85acf65ca4fb4",
+  "rows_checked": 1223,
+  "keeper_rows_checked": 164,
+  "source_workbooks": 9,
+  "source_bytes_unchanged": true,
+  "original_summary_fields_preserved": true,
+  "geometry_divergences_from_validated_discovery": 0,
+  "candidate_policy_divergences": 0,
+  "distance_divergences": 0,
+  "method": "Independent normalized label sets and NumPy physical-mm bounds/Euclidean distances; refiner not imported",
+  "by_sample": {
+    "251730": {
+      "source_rows": 79,
+      "candidate_keepers": 0
+    },
+    "252383": {
+      "source_rows": 127,
+      "candidate_keepers": 5
+    },
+    "252384": {
+      "source_rows": 99,
+      "candidate_keepers": 5
+    },
+    "252385": {
+      "source_rows": 128,
+      "candidate_keepers": 50
+    },
+    "252527": {
+      "source_rows": 99,
+      "candidate_keepers": 25
+    },
+    "252718": {
+      "source_rows": 190,
+      "candidate_keepers": 13
+    },
+    "252790": {
+      "source_rows": 123,
+      "candidate_keepers": 41
+    },
+    "250432": {
+      "source_rows": 234,
+      "candidate_keepers": 9
+    },
+    "252714": {
+      "source_rows": 144,
+      "candidate_keepers": 16
+    }
+  },
+  "source_counts": {
+    "not_rescue_candidate": 899,
+    "excluded_outside_bbox": 148,
+    "auto_atlas_insula": 128,
+    "excluded_ambiguous_bbox": 12,
+    "coord_inferred_from_251637_padded_distant": 19,
+    "coord_inferred_from_251637_padded": 4,
+    "coord_inferred_from_251637_strict_distant": 2,
+    "coord_inferred_from_251637_strict": 11
+  },
+  "anatomical_acceptance": "not_assessed",
+  "canonical_promotion": false
+}

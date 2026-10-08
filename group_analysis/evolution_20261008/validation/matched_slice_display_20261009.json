@@ -1,0 +1,27 @@
+{
+  "status": "passed_display_readback",
+  "renderer_sha256": "f5671457c601e3c1b60f100c58914626103c7cc7f72f25ce09c4f8fef3c31776",
+  "checks": [
+    {
+      "metric": "endpoint-density",
+      "figures": 1,
+      "slices": 3,
+      "decoded": "rendered_and_png_decoded",
+      "vmax": 0.05115252244738129
+    },
+    {
+      "metric": "endpoint-occupancy",
+      "figures": 1,
+      "slices": 3,
+      "decoded": "rendered_and_png_decoded",
+      "vmax": 1.0
+    },
+    {
+      "metric": "axon-density",
+      "figures": 2,
+      "slices": 8,
+      "decoded": "rendered_and_png_decoded"
+    }
+  ],
+  "scope": "display-only; synthetic endpoint fixtures and unchanged real pilot; no anatomical validation"
+}

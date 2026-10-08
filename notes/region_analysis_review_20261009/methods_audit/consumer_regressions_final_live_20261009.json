@@ -1,0 +1,47 @@
+{
+  "status": "pass",
+  "live": true,
+  "tests_run": 7,
+  "failures": 0,
+  "errors": 0,
+  "module_bindings": [
+    {
+      "module": "region_analysis.utils",
+      "path": "main_scripts\\region_analysis\\utils.py",
+      "sha256": "69b47500c3fb78a9a7ee8826591d2f7594564dfb7109a10113617f36e15600e5"
+    },
+    {
+      "module": "region_analysis.laterality",
+      "path": "main_scripts\\region_analysis\\laterality.py",
+      "sha256": "b648c82929aa56c83e540a0b0c86f26876edf29a5b29ade1a346c4a9e26a1ffb"
+    },
+    {
+      "module": "region_analysis.laterality_projection_analysis",
+      "path": "main_scripts\\region_analysis\\laterality_projection_analysis.py",
+      "sha256": "a6f6e003b003ece5691fdf469b5f5580bd9b370f7aee6d1b45965921ec38080c"
+    },
+    {
+      "module": "region_analysis.population",
+      "path": "main_scripts\\region_analysis\\population.py",
+      "sha256": "06ea70b3f55693175f475cb9b7cbd759cb0123a967a4922b1a08f1fc4ae01de5"
+    }
+  ],
+  "test_path": "notes\\region_analysis_review_20261009\\methods_audit\\test_final_staged_consumers_independent.py",
+  "test_sha256": "cc610f4dda647c802ed6e2d542be4af3e5aa55c6b3161f939548dfb0f8afc755",
+  "log": "test_conflicting_summary_and_hierarchy_sheet_fail (independent_live_consumer_cases.FinalStagedConsumers) ... ok\ntest_population_explicit_legacy_hierarchy_conflict (independent_live_consumer_cases.FinalStagedConsumers) ... ok\ntest_population_split_metadata_collision_and_unknown_side (independent_live_consumer_cases.FinalStagedConsumers) ... ok\ntest_shuffled_multi_subject_identity_and_repeated_records (independent_live_consumer_cases.FinalStagedConsumers) ... ok\ntest_uid_contradictions_and_blank_identity_fail (independent_live_consumer_cases.FinalStagedConsumers) ... ok\ntest_unknown_side_length_conservation_and_stale_reclassification (independent_live_consumer_cases.FinalStagedConsumers) ... ok\ntest_unknown_target_control_consistent_between_consumers (independent_live_consumer_cases.FinalStagedConsumers) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.269s\n\nOK\n",
+  "counterexamples_resolved": [
+    "Contradictory composite UID now rejected",
+    "Summary/Soma_Hierarchy conflict now rejected",
+    "Prefixed Unknown_0 targets retained consistently as unresolved"
+  ],
+  "test_scope": [
+    "Multi-subject same bare ID joins and repeated long records",
+    "Exact membership/duplicate/blank/UID checks",
+    "Metadata retention and C/S collision-safe split",
+    "Explicit/legacy hierarchy conflict",
+    "Standalone stale-side reclassification",
+    "Unknown side/target length conservation"
+  ],
+  "production_writes_by_this_runner": false,
+  "scientific_acceptance": false
+}

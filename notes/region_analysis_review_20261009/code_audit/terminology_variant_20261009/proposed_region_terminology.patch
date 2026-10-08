@@ -1,0 +1,554 @@
+--- a/main_scripts/region_analysis/plotting.py
++++ b/main_scripts/region_analysis/plotting.py
+@@ -157,7 +157,7 @@
+             at.set_fontweight("bold")
+             at.set_fontsize(11)
+         ax_pie.set_title(
+-            f"Site Distribution (N={total_n})", fontsize=11, fontweight="bold", pad=15
++            f"Endpoint-target entries (N={total_n} neurons)", fontsize=11, fontweight="bold", pad=15
+         )
+ 
+     unk_excl = total_unknown if exclude_unknown else 0
+@@ -173,13 +173,13 @@
+         ax_bar.text(i, v + 0.5, str(v), ha="center", va="bottom", fontsize=10)
+ 
+     bar_title = title or (
+-        f"Top {top_n} Terminal Regions (Excl. Unknown)"
++        f"Top {top_n} Endpoint-Target Regions (Excl. Unknown)"
+         if exclude_unknown
+-        else f"Top {top_n} Terminal Regions"
++        else f"Top {top_n} Endpoint-Target Regions"
+     )
+     ax_bar.set_title(bar_title, fontsize=12, fontweight="bold")
+     ax_bar.set_xlabel("Target Region", fontsize=11)
+-    ax_bar.set_ylabel("Number of Neurons Projecting", fontsize=11)
++    ax_bar.set_ylabel("Neurons with an endpoint-target region", fontsize=11)
+     ax_bar.tick_params(axis="x", rotation=45)
+     if exclude_unknown and unk_excl > 0:
+         ax_bar.text(
+@@ -202,20 +202,20 @@
+     # Report
+     lines = [
+         "=" * 60,
+-        "TERMINAL REGION DISTRIBUTION REPORT",
++        "ENDPOINT-TARGET REGION DISTRIBUTION REPORT",
+         "=" * 60,
+         "",
+         "--- Known vs Unknown Statistics ---",
+-        "  Entries are distinct target regions per neuron, not biological terminal/bouton counts.",
++        "  Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.",
+         "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+-        f"  Total projection sites: {total_sites}",
+-        f"  Known sites: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
+-        f"  Unknown sites: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
++        f"  Total endpoint-target entries: {total_sites}",
++        f"  Known endpoint-target entries: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
++        f"  Unresolved endpoint-target entries: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
+         f"  Neurons with unknown regions: {n_with_unk} ({n_with_unk / total_n * 100:.1f}%)",
+         f"  Neurons with only known regions: {n_only_known} ({n_only_known / total_n * 100:.1f}%)",
+         f"  Neurons with no target entries: {n_no_targets} ({n_no_targets / total_n * 100:.1f}%)",
+         "",
+-        "--- Terminal Region Distribution ---",
++        "--- Endpoint-Target Region Distribution ---",
+         f"  Total unique regions shown: {len(counts)}",
+         f"  Total projection entries (after filtering): {int(counts.sum())}",
+     ]
+@@ -239,7 +239,7 @@
+ # ======================================================================
+ def plot_projection_sites_count_df(
+     df: pd.DataFrame,
+-    title: str = "Projection Sites Count per Neuron",
++    title: str = "Distinct Endpoint-Target Regions per Neuron",
+     figsize: tuple = (12, 5),
+     save_path: str = None,
+     save_report_path: str = None,
+@@ -273,7 +273,7 @@
+         align="left",
+         color="steelblue",
+     )
+-    axes[0].set_xlabel("Distinct target-region count (known only)")
++    axes[0].set_xlabel("Distinct endpoint-target region count (known only)")
+     axes[0].set_ylabel("Number of Neurons")
+     axes[0].set_title("Distribution (Excl. Unknown)")
+     m = df["_psc"].mean()
+@@ -298,7 +298,7 @@
+         axes[1].tick_params(axis="x", rotation=45)
+     else:
+         axes[1].boxplot(df["_psc"])
+-    axes[1].set_ylabel("Distinct target-region count (known)")
++    axes[1].set_ylabel("Distinct endpoint-target region count (known)")
+     axes[1].set_title("By Neuron Type")
+ 
+     plt.suptitle(title, fontsize=12, fontweight="bold")
+@@ -316,34 +316,34 @@
+ 
+     lines = [
+         "=" * 60,
+-        "PROJECTION SITES STATISTICS (KNOWN REGIONS ONLY)",
+-        "Entries are distinct target regions per neuron, not biological terminal/bouton counts.",
++        "ENDPOINT-TARGET REGION COUNTS (KNOWN REGIONS ONLY)",
++        "Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.",
+         "=" * 60,
+         "",
+         f"Total neurons analyzed: {total_n}",
+         "",
+-        "--- Known Projection Sites (Excluding Unknown) ---",
+-        f"  Total known sites: {int(df['_psc'].sum())}",
+-        f"  Mean known sites per neuron: {df['_psc'].mean():.2f}",
++        "--- Known Endpoint-Target Regions (Unresolved Excluded) ---",
++        f"  Total known endpoint-target entries: {int(df['_psc'].sum())}",
++        f"  Mean known endpoint-target regions per neuron: {df['_psc'].mean():.2f}",
+         f"  Median: {df['_psc'].median():.1f}",
+         f"  Min: {int(df['_psc'].min())}",
+         f"  Max: {int(df['_psc'].max())}",
+         f"  Std: {df['_psc'].std():.2f}",
+         "",
+-        "  Distribution of known sites per neuron:",
++        "  Distribution of known endpoint-target regions per neuron:",
+     ]
+     known_dist = df["_psc"].value_counts().sort_index()
+     for sites, count in known_dist.head(10).items():
+         lines.append(
+-            f"    {int(sites)} site(s): {int(count)} neurons ({count / total_n * 100:.1f}%)"
++            f"    {int(sites)} endpoint-target region(s): {int(count)} neurons ({count / total_n * 100:.1f}%)"
+         )
+     lines += [
+         "",
+-        "--- Unknown Projection Sites (Excluded from Plot) ---",
++        "--- Unresolved Endpoint-Target Regions (Excluded from Plot) ---",
+         "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+-        f"  Neurons with unknown sites: {n_wu} ({n_wu / total_n * 100:.1f}%)",
+-        f"  Total unknown sites excluded: {int(df['_usc'].sum())}",
+-        f"  Mean unknown sites per neuron: {df['_usc'].mean():.2f}",
++        f"  Neurons with unresolved endpoint-target regions: {n_wu} ({n_wu / total_n * 100:.1f}%)",
++        f"  Total unresolved endpoint-target entries excluded: {int(df['_usc'].sum())}",
++        f"  Mean unresolved endpoint-target regions per neuron: {df['_usc'].mean():.2f}",
+         "",
+         "--- Outlier Statistics ---",
+         f"  Neurons with outliers: {n_wo} ({n_wo / total_n * 100:.1f}%)",
+@@ -515,6 +515,12 @@
+     save_path: str = None,
+     show: bool = True,
+ ):
++    """Plot distinct endpoint-target counts and retained reconstruction lengths.
++
++    Laterality_Index is the contralateral length fraction Contra/(Ipsi+Contra),
++    0..1, excluding unresolved lengths. It is not the signed contrast
++    (Contra-Ipsi)/(Contra+Ipsi), -1..1. Source units are never converted here.
++    """
+     needed = {"N_Ipsilateral", "N_Contralateral"}
+     if df.empty or not needed.issubset(df.columns):
+         print("Run add_laterality_columns first.")
+@@ -552,7 +558,7 @@
+             colors=cols,
+             explode=[0.02] * len(vals),
+         )
+-    axes[0].set_title("Distinct target-region laterality", fontsize=12, fontweight="bold")
++    axes[0].set_title("Distinct endpoint-target region laterality", fontsize=12, fontweight="bold")
+     units = (df["Length_Unit"].fillna("unspecified source units").astype(str).str.strip().replace("", "unspecified source units")
+              if "Length_Unit" in df else pd.Series(dtype=str))
+     units = sorted(set(units[units.ne("")]))
+@@ -574,8 +580,8 @@
+             for patch, label in zip(bp["boxes"], td.keys()):
+                 patch.set_facecolor(NEURON_TYPE_COLORS.get(label, "#999"))
+                 patch.set_alpha(0.6)
+-            axes[1].set_ylabel("Laterality Index\n(0=ipsi, 1=contra)")
+-            axes[1].set_title("Laterality Index by Type", fontsize=12, fontweight="bold")
++            axes[1].set_ylabel("Contralateral length fraction\nContra/(Ipsi+Contra), 0 to 1")
++            axes[1].set_title("Contralateral length fraction by type", fontsize=12, fontweight="bold")
+             axes[1].tick_params(axis="x", rotation=45)
+             axes[1].axhline(0.5, color="grey", linestyle=":", alpha=0.5)
+         else:
+@@ -586,9 +592,9 @@
+     elif has_length:
+         valid = df["Laterality_Index"].dropna()
+         axes[1].hist(valid, bins=20, edgecolor="black", alpha=0.7, color="steelblue")
+-        axes[1].set_xlabel("Laterality Index")
++        axes[1].set_xlabel("Contra/(Ipsi+Contra), 0 to 1")
+         axes[1].set_ylabel("Neurons")
+-        axes[1].set_title("LI Distribution", fontsize=12, fontweight="bold")
++        axes[1].set_title("Contralateral length fraction", fontsize=12, fontweight="bold")
+ 
+     if has_length and n_panels == 3:
+         if "Neuron_Type" in df.columns:
+@@ -618,7 +624,7 @@
+             axes[2].set_xticklabels(grp.index, rotation=45)
+             axes[2].set_ylabel(f"Retained reconstruction length ({unit_label})")
+             axes[2].set_title(
+-                "Length by Laterality", fontsize=12, fontweight="bold"
++                "Retained reconstruction length by side", fontsize=12, fontweight="bold"
+             )
+             axes[2].legend()
+         else:
+@@ -632,7 +638,7 @@
+                 alpha=0.7,
+             )
+             axes[2].set_ylabel(f"Retained reconstruction length ({unit_label})")
+-            axes[2].set_title("Length", fontsize=12, fontweight="bold")
++            axes[2].set_title("Retained reconstruction length", fontsize=12, fontweight="bold")
+ 
+     plt.tight_layout()
+     if save_path:
+@@ -657,7 +663,7 @@
+     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
+     top_n = stats.head(10)
+     sns.barplot(x=top_n.values, y=top_n.index, ax=axes[0], palette="viridis")
+-    axes[0].set_title(f"Top Projections ({neuron_id})")
++    axes[0].set_title(f"Top retained regional lengths (source unit; {neuron_id})")
+     if len(stats) > 6:
+         main = stats.head(6)
+         other = pd.Series({"Others": stats.iloc[6:].sum()})
+@@ -665,7 +671,7 @@
+     else:
+         pie_data = stats
+     axes[1].pie(pie_data, labels=pie_data.index, autopct="%1.1f%%")
+-    axes[1].set_title("Distribution")
++    axes[1].set_title("Share of retained reconstruction length")
+     plt.tight_layout()
+     if save_path:
+         fig.savefig(save_path, dpi=300, bbox_inches="tight")
+--- a/main_scripts/region_analysis/population.py
++++ b/main_scripts/region_analysis/population.py
+@@ -1,5 +1,10 @@
+ """
+-population.py - Population-level batch neuron analysis.
++population.py - Population-level batch reconstruction analysis.
++
++Regional projection values are retained reconstruction lengths in Length_Unit
++(or unspecified source units). Total_Length is the whole computed edge total.
++Terminal_Count counts distinct endpoint-target regions per neuron from legacy
++leaves of all SWC compartments, not verified biological terminals or boutons.
+ 
+ save_all() produces:
+     tables/{sample_id}_results.xlsx  (7+ sheets)
+@@ -631,7 +636,7 @@
+         return df
+ 
+     def get_projection_matrix(self, level: str = "finest") -> pd.DataFrame:
+-        """Neuron x region matrix in the existing atlas-voxel length unit."""
++        """Neuron x region retained reconstruction lengths in the source unit."""
+         if level == "finest":
+             candidates = [
+                 "Region_Projection_Length_finest",
+@@ -682,13 +687,13 @@
+             if total_u > 0:
+                 pct = total_u / total_a * 100 if total_a > 0 else 0
+                 print(
+-                    f"[MATRIX L{level}] _Unmapped: {total_u:.1f} atlas voxels ({pct:.1f}%)"
++                    f"[MATRIX L{level}] _Unmapped: {total_u:.1f} source units (see Length_Unit; {pct:.1f}%)"
+                 )
+         
+         return matrix
+ 
+     def get_projection_strength(self, level: str = "finest") -> pd.DataFrame:
+-        """Sheet 4: log10(length + 1)."""
++        """Display log10(retained regional length + 1), dependent on source unit."""
+         matrix = self.get_projection_matrix(level)
+         if matrix.empty:
+             return matrix
+@@ -702,13 +707,14 @@
+         Split projection matrix into ipsilateral and contralateral DataFrames.
+         
+         Uses original data with prefixes for correct laterality classification,
+-        then strips prefixes for clean output.
++        then removes hemisphere prefixes using collision-safe target labels.
++        Cortical/subcortical homonyms retain separate C_/S_ namespaces.
+         
+         Args:
+             level: Hierarchy level ("finest" or 1-6)
+             
+         Returns:
+-            Tuple of (ipsi_df, contra_df) with prefixes stripped.
++            Tuple of (ipsi_df, contra_df) with collision-safe regional labels.
+         """
+         from region_analysis.laterality import LateralityParser
+         
+@@ -781,7 +787,10 @@
+         return tuple(results)
+ 
+     def get_terminal_sites_df(self) -> pd.DataFrame:
+-        """Sheet 5: Long-format terminals."""
++        """Distinct endpoint-target regions from all-compartment legacy leaves.
++
++        These rows do not establish biological terminal sites or boutons.
++        """
+         rows = []
+         for _, nr in self.plot_dataframe.iterrows():
+             nid = nr["NeuronID"]
+@@ -828,7 +837,13 @@
+         return df
+ 
+     def get_laterality_df(self) -> pd.DataFrame:
+-        """Sheet 6: Per-neuron laterality scalars."""
++        """Per-neuron counts and lengths relative to the resolved soma side.
++
++        Laterality_Index is Contra/(Ipsi+Contra), 0..1; unresolved lengths are
++        excluded. The separate signed contrast (Contra-Ipsi)/(Contra+Ipsi)
++        ranges from -1 to 1 and is not produced by this column. A zero
++        resolved denominator remains missing.
++        """
+         scalar_cols = [
+             "NeuronUID", "SampleID", "NeuronID", "Neuron_Type", "Soma_Region", "Soma_Side",
+             "Soma_Side_Method", "Soma_Side_Conflict", "Soma_Side_Name", "Soma_Side_Reference",
+@@ -1061,7 +1076,7 @@
+                 f"  Side: {row.get('Soma_Side', '?')} | "
+                 f"Ipsi: {row.get('N_Ipsilateral', '?')} | "
+                 f"Contra: {row.get('N_Contralateral', '?')} | "
+-                f"LI: {row.get('Laterality_Index', '?')}"
++                f"Contra/(Ipsi+Contra), 0..1: {row.get('Laterality_Index', '?')}"
+             )
+ 
+         for tag in ("NII", "Phys"):
+@@ -1070,8 +1085,8 @@
+             z = row.get(f"Soma_{tag}_Z", "?")
+             print(f"  Soma {tag}: ({x}, {y}, {z})")
+ 
+-        print(f"  Length: {row['Total_Length']:.3f}")
+-        print(f"  Terminals ({row['Terminal_Count']}): {row['Terminal_Regions']}")
++        print(f"  Total reconstruction length (source unit; see Length_Unit): {row['Total_Length']:.3f}")
++        print(f"  Distinct endpoint-target regions (legacy all compartments; {row['Terminal_Count']}): {row['Terminal_Regions']}")
+         print(f"  Outliers: {row['Outlier_Count']}")
+ 
+         length_col = None
+@@ -1084,10 +1099,10 @@
+                 row[length_col].items(), key=lambda x: x[1], reverse=True
+             )[:5]
+             if top5:
+-                print(f"\n  Top projections (atlas voxels -> log10 strength):")
++                print(f"\n  Top retained regional lengths (source unit -> log10(length + 1)):")
+                 for region, length in top5:
+                     strength = np.log10(length + 1)
+-                    print(f"    {region}: {length:.2f} atlas voxels -> {strength:.3f}")
++                    print(f"    {region}: {length:.2f} source units -> {strength:.3f}")
+ 
+         if length_col:
+             save = (
+@@ -1244,7 +1259,7 @@
+         data = [df.loc[df["Soma_Region"] == r, "Total_Length"] for r in regions]
+         fig, ax = plt.subplots(figsize=(10, 6))
+         ax.boxplot(data, labels=regions)
+-        ax.set_title(f"Projection Length by Soma Region ({stat})")
++        ax.set_title(f"Total reconstruction length by soma region (source unit; display label={stat})")
+         plt.xticks(rotation=45)
+         plt.tight_layout()
+         if self.output:
+@@ -1504,16 +1519,16 @@
+                 lines.append(f"  Soma side {side}: {c}")
+             if "N_Ipsilateral" in df.columns:
+                 lines.append(
+-                    f"  Total ipsi terminal regions:   {int(df['N_Ipsilateral'].sum())}"
++                    f"  Total ipsilateral endpoint-target entries:   {int(df['N_Ipsilateral'].sum())}"
+                 )
+                 lines.append(
+-                    f"  Total contra terminal regions: {int(df['N_Contralateral'].sum())}"
++                    f"  Total contralateral endpoint-target entries: {int(df['N_Contralateral'].sum())}"
+                 )
+             if "Laterality_Index" in df.columns:
+                 valid = df["Laterality_Index"].dropna()
+                 if not valid.empty:
+                     lines.append(
+-                        f"  Laterality Index - mean: {valid.mean():.3f}, "
++                        f"  Contralateral length fraction [Contra/(Ipsi+Contra), 0..1] - mean: {valid.mean():.3f}, "
+                         f"median: {valid.median():.3f}"
+                     )
+ 
+@@ -1530,22 +1545,22 @@
+             if all_lengths:
+                 arr = np.array(all_lengths)
+                 log_arr = np.log10(arr + 1)
+-                lines.append("\n--- Projection Strength (Population) ---")
++                lines.append("\n--- Retained Regional Reconstruction Lengths (Source Units) ---")
+                 lines.append(
+-                    f"  Raw length: mean={arr.mean():.2f}, "
+-                    f"median={np.median(arr):.2f}, max={arr.max():.2f} atlas voxels"
++                    f"  Retained regional length: mean={arr.mean():.2f}, "
++                    f"median={np.median(arr):.2f}, max={arr.max():.2f} source units (see Length_Unit)"
+                 )
+                 lines.append(
+-                    f"  Log strength: mean={log_arr.mean():.3f}, "
++                    f"  Display log10(length + 1): mean={log_arr.mean():.3f}, "
+                     f"median={np.median(log_arr):.3f}, max={log_arr.max():.3f}"
+                 )
+ 
+         lines += [
+             "",
+             "--- Morphology ---",
+-            f"Total length - Mean: {df['Total_Length'].mean():.2f}, "
+-            f"Std: {df['Total_Length'].std():.2f} atlas voxels",
+-            f"Unique terminal-region count - Mean: {df['Terminal_Count'].mean():.2f}, "
++            f"Total reconstruction length - Mean: {df['Total_Length'].mean():.2f}, "
++            f"Std: {df['Total_Length'].std():.2f} source units (see Length_Unit)",
++            f"Distinct endpoint-target regions (legacy all compartments) - Mean: {df['Terminal_Count'].mean():.2f}, "
+             f"Max: {int(df['Terminal_Count'].max())}",
+         ]
+ 
+@@ -1570,7 +1585,7 @@
+             "--- Excel Workbook Contents ---",
+             "  Sheet 1: Summary                    (scalar overview)",
+             "  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)",
+-            "  Sheet 3: Terminal_Sites             (one row per unique terminal region)",
++            "  Sheet 3: Terminal_Sites             (one row per distinct endpoint-target region; legacy all compartments)",
+             "  Sheet 4: Laterality                 (ipsi/contra scalars)",
+             "  Sheet 5: Outliers                   (one row per outlier)",
+             "",
+@@ -1580,7 +1595,7 @@
+             "    Projection_Length_L{n}_ipsi     (level n, ipsilateral)",
+             "    Projection_Length_L{n}_contra   (level n, contralateral)",
+             "",
+-            "  Projection Strength Sheets (split by laterality):",
++            "  Projection Strength Sheets (display log10(retained length + 1), source-unit dependent):",
+             "    Projection_Strength_ipsi        (ipsilateral regions, log10)",
+             "    Projection_Strength_contra      (contralateral regions, log10)",
+             "    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)",
+@@ -1594,7 +1609,7 @@
+         print(report)
+ 
+     def _save_terminal_report(self):
+-        """Report 2/3: Terminal distribution statistics."""
++        """Report 2/3: Distinct endpoint-target regions from all-compartment legacy leaves."""
+         df = self.plot_dataframe
+         if df.empty or "Terminal_Regions" not in df.columns:
+             return
+@@ -1621,21 +1636,21 @@
+ 
+         lines = [
+             "=" * 60,
+-            "TERMINAL REGION DISTRIBUTION REPORT",
++            "ENDPOINT-TARGET REGION DISTRIBUTION REPORT",
+             "=" * 60,
+             f"Generated: {datetime.now():%Y-%m-%d %H:%M:%S}",
+             f"Sample: {self.sample_id}",
+             "",
+             "--- Known vs Unknown Statistics ---",
+-            "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+-            f"  Total projection sites: {total_sites}",
+-            f"  Known sites: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
+-            f"  Unknown sites: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
++            "  Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.\n  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
++            f"  Total endpoint-target entries: {total_sites}",
++            f"  Known endpoint-target entries: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
++            f"  Unresolved endpoint-target entries: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
+             f"  Neurons with unknown regions: {n_with_unk} ({n_with_unk / total_n * 100:.1f}%)",
+             f"  Neurons with only known regions: {n_only_known} ({n_only_known / total_n * 100:.1f}%)",
+             f"  Neurons with no target entries: {n_no_targets} ({n_no_targets / total_n * 100:.1f}%)",
+             "",
+-            "--- Terminal Region Distribution (Top 30) ---",
++            "--- Endpoint-Target Region Distribution (Top 30) ---",
+             f"  Total unique regions: {len(counts)}",
+             f"  Total entries (known only): {int(counts.sum())}",
+             "",
+@@ -1649,7 +1664,7 @@
+         self.save_report(report, "terminal_report")
+ 
+     def _save_projection_sites_report(self):
+-        """Report 3/3: Projection sites count + outlier statistics."""
++        """Report 3/3: Known distinct endpoint-target region counts and outliers."""
+         df = self.plot_dataframe
+         if df.empty or "Terminal_Regions" not in df.columns:
+             return
+@@ -1673,37 +1688,37 @@
+ 
+         lines = [
+             "=" * 60,
+-            "PROJECTION SITES STATISTICS (KNOWN REGIONS ONLY)",
++            "ENDPOINT-TARGET REGION COUNTS (KNOWN REGIONS ONLY)",
+             "=" * 60,
+             f"Generated: {datetime.now():%Y-%m-%d %H:%M:%S}",
+             f"Sample: {self.sample_id}",
+             "",
+             f"Total neurons analyzed: {total_n}",
+             "",
+-            "--- Known Projection Sites (Excluding Unknown) ---",
+-            f"  Total known sites: {int(df_temp['_psc'].sum())}",
+-            f"  Mean known sites per neuron: {df_temp['_psc'].mean():.2f}",
++            "--- Known Endpoint-Target Regions (Unresolved Excluded) ---",
++            f"  Total known endpoint-target entries: {int(df_temp['_psc'].sum())}",
++            f"  Mean known endpoint-target regions per neuron: {df_temp['_psc'].mean():.2f}",
+             f"  Median: {df_temp['_psc'].median():.1f}",
+             f"  Min: {int(df_temp['_psc'].min())}",
+             f"  Max: {int(df_temp['_psc'].max())}",
+             f"  Std: {df_temp['_psc'].std():.2f}",
+             "",
+-            "  Distribution of known sites per neuron:",
++            "  Distribution of known endpoint-target regions per neuron:",
+         ]
+         known_dist = df_temp["_psc"].value_counts().sort_index()
+         for sites, count in known_dist.head(15).items():
+             lines.append(
+-                f"    {int(sites)} site(s): {int(count)} neurons "
++                f"    {int(sites)} endpoint-target region(s): {int(count)} neurons "
+                 f"({count / total_n * 100:.1f}%)"
+             )
+ 
+         lines += [
+             "",
+-            "--- Unknown Projection Sites (Excluded from Plot) ---",
+-            "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+-            f"  Neurons with unknown sites: {n_wu} ({n_wu / total_n * 100:.1f}%)",
+-            f"  Total unknown sites excluded: {int(df_temp['_usc'].sum())}",
+-            f"  Mean unknown sites per neuron: {df_temp['_usc'].mean():.2f}",
++            "--- Unresolved Endpoint-Target Regions (Excluded from Plot) ---",
++            "  Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.\n  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
++            f"  Neurons with unresolved endpoint-target regions: {n_wu} ({n_wu / total_n * 100:.1f}%)",
++            f"  Total unresolved endpoint-target entries excluded: {int(df_temp['_usc'].sum())}",
++            f"  Mean unresolved endpoint-target regions per neuron: {df_temp['_usc'].mean():.2f}",
+             "",
+             "--- Outlier Statistics ---",
+             f"  Neurons with outliers: {n_wo} ({n_wo / total_n * 100:.1f}%)",
+@@ -1787,7 +1802,7 @@
+                 ]
+                 fig, ax = plt.subplots(figsize=(10, 6))
+                 ax.boxplot(data, labels=regions)
+-                ax.set_title("Projection Length by Soma Region")
++                ax.set_title("Total reconstruction length by soma region (source unit)")
+                 plt.xticks(rotation=45)
+                 plt.tight_layout()
+                 p = self.output.get_plot_path("projection_by_soma")
+--- a/main_scripts/region_analysis/laterality_projection_analysis.py
++++ b/main_scripts/region_analysis/laterality_projection_analysis.py
+@@ -2,7 +2,10 @@
+ laterality_projection_analysis.py - Laterality-based projection analysis.
+ 
+ Generates separate tables for ipsilateral and contralateral projections,
+-including lengths and strengths at multiple hierarchy levels.
++including retained reconstruction lengths in the source unit and display
++values log10(length + 1). Hierarchy exports use PopulationRegionAnalysis.
++Legacy endpoint labels come from leaves of all SWC compartments; they do
++not verify biological terminal sites or boutons.
+ 
+ Can be run standalone or as part of the analysis pipeline.
+ """
+@@ -35,7 +38,7 @@
+     
+     Generates separate tables for each side with:
+     - Retained reconstruction lengths in the declared input unit
+-    - Projection display strengths log10(length + 1)
++    - Display values log10(retained regional length + 1), source-unit dependent
+     - Soma hemisphere information
+     """
+     
+@@ -494,20 +497,20 @@
+ def main():
+     """Run laterality projection analysis from command line."""
+     parser = argparse.ArgumentParser(
+-        description="Laterality-based projection analysis"
++        description="Split retained reconstruction lengths by soma-relative side; display values are log10(length + 1) in the declared source unit"
+     )
+     parser.add_argument(
+         "input",
+-        help="Input Excel or CSV file with neuron data",
++        help="Excel/CSV with exact neuron identities (NeuronUID or SampleID+NeuronID), soma labels and absolute target-length dictionaries",
+     )
+     parser.add_argument(
+         "-o", "--output",
+-        help="Output Excel file path",
++        help="Fresh output Excel path; existing files are protected",
+         default=None,
+     )
+     parser.add_argument(
+         "--length-col",
+-        help="Column name for projection lengths",
++        help="Retained reconstruction-length dictionary column; source units are preserved and unresolved-side lengths are reported separately",
+         default="Region_Projection_Length_finest",
+     )
+     parser.add_argument(

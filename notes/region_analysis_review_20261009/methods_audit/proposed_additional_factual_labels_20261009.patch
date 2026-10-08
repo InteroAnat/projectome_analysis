@@ -1,0 +1,287 @@
+--- a/R_analysis/Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/Projectome_Analysis_Tutorial.Rmd
+@@ -378,12 +378,13 @@
+ )
+ 
+ # 构建对侧热图
++# Demonstration only: this second panel duplicates the ipsilateral input.
+ ht_contra <- Heatmap(
+   mat_strength_ipsi_t,  # 使用相同矩阵作为示例
+-  name = "CONTRA",
++  name = "IPSI_DEMO_COPY",
+   col = colour_func,
+   show_column_names = FALSE,
+-  row_title = "Contralateral",
++  row_title = "Duplicated ipsilateral example; not contralateral data",
+   row_title_side = "right",
+   cluster_rows = FALSE,
+   cluster_columns = dend,          # 同步聚类
+@@ -416,7 +417,7 @@
+              gp = gpar(lwd = 5, col = "#377EB8"))
+ })
+ 
+-decorate_row_title("CONTRA", {
++decorate_row_title("IPSI_DEMO_COPY", {
+   grid.lines(x = unit(0.1, "npc"),
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#E41A1C"))
+@@ -439,7 +440,7 @@
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#377EB8"))
+ })
+-decorate_row_title("CONTRA", {
++decorate_row_title("IPSI_DEMO_COPY", {
+   grid.lines(x = unit(0.1, "npc"),
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#E41A1C"))
+@@ -700,7 +701,7 @@
+ 
+ # 示例使用
+ h1 <- build_projection_ht(mat_strength_ipsi_t, "IPSI", "Ipsilateral", order = 1)
+-h2 <- build_projection_ht(mat_strength_ipsi_t, "CONTRA", "Contralateral", order = 2)
++h2 <- build_projection_ht(mat_strength_ipsi_t, "IPSI_DEMO_COPY", "Duplicated ipsilateral example; not contralateral data", order = 2)
+ 
+ final_list <- h1 %v% h2
+ ```
+--- a/R_analysis/scripts/Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/scripts/Projectome_Analysis_Tutorial.Rmd
+@@ -378,12 +378,13 @@
+ )
+ 
+ # 构建对侧热图
++# Demonstration only: this second panel duplicates the ipsilateral input.
+ ht_contra <- Heatmap(
+   mat_strength_ipsi_t,  # 使用相同矩阵作为示例
+-  name = "CONTRA",
++  name = "IPSI_DEMO_COPY",
+   col = colour_func,
+   show_column_names = FALSE,
+-  row_title = "Contralateral",
++  row_title = "Duplicated ipsilateral example; not contralateral data",
+   row_title_side = "right",
+   cluster_rows = FALSE,
+   cluster_columns = dend,          # 同步聚类
+@@ -416,7 +417,7 @@
+              gp = gpar(lwd = 5, col = "#377EB8"))
+ })
+ 
+-decorate_row_title("CONTRA", {
++decorate_row_title("IPSI_DEMO_COPY", {
+   grid.lines(x = unit(0.1, "npc"),
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#E41A1C"))
+@@ -439,7 +440,7 @@
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#377EB8"))
+ })
+-decorate_row_title("CONTRA", {
++decorate_row_title("IPSI_DEMO_COPY", {
+   grid.lines(x = unit(0.1, "npc"),
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#E41A1C"))
+@@ -700,7 +701,7 @@
+ 
+ # 示例使用
+ h1 <- build_projection_ht(mat_strength_ipsi_t, "IPSI", "Ipsilateral", order = 1)
+-h2 <- build_projection_ht(mat_strength_ipsi_t, "CONTRA", "Contralateral", order = 2)
++h2 <- build_projection_ht(mat_strength_ipsi_t, "IPSI_DEMO_COPY", "Duplicated ipsilateral example; not contralateral data", order = 2)
+ 
+ final_list <- h1 %v% h2
+ ```
+--- a/R_analysis/scripts/Projectome_Tutorials/Projectome_Analysis_Tutorial.Rmd
++++ b/R_analysis/scripts/Projectome_Tutorials/Projectome_Analysis_Tutorial.Rmd
+@@ -378,12 +378,13 @@
+ )
+ 
+ # 构建对侧热图
++# Demonstration only: this second panel duplicates the ipsilateral input.
+ ht_contra <- Heatmap(
+   mat_strength_ipsi_t,  # 使用相同矩阵作为示例
+-  name = "CONTRA",
++  name = "IPSI_DEMO_COPY",
+   col = colour_func,
+   show_column_names = FALSE,
+-  row_title = "Contralateral",
++  row_title = "Duplicated ipsilateral example; not contralateral data",
+   row_title_side = "right",
+   cluster_rows = FALSE,
+   cluster_columns = dend,          # 同步聚类
+@@ -416,7 +417,7 @@
+              gp = gpar(lwd = 5, col = "#377EB8"))
+ })
+ 
+-decorate_row_title("CONTRA", {
++decorate_row_title("IPSI_DEMO_COPY", {
+   grid.lines(x = unit(0.1, "npc"),
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#E41A1C"))
+@@ -439,7 +440,7 @@
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#377EB8"))
+ })
+-decorate_row_title("CONTRA", {
++decorate_row_title("IPSI_DEMO_COPY", {
+   grid.lines(x = unit(0.1, "npc"),
+              y = unit(c(0.02, 0.98), "npc"),
+              gp = gpar(lwd = 5, col = "#E41A1C"))
+@@ -700,7 +701,7 @@
+ 
+ # 示例使用
+ h1 <- build_projection_ht(mat_strength_ipsi_t, "IPSI", "Ipsilateral", order = 1)
+-h2 <- build_projection_ht(mat_strength_ipsi_t, "CONTRA", "Contralateral", order = 2)
++h2 <- build_projection_ht(mat_strength_ipsi_t, "IPSI_DEMO_COPY", "Duplicated ipsilateral example; not contralateral data", order = 2)
+ 
+ final_list <- h1 %v% h2
+ ```
+--- a/notes/hemispheric_asymmetry_methods_comparison.md
++++ b/notes/hemispheric_asymmetry_methods_comparison.md
+@@ -1,7 +1,9 @@
+ # Hemispheric Asymmetry: Gou et al. vs. Current Analysis
+ 
+ **Date:** 2026-04-16
+-**Status:** Comparison note for projectome laterality analysis
++**Status:** Historical schematic comparison; factual method labels corrected 2026-10-09
++
++The deposited Gou implementation distinguishes axon-length laterality from arbor-count laterality. The raw-length formula below describes one measurement, not every published arbor endpoint. Contra/ipsi describes a projection relative to its source hemisphere; it does not mean absolute right/left. In SQ3d, targets index hypotheses and neuron values enter the tests; animal independence is not established by target-wise BH correction.
+ 
+ ---
+ 
+@@ -59,7 +61,7 @@
+ 
+ **Step 4:** Wilcoxon test per region comparing L vs R neuron values.
+ 
+-**Key:** every statistical unit is a brain region (not a neuron).
++**Key:** each brain region defines a separate hypothesis; the tested observations are neuron values in L-source and R-source groups. Neurons nested within animals are not thereby independent animal replicates.
+ 
+ ---
+ 
+@@ -68,12 +70,12 @@
+ | | Gou et al. | Current SQ3d |
+ |---|---|---|
+ | **What gets a LI value?** | Each neuron | Each target brain region |
+-| **Formula** | `(contra − ipsi) / (contra + ipsi)` on raw lengths | Same formula on group-mean proportions |
++| **Formula** | `(contra − ipsi) / (contra + ipsi)` on raw lengths | `(mean_L − mean_R) / (mean_L + mean_R + eps)` on normalized group-mean profiles |
+ | **Preprocessing** | None (raw lengths) | Per-neuron proportion normalization |
+ | **What is tested** | Distribution of per-neuron LIs across types | Per-region group-mean LI, tested neuron-by-neuron |
+-| **Statistical unit** | Neuron | Region |
++| **Test observations / hypothesis** | Neuron LI values / group contrast | Neuron normalized values / one hypothesis per target region |
+ | **Test used** | Mann-Whitney U | Wilcoxon rank-sum |
+-| **Interpretation** | "PT neurons are more right-lateralized than CT neurons" | "Which target regions receive systematically asymmetric inputs from left vs right source neurons?" |
++| **Interpretation** | "Higher LI denotes relatively more contralateral than ipsilateral projection" | "Which target regions receive systematically asymmetric inputs from left vs right source neurons?" |
+ 
+ ---
+ 
+--- a/group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
++++ b/group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
+@@ -32,32 +32,34 @@
+ > a fresh exact-cohort and namespace/unit preflight is required before reuse.
+ 
+ 
+-> ⚠️ **Interim dataset.** This pipeline analyses the **partial cohort currently
+-> available (4 macaques, 306 neurons after harmonization)**. The granular Ig
+-> stratum and the agranular L-side IAL stratum will continue to grow as more
+-> samples are added; treat all per-region tests outside the IDD5+IDM balanced
+-> stratum as descriptive until additional bilateral sampling is available.
++> **Historical outputs and current input.** The saved output narrative below refers
++> to the historical 306-neuron cohort from four SampleIDs. The workbook audited
++> on 2026-10-09 has 353 unique neurons across six SampleIDs (251637, 252383,
++> 252384, 252385, 252527, 252718). SampleIDs are not asserted to be independent
++> animals. No fresh 353-neuron result is established by the preserved 306-neuron
++> tables or captions. All current neuron-level tests remain exploratory pending
++> an agreed animal sampling model and exact-cohort/namespace/unit preflight.
+ 
+ ## 0.1 What this notebook does
+ 
+-This notebook runs the **whole-insula L vs R laterality continuation pipeline (v2)** end-to-end on a **single harmonized table** of 306 reconstructed insula neurons from 4 macaques. Each chunk produces one numbered figure (F1–F10) plus the CSVs that back it; the final chunk emits a figure registry, a publication-style caption file, and a manuscript-numbers workbook.
++This notebook runs the **whole-insula L vs R laterality continuation pipeline (v2)** end-to-end on a **single harmonized table** of selected reconstructed neurons. The preserved historical outputs used 306 neurons from four SampleIDs; the current audited workbook contains 353 neurons across six SampleIDs, without an established six-animal interpretation. Each chunk produces one numbered figure (F1–F10) plus the CSVs that back it; the final chunk emits a figure registry, a publication-style caption file, and a manuscript-numbers workbook.
+ 
+ The biological framework (Craig 2005 bicameral forebrain; Oppenheimer 1992 cardiac sub-model; Hoy 2022 asymmetric reward-prediction-error coding; Barrett & Simmons 2015 EPIC predictive coding) and the full sampling-design audit live in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md). This notebook implements the analyses that document supports — see [§1.4 below](#sec-figure-index) for the figure-to-question map.
+ 
+-## 0.2 Cohort summary (this run)
+-
+-After harmonizing manual `IAL/IAPM/IDD5/IDM/IDV` labels with atlas labels via `Mapping_Rule` (sheet of `multi_monkey_INS_combined_harmonized.xlsx`):
++## 0.2 Historical 306-neuron cohort summary
++
++The following counts describe the historical output cohort. They are preserved, not substituted for the current 353-neuron workbook. Manual labels were harmonized with atlas labels through `Mapping_Rule` (sheet of `multi_monkey_INS_combined_harmonized.xlsx`):
+ 
+ | Sub-region | n_L | n_R | total | Notes |
+ |---|---:|---:|---:|---|
+ | **IAL** (lateral agranular) | 21 | 117 | 138 | severely L-undersampled; 251637 contributes 7 L : 95 R |
+ | **IAPM** (medial agranular) | 16 | 0 | 16 | **L-only**; descriptive only |
+-| **IDD5** (dorsal dysgranular) | **34** | **36** | **70** | **balanced** ✅ — primary inferential stratum |
+-| **IDM** (medial dysgranular) | **47** | **32** | **79** | reasonably balanced ✅ |
++| **IDD5** (dorsal dysgranular) | **34** | **36** | **70** | L/R sampled — exploratory neuron contrast; not animal balanced |
++| **IDM** (medial dysgranular) | **47** | **32** | **79** | L/R sampled; not animal balanced |
+ | **IDV** (ventral dysgranular) | 3 | 0 | 3 | descriptive only |
+-| **Combined (this run)** | **121** | **185** | **306** | 4 macaques (251637 + 252383 + 252384 + 252385) |
+-
+-The **inferential anchor** is the `IDD5_plus_IDM_balanced` stratum (n_L = 81, n_R = 68 in the new harmonized table). All BH-corrected laterality claims must survive in this stratum — see [§0.5 strata strategy](#sec-strata).
++| **Historical combined** | **121** | **185** | **306** | Four SampleIDs (251637 + 252383 + 252384 + 252385); no animal-replication claim |
++
++The historical region-restricted contrast is `IDD5_plus_IDM_balanced` (n_L = 81, n_R = 68 in the historical 306-neuron table). These are compatibility labels and historical counts, not animal balancing or independent replication — see [§0.5 strata strategy](#sec-strata).
+ 
+ ## 0.3 Why a hybrid `p_combo` profile?
+ 
+@@ -173,7 +175,7 @@
+ | **F8** | Leave-one-SampleID-out sensitivity for the headline endpoints | full data vs each drop | `F8_loso_sensitivity.png` |
+ | **F9 / F9b** | Are FNT morphology distances correlated with Bray-Curtis projection dissimilarity? (positive control / data quality) | Mantel ρ + permutation | `F9_FNT_vs_projection_pairwise.png`, `F9b_FNT_vs_projection_heatmaps_SQ5.png` |
+ | **F10** | Do interoceptive-target proportions track soma AP at finer (octile) resolution? | descriptive | `F10_interoceptive_AP_octile_heatmap.png` |
+-| **P13** | Where do the 306 somata sit on the insula flatmap, by monkey × side? | descriptive | `flatmap_overlays/P13_flatmap_with_LR_context_strip.png` |
++| **P13** | Where do the selected somata sit on the insula flatmap, by SampleID × side? | descriptive | `flatmap_overlays/P13_flatmap_with_LR_context_strip.png` |
+ 
+ ## 0.8 Pipeline mechanics
+ 
+@@ -1768,7 +1770,7 @@
+ 
+ **References (supplementary).** Mantel (1967) *Cancer Res*; Legendre & Legendre (1998/2012) *Numerical Ecology* §10.6; Gou et al. (2025) Supp morphology–projection linkage; Winnubst et al. (2019) data-quality framing; review §5 SQ4, §11A.5 (ρ ≈ 0.68 combined L6 note).
+ 
+-**Method.** Re-build a 306×306 FNT distance matrix from the `Score` column (the FNT score *is* a distance — no inversion). Compute Bray-Curtis on `p_combo` rows via `vegan::vegdist`, run `vegan::mantel(method = "spearman", permutations = 999)`. Also build an `FNT01` display matrix (min-max scaled FNT) and a `|d_rank|` mismatch matrix (per-pair absolute difference of within-pair ranks) for the F9b parallel-heatmap view. Row/column order in F9b is `hclust` on the average of FNT01 and Bray, so the same neuron index spans all three panels.
++**Method.** Build the exact-cohort square FNT distance matrix (historical run: 306×306) from the `Score` column (the FNT score *is* a distance — no inversion). Compute Bray-Curtis on `p_combo` rows via `vegan::vegdist`, run `vegan::mantel(method = "spearman", permutations = 999)`. Also build an `FNT01` display matrix (min-max scaled FNT) and a `|d_rank|` mismatch matrix (per-pair absolute difference of within-pair ranks) for the F9b parallel-heatmap view. Row/column order in F9b is `hclust` on the average of FNT01 and Bray, so the same neuron index spans all three panels.
+ 
+ **Outputs.** `F9_FNT_vs_projection_pairwise.png` (hex bin of all upper-triangle pairs), `F9b_FNT_vs_projection_heatmaps_SQ5.png` (three aligned heatmaps with side annotation track), stats: `08_mantel_replication.csv`.
+ 
+@@ -2029,7 +2031,7 @@
+   paste0("**Input workbook:** `", COMBINED_XLSX, "`"),
+   "**Anchor doc:** [`notes/LR_insula_analysis_review.md`](../../../../notes/LR_insula_analysis_review.md) (biological framing, sampling-design audit, full reference list).",
+   "",
+-  "> ⚠️ **Interim cohort.** This run analyses the partial dataset currently available (4 macaques, 306 neurons after harmonization). Numbers will change as more samples are added. Always cite this README's cohort table next to any figure quoted in a manuscript draft.",
++  "> **Historical cohort warning.** The preserved quoted results refer to 306 neurons from four SampleIDs. The workbook audited 2026-10-09 has 353 neurons from six SampleIDs, not an established six-animal cohort. A fresh exact-cohort/namespace/unit preflight and versioned rerun are required before quoting current results.",
+   "",
+   "## Cohort (this run)",
+   "",
+@@ -2253,7 +2255,7 @@
+   "**Pipeline:** [`v2_combined_primary_pipeline.Rmd`](../../../v2_combined_primary_pipeline.Rmd). **Stats:** [`../stats/`](../stats/). **Spec:** [`../spec/`](../spec/). **Anchor doc:** [`notes/LR_insula_analysis_review.md`](../../../../../notes/LR_insula_analysis_review.md).",
+   "",
+   sprintf(
+-    "**Cohort (this run).** N = **%d** neurons (L=%d, R=%d) across 4 macaques after harmonization; primary inferential stratum is `IDD5_plus_IDM_balanced` (n_L = %d, n_R = %d).",
++    "**Cohort (this run).** N = **%d** neurons (L=%d, R=%d) after harmonization; independent animal replication is unestablished; exploratory region-restricted stratum is `IDD5_plus_IDM_balanced` (n_L = %d, n_R = %d).",
+     nrow(summ), cohort_n_l, cohort_n_r,
+     sum(summ$Side == "L" & summ$Region %in% c("IDD5", "IDM")),
+     sum(summ$Side == "R" & summ$Region %in% c("IDD5", "IDM"))
+@@ -2275,7 +2277,7 @@
+   "## F1A — `F1A_subregion_x_gou_panels_combined.png`",
+   "",
+   "**Question.** How does each insula sub-region's normalized log-strength profile map across the six Gou et al. 2025 functional domains?",
+-  "**What is shown.** Mean summed normalized log-strength share (L+R combined) per (sub-region × Gou domain). The `All_insula` row pools all 306 neurons. Each cell is annotated with the value and `n_total`.",
++  "**What is shown.** Mean summed normalized log-strength share (L+R combined) per (sub-region × Gou domain). The `All_insula` row pools the selected neurons; preserved quoted values refer to the historical 306-neuron cohort. Each cell is annotated with the value and `n_total`.",
+   "**Anchor stats.** `../stats/01_subregion_x_gou_panels.csv` (one row per `Region × panel`); column-to-domain provenance in `../stats/01_gou_domain_column_map.csv`.",
+   "**How to interpret.** F1A is descriptive structure. Dysgranular IDD5/IDM are sensory-dominant (Ia/Id and Ig in p_combo at L6); IAL (anterior agranular) loads Emotional/Reward via caudal_OFC. Read F1B for the L vs R contrast.",
+   "",
+@@ -2398,7 +2400,7 @@
+   "",
+   "## P13 flatmap — `../flatmap_overlays/P13_flatmap_with_LR_context_strip.png`",
+   "",
+-  "**Question.** Where do the 306 somata sit on the insula flatmap, by monkey × side?",
++  "**Question.** Where do the selected somata sit on the insula flatmap, by SampleID × side?",
+   "**What is shown.** Combined flatmap with monkey-coloured + side-shaped (circle = L, triangle = R) markers; `n` strip below shows per-sub-region L/R counts (harmonized scheme).",
+   "**Anchor stats.** `../stats/00_context_per_subregion_n.csv`.",
+   ""
+@@ -2427,7 +2429,7 @@
+ 
+ | # | Caveat | Implication |
+ |---|---|---|
+-| 1 | **Partial cohort.** This run uses 306 neurons across 4 macaques; only 251637 was an insula-targeted injection. Numbers will change as more samples are added. | Treat all numeric headlines as version-stamped to this run. The CSVs in `stats/` are the canonical record; the `tables/manuscript_quoted_numbers.xlsx` workbook is regenerated each run. |
++| 1 | **Historical cohort.** Preserved outputs use 306 neurons from four SampleIDs; the workbook audited 2026-10-09 has 353 neurons from six SampleIDs without an established six-animal interpretation; only 251637 was an insula-targeted injection. Numbers will change as more samples are added. | Treat all numeric headlines as version-stamped to this run. The CSVs in `stats/` are the canonical record; the `tables/manuscript_quoted_numbers.xlsx` workbook is regenerated each run. |
+ | 2 | **IAL severely L-undersampled.** Combined IAL is 21 L : 117 R. | F7 `caudal_OFC` shows the structural R>L artefact; do not interpret it as laterality. Restrict L/R claims to IDD5/IDM. |
+ | 3 | **Dysgranular only in 251637.** No new monkey contributed IDD5/IDM neurons. | F8 `dropped == 251637` collapses the inferential cohort and is an artefact, not a sensitivity result. |
+ | 4 | **Insula has sparse contralateral output.** ~2% of neurons have any contra projection. | F5 Ibias is structurally near -1 for almost everyone; report as "insula is not a major callosal source", not as a quantitative laterality test. Gou-style per-neuron Ibias is not applicable as an inferential measure. |

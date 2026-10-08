@@ -1,0 +1,41 @@
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/build_endpoint_maps.py", "--manifest", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\multimonkey_coarse_20261009_v2\\projection_manifest.csv", "--reference", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "--brain-mask", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_brainmask.nii.gz", "--atlas-path", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz", "--atlas-key", "atlas/ARM_key_all.txt", "--hemisphere-mask", "atlas/NMT_v2.1_sym/NMT_v2.1_sym/supplemental_masks/NMT_v2.1_sym_LR_plane.nii.gz", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009"], "started_utc": "2026-10-08T16:58:03.662132+00:00"}
+animal=331 subregion=AtlasINS_L selected=14 computable=14
+animal=331 subregion=AtlasINS_R selected=4 computable=4
+animal=331 subregion=Candidate_L selected=11 computable=11
+animal=331 subregion=Candidate_R selected=21 computable=21
+animal=331 subregion=G_exploratory_L selected=3 computable=3
+animal=605 subregion=AtlasINS_L selected=1 computable=1
+animal=605 subregion=AtlasINS_R selected=5 computable=5
+animal=631 subregion=AtlasINS_L selected=3 computable=3
+animal=631 subregion=AtlasINS_R selected=1 computable=1
+animal=631 subregion=G_exploratory_L selected=7 computable=7
+animal=631 subregion=G_exploratory_R selected=5 computable=5
+animal=797 subregion=AtlasINS_L selected=21 computable=21
+animal=797 subregion=AtlasINS_R selected=17 computable=17
+animal=797 subregion=Candidate_L selected=3 computable=3
+animal=797 subregion=Candidate_R selected=4 computable=4
+animal=900 subregion=AtlasINS_L selected=4 computable=4
+animal=900 subregion=G_exploratory_L selected=7 computable=7
+animal=900 subregion=G_exploratory_R selected=2 computable=2
+animal=936 subregion=Candidate_R selected=1 computable=1
+animal=936 subregion=HumanINS_L selected=103 computable=91
+animal=936 subregion=HumanINS_R selected=157 computable=136
+animal=945 subregion=AtlasINS_L selected=12 computable=12
+animal=945 subregion=AtlasINS_R selected=2 computable=2
+animal=945 subregion=Candidate_R selected=11 computable=11
+animal=948 subregion=AtlasINS_L selected=3 computable=3
+animal=948 subregion=AtlasINS_R selected=2 computable=2
+animal=948 subregion=Candidate_L selected=5 computable=5
+animal=948 subregion=Candidate_R selected=7 computable=7
+software_verified_candidate_endpoints: selected=436 computable=403
+{"argv": ["C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe", "-X", "utf8", "-B", "group_analysis/scripts/review_endpoint_run.py", "--run", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009", "--output", "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review"], "started_utc": "2026-10-08T17:01:10.327731+00:00"}
+Traceback (most recent call last):
+  File "D:\projectome_analysis\group_analysis\scripts\review_endpoint_run.py", line 698, in <module>
+    result = review(args.run, args.output)
+  File "D:\projectome_analysis\group_analysis\scripts\review_endpoint_run.py", line 518, in review
+    leaves, neurons = source_expectations(manifest, shape, affine, record.get("input_root", ROOT))
+  File "D:\projectome_analysis\group_analysis\scripts\review_endpoint_run.py", line 103, in source_expectations
+    require(all(isinstance(entry[field], str) and entry[field].strip() for field in IDENTITY_FIELDS if field != "IndexScaleUm"),
+  File "D:\projectome_analysis\group_analysis\scripts\review_endpoint_run.py", line 82, in require
+    raise ValueError(message)
+ValueError: Blank manifest identity/coordinate fields
