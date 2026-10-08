@@ -14,6 +14,14 @@ output:
     toc: true
 ---
 
+
+> Imported Summary metric: the repository producer defines Laterality_Index
+> as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
+> These labels assume that producer contract; verify an older workbook's source
+> before reuse. This is retained reconstruction length, not accepted terminal
+> arbors/synapses. It differs from signed Ibias and from source-group LI.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -352,7 +360,7 @@ ggplot(df_n_targets, aes(x = Neuron_Type, y = n_targets, fill = Neuron_Type)) +
 
 # 5. Laterality Analysis
 
-## 5.1 Laterality Index Distribution
+## 5.1 Contralateral retained length share
 
 ```{r laterality-index}
 ggplot(df_summary, aes(x = Neuron_Type, y = Laterality_Index, fill = Neuron_Type)) +
@@ -361,10 +369,10 @@ ggplot(df_summary, aes(x = Neuron_Type, y = Laterality_Index, fill = Neuron_Type
   scale_fill_manual(values = type_colors) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "gray50") +
   labs(
-    title = "Laterality Index by Neuron Type",
-    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
+    title = "Contralateral retained length share by neuron type",
+    subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
     x = "Neuron Type",
-    y = "Laterality Index"
+    y = "Contralateral retained length share (0 to 1)"
   ) +
   theme_classic(base_size = 14) +
   theme(legend.position = "none")

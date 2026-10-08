@@ -1,3 +1,18 @@
+# Metric names (2026-10-09): retained length is the legacy reconstruction
+# measurement in its declared source units, with compartment/terminal-target
+# semantics unverified. Display strength = log10(retained length + 1).
+# A log-scaled length share divides that strength by the sum over selected
+# features; hybrid L3/L6 features overlap and are not a raw-length budget.
+# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
+# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
+# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
+# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
+# hemisphere index. Zero-denominator individual balances are unavailable.
+# Names, columns, thresholds, stratum IDs and output filenames are preserved.
+
+# Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+# Historical inputs/results are not accepted terminal fields or animal-population inference.
+# Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
 # ============================================================
 # Intra-insula interconnectivity analysis
 #
@@ -210,10 +225,10 @@ fig_heat <- ggplot(heat_all,
   geom_text(aes(label = ifelse(self_proj, "*", "")),
             size = 3.8, color = "red", nudge_y = 0.30) +
   scale_fill_gradient(low = "white", high = "#1976d2",
-                      name = "mean prop ipsi") +
+                      name = "mean log-scaled length share ipsi") +
   facet_wrap(~ side, ncol = 2, labeller = labeller(side = function(x) paste("Soma side:", x))) +
   labs(title = "Intra-insula ipsilateral projection: source soma sub-region -> target insula sub-region",
-       subtitle = "Cells = mean proportion of ipsi projection budget; * = self/within-sub-region (auto-projection back to soma sub-region)",
+       subtitle = "Cells = mean ipsilateral share of log-scaled length; * = self/within-sub-region (auto-projection back to soma sub-region)",
        x = "Target insula sub-region", y = "Source soma sub-region") +
   theme_minimal(base_size = 9) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
@@ -328,9 +343,9 @@ fig_intra <- ggplot(df_for_test,
   geom_boxplot(width = 0.18, alpha = 0.85, outlier.size = 0.6,
                position = position_dodge(width = 0.9)) +
   scale_fill_manual(values = side_cols, name = "Soma side") +
-  labs(title = "Intra-insula projection fraction per neuron, by source soma sub-region",
+  labs(title = "Legacy intra-insula share of log-scaled length per neuron, by source soma sub-region",
        subtitle = sprintf("intra_frac = (insula_ipsi + insula_contra) / total_projection;  n_total = %d", nrow(df_for_test)),
-       x = "Source sub-region", y = "Intra-insula fraction") +
+       x = "Source sub-region", y = "Legacy intra-insula log-scaled length share") +
   theme_minimal(base_size = 11)
 ggsave(file.path(FIG_DIR, "intra_frac_by_subregion_LR.png"),
        fig_intra, width = 11, height = 6, dpi = 200)

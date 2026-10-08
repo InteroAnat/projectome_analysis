@@ -1,3 +1,9 @@
+# Imported Summary metric: the repository producer defines Laterality_Index
+# as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
+# These labels assume that producer contract; verify an older workbook's source
+# before reuse. This is retained reconstruction length, not accepted terminal
+# arbors/synapses. It differs from signed Ibias and from source-group LI.
+
 # ============================================================================
 # 针对251637数据的完整R分析脚本
 # 
@@ -359,9 +365,9 @@ p6 <- ggplot(df_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
         "ITs" = "#4DAF4A", "ITi" = "#984EA3", 
         "ITc" = "#377EB8", "CT" = "#FF7F00"
     )) +
-    labs(title = "Laterality Index Distribution",
-         subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
-         x = "Laterality Index",
+    labs(title = "Contralateral retained length share",
+         subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
+         x = "Contralateral retained length share (0 to 1)",
          y = "Count") +
     theme_minimal()
 

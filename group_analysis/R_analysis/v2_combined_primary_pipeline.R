@@ -1,3 +1,19 @@
+# Metric names (2026-10-09): retained length is the legacy reconstruction
+# measurement in its declared source units, with compartment/terminal-target
+# semantics unverified. Display strength = log10(retained length + 1).
+# A log-scaled length share divides that strength by the sum over selected
+# features; hybrid L3/L6 features overlap and are not a raw-length budget.
+# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
+# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
+# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
+# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
+# hemisphere index. Zero-denominator individual balances are unavailable.
+# Names, columns, thresholds, stratum IDs and output filenames are preserved.
+
+# Methods audit 2026-10-09: labels corrected; numerical operations unchanged.
+# prop = share of log-scaled length; hybrid L3/L6 features overlap.
+# _balanced IDs denote region restrictions, not animal balancing.
+# OLS slope p-values are ordinary t-test p-values; animal dependence is unmodeled.
 inp <- knitr::current_input()
 pipeline_dir <- dirname(normalizePath(
   if (is.null(inp) || !nzchar(inp)) getwd() else inp,
@@ -153,9 +169,9 @@ ap_axis_lbl <- "Soma NII Y (NMT RAS: greater = anterior, lesser = posterior)"
 cat("[v2] writing strata + metrics spec\n")
 strata_spec <- tibble::tribble(
   ~stratum_id,                ~filter_R,                                               ~role,                  ~min_n_inferential,
-  "IDD5_plus_IDM_balanced",   "Region %in% c('IDD5','IDM')",                            "primary inferential",  10,
+  "IDD5_plus_IDM_balanced",   "Region %in% c('IDD5','IDM')",                            "exploratory neuron contrast",  10,
   "IDD5_balanced",            "Region == 'IDD5'",                                       "stricter check",       10,
-  "IDM_balanced",             "Region == 'IDM'",                                        "replication",          10,
+  "IDM_balanced",             "Region == 'IDM'",                                        "additional region contrast; not independent replication",          10,
   "all_combined",             "TRUE",                                                   "overall sensitivity",  10,
   "IAL_combined",             "Region == 'IAL'",                                        "v3 caudal-OFC sanity", 10,
   "IAPM_combined",            "Region == 'IAPM'",                                       "descriptive only",     999,
@@ -164,10 +180,10 @@ strata_spec <- tibble::tribble(
 metric_spec <- tibble::tribble(
   ~metric,                    ~description,
   "frac_projecting",          "fraction of source-side neurons with prop > 0 (Fisher's exact)",
-  "mean_prop",                "mean ipsi projection proportion (Wilcoxon)",
+  "mean_prop",                "mean ipsilateral share of log-scaled length (neuron-level Wilcoxon; animal dependence unmodeled)",
   "cliffs_delta",             "rank-based effect size",
   "log_odds_presence",        "log-odds ratio of presence",
-  "regression_slope",         "OLS slope of target ~ soma_pos with permutation p"
+  "regression_slope",         "OLS slope of share of log-scaled length ~ soma_pos; ordinary t-test p, animal dependence unmodeled"
 )
 write.csv(strata_spec, file.path(OUT_SPEC, "strata_spec.csv"), row.names = FALSE)
 write.csv(metric_spec, file.path(OUT_SPEC, "metric_spec.csv"), row.names = FALSE)
@@ -214,7 +230,7 @@ PANEL_CODE_ORDER <- c("auto", "emo", "sens", "motor", "cog", "memory")
 
 # ------------------------------------------------------------
 # P4 - F1 per-subregion x Gou functional-domain panels (L+R insula)
-# Domain mass = row sum of p_combo columns assigned to each Gou category.
+# Assigned transformed-strength share = row sum of p_combo columns assigned to each Gou category.
 # p_combo = L3 columns for non-insula targets + L6 columns for intra-insula targets (L3-only insula fallback).
 # Assignment: (1) region_to_gou_category_map user_region (L3 table);
 # (2) else modal Category from Gou et al. area_function_category_full.csv;
@@ -358,10 +374,10 @@ fig1_combined <- ggplot(f1_df, aes(panel_label, Region, fill = mean_combined)) +
     label = ifelse(mean_combined > 0.005,
                    sprintf("%.2f\nn=%d", mean_combined, n_total), sprintf("n=%d", n_total))
   ), size = 2.6, color = "black") +
-  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean prop\n(L+R)") +
+  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean log-scaled length share\n(L+R)") +
   labs(
     title = "F1A. Functional-domain projection (Gou 6 panels, L+R)",
-    subtitle = "Row-normalized ipsi profile: L3 extrinsic + L6 intra-insula; cell = summed target prop per domain.",
+    subtitle = "Ipsilateral shares of log-scaled length; overlapping L3/L6 features; cells sum assigned feature shares.",
     caption = "Domain→column map: stats/01_gou_domain_column_map.csv (v3 table, Gou ontology, L6 interoceptive→Sensory).",
     x = NULL, y = "Source (All insula pooled, then sub-region)"
   ) +
@@ -492,7 +508,7 @@ fig2 <- ggplot(f2_df, aes(target_id, Region, fill = mean_combined)) +
   geom_text(aes(
     label = ifelse(mean_combined > 0.005, sprintf("%.2f", mean_combined), "")
   ), size = 2.4, color = "black") +
-  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean prop\n(L+R)") +
+  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean log-scaled length share\n(L+R)") +
   labs(
     title = "F2. Sub-region x key target (L+R combined)",
     subtitle = "L3 extrinsic targets, then L6 intra-insula; rows IAL→IDV.",
@@ -624,7 +640,7 @@ fig3a <- ggplot(f3_plot, aes(target, Region)) +
                    sprintf("%.2f\nn=%d", mean_prop_combined, n_with_proj),
                    "")
   ), size = 2.4, color = "black") +
-  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean prop\n(L+R)") +
+  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean log-scaled length share\n(L+R)") +
   scale_alpha_manual(values = c(`TRUE` = 1, `FALSE` = 0.25), guide = "none") +
   labs(
     title = "F3A. Intra-insula source x target (L+R combined)",
@@ -737,7 +753,7 @@ if (nrow(f4_scatter_df)) {
       title = "F4. Interoceptive-gradient regressions (per-side fits)",
       subtitle = "OLS lines per facet; slopes and p in stats/04_interoceptive_gradient_regressions.csv",
       x = ap_axis_lbl,
-      y = "Projection proportion to target (row-normalized L6)"
+      y = "Normalized log-scaled length share to target (L6)"
     ) +
     theme_minimal(base_size = 10)
   ggsave(file.path(OUT_FIGS, "F4_interoceptive_gradient.png"), fig4,
@@ -745,8 +761,8 @@ if (nrow(f4_scatter_df)) {
 }
 
 # ------------------------------------------------------------
-# P8 - F5 continuous per-neuron Ibias on projection STRENGTH
-# Use Projection_Length_ipsi vs contra; if both zero we treat as bias = -1 (all ipsi by default)
+# P8 - F5 continuous per-neuron Ibias on retained regional lengths
+# Use Projection_Length_ipsi vs contra; if both totals are zero, Ibias is unavailable (NA)
 # ------------------------------------------------------------
 cat("[v2] F5 per-neuron Ibias (continuous)\n")
 len_ipsi  <- rowSums(m_len_l6, na.rm = TRUE)
@@ -789,9 +805,9 @@ fig5 <- ggplot(ibias_df %>% filter(Region %in% SUBREGION_ROW_ORDER),
   scale_color_manual(values = c(L = "#0072b2", R = "#c1272d"), name = "Side") +
   ylim(-1.05, 1.05) +
   labs(
-    title = "F5. Per-neuron continuous hemispheric bias (Gou-style)",
-    subtitle = "Ibias = (contra−ipsi)/(contra+ipsi) on total axon length; −1 = purely ipsilateral.",
-    x = ap_axis_lbl, y = "Hemispheric bias (Ibias)"
+    title = "F5. Individual ipsi/contra balance of retained length",
+    subtitle = "Ibias = (contra−ipsi)/(contra+ipsi) on legacy regional voxel lengths (unverified compartments/terminal-target selection); −1 = purely ipsilateral.",
+    x = ap_axis_lbl, y = "Retained length balance (Ibias)\n-1 ipsi; +1 contra"
   ) +
   theme_minimal(base_size = 10)
 ggsave(file.path(OUT_FIGS, "F5_per_neuron_ibias.png"), fig5,
@@ -911,11 +927,11 @@ make_li_bars <- function(df, title_txt) {
     coord_flip() +
     facet_grid(stratum ~ ., scales = "free_y", space = "free_y", switch = "y") +
     scale_x_discrete(labels = function(x) sub("^.*__", "", x)) +
-    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Dir") +
+    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Higher source-group mean") +
     labs(
       title = title_txt,
       subtitle = "BH across targets within each stratum; nL/nR in stats CSV.",
-      x = "Target (region@layer)", y = "Laterality index (L−R)/(L+R)"
+      x = "Target (region@layer)", y = "Left vs right SOURCE contrast\n(mean_L-mean_R)/(mean_L+mean_R+eps)"
     ) +
     theme_minimal(base_size = 10) +
     theme(
@@ -927,11 +943,11 @@ make_li_bars <- function(df, title_txt) {
 
 g6b <- make_li_bars(
   dplyr::filter(li_sig, receipt_class == "bilateral_receiving"),
-  "F6. Bilateral-receiving targets (preferred LI interpretation)"
+  "F6. Targets with evidence from both source groups"
 )
 g6c <- make_li_bars(
   dplyr::filter(li_sig, receipt_class == "one_side_only_or_extreme"),
-  "F6 supplement. One-sided / extreme receipt (QC; not symmetric sampling)"
+  "F6 supplement. Evidence from one source group only (sampling QC)"
 )
 ggsave(
   file.path(OUT_FIGS, "F6_projection_LI_bilateral_receiving.png"),
@@ -955,9 +971,9 @@ g6v <- ggplot(li_plot_df, aes(stratum_family, LI, fill = stratum_family)) +
   geom_boxplot(width = 0.18, outlier.size = 0.5, alpha = 0.9) +
   geom_hline(yintercept = 0, linetype = 2, linewidth = 0.35) +
   labs(
-    title = "F6. Target-level LI distributions by stratum family",
+    title = "F6. Left vs right source contrast across targets",
     subtitle = "Includes all-neurons and per-subregion strata with both L and R somas.",
-    x = NULL, y = "Laterality index"
+    x = NULL, y = "Left vs right SOURCE contrast"
   ) +
   theme_minimal(base_size = 10) +
   theme(legend.position = "none")
@@ -1021,10 +1037,10 @@ if (nrow(summ_ap) >= 40) {
       fig10 <- ggplot(f10_long, aes(target, ap_label, fill = mean_prop)) +
         geom_tile(color = "grey85") +
         geom_text(aes(label = sprintf("%.2f", mean_prop)), size = 2.8, color = "grey15") +
-        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nprop") +
+        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nlog-scaled length share") +
         labs(
           title = "F10. Interoceptive targets vs soma AP (octiles)",
-          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); L6 row-normalized mean prop.",
+          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); Mean ipsilateral log-scaled length shares at L6.",
           x = "Target", y = "Soma AP (posterior ↑ anterior)"
         ) +
         theme_minimal(base_size = 9) +
@@ -1143,11 +1159,11 @@ if (nrow(top_targets)) {
     theme(plot.caption = element_text(size = 7.5, hjust = 0))
 } else {
   fig6 <- ggplot() +
-    annotate("text", x = 0.5, y = 0.5, label = "No rank-based BH hits in balanced strata") +
+    annotate("text", x = 0.5, y = 0.5, label = "No rank-based BH hits in region-restricted neuron strata") +
     theme_void() +
     labs(
       title = "F6 supplement. Top asymmetric receiver targets (by test family)",
-      subtitle = "No BH hits in balanced strata at q<.05 (presence or magnitude).",
+      subtitle = "No BH hits in region-restricted neuron strata at q<.05 (presence or magnitude).",
       caption = "Composition LI: F6_projection_LI_*.png"
     ) +
     theme(plot.caption = element_text(size = 7.5, hjust = 0))
@@ -1275,7 +1291,7 @@ fig8 <- ggplot(f8_df %>% filter(stratum == "IDD5_plus_IDM_balanced"),
   facet_wrap(~ target, ncol = 4) +
   scale_fill_manual(values = c(`L>R` = "#0072b2", `R>L` = "#c1272d")) +
   labs(
-    title = "F8. Leave-one-monkey-out (IDD5+IDM stratum)",
+    title = "F8. Leave-one-SampleID-out (IDD5+IDM stratum)",
     subtitle = "Cliff's d L vs R; __none__ = full data. nL/nR in stats/09_loso_sensitivity.csv",
     x = "Dropped sample", y = "Cliff's d (L vs R)"
   ) +
@@ -1481,7 +1497,7 @@ stat_registry <- tibble::tribble(
   "F6_projection_LI_violin_by_stratum_family.png", "06b_projection_laterality_index_all_targets.csv", "LI distribution",
   "F6_supplement_rank_based_receivers.png", "06_asymmetric_receivers_BH.csv", "Rank tests Cliff/Fisher",
   "F7_hierarchy_sensitivity.png", "07_hierarchy_sensitivity_per_target.csv", "Headline targets resolved L3/L6",
-  "F8_loso_sensitivity.png", "09_loso_sensitivity.csv", "Leave-one-monkey-out",
+  "F8_loso_sensitivity.png", "09_loso_sensitivity.csv", "Leave-one-SampleID-out",
   "F9_FNT_vs_projection_pairwise.png", "08_mantel_replication.csv", "Hex + Mantel rho/p",
   "F9b_FNT_vs_projection_heatmaps_SQ5.png", "08_mantel_replication.csv", "Parallel matrices + d_rank",
   "F10_interoceptive_AP_octile_heatmap.png", "10_ap_octile_interoceptive_profile.csv", "AP octile x targets",
@@ -1694,7 +1710,7 @@ caption_md <- c(
     nrow(summ)
   ),
   "",
-  "**`p_combo` policy.** Extra-insula targets from L3; intra-insula from L6 (L3 insula fallback if no L6 column). Row-normalized proportions per neuron.",
+  "**`p_combo` policy.** Extra-insula targets from L3; intra-insula from L6 (L3 insula fallback if no L6 column). Row-share of log-scaled lengths per neuron; overlapping spatial features.",
   "",
   mantel_txt,
   "",
@@ -1702,12 +1718,12 @@ caption_md <- c(
   "",
   "## F1A — `F1A_subregion_x_gou_panels_combined.png`",
   "",
-  "**What.** Mean summed target proportion (L+R pooled) assigned to each Gou *functional domain* (six columns), by insula source sub-region and **All_insula** row.",
+  "**What.** Mean summed share of log-scaled length (L+R pooled) assigned to each Gou *functional domain* (six columns), by insula source sub-region and **All_insula** row.",
   "**Stats.** `01_subregion_x_gou_panels.csv`, `01_gou_domain_column_map.csv` (column→domain mapping). Cliff's *d* (L vs R) with BH within row.",
   "",
   "## F1B — `F1B_subregion_x_gou_panels_LRcontrast.png`",
   "",
-  "**What.** Same layout as F1A; inferential rows only; color = Cliff's *d* for domain mass L vs R.",
+  "**What.** Same layout as F1A; inferential rows only; color = Cliff's *d* for assigned transformed-strength share L vs R.",
   "",
   "## F2 — `F2_subregion_x_key_targets.png`",
   "",
@@ -1720,7 +1736,7 @@ caption_md <- c(
   "",
   "## F3A–C — intra-insula heatmaps",
   "",
-  "**What.** L6 row-normalized proportion (A), prevalence (B), Cliff's *d* L vs R (C, inferential rows). Column order: Ward.D2 on prevalence.",
+  "**What.** Normalized L6 log-scaled length share (A), prevalence (B), Cliff's *d* L vs R (C, inferential rows). Column order: Ward.D2 on prevalence.",
   "**Stats.** `03_intra_insula_meanprop.csv`, `03_intra_insula_prevalence.csv`, `03_intra_insula_full.csv`.",
   "",
   "## F4 — `F4_interoceptive_gradient.png`",
@@ -1730,12 +1746,12 @@ caption_md <- c(
   "",
   "## F5 — `F5_per_neuron_ibias.png`",
   "",
-  "**What.** Ibias = (contra − ipsi)/(contra + ipsi) **total axon length** (L6 length sheets) vs soma AP.",
+  "**What.** Ibias = (contra − ipsi)/(contra + ipsi) retained regional length (L6 length sheets; source units) vs soma AP.",
   "**Stats.** `05_per_neuron_ibias.csv`.",
   "",
-  "## F6 — projection laterality index",
+  "## F6 — left vs right source contrast",
   "",
-  "**What.** Target-level **composition LI** = (mean_L − mean_R)/(mean_L + mean_R) on group-mean `p_combo` proportions; Wilcoxon L vs R per target, BH within stratum.",
+  "**What.** Target-level **left vs right source contrast (LI)** = (mean_L − mean_R)/(mean_L + mean_R) on group means of normalized log-scaled retained length shares; Wilcoxon L vs R per target, BH within stratum.",
   "**Panels.** `F6_projection_LI_bilateral_receiving.png` (both sides receive); `F6_projection_LI_one_side_or_extreme.png` (QC); `F6_projection_LI_violin_by_stratum_family.png` (distribution).",
   "**Stats.** `06b_projection_laterality_index_all_targets.csv` (`n_L`, `n_R` per stratum); BH-significant subset in `06b_projection_laterality_index_BH_significant.csv` when non-empty.",
   "",
@@ -1765,7 +1781,7 @@ caption_md <- c(
   "",
   "## F10 — `F10_interoceptive_AP_octile_heatmap.png`",
   "",
-  "**What.** Mean L6 proportion to interoceptive targets by soma AP octile (NII-Y).",
+  "**What.** Mean normalized L6 log-scaled length share to interoceptive targets by soma AP octile (NII-Y).",
   "**Stats.** `10_ap_octile_interoceptive_profile.csv`.",
   "",
   "## P13 flatmap — `../flatmap_overlays/P13_flatmap_with_LR_context_strip.png`",

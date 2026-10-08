@@ -1,3 +1,18 @@
+# Metric names (2026-10-09): retained length is the legacy reconstruction
+# measurement in its declared source units, with compartment/terminal-target
+# semantics unverified. Display strength = log10(retained length + 1).
+# A log-scaled length share divides that strength by the sum over selected
+# features; hybrid L3/L6 features overlap and are not a raw-length budget.
+# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
+# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
+# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
+# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
+# hemisphere index. Zero-denominator individual balances are unavailable.
+# Names, columns, thresholds, stratum IDs and output filenames are preserved.
+
+# Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+# Historical inputs/results are not accepted terminal fields or animal-population inference.
+# Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
 # Improved multi-panel figures with explicit sample-size breakdowns
 # Replaces the Phase 6 panel images (titles ran together, no per-sample
 # breakdown, no significance markers)
@@ -203,7 +218,7 @@ fig_B <- ggplot(panel_summary,
   facet_wrap(~ stratum, ncol = 1) +
   scale_fill_manual(values = side_cols, name = "Soma side") +
   labs(title = "Gou 6-category L/R projection scores across strata",
-       subtitle = "Bars = mean proportion of ipsi projection budget; error bars = SEM; *=p<0.05, **=p<0.01, ***=p<0.001 (Wilcoxon, uncorrected)",
+       subtitle = "Bars = mean ipsilateral share of log-scaled length; error bars = SEM; *=p<0.05, **=p<0.01, ***=p<0.001 (Wilcoxon, uncorrected)",
        x = "Gou functional category (Table S2C)",
        y = "Mean proportion of ipsi projection") +
   theme_minimal(base_size = 11) +
@@ -271,7 +286,7 @@ fig_C <- ggplot(ofc_long,
   facet_wrap(~ stratum, ncol = 3) +
   scale_fill_manual(values = side_cols) +
   labs(title = "Caudal-OFC R>L asymmetry collapses with bilateral sampling",
-       subtitle = "Per-neuron proportion of ipsi projection going to caudal_OFC. The R>L signal in 251637 (p=5.4e-9) was driven by IAL imbalance (7L:95R). When 252385 contributes 14 L-IAL neurons, the asymmetry vanishes (p=0.49 in IAL_combined; ns in IAL_252385 alone).",
+       subtitle = "Per-neuron ipsilateral share of log-scaled retained length assigned to caudal_OFC. The R>L signal in 251637 (p=5.4e-9) was driven by IAL imbalance (7L:95R). When 252385 contributes 14 L-IAL neurons, the asymmetry vanishes (p=0.49 in IAL_combined; ns in IAL_252385 alone).",
        x = "Soma side", y = "Proportion of ipsi projection to caudal_OFC") +
   theme_minimal(base_size = 11) +
   theme(legend.position = "none",
@@ -407,9 +422,9 @@ fig_F <- ggplot(heat_LR,
              labeller = labeller(side = c(L = "Soma side: LEFT",
                                             R = "Soma side: RIGHT"))) +
   scale_fill_gradient(low = "white", high = "#1976d2",
-                      name = "mean prop\nipsi") +
+                      name = "Mean ipsilateral\nlog-scaled length share") +
   labs(title = "Intra-insula projection at finest atlas level (L6)",
-       subtitle = "Each cell = mean fraction of ipsi projection from source soma sub-region (rows) to target insula sub-region (cols). 96.4% of insula neurons project to other insula sub-regions.",
+       subtitle = "Each cell = mean ipsilateral share of log-scaled retained length from source (rows) to target (columns). 96.4% of insula neurons project to other insula sub-regions.",
        x = "Target insula sub-region", y = "Source soma sub-region") +
   theme_minimal(base_size = 10) +
   theme(strip.background = element_rect(fill = "grey90", color = NA),

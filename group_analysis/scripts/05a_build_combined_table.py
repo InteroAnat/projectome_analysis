@@ -3,7 +3,7 @@ Phase 5a: Build combined insula projection table across 251637 + new monkeys.
 
 Outputs (under group_analysis/combined/):
   multi_monkey_INS_combined.xlsx
-    - Summary               : 306 neurons (251637 untouched + new keepers)
+    - Summary               : validated reference neurons + selected new keepers
     - Projection_Length_L3_ipsi
     - Projection_Length_L3_contra
     - Projection_Strength_L3_ipsi
@@ -18,12 +18,20 @@ filling missing values with 0. The Summary sheet adds:
     - All NII coords from each monkey's own step1 output
 
 This file is the input for Phase 5c (FNT) and Phase 6 (R L/R analysis).
+The historical canonical derivative had 306 neurons. Counts now follow the
+validated inputs; an existing output is never replaced. Set
+PROJECTOME_COMBINED_OUT to a fresh output directory for a derivative build.
+Every configured recovery workbook and all eight quantitative sheets are
+required; selected quantitative rows are aligned explicitly to Summary order.
 """
 from __future__ import annotations
 
 import os
 import sys
 import glob
+import tempfile
+from pathlib import Path
+from numbers import Real
 import pandas as pd
 import numpy as np
 
@@ -45,7 +53,6 @@ STEP1_DIR = os.environ.get(
 OUT_DIR = os.environ.get(
     "PROJECTOME_COMBINED_OUT", os.path.join(GROUP_DIR, "combined")
 )
-os.makedirs(OUT_DIR, exist_ok=True)
 
 PROJ_SHEETS = (
     # Finest level (L6) - has Ial/Ig/Iam/Iapm etc. as separate columns
@@ -68,35 +75,63 @@ def find_results_xlsx(sid):
     return matches[-1] if matches else None
 
 
+def _checked_identities(frame, sample_id, source):
+    """Validate supplied identities before adding canonical sample/UID columns."""
+    sample_id = str(sample_id)
+    if "NeuronID" not in frame or not frame.NeuronID.map(
+        lambda value: isinstance(value, str) and bool(value.strip()) and value == value.strip()
+    ).all():
+        raise ValueError(f"{source}: NeuronID must be present literal text")
+    if frame.NeuronID.duplicated().any():
+        raise ValueError(f"{source}: duplicate neuron identities")
+    if "SampleID" in frame:
+        def token(value):
+            if pd.isna(value) or isinstance(value, (bool, np.bool_)):
+                raise ValueError(f"{source}: invalid SampleID")
+            if isinstance(value, Real) and np.isfinite(value) and float(value).is_integer():
+                return str(int(value))
+            return str(value).strip()
+        if not frame.SampleID.map(token).eq(sample_id).all():
+            raise ValueError(f"{source}: foreign SampleID")
+    expected = sample_id + "::" + frame.NeuronID
+    if "NeuronUID" in frame and not frame.NeuronUID.eq(expected).all():
+        raise ValueError(f"{source}: NeuronUID disagrees with sample/neuron identities")
+    result = frame.copy()
+    result["SampleID"] = sample_id
+    result["NeuronUID"] = expected
+    return result
+
+
 def union_projection_sheet(combined_meta: pd.DataFrame, source_xlsx: str,
                             sheet_name: str, sample_id: str,
                             keep_neuron_ids: list[str]) -> pd.DataFrame:
-    """Read sheet_name from source_xlsx, filter to keep_neuron_ids,
-    add SampleID + composite NeuronID for cross-monkey uniqueness."""
-    try:
-        df = pd.read_excel(source_xlsx, sheet_name=sheet_name)
-    except (KeyError, ValueError) as e:
-        print(f"  [warn] {sample_id}: missing sheet '{sheet_name}' -> empty")
-        return pd.DataFrame()
-    if "NeuronID" not in df.columns:
-        print(f"  [warn] {sample_id}: no NeuronID column in {sheet_name}")
-        return pd.DataFrame()
-    df = df[df["NeuronID"].isin(keep_neuron_ids)].copy()
-    df["SampleID"] = sample_id
-    df["NeuronUID"] = df["SampleID"].astype(str) + "::" + df["NeuronID"].astype(str)
-    return df
+    """Require all selected identities and explicitly align rows to keeper order."""
+    _checked_identities(pd.DataFrame({"NeuronID": keep_neuron_ids}), sample_id, "keepers")
+    df = _checked_identities(pd.read_excel(source_xlsx, sheet_name=sheet_name),
+                             sample_id, f"{source_xlsx}:{sheet_name}")
+    selected = df[df["NeuronID"].isin(keep_neuron_ids)]
+    if set(selected.NeuronID) != set(keep_neuron_ids):
+        raise ValueError(f"{sample_id}:{sheet_name}: missing selected neuron identities")
+    return selected.set_index("NeuronID", drop=False).loc[keep_neuron_ids].reset_index(drop=True)
 
 
 def main() -> int:
+    out_xlsx = Path(OUT_DIR) / "multi_monkey_INS_combined.xlsx"
+    if out_xlsx.exists():
+        raise FileExistsError(f"Combined output already exists; use a fresh output directory: {out_xlsx}")
     # 1. Read 251637 untouched (Summary + projection sheets)
     print(f"[5a] Reading {REFERENCE_SAMPLE} untouched: {REF_INS_XLSX}")
     print(f"[5a] RECOVERY_DIR={RECOVERY_DIR}")
     print(f"[5a] OUT_DIR={OUT_DIR}")
     print(f"[5a] NEW_SAMPLES={NEW_SAMPLES}")
-    ref_xl = pd.ExcelFile(REF_INS_XLSX)
-    ref_summary = pd.read_excel(REF_INS_XLSX, sheet_name="Summary")
-    ref_summary["SampleID"] = REFERENCE_SAMPLE
-    ref_summary["NeuronUID"] = f"{REFERENCE_SAMPLE}::" + ref_summary["NeuronID"].astype(str)
+    with pd.ExcelFile(REF_INS_XLSX) as ref_xl:
+        missing = set(("Summary",) + PROJ_SHEETS) - set(ref_xl.sheet_names)
+    if missing:
+        raise ValueError(f"Reference workbook missing required sheets: {sorted(missing)}")
+    ref_summary = _checked_identities(pd.read_excel(REF_INS_XLSX, sheet_name="Summary"),
+                                      REFERENCE_SAMPLE, "reference Summary")
+    if ref_summary.empty:
+        raise ValueError("Reference Summary cannot be empty")
     # Add provenance
     ref_summary["Soma_Region_Auto"] = ref_summary["Soma_Region"]
     ref_summary["Soma_Region_Refined"] = ref_summary["Soma_Region"].astype(str).map(
@@ -106,15 +141,12 @@ def main() -> int:
 
     ref_proj_sheets = {}
     for s in PROJ_SHEETS:
-        if s in ref_xl.sheet_names:
-            df = pd.read_excel(REF_INS_XLSX, sheet_name=s)
-            df["SampleID"] = REFERENCE_SAMPLE
-            df["NeuronUID"] = f"{REFERENCE_SAMPLE}::" + df["NeuronID"].astype(str)
-            ref_proj_sheets[s] = df
-            print(f"  251637 {s}: {df.shape}")
-        else:
-            ref_proj_sheets[s] = pd.DataFrame()
-            print(f"  251637 {s}: MISSING")
+        df = _checked_identities(pd.read_excel(REF_INS_XLSX, sheet_name=s), REFERENCE_SAMPLE, s)
+        if set(df.NeuronID) != set(ref_summary.NeuronID):
+            raise ValueError(f"Reference {s}: membership differs from Summary")
+        df = df.set_index("NeuronID", drop=False).loc[ref_summary.NeuronID.tolist()].reset_index(drop=True)
+        ref_proj_sheets[s] = df
+        print(f"  251637 {s}: {df.shape}")
 
     # 2. New-monkey keepers (already filtered)
     new_summaries = []
@@ -123,14 +155,14 @@ def main() -> int:
     for sid in NEW_SAMPLES:
         kp_xlsx = os.path.join(RECOVERY_DIR, f"{sid}_INS_HE_coord_inferred.xlsx")
         if not os.path.exists(kp_xlsx):
-            print(f"  [skip] {sid}: no recovery xlsx")
-            continue
-        keepers = pd.read_excel(kp_xlsx, sheet_name="Insula_keepers")
+            raise FileNotFoundError(f"Configured sample {sid} missing recovery workbook: {kp_xlsx}")
+        keeper_input = pd.read_excel(kp_xlsx, sheet_name="Insula_keepers")
+        if "SampleID" not in keeper_input:
+            raise ValueError(f"{kp_xlsx}: keeper identities require SampleID")
+        keepers = _checked_identities(keeper_input, sid, kp_xlsx)
         if keepers.empty:
             print(f"  {sid}: 0 keepers")
             continue
-        keepers["NeuronUID"] = keepers["SampleID"].astype(str) + "::" + \
-                                keepers["NeuronID"].astype(str)
         # Final Soma_Region is Soma_Region_Refined; final Soma_Side from inferred
         keepers["Soma_Region_Final"] = keepers["Soma_Region_Refined"]
         new_summaries.append(keepers)
@@ -138,8 +170,7 @@ def main() -> int:
         # Projection sheets from the original results.xlsx
         src = find_results_xlsx(sid)
         if not src:
-            print(f"  [skip] {sid}: no source xlsx")
-            continue
+            raise FileNotFoundError(f"Configured sample {sid} has keepers but no source workbook")
         keep_ids = keepers["NeuronID"].tolist()
         for s in PROJ_SHEETS:
             df = union_projection_sheet(ref_summary, src, s, sid, keep_ids)
@@ -171,6 +202,8 @@ def main() -> int:
 
     combined_summary = pd.concat([ref_block] + new_blocks,
                                   ignore_index=True, sort=False)
+    if combined_summary.NeuronUID.duplicated().any():
+        raise ValueError("Combined Summary has duplicate full neuron identities")
 
     # Use Soma_Side_Inferred when available, fall back to Soma_Side
     combined_summary["Soma_Side_Final"] = combined_summary.get(
@@ -202,19 +235,28 @@ def main() -> int:
         numeric_cols = merged.select_dtypes(include=[np.number]).columns
         merged[numeric_cols] = merged[numeric_cols].fillna(0.0)
         combined_proj[s] = merged
+        if merged.NeuronUID.tolist() != combined_summary.NeuronUID.tolist():
+            raise ValueError(f"Combined {s}: ordered membership differs from Summary")
         print(f"  combined {s}: {merged.shape}")
 
     # 5. Write workbook
-    out_xlsx = os.path.join(OUT_DIR, "multi_monkey_INS_combined.xlsx")
-    with pd.ExcelWriter(out_xlsx, engine="openpyxl") as w:
-        combined_summary.to_excel(w, sheet_name="Summary", index=False)
-        for s in PROJ_SHEETS:
-            combined_proj[s].to_excel(w, sheet_name=s, index=False)
-        # provenance summary
-        prov = (combined_summary["Soma_Region_Source"]
-                .value_counts().rename("n").reset_index()
-                .rename(columns={"index": "Soma_Region_Source"}))
-        prov.to_excel(w, sheet_name="Provenance", index=False)
+    out_xlsx.parent.mkdir(parents=True, exist_ok=True)
+    fd, temporary = tempfile.mkstemp(prefix=".combined_build_", suffix=".xlsx", dir=out_xlsx.parent)
+    os.close(fd)
+    try:
+        with pd.ExcelWriter(temporary, engine="openpyxl") as w:
+            combined_summary.to_excel(w, sheet_name="Summary", index=False)
+            for s in PROJ_SHEETS:
+                combined_proj[s].to_excel(w, sheet_name=s, index=False)
+            prov = (combined_summary["Soma_Region_Source"]
+                    .value_counts().rename("n").reset_index()
+                    .rename(columns={"index": "Soma_Region_Source"}))
+            prov.to_excel(w, sheet_name="Provenance", index=False)
+        # Fail atomically if another process created the destination meanwhile.
+        os.link(temporary, out_xlsx)
+    finally:
+        if os.path.exists(temporary):
+            os.remove(temporary)
     print(f"\n[saved] {out_xlsx}")
 
     return 0

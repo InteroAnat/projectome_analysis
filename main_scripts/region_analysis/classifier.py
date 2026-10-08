@@ -5,6 +5,7 @@ Uses ARM atlas index ranges for NMT v2.1.
 """
 
 import pandas as pd
+from region_analysis.laterality import LateralityParser
 
 
 class NeuronClassifier:
@@ -36,12 +37,9 @@ class NeuronClassifier:
             return "Cortex_R"
         return "Other"
 
-    def classify_single_neuron(self, terminal_list: list, soma_region: str) -> str:
-        soma_side = "Unknown"
-        if "CL_" in soma_region or "SL_" in soma_region:
-            soma_side = "L"
-        elif "CR_" in soma_region or "SR_" in soma_region:
-            soma_side = "R"
+    def classify_single_neuron(self, terminal_list: list, soma_region: str, soma_side=None) -> str:
+        if soma_side is None:
+            soma_side = LateralityParser.get_side(soma_region)
         is_PT = is_CT = has_striatum = has_contra = has_ipsi = False
         for t_name in terminal_list:
             cat = self._get_detailed_category(t_name)

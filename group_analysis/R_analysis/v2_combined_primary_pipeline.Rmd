@@ -19,34 +19,61 @@ output:
     df_print: paged
 ---
 
+
+> Metric names (2026-10-09): retained length is the legacy reconstruction
+> measurement in its declared source units, with compartment/terminal-target
+> semantics unverified. Display strength = log10(retained length + 1).
+> A log-scaled length share divides that strength by the sum over selected
+> features; hybrid L3/L6 features overlap and are not a raw-length budget.
+> Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
+> Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
+> Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
+> higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
+> hemisphere index. Zero-denominator individual balances are unavailable.
+> Names, columns, thresholds, stratum IDs and output filenames are preserved.
+
+
 # 0 · Overview
 
-> ⚠️ **Interim dataset.** This pipeline analyses the **partial cohort currently
-> available (4 macaques, 306 neurons after harmonization)**. The granular Ig
-> stratum and the agranular L-side IAL stratum will continue to grow as more
-> samples are added; treat all per-region tests outside the IDD5+IDM balanced
-> stratum as descriptive until additional bilateral sampling is available.
+> **Methods audit (2026-10-09).** Numeric calculations and legacy column/stratum
+> identifiers are retained. `prop` denotes normalized log-strength composition,
+> not raw axonal-length fraction. The L3/L6 hybrid has overlapping ancestors and
+> descendants. OLS slope p-values are ordinary t-test p-values. `_balanced`
+> names denote region restrictions, not animal balancing. Historical 306-neuron
+> narratives do not describe every future input workbook; no new anatomical,
+> terminal-field or animal-population acceptance follows from these outputs.
+> Existing plain-name target lists are incompatible with collision-safe exports;
+> a fresh exact-cohort and namespace/unit preflight is required before reuse.
+
+
+> **Historical outputs and current input.** The saved output narrative below refers
+> to the historical 306-neuron cohort from four SampleIDs. The workbook audited
+> on 2026-10-09 has 353 unique neurons across six SampleIDs (251637, 252383,
+> 252384, 252385, 252527, 252718). SampleIDs are not asserted to be independent
+> animals. No fresh 353-neuron result is established by the preserved 306-neuron
+> tables or captions. All current neuron-level tests remain exploratory pending
+> an agreed animal sampling model and exact-cohort/namespace/unit preflight.
 
 ## 0.1 What this notebook does
 
-This notebook runs the **whole-insula L vs R laterality continuation pipeline (v2)** end-to-end on a **single harmonized table** of 306 reconstructed insula neurons from 4 macaques. Each chunk produces one numbered figure (F1–F10) plus the CSVs that back it; the final chunk emits a figure registry, a publication-style caption file, and a manuscript-numbers workbook.
+This notebook runs the **whole-insula L vs R laterality continuation pipeline (v2)** end-to-end on a **single harmonized table** of selected reconstructed neurons. The preserved historical outputs used 306 neurons from four SampleIDs; the current audited workbook contains 353 neurons across six SampleIDs, without an established six-animal interpretation. Each chunk produces one numbered figure (F1–F10) plus the CSVs that back it; the final chunk emits a figure registry, a publication-style caption file, and a manuscript-numbers workbook.
 
 The biological framework (Craig 2005 bicameral forebrain; Oppenheimer 1992 cardiac sub-model; Hoy 2022 asymmetric reward-prediction-error coding; Barrett & Simmons 2015 EPIC predictive coding) and the full sampling-design audit live in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md). This notebook implements the analyses that document supports — see [§1.4 below](#sec-figure-index) for the figure-to-question map.
 
-## 0.2 Cohort summary (this run)
+## 0.2 Historical 306-neuron cohort summary
 
-After harmonizing manual `IAL/IAPM/IDD5/IDM/IDV` labels with atlas labels via `Mapping_Rule` (sheet of `multi_monkey_INS_combined_harmonized.xlsx`):
+The following counts describe the historical output cohort. They are preserved, not substituted for the current 353-neuron workbook. Manual labels were harmonized with atlas labels through `Mapping_Rule` (sheet of `multi_monkey_INS_combined_harmonized.xlsx`):
 
 | Sub-region | n_L | n_R | total | Notes |
 |---|---:|---:|---:|---|
 | **IAL** (lateral agranular) | 21 | 117 | 138 | severely L-undersampled; 251637 contributes 7 L : 95 R |
 | **IAPM** (medial agranular) | 16 | 0 | 16 | **L-only**; descriptive only |
-| **IDD5** (dorsal dysgranular) | **34** | **36** | **70** | **balanced** ✅ — primary inferential stratum |
-| **IDM** (medial dysgranular) | **47** | **32** | **79** | reasonably balanced ✅ |
+| **IDD5** (dorsal dysgranular) | **34** | **36** | **70** | L/R sampled — exploratory neuron contrast; not animal balanced |
+| **IDM** (medial dysgranular) | **47** | **32** | **79** | L/R sampled; not animal balanced |
 | **IDV** (ventral dysgranular) | 3 | 0 | 3 | descriptive only |
-| **Combined (this run)** | **121** | **185** | **306** | 4 macaques (251637 + 252383 + 252384 + 252385) |
+| **Historical combined** | **121** | **185** | **306** | Four SampleIDs (251637 + 252383 + 252384 + 252385); no animal-replication claim |
 
-The **inferential anchor** is the `IDD5_plus_IDM_balanced` stratum (n_L = 81, n_R = 68 in the new harmonized table). All BH-corrected laterality claims must survive in this stratum — see [§0.5 strata strategy](#sec-strata).
+The historical region-restricted contrast is `IDD5_plus_IDM_balanced` (n_L = 81, n_R = 68 in the historical 306-neuron table). These are compatibility labels and historical counts, not animal balancing or independent replication — see [§0.5 strata strategy](#sec-strata).
 
 ## 0.3 Why a hybrid `p_combo` profile?
 
@@ -62,7 +89,7 @@ extra-insula columns at L3   ⊕   intra-insula columns at L6
                   →           row-normalized per neuron
 ```
 
-This single per-neuron proportion vector is then used as the workhorse for F1 (Gou panels), F6 (laterality index), F9 (Mantel) and F10 (AP octiles). Where a target appears at both levels, we use the level marked in the column suffix `@L3` or `@L6`. F2 (key targets), F3 (intra-insula matrix) and F7 (headline endpoints) test specific targets at their resolved hierarchy without going through `p_combo`.
+This single per-neuron proportion vector is then used as the workhorse for F1 (Gou panels), F6 (left vs right source contrast), F9 (Mantel) and F10 (AP octiles). Where a target appears at both levels, we use the level marked in the column suffix `@L3` or `@L6`. F2 (key targets), F3 (intra-insula matrix) and F7 (headline endpoints) test specific targets at their resolved hierarchy without going through `p_combo`.
 
 ## 0.4 Pipeline at a glance
 
@@ -99,7 +126,7 @@ hybrid + LOSO  ► F8 (drop-one-monkey sensitivity)
 
 | Stratum | Filter | Role | Min n for inferential interpretation |
 |---|---|---|---:|
-| `IDD5_plus_IDM_balanced` | `Region ∈ {IDD5, IDM}` | **primary inferential** — the only L/R-balanced anatomical stratum in this dataset | 10 |
+| `IDD5_plus_IDM_balanced` | `Region ∈ {IDD5, IDM}` | **primary inferential** — the L/R-sampled region restriction; not animal balancing in this dataset | 10 |
 | `IDD5_balanced` | `Region == IDD5` | stricter check (n_L=34, n_R=36) | 10 |
 | `IDM_balanced` | `Region == IDM` | replication of IDD5 hits | 10 |
 | `all_combined` | `TRUE` | overall sensitivity (confounded by IAL imbalance) | 10 |
@@ -144,7 +171,7 @@ Cliff's *δ* (a non-parametric L-vs-R effect size, `(more − less)/(n_L · n_R)
 | **Wilcoxon (`safe_wilcox`)** | non-parametric L vs R for *magnitude* (continuous proportion). |
 | **Fisher (`safe_fisher`)** | 2×2 test for *presence* (any vs none). |
 | **BH** | Benjamini-Hochberg FDR (`p.adjust(., "BH")`). Each chunk states the BH family. |
-| **LI** | Laterality index `(mean_L − mean_R) / (mean_L + mean_R + ε)`; ±1 = exclusive, 0 = symmetric. |
+| **LI** | Left vs right **source-group** contrast `(mean_L − mean_R) / (mean_L + mean_R + ε)`; positive means a higher left-source mean. Zero with both means zero does not establish bilateral innervation. |
 | **Mantel ρ** | matrix correlation between FNT morphological distance and Bray-Curtis projection dissimilarity (999 permutations). |
 | **`receipt_class`** | F6 QC flag: `bilateral_receiving` = both sides have non-zero mean (interpret); `one_side_only_or_extreme` = LI driven by absent-on-one-side targets (do **not** interpret as laterality). |
 
@@ -156,13 +183,13 @@ Cliff's *δ* (a non-parametric L-vs-R effect size, `(more − less)/(n_L · n_R)
 | **F2 / F2B** | Does projection to a **curated set of key targets** (caudal_OFC, OFC subdomains, pallidum, claustrum, autonomic columns, Ig/Pi/Iam) show L/R asymmetry? | per-row Wilcoxon BH in inferential rows | `F2_subregion_x_key_targets.png`, `F2B_…_LRcontrast.png` |
 | **F3A/B/C** | What is the intra-insula sub-region × sub-region projection structure, and does any edge show L vs R? (Gehrlach 2020 mouse → primate) | IDD5/IDM rows | `F3A_intra_insula_combined.png`, `F3B_…_prevalence.png`, `F3C_…_LRcontrast.png` |
 | **F4** | Does projection to interoceptive targets (Ig, Pi, Ial, Iam/Iapm, Ia/Id) show a per-side gradient along soma AP? (EPIC) | OLS slope per side, per target | `F4_interoceptive_gradient.png` |
-| **F5** | Per-neuron continuous **Ibias** = (contra−ipsi)/(contra+ipsi) on **axon length** vs soma AP | descriptive (insula has sparse contra) | `F5_per_neuron_ibias.png` |
+| **F5** | Per-neuron continuous **Ibias** = (contra−ipsi)/(contra+ipsi) on retained regional length vs soma AP | descriptive (insula has sparse contra) | `F5_per_neuron_ibias.png` |
 | **F6 + supp** | Composition **laterality index** per target × stratum | BH within stratum, `bilateral_receiving` only | `F6_projection_LI_bilateral_receiving.png` (+ `…_one_side_or_extreme.png`, `…_violin_…`, `F6_supplement_rank_based_receivers.png`) |
 | **F7** | Cliff *d* of headline endpoints (Ig, Cl, LPal, VPal, PAG-proxy, caudal_OFC) under resolved L3/L6 hierarchy across 4 strata | IDD5_balanced primary | `F7_hierarchy_sensitivity.png` |
-| **F8** | Leave-one-monkey-out sensitivity for the headline endpoints | full data vs each drop | `F8_loso_sensitivity.png` |
+| **F8** | Leave-one-SampleID-out sensitivity for the headline endpoints | full data vs each drop | `F8_loso_sensitivity.png` |
 | **F9 / F9b** | Are FNT morphology distances correlated with Bray-Curtis projection dissimilarity? (positive control / data quality) | Mantel ρ + permutation | `F9_FNT_vs_projection_pairwise.png`, `F9b_FNT_vs_projection_heatmaps_SQ5.png` |
 | **F10** | Do interoceptive-target proportions track soma AP at finer (octile) resolution? | descriptive | `F10_interoceptive_AP_octile_heatmap.png` |
-| **P13** | Where do the 306 somata sit on the insula flatmap, by monkey × side? | descriptive | `flatmap_overlays/P13_flatmap_with_LR_context_strip.png` |
+| **P13** | Where do the selected somata sit on the insula flatmap, by SampleID × side? | descriptive | `flatmap_overlays/P13_flatmap_with_LR_context_strip.png` |
 
 ## 0.8 Pipeline mechanics
 
@@ -317,7 +344,7 @@ safe_fisher <- function(p_l, n_l, p_r, n_r) {
 
 **Purpose.** Read the harmonized workbook (one row per neuron in `Summary`; matching ipsi / contra / length matrices in the four projection sheets). The intersection of `NeuronUID` across `Summary`, `Projection_Strength_L3_ipsi`, and `Projection_Strength_ipsi` (L6) is taken so every downstream matrix indexes the same neurons. We coalesce `Soma_Side_Final` (post-harmonization) over `Soma_Side` and use `Soma_Region_Refined` as `Region` (the harmonized 5-class scheme `IAL/IAPM/IDD5/IDM/IDV`).
 
-**`p_combo` policy.** Build raw count matrices `m_l3` / `m_l6` / `m_l6_contra` / `m_len_l6` / `m_len_l6_contra`, then row-proportions `p_l3` and `p_l6`. The hybrid matrix `m_hybrid` keeps every L3 column **except** the 8 insula leaves (`Ial`, `Iai`, `Iapl`, `Iam/Iapm`, `Ia/Id`, `Ig`, `Pi`, `Ri`) and replaces them with the corresponding **L6** columns. Column names are tagged with the originating hierarchy (`@L3` or `@L6`) so every figure can audit which level a target came from. `p_combo` is `m_hybrid` row-normalized once per neuron — this is the per-neuron projection profile used by F1, F6, F9 and F10.
+**`p_combo` policy.** `m_l3`, `m_l6` and `m_l6_contra` contain log10(legacy regional voxel length + 1); `m_len_l6` and `m_len_l6_contra` contain the corresponding untransformed legacy voxel lengths. `p_l3` and `p_l6` are row-share of log-scaled lengths. The hybrid retains L3 ancestors and adds L6 insular leaves, so its spatial features overlap rather than forming an exclusive partition. `@L3`/`@L6` suffixes disclose feature levels. `p_combo` normalizes this overlapping transformed-strength profile once per neuron; it is not a raw-length or terminal-arbor budget.
 
 **Hypothesis (implicit).** Combining **extrinsic L3 + intrinsic L6** yields a single per-neuron profile that stays aligned with Gou et al.’s functional-domain mapping for cortex/brainstem while recovering **separate insula sub-regions**, which collapsed at L3 alone — matching the methodological argument in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §4.
 
@@ -382,7 +409,7 @@ ap_axis_lbl <- "Soma NII Y (NMT RAS: greater = anterior, lesser = posterior)"
 
 **Order conventions.** `SUBREGION_ROW_ORDER` (`IAL → IAPM → IDD5 → IDM → IDV`) is anatomical (anterior agranular → posterior dysgranular). `F1_REGION_ORDER` adds an `All_insula` pooled top row to F1. `PANEL_CODE_ORDER` (`auto / emo / sens / motor / cog / memory`) follows Gou Table_S2(C). `stratum_idx(stratum_id)` is a single dispatch helper used by every downstream figure to recover row indices for a stratum, so the strata definition lives in exactly one place.
 
-**Hypothesis (design).** Inferential statements are restricted to **IDD5±IDM** — the only L/R-balanced anatomical strata in this dataset — matching the sampling-design critique in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §3 (`all_combined` and `IAL_combined` are sensitivity / artefact probes, not primary laterality strata).
+**Hypothesis (design).** Inferential statements are restricted to **IDD5±IDM** — the L/R-sampled region restrictions; not animal balancing in this dataset — matching the sampling-design critique in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §3 (`all_combined` and `IAL_combined` are sensitivity / artefact probes, not primary laterality strata).
 
 **References (supplementary).** Winnubst et al. (2019) *Cell* — pooled multi-brain designs; Gou et al. (2025) *Cell* Methods — hemispheric bias framing; Craig (2009) review — species and sampling caveats for insula comparisons.
 
@@ -393,9 +420,9 @@ ap_axis_lbl <- "Soma NII Y (NMT RAS: greater = anterior, lesser = posterior)"
 cat("[v2] writing strata + metrics spec\n")
 strata_spec <- tibble::tribble(
   ~stratum_id,                ~filter_R,                                               ~role,                  ~min_n_inferential,
-  "IDD5_plus_IDM_balanced",   "Region %in% c('IDD5','IDM')",                            "primary inferential",  10,
+  "IDD5_plus_IDM_balanced",   "Region %in% c('IDD5','IDM')",                            "exploratory neuron contrast",  10,
   "IDD5_balanced",            "Region == 'IDD5'",                                       "stricter check",       10,
-  "IDM_balanced",             "Region == 'IDM'",                                        "replication",          10,
+  "IDM_balanced",             "Region == 'IDM'",                                        "additional region contrast; not independent replication",          10,
   "all_combined",             "TRUE",                                                   "overall sensitivity",  10,
   "IAL_combined",             "Region == 'IAL'",                                        "v3 caudal-OFC sanity", 10,
   "IAPM_combined",            "Region == 'IAPM'",                                       "descriptive only",     999,
@@ -404,10 +431,10 @@ strata_spec <- tibble::tribble(
 metric_spec <- tibble::tribble(
   ~metric,                    ~description,
   "frac_projecting",          "fraction of source-side neurons with prop > 0 (Fisher's exact)",
-  "mean_prop",                "mean ipsi projection proportion (Wilcoxon)",
+  "mean_prop",                "mean ipsilateral share of log-scaled length (neuron-level Wilcoxon; animal dependence unmodeled)",
   "cliffs_delta",             "rank-based effect size",
   "log_odds_presence",        "log-odds ratio of presence",
-  "regression_slope",         "OLS slope of target ~ soma_pos with permutation p"
+  "regression_slope",         "OLS slope of share of log-scaled length ~ soma_pos; ordinary t-test p, animal dependence unmodeled"
 )
 write.csv(strata_spec, file.path(OUT_SPEC, "strata_spec.csv"), row.names = FALSE)
 write.csv(metric_spec, file.path(OUT_SPEC, "metric_spec.csv"), row.names = FALSE)
@@ -458,13 +485,13 @@ PANEL_CODE_ORDER <- c("auto", "emo", "sens", "motor", "cog", "memory")
 
 ## 2.1 Figure 1 — Gou functional domains {#04-fig1-gou-domains}
 
-**Question.** Where does the average insula axonal budget go, when targets are folded into Gou et al. 2025's six functional domains (autonomic, emotional/reward, sensory, motor, cognitive, memory)? Is there an L vs R difference in domain mass?
+**Question.** Where does the average normalized log-strength profile go, when targets are folded into Gou et al. 2025's six functional domains (autonomic, emotional/reward, sensory, motor, cognitive, memory)? Is there an L vs R difference in assigned transformed-strength share?
 
 **Hypothesis.** **H1a:** Sub-regions differ in domain composition (agranular loads reward/OFC-related *Emotional/Reward* mass; dysgranular loads *Sensory* via L6 interoceptive leaves). **H1b:** Pooled L vs R domain Cliff’s *δ* in `All_insula` often reflects **region×side confounding** (not a pure hemispheric effect) — Emotional/Reward imbalance tracks IAL oversampling of R-soma (see review §5–6).
 
 **References (supplementary).** Gou et al. (2025) *Cell* — Table S2(C) six meta-categories; Carmichael & Price (1995) *J Comp Neurol* — OFC categorization; review [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §4 (functional schema) and §6 (IAL-excluded strata).
 
-**Method.** Each `p_combo` column is mapped to a Gou domain by a 3-tier rule: (1) the manual `region_to_gou_category_map.csv` (`user_region → category_assigned`); (2) failing that, the modal `Category` from Gou's full ontology table (`area_function_category_full.csv`); (3) failing that, any insula L6 leaf is assigned to **Sensory** (interoceptive). The provenance of each column's assignment is written to `stats/01_gou_domain_column_map.csv` for audit. For each `(Region, panel)` cell we sum the relevant `p_combo` columns to get domain mass per neuron, then compute mean and Cliff's *δ* (L vs R). BH is within `Region` (one row at a time), so the L vs R contrasts are corrected only against the 6 domains, never across regions.
+**Method.** Each `p_combo` column is mapped to a Gou domain by a 3-tier rule: (1) the manual `region_to_gou_category_map.csv` (`user_region → category_assigned`); (2) failing that, the modal `Category` from Gou's full ontology table (`area_function_category_full.csv`); (3) failing that, any insula L6 leaf is assigned to **Sensory** (interoceptive). The provenance of each column's assignment is written to `stats/01_gou_domain_column_map.csv` for audit. For each `(Region, panel)` cell we sum the relevant `p_combo` columns to get assigned transformed-strength share per neuron, then compute mean and Cliff's *δ* (L vs R). BH is within `Region` (one row at a time), so the L vs R contrasts are corrected only against the 6 domains, never across regions.
 
 **Outputs.** `F1A_subregion_x_gou_panels_combined.png` (mean L+R, all rows including unilateral IAPM and tiny IDV), `F1B_subregion_x_gou_panels_LRcontrast.png` (Cliff's *δ* with BH stars; **inferential rows only — IAPM and IDV are dropped because n_R = 0 / n_total < 10**). Stats: `01_subregion_x_gou_panels.csv`.
 
@@ -473,7 +500,7 @@ PANEL_CODE_ORDER <- c("auto", "emo", "sens", "motor", "cog", "memory")
 ```{r 04-fig1-gou-domains}
 # ------------------------------------------------------------
 # P4 - F1 per-subregion x Gou functional-domain panels (L+R insula)
-# Domain mass = row sum of p_combo columns assigned to each Gou category.
+# Assigned transformed-strength share = row sum of p_combo columns assigned to each Gou category.
 # p_combo = L3 columns for non-insula targets + L6 columns for intra-insula targets (L3-only insula fallback).
 # Assignment: (1) region_to_gou_category_map user_region (L3 table);
 # (2) else modal Category from Gou et al. area_function_category_full.csv;
@@ -617,10 +644,10 @@ fig1_combined <- ggplot(f1_df, aes(panel_label, Region, fill = mean_combined)) +
     label = ifelse(mean_combined > 0.005,
                    sprintf("%.2f\nn=%d", mean_combined, n_total), sprintf("n=%d", n_total))
   ), size = 2.6, color = "black") +
-  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean prop\n(L+R)") +
+  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "Mean log-scaled length share\n(L+R)") +
   labs(
     title = "F1A. Functional-domain projection (Gou 6 panels, L+R combined)",
-    subtitle = "Hybrid p_combo (L3 extrinsic + L6 intra-insula); cell = mean summed prop per domain. n_total annotated.",
+    subtitle = "Mean shares of log-scaled length, summed by domain; overlapping L3/L6 features; n_total shown.",
     caption = paste(
       "Domain map: stats/01_gou_domain_column_map.csv. IAPM is L-only (n_R=0); IDV n=3 — non-inferential.",
       sep = "\n"
@@ -772,7 +799,7 @@ fig2 <- ggplot(f2_df, aes(target_id, Region, fill = mean_combined)) +
   geom_text(aes(
     label = ifelse(mean_combined > 0.005, sprintf("%.2f", mean_combined), "")
   ), size = 2.4, color = "black") +
-  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean prop\n(L+R)") +
+  scale_fill_gradient(low = "white", high = "#3a7ab8", name = "Mean log-scaled length share\n(L+R)") +
   labs(
     title = "F2. Sub-region × key target (L+R combined)",
     subtitle = "Hybrid policy: extra-insula targets at @L3, intra-insula leaves at @L6. Rows IAL→IDV.",
@@ -923,7 +950,7 @@ fig3a <- ggplot(f3_plot, aes(target, Region)) +
                    sprintf("%.2f\nn=%d", mean_prop_combined, n_with_proj),
                    ifelse(n_with_proj > 0, sprintf("n=%d", n_with_proj), ""))
   ), size = 2.4, color = "black") +
-  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean prop\n(L+R)") +
+  scale_fill_gradient(low = "white", high = "#1f6f8b", name = "mean log-scaled length share\n(L+R)") +
   labs(
     title = "F3A. Intra-insula source x target (L+R combined)",
     subtitle = "Columns: Ward.D2 on prevalence; dotted outline = same-subregion “self” edge.",
@@ -1058,7 +1085,7 @@ if (nrow(f4_scatter_df)) {
       ),
       caption = "Slopes and BH p in stats/04_interoceptive_gradient_regressions.csv (per target, per side).",
       x = ap_axis_lbl,
-      y = "Projection proportion to target (row-normalized L6)"
+      y = "Normalized log-scaled length share to target (L6)"
     ) +
     theme_minimal(base_size = 10) +
     theme(plot.subtitle = element_text(size = 8.5))
@@ -1068,11 +1095,11 @@ if (nrow(f4_scatter_df)) {
 ```
 
 
-## 2.5 Figure 5 — Ibias (axon length) {#08-fig5-ibias}
+## 2.5 Figure 5 — Individual retained length balance (Ibias) {#08-fig5-ibias}
 
-**Question.** Replicating Gou et al. 2025 *Cell*'s per-neuron hemispheric bias index, where does each insula neuron sit on the ipsi-vs-contra axis when measured by **total axon length** (not by branch-tip count)?
+**Question.** Using a signed retained-length balance, distinct from Gou et al.'s segmented-arbor measurements, where does each neuron sit on the ipsi-vs-contra axis for retained reconstruction length (not candidate endpoint count or segmented arbor count)?
 
-**Hypothesis.** **H5:** Insula **Ibias ≈ −1** for most neurons (**purely ipsilateral length**) — predicting **sparse callosal output** versus PFC ITc in Gou et al. (same metric, different anatomical nucleus). Biological **positive finding** (structure of insula efferents), not a “failed” L vs R test.
+**Historical description.** **Ibias ≈ −1** means predominantly ipsilateral retained length under the legacy measurement. It does not by itself establish sparse biological callosal output or replicate a segmented-arbor measurement.
 
 **References (supplementary).** Gou et al. (2025) *Cell* Methods / Fig. 5F Ibias; review §5 SQ3e + §8 C.3; Hayama & Ogawa (2001) rat insula callosal projections (sparse).
 
@@ -1080,12 +1107,12 @@ if (nrow(f4_scatter_df)) {
 
 **Outputs.** `F5_per_neuron_ibias.png` (scatter, faceted by sub-region; jittered with side colour), stats: `05_per_neuron_ibias.csv` (one row per neuron) + `05_per_neuron_ibias_summary.csv` (per-region summary).
 
-> ⚠️ **Caveat — insula has sparse contra projection.** In our dataset only ~2% of insula neurons have any contralateral axon (consistent with the rodent insula literature; see §5 SQ3e + §8 C.3 of [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md)), so `Ibias` collapses to ≈ −1 for almost every neuron. The figure visually flat-lines at -1 with a few outliers in IAL near +218 µm (anterior). This is the **biological story** (insula is not a major callosal source, unlike Gou's PFC ITc neurons), not a null result; report as a qualitative confirmation rather than a quantitative laterality test.
+> **Measurement caveat.** The historical tables reported only ~2% of neurons with a nonzero contralateral retained-length entry, so many Ibias values lie near -1. This is sampled reconstruction evidence under unverified compartment, terminal-target and registration semantics. It is not acceptance of biological absence, sparse callosal anatomy or a current-cohort result. Soma_NII_Y is an index coordinate; an index near 218 is not a distance of 218 micrometres.
 
 ```{r 08-fig5-ibias}
 # ------------------------------------------------------------
-# P8 - F5 continuous per-neuron Ibias on projection STRENGTH
-# Use Projection_Length_ipsi vs contra; if both zero we treat as bias = -1 (all ipsi by default)
+# P8 - F5 continuous per-neuron Ibias on retained regional lengths
+# Use Projection_Length_ipsi vs contra; if both totals are zero, Ibias is unavailable (NA)
 # ------------------------------------------------------------
 cat("[v2] F5 per-neuron Ibias (continuous)\n")
 len_ipsi  <- rowSums(m_len_l6, na.rm = TRUE)
@@ -1130,7 +1157,7 @@ n_bilateral <- sum(
 )
 fig5_subtitle <- sprintf(
   paste(
-    "Ibias = (contra-ipsi)/(contra+ipsi) on total L6 axon length; -1 = purely ipsilateral.",
+    "Ibias = (contra-ipsi)/(contra+ipsi) on legacy L6 regional voxel lengths (unverified compartments/terminal-target selection); -1 = purely ipsilateral.",
     "%.1f%% of insula neurons (%d / %d) are purely ipsilateral; only %d have any contra axon.",
     sep = "\n"
   ),
@@ -1147,10 +1174,10 @@ fig5 <- ggplot(ibias_df %>% filter(Region %in% SUBREGION_ROW_ORDER),
   scale_color_manual(values = c(L = "#0072b2", R = "#c1272d"), name = "Side") +
   ylim(-1.05, 1.05) +
   labs(
-    title = "F5. Per-neuron continuous hemispheric bias (Gou-style)",
+    title = "F5. Individual ipsi/contra balance of retained length",
     subtitle = fig5_subtitle,
     caption = "Insula is not a major callosal source - this is a biological property, not a null result.",
-    x = ap_axis_lbl, y = "Hemispheric bias (Ibias)"
+    x = ap_axis_lbl, y = "Retained length balance (Ibias)\n-1 ipsi; +1 contra"
   ) +
   theme_minimal(base_size = 10) +
   theme(plot.subtitle = element_text(size = 8.5))
@@ -1159,7 +1186,7 @@ ggsave(file.path(OUT_FIGS, "F5_per_neuron_ibias.png"), fig5,
 ```
 
 
-## 2.6 Figure 6 — Composition laterality index {#09-fig6-composition-li}
+## 2.6 Figure 6 — Left vs right source contrast {#09-fig6-composition-li}
 
 **Question.** Across the 67 + 8 hybrid `p_combo` columns, which targets show the largest L vs R group-mean composition difference, and which of those survive BH within stratum?
 
@@ -1289,12 +1316,12 @@ make_li_bars <- function(df, title_txt) {
     coord_flip() +
     facet_wrap(~ stratum, scales = "free_y", ncol = 1, strip.position = "top") +
     scale_x_discrete(labels = function(x) sub("^.*__", "", x)) +
-    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Dir") +
+    scale_fill_manual(values = c("L>R" = "#E74C3C", "R>L" = "#3498DB"), name = "Higher source-group mean") +
     expand_limits(y = c(-1.25, 1.25)) +
     labs(
       title = title_txt,
       subtitle = "BH across targets within each stratum. Bars labelled with nL, nR, and BH q.",
-      x = "Target (region@layer)", y = "Laterality index (L-R)/(L+R)"
+      x = "Target (region@layer)", y = "Left vs right SOURCE contrast\n(mean_L-mean_R)/(mean_L+mean_R+eps)"
     ) +
     theme_minimal(base_size = 10) +
     theme(
@@ -1307,11 +1334,11 @@ make_li_bars <- function(df, title_txt) {
 
 g6b <- make_li_bars(
   dplyr::filter(li_sig, receipt_class == "bilateral_receiving"),
-  "F6. Bilateral-receiving targets (preferred LI interpretation)"
+  "F6. Targets with evidence from both source groups"
 )
 g6c <- make_li_bars(
   dplyr::filter(li_sig, receipt_class == "one_side_only_or_extreme"),
-  "F6 supplement. One-sided / extreme receipt (QC; not symmetric sampling)"
+  "F6 supplement. Evidence from one source group only (sampling QC)"
 )
 ggsave(
   file.path(OUT_FIGS, "F6_projection_LI_bilateral_receiving.png"),
@@ -1335,9 +1362,9 @@ g6v <- ggplot(li_plot_df, aes(stratum_family, LI, fill = stratum_family)) +
   geom_boxplot(width = 0.18, outlier.size = 0.5, alpha = 0.9) +
   geom_hline(yintercept = 0, linetype = 2, linewidth = 0.35) +
   labs(
-    title = "F6. Target-level LI distributions by stratum family",
+    title = "F6. Left vs right source contrast across targets",
     subtitle = "Includes all-neurons and per-subregion strata with both L and R somas.",
-    x = NULL, y = "Laterality index"
+    x = NULL, y = "Left vs right SOURCE contrast"
   ) +
   theme_minimal(base_size = 10) +
   theme(legend.position = "none")
@@ -1418,10 +1445,10 @@ if (nrow(summ_ap) >= 40) {
       fig10 <- ggplot(f10_long, aes(target, ap_label, fill = mean_prop)) +
         geom_tile(color = "grey85") +
         geom_text(aes(label = sprintf("%.2f", mean_prop)), size = 2.8, color = "grey15") +
-        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nprop") +
+        scale_fill_gradient(low = "white", high = "#1a3353", name = "Mean\nlog-scaled length share") +
         labs(
           title = "F10. Interoceptive targets vs soma AP (octiles)",
-          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); L6 row-normalized mean prop.",
+          subtitle = "Rows: soma NII-Y octiles (posterior low Y bottom); Mean ipsilateral log-scaled length shares at L6.",
           x = "Target", y = "Soma AP (posterior ↑ anterior)"
         ) +
         theme_minimal(base_size = 9) +
@@ -1443,15 +1470,15 @@ if (nrow(summ_ap) >= 40) {
 
 **Question.** Restated F6, but now asking **which targets are ranked most asymmetric by direct non-parametric tests** (Cliff's *δ* + Fisher), with BH correction within (`stratum × hierarchy × family`) — separating intra-insula edges from extra-insula targets — to avoid inflating the family size.
 
-**Hypothesis.** **H6′:** BH within **family** (intra vs extra-insula) recovers **`Ig`, `LPal`** aligned with **`Ia/Id`** as the strongest asymmetric **receivers** in **`IDD5_balanced`** — **cross-validation** of the composition-LI narrative without assuming a single distance metric.
+**Scope.** This supplementary ranking uses the same sampled neurons as the composition contrast. Presence and magnitude are reported as separate test families; this is not independent cross-validation or animal-level inference.
 
 **References (supplementary).** Cliff (1993) *Psychol Bull*; Benjamini & Hochberg (1995); Neuhauser *Nonparametric Statistical Tests*; review §11B.3 (hurdle decomposition).
 
-**Method.** Iterate over balanced strata (`IDD5_plus_IDM_balanced`, `IDD5_balanced`, `IDM_balanced`) and `all_combined`. Each target is tested **once at its policy hierarchy** (`L6` if it's an insula leaf with an L6 column; otherwise `L3`). Each row is tagged `family ∈ {intra_insula, extra_insula}` and BH is applied within `(stratum × hierarchy × family)`. The bar chart selects targets with `best_q < 0.05` in any balanced stratum, takes the top 18, and labels each bar with the strongest `q`, the stratum that gave it, and the family.
+**Method.** Iterate over region-restricted neuron strata (`IDD5_plus_IDM_balanced`, `IDD5_balanced`, `IDM_balanced`) and `all_combined`. Each target is tested **once at its policy hierarchy** (`L6` if it's an insula leaf with an L6 column; otherwise `L3`). Each row is tagged `family ∈ {intra_insula, extra_insula}` and BH is applied within `(stratum × hierarchy × family)`. Following the established workflow in commit `d27c855b82a280989850d71f9f1eb994f70df58e`, create separate presence and magnitude rows and retain `q < 0.05` within each test family. Rank at most 18 targets per family and facet the display by test family. Do not take a minimum across presence/magnitude q-values. Selecting a best stratum for display does not establish correction across strata or independent animal replication.
 
-**Outputs.** `F6_supplement_rank_based_receivers.png`, stats: `06_asymmetric_receivers_BH.csv` (all rows, with `p_pres_BH`, `p_mag_BH`, `best_q`, `direction`).
+**Outputs.** `F6_supplement_rank_based_receivers.png`; `06_asymmetric_receivers_BH.csv` keeps the separate adjusted p-value columns; `06_asymmetric_receivers_BH_long.csv` adds the established `test_family` and `q` representation. Old saved outputs are preserved until a separate versioned rerun.
 
-**How to read.** This run yields three bars: `Ig@L6` (L>R, intra-insula, q ≈ 8 × 10⁻¹⁰ in IDD5_balanced), `Ia/Id@L6` (R>L, intra-insula, q ≈ 8 × 10⁻⁴), `LPal@L3` (L>R, extra-insula, q ≈ 0.01) — exactly the two pillars of [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §11C reproduced from the harmonized data. The three bars are sparse because every other Cliff-asymmetric target either fails BH (small effect) or sits in a non-balanced stratum.
+**Historical selector readback.** Applying the established selector to the saved 306-neuron statistics gives presence targets `Ig@L6` and `LPal@L3`, and magnitude targets `Ia/Id@L6`, `Ig@L6` and `LPal@L3`. These are five family-specific display rows for three distinct targets, not a fresh 353-neuron result. The original p-values are unchanged; this audit does not establish a valid animal-level model.
 
 ```{r 11-fig6-rank-supplement}
 # ------------------------------------------------------------
@@ -1506,60 +1533,62 @@ f6_df <- bind_rows(f6_rows) %>%
   mutate(
     p_pres_BH = p.adjust(p_pres, method = "BH"),
     p_mag_BH  = p.adjust(p_mag,  method = "BH"),
-    best_q = pmin(p_pres_BH, p_mag_BH, na.rm = TRUE),
     direction = ifelse(mean_L > mean_R, "L>R", "R>L")
   ) %>%
-  ungroup() %>%
-  arrange(best_q, desc(abs(cliffs_delta)))
+  ungroup()
 write.csv(f6_df, file.path(OUT_STATS, "06_asymmetric_receivers_BH.csv"), row.names = FALSE)
 
-# Top asymmetric receivers in any balanced stratum, ranked by best_q.
-# Group by target_id (region@hierarchy) so LPal@L3 is distinct from L6 pallidal sub-leaves.
-# Threshold widened to BH<0.10 to surface near-significant targets in this partial cohort.
+# Top targets that survive BH<0.05 — report presence and magnitude separately
+# (never pmin across families; BH already within stratum × hier × family).
 balanced_strata <- c("IDD5_plus_IDM_balanced", "IDD5_balanced", "IDM_balanced")
-top_targets <- f6_df %>%
-  filter(stratum %in% balanced_strata, best_q < 0.10) %>%
-  group_by(target_id) %>%
+f6_long <- bind_rows(
+  f6_df %>% mutate(test_family = "presence",  q = p_pres_BH),
+  f6_df %>% mutate(test_family = "magnitude", q = p_mag_BH)
+)
+write.csv(f6_long, file.path(OUT_STATS, "06_asymmetric_receivers_BH_long.csv"),
+          row.names = FALSE)
+
+top_targets <- f6_long %>%
+  filter(stratum %in% balanced_strata, !is.na(q), q < 0.05) %>%
+  group_by(test_family, target_id) %>%
   summarise(
-    best_q = min(best_q, na.rm = TRUE),
-    best_stratum = stratum[which.min(best_q)],
-    direction_at_best = direction[which.min(best_q)],
+    best_q = min(q, na.rm = TRUE),
+    best_stratum = stratum[which.min(q)],
+    direction_at_best = direction[which.min(q)],
     abs_delta = max(abs(cliffs_delta), na.rm = TRUE),
-    n_L_at_best = n_L[which.min(best_q)],
-    n_R_at_best = n_R[which.min(best_q)],
-    family = first(family),
+    spatial_family = first(family),
     .groups = "drop"
   ) %>%
-  arrange(best_q, desc(abs_delta)) %>%
-  slice_head(n = 18)
+  group_by(test_family) %>%
+  arrange(best_q, desc(abs_delta), .by_group = TRUE) %>%
+  slice_head(n = 18) %>%
+  ungroup()
 if (nrow(top_targets)) {
   top_targets <- top_targets %>%
-    mutate(target_id = factor(target_id, levels = rev(target_id)))
+    mutate(target_id = factor(target_id, levels = rev(unique(target_id))))
   fig6 <- ggplot(top_targets, aes(target_id, abs_delta, fill = direction_at_best)) +
     geom_col() +
-    geom_text(aes(label = sprintf(
-      "q=%.2g | %s | %s | nL=%d nR=%d",
-      best_q, best_stratum, family, n_L_at_best, n_R_at_best
-    )),
+    geom_text(aes(label = sprintf("q=%.2g\n%s\n%s", best_q, best_stratum, spatial_family)),
               hjust = -0.05, size = 2.2, lineheight = 0.95) +
+    facet_wrap(~test_family, scales = "free_y") +
     coord_flip() +
-    expand_limits(y = max(top_targets$abs_delta, na.rm = TRUE) * 1.85) +
+    expand_limits(y = max(top_targets$abs_delta, na.rm = TRUE) * 1.55) +
     scale_fill_manual(values = c(`L>R` = "#0072b2", `R>L` = "#c1272d"), name = "Direction") +
     labs(
-      title = "F6 supplement. Top asymmetric receiver targets (rank-based)",
-      subtitle = "BH within (stratum x layer x family). Threshold widened to BH q<.10 in partial cohort.",
-      caption = "Each bar = best result for that target across balanced strata. See F6_projection_LI_*.png for composition LI.",
-      x = "Target (region@layer)", y = "max |Cliff's d|"
+      title = "F6 supplement. Top asymmetric receiver targets (by test family)",
+      subtitle = "BH within stratum × layer × spatial family; presence and magnitude ranked separately.",
+      caption = "Composition LI: F6_projection_LI_*.png",
+      x = "Target (region@layer)", y = "max |Cliff's δ|"
     ) +
     theme_minimal(base_size = 10) +
     theme(plot.caption = element_text(size = 7.5, hjust = 0))
 } else {
   fig6 <- ggplot() +
-    annotate("text", x = 0.5, y = 0.5, label = "No rank-based BH hits in balanced strata") +
+    annotate("text", x = 0.5, y = 0.5, label = "No rank-based BH hits in region-restricted neuron strata") +
     theme_void() +
     labs(
-      title = "F6 supplement. Top asymmetric receiver targets (rank-based)",
-      subtitle = "No BH hits in balanced strata at q<.10.",
+      title = "F6 supplement. Top asymmetric receiver targets (by test family)",
+      subtitle = "No BH hits in region-restricted neuron strata at q<.05 (presence or magnitude).",
       caption = "Composition LI: F6_projection_LI_*.png"
     ) +
     theme(plot.caption = element_text(size = 7.5, hjust = 0))
@@ -1573,7 +1602,7 @@ ggsave(file.path(OUT_FIGS, "F6_supplement_rank_based_receivers.png"), fig6,
 
 **Question.** For the six headline endpoints (`Ig`, `Cl`, `LPal`, `VPal`, `PAG` proxied by `VMid`, `caudal_OFC`), how does Cliff's *δ* L vs R behave across four strata simultaneously? This is the single figure that lets a reader see at a glance where each headline finding is robust and where it is sampling-driven.
 
-**Hypothesis.** **H7:** **`Ig`** and **`LPal`** stay **L>R** in **`IDD5_balanced`** ***or*** **`IDD5_plus_IDM_balanced`**; **`caudal_OFC`** flips/significant only under **`all_combined`** (**null** under balanced strata = sampling artefact per review §8). **`VMid`/PAG** remains **non-significant** here — Oppenheimer **cardiac-autonomic-at-brainstem** sub-model **not testable** at this atlas granularity (aggregate midbrain shells).
+**Hypothesis.** **H7:** **`Ig`** and **`LPal`** stay **L>R** in **`IDD5_balanced`** ***or*** **`IDD5_plus_IDM_balanced`**; **`caudal_OFC`** flips/significant only under **`all_combined`** (**null** under region-restricted neuron strata = sampling artefact per review §8). **`VMid`/PAG** remains **non-significant** here — Oppenheimer **cardiac-autonomic-at-brainstem** sub-model **not testable** at this atlas granularity (aggregate midbrain shells).
 
 **References (supplementary).** Craig (2005) bicameral forebrain; Hoy et al. (2023) *Nat Commun* insula↔reward; Oppenheimer & Cechetto (2016); review §11C.
 
@@ -1669,7 +1698,7 @@ ggsave(file.path(OUT_FIGS, "F7_hierarchy_sensitivity.png"), fig7,
 ```
 
 
-## 2.10 Figure 8 — Leave-one-monkey-out {#13-fig8-loso}
+## 2.10 Figure 8 — Leave-one-SampleID-out {#13-fig8-loso}
 
 **Question.** Are the headline laterality effects (Ig, Cl, LPal, VPal, Pi, Ia/Id, caudal_OFC, VPons, VMid) carried by a single monkey, or do they survive removing each animal in turn?
 
@@ -1729,7 +1758,7 @@ fig8 <- ggplot(f8_df %>% filter(stratum == "IDD5_plus_IDM_balanced"),
   facet_wrap(~ target, ncol = 4) +
   scale_fill_manual(values = c(`L>R` = "#0072b2", `R>L` = "#c1272d")) +
   labs(
-    title = "F8. Leave-one-monkey-out sensitivity (IDD5+IDM stratum)",
+    title = "F8. Leave-one-SampleID-out sensitivity (IDD5+IDM stratum)",
     subtitle = paste(
       "Cliff's d L vs R; __none__ = full data; q-labels show BH<.05 within (stratum x dropped).",
       "NOTE: dropping 251637 empties the dysgranular cohort - read the 252383/4/5 columns as the real check.",
@@ -1757,7 +1786,7 @@ ggsave(file.path(OUT_FIGS, "F8_loso_sensitivity.png"), fig8,
 
 **References (supplementary).** Mantel (1967) *Cancer Res*; Legendre & Legendre (1998/2012) *Numerical Ecology* §10.6; Gou et al. (2025) Supp morphology–projection linkage; Winnubst et al. (2019) data-quality framing; review §5 SQ4, §11A.5 (ρ ≈ 0.68 combined L6 note).
 
-**Method.** Re-build a 306×306 FNT distance matrix from the `Score` column (the FNT score *is* a distance — no inversion). Compute Bray-Curtis on `p_combo` rows via `vegan::vegdist`, run `vegan::mantel(method = "spearman", permutations = 999)`. Also build an `FNT01` display matrix (min-max scaled FNT) and a `|d_rank|` mismatch matrix (per-pair absolute difference of within-pair ranks) for the F9b parallel-heatmap view. Row/column order in F9b is `hclust` on the average of FNT01 and Bray, so the same neuron index spans all three panels.
+**Method.** Build the exact-cohort square FNT distance matrix (historical run: 306×306) from the `Score` column (the FNT score *is* a distance — no inversion). Compute Bray-Curtis on `p_combo` rows via `vegan::vegdist`, run `vegan::mantel(method = "spearman", permutations = 999)`. Also build an `FNT01` display matrix (min-max scaled FNT) and a `|d_rank|` mismatch matrix (per-pair absolute difference of within-pair ranks) for the F9b parallel-heatmap view. Row/column order in F9b is `hclust` on the average of FNT01 and Bray, so the same neuron index spans all three panels.
 
 **Outputs.** `F9_FNT_vs_projection_pairwise.png` (hex bin of all upper-triangle pairs), `F9b_FNT_vs_projection_heatmaps_SQ5.png` (three aligned heatmaps with side annotation track), stats: `08_mantel_replication.csv`.
 
@@ -1983,7 +2012,7 @@ stat_registry <- tibble::tribble(
   "F6_projection_LI_violin_by_stratum_family.png", "06b_projection_laterality_index_all_targets.csv", "LI distribution",
   "F6_supplement_rank_based_receivers.png", "06_asymmetric_receivers_BH.csv", "Rank tests Cliff/Fisher",
   "F7_hierarchy_sensitivity.png", "07_hierarchy_sensitivity_per_target.csv", "Headline targets resolved L3/L6",
-  "F8_loso_sensitivity.png", "09_loso_sensitivity.csv", "Leave-one-monkey-out",
+  "F8_loso_sensitivity.png", "09_loso_sensitivity.csv", "Leave-one-SampleID-out",
   "F9_FNT_vs_projection_pairwise.png", "08_mantel_replication.csv", "Hex + Mantel rho/p",
   "F9b_FNT_vs_projection_heatmaps_SQ5.png", "08_mantel_replication.csv", "Parallel matrices + d_rank",
   "F10_interoceptive_AP_octile_heatmap.png", "10_ap_octile_interoceptive_profile.csv", "AP octile x targets",
@@ -2018,13 +2047,13 @@ readme_txt <- c(
   paste0("**Input workbook:** `", COMBINED_XLSX, "`"),
   "**Anchor doc:** [`notes/LR_insula_analysis_review.md`](../../../../notes/LR_insula_analysis_review.md) (biological framing, sampling-design audit, full reference list).",
   "",
-  "> ⚠️ **Interim cohort.** This run analyses the partial dataset currently available (4 macaques, 306 neurons after harmonization). Numbers will change as more samples are added. Always cite this README's cohort table next to any figure quoted in a manuscript draft.",
+  "> **Historical cohort warning.** The preserved quoted results refer to 306 neurons from four SampleIDs. The workbook audited 2026-10-09 has 353 neurons from six SampleIDs, not an established six-animal cohort. A fresh exact-cohort/namespace/unit preflight and versioned rerun are required before quoting current results.",
   "",
   "## Cohort (this run)",
   "",
   ctx_lines,
   "",
-  "**Inferential anchor:** `IDD5_plus_IDM_balanced` (only L/R-balanced anatomical stratum). All BH-corrected laterality claims are anchored here.",
+  "**Inferential anchor:** `IDD5_plus_IDM_balanced` (L/R-sampled region restriction; not animal balancing). All BH-corrected laterality claims are anchored here.",
   "",
   "## Reproduce",
   "",
@@ -2059,11 +2088,11 @@ readme_txt <- c(
   "| F3B | Intra-insula prevalence (% projecting) | `03_intra_insula_prevalence.csv` |",
   "| F3C | Intra-insula L vs R Cliff's d, BH within source row | `03_intra_insula_full.csv` |",
   "| F4  | Interoceptive prop ~ Soma_NII_Y per side (per target OLS) — descriptive due to sub-region/side confound | `04_interoceptive_gradient_regressions.csv` |",
-  "| F5  | Per-neuron Ibias = (contra-ipsi)/(contra+ipsi) on axon length | `05_per_neuron_ibias.csv` |",
+  "| F5  | Per-neuron Ibias = (contra-ipsi)/(contra+ipsi) on retained regional length | `05_per_neuron_ibias.csv` |",
   "| F6 LI | Composition LI per target × stratum (`bilateral_receiving` panel preferred) | `06b_projection_laterality_index_all_targets.csv` |",
-  "| F6 supplement | Top BH-significant rank-based receivers across balanced strata | `06_asymmetric_receivers_BH.csv` |",
+  "| F6 supplement | Top BH-significant rank-based receivers across region-restricted neuron strata | `06_asymmetric_receivers_BH.csv` |",
   "| F7  | Headline endpoints (Ig, Cl, LPal, VPal, PAG-proxy, caudal_OFC) across 4 strata | `07_hierarchy_sensitivity_per_target.csv` |",
-  "| F8  | Leave-one-monkey-out for headline targets (IDD5+IDM stratum primary) | `09_loso_sensitivity.csv` |",
+  "| F8  | Leave-one-SampleID-out for headline targets (IDD5+IDM stratum primary) | `09_loso_sensitivity.csv` |",
   "| F9  | Pairwise FNT vs Bray-Curtis (hex bin) — positive control | `08_mantel_replication.csv` |",
   "| F9b | F9 as parallel SQ5-style heatmaps (FNT01 ‖ Proj ‖ |Δrank|) | `08_mantel_replication.csv` |",
   "| F10 | Interoceptive targets vs soma AP octile heatmap | `10_ap_octile_interoceptive_profile.csv` |",
@@ -2073,8 +2102,8 @@ readme_txt <- c(
   "",
   "1. **Dysgranular → granular Ig L > R** — F3C IDD5 row Cliff *d* = +0.72 (BH < 0.001); F6 supplement q ≈ 8 × 10⁻¹⁰ in IDD5_balanced.",
   "2. **Dysgranular → ventral / lateral pallidum + claustrum L > R** — F2B IDD5 LPal Cliff *d* = +0.36 (BH < 0.01); F6 supplement q ≈ 0.01.",
-  "3. **Insula is dominantly intra-insula** — F3A/B 96.4% of 306 neurons project intra-insula; mean intra fraction = 58% of axonal budget.",
-  "4. **Caudal-OFC R > L is a sampling artefact** — F7 R>L*** in `all_combined` only; null in IDD5/IDM balanced strata.",
+  "3. **Insula is dominantly intra-insula** — F3A/B 96.4% of 306 neurons project intra-insula; mean intra fraction = 58% of normalized log-strength composition (historical cohort; not a raw-length budget).",
+  "4. **Caudal-OFC R > L is a sampling artefact** — F7 R>L*** in `all_combined` only; null in IDD5/IDM region-restricted neuron strata.",
   "",
   "Autonomic Gou panel (F1) and PAG / VPal endpoints (F7) are firmly null in inferential strata — Oppenheimer 1992 cardiac sub-model is not testable at NMT v2.1 L6 brainstem aggregation.",
   "",
@@ -2242,7 +2271,7 @@ caption_md <- c(
   "**Pipeline:** [`v2_combined_primary_pipeline.Rmd`](../../../v2_combined_primary_pipeline.Rmd). **Stats:** [`../stats/`](../stats/). **Spec:** [`../spec/`](../spec/). **Anchor doc:** [`notes/LR_insula_analysis_review.md`](../../../../../notes/LR_insula_analysis_review.md).",
   "",
   sprintf(
-    "**Cohort (this run).** N = **%d** neurons (L=%d, R=%d) across 4 macaques after harmonization; primary inferential stratum is `IDD5_plus_IDM_balanced` (n_L = %d, n_R = %d).",
+    "**Cohort (this run).** N = **%d** neurons (L=%d, R=%d) after harmonization; independent animal replication is unestablished; exploratory region-restricted stratum is `IDD5_plus_IDM_balanced` (n_L = %d, n_R = %d).",
     nrow(summ), cohort_n_l, cohort_n_r,
     sum(summ$Side == "L" & summ$Region %in% c("IDD5", "IDM")),
     sum(summ$Side == "R" & summ$Region %in% c("IDD5", "IDM"))
@@ -2263,8 +2292,8 @@ caption_md <- c(
   "",
   "## F1A — `F1A_subregion_x_gou_panels_combined.png`",
   "",
-  "**Question.** How does each insula sub-region's axonal budget split across the six Gou et al. 2025 functional domains?",
-  "**What is shown.** Mean summed target proportion (L+R combined) per (sub-region × Gou domain). The `All_insula` row pools all 306 neurons. Each cell is annotated with the value and `n_total`.",
+  "**Question.** How does each insula sub-region's normalized log-strength profile map across the six Gou et al. 2025 functional domains?",
+  "**What is shown.** Mean summed share of log-scaled length (L+R combined) per (sub-region × Gou domain). The `All_insula` row pools the selected neurons; preserved quoted values refer to the historical 306-neuron cohort. Each cell is annotated with the value and `n_total`.",
   "**Anchor stats.** `../stats/01_subregion_x_gou_panels.csv` (one row per `Region × panel`); column-to-domain provenance in `../stats/01_gou_domain_column_map.csv`.",
   "**How to interpret.** F1A is descriptive structure. Dysgranular IDD5/IDM are sensory-dominant (Ia/Id and Ig in p_combo at L6); IAL (anterior agranular) loads Emotional/Reward via caudal_OFC. Read F1B for the L vs R contrast.",
   "",
@@ -2319,8 +2348,8 @@ caption_md <- c(
   "",
   "## F5 — `F5_per_neuron_ibias.png`",
   "",
-  "**Question.** Per-neuron continuous hemispheric bias on axon length (Gou-style).",
-  "**What is shown.** Ibias = (contra − ipsi)/(contra + ipsi) on total axon length, vs Soma_NII_Y, faceted by sub-region. -1 = purely ipsilateral.",
+  "**Question.** Per-neuron continuous hemispheric bias on legacy regional voxel lengths; not segmented-arbor replication.",
+  "**What is shown.** Ibias = (contra − ipsi)/(contra + ipsi) on legacy regional voxel lengths (unverified compartments/terminal-target selection), vs Soma_NII_Y, faceted by sub-region. -1 = purely ipsilateral.",
   "**Anchor stats.** `../stats/05_per_neuron_ibias.csv` (per-neuron) + `05_per_neuron_ibias_summary.csv` (per region × side).",
   "**Biological note.** Insula has very sparse contralateral projection (~98% of insula neurons are purely ipsilateral). This is a structural property, not a null result; insula is not a major callosal source (compare Gou's PFC ITc neurons).",
   "",
@@ -2345,8 +2374,8 @@ caption_md <- c(
   "",
   "## F6 supplement — `F6_supplement_rank_based_receivers.png`",
   "",
-  "**Question.** Cross-checking F6 with rank-based tests: top BH-significant asymmetric receivers across balanced strata.",
-  "**What is shown.** Top 18 (or fewer) targets in any balanced stratum at BH q < 0.10, ranked by `best_q`; bars labelled with q, best stratum, family (intra/extra insula), n_L, n_R.",
+  "**Question.** Cross-checking F6 with rank-based tests: top BH-significant asymmetric receivers across region-restricted neuron strata.",
+  "**What is shown.** Top 18 (or fewer) targets in any region-restricted neuron stratum at BH q < 0.10, ranked by `best_q`; bars labelled with q, best stratum, family (intra/extra insula), n_L, n_R.",
   "**Anchor stats.** `../stats/06_asymmetric_receivers_BH.csv`.",
   "**How to interpret.** Three bars in this run: `Ig@L6` L>R (q ≈ 8 × 10⁻¹⁰, intra-insula), `Ia/Id@L6` R>L (q ≈ 8 × 10⁻⁴, intra-insula), `LPal@L3` L>R (q ≈ 0.01, extra-insula). Sparse because this is the partial cohort.",
   "",
@@ -2359,7 +2388,7 @@ caption_md <- c(
   "",
   "## F8 — `F8_loso_sensitivity.png`",
   "",
-  "**Question.** Leave-one-monkey-out: do the headline endpoints survive removing each animal?",
+  "**Question.** Leave-one-SampleID-out: do the headline endpoints survive removing each animal?",
   "**What is shown.** Cliff's *d* per (target × dropped sample) in IDD5+IDM stratum; `__none__` = full data. q labels = BH p_mag<0.05 within (stratum × dropped).",
   "**Anchor stats.** `../stats/09_loso_sensitivity.csv` (includes `n_L`, `n_R` per drop).",
   "**Caveat.** Dropping 251637 collapses the dysgranular cohort (no IDD5/IDM neurons left). Read the `__none__`, `252383`, `252384`, `252385` columns as the real check; the 251637 column is a structural artefact.",
@@ -2381,13 +2410,13 @@ caption_md <- c(
   "## F10 — `F10_interoceptive_AP_octile_heatmap.png`",
   "",
   "**Question.** Sub-region-agnostic AP gradient: how do interoceptive target proportions track soma Y in 8 octiles?",
-  "**What is shown.** Mean L6 proportion per (octile × target) for {Ig, Pi, Ial, Iam/Iapm, Ia/Id}; rows sorted by median Y (posterior bottom).",
+  "**What is shown.** Mean normalized L6 log-scaled length share per (octile × target) for {Ig, Pi, Ial, Iam/Iapm, Ia/Id}; rows sorted by median Y (posterior bottom).",
   "**Anchor stats.** `../stats/10_ap_octile_interoceptive_profile.csv`.",
   "**How to interpret.** Posterior octiles (Y ~170–185) are Ia/Id-dominant with secondary Ig (up to 0.31); transition octile (Y ~210) loses Ia/Id and gains Ial; anterior octiles (Y ~218) are Ial-dominant. The macaque counterpart of Gehrlach 2020 mouse posterior-to-anterior intra-insula flow.",
   "",
   "## P13 flatmap — `../flatmap_overlays/P13_flatmap_with_LR_context_strip.png`",
   "",
-  "**Question.** Where do the 306 somata sit on the insula flatmap, by monkey × side?",
+  "**Question.** Where do the selected somata sit on the insula flatmap, by SampleID × side?",
   "**What is shown.** Combined flatmap with monkey-coloured + side-shaped (circle = L, triangle = R) markers; `n` strip below shows per-sub-region L/R counts (harmonized scheme).",
   "**Anchor stats.** `../stats/00_context_per_subregion_n.csv`.",
   ""
@@ -2401,13 +2430,13 @@ cat("[v2] R pipeline done; outputs at", OUT_ROOT, "\n")
 
 # 4 · Headline findings (this run)
 
-The four pillars below are the BH-robust outputs of the pipeline above as of this run, mapped against the framework laid out in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §11C. All are anchored in the only L/R-balanced anatomical stratum (`IDD5_balanced`, n_L = 34, n_R = 36) and replicate in `IDD5_plus_IDM_balanced` (n_L = 81, n_R = 68).
+The four pillars below are the BH-robust outputs of the pipeline above as of this run, mapped against the framework laid out in [`notes/LR_insula_analysis_review.md`](../../notes/LR_insula_analysis_review.md) §11C. All are anchored in the L/R-sampled region restriction; not animal balancing (`IDD5_balanced`, n_L = 34, n_R = 36) and replicate in `IDD5_plus_IDM_balanced` (n_L = 81, n_R = 68).
 
 | # | Finding | Evidence (this run) | Theoretical reading |
 |---|---|---|---|
 | **1** | **Dysgranular → granular Ig L > R** | F3C: IDD5 → Ig Cliff *δ* = +0.72 (BH < 0.001); F6 supplement: q ≈ 8 × 10⁻¹⁰ in IDD5_balanced; F7: Ig*** in 3 of 4 strata; F8: persists across `__none__`, 252383, 252384, 252385 drops | Left-side dominant interoceptive prediction-error refinement (EPIC; Barrett 2015) + Craig 2005 left-vagal-positive-integration limb |
 | **2** | **Insula → ventral / lateral pallidum + claustrum L > R** | F2B: IDD5 LPal Cliff *δ* = +0.36** (BH < 0.01); F6 supplement: LPal q ≈ 0.01 in IDD5_balanced; F7: LPal*** in IDD5_balanced; F8: stable across drops | Left-approach / positive-RPE limb (Craig 2005 + Hoy 2022); ventral pallidum is the canonical reward-approach gateway |
-| **3** | **Insula is dominantly an intra-insula projection system** | F3A/B: 96.4% of 306 neurons project intra-insula at L6; mean intra-insula fraction = 58% of axonal budget; F10 confirms posterior-to-anterior gradient | Anatomical substrate of "homeostatic emotion" (Craig 2002); single-cell extension of Gehrlach 2020 mouse |
+| **3** | **Insula is dominantly an intra-insula projection system** | F3A/B: 96.4% of 306 neurons project intra-insula at L6; mean intra-insula fraction = 58% of normalized log-strength composition (historical cohort; not a raw-length budget); F10 confirms posterior-to-anterior gradient | Anatomical substrate of "homeostatic emotion" (Craig 2002); single-cell extension of Gehrlach 2020 mouse |
 | **4** | **Apparent caudal-OFC R > L is a sampling artefact** | F7: R>L*** in `all_combined` only; null in `IDD5_balanced`, `IDD5_plus_IDM_balanced`, `IDM_balanced`; LI = -0.48 in `all_neurons` driven by R-IAL = 117 vs L-IAL = 21 | Bilateral agranular → caudal-OFC pathway (Mesulam-Mufson 1982 III; Carmichael-Price 1995); not a hemisphere effect |
 
 The **autonomic Gou panel** (F1) and the **PAG / brainstem-autonomic** endpoints (F7) remain firmly null in the inferential strata — the strict Oppenheimer 1992 cardiac-control sub-model is **not testable** at NMT v2.1 L6 brainstem aggregation, not refuted (see §11C.3 of the review notes).
@@ -2416,7 +2445,7 @@ The **autonomic Gou panel** (F1) and the **PAG / brainstem-autonomic** endpoints
 
 | # | Caveat | Implication |
 |---|---|---|
-| 1 | **Partial cohort.** This run uses 306 neurons across 4 macaques; only 251637 was an insula-targeted injection. Numbers will change as more samples are added. | Treat all numeric headlines as version-stamped to this run. The CSVs in `stats/` are the canonical record; the `tables/manuscript_quoted_numbers.xlsx` workbook is regenerated each run. |
+| 1 | **Historical cohort.** Preserved outputs use 306 neurons from four SampleIDs; the workbook audited 2026-10-09 has 353 neurons from six SampleIDs without an established six-animal interpretation; only 251637 was an insula-targeted injection. Numbers will change as more samples are added. | Treat all numeric headlines as version-stamped to this run. The CSVs in `stats/` are the canonical record; the `tables/manuscript_quoted_numbers.xlsx` workbook is regenerated each run. |
 | 2 | **IAL severely L-undersampled.** Combined IAL is 21 L : 117 R. | F7 `caudal_OFC` shows the structural R>L artefact; do not interpret it as laterality. Restrict L/R claims to IDD5/IDM. |
 | 3 | **Dysgranular only in 251637.** No new monkey contributed IDD5/IDM neurons. | F8 `dropped == 251637` collapses the inferential cohort and is an artefact, not a sensitivity result. |
 | 4 | **Insula has sparse contralateral output.** ~2% of neurons have any contra projection. | F5 Ibias is structurally near -1 for almost everyone; report as "insula is not a major callosal source", not as a quantitative laterality test. Gou-style per-neuron Ibias is not applicable as an inferential measure. |

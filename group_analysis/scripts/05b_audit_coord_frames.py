@@ -9,8 +9,8 @@ Method: for one example neuron from each sample, compare:
   - SWC root soma coordinate (parsed from getNeuronByID text)
   - Summary sheet Soma_Phys_X/Y/Z from that monkey's step1 output
 
-If all 4 monkeys' SWC root coords match their Summary's Soma_Phys_X/Y/Z, we
-know the SWC is in the same physical (NMT-aligned) frame -> Path A is OK.
+Agreement checks consistency with cached Summary coordinates. It does not
+independently establish NMT registration, export origin or physical orientation.
 
 Output:
   group_analysis/fnt/coord_frame_audit.csv
@@ -27,6 +27,8 @@ NEUROVIS = os.path.join(PROJECT_ROOT, "neuron-vis", "neuronVis")
 sys.path.insert(0, NEUROVIS)
 
 import IONData  # noqa: E402
+sys.path.insert(0, os.path.join(PROJECT_ROOT, "main_scripts"))
+from swc_validation import parse_swc  # noqa: E402
 
 GROUP_DIR = os.path.join(PROJECT_ROOT, "group_analysis")
 STEP1_DIR = os.path.join(GROUP_DIR, "step1_results")
@@ -47,22 +49,10 @@ def find_results_xlsx(sid):
 
 
 def parse_swc_root(swc_text: str):
-    """Return (x, y, z, n_lines) of the first non-comment node in SWC text."""
-    n = 0
-    root = None
-    for line in swc_text.splitlines():
-        s = line.strip()
-        if not s or s.startswith("#"):
-            continue
-        n += 1
-        if root is None:
-            parts = s.split()
-            if len(parts) >= 5:
-                try:
-                    root = (float(parts[2]), float(parts[3]), float(parts[4]))
-                except ValueError:
-                    pass
-    return root, n
+    """Return ((x, y, z), node_count) for the validated unique parent=-1 root."""
+    rows = parse_swc(swc_text, source="coordinate-frame audit")
+    root = next(row for row in rows if row[6] == -1)
+    return tuple(root[2:5]), len(rows)
 
 
 def main():
@@ -94,7 +84,11 @@ def main():
             rows.append(dict(sample_id=sid, neuron=nid,
                              status="empty_swc"))
             continue
-        root, n_lines = parse_swc_root(swc_text)
+        try:
+            root, n_lines = parse_swc_root(swc_text)
+        except ValueError as exc:
+            rows.append(dict(sample_id=sid, neuron=nid, status=f"invalid_swc: {exc}"))
+            continue
         if root is None:
             rows.append(dict(sample_id=sid, neuron=nid,
                              status="no_root", n_lines=n_lines))

@@ -1,3 +1,18 @@
+# Metric names (2026-10-09): retained length is the legacy reconstruction
+# measurement in its declared source units, with compartment/terminal-target
+# semantics unverified. Display strength = log10(retained length + 1).
+# A log-scaled length share divides that strength by the sum over selected
+# features; hybrid L3/L6 features overlap and are not a raw-length budget.
+# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
+# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
+# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
+# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
+# hemisphere index. Zero-denominator individual balances are unavailable.
+# Names, columns, thresholds, stratum IDs and output filenames are preserved.
+
+# Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+# Historical inputs/results are not accepted terminal fields or animal-population inference.
+# Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
 # ============================================================
 # Functional hub-region L/R analysis: thalamus + brainstem
 # Per-target hurdle decomposition (presence + magnitude)
@@ -223,7 +238,7 @@ plot_hub <- function(df, hub_name, top_strata) {
     facet_wrap(~ stratum, ncol = 1, scales = "free_y") +
     scale_fill_manual(values = side_cols) +
     labs(title = sprintf("Hub: %s", hub_name),
-         x = "target region", y = "mean proportion of ipsi projection") +
+         x = "target region", y = "mean ipsilateral share of log-scaled length") +
     theme_minimal(base_size = 10) +
     theme(axis.text.x = element_text(angle = 45, hjust = 1),
           legend.position = "bottom")

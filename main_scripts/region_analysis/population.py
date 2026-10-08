@@ -1,5 +1,10 @@
 """
-population.py - Population-level batch neuron analysis.
+population.py - Population-level batch reconstruction analysis.
+
+Regional projection values are retained reconstruction lengths in Length_Unit
+(or unspecified source units). Total_Length is the whole computed edge total.
+Terminal_Count counts distinct endpoint-target regions per neuron from legacy
+leaves of all SWC compartments, not verified biological terminals or boutons.
 
 save_all() produces:
     tables/{sample_id}_results.xlsx  (7+ sheets)
@@ -22,6 +27,7 @@ import matplotlib.pyplot as plt
 from region_analysis.output_manager import OutputManager
 from region_analysis.hierarchy import (
     RegionHierarchy,
+    add_soma_hierarchy_column,
     add_projection_length_hierarchy,
     add_projection_hierarchy,
     extract_soma_level,
@@ -31,7 +37,13 @@ from region_analysis.hierarchy_table import DualHierarchyTable
 from region_analysis.classifier import NeuronClassifier
 from region_analysis.neuron_analysis import RegionAnalysisPerNeuron
 from region_analysis.laterality import LateralityParser, add_laterality_columns
-from region_analysis.utils import parse_terminal_regions, save_debug_snapshot
+from region_analysis.utils import (
+    parse_terminal_regions, save_debug_snapshot, is_known_terminal_target,
+    terminal_target_region_counts,
+    load_processed_df, normalize_region_dataframe, parse_projection_lengths,
+    projection_column_names,
+    neuron_metadata,
+)
 from region_analysis.plotting import (
     plot_soma_distribution_df,
     plot_type_distribution_df,
@@ -72,6 +84,9 @@ class PopulationRegionAnalysis:
         output_base: str = None,
         create_output_folder: bool = False,
         show_plots: bool = True,
+        neuron_list: Optional[List[dict]] = None,
+        swc_source_dir: str = None,
+        hemisphere_reference=None,
     ):
         """
         Args:
@@ -95,7 +110,11 @@ class PopulationRegionAnalysis:
         self.atlas_table = atlas_table
         self.template_img = template_img
         self.nii_space = nii_space
-        self.neuron_list = _iondata.getNeuronListBySampleID(sample_id)
+        self.neuron_list = (list(neuron_list) if neuron_list is not None
+                            else _iondata.getNeuronListBySampleID(sample_id))
+        self.swc_source_dir = Path(swc_source_dir) if swc_source_dir is not None else None
+        self.load_failures = []
+        self.hemisphere_reference = hemisphere_reference
         self.classifier = NeuronClassifier(atlas_table)
         self.plot_dataframe = pd.DataFrame()
         self.neurons: dict = {}
@@ -165,10 +184,10 @@ class PopulationRegionAnalysis:
         """
         from region_analysis.hierarchy_table import HierarchyTable
 
-        paths = [path] if isinstance(path, str) else list(path) if isinstance(path, (list, tuple)) else []
-        valid = [p for p in paths if os.path.exists(p)]
-        if valid:
-            self.hierarchy_table = HierarchyTable.from_files(*valid)
+        paths = [path] if isinstance(path, (str, Path)) else list(path)
+        if not paths:
+            raise ValueError("At least one hierarchy file is required")
+        self.hierarchy_table = HierarchyTable.from_files(*paths)
 
     def load_hierarchy_csv(self, path):
         """
@@ -179,12 +198,13 @@ class PopulationRegionAnalysis:
             path: Single file path (str) or list of paths.
         """
         from region_analysis.hierarchy_table import HierarchyTable
-        paths = [path] if isinstance(path, str) else list(path) if isinstance(path, (list, tuple)) else []
-        if self.hierarchy_table is None:
-            self.hierarchy_table = HierarchyTable()
-        for p in paths:
-            if os.path.exists(p):
-                self.hierarchy_table.load_file(p)
+        paths = [path] if isinstance(path, (str, Path)) else list(path)
+        if not paths:
+            raise ValueError("At least one hierarchy file is required")
+        loaded = HierarchyTable.from_files(*paths)
+        if self.hierarchy_table is not None:
+            loaded = HierarchyTable(pd.concat([self.hierarchy_table.df, loaded.df], ignore_index=True))
+        self.hierarchy_table = loaded
 
     def _load_dual_hierarchy(self, cortex_paths=None, subcortical_paths=None):
         """Load separate hierarchy tables for cortex and subcortical regions."""
@@ -226,6 +246,18 @@ class PopulationRegionAnalysis:
             add_hierarchy: Override auto_hierarchy setting
             add_laterality: Override auto_laterality setting
         """
+        if isinstance(level, (bool, np.bool_)) or not isinstance(level, (int, np.integer)) or not 1 <= level <= 6:
+            raise ValueError("Atlas level must be an integer between 1 and 6")
+        if self.full_atlas.ndim not in (3, 5):
+            raise ValueError("Atlas must be a selected 3D level or a 5D hierarchy")
+        if self.full_atlas.ndim == 5 and (self.full_atlas.shape[3] != 1 or level > self.full_atlas.shape[4]):
+            raise ValueError("Atlas hierarchy geometry does not contain the requested level")
+        if neuron_id is not None and not isinstance(neuron_id, str):
+            selected_ids = list(neuron_id)
+            if len(selected_ids) != len(set(selected_ids)):
+                raise ValueError("Requested neuron IDs must be unique")
+            neuron_id = selected_ids
+
         current_atlas = (
             self.full_atlas[:, :, :, 0, level - 1]
             if self.full_atlas.ndim == 5
@@ -261,25 +293,49 @@ class PopulationRegionAnalysis:
         else:
             target_list = self.neuron_list
 
+        identities = []
+        for entry in target_list:
+            sample = str(entry.get("sampleid", "")).strip()
+            name = entry.get("name")
+            if sample != str(self.sample_id).strip():
+                raise ValueError("Selected neuron entry belongs to another sample or lacks sampleid")
+            if not isinstance(name, str) or not name.strip() or Path(name).name != name:
+                raise ValueError("Selected neuron entry requires a nonempty basename")
+            identities.append((sample, name))
+        if len(identities) != len(set(identities)):
+            raise ValueError("Selected full neuron identities must be unique")
+
         print(f"Processing {len(target_list)} neurons at Level {level}...")
 
         data = []
+        self.load_failures = []
         for entry in target_list:
             print(f"  -> {entry['name']}")
             neuron = nt.neuro_tracer()
             try:
+                source = None
+                if self.swc_source_dir is not None:
+                    source_path = self.swc_source_dir / entry["name"]
+                    if not source_path.is_file():
+                        raise FileNotFoundError(f"Declared local SWC source missing: {source_path}")
+                    source = str(source_path)
                 neuron.process(
-                    entry["sampleid"], entry["name"], nii_space=self.nii_space
+                    entry["sampleid"], entry["name"], nii_space=self.nii_space,
+                    swc=source,
+                    output_dir=(str(self.output.output_dir / "processed_neurons")
+                                if self.swc_source_dir is not None and self.output else None),
                 )
-            except Exception:
-                print("     Load failed.")
+            except Exception as exc:
+                self.load_failures.append({"SampleID": entry.get("sampleid", self.sample_id),
+                                           "NeuronID": entry.get("name"), "error": str(exc)})
+                print(f"     Load failed for {entry.get('sampleid', self.sample_id)}/{entry.get('name', 'Unknown')}: {exc}")
                 continue
 
             analysis = RegionAnalysisPerNeuron(neuron, current_atlas, self.atlas_table)
             analysis.run()
 
             neuron.outliers = []
-            if "Unknown" in analysis.soma_region:
+            if "Unknown" in analysis.soma_region or analysis.soma_region == "Out_of_Bounds":
                 root = neuron.root
                 neuron.outliers.append(
                     {
@@ -293,7 +349,7 @@ class PopulationRegionAnalysis:
                     }
                 )
             for item in analysis.terminal_regions:
-                if "Unknown" in item["region"]:
+                if "Unknown" in item["region"] or item["region"] == "Out_of_Bounds":
                     neuron.outliers.append(
                         {
                             "type": "Terminal",
@@ -328,6 +384,7 @@ class PopulationRegionAnalysis:
                     "Soma_Phys_Y": round(root.y, 4),
                     "Soma_Phys_Z": round(root.z, 4),
                     "Total_Length": analysis.neuron_total_length,
+                    "Length_Unit": "voxel",
                     "Terminal_Count": len(term_unique),
                     "Terminal_Regions": term_unique,
                     "Region_projection_length": analysis.mapped_brain_region_lengths,
@@ -372,6 +429,15 @@ class PopulationRegionAnalysis:
             hierarchy_source = None  # Will use ARM key in functions
         else:
             return
+
+        self.plot_dataframe = add_soma_hierarchy_column(
+            self.plot_dataframe, self.hierarchy, max_level=max_level,
+            hierarchy_table=hierarchy_source,
+        )
+        self.plot_dataframe = add_projection_hierarchy(
+            self.plot_dataframe, self.hierarchy, max_level=max_level,
+            hierarchy_table=hierarchy_source,
+        )
         
         # Projection hierarchy: projection_min_level to max_level
         self.plot_dataframe = add_projection_length_hierarchy(
@@ -403,9 +469,9 @@ class PopulationRegionAnalysis:
             self._arm_key_path != arm_key_path or self.hierarchy is None
         ):
             self._load_hierarchy(arm_key_path)
-        if self.hierarchy is None and self.hierarchy_table is None:
+        if self.hierarchy is None and self.hierarchy_table is None and self.dual_hierarchy is None:
             self._detect_and_load_hierarchy()
-        if self.hierarchy is None and self.hierarchy_table is None:
+        if self.hierarchy is None and self.hierarchy_table is None and self.dual_hierarchy is None:
             raise FileNotFoundError("No hierarchy source found.")
         self._apply_hierarchy_columns(max_level, projection_min_level=1)
         return self.plot_dataframe
@@ -426,7 +492,7 @@ class PopulationRegionAnalysis:
             return None
         if arm_key_path and self.hierarchy is None:
             self._load_hierarchy(arm_key_path)
-        if self.hierarchy is None and self.hierarchy_table is None:
+        if self.hierarchy is None and self.hierarchy_table is None and self.dual_hierarchy is None:
             print("[ERROR] No hierarchy source.")
             return None
         
@@ -434,7 +500,7 @@ class PopulationRegionAnalysis:
             self.plot_dataframe,
             self.hierarchy,
             max_level,
-            hierarchy_table=self.hierarchy_table,
+            hierarchy_table=self.dual_hierarchy or self.hierarchy_table,
         )
         
         # Also ensure projection length columns exist
@@ -444,7 +510,7 @@ class PopulationRegionAnalysis:
             "Region_projection_length",
             max_level,
             min_level=min_level,
-            hierarchy_table=self.hierarchy_table,
+            hierarchy_table=self.dual_hierarchy or self.hierarchy_table,
         )
         
         self._ensure_projection_columns_exist(min_level, max_level)
@@ -459,12 +525,46 @@ class PopulationRegionAnalysis:
             if c in self.plot_dataframe.columns:
                 length_col = c
                 break
+        reference = getattr(self, "hemisphere_reference", None)
+        reference_sides = None
+        if reference is not None:
+            sides = []
+            for _, row in self.plot_dataframe.iterrows():
+                neuron = self.neurons.get(row["NeuronID"])
+                xyz = ([neuron.root.x_nii, neuron.root.y_nii, neuron.root.z_nii]
+                       if neuron is not None else [row["Soma_NII_" + a] for a in "XYZ"])
+                sides.append(reference.sample(xyz))
+            reference_sides = pd.Series(sides, index=self.plot_dataframe.index)
         self.plot_dataframe = add_laterality_columns(
             self.plot_dataframe,
             soma_col="Soma_Region",
             terminal_col="Terminal_Regions",
             length_col=length_col,
+            soma_side_reference=reference_sides,
+            soma_side_reference_source=reference.source if reference is not None else None,
         )
+        if hasattr(self, "classifier"):
+            self.plot_dataframe["Neuron_Type"] = self.plot_dataframe.apply(
+                lambda row: self.classifier.classify_single_neuron(
+                    row["Terminal_Regions"], row["Soma_Region"], soma_side=row["Soma_Side"]), axis=1)
+
+    def apply_soma_labels(self, mapping: dict, source: str):
+        """Apply reviewed labels and recompute dependent views together.
+
+        This edits this analysis instance only. It does not promote annotations
+        or modify source workbooks. Conflicts with the reference remain explicit.
+        """
+        if not source or not str(source).strip():
+            raise ValueError("Refined soma labels require source provenance")
+        if "Soma_Region_Auto" not in self.plot_dataframe:
+            self.plot_dataframe["Soma_Region_Auto"] = self.plot_dataframe.Soma_Region
+        labels = self.plot_dataframe.NeuronID.map(mapping)
+        use = labels.notna()
+        self.plot_dataframe.loc[use, "Soma_Region"] = labels.loc[use]
+        self.plot_dataframe.loc[use, "Soma_Label_Source"] = source
+        self._apply_hierarchy_columns(max_level=6, projection_min_level=1)
+        self._apply_laterality_columns()
+        return self.plot_dataframe
 
     def add_laterality(self) -> pd.DataFrame:
         if self.plot_dataframe.empty:
@@ -478,20 +578,12 @@ class PopulationRegionAnalysis:
     # ==================================================================
     def load_processed_dataframe(self, df_or_path) -> pd.DataFrame:
         if isinstance(df_or_path, pd.DataFrame):
-            self.plot_dataframe = df_or_path.copy()
-        elif isinstance(df_or_path, str):
-            if df_or_path.endswith(".xlsx"):
-                self.plot_dataframe = pd.read_excel(df_or_path)
-            elif df_or_path.endswith(".csv"):
-                self.plot_dataframe = pd.read_csv(df_or_path)
-            else:
-                raise ValueError("File must be .xlsx or .csv")
+            loaded = normalize_region_dataframe(df_or_path)
+        elif isinstance(df_or_path, (str, os.PathLike)):
+            loaded = load_processed_df(df_or_path)
         else:
             raise TypeError("Expected DataFrame or file path")
-        if "Terminal_Regions" in self.plot_dataframe.columns:
-            self.plot_dataframe["Terminal_Regions"] = self.plot_dataframe[
-                "Terminal_Regions"
-            ].apply(parse_terminal_regions)
+        self.plot_dataframe = loaded
         print(f"Loaded {len(self.plot_dataframe)} neurons")
         return self.plot_dataframe
 
@@ -501,11 +593,14 @@ class PopulationRegionAnalysis:
     def get_summary_df(self) -> pd.DataFrame:
         """Sheet 1: Scalar-only summary."""
         cols = [
-            "SampleID", "NeuronID", "Neuron_Type", "Soma_Region", "Soma_Side",
+            "NeuronUID", "SampleID", "NeuronID", "Neuron_Type", "Soma_Region", "Soma_Side",
+            "Soma_Side_Method", "Soma_Side_Conflict", "Soma_Side_Reference_Source",
+            "Soma_Side_Name", "Soma_Side_Reference", "Soma_Region_Auto", "Soma_Label_Source",
             "Soma_NII_X", "Soma_NII_Y", "Soma_NII_Z",
             "Soma_Phys_X", "Soma_Phys_Y", "Soma_Phys_Z",
-            "Total_Length", "Terminal_Count",
+            "Total_Length", "Length_Unit", "Terminal_Count",
             "N_Ipsilateral", "N_Contralateral", "N_Laterality_Unknown",
+            "Total_Ipsilateral_Length", "Total_Contralateral_Length", "Total_Unknown_Laterality_Length",
             "Laterality_Index", "Outlier_Count",
         ]
         available = [c for c in cols if c in self.plot_dataframe.columns]
@@ -513,7 +608,14 @@ class PopulationRegionAnalysis:
 
     def get_soma_hierarchy_df(self) -> pd.DataFrame:
         """Sheet 2: Hierarchy dict expanded to L1–L6."""
-        df = self.plot_dataframe[["NeuronID", "Soma_Region"]].copy()
+        identity = [column for column in ("NeuronUID", "SampleID", "NeuronID", "Soma_Region")
+                    if column in self.plot_dataframe]
+        neuron_metadata(self.plot_dataframe)
+        df = self.plot_dataframe[identity].copy()
+        for lv in range(1, 7):
+            col = f"Soma_Level_{lv}"
+            if col in self.plot_dataframe:
+                df[f"L{lv}"] = self.plot_dataframe[col]
         if "Soma_Region_Hierarchy" in self.plot_dataframe.columns:
             hier_exp = self.plot_dataframe["Soma_Region_Hierarchy"].apply(
                 lambda d: pd.Series(d) if isinstance(d, dict) else pd.Series(dtype=str)
@@ -523,11 +625,18 @@ class PopulationRegionAnalysis:
                 if key not in hier_exp.columns:
                     hier_exp[key] = None
             hier_exp = hier_exp[[f"L{lv}" for lv in range(1, 7)]]
-            df = pd.concat([df, hier_exp], axis=1)
+            for key in hier_exp:
+                if key in df:
+                    conflicts = df[key].notna() & hier_exp[key].notna() & df[key].ne(hier_exp[key])
+                    if conflicts.any():
+                        raise ValueError(f"Conflicting soma hierarchy values for {key}")
+                    df[key] = df[key].fillna(hier_exp[key])
+                else:
+                    df[key] = hier_exp[key]
         return df
 
     def get_projection_matrix(self, level: str = "finest") -> pd.DataFrame:
-        """Sheet 3: Neuron x region matrix (mm)."""
+        """Neuron x region retained reconstruction lengths in the source unit."""
         if level == "finest":
             candidates = [
                 "Region_Projection_Length_finest",
@@ -557,10 +666,7 @@ class PopulationRegionAnalysis:
         # Keep prefixes internally for correct laterality classification
         data_list = []
         for val in self.plot_dataframe[length_col]:
-            if isinstance(val, dict):
-                data_list.append(val)
-            else:
-                data_list.append({})
+            data_list.append(parse_projection_lengths(val))
         
         matrix = pd.DataFrame(data_list)
         matrix.fillna(0, inplace=True)
@@ -572,26 +678,26 @@ class PopulationRegionAnalysis:
         regular = sorted([c for c in matrix.columns if c != "_Unmapped"])
         ordered = regular + (["_Unmapped"] if "_Unmapped" in matrix.columns else [])
         matrix = matrix[ordered]
-        matrix.insert(0, "NeuronID", self.plot_dataframe["NeuronID"].values)
-        matrix.insert(1, "Neuron_Type", self.plot_dataframe["Neuron_Type"].values)
+        metadata = neuron_metadata(self.plot_dataframe)
+        matrix = pd.concat([metadata, matrix.reset_index(drop=True)], axis=1)
 
         if "_Unmapped" in matrix.columns:
             total_u = matrix["_Unmapped"].sum()
-            total_a = matrix.iloc[:, 2:].sum().sum()
+            total_a = matrix.drop(columns=metadata.columns).sum().sum()
             if total_u > 0:
                 pct = total_u / total_a * 100 if total_a > 0 else 0
                 print(
-                    f"[MATRIX L{level}] _Unmapped: {total_u:.1f} mm ({pct:.1f}%)"
+                    f"[MATRIX L{level}] _Unmapped: {total_u:.1f} source units (see Length_Unit; {pct:.1f}%)"
                 )
         
         return matrix
 
     def get_projection_strength(self, level: str = "finest") -> pd.DataFrame:
-        """Sheet 4: log10(length + 1)."""
+        """Display log10(retained regional length + 1), dependent on source unit."""
         matrix = self.get_projection_matrix(level)
         if matrix.empty:
             return matrix
-        numeric_cols = matrix.columns[2:]
+        numeric_cols = [column for column in matrix if column not in ("NeuronUID", "SampleID", "NeuronID", "Neuron_Type")]
         strength = matrix.copy()
         strength[numeric_cols] = np.log10(matrix[numeric_cols] + 1).round(4)
         return strength
@@ -601,20 +707,20 @@ class PopulationRegionAnalysis:
         Split projection matrix into ipsilateral and contralateral DataFrames.
         
         Uses original data with prefixes for correct laterality classification,
-        then strips prefixes for clean output.
+        then removes hemisphere prefixes using collision-safe target labels.
+        Cortical/subcortical homonyms retain separate C_/S_ namespaces.
         
         Args:
             level: Hierarchy level ("finest" or 1-6)
             
         Returns:
-            Tuple of (ipsi_df, contra_df) with prefixes stripped.
+            Tuple of (ipsi_df, contra_df) with collision-safe regional labels.
         """
         from region_analysis.laterality import LateralityParser
-        from region_analysis.hierarchy import _strip_prefix
         
         # Get source column with prefixes (for correct laterality classification)
         if level == "finest":
-            candidates = ["Region_projection_length"]
+            candidates = ["Region_Projection_Length_finest", "Region_projection_length"]
         else:
             level_int = int(level) if isinstance(level, str) and level.isdigit() else level
             candidates = [f"Region_Projection_Length_L{level_int}"]
@@ -632,65 +738,29 @@ class PopulationRegionAnalysis:
         if "Soma_Side" not in self.plot_dataframe.columns:
             self._apply_laterality_columns()
         
-        # Build neuron_id to soma_region mapping
-        neuron_soma_map = dict(zip(
-            self.plot_dataframe["NeuronID"],
-            self.plot_dataframe["Soma_Region"]
-        ))
-        
-        # Collect all regions and classify by laterality
-        all_regions = set()
-        for val in self.plot_dataframe[source_col]:
-            if isinstance(val, dict):
-                all_regions.update(val.keys())
-        
-        all_ipsi_regions = set()
-        all_contra_regions = set()
-        
-        for _, row in self.plot_dataframe.iterrows():
-            soma_side = row.get("Soma_Side", "Unknown")
-            soma_region = row.get("Soma_Region", "")
-            length_dict = row.get(source_col, {})
-            if not isinstance(length_dict, dict):
-                continue
-            
-            for region, length in length_dict.items():
-                if length == 0:
-                    continue
-                if soma_side in ("L", "R"):
-                    lat = LateralityParser.classify_with_soma_side(soma_side, region)
-                else:
-                    lat = LateralityParser.classify(soma_region, region)
-                if lat == "Ipsilateral":
-                    all_ipsi_regions.add(region)
-                elif lat == "Contralateral":
-                    all_contra_regions.add(region)
-        
+        metadata = neuron_metadata(self.plot_dataframe)
+        lengths = self.plot_dataframe[source_col].apply(parse_projection_lengths)
+        atlas_regions = getattr(self, "atlas_table", pd.DataFrame()).get("Abbreviation", [])
+        column_names = projection_column_names(
+            {region for mapping in lengths for region in mapping}, atlas_regions)
+
         # Build rows with clean (stripped) column names
         ipsi_data = []
         contra_data = []
         
-        for _, row in self.plot_dataframe.iterrows():
-            neuron_id = row["NeuronID"]
-            neuron_type = row.get("Neuron_Type", "")
+        for position, (_, row) in enumerate(self.plot_dataframe.iterrows()):
             soma_side = row.get("Soma_Side", "Unknown")
-            soma_region = row.get("Soma_Region", "")
-            length_dict = row.get(source_col, {})
-            if not isinstance(length_dict, dict):
-                length_dict = {}
+            length_dict = lengths.iloc[position]
             
-            ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
-            contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
+            ipsi_row = {}
+            contra_row = {}
             
             # Fill in values with stripped column names
             for region, length in length_dict.items():
                 if length == 0:
                     continue
-                if soma_side in ("L", "R"):
-                    lat = LateralityParser.classify_with_soma_side(soma_side, region)
-                else:
-                    lat = LateralityParser.classify(soma_region, region)
-                clean_region = _strip_prefix(region)
+                lat = LateralityParser.classify_with_soma_side(soma_side, region)
+                clean_region = column_names[region]
                 
                 if lat == "Ipsilateral":
                     ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + length
@@ -701,93 +771,30 @@ class PopulationRegionAnalysis:
             contra_data.append(contra_row)
         
         # Create DataFrames
-        ipsi_df = pd.DataFrame(ipsi_data).fillna(0)
-        contra_df = pd.DataFrame(contra_data).fillna(0)
+        ipsi_df = pd.concat([metadata, pd.DataFrame(ipsi_data).fillna(0)], axis=1)
+        contra_df = pd.concat([metadata, pd.DataFrame(contra_data).fillna(0)], axis=1)
         
         return ipsi_df, contra_df
 
     def get_projection_strength_split(self, level: str = "finest") -> tuple:
-        """
-        Split projection strength matrix into ipsilateral and contralateral DataFrames.
-        
-        Uses original data with prefixes for correct laterality classification,
-        then strips prefixes for clean output.
-        
-        Args:
-            level: Hierarchy level ("finest" or 1-6)
-            
-        Returns:
-            Tuple of (ipsi_df, contra_df) with prefixes stripped.
-        """
-        from region_analysis.laterality import LateralityParser
-        from region_analysis.hierarchy import _strip_prefix
-        
-        # Get source column with prefixes (for correct laterality classification)
-        if level == "finest":
-            candidates = ["Region_projection_length"]
-        else:
-            level_int = int(level) if isinstance(level, str) and level.isdigit() else level
-            candidates = [f"Region_Projection_Length_L{level_int}"]
-        
-        source_col = None
-        for c in candidates:
-            if c in self.plot_dataframe.columns:
-                source_col = c
-                break
-        
-        if source_col is None:
-            return pd.DataFrame(), pd.DataFrame()
-        
-        # Ensure laterality columns exist
-        if "Soma_Side" not in self.plot_dataframe.columns:
-            self._apply_laterality_columns()
-        
-        # Build rows with clean (stripped) column names
-        ipsi_data = []
-        contra_data = []
-        
-        for _, row in self.plot_dataframe.iterrows():
-            neuron_id = row["NeuronID"]
-            neuron_type = row.get("Neuron_Type", "")
-            soma_side = row.get("Soma_Side", "Unknown")
-            soma_region = row.get("Soma_Region", "")
-            length_dict = row.get(source_col, {})
-            if not isinstance(length_dict, dict):
-                length_dict = {}
-            
-            ipsi_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
-            contra_row = {"NeuronID": neuron_id, "Neuron_Type": neuron_type}
-            
-            # Fill in values with stripped column names
-            for region, length in length_dict.items():
-                if length == 0:
-                    continue
-                if soma_side in ("L", "R"):
-                    lat = LateralityParser.classify_with_soma_side(soma_side, region)
-                else:
-                    lat = LateralityParser.classify(soma_region, region)
-                clean_region = _strip_prefix(region)
-                strength = round(np.log10(length + 1), 4)
-                
-                if lat == "Ipsilateral":
-                    ipsi_row[clean_region] = ipsi_row.get(clean_region, 0) + strength
-                elif lat == "Contralateral":
-                    contra_row[clean_region] = contra_row.get(clean_region, 0) + strength
-            
-            ipsi_data.append(ipsi_row)
-            contra_data.append(contra_row)
-        
-        # Create DataFrames
-        ipsi_df = pd.DataFrame(ipsi_data).fillna(0)
-        contra_df = pd.DataFrame(contra_data).fillna(0)
-        
-        return ipsi_df, contra_df
+        """Log-transform the final split lengths, after anatomical aggregation."""
+        results = []
+        for lengths in self.get_projection_matrix_split(level):
+            strength = lengths.copy()
+            targets = [column for column in strength if column not in ("NeuronUID", "SampleID", "NeuronID", "Neuron_Type")]
+            strength[targets] = np.log10(strength[targets] + 1).round(4)
+            results.append(strength)
+        return tuple(results)
 
     def get_terminal_sites_df(self) -> pd.DataFrame:
-        """Sheet 5: Long-format terminals."""
+        """Distinct endpoint-target regions from all-compartment legacy leaves.
+
+        These rows do not establish biological terminal sites or boutons.
+        """
         rows = []
         for _, nr in self.plot_dataframe.iterrows():
             nid = nr["NeuronID"]
+            identity = {column: nr[column] for column in ("NeuronUID", "SampleID") if column in nr}
             ntype = nr.get("Neuron_Type", "")
             soma = nr.get("Soma_Region", "")
             lat_info = nr.get("Terminal_Laterality", None)
@@ -795,6 +802,7 @@ class PopulationRegionAnalysis:
                 for term in lat_info:
                     rows.append(
                         {
+                            **identity,
                             "NeuronID": nid,
                             "Neuron_Type": ntype,
                             "Terminal_Region": term.get("region", ""),
@@ -809,27 +817,36 @@ class PopulationRegionAnalysis:
                 for t_region in terminals:
                     rows.append(
                         {
+                            **identity,
                             "NeuronID": nid,
                             "Neuron_Type": ntype,
                             "Terminal_Region": t_region,
                             "Side": LateralityParser.get_side(t_region),
-                            "Laterality": LateralityParser.classify(soma, t_region),
+                            "Laterality": LateralityParser.classify_with_soma_side(nr.get("Soma_Side", LateralityParser.get_side(soma)), t_region),
                         }
                     )
         df = pd.DataFrame(rows)
-        if (self.hierarchy or self.hierarchy_table) and not df.empty:
+        hierarchy_source = self.dual_hierarchy or self.hierarchy_table
+        if (self.hierarchy or hierarchy_source) and not df.empty:
             for lv in [1, 3, 6]:
                 df[f"Terminal_L{lv}"] = df["Terminal_Region"].apply(
                     lambda r, _lv=lv: resolve_to_level(
-                        str(r), _lv, self.hierarchy, self.hierarchy_table
+                        str(r), _lv, self.hierarchy, hierarchy_source
                     )
                 )
         return df
 
     def get_laterality_df(self) -> pd.DataFrame:
-        """Sheet 6: Per-neuron laterality scalars."""
+        """Per-neuron counts and lengths relative to the resolved soma side.
+
+        Laterality_Index is Contra/(Ipsi+Contra), 0..1; unresolved lengths are
+        excluded. The separate signed contrast (Contra-Ipsi)/(Contra+Ipsi)
+        ranges from -1 to 1 and is not produced by this column. A zero
+        resolved denominator remains missing.
+        """
         scalar_cols = [
-            "NeuronID", "Neuron_Type", "Soma_Region", "Soma_Side",
+            "NeuronUID", "SampleID", "NeuronID", "Neuron_Type", "Soma_Region", "Soma_Side",
+            "Soma_Side_Method", "Soma_Side_Conflict", "Soma_Side_Name", "Soma_Side_Reference",
             "N_Ipsilateral", "N_Contralateral", "N_Laterality_Unknown",
             "Total_Ipsilateral_Length", "Total_Contralateral_Length",
             "Total_Unknown_Laterality_Length", "Laterality_Index",
@@ -848,6 +865,7 @@ class PopulationRegionAnalysis:
         rows = []
         for _, nr in self.plot_dataframe.iterrows():
             details = nr.get("Outlier_Details", [])
+            identity = {column: nr[column] for column in ("NeuronUID", "SampleID") if column in nr}
             if not isinstance(details, list):
                 if isinstance(details, str):
                     try:
@@ -865,6 +883,7 @@ class PopulationRegionAnalysis:
                     vx, vy, vz = None, None, None
                 rows.append(
                     {
+                        **identity,
                         "NeuronID": nr["NeuronID"],
                         "Neuron_Type": nr.get("Neuron_Type", ""),
                         "Outlier_Type": o.get("type", ""),
@@ -892,7 +911,7 @@ class PopulationRegionAnalysis:
         
         # Get all unique regions from projections
         all_regions = set()
-        length_col = f"Region_Projection_Length_{level}" if level != "finest" else "Region_Projection_Length_finest"
+        length_col = f"Region_Projection_Length_L{level}" if level != "finest" else ("Region_Projection_Length_finest" if "Region_Projection_Length_finest" in self.plot_dataframe else "Region_projection_length")
         
         if length_col not in self.plot_dataframe.columns:
             print(f"[ERROR] Column {length_col} not found")
@@ -907,7 +926,7 @@ class PopulationRegionAnalysis:
         
         # Check resolution for each region
         unmapped = []
-        region_type_counts = {"cortical": 0, "subcortical": 0, "unknown": 0}
+        region_type_counts = {"Cortical": 0, "Subcortical": 0, "Unknown": 0}
         
         from region_analysis.laterality import LateralityParser
         
@@ -954,7 +973,7 @@ class PopulationRegionAnalysis:
         Check what region names are in a projection column.
         Useful for verifying prefix stripping is working.
         """
-        col_name = f"Region_Projection_Length_{level}" if level != "finest" else "Region_Projection_Length_finest"
+        col_name = f"Region_Projection_Length_L{level}" if level != "finest" else ("Region_Projection_Length_finest" if "Region_Projection_Length_finest" in self.plot_dataframe else "Region_projection_length")
         
         if col_name not in self.plot_dataframe.columns:
             print(f"[ERROR] Column {col_name} not found")
@@ -1057,7 +1076,7 @@ class PopulationRegionAnalysis:
                 f"  Side: {row.get('Soma_Side', '?')} | "
                 f"Ipsi: {row.get('N_Ipsilateral', '?')} | "
                 f"Contra: {row.get('N_Contralateral', '?')} | "
-                f"LI: {row.get('Laterality_Index', '?')}"
+                f"Contra/(Ipsi+Contra), 0..1: {row.get('Laterality_Index', '?')}"
             )
 
         for tag in ("NII", "Phys"):
@@ -1066,8 +1085,8 @@ class PopulationRegionAnalysis:
             z = row.get(f"Soma_{tag}_Z", "?")
             print(f"  Soma {tag}: ({x}, {y}, {z})")
 
-        print(f"  Length: {row['Total_Length']:.3f}")
-        print(f"  Terminals ({row['Terminal_Count']}): {row['Terminal_Regions']}")
+        print(f"  Total reconstruction length (source unit; see Length_Unit): {row['Total_Length']:.3f}")
+        print(f"  Distinct endpoint-target regions (legacy all compartments; {row['Terminal_Count']}): {row['Terminal_Regions']}")
         print(f"  Outliers: {row['Outlier_Count']}")
 
         length_col = None
@@ -1080,10 +1099,10 @@ class PopulationRegionAnalysis:
                 row[length_col].items(), key=lambda x: x[1], reverse=True
             )[:5]
             if top5:
-                print(f"\n  Top projections (mm -> log10 strength):")
+                print(f"\n  Top retained regional lengths (source unit -> log10(length + 1)):")
                 for region, length in top5:
                     strength = np.log10(length + 1)
-                    print(f"    {region}: {length:.2f} mm -> {strength:.3f}")
+                    print(f"    {region}: {length:.2f} source units -> {strength:.3f}")
 
         if length_col:
             save = (
@@ -1097,92 +1116,21 @@ class PopulationRegionAnalysis:
     # DEBUG HIERARCHY
     # ==================================================================
     def debug_hierarchy(self, region: str):
-        """Debug hierarchy resolution for a specific region."""
-        print(f"\n{'='*50}")
+        """Report actual hierarchy paths and resolution using supported APIs."""
+        source = self.dual_hierarchy or self.hierarchy_table
         print(f"HIERARCHY DEBUG: {region}")
-        print(f"{'='*50}")
-        
-        # Use dual hierarchy if available
-        if self.dual_hierarchy is not None:
-            self.dual_hierarchy.debug_region(region)
-            return
-        
-        # Legacy single-table debug
-        if self.hierarchy:
-            print("\n--- ARM Key ---")
-            self.hierarchy.debug_region(region)
-        else:
-            print("\n--- ARM Key: not loaded ---")
-        if self.hierarchy_table:
-            print("\n--- User CSV ---")
-            self.hierarchy_table.debug_region(region)
-        else:
-            print("\n--- User CSV: not loaded ---")
-        print("\n--- Combined Resolution ---")
-        for lv in range(1, 7):
-            result = resolve_to_level(
-                region, lv, self.hierarchy, self.hierarchy_table
-            )
-            source = "?"
-            if (
-                self.hierarchy_table
-                and self.hierarchy_table.aggregate_to_level(region, lv)
-            ):
-                source = "CSV"
-            elif self.hierarchy and self.hierarchy.aggregate_to_level(region, lv):
-                source = "ARM"
-            status = f"{result} [{source}]" if result else "None"
-            print(f"  L{lv}: {status}")
+        if source:
+            print(f"CSV path: {source.get_path(region)}")
+        for level in range(1, 7):
+            print(f"  L{level}: {resolve_to_level(region, level, self.hierarchy, source)}")
 
     def debug_region_resolution(self, region: str):
-        """
-        Debug why a specific region isn't being resolved.
-        Shows step-by-step resolution process.
-        """
-        from region_analysis.hierarchy_table import _strip_prefix
-        
-        print(f"\n{'='*60}")
-        print(f"REGION RESOLUTION DEBUG: {region}")
-        print(f"{'='*60}")
-        
-        # Step 1: Strip prefix
-        base = _strip_prefix(region)
-        print(f"\n1. Strip prefix: {region} -> {base}")
-        
-        # Step 2: Check laterality
-        from region_analysis.laterality import LateralityParser
-        side = LateralityParser.get_side(region)
-        rtype = LateralityParser.get_region_type(region)
-        print(f"2. Classification: side={side}, type={rtype}")
-        
-        # Step 3: Check dual hierarchy
+        """Report explicit domain routing without hypothetical helper methods."""
+        print(f"Region {region}: side={LateralityParser.get_side(region)}, type={LateralityParser.get_region_type(region)}")
         if self.dual_hierarchy:
-            print(f"\n3. Dual Hierarchy loaded:")
-            print(f"   Cortex table: {self.dual_hierarchy.cortex_table.n_regions if self.dual_hierarchy.cortex_table else 0} regions")
-            print(f"   Subcortical table: {self.dual_hierarchy.subcortical_table.n_regions if self.dual_hierarchy.subcortical_table else 0} regions")
-            
-            # Try to find in appropriate table
-            table = self.dual_hierarchy._get_table_for_region(region)
-            if table:
-                print(f"   Selected table: {'cortex' if table == self.dual_hierarchy.cortex_table else 'subcortical'}")
-                has_region = table.has_region(region)
-                print(f"   has_region({region}): {has_region}")
-                
-                if has_region:
-                    path = table.get_path(region)
-                    print(f"   Full path: {path}")
-            else:
-                print(f"   ERROR: No table found for region type '{rtype}'")
-        
-        # Step 4: Try resolution at each level
-        print(f"\n4. Resolution by level:")
-        for lv in range(1, 7):
-            result = resolve_to_level(region, lv, self.hierarchy, 
-                                     self.dual_hierarchy or self.hierarchy_table)
-            status = result if result else "NOT FOUND"
-            print(f"   L{lv}: {status}")
-        
-        print(f"{'='*60}\n")
+            table = self.dual_hierarchy._get_table(region)
+            print(f"Selected table: {table.name if table else None}")
+        self.debug_hierarchy(region)
 
     # ==================================================================
     # OUTLIER EXPORT
@@ -1311,7 +1259,7 @@ class PopulationRegionAnalysis:
         data = [df.loc[df["Soma_Region"] == r, "Total_Length"] for r in regions]
         fig, ax = plt.subplots(figsize=(10, 6))
         ax.boxplot(data, labels=regions)
-        ax.set_title(f"Projection Length by Soma Region ({stat})")
+        ax.set_title(f"Total reconstruction length by soma region (source unit; display label={stat})")
         plt.xticks(rotation=45)
         plt.tight_layout()
         if self.output:
@@ -1416,7 +1364,7 @@ class PopulationRegionAnalysis:
         
         if missing_levels:
             print(f"[HIERARCHY] Creating missing projection columns: {missing_levels}")
-            if self.hierarchy is not None or self.hierarchy_table is not None:
+            if self.hierarchy is not None or self.hierarchy_table is not None or self.dual_hierarchy is not None:
                 # Only create the missing levels (not all L1-L6)
                 min_missing = min(missing_levels)
                 max_missing = max(missing_levels)
@@ -1476,6 +1424,11 @@ class PopulationRegionAnalysis:
             )
 
             # Projection sheets with laterality splits
+            # Preserve absolute atlas labels and unknown-side lengths for
+            # reconstruction and cross-sheet QC; splits alone lose that data.
+            all_lengths = self.get_projection_matrix("finest")
+            if not all_lengths.empty:
+                all_lengths.to_excel(writer, sheet_name="Projection_Length_all", index=False)
             # Sheet 6-7: Projection Length finest (ipsi/contra split)
             ipsi_len, contra_len = self.get_projection_matrix_split("finest")
             if not ipsi_len.empty:
@@ -1566,16 +1519,16 @@ class PopulationRegionAnalysis:
                 lines.append(f"  Soma side {side}: {c}")
             if "N_Ipsilateral" in df.columns:
                 lines.append(
-                    f"  Total ipsi terminals:   {int(df['N_Ipsilateral'].sum())}"
+                    f"  Total ipsilateral endpoint-target entries:   {int(df['N_Ipsilateral'].sum())}"
                 )
                 lines.append(
-                    f"  Total contra terminals: {int(df['N_Contralateral'].sum())}"
+                    f"  Total contralateral endpoint-target entries: {int(df['N_Contralateral'].sum())}"
                 )
             if "Laterality_Index" in df.columns:
                 valid = df["Laterality_Index"].dropna()
                 if not valid.empty:
                     lines.append(
-                        f"  Laterality Index - mean: {valid.mean():.3f}, "
+                        f"  Contralateral length fraction [Contra/(Ipsi+Contra), 0..1] - mean: {valid.mean():.3f}, "
                         f"median: {valid.median():.3f}"
                     )
 
@@ -1592,22 +1545,22 @@ class PopulationRegionAnalysis:
             if all_lengths:
                 arr = np.array(all_lengths)
                 log_arr = np.log10(arr + 1)
-                lines.append("\n--- Projection Strength (Population) ---")
+                lines.append("\n--- Retained Regional Reconstruction Lengths (Source Units) ---")
                 lines.append(
-                    f"  Raw length: mean={arr.mean():.2f}, "
-                    f"median={np.median(arr):.2f}, max={arr.max():.2f} mm"
+                    f"  Retained regional length: mean={arr.mean():.2f}, "
+                    f"median={np.median(arr):.2f}, max={arr.max():.2f} source units (see Length_Unit)"
                 )
                 lines.append(
-                    f"  Log strength: mean={log_arr.mean():.3f}, "
+                    f"  Display log10(length + 1): mean={log_arr.mean():.3f}, "
                     f"median={np.median(log_arr):.3f}, max={log_arr.max():.3f}"
                 )
 
         lines += [
             "",
             "--- Morphology ---",
-            f"Total length - Mean: {df['Total_Length'].mean():.2f}, "
-            f"Std: {df['Total_Length'].std():.2f}",
-            f"Terminal count - Mean: {df['Terminal_Count'].mean():.2f}, "
+            f"Total reconstruction length - Mean: {df['Total_Length'].mean():.2f}, "
+            f"Std: {df['Total_Length'].std():.2f} source units (see Length_Unit)",
+            f"Distinct endpoint-target regions (legacy all compartments) - Mean: {df['Terminal_Count'].mean():.2f}, "
             f"Max: {int(df['Terminal_Count'].max())}",
         ]
 
@@ -1632,7 +1585,7 @@ class PopulationRegionAnalysis:
             "--- Excel Workbook Contents ---",
             "  Sheet 1: Summary                    (scalar overview)",
             "  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)",
-            "  Sheet 3: Terminal_Sites             (one row per terminal)",
+            "  Sheet 3: Terminal_Sites             (one row per distinct endpoint-target region; legacy all compartments)",
             "  Sheet 4: Laterality                 (ipsi/contra scalars)",
             "  Sheet 5: Outliers                   (one row per outlier)",
             "",
@@ -1642,7 +1595,7 @@ class PopulationRegionAnalysis:
             "    Projection_Length_L{n}_ipsi     (level n, ipsilateral)",
             "    Projection_Length_L{n}_contra   (level n, contralateral)",
             "",
-            "  Projection Strength Sheets (split by laterality):",
+            "  Projection Strength Sheets (display log10(retained length + 1), source-unit dependent):",
             "    Projection_Strength_ipsi        (ipsilateral regions, log10)",
             "    Projection_Strength_contra      (contralateral regions, log10)",
             "    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)",
@@ -1656,9 +1609,9 @@ class PopulationRegionAnalysis:
         print(report)
 
     def _save_terminal_report(self):
-        """Report 2/3: Terminal distribution statistics."""
+        """Report 2/3: Distinct endpoint-target regions from all-compartment legacy leaves."""
         df = self.plot_dataframe
-        if "Terminal_Regions" not in df.columns:
+        if df.empty or "Terminal_Regions" not in df.columns:
             return
 
         df_temp = df.copy()
@@ -1666,39 +1619,38 @@ class PopulationRegionAnalysis:
             parse_terminal_regions
         )
         df_temp["_known"] = df_temp["Terminal_Regions"].apply(
-            lambda x: sum(1 for r in x if "Unknown" not in str(r))
+            lambda x: sum(is_known_terminal_target(r) for r in x)
         )
         df_temp["_unk"] = df_temp["Terminal_Regions"].apply(
-            lambda x: sum(1 for r in x if "Unknown" in str(r))
+            lambda x: sum(not is_known_terminal_target(r) for r in x)
         )
         total_known = int(df_temp["_known"].sum())
         total_unknown = int(df_temp["_unk"].sum())
         total_sites = total_known + total_unknown
         n_with_unk = int((df_temp["_unk"] > 0).sum())
-        n_only_known = int((df_temp["_unk"] == 0).sum())
+        n_only_known = int(((df_temp["_unk"] == 0) & (df_temp["_known"] > 0)).sum())
+        n_no_targets = int(df_temp["Terminal_Regions"].map(len).eq(0).sum())
         total_n = len(df_temp)
 
-        exploded = df_temp.explode("Terminal_Regions")
-        exploded_clean = exploded[
-            ~exploded["Terminal_Regions"].str.contains("Unknown", na=False)
-        ]
-        counts = exploded_clean["Terminal_Regions"].value_counts().head(30)
+        counts = terminal_target_region_counts(df_temp["Terminal_Regions"]).head(30)
 
         lines = [
             "=" * 60,
-            "TERMINAL REGION DISTRIBUTION REPORT",
+            "ENDPOINT-TARGET REGION DISTRIBUTION REPORT",
             "=" * 60,
             f"Generated: {datetime.now():%Y-%m-%d %H:%M:%S}",
             f"Sample: {self.sample_id}",
             "",
             "--- Known vs Unknown Statistics ---",
-            f"  Total projection sites: {total_sites}",
-            f"  Known sites: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
-            f"  Unknown sites: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
+            "  Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.\n  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+            f"  Total endpoint-target entries: {total_sites}",
+            f"  Known endpoint-target entries: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
+            f"  Unresolved endpoint-target entries: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
             f"  Neurons with unknown regions: {n_with_unk} ({n_with_unk / total_n * 100:.1f}%)",
             f"  Neurons with only known regions: {n_only_known} ({n_only_known / total_n * 100:.1f}%)",
+            f"  Neurons with no target entries: {n_no_targets} ({n_no_targets / total_n * 100:.1f}%)",
             "",
-            "--- Terminal Region Distribution (Top 30) ---",
+            "--- Endpoint-Target Region Distribution (Top 30) ---",
             f"  Total unique regions: {len(counts)}",
             f"  Total entries (known only): {int(counts.sum())}",
             "",
@@ -1712,9 +1664,9 @@ class PopulationRegionAnalysis:
         self.save_report(report, "terminal_report")
 
     def _save_projection_sites_report(self):
-        """Report 3/3: Projection sites count + outlier statistics."""
+        """Report 3/3: Known distinct endpoint-target region counts and outliers."""
         df = self.plot_dataframe
-        if "Terminal_Regions" not in df.columns:
+        if df.empty or "Terminal_Regions" not in df.columns:
             return
 
         df_temp = df.copy()
@@ -1722,10 +1674,10 @@ class PopulationRegionAnalysis:
             parse_terminal_regions
         )
         df_temp["_psc"] = df_temp["Terminal_Regions"].apply(
-            lambda x: sum(1 for r in x if "Unknown" not in str(r))
+            lambda x: sum(is_known_terminal_target(r) for r in x)
         )
         df_temp["_usc"] = df_temp["Terminal_Regions"].apply(
-            lambda x: sum(1 for r in x if "Unknown" in str(r))
+            lambda x: sum(not is_known_terminal_target(r) for r in x)
         )
         if "Outlier_Count" not in df_temp.columns:
             df_temp["Outlier_Count"] = 0
@@ -1736,36 +1688,37 @@ class PopulationRegionAnalysis:
 
         lines = [
             "=" * 60,
-            "PROJECTION SITES STATISTICS (KNOWN REGIONS ONLY)",
+            "ENDPOINT-TARGET REGION COUNTS (KNOWN REGIONS ONLY)",
             "=" * 60,
             f"Generated: {datetime.now():%Y-%m-%d %H:%M:%S}",
             f"Sample: {self.sample_id}",
             "",
             f"Total neurons analyzed: {total_n}",
             "",
-            "--- Known Projection Sites (Excluding Unknown) ---",
-            f"  Total known sites: {int(df_temp['_psc'].sum())}",
-            f"  Mean known sites per neuron: {df_temp['_psc'].mean():.2f}",
+            "--- Known Endpoint-Target Regions (Unresolved Excluded) ---",
+            f"  Total known endpoint-target entries: {int(df_temp['_psc'].sum())}",
+            f"  Mean known endpoint-target regions per neuron: {df_temp['_psc'].mean():.2f}",
             f"  Median: {df_temp['_psc'].median():.1f}",
             f"  Min: {int(df_temp['_psc'].min())}",
             f"  Max: {int(df_temp['_psc'].max())}",
             f"  Std: {df_temp['_psc'].std():.2f}",
             "",
-            "  Distribution of known sites per neuron:",
+            "  Distribution of known endpoint-target regions per neuron:",
         ]
         known_dist = df_temp["_psc"].value_counts().sort_index()
         for sites, count in known_dist.head(15).items():
             lines.append(
-                f"    {int(sites)} site(s): {int(count)} neurons "
+                f"    {int(sites)} endpoint-target region(s): {int(count)} neurons "
                 f"({count / total_n * 100:.1f}%)"
             )
 
         lines += [
             "",
-            "--- Unknown Projection Sites (Excluded from Plot) ---",
-            f"  Neurons with unknown sites: {n_wu} ({n_wu / total_n * 100:.1f}%)",
-            f"  Total unknown sites excluded: {int(df_temp['_usc'].sum())}",
-            f"  Mean unknown sites per neuron: {df_temp['_usc'].mean():.2f}",
+            "--- Unresolved Endpoint-Target Regions (Excluded from Plot) ---",
+            "  Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.\n  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+            f"  Neurons with unresolved endpoint-target regions: {n_wu} ({n_wu / total_n * 100:.1f}%)",
+            f"  Total unresolved endpoint-target entries excluded: {int(df_temp['_usc'].sum())}",
+            f"  Mean unresolved endpoint-target regions per neuron: {df_temp['_usc'].mean():.2f}",
             "",
             "--- Outlier Statistics ---",
             f"  Neurons with outliers: {n_wo} ({n_wo / total_n * 100:.1f}%)",
@@ -1833,7 +1786,7 @@ class PopulationRegionAnalysis:
                 print(f"  [WARN] laterality_summary failed: {e}")
 
         # 6. Stacked region distribution (all levels in one plot)
-        if "Soma_Region_Hierarchy" in df.columns:
+        if "Soma_Region_Hierarchy" in df.columns or any(f"Soma_Level_{level}" in df.columns for level in range(1, 7)):
             try:
                 s = str(self.output.get_plot_path("region_dist_stacked"))
                 plot_region_distribution_stacked(df, save_path=s, show=self.show_plots)
@@ -1849,7 +1802,7 @@ class PopulationRegionAnalysis:
                 ]
                 fig, ax = plt.subplots(figsize=(10, 6))
                 ax.boxplot(data, labels=regions)
-                ax.set_title("Projection Length by Soma Region")
+                ax.set_title("Total reconstruction length by soma region (source unit)")
                 plt.xticks(rotation=45)
                 plt.tight_layout()
                 p = self.output.get_plot_path("projection_by_soma")

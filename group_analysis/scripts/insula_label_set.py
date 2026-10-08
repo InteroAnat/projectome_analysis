@@ -11,20 +11,22 @@ from __future__ import annotations
 
 import os
 import re
+import sys
+from pathlib import Path
 import pandas as pd
 
+_MAIN_SCRIPTS = str(Path(__file__).resolve().parents[2] / "main_scripts")
+if _MAIN_SCRIPTS not in sys.path:
+    sys.path.insert(0, _MAIN_SCRIPTS)
+from region_labels import (CURATED_INSULA_LABELS, SOMA_REGION_PREFIXES,
+                           strip_region_prefix, normalize_region_label,
+                           is_explicit_unknown_label)
+
 ARM_KEY = r"D:\projectome_analysis\atlas\ARM_key_all.txt"
-SOMA_REGION_PREFIXES = ("CL_", "CR_", "L-", "R-", "L_", "R_")
 
 
 def strip_prefix(s: str) -> str:
-    if not isinstance(s, str):
-        return ""
-    s = s.strip()
-    for p in SOMA_REGION_PREFIXES:
-        if s.startswith(p):
-            return s[len(p):]
-    return s
+    return strip_region_prefix(s)
 
 
 def build_insula_label_set(atlas_path: str = ARM_KEY,
@@ -36,10 +38,11 @@ def build_insula_label_set(atlas_path: str = ARM_KEY,
     insula_labels_upper: canonical UPPERCASE sub-region abbreviations from
         the atlas (any Full_Name containing 'insula') plus the manually-
         curated finer labels used by the 251637 reference table
-        (IAL/IAPM/IDD5/IDM/IDV - resolved through CHARM hierarchy).
+        (IAL/IAPM/IDD5/IDM/IDV). These manual labels are retained source
+        annotations; their fine anatomical crosswalk to CHARM is unresolved.
 
     rescue_labels_upper: labels eligible for coordinate-based rescue
-        (auto-classification likely wrong). Includes PrCO, Unknown,
+        for review, without anatomical acceptance. Includes PrCO, Unknown,
         empty string, and unmapped sentinels.
     """
     atlas = pd.read_csv(atlas_path, sep="\t")
@@ -58,22 +61,22 @@ def build_insula_label_set(atlas_path: str = ARM_KEY,
                 base.add(part.upper())
         base.add(s.upper())
 
-    # 251637 manual finer-hierarchy labels (CHARM-derived; not in ARM atlas
-    # directly). These are the sub-region names found in
+    # 251637 manual finer labels, not an established CHARM crosswalk.
+    # These are the sub-region names found in
     # neuron_tables_new/251637_INS_HE_inferred.xlsx Summary sheet.
-    base.update({"IAL", "IAPM", "IDD5", "IDM", "IDV", "IDD", "IDI"})
+    base.update(CURATED_INSULA_LABELS)
 
     if not include_retroinsula:
         base.discard("RI")
         base.discard("RETROINSULA")
 
-    rescue = {"PRCO", "UNKNOWN", "_UNMAPPED", "INSULAUNKNOWN", ""}
+    rescue = {"PRCO", "UNKNOWN", "UNKNOWN_0", "_UNMAPPED", "INSULAUNKNOWN", ""}
     return base, rescue
 
 
 def normalize_label(s) -> str:
     """Canonical UPPERCASE label after prefix strip."""
-    return strip_prefix(s).upper().strip() if isinstance(s, str) else ""
+    return normalize_region_label(s)
 
 
 if __name__ == "__main__":

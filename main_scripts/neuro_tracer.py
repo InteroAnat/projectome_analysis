@@ -37,6 +37,7 @@ from bs4 import BeautifulSoup
 from collections import defaultdict
 
 from pathlib import Path
+from swc_validation import parse_swc
 
 matplotlib.use('TkAgg')  # Set before importing pyplot
 
@@ -94,7 +95,7 @@ class neuro_tracer:
 
         if output_dir is None:
             output_dir = os.path.join(os.getcwd(), 'processed_neurons', f'{exp_no}')
-            self.output_dir = output_dir
+        self.output_dir = output_dir
         if not os.path.exists(output_dir):
             os.makedirs(output_dir)
             
@@ -115,6 +116,7 @@ class neuro_tracer:
     def _loadSWC(self, exp_no, swc_filename, swc=None):
         # First check if we have a local file in the output directory
         local_swc_path = os.path.join(self.output_dir, swc_filename)
+        downloaded = False
         
         # If no SWC data is provided directly
         if swc is None:
@@ -122,48 +124,47 @@ class neuro_tracer:
             if os.path.exists(local_swc_path):
                 print(f"Loading SWC from local file: {local_swc_path}")
                 with open(local_swc_path, "r") as f:
-                    swclines = f.read().split('\n')
+                    swc_data = f.read()
+                source = local_swc_path
             else:
                 # Download from IONData if not found locally
                 print("Fetching SWC data via iondata")
                 iondata = IONData.IONData()
                 swc_data = iondata.getNeuronByID(exp_no, swc_filename)
-                swclines = swc_data.split('\n')
-                
-                # Save the downloaded SWC to output directory
-                with open(local_swc_path, "w") as f:
-                    f.write(swc_data)
-                print(f"Saved SWC to: {local_swc_path}")
+                downloaded = True
+                source = f"ION {exp_no}/{swc_filename}"
         else:
             # Handle direct SWC input (file path or string)
             if os.path.isfile(swc):
                 print("Parse swc as file")
                 with open(swc, "r") as f:
-                    swclines = f.read().split('\n')
+                    swc_data = f.read()
+                source = str(swc)
             else:
                 print("Parse swc as string")
-                swclines = swc.split('\n')
-                
-        # Process SWC lines
-        for line in swclines:
-            if len(line) == 0 or line[0] == '#' or line[0] == '\r':
-                continue
-            p = list(map(float, (line.split())))
-            self.nodes[int(p[0])] = self.Node(p)
-            
+                swc_data = swc
+                source = f"SWC input {exp_no}/{swc_filename}"
+
+        # Validate before caching or changing tracer state. Malformed downloads
+        # must not become persistent cache entries or partial reconstructions.
+        rows = parse_swc(swc_data, source=source)
+        nodes = {row[0]: self.Node(row) for row in rows}
+        root = next(node for node in nodes.values() if node.parent == -1)
+        if downloaded:
+            with open(local_swc_path, "w") as f:
+                f.write(swc_data)
+            print(f"Saved SWC to: {local_swc_path}")
+
+        self.nodes = nodes
+        self.root = root
+        self.branches = []
+        self.branches_in_id = []
+        self.terminal_nodes = None
+        self.processed_data = None
+        self.reso = None
+        self.nii_shape = None
         self.swc_filename = swc_filename
         self.exp_no = exp_no
-        
-        # Sanity checks
-        root_count = 0
-        for node in self.nodes.values():
-            if node.parent == -1:
-                self.root = node
-                root_count += 1
-        if root_count != 1:
-            print("Multiple root nodes found")
-        if not self.root:
-            raise ValueError("No root node found")
 
     
     def _acquire_nii_nodes(self,nii_space='monkey'):
@@ -218,34 +219,26 @@ class neuro_tracer:
     def _construct_branches(self):
         
         print ("\nConstructing branches, assigning orders \n \n")
-        
+
         def build_branch(current_node, parent_order, branch=None):
-            if branch is None:
-                branch = [current_node]
-            
-            current_order = parent_order
-            current_node.order = current_order  # Use branch_order
-            while len(current_node.children) == 1:
-                current_node = current_node.children[0]
+            # DFS stack preserves legacy branch order without Python recursion.
+            pending = [(current_node, parent_order, branch)]
+            while pending:
+                current_node, current_order, branch = pending.pop()
+                branch = [current_node] if branch is None else branch
                 current_node.order = current_order
-                branch.append(current_node)
-            
-            if len(current_node.children) == 0:
-                self.branches.append(branch[:])
-                # if current_node.id < 40:
-                #     # print(f"Terminal at {current_node.id}, order: {current_order}")
-            if len(current_node.children) > 1:
-                next_order = current_order + 1
-                # if current_node.id < 40:
-                #     # print(f"Branch point at {current_node.id}, next_order: {next_order}")
-                #     # print(f'next node is  {current_node.children[0].id}')
-                    
-                if len(branch)>1: #key modification 
+                while len(current_node.children) == 1:
+                    current_node = current_node.children[0]
+                    current_node.order = current_order
+                    branch.append(current_node)
+                if not current_node.children:
+                    self.branches.append(branch[:])
+                else:
+                    if len(branch) > 1:
                         self.branches.append(branch[:])
-                for child in current_node.children:
-                    new_branch = [current_node,child]
-                    build_branch(child, next_order, new_branch)
-        
+                    for child in reversed(current_node.children):
+                        pending.append((child, current_order + 1, [current_node, child]))
+
         def construct_id_branches(self):
             node_id_branches= []
             for branch in self.branches:

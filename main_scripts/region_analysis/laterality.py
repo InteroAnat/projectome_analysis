@@ -9,16 +9,19 @@ Prefix logic:
 from typing import Dict, List, Optional, Tuple
 
 import pandas as pd
+from region_analysis.utils import is_known_terminal_target, parse_projection_lengths
 
 
 class LateralityParser:
-    LEFT_PREFIXES = ("CL_", "SL_")
-    RIGHT_PREFIXES = ("CR_", "SR_")
+    # Refined soma labels use L-IDM / R-IDD5 (and legacy L_ / R_).
+    # Keep the same explicit-side interpretation in every consumer.
+    LEFT_PREFIXES = ("CL_", "SL_", "L-", "L_")
+    RIGHT_PREFIXES = ("CR_", "SR_", "R-", "R_")
     ALL_PREFIXES = LEFT_PREFIXES + RIGHT_PREFIXES
 
     @staticmethod
     def get_side(region_name: str) -> str:
-        if pd.isna(region_name):
+        if not isinstance(region_name, str):
             return "Unknown"
         s = str(region_name)
         if any(s.startswith(p) for p in LateralityParser.LEFT_PREFIXES):
@@ -39,7 +42,7 @@ class LateralityParser:
 
     @staticmethod
     def get_region_type(region_name: str) -> str:
-        if pd.isna(region_name):
+        if not isinstance(region_name, str):
             return "Unknown"
         s = str(region_name)
         if s.startswith("CL_") or s.startswith("CR_"):
@@ -55,8 +58,10 @@ class LateralityParser:
 
     @staticmethod
     def classify_with_soma_side(soma_side: str, terminal_region: str) -> str:
+        if not is_known_terminal_target(terminal_region):
+            return "Unknown"
         term_side = LateralityParser.get_side(terminal_region)
-        if soma_side == "Unknown" or term_side == "Unknown":
+        if not isinstance(soma_side, str) or soma_side not in ("L", "R") or term_side == "Unknown":
             return "Unknown"
         return "Ipsilateral" if soma_side == term_side else "Contralateral"
 
@@ -95,8 +100,7 @@ class LateralityParser:
     def split_projection_lengths_with_soma_side(
         soma_side: str, projection_dict: dict
     ) -> Tuple[dict, dict, dict]:
-        if not isinstance(projection_dict, dict):
-            return {}, {}, {}
+        projection_dict = parse_projection_lengths(projection_dict)
         ipsi, contra, unk = {}, {}, {}
         for region, length in projection_dict.items():
             lat = LateralityParser.classify_with_soma_side(soma_side, region)
@@ -109,41 +113,21 @@ class LateralityParser:
         return ipsi, contra, unk
 
 
-def _infer_soma_side_from_coords(df: pd.DataFrame, soma_col: str, soma_x_col: str) -> pd.Series:
-    """Infer soma side from coordinates when name-based side is unknown."""
-    name_side = df[soma_col].apply(LateralityParser.get_side)
-    if soma_x_col not in df.columns:
-        return pd.Series(["Unknown"] * len(df), index=df.index)
-
-    x = pd.to_numeric(df[soma_x_col], errors="coerce")
-    known = pd.DataFrame({"side": name_side, "x": x}).dropna()
-    known = known[known["side"].isin(["L", "R"])]
-    if known.empty or set(known["side"]) != {"L", "R"}:
-        return pd.Series(["Unknown"] * len(df), index=df.index)
-
-    med_l = known.loc[known["side"] == "L", "x"].median()
-    med_r = known.loc[known["side"] == "R", "x"].median()
-    thr = (med_l + med_r) / 2.0
-    l_is_lower = med_l < med_r
-
-    out = pd.Series(["Unknown"] * len(df), index=df.index, dtype=object)
-    valid = x.notna()
-    if l_is_lower:
-        out.loc[valid & (x <= thr)] = "L"
-        out.loc[valid & (x > thr)] = "R"
-    else:
-        out.loc[valid & (x >= thr)] = "L"
-        out.loc[valid & (x < thr)] = "R"
-    return out
-
-
 def add_laterality_columns(
     df: pd.DataFrame,
     soma_col: str = "Soma_Region",
     terminal_col: str = "Terminal_Regions",
     length_col: str = None,
     soma_x_col: str = "Soma_NII_X",
+    soma_side_reference: Optional[pd.Series] = None,
+    soma_side_reference_source: Optional[str] = None,
 ) -> pd.DataFrame:
+    """Classify explicit label sides, optionally using a declared reference.
+
+    Unknown labels stay unknown without an independently supplied side reference.
+    Sample coordinate medians are not a hemisphere reference. ``soma_x_col``
+    remains accepted for compatibility but does not determine side.
+    """
     df = df.copy()
     P = LateralityParser
 
@@ -155,14 +139,29 @@ def add_laterality_columns(
 
     # Stage 1: parse side from region name prefix.
     df["Soma_Side_Name"] = df[soma_col].apply(P.get_side)
-    # Stage 2 (fallback): infer side from soma coordinates if name is unknown.
-    df["Soma_Side_Coord"] = _infer_soma_side_from_coords(df, soma_col=soma_col, soma_x_col=soma_x_col)
+    reference = pd.Series("Unknown", index=df.index, dtype=object)
+    if soma_side_reference is not None:
+        if not soma_side_reference_source or not soma_side_reference_source.strip():
+            raise ValueError("A soma-side reference requires a provenance source")
+        if not isinstance(soma_side_reference, pd.Series) or not soma_side_reference.index.equals(df.index):
+            raise ValueError("Soma-side reference must be a Series with the exact dataframe index")
+        if not soma_side_reference.isin(["L", "R", "Unknown"]).all():
+            raise ValueError("Soma-side reference values must be L, R, or Unknown")
+        reference = soma_side_reference.copy()
+    # Retained legacy diagnostic column; no coordinate-derived assignment.
+    df["Soma_Side_Coord"] = "Unknown"
+    df["Soma_Side_Reference"] = reference
+    df["Soma_Side_Reference_Source"] = soma_side_reference_source
+    conflict = df["Soma_Side_Name"].isin(["L", "R"]) & reference.isin(["L", "R"]) & df["Soma_Side_Name"].ne(reference)
+    df["Soma_Side_Conflict"] = conflict
     df["Soma_Side"] = df["Soma_Side_Name"]
-    use_coord = df["Soma_Side"].eq("Unknown") & df["Soma_Side_Coord"].isin(["L", "R"])
-    df.loc[use_coord, "Soma_Side"] = df.loc[use_coord, "Soma_Side_Coord"]
+    use_reference = df["Soma_Side"].eq("Unknown") & reference.isin(["L", "R"])
+    df.loc[use_reference, "Soma_Side"] = reference.loc[use_reference]
+    df.loc[conflict, "Soma_Side"] = "Unknown"
     df["Soma_Side_Method"] = "name"
-    df.loc[use_coord, "Soma_Side_Method"] = "coord_fallback"
+    df.loc[use_reference, "Soma_Side_Method"] = "reference"
     df.loc[df["Soma_Side"].eq("Unknown"), "Soma_Side_Method"] = "unknown"
+    df.loc[conflict, "Soma_Side_Method"] = "conflicting_reference"
 
     df["Terminal_Laterality"] = df.apply(
         lambda row: P.parse_terminal_list_with_soma_side(row["Soma_Side"], row[terminal_col]),
@@ -224,10 +223,10 @@ def add_laterality_columns(
     n = len(df)
     n_ipsi = (df["N_Ipsilateral"] > 0).sum()
     n_contra = (df["N_Contralateral"] > 0).sum()
-    n_coord_fb = int((df["Soma_Side_Method"] == "coord_fallback").sum())
+    n_reference = int((df["Soma_Side_Method"] == "reference").sum())
     print(
         f"[LATERALITY] {n} neurons: "
         f"{n_ipsi} with ipsi targets, {n_contra} with contra targets "
-        f"(coord fallback for soma side: {n_coord_fb})"
+        f"(reference for soma side: {n_reference}; conflicts: {int(conflict.sum())})"
     )
     return df

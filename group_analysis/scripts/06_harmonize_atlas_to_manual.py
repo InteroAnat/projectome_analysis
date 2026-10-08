@@ -49,7 +49,11 @@ with:
              updates `Soma_Region_Refined` and `Soma_Region_Source`.
   - Mapping_Rule (new): documents the empirical crosstab and applied rule.
   - Provenance (regenerated): updated counts.
-All other sheets are preserved verbatim from the input.
+Untouched workbook cells retain their values, formulas and formatting through
+openpyxl. Existing Phase 6a enrichment still updates its documented Henry
+Summary annotation fields and Henry_Layer_Provenance sheet. The derivative
+XLSX archive is reserialized; byte-for-byte equality is promised only for the
+unchanged source file.
 
 The original `multi_monkey_INS_combined.xlsx` is left untouched. Once
 verified, the user can swap names manually.
@@ -59,9 +63,12 @@ from __future__ import annotations
 import os
 import importlib.util
 import tempfile
-import time
+from pathlib import Path
+from numbers import Real
 
 import pandas as pd
+from openpyxl import load_workbook
+from openpyxl.utils.dataframe import dataframe_to_rows
 
 PROJECT_ROOT = r"D:\projectome_analysis"
 GROUP_DIR = os.path.join(PROJECT_ROOT, "group_analysis")
@@ -120,15 +127,94 @@ def _strip_prefix(label: str) -> str:
     return label
 
 
-def harmonize() -> None:
-    if not os.path.exists(COMBINED_XLSX):
-        raise FileNotFoundError(COMBINED_XLSX)
+def _sample_token(value):
+    if pd.isna(value):
+        raise ValueError("SampleID must be present")
+    if isinstance(value, Real) and float(value).is_integer():
+        return str(int(value))
+    token = str(value).strip()
+    if not token:
+        raise ValueError("SampleID must be present")
+    return token
 
-    # Read every sheet so we can rewrite the file with all of them preserved.
-    xl = pd.ExcelFile(COMBINED_XLSX)
-    sheets: dict[str, pd.DataFrame] = {
-        s: pd.read_excel(COMBINED_XLSX, sheet_name=s) for s in xl.sheet_names
-    }
+
+def _ordered_uids(frame, sheet_name):
+    required = {"SampleID", "NeuronID"}
+    if not required.issubset(frame.columns):
+        raise ValueError(f"{sheet_name} missing identity columns: {sorted(required - set(frame.columns))}")
+    if frame.NeuronID.isna().any():
+        raise ValueError(f"{sheet_name} has missing NeuronID")
+    pairs = []
+    for sample, neuron in zip(frame.SampleID, frame.NeuronID):
+        neuron = str(neuron).strip()
+        if not neuron:
+            raise ValueError(f"{sheet_name} has blank NeuronID")
+        pairs.append((_sample_token(sample), neuron))
+    if len(pairs) != len(set(pairs)):
+        raise ValueError(f"{sheet_name} has duplicate full neuron identities")
+    if "NeuronUID" in frame:
+        expected = [sample + "::" + neuron for sample, neuron in pairs]
+        if frame.NeuronUID.astype(str).tolist() != expected:
+            raise ValueError(f"{sheet_name} NeuronUID disagrees with SampleID/NeuronID")
+    return tuple(pairs)
+
+
+def validate_workbook_membership(sheets):
+    """Require complete, ordered full identities in every quantitative sheet."""
+    required = {f"Projection_{metric}{level}_{side}"
+                for metric in ("Length", "Strength")
+                for level in ("", "_L3") for side in ("ipsi", "contra")}
+    missing = required - set(sheets)
+    if missing:
+        raise ValueError(f"Workbook missing required quantitative sheets: {sorted(missing)}")
+    if "Summary" not in sheets:
+        raise ValueError("Workbook missing Summary")
+    expected = _ordered_uids(sheets["Summary"], "Summary")
+    if not expected:
+        raise ValueError("Summary cannot be empty")
+    signatures = {"Summary": expected}
+    for name, frame in sheets.items():
+        if name.startswith("Projection_"):
+            actual = _ordered_uids(frame, name)
+            if actual != expected:
+                raise ValueError(f"{name} ordered membership differs from Summary")
+            signatures[name] = actual
+    return signatures
+
+
+def _enrich_henry_layers(workbook):
+    layer_script = os.path.join(GROUP_DIR, "scripts", "06a_merge_henry_layers.py")
+    spec = importlib.util.spec_from_file_location("merge_henry_layers_phase06a", layer_script)
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Could not load layer enrichment: {layer_script}")
+    layer_module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(layer_module)
+    layer_module.merge_henry_layers(workbook)
+
+
+def harmonize(combined_xlsx=None, out_xlsx=None) -> None:
+    """Write a new derivative; existing workbooks are never replaced.
+
+    Both canonical and staging destinations must use a fresh path. This makes
+    the historical 306-input/353-destination mismatch an early refusal rather
+    than silent membership loss. Curated reference and distant candidate rows
+    retain their existing provenance and membership.
+    """
+    source = Path(combined_xlsx or COMBINED_XLSX).resolve()
+    destination = Path(out_xlsx or OUT_XLSX).resolve()
+    if os.path.normcase(str(source)) == os.path.normcase(str(destination)):
+        raise ValueError("Harmonized input and output must be distinct paths")
+    if destination.exists():
+        raise FileExistsError(f"Harmonized output already exists; use a new derivative path: {destination}")
+    if not source.is_file():
+        raise FileNotFoundError(source)
+
+    # Read tabular values for label decisions and complete membership checks.
+    # The write below starts from the original workbook, not these dataframes.
+    with pd.ExcelFile(source) as xl:
+        original_sheet_names = list(xl.sheet_names)
+        sheets = {name: pd.read_excel(xl, sheet_name=name) for name in xl.sheet_names}
+    input_membership = validate_workbook_membership(sheets)
 
     summ = sheets["Summary"].copy()
     if "Soma_Region_Refined" not in summ.columns:
@@ -191,7 +277,10 @@ def harmonize() -> None:
                 "(overrides empirical Ig→IDD5 crosstab); atlas G untouched"
             )
         if conf == "high":
-            return "100% concordance in 251637 empirical crosstab"
+            rows = REFERENCE_CROSSTAB[REFERENCE_CROSSTAB.atlas_leaf.eq(leaf)]
+            dominant = EMPIRICAL_MAPPING[leaf][0]
+            fraction = rows.loc[rows.manual_leaf.eq(dominant), "n"].sum() / rows.n.sum()
+            return f"{fraction:.1%} concordance in 251637 empirical crosstab"
         return "split assignment in 251637; verify by coord/visual QC"
 
     mapping_rule = pd.DataFrame(
@@ -221,61 +310,53 @@ def harmonize() -> None:
         .reset_index(name="n")
     )
 
-    # Write everything back, preserving sheet order from the original file
-    # then appending new sheets at the end.
-    new_sheet_names = [s for s in xl.sheet_names] + [
-        s for s in ("Mapping_Rule", "Mapping_Rule_Crosstab")
-        if s not in xl.sheet_names
-    ]
-
-    out_dir = os.path.dirname(OUT_XLSX)
+    out_dir = str(destination.parent)
     fd, temp_out = tempfile.mkstemp(
         prefix=".harmonized_build_", suffix=".xlsx", dir=out_dir
     )
     os.close(fd)
     try:
-        with pd.ExcelWriter(temp_out, engine="openpyxl") as writer:
-            for name in new_sheet_names:
-                sheets[name].to_excel(writer, sheet_name=name, index=False)
+        # Preserve source workbook objects, formulas and formatting. Only the
+        # documented Summary fields and generated rule/provenance sheets change.
+        workbook = load_workbook(source)
+        summary_ws = workbook["Summary"]
+        headers = {cell.value: cell.column for cell in summary_ws[1] if cell.value is not None}
+        for column in ("Soma_Region_Refined_PreHarmonize", "Soma_Region_Refined", "Soma_Region_Source"):
+            if column not in headers:
+                headers[column] = summary_ws.max_column + 1
+                summary_ws.cell(1, headers[column], column)
+            for row_number, value in enumerate(summ[column], start=2):
+                summary_ws.cell(row_number, headers[column]).value = None if pd.isna(value) else value
+        for name in ("Provenance", "Mapping_Rule", "Mapping_Rule_Crosstab"):
+            position = workbook.sheetnames.index(name) if name in workbook.sheetnames else len(workbook.sheetnames)
+            if name in workbook:
+                del workbook[name]
+            sheet = workbook.create_sheet(name, position)
+            for row in dataframe_to_rows(sheets[name], index=False, header=True):
+                sheet.append([None if pd.isna(value) else value for value in row])
+        workbook.save(temp_out)
+        workbook.close()
 
         # The canonical harmonized workbook must include Henry's 251637 layer
         # annotations. Enrich every rebuild so Phase 6 cannot erase Phase 6a.
-        layer_script = os.path.join(
-            GROUP_DIR, "scripts", "06a_merge_henry_layers.py"
-        )
-        spec = importlib.util.spec_from_file_location(
-            "merge_henry_layers_phase06a", layer_script
-        )
-        if spec is None or spec.loader is None:
-            raise RuntimeError(f"Could not load layer enrichment: {layer_script}")
-        layer_module = importlib.util.module_from_spec(spec)
-        spec.loader.exec_module(layer_module)
-        layer_module.merge_henry_layers(temp_out)
+        _enrich_henry_layers(temp_out)
 
         # A harmonized build may change labels, never membership.
-        built = pd.read_excel(temp_out, sheet_name="Summary")
-        key_cols = ["SampleID", "NeuronID"]
-        source_keys = set(map(tuple, sheets["Summary"][key_cols].to_numpy()))
-        built_keys = set(map(tuple, built[key_cols].to_numpy()))
-        if len(built) != len(sheets["Summary"]) or built_keys != source_keys:
-            raise RuntimeError(
-                "Harmonized membership differs from current combined table"
-            )
+        built_sheets = pd.read_excel(temp_out, sheet_name=None)
+        if validate_workbook_membership(built_sheets) != input_membership:
+            raise RuntimeError("Harmonized workbook membership differs from its input")
+        if not set(original_sheet_names).issubset(built_sheets):
+            raise RuntimeError("Harmonized workbook lost an input sheet")
 
-        # Antivirus/indexers can briefly hold an xlsx on Windows.
-        for attempt in range(5):
-            try:
-                os.replace(temp_out, OUT_XLSX)
-                break
-            except PermissionError:
-                if attempt == 4:
-                    raise
-                time.sleep(1)
+        # The same-directory hard link publishes a complete file atomically
+        # and fails if another process created the destination during the build.
+        # os.replace would silently clobber that newly created workbook.
+        os.link(temp_out, destination)
     finally:
         if os.path.exists(temp_out):
             os.remove(temp_out)
 
-    print(f"[06] wrote {OUT_XLSX}")
+    print(f"[06] wrote {destination}")
     print("[06] done")
 
 

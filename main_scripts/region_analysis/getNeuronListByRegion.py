@@ -2,6 +2,8 @@
 import sys, os, re
 import pandas as pd
 from typing import List, Union
+from region_labels import (CURATED_INSULA_LABELS, normalize_region_label,
+                           normalize_portal_region_label)
 
 # ==============================================================================
 # CONFIGURATION
@@ -71,11 +73,17 @@ def getNeuronListByRegion(
             print(f'[WARN] No atlas regions found for: {region_keywords}')
         return [] if return_ids_only else pd.DataFrame()
     
-    # Extract base names: "CL_Ial" -> "ial", "CL_Ia/Id" -> ["ia", "id"]
+    # Exact bases include both the combined atlas leaf and its slash members.
     base_names = set()
     for abbr in roi_abbr:
-        name = abbr.replace('CL_', '').replace('CR_', '')
-        base_names.update(p.strip().lower() for p in name.split('/'))
+        name = normalize_region_label(abbr)
+        base_names.add(name)
+        base_names.update(p.strip() for p in name.split('/'))
+    if any(keyword.lower() in {"insula", "insular"} for keyword in region_keywords):
+        # The curated reference vocabulary is a separate candidate source.
+        # Keep its complete token (e.g. IDD5); do not fuzzy-match ID prefixes.
+        base_names.update(CURATED_INSULA_LABELS)
+    full_names = {str(abbr).strip().upper() for abbr in roi_abbr}
     
     if verbose:
         print(f'Atlas regions for "{region_keywords}": {len(roi_abbr)}')
@@ -89,19 +97,21 @@ def getNeuronListByRegion(
         return [] if return_ids_only else pd.DataFrame()
     
     neurons_df = pd.DataFrame(neuron_list)
-    neurons_df['region_clean'] = neurons_df['region'].str.strip().str.replace(r'[\r\n]', '', regex=True)
+    regions = neurons_df.get('region', pd.Series("", index=neurons_df.index))
+    neurons_df['region_clean'] = regions.map(
+        lambda value: value.strip().replace('\r', '').replace('\n', '')
+        if isinstance(value, str) else "")
     
     # Match function
     def is_match(region):
-        if not region:
-            return False
-        match = re.match(r'^([A-Za-z/]+)', region)
-        if match:
-            base = match.group(1).lower()
-            return base in base_names or any(
-                base.startswith(b) or b.startswith(base) for b in base_names
-            )
-        return False
+        text = region.strip().upper()
+        if text.startswith(("CL_", "CR_", "SL_", "SR_")):
+            # Explicit atlas prefixes distinguish cortical Pi from pineal Pi.
+            if text in full_names:
+                return True
+            head, separator, tail = text.rpartition("_")
+            return bool(separator and tail.isdigit() and head in full_names)
+        return normalize_portal_region_label(region, base_names) in base_names
     
     # Filter
     filtered = neurons_df[neurons_df['region_clean'].apply(is_match)].copy()

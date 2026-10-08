@@ -1018,3 +1018,38 @@ group_analysis/                       — Multi-monkey extension (added 2026-04-
 42. **Anderson 2001** *Austral Ecol* 26:32. PERMANOVA.
 43. **Mantel 1967** *Cancer Res* 27:209. Mantel test.
 44. **Benjamini & Hochberg 1995** *J R Stat Soc B* 57:289. BH correction.
+
+## Historical-results methods warning — 2026-10-09
+
+The earlier results in this report are preserved as historical observations.
+They are not newly accepted anatomical or animal-population findings. The
+independent audit and numerical receipts are in
+`notes/region_analysis_review_20261009/methods_audit/`.
+
+- The reported 58% intra-insula value is a mean share of **normalized
+  log10(legacy regional voxel length + 1)**, not an axonal-length budget.
+  A diagnostic untransformed-length share for the same 306 IDs is about 64%;
+  it is not a replacement biological result. Those legacy lengths retain
+  unverified compartment, terminal-target and coordinate semantics.
+- Gradient `slope_p` values are ordinary OLS t-test p-values, not permutation
+  p-values. Neuron-level tests and their BH adjustments do not establish
+  independent animal replication or correct within-animal dependence.
+- The L3/L6 hybrid retains L3 ancestors alongside L6 descendants. It is an
+  overlapping multiscale transformed-strength profile, not an exclusive
+  anatomical partition. Historical stripped Pi labels also have a known
+  cortical/subcortical namespace ambiguity. Existing plain-name R target lists
+  are incompatible with the collision-safe C_/S_ exports until an explicit
+  namespace, unit and exact-cohort preflight has passed.
+- The historical output tables use 306 neurons; the current harmonized
+  workbook inspected on 2026-10-09 contains 353 common valid IDs. Old tables
+  and figures remain version-specific. Their existence/QC flags do not
+  establish fresh input-to-output lineage.
+- Stratum identifiers ending `_balanced` are retained compatibility names
+  for region restrictions. They implement neither animal balancing nor
+  independent replication. LOSO drops SampleID; an animal interpretation
+  requires a verified registry relationship for that run.
+
+No numerical result, p-value, cohort, original label or historical figure was
+changed by this warning. Candidate graph endpoints, legacy regional lengths
+and image-reviewed terminal arbors remain distinct measurements. A separate
+versioned analysis and agreed sampling design are required for new claims.

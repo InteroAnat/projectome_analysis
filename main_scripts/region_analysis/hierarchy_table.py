@@ -50,67 +50,61 @@ class HierarchyTable:
         return level_cols
     
     def _parse_df(self):
-        """Parse DataFrame to build region and index paths."""
+        """Keep explicit level positions and reject conflicting identity paths."""
         df = self.df
-        
-        # Detect level columns
         level_cols = self._detect_level_columns(df)
         if not level_cols:
-            return
-        
-        self.max_level = max(level_cols.keys())
-        
-        # Check for v2 format with _abbr columns
-        has_abbr_cols = any('_abbr' in str(c) for c in df.columns)
-        has_index_cols = any('_index' in str(c) for c in df.columns)
-        
+            raise ValueError("Hierarchy table has no level columns")
+        if min(level_cols) < 0 or max(level_cols) > 6:
+            raise ValueError("Hierarchy levels must be between 0 and 6")
+        self.max_level = max(level_cols)
+        self._level_start = 0 if 0 in level_cols else 1
+        levels = list(range(self._level_start, self.max_level + 1))
 
-        
-        # Build paths for each row
-        for idx, row in df.iterrows():
-            row_path = []
-            
-            for lv in sorted(level_cols.keys()):
-                level_col = level_cols[lv]
-                
-                if has_abbr_cols:
-                    # v2 format: use _abbr column for abbreviation
-                    abbr_col = f"Level_{lv}_abbr"
-                    if abbr_col in df.columns:
-                        abbrev = str(row[abbr_col]).strip()
-                        if abbrev and abbrev.lower() not in ('nan', 'none', ''):
-                            row_path.append(abbrev)
-                            continue
-                
-                # Fallback: use main column, strip prefix
-                full_name = str(row[level_col]).strip()
-                if full_name and full_name.lower() not in ('nan', 'none', ''):
-                    abbrev = self._strip_prefix(full_name)
-                    row_path.append(abbrev)
+        def register(mapping, key, path):
+            if key in mapping:
+                previous = mapping[key]
+                for old, new in zip(previous, path):
+                    if old is not None and new is not None and old != new:
+                        raise ValueError(f"Conflicting hierarchy paths for {key}")
+                mapping[key] = [old if old is not None else new
+                                for old, new in zip(previous, path)]
+            else:
+                mapping[key] = path
+
+        for _, row in df.iterrows():
+            row_path, indices = [], []
+            for lv in levels:
+                abbr = row.get(f"Level_{lv}_abbr")
+                if pd.isna(abbr) or not str(abbr).strip():
+                    abbr = row.get(level_cols.get(lv))
+                    abbr = self._strip_prefix(str(abbr).strip()) if pd.notna(abbr) else None
+                row_path.append(str(abbr).strip() if pd.notna(abbr) and str(abbr).strip() else None)
+                index = row.get(f"Level_{lv}_index")
+                if pd.isna(index):
+                    indices.append(None)
                 else:
-                    row_path.append(None)
-            
-            # Store by abbreviation (last non-None level)
-            if row_path and row_path[-1]:
-                self.region_paths[row_path[-1]] = row_path
-            
-            # Store by index if available - store ALL level indices for this row
-            if has_index_cols:
-                for lv in sorted(level_cols.keys()):
-                    idx_col = f"Level_{lv}_index"
-                    if idx_col in df.columns:
-                        try:
-                            region_idx = int(row[idx_col])
-                            if region_idx > 0 and region_idx not in self.index_paths:
-                                # Store path for this index - use the path up to this level
-                                path_to_level = [p for p in row_path[:lv] if p is not None]
-                                if path_to_level:
-                                    self.index_paths[region_idx] = row_path
-                        except (ValueError, TypeError):
-                            continue
-        
+                    numeric = float(index)
+                    if not np.isfinite(numeric) or not numeric.is_integer() or numeric <= 0:
+                        raise ValueError(f"Invalid hierarchy index {index}")
+                    indices.append(int(numeric))
+            for pos, name in enumerate(row_path):
+                if name is not None:
+                    last = max(i for i, value in enumerate(row_path) if value == name)
+                    register(self.region_paths, name, row_path[:last+1] + [None]*(len(row_path)-last-1))
+            for pos, index in enumerate(indices):
+                if index is not None:
+                    last = max(i for i, value in enumerate(indices) if value == index)
+                    register(self.index_paths, index, row_path[:last+1] + [None]*(len(row_path)-last-1))
 
-    
+    @classmethod
+    def from_files(cls, *paths):
+        """Load and merge requested files; missing/conflicting inputs fail closed."""
+        if not paths:
+            raise ValueError("At least one hierarchy file is required")
+        tables = [cls.load_file(path) for path in paths]
+        return cls(pd.concat([table.df for table in tables], ignore_index=True))
+
     @staticmethod
     def _strip_prefix(name: str) -> str:
         """Strip CL_/CR_/SL_/SR_ prefix."""
@@ -166,14 +160,8 @@ class HierarchyTable:
         if path is None:
             return None
         
-        # Handle Level_0 in CSV - if path has 7 elements (0-6), level 1 = index 1 (skip Level_0)
-        if len(path) == 7 and self.max_level == 6:
-            # Path includes Level_0, so adjust: level 1 = index 1
-            level_idx = level
-        else:
-            # Standard: level 1 = index 0
-            level_idx = level - 1
-        
+        level_idx = level - self._level_start
+
         if level_idx < 0 or level_idx >= len(path):
             return None
         
@@ -197,19 +185,15 @@ class HierarchyTable:
         if level is None:
             return path
         
-        # Handle Level_0 in CSV - if path has 7 elements (0-6), level 1 = index 1 (skip Level_0)
-        if len(path) == 7 and self.max_level == 6:
-            level_idx = level
-        else:
-            level_idx = level - 1
-        
+        level_idx = level - self._level_start
+
         if level_idx < 0 or level_idx >= len(path):
             return None
         
         return path[level_idx]
     
     def aggregate_to_level(self, region_lengths: Dict[str, float], 
-                           target_level: int) -> Dict[str, float]:
+                           target_level: int, strip_prefixes: bool = False) -> Tuple[Dict[str, float], List[str]]:
         """
         Aggregate region lengths to target hierarchy level using index-based lookup.
         
@@ -224,27 +208,14 @@ class HierarchyTable:
         unmapped = []
         
         for region_key, length in region_lengths.items():
-            # Try direct lookup first
             target = self.get_at_level(region_key, target_level)
-            
-            if target is not None:
-                result[target] = result.get(target, 0) + length
-            else:
-                # Try numeric index lookup
-                try:
-                    idx = int(region_key)
-                    if idx in self.index_paths:
-                        path = self.index_paths[idx]
-                        level_idx = target_level - 1
-                        if 0 <= level_idx < len(path) and path[level_idx]:
-                            result[path[level_idx]] = result.get(path[level_idx], 0) + length
-                        else:
-                            unmapped.append(region_key)
-                    else:
-                        unmapped.append(region_key)
-                except ValueError:
-                    unmapped.append(region_key)
-        
+            if target is None:
+                unmapped.append(region_key)
+                continue
+            if strip_prefixes:
+                target = self._strip_prefix(target)
+            result[target] = result.get(target, 0) + length
+
         return result, unmapped
     
     @classmethod
@@ -255,6 +226,9 @@ class HierarchyTable:
         if not path.exists():
             raise FileNotFoundError(f"Hierarchy file not found: {path}")
         
+        if path.suffix.lower() in {".xlsx", ".xls"}:
+            return cls(pd.read_excel(path), name=name or path.stem)
+
         try:
             # Try different encodings
             for encoding in ['utf-8', 'latin-1', 'cp1252']:

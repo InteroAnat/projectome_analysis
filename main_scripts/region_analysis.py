@@ -1,5 +1,9 @@
 """
-region_analysis.py - Monkey Projectome Region Analysis
+region_analysis.py - Legacy Monkey Projectome Region Analysis
+
+Historical implementation retained for reference. The active pipeline imports
+the region_analysis/ package. This file has different hierarchy/outside-target
+behavior and is not covered by the package's scientific or software validation.
 
 Version: 3.5.0 (2026-03-04)
 Author: [Your Name]

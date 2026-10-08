@@ -1,3 +1,18 @@
+# Metric names (2026-10-09): retained length is the legacy reconstruction
+# measurement in its declared source units, with compartment/terminal-target
+# semantics unverified. Display strength = log10(retained length + 1).
+# A log-scaled length share divides that strength by the sum over selected
+# features; hybrid L3/L6 features overlap and are not a raw-length budget.
+# Summary Laterality_Index = Contra/(Ipsi+Contra), range 0..1 (0 ipsi, 1 contra).
+# Individual Ibias = (Contra-Ipsi)/(Contra+Ipsi), range -1..1 (+1 contra).
+# Source-group LI = (mean_L-mean_R)/(mean_L+mean_R+epsilon), positive for a
+# higher LEFT-source neuron mean; this is not an ipsi/contra or right/left target
+# hemisphere index. Zero-denominator individual balances are unavailable.
+# Names, columns, thresholds, stratum IDs and output filenames are preserved.
+
+# Methods audit 2026-10-09: prop denotes normalized log-strength composition, not raw length.
+# Historical inputs/results are not accepted terminal fields or animal-population inference.
+# Collision-safe C_/S_ export names require an explicit schema/cohort preflight before reuse.
 # ============================================================
 # Combined-first (L+R pooled) insula analysis
 # - Primary outputs are pooled across hemisphere
@@ -176,10 +191,10 @@ fig_grad <- ggplot(grad_df, aes(x = target_region, y = source_region, fill = mea
     aes(label = ifelse(mean_prop >= 0.01, sprintf("%.2f", mean_prop), "")),
     size = 2.8
   ) +
-  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "mean\nprop") +
+  scale_fill_gradient(low = "white", high = "#2a6fbb", name = "mean\nlog-scaled length share") +
   labs(
     title = "Whole-insula interoceptive gradient (L+R pooled)",
-    subtitle = "Pooled mean ipsi projection fraction from each source sub-region to insula targets",
+    subtitle = "Pooled mean ipsilateral share of log-scaled length from each source sub-region to insula targets",
     x = "Target insula sub-region",
     y = "Source soma sub-region"
   ) +
@@ -221,9 +236,9 @@ fig_dom <- ggplot(dom_df, aes(x = reorder(panel_label, -mean_prop), y = mean_pro
   geom_text(aes(label = sprintf("nT=%d", n_targets)), vjust = -0.35, size = 3) +
   labs(
     title = "Whole-insula functional domain overview (L+R pooled)",
-    subtitle = "Mean pooled projection proportion by Gou domain (L3 mapping)",
+    subtitle = "Mean pooled share of log-scaled length by Gou domain (L3 mapping)",
     x = "Functional domain",
-    y = "Mean projection proportion"
+    y = "Mean share of log-scaled length"
   ) +
   theme_minimal(base_size = 10)
 ggsave(file.path(OUT_FIGS, "combined_functional_domain_overview.png"), fig_dom, width = 8.2, height = 5.4, dpi = 220)
@@ -350,4 +365,3 @@ write.csv(mantel_rep, file.path(OUT_STATS, "mantel_replication_group.csv"), row.
 
 cat("[combined-primary] done\n")
 cat(" outputs root:", OUT_ROOT, "\n")
-

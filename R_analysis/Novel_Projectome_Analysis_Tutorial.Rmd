@@ -16,6 +16,17 @@ output:
     fig_height: 10
 ---
 
+
+> Historical tutorial metrics: Length_Asymmetry actually sums Projection_Strength
+> (log10(retained length + 1)), then computes (ipsi-contra)/(ipsi+contra+eps).
+> Count_Asymmetry uses counts of targets with positive strength. Asymmetry_Score
+> averages those two balances. Their positive sign means ipsilateral, the
+> opposite sign to Ibias. Imported Summary Laterality_Index is a separate
+> 0..1 contralateral share; abs(Laterality_Index) is not a signed bias magnitude.
+> Calculations and historical variable IDs are preserved; no biological
+> terminal-arbor or independent-animal acceptance follows from this tutorial.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -727,8 +738,8 @@ p7 <- ggplot(df_asymmetry, aes(x = Length_Asymmetry, y = Count_Asymmetry, color 
   labs(
     title = "Bilateral Projection Asymmetry",
     subtitle = "Positive = ipsilateral bias, Negative = contralateral bias",
-    x = "Length Asymmetry Index",
-    y = "Target Count Asymmetry Index"
+    x = "Log-scaled length balance (ipsi-contra)/(ipsi+contra+eps)",
+    y = "Target-count balance (ipsi-contra)/(ipsi+contra+eps)"
   ) +
   annotate("rect", xmin = 0.5, xmax = 1, ymin = 0.5, ymax = 1, 
            alpha = 0.1, fill = "blue") +
@@ -744,8 +755,8 @@ p8 <- ggplot(df_asymmetry, aes(x = Neuron_Type, y = Asymmetry_Score, fill = Neur
   scale_fill_manual(values = type_colors) +
   geom_hline(yintercept = 0, linetype = "dashed", color = "black") +
   labs(
-    title = "Asymmetry Score by Neuron Type",
-    y = "Asymmetry Score (-1 to 1)"
+    title = "Average of log-scaled length and target-count balances",
+    y = "Mean balance: positive ipsi; negative contra"
   ) +
   theme(legend.position = "none")
 

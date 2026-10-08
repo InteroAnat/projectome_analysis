@@ -19,7 +19,7 @@ from . import hierarchy_table as ht
 
 class RegionHierarchy:
     """
-    Legacy ARM key parser for L1-L2 hierarchy.
+    ARM label availability by atlas level, without invented parent paths.
     
     Parses ARM_key_all.txt format:
     Index\tAbbreviation\tFull_Name\tFirst_Level\tLast_Level
@@ -58,17 +58,20 @@ class RegionHierarchy:
                     idx = int(parts[0])
                     abbr = parts[1].strip()
                     full_name = parts[2].strip()
-                    first_level = parts[3].strip()
-                    last_level = parts[4].strip()
+                    first_level = int(parts[3])
+                    last_level = int(parts[4])
+                    if not 1 <= first_level <= last_level <= 6:
+                        raise ValueError("Invalid ARM level availability")
                     
                     # Store index mappings
                     instance.index_to_abbr[idx] = abbr
                     instance.abbr_to_index[abbr] = idx
                     
-                    # Build level map (L1 = first_level, L2 = last_level)
+                    # First/Last_Level specify where this very label occurs;
+                    # they are numeric metadata, not L1/L2 parent names.
+                    # Parent paths require the CHARM/SARM hierarchy tables.
                     instance.level_map[abbr] = {
-                        1: first_level,
-                        2: last_level,
+                        level: abbr for level in range(first_level, last_level + 1)
                     }
                     
                 except (ValueError, IndexError):
@@ -77,15 +80,9 @@ class RegionHierarchy:
         return instance
     
     def get_at_level(self, region: str, level: int) -> Optional[str]:
-        """Get region at specified level (1 or 2 for ARM key)."""
+        """Return this label only at levels where the ARM key declares it."""
         region = str(region).strip()
-        
-        # Strip prefix if present
-        for prefix in ['CL_', 'CR_', 'SL_', 'SR_']:
-            if region.startswith(prefix):
-                region = region[len(prefix):]
-                break
-        
+
         if region in self.level_map:
             return self.level_map[region].get(level)
         
@@ -311,10 +308,10 @@ def add_projection_length_hierarchy(df, hierarchy: Dict, base_col: str,
     
     def safe_literal_eval(val):
         """Safely evaluate string representation of dict/list."""
-        if pd.isna(val) or val == '':
-            return {}
         if isinstance(val, dict):
             return val
+        if not isinstance(val, str):
+            return {}
         if isinstance(val, str):
             try:
                 return ast.literal_eval(val)
@@ -370,10 +367,10 @@ def add_projection_hierarchy(df, hierarchy, max_level: int = 6,
     import ast
     
     def safe_literal_eval(val):
-        if pd.isna(val) or val == '':
-            return []
         if isinstance(val, list):
             return val
+        if not isinstance(val, str):
+            return []
         if isinstance(val, str):
             try:
                 return ast.literal_eval(val)

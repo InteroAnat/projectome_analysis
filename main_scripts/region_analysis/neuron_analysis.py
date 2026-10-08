@@ -5,6 +5,7 @@ neuron_analysis.py - Per-neuron region & projection length analysis.
 import numpy as np
 import pandas as pd
 from collections import defaultdict
+from decimal import Decimal, InvalidOperation
 
 
 class RegionAnalysisPerNeuron:
@@ -12,9 +13,28 @@ class RegionAnalysisPerNeuron:
         self.neuron = neuron_tracer_obj
         self.atlas = atlas_volume
         self.atlas_table = atlas_table
-        self.brain_region_map = {
-            row["Index"]: row["Abbreviation"] for _, row in self.atlas_table.iterrows()
-        }
+        if atlas_volume.ndim != 3:
+            raise ValueError("Per-neuron analysis requires a selected 3D atlas level")
+        if not {"Index", "Abbreviation"}.issubset(atlas_table.columns) or atlas_table.empty:
+            raise ValueError("Atlas key requires nonempty Index and Abbreviation columns")
+        indices = []
+        for raw in atlas_table["Index"]:
+            try:
+                number = Decimal(str(raw))
+            except InvalidOperation as exc:
+                raise ValueError("Atlas label indices must be finite nonnegative integers") from exc
+            if (isinstance(raw, (bool, np.bool_)) or not number.is_finite()
+                    or number != number.to_integral_value() or number < 0):
+                raise ValueError("Atlas label indices must be finite nonnegative integers")
+            indices.append(int(number))
+        if len(indices) != len(set(indices)):
+            raise ValueError("Atlas label indices must be unique")
+        labels = atlas_table["Abbreviation"].tolist()
+        if any(not isinstance(label, str) or not label.strip() or label != label.strip() for label in labels):
+            raise ValueError("Atlas abbreviations must be nonblank literal text without surrounding whitespace")
+        if len(labels) != len(set(labels)):
+            raise ValueError("Atlas abbreviations must be unique to prevent regional length overwrite")
+        self.brain_region_map = dict(zip(indices, labels))
         self.mapped_brain_region_lengths: dict = {}
         self.neuron_total_length: float = 0.0
         self.soma_region: str = ""
@@ -89,4 +109,8 @@ class RegionAnalysisPerNeuron:
                 tid = int(self.atlas[pos])
                 t_name = self.brain_region_map.get(tid, f"Unknown_{tid}")
                 terminal_regions.append({"region": t_name, "coords": pos})
+            else:
+                # Preserve missing-label endpoints in counts and QC instead
+                # of silently dropping their targets from the neuron table.
+                terminal_regions.append({"region": "Out_of_Bounds", "coords": pos})
         return soma_region, terminal_regions

@@ -12,7 +12,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 
-from region_analysis.utils import parse_terminal_regions
+from region_analysis.utils import (
+    parse_terminal_regions, is_known_terminal_target, terminal_target_region_counts,
+)
 
 
 NEURON_TYPE_COLORS = {
@@ -113,16 +115,17 @@ def plot_terminal_distribution_df(
     df = df.copy()
     df["Terminal_Regions"] = df["Terminal_Regions"].apply(parse_terminal_regions)
     df["_known"] = df["Terminal_Regions"].apply(
-        lambda x: sum(1 for r in x if "Unknown" not in str(r))
+        lambda x: sum(is_known_terminal_target(r) for r in x)
     )
     df["_unk"] = df["Terminal_Regions"].apply(
-        lambda x: sum(1 for r in x if "Unknown" in str(r))
+        lambda x: sum(not is_known_terminal_target(r) for r in x)
     )
     total_known = int(df["_known"].sum())
     total_unknown = int(df["_unk"].sum())
     total_sites = total_known + total_unknown
     n_with_unk = int((df["_unk"] > 0).sum())
-    n_only_known = int((df["_unk"] == 0).sum())
+    n_only_known = int(((df["_unk"] == 0) & (df["_known"] > 0)).sum())
+    n_no_targets = int(df["Terminal_Regions"].map(len).eq(0).sum())
     total_n = len(df)
 
     if show_pie:
@@ -133,7 +136,10 @@ def plot_terminal_distribution_df(
     else:
         fig, ax_bar = plt.subplots(figsize=(figsize[0] * 0.6, figsize[1]))
 
-    if show_pie:
+    if show_pie and total_sites == 0:
+        ax_pie.text(0.5, 0.5, "No target entries", ha="center", va="center")
+        ax_pie.set_axis_off()
+    elif show_pie:
         vals = [total_known, total_unknown]
         labs = [f"Known\n({total_known})", f"Unknown\n({total_unknown})"]
         wedges, texts, autotexts = ax_pie.pie(
@@ -151,38 +157,35 @@ def plot_terminal_distribution_df(
             at.set_fontweight("bold")
             at.set_fontsize(11)
         ax_pie.set_title(
-            f"Site Distribution (N={total_n})", fontsize=11, fontweight="bold", pad=15
+            f"Endpoint-target entries (N={total_n} neurons)", fontsize=11, fontweight="bold", pad=15
         )
 
-    exploded = df.explode("Terminal_Regions")
-    if exclude_unknown:
-        orig = len(exploded)
-        exploded = exploded[
-            ~exploded["Terminal_Regions"].str.contains("Unknown", na=False)
-        ]
-        unk_excl = orig - len(exploded)
+    unk_excl = total_unknown if exclude_unknown else 0
+    counts = terminal_target_region_counts(
+        df["Terminal_Regions"], include_unresolved=not exclude_unknown
+    ).head(top_n)
+    if counts.empty:
+        ax_bar.text(0.5, 0.5, "No target entries to plot", ha="center", va="center",
+                    transform=ax_bar.transAxes)
     else:
-        unk_excl = 0
-
-    counts = exploded["Terminal_Regions"].value_counts().head(top_n)
-    counts.plot(kind="bar", ax=ax_bar, color="steelblue", edgecolor="black")
+        counts.plot(kind="bar", ax=ax_bar, color="steelblue", edgecolor="black")
     for i, v in enumerate(counts.values):
         ax_bar.text(i, v + 0.5, str(v), ha="center", va="bottom", fontsize=10)
 
     bar_title = title or (
-        f"Top {top_n} Terminal Regions (Excl. Unknown)"
+        f"Top {top_n} Endpoint-Target Regions (Excl. Unknown)"
         if exclude_unknown
-        else f"Top {top_n} Terminal Regions"
+        else f"Top {top_n} Endpoint-Target Regions"
     )
     ax_bar.set_title(bar_title, fontsize=12, fontweight="bold")
     ax_bar.set_xlabel("Target Region", fontsize=11)
-    ax_bar.set_ylabel("Number of Neurons Projecting", fontsize=11)
+    ax_bar.set_ylabel("Neurons with an endpoint-target region", fontsize=11)
     ax_bar.tick_params(axis="x", rotation=45)
     if exclude_unknown and unk_excl > 0:
         ax_bar.text(
             0.5,
             -0.15,
-            f'{unk_excl} "Unknown" entries excluded',
+            f"{unk_excl} unresolved target entries excluded",
             transform=ax_bar.transAxes,
             ha="center",
             fontsize=9,
@@ -199,17 +202,20 @@ def plot_terminal_distribution_df(
     # Report
     lines = [
         "=" * 60,
-        "TERMINAL REGION DISTRIBUTION REPORT",
+        "ENDPOINT-TARGET REGION DISTRIBUTION REPORT",
         "=" * 60,
         "",
         "--- Known vs Unknown Statistics ---",
-        f"  Total projection sites: {total_sites}",
-        f"  Known sites: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
-        f"  Unknown sites: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
+        "  Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.",
+        "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+        f"  Total endpoint-target entries: {total_sites}",
+        f"  Known endpoint-target entries: {total_known} ({total_known / max(total_sites, 1) * 100:.1f}%)",
+        f"  Unresolved endpoint-target entries: {total_unknown} ({total_unknown / max(total_sites, 1) * 100:.1f}%)",
         f"  Neurons with unknown regions: {n_with_unk} ({n_with_unk / total_n * 100:.1f}%)",
         f"  Neurons with only known regions: {n_only_known} ({n_only_known / total_n * 100:.1f}%)",
+        f"  Neurons with no target entries: {n_no_targets} ({n_no_targets / total_n * 100:.1f}%)",
         "",
-        "--- Terminal Region Distribution ---",
+        "--- Endpoint-Target Region Distribution ---",
         f"  Total unique regions shown: {len(counts)}",
         f"  Total projection entries (after filtering): {int(counts.sum())}",
     ]
@@ -233,7 +239,7 @@ def plot_terminal_distribution_df(
 # ======================================================================
 def plot_projection_sites_count_df(
     df: pd.DataFrame,
-    title: str = "Projection Sites Count per Neuron",
+    title: str = "Distinct Endpoint-Target Regions per Neuron",
     figsize: tuple = (12, 5),
     save_path: str = None,
     save_report_path: str = None,
@@ -247,10 +253,10 @@ def plot_projection_sites_count_df(
     df = df.copy()
     df["Terminal_Regions"] = df["Terminal_Regions"].apply(parse_terminal_regions)
     df["_psc"] = df["Terminal_Regions"].apply(
-        lambda x: sum(1 for r in x if "Unknown" not in str(r))
+        lambda x: sum(is_known_terminal_target(r) for r in x)
     )
     df["_usc"] = df["Terminal_Regions"].apply(
-        lambda x: sum(1 for r in x if "Unknown" in str(r))
+        lambda x: sum(not is_known_terminal_target(r) for r in x)
     )
     if "Outlier_Count" not in df.columns:
         df["Outlier_Count"] = 0
@@ -267,7 +273,7 @@ def plot_projection_sites_count_df(
         align="left",
         color="steelblue",
     )
-    axes[0].set_xlabel("Projection Sites (Known Only)")
+    axes[0].set_xlabel("Distinct endpoint-target region count (known only)")
     axes[0].set_ylabel("Number of Neurons")
     axes[0].set_title("Distribution (Excl. Unknown)")
     m = df["_psc"].mean()
@@ -292,7 +298,7 @@ def plot_projection_sites_count_df(
         axes[1].tick_params(axis="x", rotation=45)
     else:
         axes[1].boxplot(df["_psc"])
-    axes[1].set_ylabel("Projection Sites (Known)")
+    axes[1].set_ylabel("Distinct endpoint-target region count (known)")
     axes[1].set_title("By Neuron Type")
 
     plt.suptitle(title, fontsize=12, fontweight="bold")
@@ -310,32 +316,34 @@ def plot_projection_sites_count_df(
 
     lines = [
         "=" * 60,
-        "PROJECTION SITES STATISTICS (KNOWN REGIONS ONLY)",
+        "ENDPOINT-TARGET REGION COUNTS (KNOWN REGIONS ONLY)",
+        "Entries are distinct endpoint-target regions per neuron from legacy all-compartment leaves; biological terminals/boutons are not verified.",
         "=" * 60,
         "",
         f"Total neurons analyzed: {total_n}",
         "",
-        "--- Known Projection Sites (Excluding Unknown) ---",
-        f"  Total known sites: {int(df['_psc'].sum())}",
-        f"  Mean known sites per neuron: {df['_psc'].mean():.2f}",
+        "--- Known Endpoint-Target Regions (Unresolved Excluded) ---",
+        f"  Total known endpoint-target entries: {int(df['_psc'].sum())}",
+        f"  Mean known endpoint-target regions per neuron: {df['_psc'].mean():.2f}",
         f"  Median: {df['_psc'].median():.1f}",
         f"  Min: {int(df['_psc'].min())}",
         f"  Max: {int(df['_psc'].max())}",
         f"  Std: {df['_psc'].std():.2f}",
         "",
-        "  Distribution of known sites per neuron:",
+        "  Distribution of known endpoint-target regions per neuron:",
     ]
     known_dist = df["_psc"].value_counts().sort_index()
     for sites, count in known_dist.head(10).items():
         lines.append(
-            f"    {int(sites)} site(s): {int(count)} neurons ({count / total_n * 100:.1f}%)"
+            f"    {int(sites)} endpoint-target region(s): {int(count)} neurons ({count / total_n * 100:.1f}%)"
         )
     lines += [
         "",
-        "--- Unknown Projection Sites (Excluded from Plot) ---",
-        f"  Neurons with unknown sites: {n_wu} ({n_wu / total_n * 100:.1f}%)",
-        f"  Total unknown sites excluded: {int(df['_usc'].sum())}",
-        f"  Mean unknown sites per neuron: {df['_usc'].mean():.2f}",
+        "--- Unresolved Endpoint-Target Regions (Excluded from Plot) ---",
+        "  Unknown includes explicit unknown, outside, unmapped, absent and invalid targets.",
+        f"  Neurons with unresolved endpoint-target regions: {n_wu} ({n_wu / total_n * 100:.1f}%)",
+        f"  Total unresolved endpoint-target entries excluded: {int(df['_usc'].sum())}",
+        f"  Mean unresolved endpoint-target regions per neuron: {df['_usc'].mean():.2f}",
         "",
         "--- Outlier Statistics ---",
         f"  Neurons with outliers: {n_wo} ({n_wo / total_n * 100:.1f}%)",
@@ -368,16 +376,14 @@ def plot_region_distribution(
     save_path: str = None,
     show: bool = True,
 ):
-    if "Soma_Region_Hierarchy" in df.columns:
-        from region_analysis.hierarchy import extract_soma_level
-
+    from region_analysis.hierarchy import extract_soma_level
+    if f"Soma_Level_{level}" in df.columns or "Soma_Region_Hierarchy" in df.columns:
         data = extract_soma_level(df, level)
+    elif f"Region_L{level}" in df.columns:
+        data = df[f"Region_L{level}"]
     else:
-        col = f"Region_L{level}"
-        if col not in df.columns:
-            print(f"Error: no hierarchy data for level {level}.")
-            return None
-        data = df[col]
+        print(f"Error: no hierarchy data for level {level}.")
+        return None
 
     data = data.dropna()
     if data.empty:
@@ -437,7 +443,7 @@ def plot_region_distribution_stacked(
     # Filter to valid levels
     valid_levels = []
     for lv in levels:
-        if "Soma_Region_Hierarchy" in df.columns:
+        if f"Soma_Level_{lv}" in df.columns or "Soma_Region_Hierarchy" in df.columns:
             from region_analysis.hierarchy import extract_soma_level
             test_data = extract_soma_level(df, lv)
             if not test_data.dropna().empty:
@@ -465,7 +471,7 @@ def plot_region_distribution_stacked(
     for idx, level in enumerate(valid_levels):
         ax = axes[idx]
 
-        if "Soma_Region_Hierarchy" in df.columns:
+        if f"Soma_Level_{level}" in df.columns or "Soma_Region_Hierarchy" in df.columns:
             from region_analysis.hierarchy import extract_soma_level
             data = extract_soma_level(df, level)
         else:
@@ -509,6 +515,12 @@ def plot_laterality_summary_df(
     save_path: str = None,
     show: bool = True,
 ):
+    """Plot distinct endpoint-target counts and retained reconstruction lengths.
+
+    Laterality_Index is the contralateral length fraction Contra/(Ipsi+Contra),
+    0..1, excluding unresolved lengths. It is not the signed contrast
+    (Contra-Ipsi)/(Contra+Ipsi), -1..1. Source units are never converted here.
+    """
     needed = {"N_Ipsilateral", "N_Contralateral"}
     if df.empty or not needed.issubset(df.columns):
         print("Run add_laterality_columns first.")
@@ -534,15 +546,25 @@ def plot_laterality_summary_df(
         labs.append(f"Unknown\n({total_unk})")
         cols.append("#9E9E9E")
 
-    axes[0].pie(
-        vals,
-        labels=labs,
-        autopct="%1.1f%%",
-        startangle=90,
-        colors=cols,
-        explode=[0.02] * len(vals),
-    )
-    axes[0].set_title("Terminal Laterality", fontsize=12, fontweight="bold")
+    if sum(vals) == 0:
+        axes[0].text(0.5, 0.5, "No target regions", ha="center", va="center")
+        axes[0].set_axis_off()
+    else:
+        axes[0].pie(
+            vals,
+            labels=labs,
+            autopct="%1.1f%%",
+            startangle=90,
+            colors=cols,
+            explode=[0.02] * len(vals),
+        )
+    axes[0].set_title("Distinct endpoint-target region laterality", fontsize=12, fontweight="bold")
+    units = (df["Length_Unit"].fillna("unspecified source units").astype(str).str.strip().replace("", "unspecified source units")
+             if "Length_Unit" in df else pd.Series(dtype=str))
+    units = sorted(set(units[units.ne("")]))
+    unit_label = units[0] if len(units) == 1 else "unspecified source units"
+    if len(units) > 1:
+        raise ValueError("Cannot pool reconstruction lengths with mixed Length_Unit values")
 
     if has_length and "Neuron_Type" in df.columns:
         valid = df.dropna(subset=["Laterality_Index"])
@@ -558,8 +580,8 @@ def plot_laterality_summary_df(
             for patch, label in zip(bp["boxes"], td.keys()):
                 patch.set_facecolor(NEURON_TYPE_COLORS.get(label, "#999"))
                 patch.set_alpha(0.6)
-            axes[1].set_ylabel("Laterality Index\n(0=ipsi, 1=contra)")
-            axes[1].set_title("Laterality Index by Type", fontsize=12, fontweight="bold")
+            axes[1].set_ylabel("Contralateral length fraction\nContra/(Ipsi+Contra), 0 to 1")
+            axes[1].set_title("Contralateral length fraction by type", fontsize=12, fontweight="bold")
             axes[1].tick_params(axis="x", rotation=45)
             axes[1].axhline(0.5, color="grey", linestyle=":", alpha=0.5)
         else:
@@ -570,9 +592,9 @@ def plot_laterality_summary_df(
     elif has_length:
         valid = df["Laterality_Index"].dropna()
         axes[1].hist(valid, bins=20, edgecolor="black", alpha=0.7, color="steelblue")
-        axes[1].set_xlabel("Laterality Index")
+        axes[1].set_xlabel("Contra/(Ipsi+Contra), 0 to 1")
         axes[1].set_ylabel("Neurons")
-        axes[1].set_title("LI Distribution", fontsize=12, fontweight="bold")
+        axes[1].set_title("Contralateral length fraction", fontsize=12, fontweight="bold")
 
     if has_length and n_panels == 3:
         if "Neuron_Type" in df.columns:
@@ -600,9 +622,9 @@ def plot_laterality_summary_df(
             )
             axes[2].set_xticks(list(x))
             axes[2].set_xticklabels(grp.index, rotation=45)
-            axes[2].set_ylabel("Total Axon Length (mm)")
+            axes[2].set_ylabel(f"Retained reconstruction length ({unit_label})")
             axes[2].set_title(
-                "Length by Laterality", fontsize=12, fontweight="bold"
+                "Retained reconstruction length by side", fontsize=12, fontweight="bold"
             )
             axes[2].legend()
         else:
@@ -615,8 +637,8 @@ def plot_laterality_summary_df(
                 color=["#4CAF50", "#F44336"],
                 alpha=0.7,
             )
-            axes[2].set_ylabel("Total Axon Length (mm)")
-            axes[2].set_title("Length", fontsize=12, fontweight="bold")
+            axes[2].set_ylabel(f"Retained reconstruction length ({unit_label})")
+            axes[2].set_title("Retained reconstruction length", fontsize=12, fontweight="bold")
 
     plt.tight_layout()
     if save_path:
@@ -641,7 +663,7 @@ def plot_neuron_projections(
     fig, axes = plt.subplots(1, 2, figsize=(12, 5))
     top_n = stats.head(10)
     sns.barplot(x=top_n.values, y=top_n.index, ax=axes[0], palette="viridis")
-    axes[0].set_title(f"Top Projections ({neuron_id})")
+    axes[0].set_title(f"Top retained regional lengths (source unit; {neuron_id})")
     if len(stats) > 6:
         main = stats.head(6)
         other = pd.Series({"Others": stats.iloc[6:].sum()})
@@ -649,7 +671,7 @@ def plot_neuron_projections(
     else:
         pie_data = stats
     axes[1].pie(pie_data, labels=pie_data.index, autopct="%1.1f%%")
-    axes[1].set_title("Distribution")
+    axes[1].set_title("Share of retained reconstruction length")
     plt.tight_layout()
     if save_path:
         fig.savefig(save_path, dpi=300, bbox_inches="tight")

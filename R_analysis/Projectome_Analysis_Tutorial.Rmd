@@ -16,6 +16,14 @@ output:
     fig_height: 8
 ---
 
+
+> Imported Summary metric: the repository producer defines Laterality_Index
+> as Contra/(Ipsi+Contra), range 0..1 (0 ipsilateral, 1 contralateral).
+> These labels assume that producer contract; verify an older workbook's source
+> before reuse. This is retained reconstruction length, not accepted terminal
+> arbors/synapses. It differs from signed Ibias and from source-group LI.
+
+
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
   echo = TRUE,
@@ -232,14 +240,14 @@ print(p1)
 ## 4.3 侧向性指数分析
 
 ```{r laterality-analysis}
-# 侧向性指数分布 (1=纯同侧, -1=纯对侧)
+# Imported Summary: Contra/(Ipsi+Contra), 0=ipsi and 1=contra.
 p2 <- ggplot(df_summary, aes(x = Laterality_Index, fill = Neuron_Type)) +
   geom_histogram(bins = 20, alpha = 0.7) +
   scale_fill_manual(values = type_colors) +
   labs(
-    title = "Laterality Index Distribution",
-    subtitle = "1 = Purely Ipsilateral, -1 = Purely Contralateral",
-    x = "Laterality Index",
+    title = "Contralateral retained length share",
+    subtitle = "Contra/(Ipsi+Contra): 0 ipsilateral, 1 contralateral; unavailable if total is zero",
+    x = "Contralateral retained length share (0 to 1)",
     y = "Count"
   ) +
   geom_vline(xintercept = 0, linetype = "dashed", color = "red")
@@ -378,12 +386,13 @@ ht_ipsi <- Heatmap(
 )
 
 # 构建对侧热图
+# Demonstration only: this second panel duplicates the ipsilateral input.
 ht_contra <- Heatmap(
   mat_strength_ipsi_t,  # 使用相同矩阵作为示例
-  name = "CONTRA",
+  name = "IPSI_DEMO_COPY",
   col = colour_func,
   show_column_names = FALSE,
-  row_title = "Contralateral",
+  row_title = "Duplicated ipsilateral example; not contralateral data",
   row_title_side = "right",
   cluster_rows = FALSE,
   cluster_columns = dend,          # 同步聚类
@@ -416,7 +425,7 @@ decorate_row_title("IPSI", {
              gp = gpar(lwd = 5, col = "#377EB8"))
 })
 
-decorate_row_title("CONTRA", {
+decorate_row_title("IPSI_DEMO_COPY", {
   grid.lines(x = unit(0.1, "npc"),
              y = unit(c(0.02, 0.98), "npc"),
              gp = gpar(lwd = 5, col = "#E41A1C"))
@@ -439,7 +448,7 @@ decorate_row_title("IPSI", {
              y = unit(c(0.02, 0.98), "npc"),
              gp = gpar(lwd = 5, col = "#377EB8"))
 })
-decorate_row_title("CONTRA", {
+decorate_row_title("IPSI_DEMO_COPY", {
   grid.lines(x = unit(0.1, "npc"),
              y = unit(c(0.02, 0.98), "npc"),
              gp = gpar(lwd = 5, col = "#E41A1C"))
@@ -700,7 +709,7 @@ build_projection_ht <- function(mat, name, title,
 
 # 示例使用
 h1 <- build_projection_ht(mat_strength_ipsi_t, "IPSI", "Ipsilateral", order = 1)
-h2 <- build_projection_ht(mat_strength_ipsi_t, "CONTRA", "Contralateral", order = 2)
+h2 <- build_projection_ht(mat_strength_ipsi_t, "IPSI_DEMO_COPY", "Duplicated ipsilateral example; not contralateral data", order = 2)
 
 final_list <- h1 %v% h2
 ```
