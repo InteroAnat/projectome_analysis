@@ -1,0 +1,58 @@
+{
+  "captured_utc": "2026-10-03T01:16:00.637415+00:00",
+  "validation": {
+    "command": "python -B -m unittest discover -s tests",
+    "passed": 87,
+    "failed": 0,
+    "elapsed_seconds": 2.04
+  },
+  "source_sha256": {
+    "main_scripts/fmost_derived_context.py": "18eb701c309e6007691ce21a8cf64be5023d572eb78b3d1a6840070572900512",
+    "main_scripts/Visual_toolkit.py": "16b07113695358f8e5c9d55e7b1cf5f4b1dc134d79ae777adb39dd93ae356969",
+    "group_analysis/scripts/visual_review_20261002.py": "5612b85effa7126f226ac9c16a31ea52761fd3443de4706f8214746bf534135a",
+    "tests/test_fmost_derived_context.py": "61f578fcc033764b214f74433aad155da63199b704062a48fe15fb43ae815757",
+    "tests/test_visual_review_manifest.py": "3c992ada1626fc5d631af86fcb1ef07424bce12640d3bee4175b417e3e52d6e9",
+    "tests/test_fmost_export_provenance.py": "c405d14069c8db2f48f433c66d794f59b0260307ce59dc21906ca8a4b40b385b",
+    "tests/test_fmost_image_loader.py": "782d66eb4459c43196bbdbb85dca0c7aa52c9ef549ffc3c5c665f7be261f2a09"
+  },
+  "real_saved_source_decode": {
+    "cubes_checked": 5,
+    "expected_shape_zyx": [
+      90,
+      360,
+      360
+    ],
+    "expected_dtype": "uint16",
+    "all_passed": true
+  },
+  "regional_pilot": {
+    "sample": "252790",
+    "neuron": "014.swc",
+    "session_id": 5489,
+    "state": "terminal_exit_0",
+    "cube_count": 324,
+    "runtime_budget_seconds": 900,
+    "status": "derived_partial",
+    "loaded": 249,
+    "missing": 75,
+    "coverage_fraction": 0.7681433168572158,
+    "root_pixel_covered": true,
+    "elapsed_seconds": 200.5160000002943,
+    "independent_readback": "derived_pilot_readback_252790_014_20261003.json",
+    "source_pixel_equalities": 6,
+    "missing_source_zero_checks": 3
+  },
+  "limitations": [
+    "Point decimation is exploratory and does not average or preserve fluorescence intensity.",
+    "Declared microscopy origin and orientation remain uncalibrated.",
+    "Derived local fields do not supply full-section locators.",
+    "All-nine production and final human-table readback remain pending."
+  ],
+  "record_counts": {
+    "252790": 113,
+    "250432": 108,
+    "252383": 74,
+    "252718": 0,
+    "251730": 0
+  }
+}

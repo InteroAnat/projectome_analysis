@@ -1,0 +1,59 @@
+{
+  "review_date": "2026-10-02 Asia/Shanghai",
+  "branch": "codex/fmost-methods-review-20261002",
+  "base_commit": "78008cbaab71bf737dc7129c72e5fe284c3ba40f",
+  "focused_tests_passed": 33,
+  "public_runs": [
+    {
+      "run": "multi_raw",
+      "n": 306,
+      "candidate_cuts": 19,
+      "identity_metadata_and_source_checks": "passed"
+    },
+    {
+      "run": "multi_log1p",
+      "n": 306,
+      "candidate_cuts": 19,
+      "identity_metadata_and_source_checks": "passed"
+    },
+    {
+      "run": "multi_spearman_profile",
+      "n": 306,
+      "candidate_cuts": 19,
+      "identity_metadata_and_source_checks": "passed"
+    },
+    {
+      "run": "multi_type_guided",
+      "n": 306,
+      "candidate_cuts": 19,
+      "identity_metadata_and_source_checks": "passed"
+    },
+    {
+      "run": "single_raw",
+      "n": 212,
+      "candidate_cuts": 19,
+      "identity_metadata_and_source_checks": "passed"
+    },
+    {
+      "run": "single_spearman_profile",
+      "n": 212,
+      "candidate_cuts": 19,
+      "identity_metadata_and_source_checks": "passed"
+    }
+  ],
+  "cohort_inputs_unchanged_sha256": {
+    "group_analysis/combined/multi_monkey_INS_combined.xlsx": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3",
+    "group_analysis/combined/multi_monkey_INS_combined_harmonized.xlsx": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178",
+    "group_analysis/staging_20260926/combined/multi_monkey_INS_combined.xlsx": "2d01bf9da07e4a6da46f4401d73b18b196e68de4e21cd5505e1ad7b4f1b547d1",
+    "group_analysis/staging_20260926/combined/multi_monkey_INS_combined_harmonized.xlsx": "29fb507ce89b25c2edaaaf07b3f65e33b9989fd096e5782d25e0789866109229"
+  },
+  "AST_checks": "passed",
+  "independent_code_review": "completed",
+  "scientific_acceptance": "pending",
+  "not_run": [
+    "full FNT rebuild",
+    "full R analysis",
+    "raw tracing and anatomical review",
+    "held-out animal prediction"
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "agent": "Codex",
+  "validation_date": "2026-10-02",
+  "date_timezone": "Asia/Shanghai",
+  "repository": "D:/projectome_analysis",
+  "validator": "main_scripts/swc_validation.py:parse_swc",
+  "selection": [
+    {
+      "directory": "group_analysis/fnt/nmt_swcs",
+      "recursive": true,
+      "pattern": "*.swc",
+      "file_count": 306
+    },
+    {
+      "directory": "external/liu2026/swc/VENS",
+      "recursive": false,
+      "pattern": "*.swc",
+      "file_count": 24
+    },
+    {
+      "directory": "external/liu2026/swc/VENL",
+      "recursive": false,
+      "pattern": "*.swc",
+      "file_count": 28
+    }
+  ],
+  "files_passed": 358,
+  "files_failed": 0,
+  "nodes_validated": 4882379,
+  "observed_elapsed_seconds": 29.33,
+  "mode": "read-only; existing SWC files were not changed",
+  "scope": "SWC numeric fields and rooted-tree topology only; no anatomical or reconstruction-completeness acceptance",
+  "evidence": "Counts and elapsed time are the observed output of the completed local compatibility audit. Selection counts were rechecked when this inventory was saved; validation was not repeated.",
+  "input_content_hashes_captured": false
+}

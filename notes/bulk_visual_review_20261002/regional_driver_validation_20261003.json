@@ -1,0 +1,39 @@
+{
+  "captured_utc": "2026-10-03T01:52:25.155534+00:00",
+  "tests": {
+    "command": "python -B -m unittest discover -s tests",
+    "passed": 99,
+    "failed": 0,
+    "elapsed_seconds": 3.411
+  },
+  "source_sha256": {
+    "main_scripts/fmost_context_resources.py": "20099b0f64cba5256d008b303c17096b84bd858e23e9799638c83a79cd8f4968",
+    "group_analysis/scripts/regional_context_batch_20261003.py": "593e15546a021f52edc5aa9d70d967b02e0383cba19a0189f96e08b49105387a",
+    "main_scripts/fmost_derived_context.py": "18eb701c309e6007691ce21a8cf64be5023d572eb78b3d1a6840070572900512",
+    "main_scripts/Visual_toolkit.py": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+    "group_analysis/scripts/visual_review_20261002.py": "50cf60ca8d25ffb527a8a12da0fcd71ab289e2a9ec84f15cdee345123db450ec",
+    "tests/test_fmost_context_batch.py": "80760ba8bbe907366fca5c3a6d0a4d6d325b5bb37353863fd281476a765a8692",
+    "tests/test_fmost_derived_context.py": "61f578fcc033764b214f74433aad155da63199b704062a48fe15fb43ae815757",
+    "tests/test_visual_review_manifest.py": "3c992ada1626fc5d631af86fcb1ef07424bce12640d3bee4175b417e3e52d6e9"
+  },
+  "real_resume_evidence": "independent_regional_resume_validation_20261003.json",
+  "source_lineage_evidence": [
+    "staging_origin_verification_20261003.json",
+    "terminal_soma_and_xlsx_readback_20261003.json"
+  ],
+  "regional_production_dispatched": true,
+  "limitations": [
+    "All-nine soma production is terminal; this does not complete regional context for the five monkeys without copied overview sources.",
+    "Full-section locators, fine tissue architecture, physical calibration and anatomical acceptance remain separate source/review limits.",
+    "Clustering remains exploratory; current matrices do not establish the exact accepted cohort."
+  ],
+  "live_worker": {
+    "cursor_terminal": "307757.txt",
+    "launcher_pid": 84844,
+    "python_pid": 812,
+    "selected_sample": "252790",
+    "selected_identities": 113,
+    "state": "running",
+    "observed_utc": "2026-10-03T02:12:45.527382+00:00"
+  }
+}
