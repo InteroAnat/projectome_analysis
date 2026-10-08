@@ -128,6 +128,12 @@ class ARMMapLabelTests(unittest.TestCase):
         readback.write_text(json.dumps({"status": "passed", "run_provenance_sha256": sha(provenance)}), encoding="utf-8")
         result = render(self.root, readback, self.root / "figures", metric="endpoint-density",
                         cut_policy="fixed", slice_voxels=[1, 1, 1], label_map=self.label_path)
+        self.assertEqual(len(result["figures"]), 1)
+        self.assertEqual(result["figures"][0]["source_location_status"], "mapped")
+        self.assertFalse(result["include_unresolved_qc"])
+        result = render(self.root, readback, self.root / "optional_qc_figures", metric="endpoint-density",
+                        cut_policy="fixed", slice_voxels=[1, 1, 1], label_map=self.label_path,
+                        include_unresolved_qc=True)
         self.assertEqual(len(result["figures"]), 2)
         by_status = {item["source_location_status"]: item for item in result["figures"]}
         self.assertEqual(by_status["mapped"]["source_groups"], ["ARM6_101_L"])

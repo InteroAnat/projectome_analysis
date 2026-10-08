@@ -83,7 +83,7 @@ def arm_source_labels(label_map, manifest_path):
 
 
 def render(run_dir, readback_path, output, *, metric="axon-density", scope="animal", cut_policy="per-map",
-           slice_voxels=None, label_map=None):
+           slice_voxels=None, label_map=None, include_unresolved_qc=False):
     import matplotlib
     matplotlib.use("Agg")
     import matplotlib.pyplot as plt
@@ -204,7 +204,6 @@ def render(run_dir, readback_path, output, *, metric="axon-density", scope="anim
     color_high = float(np.percentile(positives, 99.5)) if positives.size else 1.0
     if metric == "endpoint-occupancy":
         color_high = 1.0
-    output.mkdir(parents=True)
     figures = []
     source_status = ({row["Subregion"]: row["SourceARMStatus"] for row in label_receipt["names"]}
                      if label_receipt else {})
@@ -212,6 +211,11 @@ def render(run_dir, readback_path, output, *, metric="axon-density", scope="anim
     partitions = ({"mapped": [item for item in prepared if source_status[item[0]["Subregion"]] == "mapped"],
                    "unresolved": [item for item in prepared if source_status[item[0]["Subregion"]] != "mapped"]}
                   if label_receipt else {"legacy": prepared})
+    if label_receipt and not include_unresolved_qc:
+        partitions.pop("unresolved")
+    if not any(partitions.values()):
+        raise ValueError("No mapped ARM source regions to display; unresolved locations belong in case QC")
+    output.mkdir(parents=True)
     batches = [(status, start // 4 + 1, records[start:start + 4])
                for status, records in partitions.items() for start in range(0, len(records), 4)]
     for location_status, page_number, batch in batches:
@@ -297,7 +301,11 @@ def render(run_dir, readback_path, output, *, metric="axon-density", scope="anim
         "grayscale_window": {"brain_mask_percentiles": [1, 99.5], "vmin": float(gray_low), "vmax": float(gray_high)},
         "metric": metric, "scope": scope, "units": units, "cut_policy": cut_policy,
         "source_region_labels": label_receipt,
-        "unresolved_source_locations": "Separate QC sheets; never treated as anatomical ARM regions" if label_receipt else None,
+        "unresolved_source_locations": (
+            "Separate optional QC sheets; never anatomical ARM regions" if include_unresolved_qc else
+            "Excluded from anatomical figures; retained in the source manifest and case-QC ledger"
+        ) if label_receipt else None,
+        "include_unresolved_qc": bool(include_unresolved_qc),
         "map_display": "linear 0–1" if metric == "endpoint-occupancy" else "log10(1 + density)",
         "smoothing": "none; source maps unchanged",
         "common_display_vmax": color_high, "display_upper_percentile": 99.5,
@@ -330,7 +338,10 @@ if __name__ == "__main__":
     parser.add_argument("--cut-policy", choices=("per-map", "shared", "fixed"), default="per-map", help='Choose separate cuts per map, shared data-selected cuts, or fixed common voxel indices.')
     parser.add_argument("--slice-voxels", type=int, nargs=3, metavar=("X", "Y", "Z"), help='Explicit common X Y Z voxel indices when --cut-policy=fixed; these are not millimetres.')
     parser.add_argument("--label-map", type=Path, help='Full ARM level-6 names; must agree exactly with the reviewed source manifest and atlas/key hashes.')
+    parser.add_argument("--include-unresolved-qc", action="store_true",
+                        help="Also draw separate location-QC sheets. Default ARM figures show mapped parcels only.")
     args = parser.parse_args()
     result = render(args.run, args.readback, args.output, metric=args.metric, scope=args.scope,
-                    cut_policy=args.cut_policy, slice_voxels=args.slice_voxels, label_map=args.label_map)
+                    cut_policy=args.cut_policy, slice_voxels=args.slice_voxels, label_map=args.label_map,
+                    include_unresolved_qc=args.include_unresolved_qc)
     print(f"{result['status']}: {len(result['figures'])} matched-slice sheets")
