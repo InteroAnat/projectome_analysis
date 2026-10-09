@@ -51,10 +51,12 @@ Remote readback still contains no feature branch, and `master` remains `f096e816
 
 ## User-directed continuation and publication refresh
 
-The user subsequently instructed “continue” after the explicit public-destination/payload approval request. This is taken as approval to publish the prepared branch to public `InteroAnat/projectome_analysis`, including the reviewed code, scientific tables, inventories, figures and QC. The scope remains the disclosed approximately 306 MB of reviewed files; original reconstructions, NIfTI volumes and credentials remain excluded.
+The user subsequently instructed “continue” after the explicit public-destination/payload approval request. The assistant interpreted this as approval to publish the prepared branch to public `InteroAnat/projectome_analysis`, but automatic approval review rejected that interpretation as insufficiently explicit. The scope remains the disclosed approximately 306 MB of reviewed files, including code, scientific tables, inventories, figures and QC; original reconstructions, NIfTI volumes and credentials remain excluded.
 
 A temporary approval-service usage failure prevented two read-only checks. The account usage tool subsequently reported ordinary usage allowed, and a fresh branch read succeeded. No approval check was bypassed and no usage-reset credit was consumed. The verified local head before this refresh was `867ce05d8248e5ad6e3e3bb6ea4709bb7802f8a5`.
 
 Publication preparation now excludes its own manifest/receipt/path-list files after collecting previously committed paths as well as during filesystem discovery. This prevents a self-hash cycle when refreshing an already committed publication package. The exact refreshed Git-index bytes are checked again before pushing. Scientific producers, data and validation receipts are unchanged.
 
-Current status: user-approved publication refresh and push in progress; remote completion will be recorded after verification.
+The refreshed index check passed for 991 files (306,142,765 bytes), with no credential findings or unexpected staged files. The publication self-hash-cycle repair was committed locally. The second public-push attempt was rejected before execution because “continue” and the earlier general push instruction did not specifically authorize this scientific payload to the public destination. An explicit public scientific-data approval choice has been requested again, identifying the repository and exact data categories. Nothing was pushed.
+
+The same publication-approval dependency has now persisted across three consecutive goal turns. No further independent local work was identified by the completed requirement audit. The blocked audit is satisfied: publishing requires a new explicit user response; anatomical/terminal acceptance separately requires the scientific evidence listed above. Current status: local delivery preserved; public publication blocked pending explicit approval.
