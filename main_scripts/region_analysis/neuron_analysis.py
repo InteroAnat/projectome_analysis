@@ -45,7 +45,7 @@ class RegionAnalysisPerNeuron:
             self._calculate_neuronal_branch_length()
         )
         self.soma_region, self.terminal_regions = self._soma_and_terminal_region()
-        # Only keep regions that contain terminals (exclude fiber passing)
+        # Retain all branch length in regions containing a legacy graph leaf.
         terminal_region_names = {t["region"] for t in self.terminal_regions}
         self.mapped_brain_region_lengths = {
             region: length

@@ -1,0 +1,144 @@
+{
+  "checked_utc": "2026-10-09T01:30:09.678137+00:00",
+  "verification_status": "passed",
+  "full_refined_scientific_goal_achieved": false,
+  "requested_exploratory_delivery_complete": true,
+  "scientific_acceptance": false,
+  "open_scientific_requirements": [
+    "accepted fMOST-to-NMT export origin, transform and landmark lineage",
+    "reviewed target-local terminal fields/arbors with native-image and truncation evidence",
+    "accepted CM032 registration/site and corrected accepted CM033 orientation/model/site lineage"
+  ],
+  "fresh_delivery": {
+    "path": "notes/region_analysis_review_20261009/final_delivery_recheck_20261009.json",
+    "sha256": "4470712986f2c9055cdae19e1bc98d38de94c9ab123253ae395c73968f4ef89e",
+    "status": "passed",
+    "source_bindings_verified": 4973,
+    "distinct_source_paths_verified": 4955,
+    "current_counts": {
+      "ARM_main_map_files_rehashed": 320,
+      "primary_group_figure_families": 3,
+      "primary_mapped_PNGs": 12,
+      "archived_current_run_PNGs_rehashed": 26,
+      "combined_ledger_neurons": 462,
+      "source_ARM0_QC_cases": 52
+    }
+  },
+  "saved_live_suite": {
+    "status": "pass",
+    "live": true,
+    "tests_run": 409,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "module_bindings": {
+      "region_analysis.population": "D:\\projectome_analysis\\main_scripts\\region_analysis\\population.py",
+      "region_analysis.utils": "D:\\projectome_analysis\\main_scripts\\region_analysis\\utils.py",
+      "region_analysis.hierarchy_table": "D:\\projectome_analysis\\main_scripts\\region_analysis\\hierarchy_table.py",
+      "region_analysis.plotting": "D:\\projectome_analysis\\main_scripts\\region_analysis\\plotting.py",
+      "neuro_tracer": "D:\\projectome_analysis\\main_scripts\\neuro_tracer.py"
+    },
+    "log": "notes\\region_analysis_review_20261009\\validated_repairs\\live_suite.log",
+    "scientific_acceptance": false
+  },
+  "source_changes_since_delivery": [
+    {
+      "path": "main_scripts/region_analysis/neuron_analysis.py",
+      "old_sha256": "6c5435c85d142b6b01eab6df6a6029f1ecddbf52133f0cbe39497b4258cde750",
+      "current_sha256": "73c0931bf2e3fbbfa51952998c5a86549b9c7869298ac5fc1e9648ce323e4899"
+    }
+  ],
+  "executable_AST_equal_to_committed_tested_source": true,
+  "test_hashes_checked": 36,
+  "document_updates_since_delivery": [
+    {
+      "path": "notes/region_analysis_review_20261009/mstim_integration_20261009/README.md",
+      "old_sha256": "98889804293310a6d28664499355a633f5f293be5be195a8b56059cb316ea076",
+      "current_sha256": "c2adc77e707f97bb13be3a38f5d1c157f4a6820e3c016a3bf2f5d667bffbc5a9"
+    }
+  ],
+  "current_document_sha256": {
+    "docs/project_note.md": "bd34fe22e2705589446e7e3625b01a540c4eb87ec4522bbb70546017bb03b2cb",
+    "docs/region_analysis_terminology.md": "7af70e0b01963b094db1e7b17953cd1324091eaafd9f634233098a5d5f215260",
+    "group_analysis/evolution_20261008/arm_mapping_20261009/README.md": "17e8975fcb51888d3e4cdc6ef1c820d4234582f43096dcf429e53d9f8d24baf2",
+    "group_analysis/evolution_20261008/classification/background_neuron_audit_20261009/README.md": "15f61facac44f30bcbd498c8cfea861214eae0012d996262476f0765c94ddd95",
+    "group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/README.md": "2dc9aa5a1fe8d772cd6fc66142bb0242875ce907cb77c1f040277faaa61c06b3",
+    "group_analysis/evolution_20261008/figures/additional_candidates_20261009_terms-v2/README.md": "4894dee902e94e0845e204fee1b1c6335d12a71f2f340397c0ffdbd1dfb1c601",
+    "group_analysis/evolution_20261008/figures/multimonkey_coarse_20261009_terms-v3/README.md": "a3d0d04d1a7ba2c00b654ec7081fb210e0d085aa4a3c75c1734bb0939dd7d312",
+    "group_analysis/evolution_20261008/projection_inputs/arm_labels_20261009/README.md": "335c01836021fd971fd04e1a2265546db9eaf0c6d8a2dc665bf2edd18fbfba5c",
+    "group_analysis/evolution_20261008/README.md": "b0189078a37d6c6db44542eb1335ef6c1a193b1a5fbb959c0dcd241a090fcb19",
+    "group_analysis/evolution_20261008/references/scientific_basis_20261009.md": "fbf5f41b6069c9ce284e7e04c3770caa370184eccfdf1257772788dc75f0a31c",
+    "group_analysis/evolution_20261008/reports/evolution_status_20261009.md": "e9f7e5f1e0ca8ad6bfd689dee8fb68d8f648e4bcd227a5b59a8957c587a99e05",
+    "group_analysis/evolution_20261008/reports/mapping_workflow_20261009.md": "802beabed57b402365f3409d8d5ebad3b2fd2a2d93d5d76f1c451b5901bc1a03",
+    "group_analysis/evolution_20261008/terminal_projection_goal_20261008.md": "4eb67ba8db2a3bd73b796eaf970dd1539592267997d339c1a042e7034e52c7ac",
+    "notes/region_analysis_review_20261009/clustering_20261009/README.md": "9f0119c7512d41964145ba0c62338f8b0000c447e7b3dcc2dae2bb68b55a09de",
+    "notes/region_analysis_review_20261009/goal_completion_20261009/inventory_classification_audit.md": "04753d7eeb418e69c5bf669114050b173d6ac830bedbc8dad3d108b103318db3",
+    "notes/region_analysis_review_20261009/goal_completion_20261009/projection_methods_audit.md": "df0e7cc5bb300658bd3d31fecfdfce0981f08e5e605622076e317b06145b1d28",
+    "notes/region_analysis_review_20261009/goal_completion_20261009/README.md": "ad314f20bbecfc1e799e90baa0bf65959562edba8ffa94666fc327f53f149cd8",
+    "notes/region_analysis_review_20261009/goal_completion_20261009/region_reproducibility_audit.md": "66ea78ed33861505f0f7c59004b8b60a2df3cf726c384d4f9804efc81b1720a1",
+    "notes/region_analysis_review_20261009/hierarchy_tables_20261009/README.md": "831e37e42c85d714d3e8c8e81588499a850d8e5988d962b9cca29bed6c4715bf",
+    "notes/region_analysis_review_20261009/mstim_integration_20261009/README.md": "c2adc77e707f97bb13be3a38f5d1c157f4a6820e3c016a3bf2f5d667bffbc5a9",
+    "notes/region_analysis_review_20261009/README.md": "435fec6666e99d8d73cc6bbe75de407b95b1f9ace99754fe53c3080241e4d9ae",
+    "README.md": "f8b417147a5771a1ac32ba645b109e5c52c869d80e504421462aa145df2777f1"
+  },
+  "historical_methods_document_bindings": [
+    {
+      "path": "group_analysis/evolution_20261008/references/multimodal_full_methods_20261009.md",
+      "historical_review_sha256": "2824ee6c993dbca3d89366d027aabc0a2faedb65bfa744728d5085aaef28375b",
+      "current_sha256": "2824ee6c993dbca3d89366d027aabc0a2faedb65bfa744728d5085aaef28375b",
+      "historical_hash_is_current": true
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/multimodal_full_methods_20261009.json",
+      "historical_review_sha256": "52e1779de944513c9040a82638d9cc56b895cbe2d02d2ff5215c4c1416a4ecc9",
+      "current_sha256": "52e1779de944513c9040a82638d9cc56b895cbe2d02d2ff5215c4c1416a4ecc9",
+      "historical_hash_is_current": true
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/insula_full_methods_20261009.md",
+      "historical_review_sha256": "4d9273201ae93e3643f917589c5573e6d8f1882dfcb33728e0d0f600ae06999b",
+      "current_sha256": "4d9273201ae93e3643f917589c5573e6d8f1882dfcb33728e0d0f600ae06999b",
+      "historical_hash_is_current": true
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/insula_full_methods_20261009_evidence.json",
+      "historical_review_sha256": "defa0f2544aca1f0e7fa2e9bec8ffac3a79a980db8890ca562f20b3cf7a61582",
+      "current_sha256": "defa0f2544aca1f0e7fa2e9bec8ffac3a79a980db8890ca562f20b3cf7a61582",
+      "historical_hash_is_current": true
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/scientific_basis_20261009.md",
+      "historical_review_sha256": "1831434bd2a128a2beae4b7201d8ad0f7a809941577a51a49a81ee56a882c257",
+      "current_sha256": "fbf5f41b6069c9ce284e7e04c3770caa370184eccfdf1257772788dc75f0a31c",
+      "historical_hash_is_current": false
+    }
+  ],
+  "historical_document_policy": "Historical producer/reviewer receipts are preserved; current navigation and status additions are bound here, not substituted into old hashes.",
+  "CM032_T_warp": {
+    "receipt": "notes/region_analysis_review_20261009/goal_completion_20261009/cm032_t_warp_recheck/t_warp_recheck.json",
+    "receipt_sha256": "9c00010e47502b0c1638433f94942cedef62901a0e070d6c39d6fac28b7c35b6",
+    "status": "software_T_warp_reproduction_passed_registration_unaccepted",
+    "source_hashes_checked": 19,
+    "comparison": {
+      "all_reference_grids_match_atol_1e-6": true,
+      "coded_mm": true,
+      "all_T_voxels_finite": true,
+      "T_voxels_checked": 15974400,
+      "exact_T_values_equal": true,
+      "maximum_absolute_T_difference": 0.0,
+      "T_values_match_rtol_1e-7_atol_1e-9": true,
+      "T_compressed_file_hash_equal": true,
+      "coverage_binary": true,
+      "exact_coverage_values_equal": true,
+      "coverage_voxels": 5015104,
+      "exact_T_values_equal_within_coverage": true,
+      "coverage_compressed_file_hash_equal": true
+    },
+    "anatomical_acceptance": false
+  },
+  "legacy_comment_receipt_sha256": "908b76e6bf269fb79ff211927094839c5eeb9ceed34ad0f2149cd3aff1378a98",
+  "relative_links_checked": 105,
+  "original_data_written": false,
+  "new_registration_fit": false,
+  "errors": []
+}

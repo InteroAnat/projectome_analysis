@@ -1,0 +1,569 @@
+{
+  "status": "passed",
+  "checked_utc": "2026-10-09T01:25:27.897620+00:00",
+  "checker_sha256": "765f44f0092408bf117b4fe079b9e3fdf2268106cc8e1404e5e60a9a65252641",
+  "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "libraries": {
+    "numpy": "1.26.4",
+    "pandas": "2.3.3",
+    "scipy": "1.15.3",
+    "nibabel": "5.4.2",
+    "matplotlib": "3.10.9",
+    "openpyxl": "3.1.5",
+    "Pillow": "12.2.0"
+  },
+  "branch": "codex/insula-pipeline-evolution-20261008",
+  "head_at_validation": "ce9fec306a2324eba047a1a49d1c81547d71f27f",
+  "source_receipt_sha256": "daa78c125803cff55167ded70c083a6f51292b80f2b8bcd19ff56b62380b54d3",
+  "source_bindings_verified": 4973,
+  "distinct_source_paths_verified": 4955,
+  "corrected_diagnostic_workbooks": 5,
+  "correction_provenance_sha256": "1b26e630b5c5abc6e1e9be8f915b8daa86f92ea883571d68a47e88ef00801055",
+  "selection_counts": {
+    "main": 436,
+    "preview": 26
+  },
+  "main_preview_overlap": 0,
+  "map_reviews": [
+    {
+      "path": "group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009_review_v2\\endpoint_run_readback.json",
+      "sha256": "7c961f9ab269623e6aad7695378b3fa959dbfd493109e72269b3ffa9b9f9e5f4",
+      "maps_rehashed": 108,
+      "prior_complete_voxels_read": 1725235200,
+      "prior_numerical_validation_reused_after_hash_checks": true
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\projection_maps\\multimonkey_coarse_20261009_review\\projection_run_readback.json",
+      "sha256": "c4a137a0b8b327728cd3e835ea8d035d1c064d3ae382922709f964ba1d9a4b3f",
+      "maps_rehashed": 72,
+      "prior_complete_voxels_read": 1150156800,
+      "prior_numerical_validation_reused_after_hash_checks": true
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009_review\\endpoint_run_readback.json",
+      "sha256": "558985494334f3b4e3ee3bb904f5f1ced3ee4a653a50aa5f756e1581bada0a83",
+      "maps_rehashed": 39,
+      "prior_complete_voxels_read": 623001600,
+      "prior_numerical_validation_reused_after_hash_checks": true
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\projection_maps\\additional_candidates_20261009_review\\projection_run_readback.json",
+      "sha256": "42ac1bf3dea556112508eea9b327d3ac5f41a2e123d99aae75ded639a132d176",
+      "maps_rehashed": 26,
+      "prior_complete_voxels_read": 415334400,
+      "prior_numerical_validation_reused_after_hash_checks": true
+    }
+  ],
+  "figure_families": [
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\axon_density_animals\\matched_slices_provenance.json",
+      "sha256": "845bc4be63e4c9b51ada3c5adc2c6b6fe9528f6a5cac5318f536e51ea4665631",
+      "figures": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\axon_density_groups\\matched_slices_provenance.json",
+      "sha256": "1d027507efd697cec05961a305c5bc945fb8e5eeab0126208303df99d414f491",
+      "figures": 2
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_density_animals\\matched_slices_provenance.json",
+      "sha256": "531ef10663fd9c961f0444fc65ef35e8bcf5da68cb00d6b26e6043f41647770b",
+      "figures": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_density_groups\\matched_slices_provenance.json",
+      "sha256": "3c006dcbf20a98717ac3393ea29b7de3b91cba9dbbe2d958b80164c5685a30ba",
+      "figures": 2
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_layout-v2\\endpoint_occupancy_animals\\matched_slices_provenance.json",
+      "sha256": "544f1ac9c06844a06aa1081002f3dfcba212082965bcded40b92812dde7b1953",
+      "figures": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\axon_density_animals\\matched_slices_provenance.json",
+      "sha256": "df001930425395bb2b0f30fbb56cd68887f72ae665359baeac14800153ccd42c",
+      "figures": 3
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\axon_density_groups\\matched_slices_provenance.json",
+      "sha256": "d3157d2673f0f2a26bb21d3f93c69615988330043237fa2569dde6d0e8024905",
+      "figures": 1
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\endpoint_density_animals\\matched_slices_provenance.json",
+      "sha256": "8bcd2c4c2cb1c54bcbe4f08a09402dbe4c4ba3b80593830015340309efcdda34",
+      "figures": 3
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009\\endpoint_density_groups\\matched_slices_provenance.json",
+      "sha256": "8fc31ea6a4ead94610ce223fd9b36d2688ee3c26466ab2f378ce8544c13eb152",
+      "figures": 1
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_terms-v3\\axon_density_animals\\matched_slices_provenance.json",
+      "sha256": "2a7cd2bb4833210040602967bbca2bd860881c52a0bfd6870eb560fc6ecb8246",
+      "figures": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_terms-v3\\axon_density_groups\\matched_slices_provenance.json",
+      "sha256": "874a3f7788d92677ec29f007629d492fcec2ee8a90e633418925bdf5194c3246",
+      "figures": 2
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_terms-v3\\endpoint_density_animals\\matched_slices_provenance.json",
+      "sha256": "ae912b9b86fb549b50cb2b1b2487e51ed16896cc9bbbed7ea5aa3d3c7703ae6d",
+      "figures": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_terms-v3\\endpoint_density_groups\\matched_slices_provenance.json",
+      "sha256": "18951c20021e1bd25791534819dc07531c05d2f70c0cba2f8962dfd547f706f6",
+      "figures": 2
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_terms-v3\\endpoint_occupancy_animals\\matched_slices_provenance.json",
+      "sha256": "2d9875f346695a9cb98f7d318729b4de760c394f6f4517aa3a3884f66e01706d",
+      "figures": 7
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009_terms-v2\\axon_density_animals\\matched_slices_provenance.json",
+      "sha256": "2740bfa668fde686461c98752ff8c1e637c2e5a4f7f5b0a96eb7d91ee3b603b3",
+      "figures": 3
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009_terms-v2\\axon_density_groups\\matched_slices_provenance.json",
+      "sha256": "566bfba41c03e18a49cbe0b54535bd1a5cab29c80bda111366ed6262203b2bcb",
+      "figures": 1
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009_terms-v2\\endpoint_density_animals\\matched_slices_provenance.json",
+      "sha256": "6df3f605c5084d2975fb809b656becb17e7cc803fc40ef98122944eacba45779",
+      "figures": 3
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009_terms-v2\\endpoint_density_groups\\matched_slices_provenance.json",
+      "sha256": "a4d74887a4d4232de74c36bce86b63eec91313ee0db5eeb66778108df1160a03",
+      "figures": 1
+    }
+  ],
+  "historical_counts": {
+    "reviewed_map_files_rehashed": 245,
+    "figure_families": 18,
+    "PNGs_rehashed": 66
+  },
+  "current_counts": {
+    "ARM_main_map_files_rehashed": 320,
+    "primary_group_figure_families": 3,
+    "primary_mapped_PNGs": 12,
+    "archived_current_run_PNGs_rehashed": 26,
+    "combined_ledger_neurons": 462,
+    "source_ARM0_QC_cases": 52
+  },
+  "current_deliveries": {
+    "combined_ARM_manifest": {
+      "rows": 462,
+      "unique_identities": 462,
+      "source_ARM0_QC_rows": 52,
+      "manifest_sha256": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+      "delivery_receipt_sha256": "1a1c817252e8f003c01c816e3bb8a8490473c6c323b859715233f566294cb6d8"
+    },
+    "source_case_QC": {
+      "receipt_sha256": "327afe6b97f13a64fae2d211dfa36c6b827382b95fd723d9efd43bc1fce9f29b",
+      "cases": 52,
+      "effective_native_pairs": 41,
+      "effective_visual_cases": 40
+    },
+    "workflow": {
+      "required_stages_completed": [
+        "main_axon-density_group",
+        "main_axons_build",
+        "main_axons_review",
+        "main_endpoint-density_group",
+        "main_endpoint-occupancy_group",
+        "main_endpoints_build",
+        "main_endpoints_review"
+      ],
+      "recorded_completed_stages": [
+        "main_endpoints_build",
+        "main_endpoints_review",
+        "main_endpoint-density_group",
+        "main_endpoint-density_animal",
+        "main_endpoint-occupancy_group",
+        "main_endpoint-occupancy_animal",
+        "main_axons_build",
+        "main_axons_review",
+        "main_axon-density_group"
+      ],
+      "scope_reduction_receipt_sha256": "ce625e75fed7bbca3c0289c9822e10c15483d239e1fd1d2a2cb1ccfb93d7aaeb",
+      "checkpoint_sha256": "4390ffb3f36d8841337c3b8a904859bba9e5ddd98ece7336f3bbfae82d68aa8e",
+      "full_optional_workflow_completion_claimed": false
+    },
+    "ARM_main_map_reviews": [
+      {
+        "family": "endpoints",
+        "review_sha256": "89f063fabcfefeeb27cd4854ab6d21e444fec85a8e640e9a8ba6ebb13c8ec3dd",
+        "map_files_rehashed": 192,
+        "prior_complete_voxels_read": 3067084800,
+        "prior_numerical_validation_reused_after_hash_checks": true
+      },
+      {
+        "family": "axons",
+        "review_sha256": "5546b76a4881db5c8504d4f5d2a259ed31f997648d57f317ca8e99826d7f0d8c",
+        "map_files_rehashed": 128,
+        "prior_complete_voxels_read": 2044723200,
+        "prior_numerical_validation_reused_after_hash_checks": true
+      }
+    ],
+    "ARM_figures": {
+      "primary_group_families": 3,
+      "primary_mapped_PNGs": 12,
+      "archived_current_run_PNGs_rehashed": 26,
+      "families": [
+        {
+          "path": "group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\figures\\axon-density_group\\matched_slices_provenance.json",
+          "sha256": "caee01b5571bfd37a2fdc620012cc48999bb99a71b6a9b09631c9a2a6487321e",
+          "bound_PNGs": 4,
+          "primary_mapped_PNGs": 4
+        },
+        {
+          "path": "group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\figures\\endpoint-density_animal\\matched_slices_provenance.json",
+          "sha256": "8ccffabf4c035c56e237d0a932a448411f1d7503c7d3ffe1bb763b8c4ab3f2e5",
+          "bound_PNGs": 12,
+          "primary_mapped_PNGs": 0
+        },
+        {
+          "path": "group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\figures\\endpoint-density_group\\matched_slices_provenance.json",
+          "sha256": "92972f8d21c59a8723203af0ff5a35492c8dabf1c86fc575c0d443ace37cb188",
+          "bound_PNGs": 5,
+          "primary_mapped_PNGs": 4
+        },
+        {
+          "path": "group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\figures\\endpoint-occupancy_animal\\matched_slices_provenance.json",
+          "sha256": "8e37d5c8fcb238ea6cda622cf2410609a2ac7fac04b8a014d7d52257627cefd0",
+          "bound_PNGs": 12,
+          "primary_mapped_PNGs": 0
+        },
+        {
+          "path": "group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\figures\\endpoint-occupancy_group\\matched_slices_provenance.json",
+          "sha256": "47d33c8b47f5074df11f5ba9ac5108bddf261e25d4bc8f3c1690022a885372d5",
+          "bound_PNGs": 5,
+          "primary_mapped_PNGs": 4
+        }
+      ]
+    },
+    "hierarchy_tables": {
+      "receipt_sha256": "0f5c8e46b13cd96aec12ff5b415f1bdee498d5a10330bfb0cb7761243d446df6",
+      "artifacts_rehashed": 5,
+      "selected": 462,
+      "endpoint_eligible": 429,
+      "endpoint_NA": 33,
+      "independent_readback": {
+        "present": true,
+        "receipt_sha256": "25c5368ada7a1c5a406867d49098e70778ff350edfac44128ae386a1dc37f991",
+        "matrix_values_checked": 2331252,
+        "animal_target_rows_checked": 84100,
+        "equal_animal_target_rows_checked": 28594,
+        "prior_saved_table_validation_reused_after_hash_checks": true
+      }
+    },
+    "clustering": {
+      "receipt_sha256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+      "artifacts_rehashed": 15,
+      "selected": 462,
+      "independent_readback": {
+        "present": true,
+        "receipt_sha256": "e75d30b776aed39b4197c3ded559995e390243c6c09a114a9ba4722bb9c2ab58",
+        "axon_profile_eligible": 428,
+        "endpoint_profile_eligible": 425,
+        "prior_saved_profile_validation_reused_after_hash_checks": true
+      },
+      "independent_complete_profile_review": {
+        "receipt_sha256": "890acefd6a27f8969a4ffada0c0b9504bd122b8baf160d9a809f9caacf42c074",
+        "partitions_checked": 49,
+        "target_profile_values_checked": 55404
+      }
+    },
+    "clustering_extensions": {
+      "source_relative_sensitivity_receipt_sha256": "dd8291819914a81e0240d89626c41e164c1487b7c493db587ff46773d902f6c2",
+      "source_relative_sensitivity_outputs_rehashed": 5,
+      "official_bilateral_pairs": 342,
+      "display_only_receipt_sha256": "aeba75609b271eaad3e3e4303e5dc1c9be63735b0971dc59c84f7de3407af76f",
+      "corrected_display_PNGs_rehashed": 2,
+      "primary_cluster_run_unchanged": true,
+      "anatomical_or_statistical_acceptance": false,
+      "independent_source_relative_readback": {
+        "present": true,
+        "receipt_sha256": "d8bff760536c183f332e3dfebeba49482c01fda1b8aca11f34961c8fc08b1a17",
+        "independent_cut_checks": 14
+      },
+      "independent_saved_display_readback": {
+        "present": true,
+        "receipt_sha256": "3fc76d74319e88a4330367217f6dfda7b9aba54c301eb502b57a3ca1922feba1",
+        "saved_PNGs_checked": 2
+      }
+    },
+    "MSTIM": {
+      "saved_receipts": [
+        {
+          "path": "notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_warp_reproduction\\warp_reproduction.json",
+          "status": "software_reproduction_passed_registration_unaccepted",
+          "sha256": "4c5b8d94b9a1688b8e5f461978f334b85dbe0033bcd674eea66756f7226e3626",
+          "sources_rehashed": 13,
+          "outputs_rehashed": 2,
+          "historical_producer_script_sha256": "b1f14c0b44e46214214a24fac740082c894cf654bd5e39fa1f26ba0cf68892ba",
+          "prior_saved_validation_reused_after_hash_checks": true
+        },
+        {
+          "path": "notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_regional_comparison\\integration_provenance.json",
+          "status": "provisional_regional_integration_completed",
+          "sha256": "2ca71635955dfb80ba2be324447d5251d7cf86cd6b92ac539fbfdebb3f15e8ba",
+          "sources_rehashed": 45,
+          "outputs_rehashed": 3,
+          "historical_producer_script_sha256": "12f8ea8699932ebfba5c9368c25259d594556c0c010b697ad016854cc81b98a0",
+          "prior_saved_validation_reused_after_hash_checks": true
+        },
+        {
+          "path": "notes\\region_analysis_review_20261009\\mstim_integration_20261009\\cm032_readable_qc\\display_provenance.json",
+          "status": "display_correction_completed",
+          "sha256": "4a503f57b7bc672a0bb3dc9ebcd5215e8334e35f9838593956200895014b3df9",
+          "sources_rehashed": 8,
+          "outputs_rehashed": 1,
+          "historical_producer_script_sha256": "799a7f7fc4f526aca7dd8cfda552bd3dd187b7313157b297d6ade53290294315",
+          "prior_saved_validation_reused_after_hash_checks": true
+        }
+      ],
+      "ancillary_receipt_sha256": "93ea67b91ce47f0f22b580a0e59d5271e0fe8378b152bf0bfdfdc13f4352f2cd",
+      "registration_and_stimulation_coordinate_acceptance": false,
+      "new_warp_or_region_computation": false,
+      "independent_saved_regional_review": {
+        "receipt_sha256": "2ff37ff22a89fe170e7d7a05ccf0c85962c8c145089632b2c39a57d66f6cacfc",
+        "fmri_rows_checked": 1676,
+        "joint_rows_checked": 25140,
+        "saved_group_maps_checked": 30
+      }
+    }
+  },
+  "local_endpoint_ledgers": [
+    {
+      "path": "group_analysis\\evolution_20261008\\endpoint_maps\\multimonkey_coarse_20261009\\leaf_records.jsonl",
+      "bytes": 466108395,
+      "sha256": "4ee8d3d4971bb0e0739e3983b8ca51202e3f2b2bbba6d3ebdd06768875c39732",
+      "publication": "local derivative; reproduce with public workflow"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\leaf_records.jsonl",
+      "bytes": 92872025,
+      "sha256": "a6382de29814a56d2a11bc2f25f098174296f199cf7007069eacf9d83a5e0d12",
+      "publication": "local derivative; reproduce with public workflow"
+    }
+  ],
+  "current_source_sha256": {
+    "group_analysis\\R_analysis\\_check_pkgs.R": "387ba90740134acf869c50298bb669131a31b376e751690c764b7b1014edeeb3",
+    "group_analysis\\R_analysis\\combined_lr_primary_analysis.R": "07497dc31cedff46648435c1ee9e34f17e4d186264522ddff53ace453bc17723",
+    "group_analysis\\R_analysis\\functional_hubs_analysis.R": "3e0d536499ab8f047140f67cc7f203a2e4b340c9d5fab8f0e4b321a14941663c",
+    "group_analysis\\R_analysis\\functional_hubs_L6.R": "454c38fa7d8f00cc2b1d58c044971c8316f2a0a2c8a4373f9dcca08ec46e1255",
+    "group_analysis\\R_analysis\\improved_panel_figures.R": "fde16866eb110935563a7faced546443f52e070df234b337f9c35e3312bc0476",
+    "group_analysis\\R_analysis\\intra_insula_connectivity.R": "e813e1e48c1498b74b1a53cff83e617c260ff0ccb768f1506dae7248a5a9bb54",
+    "group_analysis\\R_analysis\\multi_monkey_lr_analysis.R": "c0110d8b7e8e1deb01733dd2b6ff8dea088e736158bdfe68554f6ac31c5d05f3",
+    "group_analysis\\R_analysis\\primary pipeline_starter.r": "92a886eef1c5b81ed859402236b4fb4141f694a189f0a08be272451e5dd637af",
+    "group_analysis\\R_analysis\\v2_combined_primary_pipeline.R": "3b83907486983ae57a68b26cccb38dbf0d4beec88c8efc4eb1c21a5052404a4a",
+    "group_analysis\\R_analysis\\v2_combined_primary_pipeline.Rmd": "ed07324520de72727e42391426dfb3e5137ec05263f6ae115c2987d5c347a035",
+    "group_analysis\\scripts\\01_build_insula_coord_reference.py": "d60b11c852c5de1dc58e77d9768ee5fef369aa64f840ef8d18d62ea89db70c69",
+    "group_analysis\\scripts\\02_run_step1_multi.py": "772c46acb98fc00edc5402cf38de319807d3baa5109dc8d87c945ef550e2b402",
+    "group_analysis\\scripts\\02a_probe_iondata.py": "a17c406516f13da1c2f06d9b2ea62d3279456c81ef032ec1f5a9ec8fb2d7d36c",
+    "group_analysis\\scripts\\03_scan_insula_recovery_candidates.py": "eeeb9d6c5ccb70850b8c1e836af21202da893dee9782a7598c4b2ec0e062a2f4",
+    "group_analysis\\scripts\\03b_relaxed_scan.py": "b3203ee43e48e3c1ee3924940b5d9b50f6ce297c6256ea7b177900acbb06cbdd",
+    "group_analysis\\scripts\\03c_audit_insula_labels_full.py": "b0f6e9b7cd115c9ba38a641ece333cc0ddfeda2d2203492d9e9e550b8ebe9a22",
+    "group_analysis\\scripts\\04_refine_soma_region_by_coords.py": "bed5ca9ea619f46ff8d3306a5315b75a61d5088634d2c5dd57d18acb2073db68",
+    "group_analysis\\scripts\\04b_combined_balance_check.py": "944c716355779002f27002c5d308770b7cb90a7dd4bff1329977a6d5b144720e",
+    "group_analysis\\scripts\\05a_build_combined_table.py": "d92369a1d71b79dd321d318f22c88be2ce7fa24e4e07d75994001a99a4e0d83f",
+    "group_analysis\\scripts\\05b_audit_coord_frames.py": "14403b75915f0d6c047462770e417b1670e5491f1c6ffcdbbe6aeee91127a916",
+    "group_analysis\\scripts\\05c_run_global_fnt.py": "2bbe6b1d6871818bb3b0266aa75cf18b8e6b63e3288a9c15e07f6a37c7741a1e",
+    "group_analysis\\scripts\\05d_fnt_sanity_check.py": "7aaf81926851c48a425fb3de35c16b9ca350621734fd80f2bf660d7f16bfe63f",
+    "group_analysis\\scripts\\06_harmonize_atlas_to_manual.py": "5d5b0773d56bd26a108de3afda9833ae884093071275e377a7d09cb4c8b3800a",
+    "group_analysis\\scripts\\06a_merge_henry_layers.py": "2a4bf68cc2a34f754ee86c3f2482eac8822ae740f65e929651daa5e817748b7f",
+    "group_analysis\\scripts\\13_flatmap_context_strip.py": "380d23a2cc0131031d9a2dd43116d54887fe0ead3e0e7e7066e9018c7b6722b3",
+    "group_analysis\\scripts\\audit_atlas_coordinate_origin_sensitivity.py": "cd81c468e465b3bc162f8a41f9343a70f6e49c549e8f06f2a4086c5f7ab6ba2c",
+    "group_analysis\\scripts\\audit_atlas_soma_locations.py": "5f9c7dc75f523d0759e2a71d3297d21b95607578b93c02592a0a3a2950faed2a",
+    "group_analysis\\scripts\\audit_insula_inventory.py": "becf015e90851168d483381a23ba61afaa71c4719bc57597870f3b5d6ce7a8a7",
+    "group_analysis\\scripts\\build_coarse_insula_review.py": "916b08f3d84f4528c19001d2361cb17c3c8291d053b8e399e2902c534f9fb0be",
+    "group_analysis\\scripts\\build_data_progress.py": "27720924c2cba61d4942fe3cf7960128c2e2fb7bec84aacca2828d9637c3d3b7",
+    "group_analysis\\scripts\\build_endpoint_maps.py": "5b87411ae4e32f0f51d4cb7ff3ad6799ce27311aeae268e3709ccba29d27d795",
+    "group_analysis\\scripts\\build_projection_maps.py": "c758d2daa427276436e07c1745daad00574e7e392a6f71516f179653ae623145",
+    "group_analysis\\scripts\\bulk_visual_dryrun.py": "ee3bfb2b7918ebd1a40a9d0702d6f42d94f205ac76f271b98a1e8d454cfae24e",
+    "group_analysis\\scripts\\bulk_visual_multi_monkey.py": "674c9548a8bd523c572a0f28d32455f710bb2651e01f5622b3d8a35f9d5c55f7",
+    "group_analysis\\scripts\\cluster_arm_projection_profiles.py": "1b1d7e88291f6c305326e73ce7a6913ddbc6ad5828a3bb5665533c0c52104d53",
+    "group_analysis\\scripts\\cohort.py": "6170aa9c51a6f41623cc5e7539feb1aec14de06d80149c36e2b5e7e117b52e14",
+    "group_analysis\\scripts\\compare_step1_runs.py": "f53c9ecbba5d5273b96d042209724ecf6a973a2e9ed02609c1d368a97e9d1c5f",
+    "group_analysis\\scripts\\export_arm_projection_tables.py": "01216c76c599301cb77eb0ed10601687278c70bd6c3d498af7786dc78bafb695",
+    "group_analysis\\scripts\\insula_label_set.py": "590f359bd3d1de34ce168f1974c61f02f4e68ba916103f4a7976db72d9ead12d",
+    "group_analysis\\scripts\\plot_dataset_status_overview.py": "e98943cbf01dae008c1b99de24637adff881877b5a10c6b0089a4c45d1d8a007",
+    "group_analysis\\scripts\\prepare_arm_labeled_projection_manifest.py": "3c4271c6d35e4b1e3594dde523e4986a220cf51432439db12d27ae3636cdaae7",
+    "group_analysis\\scripts\\prepare_inventory_projection_manifest.py": "65124d666e0e244336697c784e9324ebc69042cb77441cc3fb406fc7d92eb9f5",
+    "group_analysis\\scripts\\prepare_projection_manifest.py": "ece9ab7f44b406271e68a66fb9c254319e22297c8d9f204a7b71fc4e86fda6b8",
+    "group_analysis\\scripts\\prepare_review_candidate_manifest.py": "e2b91a81fc7faaa51b9c65f90cb452ebb3eb277a546da146656b7945e05d2f0e",
+    "group_analysis\\scripts\\probe_iondata_urls.py": "6b775aeffa78a12785e6db6a2c21d9b858532cd4239fcdd5bbb473a95d3b1963",
+    "group_analysis\\scripts\\push_11A_retry.py": "3f3c461bf5a72602919ef038659899a6246902d0110ef43bac6e95d954beb09d",
+    "group_analysis\\scripts\\push_review_split.py": "c3d06dcfc020f09b72e674d626382901c5c753d3605506110d6d46d304fc50a3",
+    "group_analysis\\scripts\\push_review_to_getnote.py": "8ebeb8fb64783bf63f04ccbe15bfd48de8ac4dce62e0494af65f0d7c865bb6a9",
+    "group_analysis\\scripts\\regional_context_batch_20261003.py": "f6d8b87473bc46da7b681199619319f676c8525a40ac079b3cc2888f17600674",
+    "group_analysis\\scripts\\render_projection_slices.py": "82fabccd4dcb3fd9b18528643c6f3bc37c61fca9375d8f3e89f76dc499b0c97a",
+    "group_analysis\\scripts\\review_endpoint_run.py": "2d2f6d308caf9d9409539b0b857957d61cdd4785dc856616eb7236b46da6ad75",
+    "group_analysis\\scripts\\review_projection_run.py": "5965b151e83d877f47bb7d930a03e46d562fb1bd940977a56cc50217c862ceb9",
+    "group_analysis\\scripts\\run_bulk_visual_sample.py": "2d466bdec6699b3b0c148f3741c71b81e6d8ea5c03041b1c3fbd867a4df71f55",
+    "group_analysis\\scripts\\run_step1_one_sample.py": "181fe77c6b08ce838f751630fbefe7dd352bc8971b17b145343708b1a54265a0",
+    "group_analysis\\scripts\\summarize_mstim_arm.py": "4470f879a1904fd77932dc1cb4d9700be5c8e12ce30a567b7c002a70194b26f4",
+    "group_analysis\\scripts\\sync_manifest_from_onenote_xlsx.py": "a79623fa1fad9c5ddad4506cf782f211c8438cdbe1c4bbed91e2d63728e03e7e",
+    "group_analysis\\scripts\\sync_plan_readme_to_getnote.py": "b9f5af470dd77e3983ef77affcfd63af32bb1c672c33c674ee89b1b9ae50260c",
+    "group_analysis\\scripts\\verify_atlas_soma_audit.py": "5a5dfd0e6f5e45c192854d86a8c8bb8369d84b52c02d33d443f9a90da9abb73d",
+    "group_analysis\\scripts\\visual_review_20261002.py": "5eddd6c90611a4b8d9761cca6bfb9a3633b5b8cefd6d2a9730c337c330834de4",
+    "main_scripts\\brain_mesh_viz.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "main_scripts\\brain_viz.py": "0dce12aa414494ead7400b744c1e80f0a36d83fa8bb5e94cacfbedc2e7c02256",
+    "main_scripts\\clustering_validation.py": "37c60b661e4d856657bc7d3395c10a836ae96334c657a0c87f01e7d5cf35ddf5",
+    "main_scripts\\create_pipeline_mindmap.py": "599ca8a6fd391c7e15226c590a3c1cc09a3cac90734ad51c2302a282a7fdca82",
+    "main_scripts\\cube_analysis_per_neuron.py": "0e39b535bd60e898aaa75f7fe603900d9916a26d88ed1073d219687c9330cb0a",
+    "main_scripts\\cube_analysis_per_neuron_terminal.py": "72bf64a92c0c77dd4defe9019369f6165231514da840e1ad0aa620d722faa3bf",
+    "main_scripts\\endpoint_atlas.py": "fee7d46004b9599079b1c50371a8e276847c33e6de0e0876cc579b80d5ea7b97",
+    "main_scripts\\fmost_context_resources.py": "20099b0f64cba5256d008b303c17096b84bd858e23e9799638c83a79cd8f4968",
+    "main_scripts\\fmost_derived_context.py": "18eb701c309e6007691ce21a8cf64be5023d572eb78b3d1a6840070572900512",
+    "main_scripts\\fmost_image_geometry.py": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce",
+    "main_scripts\\fmost_review_lock.py": "0d251e44cf492a2ad63d981a3c7b495c3f2e33c1038dcc2fe9e3d3c8c2d6d141",
+    "main_scripts\\fnt-dist_pipeline.py": "fce9557b760688dd781e008fead41d9375c71baaa287050d5398957b58906613",
+    "main_scripts\\fnt-dist_pipeline_generic.py": "4851c9fb0e44b55b27308c57b868b8cf1468c86da4a867e251d82782832cd52c",
+    "main_scripts\\fnt_dist_clustering.py": "461394efca4084726f94356eae89d54f5488c30b253f11ff4fae2869e91d05fb",
+    "main_scripts\\fnt_dist_clustering_monkey.py": "8c08ed1cd325c3a45d909455052bb9acfd646a1b82c57afa6c0b1aa32f87dca3",
+    "main_scripts\\fnt_pipeline.py": "6aeca70fcf95052c30734041b978dbb7804a9161cfc5dbab25ba8a151a7b86cf",
+    "main_scripts\\fnt_tools.py": "d8854c42cf89a47b58db74c0e18077abfe1c4527485347e75c57ac0aaa96e1b6",
+    "main_scripts\\FNTCubeVis.py": "348208816cfeef77e24ef17686cd3adb115bad4e74e18be140f08c35bbcd0f7e",
+    "main_scripts\\mesh_from_atlas.py": "4d46d5974231656589681e80c581203a8234562bb339f5c310d12f46d648b56d",
+    "main_scripts\\monkey_936.py": "97c2294eee689d4ceed226cc04704c85489f7b2d7c740831b14088ff2eb4dcf8",
+    "main_scripts\\monkey_atlas_mesh.py": "efac0b5e47273e692ef83220c5159c44c4be52e0b743256d41635b6477cb58ec",
+    "main_scripts\\monkey_neuron_analysis.py": "82e1c3e2556fdc7359c0ce81921b13b86e0d1776aa05fcab6a90206c0ea1a45b",
+    "main_scripts\\monkey_soma.py": "515ab2f7fff0c481220708cc4d52c54dfb14c9b314e4e3f4d06c75c18b3cfea1",
+    "main_scripts\\neuro_tracer.py": "b7a18b0c031d17111d37b003e56daeb752d020c66ed80f375ffc6beed5eca8fb",
+    "main_scripts\\plot_projection_strength_ins.py": "61adffb84ce9c15e5c2ead3e76c34b20da2c7b328801f131b324990839f7e375",
+    "main_scripts\\plot_projection_strength_with_clusters.py": "07c26395bc63f1fda3d5847e14774c3310b0a22d41f25a36b4bb71d1768fe789",
+    "main_scripts\\projection_maps.py": "e47a54bfe5e8159c8e4a4f70d687b845a0810f073189a26f60c5945a65aa90da",
+    "main_scripts\\recreate_neuron_tables_new.py": "ca9b51cdfa892270ceb8cf28b494c2cc6295fa7ae8ed91b72f0bcc6db0038aa2",
+    "main_scripts\\region_analysis\\__init__.py": "3342b4f8f720bbee9d89a469ee4ac2145f6f15ed0081631916fdad7076fcc013",
+    "main_scripts\\region_analysis\\classifier.py": "6eaddadf5350121e087c7e41b327ebf8d9d5496a7e4cdde3f8137a0669eaedb9",
+    "main_scripts\\region_analysis\\getNeuronListByRegion.py": "10dd04f125efefe395a6661bec929c6ac02b9b0eb22e870d5133c962b0aec520",
+    "main_scripts\\region_analysis\\hemisphere.py": "62ce2b1969796bf11f55b8b5d7317d31a1b93ec0e093072ba2a2092317d9ae91",
+    "main_scripts\\region_analysis\\hierarchy.py": "55f87d391db0995ff8cfc3f4026b1c1f694f9948cc53f7b1ce770958a50dcdf4",
+    "main_scripts\\region_analysis\\hierarchy_table.py": "3fbcda26b528e610e1bc51dc78c1ec7da795099fc703eef71d06fe925d44b4aa",
+    "main_scripts\\region_analysis\\laterality.py": "b648c82929aa56c83e540a0b0c86f26876edf29a5b29ade1a346c4a9e26a1ffb",
+    "main_scripts\\region_analysis\\laterality_projection_analysis.py": "a6f6e003b003ece5691fdf469b5f5580bd9b370f7aee6d1b45965921ec38080c",
+    "main_scripts\\region_analysis\\neuron_analysis.py": "6c5435c85d142b6b01eab6df6a6029f1ecddbf52133f0cbe39497b4258cde750",
+    "main_scripts\\region_analysis\\output_manager.py": "17cc493d7ffe49db95ff465580032dcf01ec1bd20c97cc12c4d0d74783d8b7e2",
+    "main_scripts\\region_analysis\\plotting.py": "e5d0795a2062720938e636ee12275fd5108cbe6c3c5d81f4f9e481bc3b435d02",
+    "main_scripts\\region_analysis\\population.py": "06ea70b3f55693175f475cb9b7cbd759cb0123a967a4922b1a08f1fc4ae01de5",
+    "main_scripts\\region_analysis\\utils.py": "69b47500c3fb78a9a7ee8826591d2f7594564dfb7109a10113617f36e15600e5",
+    "main_scripts\\region_analysis.py": "d2dab4ed91b141abef978e80fc9b5429520f1017a7b5dbcbc89156845875b595",
+    "main_scripts\\region_labels.py": "ffb122830f6ecf9f4fe4c315d768319af62779be09b34961e37d9ccb455f9521",
+    "main_scripts\\region_visualisation_tools.py": "598303dcd52684270db75370b28a27845d938b19a5f346ea3e64bb3b41f8a9bd",
+    "main_scripts\\render_cached_toolkit_pair.py": "b810f4cdd473bc0ab89b872c6162a3b789af2ef2b311b53ed9187c42c802def6",
+    "main_scripts\\s.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "main_scripts\\single_neuron_projection.py": "7a57188c576088ac55dcbdd964f2f7e76233213df602886723ba8e63f249e2dc",
+    "main_scripts\\ssh_cluster.py": "61c763671e37a1156c1bf164aa3c020be89201923981453799f1cd86b6e6b71f",
+    "main_scripts\\statistical_subtype.py": "4bc702caeffeb7a187bb5b566da1430b635c094cc2ffbbbd517c6d0bc538dcbf",
+    "main_scripts\\step1.run_region_analysis.py": "92f6cc5abf4e072d93c9dd4aa925a2e6e28635bd2de18846c8fb59c700530116",
+    "main_scripts\\step2_fnt-dist_pipeline.py": "1f5ef3ecb346ba52599e7cd9784908d7ecac84c96db76ce91717e4e7dc32e4f7",
+    "main_scripts\\step3.1.bulk_visual_data.py": "83813208b3f6aafe34332d9265703792fe312091822fac4a8497ec43a22fd271",
+    "main_scripts\\step3.2.run_brain_viz_meshRender.py": "3e248fdc9cc6c8c755c038e1506c75d357d5ae6353bee6ee93ae90ae3fe0bd41",
+    "main_scripts\\step3.3.neuronviewRender.py": "338ebfe5b94cabd16f670cd4276a75c33e1eda4c2c8e5670fdc20462c92e1ce3",
+    "main_scripts\\step3.4.mesh_extraction.py": "93657729aaece0684d65b68cdcaffe92d070e21101018f563a67443e6d69fe80",
+    "main_scripts\\step3.helper.swc2volume.py": "ddebca7870d9abbe23769f61caaa64ea50104e3aed9e3251baa2b51bae0deb11",
+    "main_scripts\\step_by_step_insula_flatmap.py": "dc99b40690c9a774dfaad7a1622e17d42e8af1400161e12d028db446f8032961",
+    "main_scripts\\swc_validation.py": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+    "main_scripts\\terminal_sites.py": "27ffb878e40fe2dfe10c36fcf30302843869b07b779b321fd361210f4aec9c2f",
+    "main_scripts\\tiff_ds2m.py": "741dd885184d6db356c286afc63cc6cf85eb9e90859aaf14c15da38216f9f426",
+    "main_scripts\\verify_flatmap_projection.py": "7172ca420612a92dd87c9d7b620d18fc0467c495af86cb7c78e9f7d011f63448",
+    "main_scripts\\Visual_toolkit.py": "bbad8eb8dd3952d76c9970214171fc36135d51ea25d888bf780bd289c1c8c9ea",
+    "main_scripts\\Visual_toolkit_gui.py": "0ea2b96bc7100450ba67fa30cb4425f028705fbaf41db8ea0339ed609abd67b0",
+    "main_scripts\\visualize_clustered_heatmap.py": "7769b86d1c83e8148e9886041257fb2d992b90ecba34e88144e3cface7e9226d",
+    "main_scripts\\volume2.py": "64b4399f2ef71a18d44a3c6d9be684a2d11742ed492255d07dc107093e5b61b5",
+    "main_scripts\\volume_tools.py": "1c45b8b9717702a5478e82509045417f6d1cc3f29ee0eb1bf6cd74ddfe2882f5",
+    "main_scripts\\vs_brain.py": "9d82ccae6357e127aee28ee4ebc872455f4ea32f97b43547a377d1b2d3572701"
+  },
+  "current_document_sha256": {
+    "README.md": "f8b417147a5771a1ac32ba645b109e5c52c869d80e504421462aa145df2777f1",
+    "group_analysis\\evolution_20261008\\README.md": "b0189078a37d6c6db44542eb1335ef6c1a193b1a5fbb959c0dcd241a090fcb19",
+    "notes\\region_analysis_review_20261009\\README.md": "435fec6666e99d8d73cc6bbe75de407b95b1f9ace99754fe53c3080241e4d9ae",
+    "docs\\region_analysis_terminology.md": "7af70e0b01963b094db1e7b17953cd1324091eaafd9f634233098a5d5f215260",
+    "group_analysis\\evolution_20261008\\arm_mapping_20261009\\README.md": "17e8975fcb51888d3e4cdc6ef1c820d4234582f43096dcf429e53d9f8d24baf2",
+    "group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\README.md": "335c01836021fd971fd04e1a2265546db9eaf0c6d8a2dc665bf2edd18fbfba5c",
+    "group_analysis\\evolution_20261008\\classification\\background_neuron_audit_20261009\\README.md": "15f61facac44f30bcbd498c8cfea861214eae0012d996262476f0765c94ddd95",
+    "notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\README.md": "831e37e42c85d714d3e8c8e81588499a850d8e5988d962b9cca29bed6c4715bf",
+    "notes\\region_analysis_review_20261009\\clustering_20261009\\README.md": "9f0119c7512d41964145ba0c62338f8b0000c447e7b3dcc2dae2bb68b55a09de",
+    "notes\\region_analysis_review_20261009\\mstim_integration_20261009\\README.md": "98889804293310a6d28664499355a633f5f293be5be195a8b56059cb316ea076",
+    "group_analysis\\evolution_20261008\\reports\\evolution_status_20261009.md": "e9f7e5f1e0ca8ad6bfd689dee8fb68d8f648e4bcd227a5b59a8957c587a99e05",
+    "group_analysis\\evolution_20261008\\reports\\mapping_workflow_20261009.md": "802beabed57b402365f3409d8d5ebad3b2fd2a2d93d5d76f1c451b5901bc1a03",
+    "group_analysis\\evolution_20261008\\figures\\multimonkey_coarse_20261009_terms-v3\\README.md": "a3d0d04d1a7ba2c00b654ec7081fb210e0d085aa4a3c75c1734bb0939dd7d312",
+    "group_analysis\\evolution_20261008\\figures\\additional_candidates_20261009_terms-v2\\README.md": "4894dee902e94e0845e204fee1b1c6335d12a71f2f340397c0ffdbd1dfb1c601"
+  },
+  "relative_links_checked": 196,
+  "live_suite": {
+    "status": "pass",
+    "live": true,
+    "tests_run": 409,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "module_bindings": {
+      "region_analysis.population": "D:\\projectome_analysis\\main_scripts\\region_analysis\\population.py",
+      "region_analysis.utils": "D:\\projectome_analysis\\main_scripts\\region_analysis\\utils.py",
+      "region_analysis.hierarchy_table": "D:\\projectome_analysis\\main_scripts\\region_analysis\\hierarchy_table.py",
+      "region_analysis.plotting": "D:\\projectome_analysis\\main_scripts\\region_analysis\\plotting.py",
+      "neuro_tracer": "D:\\projectome_analysis\\main_scripts\\neuro_tracer.py"
+    },
+    "log": "notes\\region_analysis_review_20261009\\validated_repairs\\live_suite.log",
+    "scientific_acceptance": false
+  },
+  "live_suite_receipt_sha256": "2f9bfd5593467353f9fb9aad58d497be31acdb1883d1eee3b227353fde73b095",
+  "live_suite_log_sha256": "29150c4253ba1fe3b593acab95d5b5f60aa986690ac68ae8e3182c7b51998d56",
+  "live_suite_runner_sha256": "3d6a1878cadeae6d20df3b99526552d486b8004de116e2895729f7a70eed27de",
+  "current_test_sha256": {
+    "notes\\region_analysis_review_20261009\\code_audit\\test_harmonizer_preservation.py": "3922f4db29717df9914eb6aafc5ef8cce1cad16e852771f4bd99840d82385cd9",
+    "notes\\region_analysis_review_20261009\\code_audit\\test_hierarchy_and_plots.py": "d0d41a3546dd5da3a44ee904eaabcf951a404368b536e670342b37b9b92c54fe",
+    "notes\\region_analysis_review_20261009\\code_audit\\test_standalone_identity.py": "95b81e5c2f205f20698174102b45b9124e1a95f97d1f4044866c44cc671559ea",
+    "notes\\region_analysis_review_20261009\\methods_audit\\test_final_staged_consumers_independent.py": "cc610f4dda647c802ed6e2d542be4af3e5aa55c6b3161f939548dfb0f8afc755",
+    "tests\\test_arm_map_labels.py": "4f88ea7959a5e0e57ba51905301556c8de791b98f20715a2ec80fbdd3c4f22ec",
+    "tests\\test_arm_projection_manifest.py": "f17c70a6c874cf18fe4ac8febc507585cf81047844bf2f5f15cbebd8ed666cc2",
+    "tests\\test_arm_projection_tables.py": "fd5b22e7dfc1b51ec6cbc6108de8310d96ae51fc8db21ec263ef94ca97a35608",
+    "tests\\test_atlas_soma_locations.py": "60ca334d87cb8b74aea6ce96e691acdf5d6cf83f7d12892f240de3ba03f254f7",
+    "tests\\test_clustering_validation.py": "67d6ca6695b36e5f39cd50f1106ab161c59a2c081b73d5c4bfbac597b4e89af4",
+    "tests\\test_coarse_insula_review.py": "8f742a60b208d3c9e4e99b99b6c940396f69b14abe84ec286444061a268686d8",
+    "tests\\test_discovery_geometry.py": "d5835f735458d722a9f76a9cfdd61e0f54b833b812ce452f9727b6d965b4999f",
+    "tests\\test_endpoint_maps.py": "c96509706aa19f3087dd7c058d8d75a79963774a005d559e2c45d2eb635f56eb",
+    "tests\\test_endpoint_review.py": "cb615dd7b80f5094105a2ead1ed0aad7eac8186ddbbc7e0c28c52c21e1bfa13f",
+    "tests\\test_fmost_context_batch.py": "cdbd8efa14afb53429d5d4a0291f43d512f3dbf5b25661b394e62c882cf78318",
+    "tests\\test_fmost_derived_context.py": "61f578fcc033764b214f74433aad155da63199b704062a48fe15fb43ae815757",
+    "tests\\test_fmost_export_provenance.py": "c405d14069c8db2f48f433c66d794f59b0260307ce59dc21906ca8a4b40b385b",
+    "tests\\test_fmost_image_loader.py": "782d66eb4459c43196bbdbb85dca0c7aa52c9ef549ffc3c5c665f7be261f2a09",
+    "tests\\test_fnt_clustering.py": "e3567360872216055dd0a6783db9e41166ee4648b63db04bc2b5d877d98457f6",
+    "tests\\test_harmonization_safety.py": "326a38627893fc751d40cc1095658f80e0f00e771156ac188bcea3d0675eeba5",
+    "tests\\test_insula_candidate_rules.py": "82204c839dc8775d4e7ad2f2cb585bfa6b910a303eb18c353a936f8b272fd725",
+    "tests\\test_insula_inventory.py": "a0dae46576d14a0b83318d33d2fdf8486f5cc63abc82babfae1724e71c594fa9",
+    "tests\\test_inventory_projection_manifest.py": "96205821f4dfecdca2ab1f471bf9837ab5a59cbb6ec8012a90f81e9c0d2cf618",
+    "tests\\test_mstim_arm_summary.py": "8c6a180e702c7bb9ef16328049e3d9bfd3f7fe927a47c83b711eccc682f49877",
+    "tests\\test_projection_maps.py": "116c0c21357ec566504ec2e9f3ac37d7ac236c2ca602eb5c00bc1806798561e9",
+    "tests\\test_projection_maps_independent.py": "61b4186ba4c567f8d3bbf0ee1d6f55f36fe47b0a51fe1d2a5b2b84f993029ac0",
+    "tests\\test_projection_profile_clustering.py": "cbcb054f8e5ad164706ec9eed6817ad65284528a018e5faa75d23039eb570cc9",
+    "tests\\test_projection_review.py": "ff95b7e9e57e1c713563808cf503ff04b40a28db9e24c8c01d5384b65e36f6c9",
+    "tests\\test_refinement_entrypoint.py": "b66d114700c6236004f9c7851179b019143c8861efb88dec3898ee2d7ffcaf40",
+    "tests\\test_region_analysis.py": "2277d19d11fa983afd8fb618c9ad3559599a8e4cf3f7b872580e241d28453e35",
+    "tests\\test_region_export_contracts.py": "5bfea46bd83b89fe94b001cefe69d82d5fbfe3efbf1afc1f6ef11524a3bc28de",
+    "tests\\test_region_table_consumers.py": "50aeba2d422c235e9aecfc5beae4b067b2531779052e8112ee3a2b5dc1fe580c",
+    "tests\\test_review_candidate_manifest.py": "1437bfc5a64fdde42d781a03f2d321f70c7449d5a2a54120106cad69b21555e5",
+    "tests\\test_swc_validation.py": "e16bf63e256b968d7283b354887995afb2bce0e8b931a86ca8ec84ac8d2e909b",
+    "tests\\test_terminal_reporting.py": "9d721224b00b1c5c2066a6b9b5da3082846c530e7fad4c4f29b4b054a90e35b5",
+    "tests\\test_terminal_sites.py": "b49c881b645366df21aba32109b1dc893d3cc6324bdf2a12c9648a9050e1b1a6",
+    "tests\\test_visual_review_manifest.py": "f406378dfdc80c5eeb6da94c47034d364770e60c4d6ec251cd2518dc63a88d52"
+  },
+  "methods_receipt_sha256": "d0e8e36201be6659d127a8e60e87a2a7ac6a284db8431bf8488be09502b1b366",
+  "historical_producer_receipts_rewritten": false,
+  "scope": "Current hashes, identities, schemas and display readback; prior complete numerical map checks reused after hash verification",
+  "scientific_acceptance": false,
+  "source_writes": false,
+  "errors": []
+}

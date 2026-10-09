@@ -2,6 +2,16 @@
 
 **Purpose:** Living human-readable status for fMOST / insula projectome work. Agents **merge** updates; do not replace sections.
 
+## Full-goal audit and additional CM032 T-warp validation (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+The [requirement-by-requirement completion assessment](../notes/region_analysis_review_20261009/goal_completion_20261009/README.md) independently revisits the original workstreams and refined goal. The inventory, classifications/QC, six-level ARM tables, descriptive NIfTI maps, exploratory clustering, cited methods and provisional CM032 regional comparison are delivered within their declared evidence limits. A fresh delivery recheck passes all 4,973 source bindings over 4,955 paths, current maps and saved numerical/figure receipts. Tests and executable behavior remain as validated by the passing 409-test suite. A subsequent comment-only correction accurately describes the legacy region-leaf gate, with exact executable AST equality and preserved line endings recorded separately.
+
+An additional [CM032 T-warp check](../notes/region_analysis_review_20261009/goal_completion_20261009/cm032_t_warp_recheck/t_warp_recheck.json) closes a previously available numerical validation: all 15,974,400 T voxels match exactly, maximum difference zero; coverage and compressed file hashes also agree. Sources and external fMRI files are unchanged. This does not accept registration or site localization and does not produce a new statistic.
+
+The full refined scientific goal remains incomplete: all 462 terminal-image review states are unresolved/not available, current fMOST export-origin/individual registration acceptance is unrecovered, CM032 lacks accepted exact NMT site/registration evidence, and no checked record supersedes CM033's upstream orientation rejection. Existing CM033 transforms are not evidence of accepted lineage. Folder/record paths for the missing evidence have been requested. The public feature branch is verified; subsequent audit updates are logged in the publication record. Earlier producer/document snapshots remain historical rather than being rewritten to imply acceptance.
+
 ## Consolidated ARM NIfTIs, six-level matrices, clustering and MSTIM (2026-10-09)
 
 **Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**

@@ -1,0 +1,11 @@
+{
+  "status": "comment_only_AST_identical",
+  "path": "main_scripts/region_analysis/neuron_analysis.py",
+  "before_sha256": "6c5435c85d142b6b01eab6df6a6029f1ecddbf52133f0cbe39497b4258cde750",
+  "after_sha256": "73c0931bf2e3fbbfa51952998c5a86549b9c7869298ac5fc1e9648ce323e4899",
+  "old_comment": "# Only keep regions that contain terminals (exclude fiber passing)",
+  "new_comment": "# Retain all branch length in regions containing a legacy graph leaf.",
+  "executable_AST_identical": true,
+  "line_endings_preserved": true,
+  "scientific_policy_changed": false
+}

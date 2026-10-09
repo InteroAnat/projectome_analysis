@@ -80,3 +80,15 @@ Immediately before publication, all 126 scientific source hashes, 14 report hash
 The manifest/index receipts describe the prepared byte snapshot committed at `9b4db60c8f6e6942ab68f5c227dca70f4408bff3`. This publication-log append is a documentation-only follow-up and does not rewrite those historical receipts. The follow-up is also committed, pushed and checked against the live feature branch before final delivery. Unrelated local journal/bytecode changes are preserved.
 
 Publication is complete for the disclosed Git payload. The NIfTI volumes, raw reconstructions and other declared local artifacts remain local, with their hashes and reproduction commands published. Publication resolves the approval dependency; the anatomical, terminal-field and MSTIM scientific dependencies recorded above remain unresolved.
+
+## Full-goal follow-up audit
+
+Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)
+
+After the user requested full-goal achievement, three specialist audits and the [consolidated requirement assessment](goal_completion_20261009/README.md) rechecked the original workstreams and refined scientific target. A fresh delivery readback passed all 4,973 source bindings over 4,955 paths, with no errors. The inventory/classification, current ARM maps, six-level tables, exploratory clustering, literature-method assessment and provisional CM032 delivery are complete within their declared limits. The full refined scientific target remains incomplete: reviewed terminal fields and accepted fMOST/MSTIM localization still need the concrete evidence listed in that assessment. Existing record/folder paths have been requested; no scientific acceptance was invented.
+
+The available CM032 T-image source allowed one outstanding numerical check to be completed. All 15,974,400 T voxels, the 5,015,104-voxel coverage mask and compressed-file hashes reproduce exactly with existing transforms and ANTs 2.5.1. The additive receipt binds 19 unchanged source/code/receipt files. It does not accept registration, stimulation sites or a new regional statistic. New verification NIfTIs remain local with published hashes and commands.
+
+One source comment incorrectly described the legacy region-leaf gate as excluding passing fibers. The focused correction changes only that comment; exact executable AST equality and preserved line endings establish unchanged behavior. The 36 test files are unchanged and the saved 409-test executable baseline remains applicable. Current MSTIM wording now links the T check; the refined-goal note explicitly marks its older readiness/count bullets as historical. Original producer/validation receipts and all scientific data remain unchanged.
+
+The [completion-status verification](goal_completion_20261009/completion_status.json) passed, with current document bindings, exact T source/output hashes, the single comment-only source change and 105 resolved relative links. It explicitly records `full_refined_scientific_goal_achieved=false`. These follow-up records are committed and pushed to the already approved feature branch, with live remote equality checked before delivery; the default branch remains outside the push target.
