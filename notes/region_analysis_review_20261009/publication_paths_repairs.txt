@@ -12,6 +12,7 @@ group_analysis/R_analysis/improved_panel_figures.R
 group_analysis/R_analysis/intra_insula_connectivity.R
 group_analysis/R_analysis/v2_combined_primary_pipeline.R
 group_analysis/R_analysis/v2_combined_primary_pipeline.Rmd
+group_analysis/data_progress/insula_inventory.py
 group_analysis/scripts/03_scan_insula_recovery_candidates.py
 group_analysis/scripts/04_refine_soma_region_by_coords.py
 group_analysis/scripts/05a_build_combined_table.py
@@ -23,6 +24,7 @@ group_analysis/scripts/audit_insula_inventory.py
 group_analysis/scripts/build_axon_end_branch_maps.py
 group_analysis/scripts/build_coarse_insula_review.py
 group_analysis/scripts/build_endpoint_maps.py
+group_analysis/scripts/build_monkey_insula_inventory.py
 group_analysis/scripts/build_projection_maps.py
 group_analysis/scripts/cluster_arm_projection_profiles.py
 group_analysis/scripts/export_arm_projection_tables.py
@@ -68,6 +70,7 @@ tests/test_harmonization_safety.py
 tests/test_insula_candidate_rules.py
 tests/test_insula_inventory.py
 tests/test_inventory_projection_manifest.py
+tests/test_monkey_insula_inventory.py
 tests/test_mstim_arm_summary.py
 tests/test_mstim_subject_end_branches.py
 tests/test_projection_maps.py

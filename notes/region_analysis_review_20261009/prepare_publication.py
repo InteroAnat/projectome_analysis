@@ -45,6 +45,7 @@ MAP_SCRIPTS = {
     "review_endpoint_run.py", "review_projection_run.py", "verify_atlas_soma_audit.py",
     "export_arm_projection_tables.py", "cluster_arm_projection_profiles.py", "summarize_mstim_arm.py",
     "build_axon_end_branch_maps.py",
+    "build_monkey_insula_inventory.py",
 }
 CORE_MODULES = {"endpoint_atlas.py", "projection_maps.py", "terminal_sites.py"}
 OMIT_NAMES = {"publication_files.json", "publication_scan.json", "publication_local_artifacts.json", "publication_index_receipt.json"}
@@ -105,6 +106,7 @@ def main():
     candidates |= {str(path.relative_to(ROOT)).replace("\\", "/") for path in (ROOT / "tests").glob("*.py")}
     candidates |= {f"group_analysis/scripts/{name}" for name in MAP_SCRIPTS}
     candidates |= {f"main_scripts/{name}" for name in CORE_MODULES}
+    candidates.add("group_analysis/data_progress/insula_inventory.py")
     candidates |= {"docs/region_analysis_terminology.md", "requirements-validation.txt",
                    "notes/whole_insula_lr_continuation_plan_v2.md"}
     for directory in (AUDIT, EVOLUTION, ROOT / "notes/clustering_review_20261002"):
@@ -124,7 +126,9 @@ def main():
     def primary_figure(path):
         prefix = "group_analysis/evolution_20261008/arm_mapping_20261009/main/figures/"
         family = path[len(prefix):].split("/", 1)[0] if path.startswith(prefix) else ""
-        return family in {"endpoint-density_group", "endpoint-occupancy_group", "axon-density_group"} and "unresolvedQC" not in path
+        return (path == "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/per_monkey_insula_overview.png"
+                or family in {"endpoint-density_group", "endpoint-occupancy_group", "axon-density_group"}
+                and "unresolvedQC" not in path)
 
     archived_figures = {path for path in candidates if path.startswith("group_analysis/evolution_20261008/")
                         and Path(path).suffix.lower() == ".png" and not primary_figure(path)}

@@ -2,6 +2,14 @@
 
 **Purpose:** Living human-readable status for fMOST / insula projectome work. Agents **merge** updates; do not replace sections.
 
+## Legacy overview-backed per-monkey inventory (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+Following the user's instruction to use legacy overview tools, the [per-monkey inventory](../group_analysis/evolution_20261008/inventory/legacy_overview_20261009/README.md) now reuses the original Monkey Data workbook and `build_progress_table`, joining exact monkey/fMOST identities to the complete saved inventory and existing selected ledger. It keeps atlas INS, Henry visual evidence, spatial lower bounds, legacy claims and current combined rows separate. The view includes all eight overview monkeys; the complete 49-identity catalog/channel inventory remains intact. The legacy cleanup runner was not invoked, and original workbooks, scientific outputs and unrelated work were preserved.
+
+Independent direct-source readback verifies 72 count cells, all animal/sample identities, 32 source bindings, the 462 selected identities and eight focused regressions. The actual PNG is readable and was inspected. Fifteen source differences remain explicit: legacy reconstruction zeros for 797/252790 and 631/252714 versus saved lists of 123 and 144; 353 legacy review claims versus 306 current combined rows; and two claimed versus five verified local nominal5µm copies. Missing local copies do not establish unavailability elsewhere. The priority without a verified local copy is 797,605,900. Henry's 261 INS rows represent 260 unique neurons; duplicated neuron114 retains its L-IDD5/L-IDM fine-label conflict. No anatomical acceptance or new cohort is inferred. Existing scientific source hashes remain unchanged; the prior delivery/document receipt retains its earlier snapshot scope. CM032/CM033 integration stays deferred.
+
 ## Projectome-first delivery; MSTIM integration deferred (2026-10-09)
 
 **Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**

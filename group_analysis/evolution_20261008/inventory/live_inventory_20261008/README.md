@@ -1,5 +1,7 @@
 # All-macaque insula inventory
 
+For animal-level information, use the [legacy-overview-backed per-monkey table and readable overview](../legacy_overview_20261009/README.md). It preserves source claims, independently checks current counts and exposes discrepancies without replacing this complete sample/channel ledger.
+
 Generated from saved evidence: 49 exact sample IDs; 8746 exact sample/neuron identities.
 
 Full per-neuron metadata exists for 47 samples. 0 samples have historical aggregate counts only. Blank CSV counts mean missing, never zero.

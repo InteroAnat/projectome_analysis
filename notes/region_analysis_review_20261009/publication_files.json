@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-09T05:55:33.256103+00:00",
+  "created_utc": "2026-10-09T06:19:06.137272+00:00",
   "groups": {
     "baseline": [
       {
@@ -1015,6 +1015,11 @@
         "sha256": "ed07324520de72727e42391426dfb3e5137ec05263f6ae115c2987d5c347a035"
       },
       {
+        "path": "group_analysis/data_progress/insula_inventory.py",
+        "bytes": 13709,
+        "sha256": "a11d9278ef45769e4e09eea3888f518a983ebbe559380b33e861c4bf2e7281c5"
+      },
+      {
         "path": "group_analysis/scripts/03_scan_insula_recovery_candidates.py",
         "bytes": 15434,
         "sha256": "eeeb9d6c5ccb70850b8c1e836af21202da893dee9782a7598c4b2ec0e062a2f4"
@@ -1068,6 +1073,11 @@
         "path": "group_analysis/scripts/build_endpoint_maps.py",
         "bytes": 25896,
         "sha256": "5b87411ae4e32f0f51d4cb7ff3ad6799ce27311aeae268e3709ccba29d27d795"
+      },
+      {
+        "path": "group_analysis/scripts/build_monkey_insula_inventory.py",
+        "bytes": 284,
+        "sha256": "bcf6698da1ac5d16813801da9c00eae7c2ba7f81974b493d764450d61c58578e"
       },
       {
         "path": "group_analysis/scripts/build_projection_maps.py",
@@ -1295,6 +1305,11 @@
         "sha256": "96205821f4dfecdca2ab1f471bf9837ab5a59cbb6ec8012a90f81e9c0d2cf618"
       },
       {
+        "path": "tests/test_monkey_insula_inventory.py",
+        "bytes": 4017,
+        "sha256": "dc3f2edb13724c0989aa1ca59e37d741d5ef20634b3d9e6c82571b296e449e1c"
+      },
+      {
         "path": "tests/test_mstim_arm_summary.py",
         "bytes": 2322,
         "sha256": "8c6a180e702c7bb9ef16328049e3d9bfd3f7fe927a47c83b711eccc682f49877"
@@ -1373,8 +1388,8 @@
       },
       {
         "path": "docs/project_note.md",
-        "bytes": 129399,
-        "sha256": "7348a584ead2d0680cc71e432b01a005d2e77aa9c405ef80d7ebc7d695319d47"
+        "bytes": 131141,
+        "sha256": "fc60d280f2110bfc0a17d05523e8c30684b5c7438f1da4f5728076efe17b929a"
       },
       {
         "path": "docs/region_analysis_terminology.md",
@@ -2082,9 +2097,59 @@
         "sha256": "ddcbfa04eddf84c6dfa36023bea65e52153165e198a6cc6aa5bffbcada8d6a9d"
       },
       {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/README.md",
+        "bytes": 4624,
+        "sha256": "28e67e632b21ffbe8ce68fed4d0bc5a8a830539badc78f9bfa558e771423b98f"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/focused_tests.log",
+        "bytes": 955,
+        "sha256": "36ddf8dfb3221430188296821415237e3a7ab910fda822776d6bab8d3fbd64f7"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/independent_readback.json",
+        "bytes": 6363,
+        "sha256": "19e31fa5339eefa813edb8fc110e21239347e92d3fa102b2d8d1994b58c68c1e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/legacy_reconciliation.csv",
+        "bytes": 1786,
+        "sha256": "62a4373530cc4b67e7f8667474dfc80ab48e78d9f0438ebd36a079467e6fbf8b"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/per_monkey_insula_inventory.csv",
+        "bytes": 4955,
+        "sha256": "22911d4bc2a44f869ac8249aafa56cec76f1b92524b8dfb273d51f93ef03106e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/per_monkey_insula_overview.png",
+        "bytes": 173686,
+        "sha256": "456725e712cae349840e6857d677cc817b8df1e5ad289c3cc942e430b425c27a"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/provenance.json",
+        "bytes": 6360,
+        "sha256": "29e38764ab3328baf28d6ad7bae467e578fd09d5511fd4ed9eb7d83942c96868"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/publication_and_source_checks.json",
+        "bytes": 2183,
+        "sha256": "e3ad0a72aa88bbc5b56c4779564ca98e9a499cc80f0dd56d0462223726752c0f"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/publication_tool_tests.log",
+        "bytes": 112,
+        "sha256": "f18d65baf99ae215e614d0870c74c1ec4e56546756f73058af668f717d84da3c"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/verify_overview.py",
+        "bytes": 7640,
+        "sha256": "88f2eae5f70e7b74ec4ab23b34c96f75d3e2b0c2d77979a0abe752b9b9665177"
+      },
+      {
         "path": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/README.md",
-        "bytes": 1978,
-        "sha256": "a4b0f770f86c4a3e5832d6eab22d897f7f82a82dc40a43c746340fa632bc5eb0"
+        "bytes": 2264,
+        "sha256": "5371a6a39ddeb3b6f0ccdc610ecb6477ceeb236f9d531558f2718ae5aadaeef8"
       },
       {
         "path": "group_analysis/evolution_20261008/inventory/live_inventory_20261008/independent_snapshot_verification.json",
@@ -5423,13 +5488,13 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/prepare_publication.py",
-        "bytes": 13846,
-        "sha256": "3eca12b3dd42eba3ad8fff9dd4a60593fef7ebeda7b161b3fbce2f2aae30062c"
+        "bytes": 14104,
+        "sha256": "e74965c3a1efa6c76bdb5492a2bd4af00027f088ca9d0af7e5e70c72d249dde3"
       },
       {
         "path": "notes/region_analysis_review_20261009/projectome_delivery_20261009/README.md",
-        "bytes": 8221,
-        "sha256": "a6ddc9d70176460cc20f98e846ea7e1a54afcfeba70710da6ec52a7461916445"
+        "bytes": 8734,
+        "sha256": "496a50bd554ea5a3fa116e09f874a3507fd2b0bfc6aa83524fffc7261f9e98b9"
       },
       {
         "path": "notes/region_analysis_review_20261009/projectome_delivery_20261009/delivery_checks.json",
@@ -5448,8 +5513,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_20261009.md",
-        "bytes": 25358,
-        "sha256": "31acc4de6f04604202389a462bd8170cf6e39d3a1d4f35ada8ee53acd5689f7c"
+        "bytes": 28233,
+        "sha256": "337ba06f20233c8208543bc4af393bb8154e0b49dbd317585ac6f4fab845ab55"
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_artifact_tests_20261009.json",
