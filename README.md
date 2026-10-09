@@ -4,6 +4,8 @@ A comprehensive toolkit for analyzing macaque brain neuron morphology data, incl
 
 Current insula evolution work: [dated evidence index](group_analysis/evolution_20261008/README.md) and [terminal-first goal](group_analysis/evolution_20261008/terminal_projection_goal_20261008.md). Descriptive mapping and software verification remain separate from anatomical acceptance.
 
+Current projection-map review: [second inspection and endpoint-marker sheets](notes/projection_map_review_round2/README.md), with [step-by-step reproduction](notes/projection_map_review_round2/reproduction.md) and dependency-aware local archive records. Original numerical maps and source-bound historical figures retain their established paths.
+
 The [region/table audit](notes/region_analysis_review_20261009/README.md) records validated repairs, corrected diagnostic workbooks and scientific dependencies. Use the [measurement guide](docs/region_analysis_terminology.md), [primary ARM map index](group_analysis/evolution_20261008/arm_mapping_20261009/README.md), [six-level projection tables](notes/region_analysis_review_20261009/hierarchy_tables_20261009/README.md), [projection-profile clustering](notes/region_analysis_review_20261009/clustering_20261009/README.md) and [MSTIM integration record](notes/region_analysis_review_20261009/mstim_integration_20261009/README.md). Earlier display variants remain archived.
 
 ## Overview

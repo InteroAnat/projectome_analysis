@@ -1,3 +1,15 @@
+## 2026-10-10 | Agent Codex | Projection maps: second inspection and additive endpoint markers
+
+User-authorized scope: reinspect projection validity, document exact reproduction/scripts, improve endpoint indication using primary paper figures, sort/archive safely and push the reviewed branch. CM032/CM033 integration remains deferred.
+
+- Fresh documented PowerShell procedure passed direct full-graph endpoint reconstruction and full-voxel numerical checks on all 452 NIfTIs across five existing map runs. Exact 462-source union: 429 original-end eligible and 33 unassessed. Density conversion, occupancy, geometry/units, equal-animal voxel means, identity/cohort membership, integrated lengths and per-neuron end-branch/whole-axon bounds agreed. No change to existing maps was required.
+- Four additive sheets cover 15 official ARM source locations at existing X56/Y200/Z87 cuts. A fixed-size, outlined dot marks an occupied endpoint voxel centre; colour is existing equal-animal candidate-end density. NMT v2.1 T1 MRI, matched grayscale and shared colour limit; no MIP/smoothing or terminal-field acceptance. All 45 panels checked independently and all four PNGs viewed.
+- Direct visual review of locally hashed Zotero Gou 2025 Figure 3 and Gao 2022 Figure 3 informs visual separation of trajectories and localized structures. Our glyphs are neither author-defined arbors nor arbor centroids; Liu limitations on image-derived arbors/varicosities remain applicable. Publisher previews remain private.
+- Detailed reproduction documentation, an executable PowerShell driver, independent inspector, additive renderer and final reader are in notes/projection_map_review_round2. Five focused tests passed; nine CLI entrypoints and PowerShell syntax checked. The saved-map procedure was run end to end; optional full numerical rebuild was documented but not repeated. A relative-path bug in the new inspector was found and fixed by that procedure.
+- Sorting rehashed 896 local artifacts and mapped dependencies. All 172 untracked historical PNGs had references, so source-bound originals retain paths. Two temporary paper previews and three superseded development/configuration files were archived with exact old/new hashes. Private archive is narrowly ignored; unrelated work and immutable inputs preserved. Root README links the active report and procedures.
+
+Evidence: [round-2 index](../notes/projection_map_review_round2/README.md), [reproduction](../notes/projection_map_review_round2/reproduction.md), [final readback](../notes/projection_map_review_round2/final_readback.json). Numerical consistency does not establish registration, fine soma anatomy or biological terminal identity; authoritative transform/export-origin evidence remains unavailable.
+
 # Projectome analysis — project note
 
 **Purpose:** Living human-readable status for fMOST / insula projectome work. Agents **merge** updates; do not replace sections.

@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-09T06:19:06.137272+00:00",
+  "created_utc": "2026-10-09T23:13:44.255861+00:00",
   "groups": {
     "baseline": [
       {
@@ -1230,6 +1230,141 @@
         "sha256": "72192d95c500962e273df47c721385c8a4f16b97f38b89e55ae1addb72d1614a"
       },
       {
+        "path": "notes/projection_map_review_round2/README.md",
+        "bytes": 8034,
+        "sha256": "7df24b60faa9cc5b11843613bef0e2c9242736ab01cf0ed52624d40afa692c84"
+      },
+      {
+        "path": "notes/projection_map_review_round2/archive_development_runs.py",
+        "bytes": 2560,
+        "sha256": "4eb5810d350464eac1e62e84f8d2db126c6c35fddee4291ba988a6d8d7bb6d0b"
+      },
+      {
+        "path": "notes/projection_map_review_round2/final_readback.json",
+        "bytes": 1506,
+        "sha256": "9545aff360d1ba492025467a28e6b7010119792dc967a10cbf1915a98a76004d"
+      },
+      {
+        "path": "notes/projection_map_review_round2/inspect_projection_maps.py",
+        "bytes": 13955,
+        "sha256": "7747a7d325ba453027d88f91bcc3e8237d3ce81b0a2b04b80ea9fb760b646936"
+      },
+      {
+        "path": "notes/projection_map_review_round2/literature_display_evidence.json",
+        "bytes": 1569,
+        "sha256": "8cc0c89bbff3035d062c31e0b6b7eeea23b8bea33b9bec7960c75ad76eef381d"
+      },
+      {
+        "path": "notes/projection_map_review_round2/procedure_preflight.json",
+        "bytes": 2301,
+        "sha256": "1799637f3a83004c5ed5a919c5e44fcaf226dd06f32bb0afc0f5b8c6d8f4c8ae"
+      },
+      {
+        "path": "notes/projection_map_review_round2/render_endpoint_markers.py",
+        "bytes": 8228,
+        "sha256": "17dab3648384e1bb9642f7c612b4535d381dd5d1913ce2ed8f07516a5375326f"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduce_maps.ps1",
+        "bytes": 4160,
+        "sha256": "340fc5f4ccb1168020691daaa246aa2c75af7b20d74829af3d580b98d12f8f1b"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction.md",
+        "bytes": 9225,
+        "sha256": "491dae3a136bc7b59e8dee2296f3a0653d427843d7366de6db9109aca61f80ab"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/endpoint_markers/display_provenance.json",
+        "bytes": 9489,
+        "sha256": "3d595f63467ad8dbce9d1d97bc08cc5b95b95bf024eed57575d6f2e18ed6ff28"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/endpoint_markers/space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-01.png",
+        "bytes": 912213,
+        "sha256": "97fcf73e2f5543eb7646dd609cc79d1bf2940ee7e46aa014c78d223b08144caa"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/endpoint_markers/space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-02.png",
+        "bytes": 946204,
+        "sha256": "69fb39309440483d7d86eb4e6450f5452c9944cc11a5ce8391ade545824ae86f"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/endpoint_markers/space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-03.png",
+        "bytes": 918096,
+        "sha256": "ae48ec7d745cc926e73a9764ba3c93456efcefef9567e378e82f4dd9626d007b"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/endpoint_markers/space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-04.png",
+        "bytes": 671278,
+        "sha256": "280af611a5a7afb4ccc4ad28af1e23d7bdba277b042b5f7826281ef0a82eab38"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/inspection/all_map_value_checks.csv",
+        "bytes": 125452,
+        "sha256": "cd69aa48a5ef52055eaf64b55830200af87618ad9340047b2246ed5f622054e9"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/inspection/inspection_receipt.json",
+        "bytes": 92090,
+        "sha256": "26a0c4632e8263498328951d366590b4798bc4c99097a8be5e5288823963dd55"
+      },
+      {
+        "path": "notes/projection_map_review_round2/reproduction_checked/runs.json",
+        "bytes": 504,
+        "sha256": "42404c126a14426fbeb7e78e2a4d7be62b862d9ca3055756aa0264a8b4f93832"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sort_review_artifacts.py",
+        "bytes": 5022,
+        "sha256": "59a6b5890c2ac2afb20b5af52395e7ccf6b4093bc5a3cb5b425c744240d38fe7"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sorting/archive_plan.json",
+        "bytes": 785,
+        "sha256": "168385d149628aff332a85972284c159825b30df646fc40841f812f2d42bbe4c"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sorting/archive_readback.json",
+        "bytes": 885,
+        "sha256": "ae8a128616ea48b7863f1aee181879d03ef524a239f85b962760a84598feee7d"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sorting/development_archive_plan.json",
+        "bytes": 944,
+        "sha256": "b79b436b6ec1bd6307519419a1c0b38970f3094691ccc55089b55866bfbedd13"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sorting/development_archive_readback.json",
+        "bytes": 1327,
+        "sha256": "78fb2b7b01fbee3e9276348325f8b403cce76839723cecfbec34fd1acc353e3a"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sorting/file_roles_and_dependencies.csv",
+        "bytes": 827345,
+        "sha256": "372a582a244fdb3c69ab69b02d2b0d6bda614e135067908fb1bcc4f0b313f701"
+      },
+      {
+        "path": "notes/projection_map_review_round2/sorting/sorting_receipt.json",
+        "bytes": 519,
+        "sha256": "ac0599a2678f5a1f3472a58fb1a0bf71f8e96efd6c9e7a1b1069d721dbde00e7"
+      },
+      {
+        "path": "notes/projection_map_review_round2/test_map_inspection.py",
+        "bytes": 2091,
+        "sha256": "c893f77ffce7436947bc33e29ca4b177c569228379ae0fced2ca00bfd463e780"
+      },
+      {
+        "path": "notes/projection_map_review_round2/verify_review_delivery.py",
+        "bytes": 5108,
+        "sha256": "fef195fb130acd2ac86885d2c114e0d6c98fd39019046c6f43a2e9d3abeefe99"
+      },
+      {
+        "path": "notes/projection_map_review_round2/visual_review.json",
+        "bytes": 1500,
+        "sha256": "732f7443c4ebf9cae97def27525f937c5bfc12a4701169648e2de78876575542"
+      },
+      {
         "path": "notes/whole_insula_lr_continuation_plan_v2.md",
         "bytes": 6126,
         "sha256": "be2632e4e43866971ad52be923776463025f948f0e542848f835ddf95459eb55"
@@ -1378,18 +1513,18 @@
     "evidence": [
       {
         "path": ".gitignore",
-        "bytes": 3718,
-        "sha256": "cfe3bb48b49c280bb85cc3923957e920abbaf542fe7ece213bf643b19641b58f"
+        "bytes": 3799,
+        "sha256": "f3091112473c8bec3595748d204947f4e030bebcb701ca2f48900c048d67abed"
       },
       {
         "path": "README.md",
-        "bytes": 23537,
-        "sha256": "f8b417147a5771a1ac32ba645b109e5c52c869d80e504421462aa145df2777f1"
+        "bytes": 23884,
+        "sha256": "9fe931bb6384ba463c87cd506acafe8a45ba827afb43617042cb7913cbbdf95f"
       },
       {
         "path": "docs/project_note.md",
-        "bytes": 131141,
-        "sha256": "fc60d280f2110bfc0a17d05523e8c30684b5c7438f1da4f5728076efe17b929a"
+        "bytes": 133898,
+        "sha256": "f9ef6d59546bfe62578eb45d38942f7757f4e6b8cb2b6eb75ad97dff249ed647"
       },
       {
         "path": "docs/region_analysis_terminology.md",
@@ -5488,8 +5623,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/prepare_publication.py",
-        "bytes": 14104,
-        "sha256": "e74965c3a1efa6c76bdb5492a2bd4af00027f088ca9d0af7e5e70c72d249dde3"
+        "bytes": 14157,
+        "sha256": "d8a81eec7a03dd34b2c8949a8fce136455e5a0852dd2cdb5a0828cfa0144172b"
       },
       {
         "path": "notes/region_analysis_review_20261009/projectome_delivery_20261009/README.md",
@@ -5513,8 +5648,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_20261009.md",
-        "bytes": 28233,
-        "sha256": "337ba06f20233c8208543bc4af393bb8154e0b49dbd317585ac6f4fab845ab55"
+        "bytes": 29962,
+        "sha256": "47fd8bf3193744cdbb23f294fa27016c57c99fd3ab72c9211774cb830fe2f9b8"
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_artifact_tests_20261009.json",

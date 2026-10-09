@@ -1,0 +1,53 @@
+{
+  "driver_sha256": "340fc5f4ccb1168020691daaa246aa2c75af7b20d74829af3d580b98d12f8f1b",
+  "driver_syntax": "PowerShell AST parsed successfully",
+  "cli_entrypoints": [
+    {
+      "script": "group_analysis/scripts/build_axon_end_branch_maps.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "9ca6303273969388af2935ea5916a6496349c981bf17efae4c54fc0a9f09c9be"
+    },
+    {
+      "script": "group_analysis/scripts/build_endpoint_maps.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "5b87411ae4e32f0f51d4cb7ff3ad6799ce27311aeae268e3709ccba29d27d795"
+    },
+    {
+      "script": "group_analysis/scripts/build_projection_maps.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "c758d2daa427276436e07c1745daad00574e7e392a6f71516f179653ae623145"
+    },
+    {
+      "script": "group_analysis/scripts/export_arm_projection_tables.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "01216c76c599301cb77eb0ed10601687278c70bd6c3d498af7786dc78bafb695"
+    },
+    {
+      "script": "group_analysis/scripts/review_endpoint_run.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "2d2f6d308caf9d9409539b0b857957d61cdd4785dc856616eb7236b46da6ad75"
+    },
+    {
+      "script": "group_analysis/scripts/review_projection_run.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "5965b151e83d877f47bb7d930a03e46d562fb1bd940977a56cc50217c862ceb9"
+    },
+    {
+      "script": "notes/projection_map_review_round2/inspect_projection_maps.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "7747a7d325ba453027d88f91bcc3e8237d3ce81b0a2b04b80ea9fb760b646936"
+    },
+    {
+      "script": "notes/projection_map_review_round2/render_endpoint_markers.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "17dab3648384e1bb9642f7c612b4535d381dd5d1913ce2ed8f07516a5375326f"
+    },
+    {
+      "script": "notes/region_analysis_review_20261009/axon_end_branches_20261009/independent_end_branch_readback.py",
+      "cli_help_exit_code": 0,
+      "script_sha256": "acb910d65e76edd39449930ab446859469e782c735508f20b97de578f53d42a0"
+    }
+  ],
+  "full_rebuild_executed": false,
+  "saved_map_procedure_execution": "See reproduction_checked/inspection/inspection_receipt.json and endpoint_markers/display_provenance.json"
+}

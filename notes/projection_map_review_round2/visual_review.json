@@ -1,0 +1,38 @@
+{
+  "created_utc": "2026-10-09T23:12:44.342444+00:00",
+  "reviewer": "Codex",
+  "method": "All four final PNGs opened and visually inspected",
+  "figures": [
+    {
+      "path": "space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-01.png",
+      "sha256": "97fcf73e2f5543eb7646dd609cc79d1bf2940ee7e46aa014c78d223b08144caa"
+    },
+    {
+      "path": "space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-02.png",
+      "sha256": "69fb39309440483d7d86eb4e6450f5452c9944cc11a5ce8391ade545824ae86f"
+    },
+    {
+      "path": "space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-03.png",
+      "sha256": "ae48ec7d745cc926e73a9764ba3c93456efcefef9567e378e82f4dd9626d007b"
+    },
+    {
+      "path": "space-NMTv2p1_desc-candidateAxonEndVoxelMarkers_page-04.png",
+      "sha256": "280af611a5a7afb4ccc4ad28af1e23d7bdba277b042b5f7826281ef0a82eab38"
+    }
+  ],
+  "panels": 45,
+  "checks": [
+    "Full ARM source labels readable",
+    "MRI background retains gray/white contrast with black exterior",
+    "Matched XYZ cuts and template-mm axes",
+    "Endpoint dots visible on light and dark MRI",
+    "Shared density legend readable",
+    "No clipped titles or labels observed",
+    "Empty planes retained as empty planes rather than invented data"
+  ],
+  "limits": [
+    "Dots may overlap in dense occupied voxels; quantitative source remains the NIfTI",
+    "Visual layout check does not accept terminal fields or registration"
+  ],
+  "anatomical_acceptance": false
+}

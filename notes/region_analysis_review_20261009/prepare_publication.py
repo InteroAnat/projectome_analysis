@@ -51,7 +51,7 @@ CORE_MODULES = {"endpoint_atlas.py", "projection_maps.py", "terminal_sites.py"}
 OMIT_NAMES = {"publication_files.json", "publication_scan.json", "publication_local_artifacts.json", "publication_index_receipt.json"}
 LOCAL_NODE_LEDGERS = {"leaf_records.jsonl", "section_original_node_membership.jsonl"}
 OMIT_SUFFIXES = {".pyc", ".swc", ".tif", ".tiff", ".nii", ".gz", ".pdf"}
-TEXT_SUFFIXES = {".py", ".r", ".rmd", ".md", ".txt", ".json", ".csv", ".bib", ".patch", ".log", ".yml"}
+TEXT_SUFFIXES = {".py", ".ps1", ".r", ".rmd", ".md", ".txt", ".json", ".csv", ".bib", ".patch", ".log", ".yml"}
 CM033_WORK_DIRECTORIES = {"nipype_work", "nipype_config", "mpl_config", "logs", "tmp"}
 # This interrupted supplement has no completed independent delivery. Preserve
 # it locally while the user-requested projectome phase is finalized first.
@@ -109,7 +109,7 @@ def main():
     candidates.add("group_analysis/data_progress/insula_inventory.py")
     candidates |= {"docs/region_analysis_terminology.md", "requirements-validation.txt",
                    "notes/whole_insula_lr_continuation_plan_v2.md"}
-    for directory in (AUDIT, EVOLUTION, ROOT / "notes/clustering_review_20261002"):
+    for directory in (AUDIT, EVOLUTION, ROOT / "notes/clustering_review_20261002", ROOT / "notes/projection_map_review_round2"):
         for path in directory.rglob("*"):
             if not path.is_file() or "__pycache__" in path.parts:
                 continue
