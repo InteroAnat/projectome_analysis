@@ -60,3 +60,11 @@ Publication preparation now excludes its own manifest/receipt/path-list files af
 The refreshed index check passed for 991 files (306,142,765 bytes), with no credential findings or unexpected staged files. The publication self-hash-cycle repair was committed locally. The second public-push attempt was rejected before execution because “continue” and the earlier general push instruction did not specifically authorize this scientific payload to the public destination. An explicit public scientific-data approval choice has been requested again, identifying the repository and exact data categories. Nothing was pushed.
 
 The same publication-approval dependency has now persisted across three consecutive goal turns. No further independent local work was identified by the completed requirement audit. The blocked audit is satisfied: publishing requires a new explicit user response; anatomical/terminal acceptance separately requires the scientific evidence listed above. Current status: local delivery preserved; public publication blocked pending explicit approval.
+
+## Explicit public-publication approval
+
+Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)
+
+The user replied “I approve” directly to the request to publish the disclosed scientific payload to the public `InteroAnat/projectome_analysis` repository. This authorizes the prepared feature-branch push, including inventories, projection tables, figures, QC and source paths. The previously disclosed exclusions remain in place. The public-publication approval dependency is resolved; scientific acceptance dependencies remain as recorded above.
+
+The publication manifest and exact index-byte check are refreshed before committing and pushing. Remote publication is recorded only after live branch readback agrees with the local commit.
