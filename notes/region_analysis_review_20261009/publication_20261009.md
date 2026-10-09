@@ -33,3 +33,18 @@ GitHub readback confirms that `InteroAnat/projectome_analysis` is **public**, wi
 An explicit approval request now identifies the public destination and prepared scope. No push or remote feature-branch creation is claimed. The validated local branch and all deliverables are preserved. Default-branch readback before the rejected attempt was `f096e8165da18f84e91ea69d6e5cbfd58f248e75`.
 
 Status: validated and committed locally; public push awaiting explicit user approval required by automatic approval review.
+
+## Goal completion audit after the approval dependency
+
+On 2026-10-09, a fresh read-only check found no drift in all 126 current source-file hashes and 14 report hashes recorded by the final delivery receipt. The saved live suite still records 409 passing tests. Representative endpoint and axon NIfTIs load as finite float32 volumes on the 256 × 312 × 200, 0.25-mm reference grid with coded millimetre transforms. The independent specialist audit found no newly demonstrated software defect or omitted eligible identity. No scientific computation or source data were changed during this audit.
+
+| Goal requirement | Current evidence and completion boundary |
+|---|---|
+| Official atlas labels and uncertainty | The pinned ARM image/key, full names, domains and side are used for the 462-source ledger. The 52 background soma assignments retain their independent human/candidate evidence. Anatomical acceptance is not inferred from lookup agreement. |
+| Map validity | Complete saved-volume checks cover the current 320 ARM NIfTIs; units, values, geometry, denominators and matched-slice displays are verified. Individual registration/export-origin acceptance remains unresolved. These are descriptive maps. |
+| Terminal and whole-axon measures | Candidate full-graph axon-end maps and child-type-2 axon-length maps are implemented and checked. Reviewed terminal fields/arbors remain scientifically incomplete pending native image–SWC correspondence, truncation review and applicable arbor labels/model/features. |
+| Clustering including candidates | All 462 identities are accounted for; all 428 axon and 425 endpoint-computable profiles are fitted. Henry-only, representation, animal, quality and source-relative sensitivities are retained. The current partitions do not establish cell types. |
+| Compatible multimodal inputs | The actual reference grids and payloads match, and all six actual ARM levels retain their official names and flagged key conflicts. Native sampling, interpolation grid, coverage and transform provenance remain explicit. |
+| MSTIM integration | CM032's signed-contrast warp reproduces exactly, and all 1,676 regional/25,140 joint rows pass independent readback. Accepted registration/site coordinates and the corrected CM033 orientation/model remain unresolved. The saved T image is descriptive; its warp has not independently been reproduced. |
+
+Remote readback still contains no feature branch, and `master` remains `f096e8165da18f84e91ea69d6e5cbfd58f248e75`. The outstanding public-push request has not been answered. This automatic goal continuation is not approval to publish the scientific payload. The goal remains active; neither full scientific acceptance nor remote publication is claimed.
