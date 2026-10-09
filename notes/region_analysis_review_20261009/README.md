@@ -1,5 +1,9 @@
 # Region analysis and table review — 2026-10-09
 
+**Current delivery:** [validated projectome phase, with CM032/CM033 integration deferred at the user's request](projectome_delivery_20261009/README.md). Start here for current deliverables and limits. Entries below retain their earlier checkpoint scope.
+
+**Current incremental result:** [independently checked end-branch NIfTIs and all six ARM matrices, boundary repair with no real-map impact, profile sensitivity and actual CM033 process/bridge findings](end_branch_and_mstim_followup_20261009.md). The unchanged 462-neuron ledger remains the source selection; earlier checkpoints retain their dates and scope.
+
 **Latest follow-up:** [complete axon-section census, expanded native image review, animal-confounded evidence coverage and current CM033 mapping/normalization](terminal_coverage_followup_20261009.md). Earlier receipts and counts retain their original snapshot scope.
 
 Start with the [current source clarification, local-PDF Methods and terminal/MSTIM evidence update](scope_update_20261009.md) for the latest reviewed scope. Earlier numerical receipts below retain their original byte snapshots and dates.

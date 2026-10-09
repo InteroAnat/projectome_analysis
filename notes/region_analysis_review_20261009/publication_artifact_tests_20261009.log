@@ -1,0 +1,13 @@
+test_both_candidate_workflows_keep_disposable_files_local (test_publication_artifacts.PublicationArtifacts) ... ok
+test_earlier_png_and_json_display_variants_remain_local (test_publication_artifacts.PublicationArtifacts) ... ok
+test_named_evidence_and_transform_files_are_retained (test_publication_artifacts.PublicationArtifacts) ... ok
+test_scope_does_not_filter_unrelated_reports (test_publication_artifacts.PublicationArtifacts) ... ok
+test_bids_task_paths_are_not_tokens (test_publication_credentials.PublicationCredentialBoundaries) ... ok
+test_index_private_key_detection_remains_enabled (test_publication_credentials.PublicationCredentialBoundaries) ... ok
+test_minimum_lengths_are_retained (test_publication_credentials.PublicationCredentialBoundaries) ... ok
+test_standalone_supported_token_prefixes_remain_detected (test_publication_credentials.PublicationCredentialBoundaries) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.011s
+
+OK

@@ -1,0 +1,359 @@
+{
+  "status": "software_completed_spatial_bridge_candidate_awaiting_image_review",
+  "started_utc": "2026-10-09T04:56:49.246635+00:00",
+  "PID": 6599,
+  "python": "/home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python",
+  "nipype_version": "1.11.0",
+  "workflow_API": "init_epi_anat_wf(brain=frozen_taskA,t1w=None,refmean=cachedSPM_mean,out_dir=fit,warp_type=shift_rotate,base_dir=nipype_work)",
+  "workflow_source": {
+    "path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/fmri_pipeline/workflows/nipype_anat_epi.py",
+    "sha256": "b50e42118ad6c461eb3c4be0e3c5c40c531e9f83914b8ede3d49bc11b4982bc1",
+    "API_signature": "(*, brain: 'str | Path', t1w: 'str | Path | None' = None, refmean: 'str | Path', out_dir: 'str | Path', warp_type: 'str' = 'shift_rotate', name: 'str' = 'epi_anat_wf', base_dir: 'str | Path | None' = None)"
+  },
+  "public_code_reference_commit": "73544f327c0f03b3c70700939a517049dcc1e0e7",
+  "parameters": {
+    "warp_type": "shift_rotate",
+    "cost": "lpa",
+    "center_of_mass": true,
+    "final_interpolation": "wsinc5",
+    "OMP_NUM_THREADS": 4
+  },
+  "moving": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz",
+    "sha256": "b964c0424e872e397e273851809c19d7ac5875c866736ff4250faffbae5157d8",
+    "shape": [
+      128,
+      128,
+      18
+    ],
+    "affine_mm": [
+      [
+        0.75,
+        0.0,
+        0.0,
+        -48.0
+      ],
+      [
+        0.0,
+        -0.75,
+        0.0,
+        -5.022499084472656
+      ],
+      [
+        0.0,
+        0.0,
+        -1.999999761581421,
+        63.351417541503906
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "R",
+      "P",
+      "I"
+    ],
+    "qform_code": 2,
+    "sform_code": 2,
+    "finite": true,
+    "minimum": 224.47671508789062,
+    "maximum": 1643023.125,
+    "nonzero_voxels": 294912
+  },
+  "fixed": {
+    "path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii",
+    "sha256": "f0a95a6b7e666c3b58a5e80fd179178bdca1da6e9b8405cbba730c26cb49c576",
+    "shape": [
+      128,
+      128,
+      53
+    ],
+    "affine_mm": [
+      [
+        0.75,
+        0.0,
+        0.0,
+        -47.625
+      ],
+      [
+        0.0,
+        -0.75,
+        0.0,
+        47.625
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -26.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "R",
+      "P",
+      "S"
+    ],
+    "qform_code": 1,
+    "sform_code": 1,
+    "finite": true,
+    "minimum": 0.0,
+    "maximum": 917394.4375,
+    "nonzero_voxels": 170160
+  },
+  "input_array_or_header_modifications": false,
+  "fresh_EPI_matrix_substitution": false,
+  "external_source_writes_or_job_control": false,
+  "MATLAB_used": false,
+  "historical_estimation_payload_identity": "unproven",
+  "physical_laterality": "unaccepted",
+  "anatomical_acceptance": false,
+  "driver_sha256": "63ef80b8ac7528bfea315c24ae2cf36a11d8e34de959394c8f4cd58da672f735",
+  "AFNI_version": "Precompiled binary linux_ubuntu_24_64: Jun 17 2026 (Version AFNI_26.1.05 'Balbinus')",
+  "AFNI_executable_sha256": "c639e06e39ff3bc4e6c85d1a3ff47e3ecf48b711d3f8dd6d7f97d47f5bce4553",
+  "fit_command": "3dAllineate -cost lpa -verb -cmass -final wsinc5 -source /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz -master /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii -prefix /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii -1Dmatrix_save /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D -overwrite -base /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii -warp shift_rotate",
+  "completed_utc": "2026-10-09T04:57:28.484167+00:00",
+  "aligned_mean": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii",
+    "sha256": "276b1c673f3c3d0f4e6d5a52cd03adb82af32434fae0e8dd9cf3b2ddb8ede2c9",
+    "shape": [
+      128,
+      128,
+      53
+    ],
+    "affine_mm": [
+      [
+        0.75,
+        -0.0,
+        -0.0,
+        -47.625
+      ],
+      [
+        -0.0,
+        -0.75,
+        -0.0,
+        47.625
+      ],
+      [
+        0.0,
+        0.0,
+        1.0,
+        -26.0
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "R",
+      "P",
+      "S"
+    ],
+    "qform_code": 1,
+    "sform_code": 1,
+    "finite": true,
+    "minimum": 224.47671508789062,
+    "maximum": 1643023.125,
+    "nonzero_voxels": 868352
+  },
+  "inverse_anatomy": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAInCachedEpi_brain.nii.gz",
+    "sha256": "a9fa7038bdfd4ed139a05d7b86117c656078143b87ce7fee3fa3006d9c668282",
+    "shape": [
+      128,
+      128,
+      18
+    ],
+    "affine_mm": [
+      [
+        0.75,
+        -0.0,
+        -0.0,
+        -48.0
+      ],
+      [
+        -0.0,
+        -0.75,
+        -0.0,
+        -5.022499084472656
+      ],
+      [
+        0.0,
+        0.0,
+        -1.999999761581421,
+        63.351417541503906
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "R",
+      "P",
+      "I"
+    ],
+    "qform_code": 1,
+    "sform_code": 1,
+    "finite": true,
+    "minimum": 0.0,
+    "maximum": 917394.4375,
+    "nonzero_voxels": 78032
+  },
+  "inverse_support": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupportInCachedEpi_mask.nii.gz",
+    "sha256": "a9ab34bfe887a3f32e07e30ca75ae60dbca7e97255dd7c2bf9eaf7ec0cb48856",
+    "shape": [
+      128,
+      128,
+      18
+    ],
+    "affine_mm": [
+      [
+        0.75,
+        -0.0,
+        -0.0,
+        -48.0
+      ],
+      [
+        -0.0,
+        -0.75,
+        -0.0,
+        -5.022499084472656
+      ],
+      [
+        0.0,
+        0.0,
+        -1.999999761581421,
+        63.351417541503906
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "R",
+      "P",
+      "I"
+    ],
+    "qform_code": 1,
+    "sform_code": 1,
+    "finite": true,
+    "minimum": 0.0,
+    "maximum": 1.0,
+    "nonzero_voxels": 59404
+  },
+  "inverse_support_binary": true,
+  "matrix": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D",
+    "sha256": "449a34a2f166ce68421f8dd1fa38389b75ea2cd4d2ea87bb1949e293f1cc3845",
+    "values": [
+      [
+        0.869528,
+        0.108866,
+        -0.481735,
+        -0.728821
+      ],
+      [
+        0.0233888,
+        0.965232,
+        0.260346,
+        52.9197
+      ],
+      [
+        0.493329,
+        -0.237646,
+        0.83675,
+        56.6332
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "semantics": "AFNI application matrix maps output/base taskA DICOM coordinates to input/source cached-EPI coordinates (pullback), not a source-to-target point map"
+  },
+  "inverse_matrix": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-taskAToCachedEpiApply.aff12.1D",
+    "sha256": "4a97e5227dd81405f2d5a145bb776c2f55dc7318a57148b7ea0b36a77852c02e",
+    "values": [
+      [
+        0.869529,
+        0.0233888,
+        0.493329,
+        -28.5428
+      ],
+      [
+        0.108866,
+        0.965232,
+        -0.237645,
+        -37.5418
+      ],
+      [
+        -0.481735,
+        0.260347,
+        0.83675,
+        -61.5164
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "semantics": "cat_matvec -I; AFNI apply matrix for taskA image onto cached-EPI grid"
+  },
+  "linear_determinant": 0.9999994672634553,
+  "linear_singular_values": [
+    1.0000002470019296,
+    0.9999997543496607,
+    0.9999994659119265
+  ],
+  "rotation_degrees": null,
+  "rotation_review_gate": "Anatomical/EPI rigid fit rotated 33.3 degrees, above the 30.0-degree review gate. Inspect the anatomical overlay before continuing.",
+  "coarse_QC_pngs": [
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/cm033_cachedSPM_mean_on_taskA_candidate.png",
+      "sha256": "fad17b2fe24708f3eafeab2b4a8c167a7a8038f03b16fcb2dc329fd63030a859"
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/cm033_taskA_support_on_cachedSPM_mean_candidate.png",
+      "sha256": "309f1a585b67cc5df94cf7be872338cc29bb9239b882de325e79298b00b96bd7"
+    }
+  ],
+  "QC_mask_policy": "positive-intensity support of frozen taskA, display-only; not an accepted tissue mask",
+  "artifacts": [
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D",
+      "sha256": "449a34a2f166ce68421f8dd1fa38389b75ea2cd4d2ea87bb1949e293f1cc3845"
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii",
+      "sha256": "276b1c673f3c3d0f4e6d5a52cd03adb82af32434fae0e8dd9cf3b2ddb8ede2c9"
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-taskAToCachedEpiApply.aff12.1D",
+      "sha256": "4a97e5227dd81405f2d5a145bb776c2f55dc7318a57148b7ea0b36a77852c02e"
+    }
+  ]
+}

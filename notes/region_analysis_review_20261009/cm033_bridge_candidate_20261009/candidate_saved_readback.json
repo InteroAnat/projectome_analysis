@@ -1,0 +1,69 @@
+{
+  "status": "software_saved_readback_pass_candidate_rotation_gate_failed",
+  "checked_utc": "2026-10-09T04:59:45.303365+00:00",
+  "fit_rerun": false,
+  "fit_runtime_returncode": 0,
+  "fit_runtime_seconds": 34.84791,
+  "rotation_degrees_independent_SVD": 33.30544079770782,
+  "public_rotation_review_gate_degrees": 30.0,
+  "rotation_gate_pass": false,
+  "linear_determinant": 0.9999994672634553,
+  "linear_singular_values": [
+    1.0000002470019296,
+    0.9999997543496607,
+    0.9999994659119262
+  ],
+  "matrix_pair_max_abs_identity_error": 2.2787359995390943e-05,
+  "saved_grid_checks": [
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii",
+      "sha256": "276b1c673f3c3d0f4e6d5a52cd03adb82af32434fae0e8dd9cf3b2ddb8ede2c9",
+      "master": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii",
+      "exact_affine_and_shape": true,
+      "finite": true
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAInCachedEpi_brain.nii.gz",
+      "sha256": "a9fa7038bdfd4ed139a05d7b86117c656078143b87ce7fee3fa3006d9c668282",
+      "master": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz",
+      "exact_affine_and_shape": true,
+      "finite": true
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupportInCachedEpi_mask.nii.gz",
+      "sha256": "a9ab34bfe887a3f32e07e30ca75ae60dbca7e97255dd7c2bf9eaf7ec0cb48856",
+      "master": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz",
+      "exact_affine_and_shape": true,
+      "finite": true
+    }
+  ],
+  "inverse_support_binary": true,
+  "anatomical_acceptance": false,
+  "statistical_maps_warped": false,
+  "driver_provenance_sha256": "3d2d61f09b85e4ceea3956082043e2bb43e9ce83af6f769d8b1454a81eb5f61c",
+  "display_only_variants_preserve_originals": true,
+  "display_code": {
+    "path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/fmri_pipeline/qc/overlay.py",
+    "sha256": "71a806e8a9b8c5d8339a74bbc9c2f50d458e588b2001948546eb08cc137b4891"
+  },
+  "finalizer_sha256": "28137767e9f2a544aa75914b208185a6c9388af5976b062b60b6900ce69862b2",
+  "display_artifacts": [
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/readable/cm033_cachedSPM_mean_on_taskA_candidate.json",
+      "sha256": "d68787ee978daf87beae81b79b2cfaba681e665d96a28c6e9b37644eea2515f9"
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/readable/cm033_cachedSPM_mean_on_taskA_candidate.png",
+      "sha256": "5742e568e8e011b7bcf06523a2407f3a19d16a8170a5ddcc19e6baa95b37b90e"
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/readable/cm033_taskA_support_on_cachedSPM_mean_candidate.json",
+      "sha256": "c3a02e34679dd70df24e6ae8ac704018fd5d9411d06c028bd71edcfd284720bc"
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/readable/cm033_taskA_support_on_cachedSPM_mean_candidate.png",
+      "sha256": "2611d08fa5f6753dbb4528f81a8702d59a39970a1c8ba5ae36697d8793b7efaf"
+    }
+  ],
+  "fit_execution_log_sha256": "e2c973ad11070ec5e154360125e6ede3a68fd37a5e97547bbc8545c8254b6db1"
+}

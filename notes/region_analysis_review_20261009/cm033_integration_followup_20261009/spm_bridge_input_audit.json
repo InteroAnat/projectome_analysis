@@ -1,0 +1,894 @@
+{
+  "started_utc": "2026-10-09T04:36:36.458965+00:00",
+  "code": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_integration_followup_20261009\\audit_spm_bridge_inputs.py",
+    "sha256": "ab826c5fa1deb6defc9616533784ced5bc1d7548f5e5d3ee47005901681cefc2",
+    "bytes": 11322
+  },
+  "SPM": {
+    "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat",
+    "sha256": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+    "bytes": 120497816
+  },
+  "TR_seconds": 3.0,
+  "all1472_cached_zero_based_affines_exactly_equal": true,
+  "cached_zero_based_affine": [
+    [
+      0.75,
+      0.0,
+      0.0,
+      -48.0
+    ],
+    [
+      0.0,
+      -0.75,
+      0.0,
+      -5.022499084472656
+    ],
+    [
+      0.0,
+      0.0,
+      -1.999999761581421,
+      63.351417541503906
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "xVol_M_matches_VY_exactly": true,
+  "runs": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+      "cached_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          160
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 72432.0,
+        "slope": 0.00027215422790475744,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "current_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          160
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 72432.0,
+        "slope": 1.0,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "cached_scaling_matches_current": false,
+      "source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+        "sha256": "b8cb394a1925dac17a9c1373e5c7228144b7a7c0988b341789460beadafbefaa",
+        "bytes": 188816112
+      },
+      "current_payload_to_EOF_sha256": "ddf0ef784f037d4d8be18727955e5f67aacc1a7b9e2e450f222256e1eaf638b9",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "current_header_matches_cached_geometry": false,
+      "current_to_cached_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cached_to_current_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "all_current_scaled_voxels_finite": true,
+      "scaled_range": [
+        90.41587829589844,
+        1668724.5
+      ],
+      "cached_file_layout_and_frame_offsets_match_current": true,
+      "cached_scale_must_not_be_applied_to_current_stored_floats": true,
+      "scanner_id": 57
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+      "cached_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          160
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 72400.0,
+        "slope": 0.0002718039276990295,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "current_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          160
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 72400.0,
+        "slope": 1.0,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "cached_scaling_matches_current": false,
+      "source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+        "sha256": "156860eff8fc150913f7114cb3226de8c4e9e679d0765fe87a1b0d0d441f3825",
+        "bytes": 188816080
+      },
+      "current_payload_to_EOF_sha256": "4b06130ba3307827f30c678bc7fd30d32704c58725b03c7c702b8824f198bed0",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "current_header_matches_cached_geometry": false,
+      "current_to_cached_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cached_to_current_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "all_current_scaled_voxels_finite": true,
+      "scaled_range": [
+        100.32632446289062,
+        1670395.75
+      ],
+      "cached_file_layout_and_frame_offsets_match_current": true,
+      "cached_scale_must_not_be_applied_to_current_stored_floats": true,
+      "scanner_id": 58
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+      "cached_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 166304.0,
+        "slope": 0.0002690319376560376,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "current_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 166304.0,
+        "slope": 1.0,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "cached_scaling_matches_current": false,
+      "source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+        "sha256": "9badb77d90f271d849a659f67dfad49429c76bf2686c7f018374fbf26bb0e50d",
+        "bytes": 453151136
+      },
+      "current_payload_to_EOF_sha256": "33c9c3b679584963c57e7a7bc376c7b8dce0637b55357be8de7ec5dbc3d1173a",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "current_header_matches_cached_geometry": false,
+      "current_to_cached_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cached_to_current_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "all_current_scaled_voxels_finite": true,
+      "scaled_range": [
+        63.31206130981445,
+        1706219.5
+      ],
+      "cached_file_layout_and_frame_offsets_match_current": true,
+      "cached_scale_must_not_be_applied_to_current_stored_floats": true,
+      "scanner_id": 60
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+      "cached_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 166496.0,
+        "slope": 0.0002728702772750796,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "current_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 166496.0,
+        "slope": 1.0,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "cached_scaling_matches_current": false,
+      "source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+        "sha256": "ac83876790d37280b6d2d27391dc81b462255589e02e4ee822a65403c1c83fe9",
+        "bytes": 453151328
+      },
+      "current_payload_to_EOF_sha256": "9f32846e7e71790442afb92f9429406e3762e5f0c9185cff8fa804b56742df79",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "current_header_matches_cached_geometry": false,
+      "current_to_cached_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cached_to_current_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "all_current_scaled_voxels_finite": true,
+      "scaled_range": [
+        83.2207260131836,
+        1675177.0
+      ],
+      "cached_file_layout_and_frame_offsets_match_current": true,
+      "cached_scale_must_not_be_applied_to_current_stored_floats": true,
+      "scanner_id": 61
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+      "cached_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 166480.0,
+        "slope": 0.00027627997438517925,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "current_descriptor": {
+        "filename": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "nifti_datatype": 16.0,
+        "offset": 166480.0,
+        "slope": 1.0,
+        "intercept": 0.0,
+        "big_endian": 0.0
+      },
+      "cached_scaling_matches_current": false,
+      "source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+        "sha256": "f29a2131fe21059ef088bf0d5fd02f65b7ef38f020d2077d56023a4735d68be6",
+        "bytes": 453151312
+      },
+      "current_payload_to_EOF_sha256": "29d40b7b7b6f7582dcf96de77bb21725b233951948594ccb2ddebeb78451349f",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "current_header_matches_cached_geometry": false,
+      "current_to_cached_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "cached_to_current_world_coordinate_change": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "all_current_scaled_voxels_finite": true,
+      "scaled_range": [
+        106.62383270263672,
+        1652893.25
+      ],
+      "cached_file_layout_and_frame_offsets_match_current": true,
+      "cached_scale_must_not_be_applied_to_current_stored_floats": true,
+      "scanner_id": 64
+    }
+  ],
+  "prepared_reference": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_integration_followup_20261009\\sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz",
+    "sha256": "b964c0424e872e397e273851809c19d7ac5875c866736ff4250faffbae5157d8",
+    "bytes": 1064938,
+    "shape": [
+      128,
+      128,
+      18
+    ],
+    "affine": [
+      [
+        0.75,
+        0.0,
+        0.0,
+        -48.0
+      ],
+      [
+        0.0,
+        -0.75,
+        0.0,
+        -5.022499084472656
+      ],
+      [
+        0.0,
+        0.0,
+        -1.999999761581421,
+        63.351417541503906
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "method": "Unweighted mean over all 1472 current scaled model-input volumes; float64 accumulation then float32 storage; no array reversal or spatial interpolation.",
+    "saved_array_readback_exact": true,
+    "cached_geometry_matches_atol_1e_6": true,
+    "physical_laterality_validated": false
+  },
+  "statistics": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+      "sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+      "bytes": 1180000,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_cached_zero_based_affine": true,
+      "all_values_finite": false,
+      "nonzero_voxels": 294912
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii",
+      "sha256": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+      "bytes": 1180000,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_cached_zero_based_affine": true,
+      "all_values_finite": true,
+      "nonzero_voxels": 68267
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\mask.nii",
+      "sha256": "e6e3d90808d8607322cfa9ac72b58790535fc7e222145f1adc1ffdd74a4785a2",
+      "bytes": 295264,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_cached_zero_based_affine": true,
+      "all_values_finite": true,
+      "nonzero_voxels": 68267
+    }
+  ],
+  "source_records": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\glm_config_summary.txt",
+      "sha256": "181f01ebbda3106473f0cd5f5a8589b6f823dc4de9c8c3ca80a232538a1d026f",
+      "bytes": 3501
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\contrast_qc.json",
+      "sha256": "356083b213c1011ee480214760134c4467b305104ef80a17d09ca1e85ac100d5",
+      "bytes": 3603
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\contrasts.json",
+      "sha256": "24180738fd9e65ff0ef9078dc2b1d5fd3d7ab501c59853978163de930094e4a4",
+      "bytes": 780
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\qc\\nii_reorientation_20260907_135316.json",
+      "sha256": "55587ed3cc08735bb4d1e8adb7c9aebd0a723200c8ffbb80e8981efe1b07d92e",
+      "bytes": 19032
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\tools\\preproc\\nii_reorientation.py",
+      "sha256": "15c1a03f35718453ba614aa334a3c813b9594c359c31740d9deb31d8810cf807",
+      "bytes": 17973
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\source_manifest.json",
+      "sha256": "079ce4df1e6e47e890003c1bb4101322c410b51c4f7aef96edceece6cab5d1e8",
+      "bytes": 90756
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_completed.json",
+      "sha256": "9db5fefa611c025fe46da01d74b04aa6607920ac92467870cb1d5b513e388920",
+      "bytes": 1068
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\normalization_checks.json",
+      "sha256": "a99bdb0082f5365e35adec34cf3b19a30dc0ace5f261992f4e5613e384a9ca0a",
+      "bytes": 4428
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\run_spatial_rebuild.py",
+      "sha256": "e80742ce2f1c2cf77500d6d83133507d3c2769dd24e7c869579eed060071790d",
+      "bytes": 2605
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\qc_functional_normalization.py",
+      "sha256": "3ce140abd95da72306d26eb4dccca2dedfe24b8d88ecfd55d5d275321d64ff62",
+      "bytes": 4564
+    }
+  ],
+  "current_external_receipts": {
+    "spatial_rebuild_completed.json": null,
+    "full_series_qc/full_series_checks.json": null,
+    "functional_normalization_qc/chain_checks.json": null
+  },
+  "PID405_snapshot": {
+    "returncode": 0,
+    "stdout": "PID    PPID ELAPSED STAT COMMAND\n    405     317    1936 Sl+  /home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python -u alignment_review/cm033_Dsource_20261009/run_spatial_rebuild.py",
+    "stderr": ""
+  },
+  "ended_utc": "2026-10-09T04:36:51.417649+00:00",
+  "scope": "Current payload descriptor/frame-index/finite-value verification; no original July payload hash exists in inspected records; no registration or physical laterality acceptance.",
+  "original_estimation_payload_byte_identity_independently_proven": false,
+  "scientific_anatomical_acceptance": false
+}

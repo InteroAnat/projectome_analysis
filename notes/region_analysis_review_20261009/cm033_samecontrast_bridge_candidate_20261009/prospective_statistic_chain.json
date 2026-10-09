@@ -1,0 +1,185 @@
+{
+  "status": "prospective_chain_geometry_checks_pass_numerical_reproduction_limit_requires_review",
+  "checked_utc": "2026-10-09T05:18:05.074381+00:00",
+  "code": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_samecontrast_bridge_candidate_20261009\\prepare_prospective_statistic_chain.py",
+    "sha256": "e6622def9ecb5dc1046c0d01d76035edb9b93d8bd7e1d4306ace8317560630ae"
+  },
+  "candidate": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_samecontrast_bridge_candidate_20261009\\bridge_candidate_provenance.json",
+    "sha256": "2c7a55182005f0f33529ee7320149235139955c415665802f7a29709b6e2e619"
+  },
+  "source_statistics_and_actual_mask": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+      "sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+      "in_mask_voxels": 68267,
+      "in_mask_negative": 29711,
+      "in_mask_positive": 38556,
+      "in_mask_zero": 0,
+      "outside_mask_nonfinite": 226645
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii",
+      "sha256": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+      "in_mask_voxels": 68267,
+      "in_mask_negative": 29711,
+      "in_mask_positive": 38556,
+      "in_mask_zero": 0,
+      "outside_mask_nonfinite": 0
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\mask.nii",
+      "sha256": "e6e3d90808d8607322cfa9ac72b58790535fc7e222145f1adc1ffdd74a4785a2",
+      "in_mask_voxels": 68267,
+      "in_mask_negative": 0,
+      "in_mask_positive": 68267,
+      "in_mask_zero": 0,
+      "outside_mask_nonfinite": 0
+    }
+  ],
+  "scan39_to_taskA_sources": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii",
+      "sha256": "0d610e2c7e35723cbe55044d7a2f9161260cb0eb2cb6c5bce82d09c2ab887877"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\anatomy_candidates\\sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii",
+      "sha256": "f0a95a6b7e666c3b58a5e80fd179178bdca1da6e9b8405cbba730c26cb49c576"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-brain.nii",
+      "sha256": "f0a95a6b7e666c3b58a5e80fd179178bdca1da6e9b8405cbba730c26cb49c576"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-epiToAnatAffine.aff12.1D",
+      "sha256": "b110f6baef72a7c50af604d66ac2bb6264216b1af0fbb0bdb9cbb60d096c28b3"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmeanInAnat.nii",
+      "sha256": "dfe64ff6295cf71ffdefae57b772f7382c43926c76b6e7f9491b5795c6e4008d"
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_samecontrast_bridge_candidate_20261009\\installed_chain_readback\\sub-cm033_desc-installedScan39FitReproduced_space-taskA_bold.nii.gz",
+      "sha256": "bf1d9f46d3d8a9612be9502174c2e1a739c0f2853d75e0a1e1307f27403a9528"
+    }
+  ],
+  "installed_scan39_warp_exactly_reproduced": false,
+  "installed_mean_reapplication_metrics": {
+    "max_absolute_difference": 39.375,
+    "mean_absolute_difference": 0.657933419605471,
+    "rms_difference": 1.4671505427222102,
+    "p99_absolute_difference": 6.1875,
+    "max_difference_over_installed_max": 2.0879206828760015e-05,
+    "correlation": 0.99999999999075,
+    "bitwise_scaled_value_equal": false
+  },
+  "reproduction_limit": "Saved AFNI text matrix has limited decimal precision; original fitted output and reapplication are not bitwise equal. This is a plausible explanation, not independently proven cause.",
+  "reproduction_parameters": {
+    "program": "3dAllineate",
+    "source": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii",
+    "master": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-brain.nii",
+    "1Dmatrix_apply": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-epiToAnatAffine.aff12.1D",
+    "final": "wsinc5",
+    "registration_refit": false
+  },
+  "M_scan39_to_taskA_AFNI_pullback": [
+    [
+      0.99805,
+      0.0621841,
+      -0.00541894,
+      1.10958
+    ],
+    [
+      -0.0623865,
+      0.990919,
+      -0.119109,
+      -6.84987
+    ],
+    [
+      -0.00203694,
+      0.119214,
+      0.992866,
+      3.49046
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "prospective_taskA_output_to_cached_input_DICOM_pullback": [
+    [
+      -0.9993156791922201,
+      -0.034244112607699995,
+      0.013946829731180001,
+      0.9638534759050035
+    ],
+    [
+      -0.035452300090673995,
+      0.9945204062241101,
+      -0.098343252865714,
+      51.054460263214
+    ],
+    [
+      -0.01050278662465,
+      -0.09876962670731,
+      -0.995054426969326,
+      47.37091052711081
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "formula": "inverse(B_DICOM) @ M_samecontrast @ M_scan39_to_taskA",
+  "synthetic_256_chain_checks_pass": true,
+  "ANTs_ordered_transform_arguments": [
+    {
+      "path": "c:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_1Warp.nii.gz",
+      "sha256": "21e642cdcb9c00c9bed775b2547a1a6976c2039a58036d513b5461b26db95ea7"
+    },
+    {
+      "path": "c:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_0GenericAffine.mat",
+      "sha256": "8c15444b6bf0cbecb9f03a4ba94974d9feb70bff7b0799c36e1693900d90f857"
+    },
+    {
+      "path": "c:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_1Warp.nii.gz",
+      "sha256": "bf9c315b0a38e34428732f650bd43d2a6d617bf433282ad89ad5e5edf249e0ec"
+    },
+    {
+      "path": "c:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_0GenericAffine.mat",
+      "sha256": "67ce5a1f61d719706b18c82a2409e522278aa07bf5926d6e2c0c88f40f8d0de4"
+    }
+  ],
+  "external_chain_receipt": {
+    "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\functional_normalization_qc\\chain_checks.json",
+    "sha256": "179332cf564dd85d36d2a4157c95dbaf6741ebf7c7e8b710bef7338aaef1fc7a"
+  },
+  "exact_template_equality_receipt": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_integration_20261009\\ancillary_source_readback.json",
+    "sha256": "93ea67b91ce47f0f22b580a0e59d5271e0fe8378b152bf0bfdfdc13f4352f2cd"
+  },
+  "target_reference": {
+    "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+    "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+  },
+  "source_norm_reference": {
+    "path": "D:\\OPTO_fMRI_CM\\Templates\\NMT_v2.0_sym\\NMT_v2.0_sym\\NMT_v2.0_sym_SS.nii.gz",
+    "sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056"
+  },
+  "plan": {
+    "source_continuous": "finite signed con/T inside actual SPM mask, zero-filled elsewhere; no absolute value or threshold",
+    "taskA_stage": "one AFNI composite pullback; Linear con/T; NN actual model mask",
+    "NMT_stage": "unchanged four-transform ANTs order; Linear con/T; NearestNeighbor actual model mask; explicit default-value 0",
+    "outside_model_support": "separate warped binary mask; invalid zeros are fill, not evidence of no response",
+    "boundary_limitation": "Linear interpolation can mix within-model values with zero fill at boundaries; no normalized-convolution correction is silently introduced",
+    "T_interpretation": "interpolated descriptive statistic only; no new inferential threshold/p-value or GLM"
+  },
+  "physical_LR_or_anatomical_acceptance": false,
+  "original_estimation_payload_identity_proven": false,
+  "statistic_or_mask_propagation_executed": false
+}

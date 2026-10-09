@@ -1,5 +1,9 @@
 # Insula pipeline evolution — 2026-10-08
 
+**Current delivery:** [projectome inventory, classifications/QC, descriptive ARM maps, six-level tables and exploratory clustering](../../notes/region_analysis_review_20261009/projectome_delivery_20261009/README.md). CM032/CM033 integration is deferred at the user's request; the earlier checkpoints below remain historical.
+
+**Latest increment:** [end-branch maps and six-level matrices on the same 462 neurons, independent every-voxel checks, 427 live tests, feature sensitivity and current CM033 bridge work](../../notes/region_analysis_review_20261009/end_branch_and_mstim_followup_20261009.md). Original endpoint/whole-axon maps, source classifications and prior receipts are preserved.
+
 **Latest checkpoint:** [whole-ledger morphology, expanded native review, clustering-evidence coverage and CM033 source follow-up](../../notes/region_analysis_review_20261009/terminal_coverage_followup_20261009.md). All 462 graphs are now censused; actual image review covers 11 individual leaves across seven animals. New CM033 candidate anatomical normalization exists, with the historical statistic bridge still unresolved. Existing ARM NIfTIs and six-level tables retain their declared measures and values.
 
 **Current evidence update:** [local Gao/Liu Methods, native terminal assessment and CM032/updated CM033 review](../../notes/region_analysis_review_20261009/scope_update_20261009.md). Original fMOST transforms are unavailable, without a recovery gate. The five-neuron native pilot adds image-backed morphology evidence; it does not convert all candidate ends into reviewed terminal fields. Existing ARM NIfTIs, six-level tables and the single selected-neuron ledger remain unchanged.

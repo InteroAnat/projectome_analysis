@@ -1,0 +1,41 @@
+# Validated projectome delivery before MSTIM integration
+
+Agent: Codex | Processing date: 2026-10-09 (Asia/Shanghai)
+
+The user requested completion of the projectome phase first, with CM032/CM033 integration deferred. This is the current delivery index and supersedes earlier requirements to finish MSTIM before delivering the projectome work. Original inputs, unrelated work, earlier dated receipts and completed CM033 alignment evidence are preserved. Scientific acceptance remains separate from this computational delivery.
+
+## Inventory and source classifications
+
+The [provenance-backed sample inventory](../../../group_analysis/evolution_20261008/inventory/live_inventory_20261008/README.md) covers 49 exact sample/channel identities and 8,746 neuron identities, with full per-neuron metadata for 47 samples. Its CSVs distinguish injection evidence, atlas labels, Henry visual review, reconstruction availability, observed candidate lower bounds and dataset availability. Ranking uses atlas INS counts followed by spatial candidate lower bounds; missing counts remain missing. Channel variants are not merged into animals. Nominal “5 µm” data availability does not establish isotropic sampling or optical resolution, and absence in the checked local scope does not establish absence elsewhere.
+
+The [coarse classification/QC record](../../../group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/README.md) keeps one 462-neuron selected ledger across eight animals. It includes 410 named ARM sources and 52 source-label-0 cases. Of those 52, 13 have Henry coarse INS annotations and 39 remain candidates. Henry's notes apply to **251637 / animal936**, not 251736. Atlas, manual and coordinate evidence remain distinguishable; none is promoted merely because a software check passes. Adjacent IDs aid retrieval only. Atlas background is not automatically white matter.
+
+The recovered 251637 spatial screen and its assumptions are documented in the inventory/classification provenance. Folded coordinates, reference-center assumptions, quantile bounds and padding define retrieval candidacy; they do not replace anatomical acceptance. Coordinate-origin sensitivity and unavailable original fMOST-to-NMT transforms remain explicit limitations, without an invented recovery requirement.
+
+## Validated tables and maps
+
+The [region/table audit](../README.md) documents source identity, missing values, laterality, coordinate units, axon length and cohort checks, plus focused repairs to verified defects. Its census assessed 2,475 table files. The record separates reproducible results from unresolved historical lineage and units; it does not certify that every possible error has been excluded.
+
+The [single 462-neuron hierarchy export](../hierarchy_tables_20261009/README.md) retains candidate-end count/presence and whole-axon template length at all six actual ARM hierarchy levels. Targets use official ARM indices, full names and hemisphere metadata in NMT. Label-0/outside-reference observations and four key-range conflicts remain explicit. Existing endpoint/whole-axon NIfTIs retain their original run grouping; the main historical partition has 436 neurons, with 26 disjoint additional candidates. All 154 original count/length NIfTIs reconcile to the combined regional tables. No summation across hierarchy levels is meaningful.
+
+The [new axon end-branch workflow](../axon_end_branches_20261009/README.md) supplies **67 NIfTIs**, a workbook and six hierarchy matrices on the same ledger: 429 eligible neurons and 33 NA. It measures original axon trajectories from a full-graph leaf back to the first branch point, root or nonaxon parent, with the final transition edge flagged. SWC code 2 means **axon**. End-branches are reconstructed graph proxies, not verified terminal fields, boutons or synapses; passing or unfinished shafts can contribute. Selected edges are rasterized once and reused for hierarchy summaries.
+
+Independent forward graph selection and interval rasterization agree on every selected edge, all regional cells and every animal/group map voxel. The focused voxel-face rounding repair has regression coverage; a complete audit of **7,828,761 real-source axon edges** found no old whole-axon allocation change. Original maps therefore require no recomputation for that repair.
+
+Lengths are template millimetres, not recovered native tissue lengths. Stored maps retain physical values; density divides length by the 0.015625 mm³ voxel volume. Conditional within-animal means precede equal weighting of available animals. Missing eligibility stays NA. Four actually inspected end-branch sheets use matched NMT MRI slices, full ARM names and a common intensity window; the density log transform is display-only. These are descriptive maps, with no new t-map or neuron-as-animal inference.
+
+## Exploratory findings and anatomical limits
+
+The [whole-axon/candidate-end clustering](../clustering_20261009/README.md) and [end-branch feature sensitivity](../axon_end_branches_20261009/profile_sensitivity/README.md) retain exact identities and test source-relative features, resampling and animal dependence. End-branch profiles are mapped-positive for 428 neurons; no k2–8 cut meets the declared balanced-size safeguards. The diagnostic 2-versus-426 split is dominated by animal936 and unstable under equal-animal sampling. These results do not support named cell types or a robust new biological partition.
+
+Native pairs exist for 201 selected neurons. All 261 selected animal936 neurons, including all 260 Henry INS cases, lack native SWCs in the designated cache; unavailable native measurements stay NA. The [native assessment](../terminal_field_assessment_20261009/README.md) and [expanded review](../terminal_coverage_followup_20261009.md) inspected 11 original endings across seven animals and two passage locations. This supports representative morphology review, not whole-cohort biological terminal prevalence or acceptance of every source identity.
+
+Method choices are grounded in [verified local Gao/Gou/Liu Methods](../literature_method_update_20261009/gao_local_methods.md) and the [primary scientific basis](../../../group_analysis/evolution_20261008/references/scientific_basis_20261009.md). Citation details, supported methods and adaptations are recorded. Axon allocation, distal graph paths, arbor segmentation and image-derived varicosities remain different measurements.
+
+## Reproduction, validation and deferred work
+
+Follow the linked inventory, hierarchy, end-branch and clustering reproduction commands. Use fresh output destinations; preserve frozen derivatives and source filenames. Provenance records source hashes, parameters, software versions, geometry and validation status. The latest saved live scientific regression suite passes **437 tests**, with unchanged source hashes and no skips; it also covers optional MSTIM software. Earlier 427/409-test receipts retain their original dates and scope. [Current delivery readback](delivery_checks.json) verifies the current bindings and report links; it does not repeat scientific computation or confer anatomical acceptance.
+
+CM032/CM033 multimodal interpretation and acceptance are **deferred**. Completed, independently checked intermediate results remain preserved as qualified records, outside this phase's completion claim. The [CM033 handoff](../cm033_integration_followup_20261009/README.md) recognizes the completed 19-run, 7,376-frame alignment and existing normalization chain; it is not an absent alignment dependency. No further registration or MSTIM analysis is required to finish this projectome phase. The interrupted CM032 end-branch supplement stays local and unpublished until reviewed.
+
+The [publication log](../publication_20261009.md) records exact commits and live feature-branch checks. NIfTIs, raw reconstructions, TIFFs, source PDFs and working caches remain local with hashes and reproduction commands; reviewed code, matrices/workbooks, selected figures, QC and reports form the Git payload. Unavailable source transforms, fine anatomical identity/registration, reconstruction completeness and biological terminal validation remain declared scientific limits.

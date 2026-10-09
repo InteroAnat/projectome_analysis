@@ -1,0 +1,26 @@
+{
+  "Description": "inverse taskA support (QC) on original EPI mean (disk-authentic QC)",
+  "png": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/readable/cm033_taskA_support_on_cachedSPM_mean_candidate.png",
+  "epi": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz",
+  "anat": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAInCachedEpi_brain.nii.gz",
+  "mask": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupportInCachedEpi_mask.nii.gz",
+  "n_slices": 6,
+  "title": "sub-cm033 ses-20160120 | CM033 bridge candidate: rotation review gate failed\nPhysical LR and historical payload remain unaccepted\nGRAY/WHITE = original EPI mean; RED = inverse taskA support (QC) | axial / coronal / sagittal | RAS display (header-based labels)",
+  "display_version": "2026-09-24-ras-v1",
+  "input_axcodes": [
+    "R",
+    "P",
+    "I"
+  ],
+  "contour_input_axcodes": [
+    "R",
+    "P",
+    "I"
+  ],
+  "display_axcodes": [
+    "R",
+    "A",
+    "S"
+  ],
+  "nifti_data_modified": false
+}

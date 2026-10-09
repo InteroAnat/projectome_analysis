@@ -1,0 +1,52 @@
+{
+  "status": "pass_complete_source_allocation_no_impact",
+  "neurons": 462,
+  "selected_edges": 7828761,
+  "midpoint_intervals": 878039,
+  "allocation_changed_edges": 0,
+  "scanner_tests_passed": 2,
+  "fresh_all_source_hash_readback_pass": true,
+  "no_maps_written_or_repaired": true,
+  "files": [
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/all462_boundary_impact.json",
+      "sha256": "9e05cf9f9c0a1495c4a5f694dfa91f2b12edfcf99b9862478100350fd661d05d",
+      "bytes": 3478
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/audit_whole_axon_boundary_impact.py",
+      "sha256": "953b3d0ea5f86d26c5d4b45a973a85591961a47081d002f4c37c39ce98735a7d",
+      "bytes": 13379
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/per_neuron_boundary_impact.csv",
+      "sha256": "1e0346aeb3174f20eaa40791228b63a69616fab8a73e5e80a185a19964075ea9",
+      "bytes": 51830
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/projection_maps_before_boundary_fix_HEAD.py",
+      "sha256": "e47a54bfe5e8159c8e4a4f70d687b845a0810f073189a26f60c5945a65aa90da",
+      "bytes": 10186
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/README.md",
+      "sha256": "708b67d887e8a2bf603ba875ee4cd62d2d714c89aabe0ac2e966fd49fa4e3455",
+      "bytes": 3748
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/scanner_tests_20261009.log",
+      "sha256": "5e304e5c0b50cef2aa3d08aab73c01ea24093686bdb3edd5a35179e8fd3fc118",
+      "bytes": 363
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/source_bindings.json",
+      "sha256": "215048d0b8c746393947699d9b3de4f0455bdad9236a2457b7315bab81654d17",
+      "bytes": 86739
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/axon_end_branches_20261009/boundary_impact/test_boundary_impact_scanner.py",
+      "sha256": "08b2b69d7d209b6c0b83a2f8df0b4a4f5ec493cf370cf4b10ea2198db7914bb9",
+      "bytes": 2500
+    }
+  ]
+}

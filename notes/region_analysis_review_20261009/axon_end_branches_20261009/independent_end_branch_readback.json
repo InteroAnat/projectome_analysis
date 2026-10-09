@@ -1,0 +1,3368 @@
+{
+  "status": "independent_all462_forward_edge_and_full_voxel_regional_readback_passed",
+  "recorded_at": "2026-10-09T12:51:16.340071+08:00",
+  "producer_or_kernel_imported": false,
+  "scope": "All462 direct SWC parses with FORWARD unique-full-child axon-to-leaf oracle; all selected edges; full independent interval rasterization; every ARM L1-L6 CSV cell; every per-animal/group map voxel. Software/spatial descriptive validation, not biological/anatomical acceptance.",
+  "synthetic_oracle_checks": [
+    "nonaxon_child_prevents_false_end_and_preserves_missing",
+    "mixed_type_original_bifurcation_stops_upstream_walk",
+    "nonaxon_transition_included_then_stop_no_bridge",
+    "unsorted_identity_disjoint_end_chains",
+    "half_open_fov_absolute_interval_fractions",
+    "upper_face_and_half_tie_sensitivity",
+    "affine_template_length_and_raster_sum",
+    "eligible_zero_length_not_missing"
+  ],
+  "selected_neurons": 462,
+  "eligible_neurons": 429,
+  "original_axon_leaves": 75625,
+  "selected_original_edges": 3992993,
+  "total_length_mm": 36651.4599611809,
+  "all_six_hierarchy_numeric_cells_checked": 721578,
+  "all_six_hierarchy_missing_NA_cells_checked": 55506,
+  "max_regional_cell_abs_error_mm": 3.410605131648481e-13,
+  "max_animal_voxel_abs_error_mm": 1.1159582014030889e-07,
+  "max_group_voxel_abs_error_mm": 3.290673089573204e-08,
+  "group_voxels_checked": 271564800,
+  "source_hashes_unchanged": true,
+  "input_ledger_exactly_preserved": true,
+  "run_provenance": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\selected462_ARM\\run_provenance.json",
+    "sha256": "dcd92bcca80984568fc72a26314363fcdba8760a7ccd980c8c3e8a0fc7f2197d"
+  },
+  "independent_code_sha256": "acb910d65e76edd39449930ab446859469e782c735508f20b97de578f53d42a0",
+  "source_bindings": {
+    "manifest": {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+      "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+    },
+    "reference": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    "atlas": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    "atlas_key": {
+      "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    }
+  },
+  "verified_artifacts": {
+    "arm_axon_end_branch_hierarchy_tables.xlsx": "a20e7f39b851e8752b613ada6b2be5ef0a15c4187e2faac3a9fe04c9f99aa96a",
+    "ARM_L1_axon_end_branch_length_mm.csv": "b0d9b42363055918c6a1e93283932563249c232ea97413abe27d9a1d7e437e29",
+    "ARM_L2_axon_end_branch_length_mm.csv": "ac80d28e6489fd32e65cf0f45f1345959831f92e4d6eda350b87edff5a81cb66",
+    "ARM_L3_axon_end_branch_length_mm.csv": "1eab83e1b2568ac17c039df880fc3e34a29a04b73ea26700e472b99d78cb8912",
+    "ARM_L4_axon_end_branch_length_mm.csv": "dd3ea28654a9cba412071d0ae36ac18c9e02b251892236b8200efbd827f8eb85",
+    "ARM_L5_axon_end_branch_length_mm.csv": "dcb4756dc1d56fce288d8f3384d258daec33d643b0c9bde7f8126a36a7d412aa",
+    "ARM_L6_axon_end_branch_length_mm.csv": "523386ec76c8019e8bfa66fa53443c02199478e8c6721eefc61dff5af52e6039",
+    "input_ledger.csv": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+    "per_neuron_measurements.csv": "550909dd49e93f0a3d39db38633bd964d25a3d600bdbff430338bccfed1dd481",
+    "targets.csv": "632da1c6e92b0f28bb7d94cb598752abe74a9277b83e50d526c2b84568d57547",
+    "animal_maps\\animal-331_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "bd97eb2763288443ea8d912595ff2aeba1904a9434dc9b3d66ce83122cf51ca7",
+    "animal_maps\\animal-331_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz": "752e2c5f6e8b4a0ce488e041a7433e9697c7a88ce7ab24fe0e291f9d0ddee007",
+    "animal_maps\\animal-331_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz": "3552618d6e4f454c3eb553f1d2712a01eb35b636b9bb77f9200ccda08cedb7f0",
+    "animal_maps\\animal-331_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "f0b24426523352e025aab9248f29cecd1b2067ea4755df3061436f88f95c20a0",
+    "animal_maps\\animal-331_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz": "ebd65a5e6cf603b1ee4a104efb2c26271002658cadeafb0e89ef2932015d4388",
+    "animal_maps\\animal-331_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "c3417115c43ff95f017925b29074914c6847c132ad0704fc94b525306d5d77c3",
+    "animal_maps\\animal-331_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz": "6e19d0bde8c68b68bac1addd4fc3c02ddbb513dd5c34cc4234221933b8ad180d",
+    "animal_maps\\animal-331_source-ARM6_729_R_desc-axonEndBranchLength_map.nii.gz": "a6bb9364fc86145d1d7e13671b6c0e41e522db293ccdb3cb555cac31cd741e73",
+    "animal_maps\\animal-605_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "122c32cebcd8d83ff1e6af39b9b9c3b30a06cb553dd3b068fe58c60082000e69",
+    "animal_maps\\animal-605_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "9fbb274a61a2d2a0fe1d12ace2767d8c1dc97f9b04bd42a34323120a16723f36",
+    "animal_maps\\animal-605_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "ceafc21ac25050a8822fd4522b428912122d5a49a1126429d41af4b581a3bb06",
+    "animal_maps\\animal-605_source-ARM6_729_R_desc-axonEndBranchLength_map.nii.gz": "433ebc7b4bf0678346e3fe911531cf6783f9b0d58a5d61a0c7b507c7e0ccd050",
+    "animal_maps\\animal-631_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz": "701d8e5df5cdeb3118fb2dd4595ac4358fdd17d512303a213ed6012315fd326c",
+    "animal_maps\\animal-631_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz": "dcb121d315403700312f9791b728e829317a668aea54c2a82a999810ffd89802",
+    "animal_maps\\animal-631_source-ARM6_548_R_desc-axonEndBranchLength_map.nii.gz": "8ee1f278a22c753097a771f8b419f24bf9eab267fa0c3427a41bedde272d99b7",
+    "animal_maps\\animal-631_source-ARM6_728_R_desc-axonEndBranchLength_map.nii.gz": "9973db0db091a45d6ea35210c1388e68649deaead784398d7fc9d1d070a5789d",
+    "animal_maps\\animal-797_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "3576641866f3022eb52fcbd22a0e88d4762c4f0fc14a0daa3002791346556bb4",
+    "animal_maps\\animal-797_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "8b956036bc9ca063a93ddc2d053ce48e0dcae6bec1e22a2baffae55b0fae1f23",
+    "animal_maps\\animal-797_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz": "aa263eea8813298325efdb73f1c27348800fff79bc8f45402f7bdcbf25987772",
+    "animal_maps\\animal-797_source-ARM6_1504_R_desc-axonEndBranchLength_map.nii.gz": "353a30eb4484c47be5112e85717aa41b8fd1cccfca1ce674030a2d6bb5af3efa",
+    "animal_maps\\animal-797_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "36614040792b620285e2514f0801b207d0b0c63aa3dbf0af48ebe98867567097",
+    "animal_maps\\animal-797_source-ARM6_41_L_desc-axonEndBranchLength_map.nii.gz": "62aaedfd54fa2d3e057732cfb06ee1ebb0ca651983a050dcd506d7a08ad1187d",
+    "animal_maps\\animal-797_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "deb10f2724fe9c6c1bcf57ec2acb10c82be7c9a734952939e57f146f9c821640",
+    "animal_maps\\animal-797_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz": "96b66e617cf7e447265108d8f491ad0c14165aadb1f834bd1fa0dcf8a93c80a5",
+    "animal_maps\\animal-797_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "8c1602f7112cbef4d7fefde4dc66278fc6a8221575d40fbb13c3b590cda8b21c",
+    "animal_maps\\animal-797_source-ARM6_595_R_desc-axonEndBranchLength_map.nii.gz": "4e7574a462c05bc093ac1e2cadf5f441a9840d80c84cea470ee95720e829239e",
+    "animal_maps\\animal-900_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "19dbb6da733857dd59080eec7f6d2756c014b1ae57bea6498ac65edcf4142f1c",
+    "animal_maps\\animal-900_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "336e737d9b81b7f6cd1d9b570c10ba8219ba6a9c3fd9c37c7f59fd85f4b35e4b",
+    "animal_maps\\animal-900_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz": "9e49d68fdd471f1ca07dffd46a58675299179d6f4a095fc2f7b3fc6250fae537",
+    "animal_maps\\animal-900_source-ARM6_548_R_desc-axonEndBranchLength_map.nii.gz": "06762740f445b72df071a15a80489055fbeb7c29c164936f642cac75fb2c2eb3",
+    "animal_maps\\animal-936_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "ad7155365a5c91dc663c797ec136c7e0532724828a2db137de5204f43f6b578a",
+    "animal_maps\\animal-936_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "c02cab5963f289c9af135b5dee6ac767bdc703301bce9938c1b5db4e9fabea77",
+    "animal_maps\\animal-936_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz": "ead742b8c144d618e52382edeab0c099c010f3328d185fae92c17f74bebb2beb",
+    "animal_maps\\animal-936_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "2008bc0deae42beb167c534cbc9d8ec19ca7fdf5154e1592084961bb625abf62",
+    "animal_maps\\animal-936_source-ARM6_41_L_desc-axonEndBranchLength_map.nii.gz": "ca41e4c2f1f792d3ddb8993f3dbd1d5a07159d284b1feb51e091e535d7ad0082",
+    "animal_maps\\animal-936_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "a6c4512d1c53b2db0dc145f914c1bb3a89d5d336ba6e1bfb1c573e3c1dd7bd76",
+    "animal_maps\\animal-936_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz": "5b8e6428de7f1c8b6fd1c0e5f7c6ecd0f82fd34f72bf8d39089290110a203392",
+    "animal_maps\\animal-936_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "dcedbd34e83acd68febfb07f53824af3ec051d6aa7fc0917e279efa5bfb6fbb0",
+    "animal_maps\\animal-936_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz": "ae11664f6ed9660930b9c666efb24e2627725d5eb38e36005a4560873cc1f2b2",
+    "animal_maps\\animal-936_source-ARM6_728_R_desc-axonEndBranchLength_map.nii.gz": "6010aa0264d0e62938be3eb8643f3889a39dbce26db9ab9319e8e2321711a77a",
+    "animal_maps\\animal-945_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "265c1fa234e1989ac66efcc8b7dd13617b6fe089cec766fceaa54df9304c2083",
+    "animal_maps\\animal-945_source-ARM6_43_L_desc-axonEndBranchLength_map.nii.gz": "07bf85d294150225d59f826eb7a8a806c395e3b3ff10e28f9c4d131b1bf0cd8a",
+    "animal_maps\\animal-945_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz": "b915975e9953f1900ca9edf259f35de7eaffdde45c0520f259b4f235bd3400c4",
+    "animal_maps\\animal-945_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz": "1f649d8518d445c6f17650138f296e8e7d092646a31f411d55cfc93d510eca19",
+    "animal_maps\\animal-948_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "fb02907769211ccd56a22b5cb4b159c43e7cca3b6526619414a95d293ef8e0e3",
+    "animal_maps\\animal-948_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "dbd3823cb4e8c258702d9be08bffddef6cb4fab8531275736e73496dbeeb7cc3",
+    "animal_maps\\animal-948_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz": "d17058475c5ba9c80ce99757da63319c4e7987664903661fb7d7ed652c3a6292",
+    "animal_maps\\animal-948_source-ARM6_1504_R_desc-axonEndBranchLength_map.nii.gz": "0aed2ca8cb9387940e5a9fccf2452ccb698ca1549beb71ef7993ac0445c44b8c",
+    "animal_maps\\animal-948_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "1947a7117befb8ce4117db5eeb0cdfba702a5e83dd24c0b752b2bf29c4c2b764",
+    "animal_maps\\animal-948_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "d0daf3309c70dc99d2429f30bb4b5e5c06fe0bb4c1bb0779bd8cd00abdc63589",
+    "group_maps\\source-ARM6_0_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "fedbcf2a7209bdfa69beb598e84c5e1fd2b2420faff780e032f9caa934ab319d",
+    "group_maps\\source-ARM6_0_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "30506f5b092ea1eb5edbb39160cefd8c8f52b698c75bf451831cbf0f2ec19cd4",
+    "group_maps\\source-ARM6_1004_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "ef9a5d1e69e3530d96f31cbd47585a06760d0708900d235c47adc292b2364d97",
+    "group_maps\\source-ARM6_1504_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "c5ec6c6a50695b85fc9134100a95b8b58e281f58c90ff30113302321b05ab7c2",
+    "group_maps\\source-ARM6_228_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "f078d35789614ca4ad53e5484db6daff5204a879f84afbd999c36ab8d25c9a2f",
+    "group_maps\\source-ARM6_229_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "5abfce19b5a002eb4ff22d7160ad202a2c5102730c5564304a41729be3951d83",
+    "group_maps\\source-ARM6_41_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "84743a406d094ec945687074a80bf1b3d10a12e95bb458d58608a44492c2e82a",
+    "group_maps\\source-ARM6_42_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "1998115dc2518541dfe81d1b47eb48144552c8759b9acfb1883bb52604418875",
+    "group_maps\\source-ARM6_43_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "07bf85d294150225d59f826eb7a8a806c395e3b3ff10e28f9c4d131b1bf0cd8a",
+    "group_maps\\source-ARM6_48_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "8d258bc35447b4455f1b09ffe594477eab01612e1080d66fce248a6ec20568d6",
+    "group_maps\\source-ARM6_541_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "508c44bb0d7913586cebf2d68d5f12c7441af380597f3aaa3172f680ff6ad505",
+    "group_maps\\source-ARM6_542_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "3edf10d0233e3f61058a818ac85b2da844fa1c86f23e62b39c3d84724045efd9",
+    "group_maps\\source-ARM6_548_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "ca3b7d9f6ff8cd488525ea2128d10f5e30d91a312832944ee6c50bd0e621adf2",
+    "group_maps\\source-ARM6_549_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "275e512bfb0b0048f9bdf70efc9e3d0ae17c47f134d87f2ed28736c02afe5715",
+    "group_maps\\source-ARM6_595_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "4e7574a462c05bc093ac1e2cadf5f441a9840d80c84cea470ee95720e829239e",
+    "group_maps\\source-ARM6_728_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "2d255ce09bc11cadaa3b3d0f58c2af4a507b181697166506eaa6726053ec445c",
+    "group_maps\\source-ARM6_729_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "18737ed7ef3caf0254aa5711381a5d42e60ef5c952025d415ac77f29847727ec"
+  },
+  "per_neuron_edge_identity_checks": [
+    {
+      "NeuronUID": "252385::048.swc",
+      "computable": true,
+      "selected_edges": 8661,
+      "original_axon_leaves": 114,
+      "selected_child_ids_sha256": "5cafe624c5dfa549df8b3ace32ef1545c5b28ab653d74d261d87bb34cece3a9f"
+    },
+    {
+      "NeuronUID": "252385::021.swc",
+      "computable": true,
+      "selected_edges": 21940,
+      "original_axon_leaves": 411,
+      "selected_child_ids_sha256": "160946e79b76eaf9704bc46a3c1578e3e55c0f1dab5e2d8d42562bda09a87307"
+    },
+    {
+      "NeuronUID": "252385::022.swc",
+      "computable": true,
+      "selected_edges": 2051,
+      "original_axon_leaves": 31,
+      "selected_child_ids_sha256": "d23e3d8b566a6957f6aaee12d17825d6ae03e504f1299da6e1b2d1918b1c7f95"
+    },
+    {
+      "NeuronUID": "252385::047.swc",
+      "computable": true,
+      "selected_edges": 16131,
+      "original_axon_leaves": 103,
+      "selected_child_ids_sha256": "4c2dc5fc51bb232430dd60afe11b770f3ca1ff438685a9dde814e240924e42df"
+    },
+    {
+      "NeuronUID": "252385::049.swc",
+      "computable": true,
+      "selected_edges": 9131,
+      "original_axon_leaves": 90,
+      "selected_child_ids_sha256": "73ebcdf26d2f4ff07c7b6ba9137659d37ac68f5a81fba280f9bfb4c1b7adde9d"
+    },
+    {
+      "NeuronUID": "252385::025.swc",
+      "computable": true,
+      "selected_edges": 7436,
+      "original_axon_leaves": 106,
+      "selected_child_ids_sha256": "3d29fddb3bb5538ef0b45979e49754891151d1b918b54ff95a3140febcf54857"
+    },
+    {
+      "NeuronUID": "252385::026.swc",
+      "computable": true,
+      "selected_edges": 29529,
+      "original_axon_leaves": 940,
+      "selected_child_ids_sha256": "67e8f0b97b3db003177322434ecfce186e17a577062ac56f1227a84038f19c27"
+    },
+    {
+      "NeuronUID": "252385::027.swc",
+      "computable": true,
+      "selected_edges": 26837,
+      "original_axon_leaves": 678,
+      "selected_child_ids_sha256": "08b7835ed99a28124fcf66816ae5902dd8c8b79331d2263c33bae2f0a686be34"
+    },
+    {
+      "NeuronUID": "252385::036.swc",
+      "computable": true,
+      "selected_edges": 27982,
+      "original_axon_leaves": 496,
+      "selected_child_ids_sha256": "29ce8bb5982703434a9028fc8a1e3e08951a15cbb42e63ae90ba018b05bf0992"
+    },
+    {
+      "NeuronUID": "252385::037.swc",
+      "computable": true,
+      "selected_edges": 4174,
+      "original_axon_leaves": 69,
+      "selected_child_ids_sha256": "7f16acbe50dce596fbacda218eff59cae3f35025e659e83c7133d7bed13fb813"
+    },
+    {
+      "NeuronUID": "252385::038.swc",
+      "computable": true,
+      "selected_edges": 34426,
+      "original_axon_leaves": 390,
+      "selected_child_ids_sha256": "77b75d516da7732202cf60cd6741c24faf4bcb207db79a8a9da41fe64a850a21"
+    },
+    {
+      "NeuronUID": "252385::039.swc",
+      "computable": true,
+      "selected_edges": 637,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "5bf33f0b744e995588bbfe4d0a278f8d5384980ffa8713a43f020d28bfcf9e20"
+    },
+    {
+      "NeuronUID": "252385::040.swc",
+      "computable": true,
+      "selected_edges": 6767,
+      "original_axon_leaves": 91,
+      "selected_child_ids_sha256": "38eb2411f7549251a989d972ac370f784e9450c483656293abe1be7eb2d0f260"
+    },
+    {
+      "NeuronUID": "252385::041.swc",
+      "computable": true,
+      "selected_edges": 1538,
+      "original_axon_leaves": 26,
+      "selected_child_ids_sha256": "1285e1f9776ad884a5ed7b46ebd0ecb8ce09a11ead53b4ffee851b225072273b"
+    },
+    {
+      "NeuronUID": "252385::042.swc",
+      "computable": true,
+      "selected_edges": 374,
+      "original_axon_leaves": 14,
+      "selected_child_ids_sha256": "47311448f69079c6c4b4a39f62e3cda4a962162803e1d2f5ecca92085621c703"
+    },
+    {
+      "NeuronUID": "252385::043.swc",
+      "computable": true,
+      "selected_edges": 526,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "7fb7cf9cd85ed17c000ae3f81d54af069d1ef8fa4c0dda7618cd0e7f6dbf2d59"
+    },
+    {
+      "NeuronUID": "252385::044.swc",
+      "computable": true,
+      "selected_edges": 1910,
+      "original_axon_leaves": 76,
+      "selected_child_ids_sha256": "0c2657c4ce3480a008946e539f3a6d4288ea7936be8295cfa64783e63546416f"
+    },
+    {
+      "NeuronUID": "252385::045.swc",
+      "computable": true,
+      "selected_edges": 1333,
+      "original_axon_leaves": 18,
+      "selected_child_ids_sha256": "1245ea9f25af7dce87ba216b1225ad27f13ef2d592eaa14b5ee8f29a25ebea48"
+    },
+    {
+      "NeuronUID": "252385::046.swc",
+      "computable": true,
+      "selected_edges": 39153,
+      "original_axon_leaves": 551,
+      "selected_child_ids_sha256": "8679947a225e827abf29459c525b2e5783b5564659298182cc5c4fc581df7df4"
+    },
+    {
+      "NeuronUID": "252385::020.swc",
+      "computable": true,
+      "selected_edges": 19922,
+      "original_axon_leaves": 427,
+      "selected_child_ids_sha256": "b743b70719f53266d2d1fbce6789af17a714769f5d9379c15be6da86fd3f9fc3"
+    },
+    {
+      "NeuronUID": "252385::023.swc",
+      "computable": true,
+      "selected_edges": 3104,
+      "original_axon_leaves": 132,
+      "selected_child_ids_sha256": "b1ce492d9edfa64d38a47923b439ad2c8360c14c3ecec3fe61825f52b2f7b2e2"
+    },
+    {
+      "NeuronUID": "252385::024.swc",
+      "computable": true,
+      "selected_edges": 4069,
+      "original_axon_leaves": 202,
+      "selected_child_ids_sha256": "ba9318a9b521febf27bef56e062faa39bbae32788e97d4a9b41fe25f1b238b23"
+    },
+    {
+      "NeuronUID": "252385::028.swc",
+      "computable": true,
+      "selected_edges": 8650,
+      "original_axon_leaves": 284,
+      "selected_child_ids_sha256": "fa088f07d386afba96dad19fefe1ad632ffc55820be9231d235e62b20eebbcdd"
+    },
+    {
+      "NeuronUID": "252385::029.swc",
+      "computable": true,
+      "selected_edges": 992,
+      "original_axon_leaves": 4,
+      "selected_child_ids_sha256": "388a997fdfba4c8c336b6edc7721c8194e5a263e56dfb97e15bc18dcf4ace66d"
+    },
+    {
+      "NeuronUID": "252385::030.swc",
+      "computable": true,
+      "selected_edges": 186,
+      "original_axon_leaves": 6,
+      "selected_child_ids_sha256": "9d99be10277e49bd0f8ca9323a137524467ca059c20de32c679d9aefa0482e2c"
+    },
+    {
+      "NeuronUID": "252385::031.swc",
+      "computable": true,
+      "selected_edges": 8972,
+      "original_axon_leaves": 212,
+      "selected_child_ids_sha256": "764a7c1c342883c9a45a9c4e8eb35bbed4ea4d029cfac7fac67da641ce1a208a"
+    },
+    {
+      "NeuronUID": "252385::032.swc",
+      "computable": true,
+      "selected_edges": 1567,
+      "original_axon_leaves": 128,
+      "selected_child_ids_sha256": "f994c5e728dc87fa256b626ae2a858681f262b982f0519a0be3aaee0dcf2e13f"
+    },
+    {
+      "NeuronUID": "252385::033.swc",
+      "computable": true,
+      "selected_edges": 1185,
+      "original_axon_leaves": 175,
+      "selected_child_ids_sha256": "8db8b674089fefc0b4d9c4342b7ba173d093663a8740970616def9573f372df3"
+    },
+    {
+      "NeuronUID": "252385::034.swc",
+      "computable": true,
+      "selected_edges": 2449,
+      "original_axon_leaves": 153,
+      "selected_child_ids_sha256": "aba06b6695b9db267d20aa65ebbc5b121a3bf27054b9c3da864d1b4c3699f9ca"
+    },
+    {
+      "NeuronUID": "252385::035.swc",
+      "computable": true,
+      "selected_edges": 309,
+      "original_axon_leaves": 19,
+      "selected_child_ids_sha256": "dc7322a97611114d27779db1eb828aad1649498c7efcbb68d6a917a5b797db4c"
+    },
+    {
+      "NeuronUID": "252385::063.swc",
+      "computable": true,
+      "selected_edges": 13223,
+      "original_axon_leaves": 254,
+      "selected_child_ids_sha256": "2587a13dfc4d435e5fc74b3248448a29f0a86425e2f1d794347d58cb3face47b"
+    },
+    {
+      "NeuronUID": "252385::066.swc",
+      "computable": true,
+      "selected_edges": 4608,
+      "original_axon_leaves": 147,
+      "selected_child_ids_sha256": "208e4cd99c0317e28fff37a679696c00fd629d702ef124ee6675374dce55df4c"
+    },
+    {
+      "NeuronUID": "252385::050.swc",
+      "computable": true,
+      "selected_edges": 24961,
+      "original_axon_leaves": 677,
+      "selected_child_ids_sha256": "80335f4c75ff65569cc437e1c5e07c2e0d22202a81e3a2f477c203dd502b69dc"
+    },
+    {
+      "NeuronUID": "252385::051.swc",
+      "computable": true,
+      "selected_edges": 5301,
+      "original_axon_leaves": 81,
+      "selected_child_ids_sha256": "6621594b32a4224f371e92c959e05ffe337f339a97ecc09ac64443ed85f25066"
+    },
+    {
+      "NeuronUID": "252385::052.swc",
+      "computable": true,
+      "selected_edges": 3133,
+      "original_axon_leaves": 75,
+      "selected_child_ids_sha256": "d51d04a52c741657e61e4cb665aa1b284df28595bc93b75717f31220d00282d8"
+    },
+    {
+      "NeuronUID": "252385::053.swc",
+      "computable": true,
+      "selected_edges": 6286,
+      "original_axon_leaves": 34,
+      "selected_child_ids_sha256": "eabe522df1ac4441d85c76db6c2f2f749397f3c44ea1de692b7bfe8a59b0053e"
+    },
+    {
+      "NeuronUID": "252385::054.swc",
+      "computable": true,
+      "selected_edges": 273,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "6b6de7b5c2a67d5e37418e4e27bfee426359f9894143541907a84939ba0c8896"
+    },
+    {
+      "NeuronUID": "252385::055.swc",
+      "computable": true,
+      "selected_edges": 3031,
+      "original_axon_leaves": 56,
+      "selected_child_ids_sha256": "1895b88c0727be3be0fce4b5c02caa1f7bbef012595003955a808f5f55aaf8c5"
+    },
+    {
+      "NeuronUID": "252385::056.swc",
+      "computable": true,
+      "selected_edges": 2455,
+      "original_axon_leaves": 214,
+      "selected_child_ids_sha256": "b4a5935203e77317a526abe5bb6b30c2c95c8e573c1b1d7d336e4a3b73d52f1a"
+    },
+    {
+      "NeuronUID": "252385::057.swc",
+      "computable": true,
+      "selected_edges": 597,
+      "original_axon_leaves": 26,
+      "selected_child_ids_sha256": "a538c39d310eba15a505a5f04f51d5b3aec2c17898d49b7560c35e062ab37fa5"
+    },
+    {
+      "NeuronUID": "252385::058.swc",
+      "computable": true,
+      "selected_edges": 107,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "9f615cc90aa0f25a94828b3a1949e149d42c733d974e05b2476bcdc8f82c84bb"
+    },
+    {
+      "NeuronUID": "252385::059.swc",
+      "computable": true,
+      "selected_edges": 130,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "556ca6b050b91dd044dc976003d9183e27a1fb7a10e33089b3384ab44cdf8c0c"
+    },
+    {
+      "NeuronUID": "252385::060.swc",
+      "computable": true,
+      "selected_edges": 3050,
+      "original_axon_leaves": 108,
+      "selected_child_ids_sha256": "55f54fb93544d6d8abeaf10642d605757afa3ef6c585111c53a0222c036666cd"
+    },
+    {
+      "NeuronUID": "252385::061.swc",
+      "computable": true,
+      "selected_edges": 2179,
+      "original_axon_leaves": 143,
+      "selected_child_ids_sha256": "9c175d063c2f472db711c060cb76f93248ec3eb8f085e8330e91cd44671607a2"
+    },
+    {
+      "NeuronUID": "252385::062.swc",
+      "computable": true,
+      "selected_edges": 1400,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "cde4aa82c0fe7925a221deb74fd43a5840a527fa8a2651127d420a629dc3e695"
+    },
+    {
+      "NeuronUID": "252385::064.swc",
+      "computable": true,
+      "selected_edges": 2197,
+      "original_axon_leaves": 151,
+      "selected_child_ids_sha256": "2102abfd70bccb93cdedd2e8c0514dbab52fce2e14d72aa21d1c2c4276209a97"
+    },
+    {
+      "NeuronUID": "252385::065.swc",
+      "computable": true,
+      "selected_edges": 3164,
+      "original_axon_leaves": 172,
+      "selected_child_ids_sha256": "11ab163d5dc52dabcfb43845d2169b701d626bf537b60276eef3c92729aa8a36"
+    },
+    {
+      "NeuronUID": "252385::067.swc",
+      "computable": true,
+      "selected_edges": 3691,
+      "original_axon_leaves": 20,
+      "selected_child_ids_sha256": "79b20e35e66c6fec9f73514c7b7e2953c4d83b547ef1c8206760e78b9480e4b4"
+    },
+    {
+      "NeuronUID": "252385::068.swc",
+      "computable": true,
+      "selected_edges": 7602,
+      "original_axon_leaves": 120,
+      "selected_child_ids_sha256": "7f37b2c2cab3534e2932c2c51ccfc3b72837c30032afcd7e4069f7b10a00483c"
+    },
+    {
+      "NeuronUID": "252385::069.swc",
+      "computable": true,
+      "selected_edges": 665,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "775e87de0f3d40b4d8b9f396c693abe6789566d9e4863f3743f050b7c546a65a"
+    },
+    {
+      "NeuronUID": "252385::070.swc",
+      "computable": true,
+      "selected_edges": 1485,
+      "original_axon_leaves": 34,
+      "selected_child_ids_sha256": "dbefb941b78f0c6e6fb0a8fb69e05ce45cd5c27753f68af7cc3b1d9185cd68a9"
+    },
+    {
+      "NeuronUID": "252385::071.swc",
+      "computable": true,
+      "selected_edges": 2781,
+      "original_axon_leaves": 13,
+      "selected_child_ids_sha256": "2d84bd67511600ec0511834a38530fdc7aab11375c0a5b5b89dc6fe07b7be7fa"
+    },
+    {
+      "NeuronUID": "252385::072.swc",
+      "computable": true,
+      "selected_edges": 509,
+      "original_axon_leaves": 13,
+      "selected_child_ids_sha256": "35f05e4c8de29c52a1b1c3cbcf12789b03b6f9bda035c5377146666a656e80d6"
+    },
+    {
+      "NeuronUID": "252385::073.swc",
+      "computable": true,
+      "selected_edges": 3802,
+      "original_axon_leaves": 202,
+      "selected_child_ids_sha256": "edecdd92bb1957b20f7a9470e82299d7780dfd3746a7fba95d8a4f237b2fc72c"
+    },
+    {
+      "NeuronUID": "252385::074.swc",
+      "computable": true,
+      "selected_edges": 582,
+      "original_axon_leaves": 29,
+      "selected_child_ids_sha256": "36406824e8fd6618b2ea01f02fa43742c172ed8c0b93af4be4c63ccb7b28bde3"
+    },
+    {
+      "NeuronUID": "252383::090.swc",
+      "computable": true,
+      "selected_edges": 802,
+      "original_axon_leaves": 22,
+      "selected_child_ids_sha256": "6c5028102045cdd5bdda5fc500b69bf762c4b0ec20624b02f89b5f82b2f133f6"
+    },
+    {
+      "NeuronUID": "252383::094.swc",
+      "computable": true,
+      "selected_edges": 1342,
+      "original_axon_leaves": 70,
+      "selected_child_ids_sha256": "d5ac2483dd7b117a40d03e8956495a7e1ca23ba34fb85c8016533ae297f617e9"
+    },
+    {
+      "NeuronUID": "252383::097.swc",
+      "computable": true,
+      "selected_edges": 2738,
+      "original_axon_leaves": 133,
+      "selected_child_ids_sha256": "0513c62fcf7f2c56755a7daf29c0a432c6eaf60f13f1858724aa5a07f39d7c63"
+    },
+    {
+      "NeuronUID": "252383::095.swc",
+      "computable": true,
+      "selected_edges": 200,
+      "original_axon_leaves": 11,
+      "selected_child_ids_sha256": "3519a7d9be467d501ed2ff1116621aa3f50a5b500c76ec5062d2442fa19e2b38"
+    },
+    {
+      "NeuronUID": "252383::096.swc",
+      "computable": true,
+      "selected_edges": 1066,
+      "original_axon_leaves": 15,
+      "selected_child_ids_sha256": "84dcb70c03168d7a7f6d113c91d942a1896ec59bb358f0075e619749fab6c723"
+    },
+    {
+      "NeuronUID": "252383::121.swc",
+      "computable": true,
+      "selected_edges": 779,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "a43885352c3e26d9a8b5caec13938cb797e72e9131599fb6c4e81d62e3451c38"
+    },
+    {
+      "NeuronUID": "252383::120.swc",
+      "computable": true,
+      "selected_edges": 903,
+      "original_axon_leaves": 24,
+      "selected_child_ids_sha256": "bf4c3d6ad380d9f101b7dff2cd5d85f3e66a8417a5c4d5d1c38d556b87d36504"
+    },
+    {
+      "NeuronUID": "252383::126.swc",
+      "computable": true,
+      "selected_edges": 3249,
+      "original_axon_leaves": 64,
+      "selected_child_ids_sha256": "7ebe05a4ecaa6bbea6164471572498f0628541ea725e80acdbe5c28095e40183"
+    },
+    {
+      "NeuronUID": "252383::127.swc",
+      "computable": true,
+      "selected_edges": 5338,
+      "original_axon_leaves": 153,
+      "selected_child_ids_sha256": "8128fdb5b214cb0f2bacf7f0d03560f35f3429e17ccefdcc364fbf9bfc08561e"
+    },
+    {
+      "NeuronUID": "252383::118.swc",
+      "computable": true,
+      "selected_edges": 4941,
+      "original_axon_leaves": 140,
+      "selected_child_ids_sha256": "8d73e2ebb51f5840106d326df211c599331c7aad2498c63a2f54c8a03e11a853"
+    },
+    {
+      "NeuronUID": "252383::119.swc",
+      "computable": true,
+      "selected_edges": 3954,
+      "original_axon_leaves": 78,
+      "selected_child_ids_sha256": "6570a676d5091b49ed5de37a4bd17a00483ec4ed829e6fa9255c60d5beb9c263"
+    },
+    {
+      "NeuronUID": "252383::123.swc",
+      "computable": true,
+      "selected_edges": 97,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "b7245a264299563adbe5d05921b2f9d089b3fb8912abeea12aa33e2ed79853a5"
+    },
+    {
+      "NeuronUID": "252383::124.swc",
+      "computable": true,
+      "selected_edges": 3862,
+      "original_axon_leaves": 265,
+      "selected_child_ids_sha256": "be0487d3189851d81dfe6de4680e89b8a29791b465518005860c3ce988774452"
+    },
+    {
+      "NeuronUID": "252383::117.swc",
+      "computable": true,
+      "selected_edges": 7650,
+      "original_axon_leaves": 213,
+      "selected_child_ids_sha256": "f67dac39e6cc2d0485e16e06e02cd202a928b1b5de35f69c46067e5243518082"
+    },
+    {
+      "NeuronUID": "252383::036.swc",
+      "computable": true,
+      "selected_edges": 294,
+      "original_axon_leaves": 12,
+      "selected_child_ids_sha256": "ea7df04130b7760536ae5c112e07eb21f5465744918d17d37da07e922d9bb717"
+    },
+    {
+      "NeuronUID": "252383::091.swc",
+      "computable": true,
+      "selected_edges": 4949,
+      "original_axon_leaves": 124,
+      "selected_child_ids_sha256": "6fe331ef45d90eff597c188241852b68a4af4eae80b351fd99f0e0ca2ccc3b25"
+    },
+    {
+      "NeuronUID": "252383::018.swc",
+      "computable": true,
+      "selected_edges": 5108,
+      "original_axon_leaves": 78,
+      "selected_child_ids_sha256": "41d2eed69825f65a02662f4db6216f305ad9c530f6da69eff2ba97da2a8d71ad"
+    },
+    {
+      "NeuronUID": "252383::019.swc",
+      "computable": true,
+      "selected_edges": 2612,
+      "original_axon_leaves": 175,
+      "selected_child_ids_sha256": "c443b5d5537dc5d5be49a983652a9d2709037b814fa445af43d22feb83238de0"
+    },
+    {
+      "NeuronUID": "252383::122.swc",
+      "computable": true,
+      "selected_edges": 1085,
+      "original_axon_leaves": 21,
+      "selected_child_ids_sha256": "69e9ec7985edfaf09e8bca90dfdb4100911c8f24dd93dee7eea4158589e14a2c"
+    },
+    {
+      "NeuronUID": "252383::125.swc",
+      "computable": true,
+      "selected_edges": 4531,
+      "original_axon_leaves": 150,
+      "selected_child_ids_sha256": "57908c8642dd56082a5181f1af79e4b4406e6492aef3fc83eea5f98d057b13d2"
+    },
+    {
+      "NeuronUID": "252383::130.swc",
+      "computable": true,
+      "selected_edges": 1907,
+      "original_axon_leaves": 12,
+      "selected_child_ids_sha256": "8436ed42ea90212d6a988fb9d05a0e47eaf0e233efe6ad995670cac7ed4b21d0"
+    },
+    {
+      "NeuronUID": "252714::090.swc",
+      "computable": true,
+      "selected_edges": 33428,
+      "original_axon_leaves": 1281,
+      "selected_child_ids_sha256": "6605008b3308745a3911cbc97796703c6d2209d8e1306fb6362c5a2ef657073b"
+    },
+    {
+      "NeuronUID": "252714::091.swc",
+      "computable": true,
+      "selected_edges": 26248,
+      "original_axon_leaves": 523,
+      "selected_child_ids_sha256": "a39dbe724994b1807646e165483200b9affaec754d160240c44d677f83b1992c"
+    },
+    {
+      "NeuronUID": "252714::099.swc",
+      "computable": true,
+      "selected_edges": 16060,
+      "original_axon_leaves": 434,
+      "selected_child_ids_sha256": "b4733a8c8acaed474d0b7908638029333dfaaf1f8f2f7cf448e26fcce8d611f8"
+    },
+    {
+      "NeuronUID": "252714::085.swc",
+      "computable": true,
+      "selected_edges": 38147,
+      "original_axon_leaves": 1413,
+      "selected_child_ids_sha256": "7fa5ec429789984b1dbcfb260b72b2a63944b0e12f166d65f1cb09b7d6bbb6c7"
+    },
+    {
+      "NeuronUID": "252714::086.swc",
+      "computable": true,
+      "selected_edges": 40896,
+      "original_axon_leaves": 1349,
+      "selected_child_ids_sha256": "e9436397fdf6104d4d2bdf5ad9e55bb667d789eb426881e8e454d794ef6d8345"
+    },
+    {
+      "NeuronUID": "252714::087.swc",
+      "computable": true,
+      "selected_edges": 26217,
+      "original_axon_leaves": 957,
+      "selected_child_ids_sha256": "af6ffa7b687de66772741f3d4002c2e453b0990cd55c25bb168dabce419a24e8"
+    },
+    {
+      "NeuronUID": "252714::088.swc",
+      "computable": true,
+      "selected_edges": 30320,
+      "original_axon_leaves": 1185,
+      "selected_child_ids_sha256": "97fa2bbfc48c790cb9778afb9770fa77a29d460661fb58b35a48fc98fc395bc9"
+    },
+    {
+      "NeuronUID": "252714::089.swc",
+      "computable": true,
+      "selected_edges": 25927,
+      "original_axon_leaves": 531,
+      "selected_child_ids_sha256": "fb2fe6495c3978952e1ffac3574db34df31a053668546a0c1a0666bfeb2586da"
+    },
+    {
+      "NeuronUID": "252714::092.swc",
+      "computable": true,
+      "selected_edges": 27267,
+      "original_axon_leaves": 466,
+      "selected_child_ids_sha256": "10eea026ba152a084c11a815b9b818cfb4d9311a41359b482154bf73b1d5d36f"
+    },
+    {
+      "NeuronUID": "252714::136.swc",
+      "computable": true,
+      "selected_edges": 2835,
+      "original_axon_leaves": 243,
+      "selected_child_ids_sha256": "badde57c10b8bb4b39cab9a1a13d78f61ba460bd70ee727a5dc8e53efb716d61"
+    },
+    {
+      "NeuronUID": "252714::029.swc",
+      "computable": true,
+      "selected_edges": 16435,
+      "original_axon_leaves": 753,
+      "selected_child_ids_sha256": "add308b73c94ad3e94b96c5ac007cd1fe452f6057dd9ef2229c4f0a22feda027"
+    },
+    {
+      "NeuronUID": "252714::030.swc",
+      "computable": true,
+      "selected_edges": 6464,
+      "original_axon_leaves": 170,
+      "selected_child_ids_sha256": "c91a4039461cf5655a2d45c97512598222a327e35e447a435f6bfd12bcbfe536"
+    },
+    {
+      "NeuronUID": "252714::031.swc",
+      "computable": true,
+      "selected_edges": 3206,
+      "original_axon_leaves": 173,
+      "selected_child_ids_sha256": "0d2f0fd006e2bd30c7130597b953ab114ae4eaf0e175c459e3d5003a13caa10d"
+    },
+    {
+      "NeuronUID": "252714::033.swc",
+      "computable": true,
+      "selected_edges": 6387,
+      "original_axon_leaves": 312,
+      "selected_child_ids_sha256": "c87ce213e3bf826aeeeb20ab8b561ad346ebf54f91637507c925e3a4da088740"
+    },
+    {
+      "NeuronUID": "252714::034.swc",
+      "computable": true,
+      "selected_edges": 15028,
+      "original_axon_leaves": 492,
+      "selected_child_ids_sha256": "a5ad6ad423b53a100d0e1e9a6095fe11a7091a83df102264af5fc3e3774a58ff"
+    },
+    {
+      "NeuronUID": "252714::032.swc",
+      "computable": true,
+      "selected_edges": 28834,
+      "original_axon_leaves": 766,
+      "selected_child_ids_sha256": "e2c05ba6ecadf7600e160f2d6a55a108d5aa4ab384666713caafc5a0bf6e9d93"
+    },
+    {
+      "NeuronUID": "252790::117.swc",
+      "computable": true,
+      "selected_edges": 3283,
+      "original_axon_leaves": 48,
+      "selected_child_ids_sha256": "5942b28cc853a09fcb9a0860a7c170bbed692b9eb66f227f7e730f349e4c289d"
+    },
+    {
+      "NeuronUID": "252790::121.swc",
+      "computable": true,
+      "selected_edges": 1217,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "8f4f8c4e747f5a61cabbf38aff5d7e3647148724565be0957a7185fc4953359f"
+    },
+    {
+      "NeuronUID": "252790::032.swc",
+      "computable": true,
+      "selected_edges": 9882,
+      "original_axon_leaves": 253,
+      "selected_child_ids_sha256": "5032b02310bd2681960f9f14b3530fe4253e0693c6c648a3c1db8975ba0fa256"
+    },
+    {
+      "NeuronUID": "252790::035.swc",
+      "computable": true,
+      "selected_edges": 15164,
+      "original_axon_leaves": 270,
+      "selected_child_ids_sha256": "88c947773c6ac129758f1d2ed02e9b57f476ba6392bb3f50ee4b04442c9b871b"
+    },
+    {
+      "NeuronUID": "252790::031.swc",
+      "computable": true,
+      "selected_edges": 1966,
+      "original_axon_leaves": 69,
+      "selected_child_ids_sha256": "606158f13832fc4a52a3e224a0928fb256b7bd44679df9ec2db55477a457850f"
+    },
+    {
+      "NeuronUID": "252790::036.swc",
+      "computable": true,
+      "selected_edges": 25208,
+      "original_axon_leaves": 753,
+      "selected_child_ids_sha256": "af0a1419477040540970c8f0f5f117b3015b419709b38cd777a6279820afe863"
+    },
+    {
+      "NeuronUID": "252790::037.swc",
+      "computable": true,
+      "selected_edges": 20495,
+      "original_axon_leaves": 577,
+      "selected_child_ids_sha256": "15a0ed627c4e5de2e0afe51d67188251ec64ebe50b0ea56a71287cbd832816b8"
+    },
+    {
+      "NeuronUID": "252790::116.swc",
+      "computable": true,
+      "selected_edges": 661,
+      "original_axon_leaves": 3,
+      "selected_child_ids_sha256": "a3d8ee0af9a55b5cc30967a683fcc808e0caed0659bb68c36489ee6884da8384"
+    },
+    {
+      "NeuronUID": "252790::115.swc",
+      "computable": true,
+      "selected_edges": 9301,
+      "original_axon_leaves": 281,
+      "selected_child_ids_sha256": "b031afd3145814d71802d0be8cdc560fa754cb39e8ad8b999c2fdb4c5f0537d6"
+    },
+    {
+      "NeuronUID": "252790::102.swc",
+      "computable": true,
+      "selected_edges": 28885,
+      "original_axon_leaves": 403,
+      "selected_child_ids_sha256": "6a0ae05a2cd70ee43dea5dcf6f7213ce234d391b97f4cd059b27afa123bb0cbf"
+    },
+    {
+      "NeuronUID": "252790::103.swc",
+      "computable": true,
+      "selected_edges": 732,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "a31dab9a205bf2438a9d4ca641bbe0528ca672e75e48b6e5dce73ccca53f39fe"
+    },
+    {
+      "NeuronUID": "252790::027.swc",
+      "computable": true,
+      "selected_edges": 25668,
+      "original_axon_leaves": 363,
+      "selected_child_ids_sha256": "5c9adb845e1a2b6f48a269b3a1015b0db30f3f92df444a5e4bce792e8a89e8e1"
+    },
+    {
+      "NeuronUID": "252790::099.swc",
+      "computable": true,
+      "selected_edges": 54128,
+      "original_axon_leaves": 920,
+      "selected_child_ids_sha256": "09ebebaf886963077a7361865e5619115f2f40bf3c12d4d6de905d91b036eab1"
+    },
+    {
+      "NeuronUID": "252790::033.swc",
+      "computable": true,
+      "selected_edges": 20943,
+      "original_axon_leaves": 782,
+      "selected_child_ids_sha256": "1bb71a11ba0bdc6263e019e16c6e6860a624b34f00e8776904b66c22ebd923ad"
+    },
+    {
+      "NeuronUID": "252790::034.swc",
+      "computable": true,
+      "selected_edges": 33616,
+      "original_axon_leaves": 1056,
+      "selected_child_ids_sha256": "961a1aa3e448039f96fbdef9a452b0349654280a03b1aeabc241b4b88b11c3de"
+    },
+    {
+      "NeuronUID": "252790::111.swc",
+      "computable": true,
+      "selected_edges": 3702,
+      "original_axon_leaves": 194,
+      "selected_child_ids_sha256": "46bb3009d2f976694e2d1301e40217cdc07073c982dad5adc9e2bccfbd39c1cb"
+    },
+    {
+      "NeuronUID": "252790::112.swc",
+      "computable": true,
+      "selected_edges": 27476,
+      "original_axon_leaves": 806,
+      "selected_child_ids_sha256": "4bb0e0ed9df036f0530fb3a33f4e8828f19f26907acef55ae0ac544c10dadb1e"
+    },
+    {
+      "NeuronUID": "252790::113.swc",
+      "computable": true,
+      "selected_edges": 12821,
+      "original_axon_leaves": 335,
+      "selected_child_ids_sha256": "b92fed87b41c6909efe23af190fa959e637ec9598828a037bc021bce6d892ffd"
+    },
+    {
+      "NeuronUID": "252790::014.swc",
+      "computable": true,
+      "selected_edges": 18062,
+      "original_axon_leaves": 217,
+      "selected_child_ids_sha256": "3fc7efbbe15f202f57d52dc3cc313e6e35c6d95b56e792586669057b3fbee80d"
+    },
+    {
+      "NeuronUID": "252790::015.swc",
+      "computable": true,
+      "selected_edges": 25191,
+      "original_axon_leaves": 414,
+      "selected_child_ids_sha256": "5ae94b2d07bbc329ac3bf889e283f704e6b11b21cedc8a55d73689b19cae3110"
+    },
+    {
+      "NeuronUID": "252790::016.swc",
+      "computable": true,
+      "selected_edges": 5786,
+      "original_axon_leaves": 94,
+      "selected_child_ids_sha256": "fe9a4ecc7c571f80fde9929443180ce28ad02b5bead25f000c23a98f436ca9b8"
+    },
+    {
+      "NeuronUID": "252790::017.swc",
+      "computable": true,
+      "selected_edges": 14044,
+      "original_axon_leaves": 253,
+      "selected_child_ids_sha256": "5bfcbc87fcc5720fdca32524cf4ffdf94a7a5f10cd7bf9564a6fba7d5a8efda3"
+    },
+    {
+      "NeuronUID": "252790::018.swc",
+      "computable": true,
+      "selected_edges": 15115,
+      "original_axon_leaves": 250,
+      "selected_child_ids_sha256": "7a838d8ba6df454a2f442196ed7457732eaeb14212bda0ac03fcdce1ebf18ea2"
+    },
+    {
+      "NeuronUID": "252790::019.swc",
+      "computable": true,
+      "selected_edges": 24568,
+      "original_axon_leaves": 402,
+      "selected_child_ids_sha256": "8d6124c51575d11cb851cb985dc36cf6cd1ebcbdae87ce21e01d02da8142724d"
+    },
+    {
+      "NeuronUID": "252790::020.swc",
+      "computable": true,
+      "selected_edges": 5370,
+      "original_axon_leaves": 100,
+      "selected_child_ids_sha256": "34a6c8e1bdf5a202a191b82c7662b7ee29452fcbadccfa6c6f6f10cbc93cc6af"
+    },
+    {
+      "NeuronUID": "252790::021.swc",
+      "computable": true,
+      "selected_edges": 21884,
+      "original_axon_leaves": 408,
+      "selected_child_ids_sha256": "f952d37f19ca73f5c0a641315d9ded70bb281329b11664c73d18986f691b0da3"
+    },
+    {
+      "NeuronUID": "252790::022.swc",
+      "computable": true,
+      "selected_edges": 13452,
+      "original_axon_leaves": 234,
+      "selected_child_ids_sha256": "943ea342dd36e48624db9be7e715c1312972b75b2e5ed97aaf5d7549d79adcde"
+    },
+    {
+      "NeuronUID": "252790::023.swc",
+      "computable": true,
+      "selected_edges": 8932,
+      "original_axon_leaves": 112,
+      "selected_child_ids_sha256": "cfd62bc2b04981abf9bffe0ffad67da95f36f80f6d775ac684f11dddeaf024df"
+    },
+    {
+      "NeuronUID": "252790::024.swc",
+      "computable": true,
+      "selected_edges": 39395,
+      "original_axon_leaves": 718,
+      "selected_child_ids_sha256": "92da0bfa33dcd3e3a34665aae5aff529c9914b2b8b53db8492871c11f3d13e63"
+    },
+    {
+      "NeuronUID": "252790::025.swc",
+      "computable": true,
+      "selected_edges": 5212,
+      "original_axon_leaves": 81,
+      "selected_child_ids_sha256": "aa34a5e4f08d4e9b61a888af7b89b59960aaaf89d3ed75656f9b4f9dad312adb"
+    },
+    {
+      "NeuronUID": "252790::026.swc",
+      "computable": true,
+      "selected_edges": 32625,
+      "original_axon_leaves": 528,
+      "selected_child_ids_sha256": "f3000ad29904ac00d2ba0fc31add9a4bbc2167a68cce5cbd5f587be393a260ed"
+    },
+    {
+      "NeuronUID": "252790::118.swc",
+      "computable": true,
+      "selected_edges": 6083,
+      "original_axon_leaves": 77,
+      "selected_child_ids_sha256": "ed6cbb40319e996fe13f95fa4754284db14606285cd5688211a9226ae14fe02d"
+    },
+    {
+      "NeuronUID": "252790::119.swc",
+      "computable": true,
+      "selected_edges": 17780,
+      "original_axon_leaves": 276,
+      "selected_child_ids_sha256": "d300f7090f96896b54fa7506a863c7eb759d76fd2adef47a7e7b7ac32f5e554b"
+    },
+    {
+      "NeuronUID": "252790::120.swc",
+      "computable": true,
+      "selected_edges": 457,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "c6af9484e9be2bc288ae362f4613ce2b697f7fd15078d2b52ea2dcee1ad97558"
+    },
+    {
+      "NeuronUID": "252790::063.swc",
+      "computable": true,
+      "selected_edges": 13608,
+      "original_axon_leaves": 160,
+      "selected_child_ids_sha256": "003691484039cd2d6b538931e89dcce108d696272e5d559c33bfaa24f8878b44"
+    },
+    {
+      "NeuronUID": "252790::048.swc",
+      "computable": true,
+      "selected_edges": 43448,
+      "original_axon_leaves": 844,
+      "selected_child_ids_sha256": "39c0a2a295b6f7dbb371e08db5908e15b3d4e56f4391676faadc69911b0e9bf5"
+    },
+    {
+      "NeuronUID": "252790::049.swc",
+      "computable": true,
+      "selected_edges": 22476,
+      "original_axon_leaves": 378,
+      "selected_child_ids_sha256": "fab7e26394f2c47e86ea2f3c9623e0831fd5f064a01e3857d01c87ed6bce7a5c"
+    },
+    {
+      "NeuronUID": "252790::050.swc",
+      "computable": true,
+      "selected_edges": 28411,
+      "original_axon_leaves": 352,
+      "selected_child_ids_sha256": "6dcf395b36db1b836b1ffc35dfa4ed95691df2ae1faac56619dc822551b77d6d"
+    },
+    {
+      "NeuronUID": "252790::051.swc",
+      "computable": true,
+      "selected_edges": 19533,
+      "original_axon_leaves": 409,
+      "selected_child_ids_sha256": "fc32c89408b30e801f6b5aa94560598fa4b6256244e5b54f55491f4f27265185"
+    },
+    {
+      "NeuronUID": "252790::052.swc",
+      "computable": true,
+      "selected_edges": 31900,
+      "original_axon_leaves": 649,
+      "selected_child_ids_sha256": "2e62db6359dbacf95ae32fabe18b44788dbba426e49436148720634682201766"
+    },
+    {
+      "NeuronUID": "252790::053.swc",
+      "computable": true,
+      "selected_edges": 3121,
+      "original_axon_leaves": 19,
+      "selected_child_ids_sha256": "74027d957fb8a6e3efcd2df875c236dafcfa2ce164637566750422773099cea3"
+    },
+    {
+      "NeuronUID": "252790::054.swc",
+      "computable": true,
+      "selected_edges": 12719,
+      "original_axon_leaves": 270,
+      "selected_child_ids_sha256": "642fed743ebc8a311eab28241b384cce940a92e0fad952b12df6c3bc08748166"
+    },
+    {
+      "NeuronUID": "252790::055.swc",
+      "computable": true,
+      "selected_edges": 11217,
+      "original_axon_leaves": 134,
+      "selected_child_ids_sha256": "23efd709a057716efa874a7b1b669701c8754de7d68c344f83e797a8f4a2978e"
+    },
+    {
+      "NeuronUID": "252790::056.swc",
+      "computable": true,
+      "selected_edges": 32157,
+      "original_axon_leaves": 597,
+      "selected_child_ids_sha256": "a265934d298a40a45314feb885681e3ed9d887ad65cf3184048218ae97fb90d9"
+    },
+    {
+      "NeuronUID": "252790::057.swc",
+      "computable": true,
+      "selected_edges": 18540,
+      "original_axon_leaves": 261,
+      "selected_child_ids_sha256": "694fda65d1c69533141c9925cedfd24d744baaffb2bb3da391aa133caaae73a2"
+    },
+    {
+      "NeuronUID": "252790::058.swc",
+      "computable": true,
+      "selected_edges": 4660,
+      "original_axon_leaves": 331,
+      "selected_child_ids_sha256": "0cc24300a8ba3e993a872d00e1fc566f4e934d72f54aeb1c3a121bfac5de9629"
+    },
+    {
+      "NeuronUID": "252790::059.swc",
+      "computable": true,
+      "selected_edges": 9495,
+      "original_axon_leaves": 278,
+      "selected_child_ids_sha256": "53218e55f151d699cdaa6c7d86e27bdce92242c710a62f0ad6ffa41a59e993e2"
+    },
+    {
+      "NeuronUID": "252790::060.swc",
+      "computable": true,
+      "selected_edges": 11650,
+      "original_axon_leaves": 210,
+      "selected_child_ids_sha256": "0844d3e04fb33c9b48564158f707935eef9dda72bba81df880bc0061d4e6fdb6"
+    },
+    {
+      "NeuronUID": "252790::061.swc",
+      "computable": true,
+      "selected_edges": 19751,
+      "original_axon_leaves": 364,
+      "selected_child_ids_sha256": "f14763cd91924de946758093fe7e14bba93749f1fb924ff22f41937b6132d897"
+    },
+    {
+      "NeuronUID": "252790::062.swc",
+      "computable": true,
+      "selected_edges": 11576,
+      "original_axon_leaves": 148,
+      "selected_child_ids_sha256": "807a2ca481be4a7f1755f41ef4313696380e97539a0a5d6f0fa095430d40bd79"
+    },
+    {
+      "NeuronUID": "252790::064.swc",
+      "computable": true,
+      "selected_edges": 13347,
+      "original_axon_leaves": 559,
+      "selected_child_ids_sha256": "2cbda321f11b1378c5628faeeb180d50918f1569b07982888620c81646de29d0"
+    },
+    {
+      "NeuronUID": "252790::074.swc",
+      "computable": true,
+      "selected_edges": 50014,
+      "original_axon_leaves": 1135,
+      "selected_child_ids_sha256": "b3244149872723350f026a1e7892f44a0cc408c75d41c6e591d9915e4af6c204"
+    },
+    {
+      "NeuronUID": "252718::162.swc",
+      "computable": true,
+      "selected_edges": 259,
+      "original_axon_leaves": 3,
+      "selected_child_ids_sha256": "0c4cb988491a9cdd1fdc9f5d27e8b084003199f278a28a84cb99e96b3580f145"
+    },
+    {
+      "NeuronUID": "252718::142.swc",
+      "computable": true,
+      "selected_edges": 17897,
+      "original_axon_leaves": 891,
+      "selected_child_ids_sha256": "43beeb849086a3d7000b1b6ac54a097bd7efeeb75ab57e516df99705ce9738ba"
+    },
+    {
+      "NeuronUID": "252718::144.swc",
+      "computable": true,
+      "selected_edges": 85,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "638b4cc326c07b274faed448c9ff7a7d529f057b0ca301460ec4d98dd211eaea"
+    },
+    {
+      "NeuronUID": "252718::148.swc",
+      "computable": true,
+      "selected_edges": 313,
+      "original_axon_leaves": 3,
+      "selected_child_ids_sha256": "abc4d416d183d1e92f95b0484407203ea1cc938b64957da61261004ce51312e8"
+    },
+    {
+      "NeuronUID": "252718::163.swc",
+      "computable": true,
+      "selected_edges": 132,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "b98563a42527f762d17f363e4931384d07f360afa03a009683859faa1e8baac4"
+    },
+    {
+      "NeuronUID": "252718::089.swc",
+      "computable": true,
+      "selected_edges": 4739,
+      "original_axon_leaves": 105,
+      "selected_child_ids_sha256": "1419c560acb8eeca426941a06a30f385a27ba857e80c7f65481bf8cf5e32477a"
+    },
+    {
+      "NeuronUID": "252718::090.swc",
+      "computable": true,
+      "selected_edges": 2654,
+      "original_axon_leaves": 94,
+      "selected_child_ids_sha256": "dfcdfbd9a3eebc897478b81e96baad165fac84cd14c5787d52e13b8690a0f73c"
+    },
+    {
+      "NeuronUID": "252718::120.swc",
+      "computable": true,
+      "selected_edges": 1260,
+      "original_axon_leaves": 50,
+      "selected_child_ids_sha256": "4ccd8b78ac771e46e7fb99724b9a5dd93be245cdac2335129f2ba3683a3a209f"
+    },
+    {
+      "NeuronUID": "252718::138.swc",
+      "computable": true,
+      "selected_edges": 3497,
+      "original_axon_leaves": 163,
+      "selected_child_ids_sha256": "c333a161e43272287891494a94ef72f513fcc56c9ec038cebe324ed7f2166509"
+    },
+    {
+      "NeuronUID": "252718::139.swc",
+      "computable": true,
+      "selected_edges": 476,
+      "original_axon_leaves": 9,
+      "selected_child_ids_sha256": "28dbff985679ccf31e9ee1e238046604993a1ea4cd84102e602d8b41a2f25c3d"
+    },
+    {
+      "NeuronUID": "252718::140.swc",
+      "computable": true,
+      "selected_edges": 4007,
+      "original_axon_leaves": 88,
+      "selected_child_ids_sha256": "4a4ee68ff51637f6882b506da2ed89e662da7852fb52f7f779f97dd27e3f64f6"
+    },
+    {
+      "NeuronUID": "252718::141.swc",
+      "computable": true,
+      "selected_edges": 426,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "17df4d0d7f6d8879039d8541bf2544ba9e622d97686efc77c911855d62b0915d"
+    },
+    {
+      "NeuronUID": "252718::076.swc",
+      "computable": true,
+      "selected_edges": 564,
+      "original_axon_leaves": 19,
+      "selected_child_ids_sha256": "61bd566cdcff7d81c4cb677f959f66583c8b7b9c5e8569905cf23824716a1ecb"
+    },
+    {
+      "NeuronUID": "252718::077.swc",
+      "computable": true,
+      "selected_edges": 2508,
+      "original_axon_leaves": 78,
+      "selected_child_ids_sha256": "41b05f623b19011b6a551570283926a7c405d0dc495a0e22f644cb871b6a05c8"
+    },
+    {
+      "NeuronUID": "251637::422.swc",
+      "computable": true,
+      "selected_edges": 12086,
+      "original_axon_leaves": 217,
+      "selected_child_ids_sha256": "5bf784671ecc053c97c4d892f0b57663d1e46f63a3166508f31021a7c668e3df"
+    },
+    {
+      "NeuronUID": "251637::423.swc",
+      "computable": true,
+      "selected_edges": 6554,
+      "original_axon_leaves": 109,
+      "selected_child_ids_sha256": "3a22cc6a30623f272af3ff73c56d374e564c8f0fdf0e6b4ccdfd01b2304c4839"
+    },
+    {
+      "NeuronUID": "251637::438.swc",
+      "computable": true,
+      "selected_edges": 2584,
+      "original_axon_leaves": 28,
+      "selected_child_ids_sha256": "8da8e9e6afb574a142ce24a3620dba93e5f9af4081000969e1d92f5ed48a269a"
+    },
+    {
+      "NeuronUID": "251637::439.swc",
+      "computable": true,
+      "selected_edges": 6293,
+      "original_axon_leaves": 87,
+      "selected_child_ids_sha256": "460247ea215c2991770d6c3162fe9d189437c56071b272b4f1b6f6373fa8d157"
+    },
+    {
+      "NeuronUID": "251637::440.swc",
+      "computable": true,
+      "selected_edges": 8896,
+      "original_axon_leaves": 205,
+      "selected_child_ids_sha256": "8c0da4b0ab1bd2f8be687737509b463b084026d46904cc5ec830618e102b0911"
+    },
+    {
+      "NeuronUID": "251637::444.swc",
+      "computable": true,
+      "selected_edges": 2846,
+      "original_axon_leaves": 157,
+      "selected_child_ids_sha256": "bd7f7cad8b9e685956d0cb2e84685e60cee103c2b81b798e9a29fad1170e731a"
+    },
+    {
+      "NeuronUID": "251637::458.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::459.swc",
+      "computable": true,
+      "selected_edges": 3323,
+      "original_axon_leaves": 69,
+      "selected_child_ids_sha256": "9c9bc41f38b673ccd2e52062967b5d3cf107382ceaeaddf82be024edf61febea"
+    },
+    {
+      "NeuronUID": "251637::460.swc",
+      "computable": true,
+      "selected_edges": 1606,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "866c4988fb9f35ee0e8d856b6adbf19d2755b1943e6cec0bf80d256787358c43"
+    },
+    {
+      "NeuronUID": "251637::461.swc",
+      "computable": true,
+      "selected_edges": 3810,
+      "original_axon_leaves": 36,
+      "selected_child_ids_sha256": "c27dab71b251852c41d432be37ce04a778d38a8be1dcb4331b7a92d2a25c4077"
+    },
+    {
+      "NeuronUID": "251637::469.swc",
+      "computable": true,
+      "selected_edges": 2580,
+      "original_axon_leaves": 49,
+      "selected_child_ids_sha256": "58c1b34236e2cd4542c874a4ab1b1d5a29957aa394004d39d357e963045af304"
+    },
+    {
+      "NeuronUID": "251637::112.swc",
+      "computable": true,
+      "selected_edges": 4023,
+      "original_axon_leaves": 62,
+      "selected_child_ids_sha256": "9f2f7aaad253722f1e8824714256b220b615c82250f250fc54b8ae21305f8ab0"
+    },
+    {
+      "NeuronUID": "251637::114.swc",
+      "computable": true,
+      "selected_edges": 6369,
+      "original_axon_leaves": 134,
+      "selected_child_ids_sha256": "242cdab8c99bed24118bfe169131aa603a68cd7cb3194acff2529f0322731048"
+    },
+    {
+      "NeuronUID": "251637::115.swc",
+      "computable": true,
+      "selected_edges": 1155,
+      "original_axon_leaves": 31,
+      "selected_child_ids_sha256": "1f4d6368dbb39c051443f0ac646dea9f08f5272023c5dcdb8234f32080eb0f69"
+    },
+    {
+      "NeuronUID": "251637::414.swc",
+      "computable": true,
+      "selected_edges": 11217,
+      "original_axon_leaves": 310,
+      "selected_child_ids_sha256": "6d63bfc62ae50302a9dca7d4c06cd0580059b777af24deeacc17818bb51a840b"
+    },
+    {
+      "NeuronUID": "251637::415.swc",
+      "computable": true,
+      "selected_edges": 28874,
+      "original_axon_leaves": 423,
+      "selected_child_ids_sha256": "cba992729646e64eb31c14e741b9e8e5be5f1c8ecb76d9bc3f727e243b5cc8f3"
+    },
+    {
+      "NeuronUID": "251637::416.swc",
+      "computable": true,
+      "selected_edges": 4721,
+      "original_axon_leaves": 218,
+      "selected_child_ids_sha256": "89b70b12835aa01ca2f7a9966462e390e7553726c8d7b09abe887271293035ae"
+    },
+    {
+      "NeuronUID": "251637::417.swc",
+      "computable": true,
+      "selected_edges": 12352,
+      "original_axon_leaves": 216,
+      "selected_child_ids_sha256": "9c70287ad603d9095313783e2ca2689e85fbb64f08d4751963b4480d8db7f49e"
+    },
+    {
+      "NeuronUID": "251637::418.swc",
+      "computable": true,
+      "selected_edges": 3935,
+      "original_axon_leaves": 75,
+      "selected_child_ids_sha256": "5aef2a3bf3aa1d608640b4eb7247f46fed4d9ec8292e8b663735f0cc422bdc55"
+    },
+    {
+      "NeuronUID": "251637::419.swc",
+      "computable": true,
+      "selected_edges": 4844,
+      "original_axon_leaves": 51,
+      "selected_child_ids_sha256": "99549e69ab000017f0c111a7cdc3622abf85451fad74a6cb7005889ce4b8e3ef"
+    },
+    {
+      "NeuronUID": "251637::424.swc",
+      "computable": true,
+      "selected_edges": 5844,
+      "original_axon_leaves": 104,
+      "selected_child_ids_sha256": "7d93cb5b314ad8600c5e3f55b7718669df6a2afb5e69fbd5f2c4d16d3ae835e7"
+    },
+    {
+      "NeuronUID": "251637::425.swc",
+      "computable": true,
+      "selected_edges": 2647,
+      "original_axon_leaves": 58,
+      "selected_child_ids_sha256": "2822dc2d60e47afd766829251ce59d55cd18d7494a8a9f725e84a8d0884c34bd"
+    },
+    {
+      "NeuronUID": "251637::426.swc",
+      "computable": true,
+      "selected_edges": 698,
+      "original_axon_leaves": 9,
+      "selected_child_ids_sha256": "e3257375a019f9d17e5450b272212757a68a37443bd6fef13a348c8fb0f983a0"
+    },
+    {
+      "NeuronUID": "251637::427.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::428.swc",
+      "computable": true,
+      "selected_edges": 4904,
+      "original_axon_leaves": 287,
+      "selected_child_ids_sha256": "c9e7f8982ac7718fc3c1cc6a2ae24c6be618c33a14e210834f1016188fabc85c"
+    },
+    {
+      "NeuronUID": "251637::429.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::430.swc",
+      "computable": true,
+      "selected_edges": 17091,
+      "original_axon_leaves": 337,
+      "selected_child_ids_sha256": "3d70cd4972540c791397e22a544ebb5b587fb8e89c527467c3dad439b02e91c5"
+    },
+    {
+      "NeuronUID": "251637::431.swc",
+      "computable": true,
+      "selected_edges": 12822,
+      "original_axon_leaves": 160,
+      "selected_child_ids_sha256": "716f014d9b171f355abdc2e185050077f1870b5e5928dab7798314eb3f311f2a"
+    },
+    {
+      "NeuronUID": "251637::432.swc",
+      "computable": true,
+      "selected_edges": 4826,
+      "original_axon_leaves": 92,
+      "selected_child_ids_sha256": "1ab676f9a0bbb7054e5060848fb6d0baeaf11ca169ceee9f8bf6b6c6ccf113a7"
+    },
+    {
+      "NeuronUID": "251637::433.swc",
+      "computable": true,
+      "selected_edges": 16534,
+      "original_axon_leaves": 301,
+      "selected_child_ids_sha256": "bd39ae325acedcd59b274e02002d0cfbc395fd3e3d41c3db975e21f6aefcdf61"
+    },
+    {
+      "NeuronUID": "251637::434.swc",
+      "computable": true,
+      "selected_edges": 3711,
+      "original_axon_leaves": 64,
+      "selected_child_ids_sha256": "87126bcb07a3d06c2bea0a0e1fd4a41fad0318a810cb13be5d5c49701b1e548b"
+    },
+    {
+      "NeuronUID": "251637::435.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::436.swc",
+      "computable": true,
+      "selected_edges": 27124,
+      "original_axon_leaves": 397,
+      "selected_child_ids_sha256": "0d119630e86ef71a3194e8cce49cb130d5f668a7602ba344ea7893320858f947"
+    },
+    {
+      "NeuronUID": "251637::437.swc",
+      "computable": true,
+      "selected_edges": 53802,
+      "original_axon_leaves": 854,
+      "selected_child_ids_sha256": "7645441da3bfa6e38a85f8179a2ab71833766d6d377ec72f6318ce85f733a6ed"
+    },
+    {
+      "NeuronUID": "251637::441.swc",
+      "computable": true,
+      "selected_edges": 4124,
+      "original_axon_leaves": 7,
+      "selected_child_ids_sha256": "c82357e376f34468b4acd487eb049777f3589adfda42fb28fe31f766449ea217"
+    },
+    {
+      "NeuronUID": "251637::442.swc",
+      "computable": true,
+      "selected_edges": 29159,
+      "original_axon_leaves": 495,
+      "selected_child_ids_sha256": "44dce52b559f7ed3189b540a54e8756eda98a20704742a50915f4fc34f0930dc"
+    },
+    {
+      "NeuronUID": "251637::443.swc",
+      "computable": true,
+      "selected_edges": 12007,
+      "original_axon_leaves": 170,
+      "selected_child_ids_sha256": "1b5dede3c2a182f2507a1d8af11c21264c21613c7d7b9c25b7914afa5b671f86"
+    },
+    {
+      "NeuronUID": "251637::445.swc",
+      "computable": true,
+      "selected_edges": 5725,
+      "original_axon_leaves": 78,
+      "selected_child_ids_sha256": "8b7666797c88e3199191526c3e036258d4b883e3b0d0489982b0f0affa7712d3"
+    },
+    {
+      "NeuronUID": "251637::446.swc",
+      "computable": true,
+      "selected_edges": 7683,
+      "original_axon_leaves": 55,
+      "selected_child_ids_sha256": "81788c3d57f60a05a278bc00d3de2231615db8827b39e9b46be68c1ccafa2e2f"
+    },
+    {
+      "NeuronUID": "251637::447.swc",
+      "computable": true,
+      "selected_edges": 5181,
+      "original_axon_leaves": 82,
+      "selected_child_ids_sha256": "ce3e1d1403dc4943e29dcaff7dda2096fb55648158c531d21210671c7c069db5"
+    },
+    {
+      "NeuronUID": "251637::448.swc",
+      "computable": true,
+      "selected_edges": 2559,
+      "original_axon_leaves": 19,
+      "selected_child_ids_sha256": "84ca326f4b6ecc23aa94007b3d10772bb7c8ebc9f448d9c23fda5d10630a2ee0"
+    },
+    {
+      "NeuronUID": "251637::449.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::450.swc",
+      "computable": true,
+      "selected_edges": 698,
+      "original_axon_leaves": 13,
+      "selected_child_ids_sha256": "8975409aba4861c06e2b78c1c39946500ac6d0e1cab345be0d8628d2d379ea87"
+    },
+    {
+      "NeuronUID": "251637::451.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::452.swc",
+      "computable": true,
+      "selected_edges": 13995,
+      "original_axon_leaves": 200,
+      "selected_child_ids_sha256": "0124de280b27b3bcd38a9cf88ea766e14f59751d733acadcacb45ff3302b31eb"
+    },
+    {
+      "NeuronUID": "251637::453.swc",
+      "computable": true,
+      "selected_edges": 1568,
+      "original_axon_leaves": 44,
+      "selected_child_ids_sha256": "991560e88bf07738a1da0eec866f7a0485f9a13dfdb4c26932d771ec2f3517e8"
+    },
+    {
+      "NeuronUID": "251637::454.swc",
+      "computable": true,
+      "selected_edges": 3974,
+      "original_axon_leaves": 21,
+      "selected_child_ids_sha256": "ae624f5428be6dc7bf7b0c9f2d947569c7fe8d38f77d287231afce534cad7947"
+    },
+    {
+      "NeuronUID": "251637::455.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::456.swc",
+      "computable": true,
+      "selected_edges": 2400,
+      "original_axon_leaves": 94,
+      "selected_child_ids_sha256": "da412b31d3e0682c95b0bc0c6fc44ef703b8ca4c5179c6e7fecffde7663754a8"
+    },
+    {
+      "NeuronUID": "251637::457.swc",
+      "computable": true,
+      "selected_edges": 11233,
+      "original_axon_leaves": 183,
+      "selected_child_ids_sha256": "7a22370d23b0ce3bf79efbcdfd56c43d8221d3acb6d9193db157a0067cd2ced7"
+    },
+    {
+      "NeuronUID": "251637::462.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::463.swc",
+      "computable": true,
+      "selected_edges": 841,
+      "original_axon_leaves": 21,
+      "selected_child_ids_sha256": "10d45609027d94c247c68bf5365bcca79eebc45cb24b7e9a5ebb5cc198d6dc87"
+    },
+    {
+      "NeuronUID": "251637::464.swc",
+      "computable": true,
+      "selected_edges": 701,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "e81035525be2d09c61aa7603a79b1fb22bb48bbfdf1dd6ed0d9d7f029ed493a1"
+    },
+    {
+      "NeuronUID": "251637::465.swc",
+      "computable": true,
+      "selected_edges": 2328,
+      "original_axon_leaves": 6,
+      "selected_child_ids_sha256": "e4021df1825443a6e0548bf520c34a4eb37c7d826416895b3947d7d60a8f1968"
+    },
+    {
+      "NeuronUID": "251637::466.swc",
+      "computable": true,
+      "selected_edges": 1063,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "adc96391bbd54783c10e25d678ab009b52299d1d523e6e841e7a91755c00f8f1"
+    },
+    {
+      "NeuronUID": "251637::467.swc",
+      "computable": true,
+      "selected_edges": 2184,
+      "original_axon_leaves": 11,
+      "selected_child_ids_sha256": "4a36cbbdf63be43dceef00df92673cd33dba1a31b168a1a055166d3ec46c170e"
+    },
+    {
+      "NeuronUID": "251637::468.swc",
+      "computable": true,
+      "selected_edges": 1348,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "8131fb413f028e96dbcbfc6eb9ef1d18751fdfb16fbb52c2c278fd684be51d78"
+    },
+    {
+      "NeuronUID": "251637::470.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::471.swc",
+      "computable": true,
+      "selected_edges": 986,
+      "original_axon_leaves": 11,
+      "selected_child_ids_sha256": "130fdf6483fb7edba5b0c2a205f199d7136d3364f015c12cb1d6a576f8301c9c"
+    },
+    {
+      "NeuronUID": "251637::392.swc",
+      "computable": true,
+      "selected_edges": 10041,
+      "original_axon_leaves": 216,
+      "selected_child_ids_sha256": "846b249f6895668e76c53417bc19db775c629921475dd92127f21ddc09199123"
+    },
+    {
+      "NeuronUID": "251637::393.swc",
+      "computable": true,
+      "selected_edges": 8632,
+      "original_axon_leaves": 176,
+      "selected_child_ids_sha256": "1ac69819949d360757268b0063235c5bb46cead0da68ed2f9977dc086e7a847c"
+    },
+    {
+      "NeuronUID": "251637::394.swc",
+      "computable": true,
+      "selected_edges": 603,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "a7aee72c32c453033dff5cbea07d663fe6c8d0657904f53218e9c8f7a1bd7d84"
+    },
+    {
+      "NeuronUID": "251637::395.swc",
+      "computable": true,
+      "selected_edges": 1576,
+      "original_axon_leaves": 25,
+      "selected_child_ids_sha256": "4e6be746afa8db6dc3a1e8ea28fee287449566add985d2ffe92cd8d012f85d05"
+    },
+    {
+      "NeuronUID": "251637::396.swc",
+      "computable": true,
+      "selected_edges": 7653,
+      "original_axon_leaves": 181,
+      "selected_child_ids_sha256": "97d82a3de41809bc33684670a4558e96afdf578a5e31b8b4e46925f2e14a5148"
+    },
+    {
+      "NeuronUID": "251637::397.swc",
+      "computable": true,
+      "selected_edges": 180,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "93c25bc4cc622e2972f605053193a10288b93a41ee5d2f39ab89017671d2f6ae"
+    },
+    {
+      "NeuronUID": "251637::398.swc",
+      "computable": true,
+      "selected_edges": 4182,
+      "original_axon_leaves": 132,
+      "selected_child_ids_sha256": "024642c005be2d5cdd072fd7b07995f42eaece0bfa7f248d9cae99503f36c075"
+    },
+    {
+      "NeuronUID": "251637::399.swc",
+      "computable": true,
+      "selected_edges": 28065,
+      "original_axon_leaves": 415,
+      "selected_child_ids_sha256": "d70612a472bed849d6abe1dee36e93c675d78e5bd4eb0304923da6e51e252056"
+    },
+    {
+      "NeuronUID": "251637::400.swc",
+      "computable": true,
+      "selected_edges": 28533,
+      "original_axon_leaves": 521,
+      "selected_child_ids_sha256": "c595fb993908a57c38a34dde31987e4dc77b7aa2f7115c72f7e95e512ba0f083"
+    },
+    {
+      "NeuronUID": "251637::401.swc",
+      "computable": true,
+      "selected_edges": 4679,
+      "original_axon_leaves": 57,
+      "selected_child_ids_sha256": "dde6634a04175b1a05f3e4b4f4ce62bf9fbf19934c6833bd0695cfa4d0bc5332"
+    },
+    {
+      "NeuronUID": "251637::402.swc",
+      "computable": true,
+      "selected_edges": 6641,
+      "original_axon_leaves": 86,
+      "selected_child_ids_sha256": "60ecff19541d3af03787197e73f630788c804d61aa64fe0e392264b34db31a6b"
+    },
+    {
+      "NeuronUID": "251637::403.swc",
+      "computable": true,
+      "selected_edges": 25393,
+      "original_axon_leaves": 531,
+      "selected_child_ids_sha256": "febb6586b9b00edc8ed45bd71b90b29a4ae248320468b1309a2572d779055481"
+    },
+    {
+      "NeuronUID": "251637::404.swc",
+      "computable": true,
+      "selected_edges": 1086,
+      "original_axon_leaves": 33,
+      "selected_child_ids_sha256": "4fdb3c79a37e45fafb66128299cdea570afdad4574ad7406c5860d2a3384a661"
+    },
+    {
+      "NeuronUID": "251637::405.swc",
+      "computable": true,
+      "selected_edges": 9934,
+      "original_axon_leaves": 250,
+      "selected_child_ids_sha256": "997df14b792651cf738b19f983efb0b6ea9af605dd4f94c81eefd166d3880871"
+    },
+    {
+      "NeuronUID": "251637::406.swc",
+      "computable": true,
+      "selected_edges": 4497,
+      "original_axon_leaves": 234,
+      "selected_child_ids_sha256": "68a91c10640278b5dd5c30d8dbcc3f43cefbe2330e4e0c8528c594dab42729e1"
+    },
+    {
+      "NeuronUID": "251637::407.swc",
+      "computable": true,
+      "selected_edges": 1925,
+      "original_axon_leaves": 18,
+      "selected_child_ids_sha256": "677b34413327fcb65875e012a48a5e3707b4634bd4189c60a2cb13861081cd90"
+    },
+    {
+      "NeuronUID": "251637::408.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::409.swc",
+      "computable": true,
+      "selected_edges": 2276,
+      "original_axon_leaves": 24,
+      "selected_child_ids_sha256": "2b2db354133795d466a935dd40871673daa67a270488a987566f5530b8877f10"
+    },
+    {
+      "NeuronUID": "251637::410.swc",
+      "computable": true,
+      "selected_edges": 554,
+      "original_axon_leaves": 27,
+      "selected_child_ids_sha256": "7790026a0577f571e33a68e416a873963a21aafe94b29ff81c48cfa927fa1951"
+    },
+    {
+      "NeuronUID": "251637::411.swc",
+      "computable": true,
+      "selected_edges": 1834,
+      "original_axon_leaves": 28,
+      "selected_child_ids_sha256": "9fa92b4a83ffc53ea499812c4d0a78f7bdbcc0cadc9ee968774f97c218a1509f"
+    },
+    {
+      "NeuronUID": "251637::412.swc",
+      "computable": true,
+      "selected_edges": 792,
+      "original_axon_leaves": 24,
+      "selected_child_ids_sha256": "45c45540b3ab520169a620a8170fe17a6a48fa2c7cbd6d131d162b0c0a2ff171"
+    },
+    {
+      "NeuronUID": "251637::413.swc",
+      "computable": true,
+      "selected_edges": 399,
+      "original_axon_leaves": 9,
+      "selected_child_ids_sha256": "e94624a5076b183aca5756bfaa423f7e5e05d43a8755673837b7fd4ca180827e"
+    },
+    {
+      "NeuronUID": "251637::420.swc",
+      "computable": true,
+      "selected_edges": 1768,
+      "original_axon_leaves": 21,
+      "selected_child_ids_sha256": "a59550ff822b3fae7328b2c2dde6e7a037bd4f3c43167c007bce43dc5bf5c65a"
+    },
+    {
+      "NeuronUID": "251637::421.swc",
+      "computable": true,
+      "selected_edges": 1538,
+      "original_axon_leaves": 26,
+      "selected_child_ids_sha256": "511dbfd99b14325e8cc4ef1b2f59cc4a79492e52f81dd91def2cb0ee3f051a71"
+    },
+    {
+      "NeuronUID": "251637::478.swc",
+      "computable": true,
+      "selected_edges": 34655,
+      "original_axon_leaves": 382,
+      "selected_child_ids_sha256": "3800f030814e23c0eb1d0739c4b984a91b43de2487cee10ba5c50e020fd96362"
+    },
+    {
+      "NeuronUID": "251637::479.swc",
+      "computable": true,
+      "selected_edges": 6311,
+      "original_axon_leaves": 93,
+      "selected_child_ids_sha256": "c8f0127df5af4b30283206a2b38d65ec330dd35877277ff3fea43f67abd51e9b"
+    },
+    {
+      "NeuronUID": "251637::480.swc",
+      "computable": true,
+      "selected_edges": 2167,
+      "original_axon_leaves": 28,
+      "selected_child_ids_sha256": "86b20713f76f714eb37751681fb7aa8fed24e4dc5a85d4d9f8a05ee8e642da8c"
+    },
+    {
+      "NeuronUID": "251637::481.swc",
+      "computable": true,
+      "selected_edges": 14970,
+      "original_axon_leaves": 191,
+      "selected_child_ids_sha256": "bd2c8f41d340ec21863921abe31f42265b5b2f85284be9e0e66a403a89d04f1f"
+    },
+    {
+      "NeuronUID": "251637::482.swc",
+      "computable": true,
+      "selected_edges": 6071,
+      "original_axon_leaves": 119,
+      "selected_child_ids_sha256": "1bac876dec34555411568541bd09c8e1827aee32480613f7d1c4fa03c8440083"
+    },
+    {
+      "NeuronUID": "251637::483.swc",
+      "computable": true,
+      "selected_edges": 8609,
+      "original_axon_leaves": 61,
+      "selected_child_ids_sha256": "40f4feef5922ffe5661b12ced7e0a3a9c95dc3e575ec8ce6088b3b666c33fc36"
+    },
+    {
+      "NeuronUID": "251637::484.swc",
+      "computable": true,
+      "selected_edges": 1871,
+      "original_axon_leaves": 9,
+      "selected_child_ids_sha256": "d08005b51c4fe5bd6bbd909054fd62dbc303000a2400a0ffa9f48da40becdb26"
+    },
+    {
+      "NeuronUID": "251637::490.swc",
+      "computable": true,
+      "selected_edges": 35430,
+      "original_axon_leaves": 494,
+      "selected_child_ids_sha256": "913e03b1f6cca379f8c2aa3d7da5dfc3bdb57abcd123c73ae715235bb2b50e98"
+    },
+    {
+      "NeuronUID": "251637::491.swc",
+      "computable": true,
+      "selected_edges": 5070,
+      "original_axon_leaves": 52,
+      "selected_child_ids_sha256": "06cc7fe6612ca3f8491f2510b534dc416553312b9fb25a8775f0e35023e02ec7"
+    },
+    {
+      "NeuronUID": "251637::492.swc",
+      "computable": true,
+      "selected_edges": 5652,
+      "original_axon_leaves": 48,
+      "selected_child_ids_sha256": "7c3fd8927fea5cfe6489e8524d2b0fa9687653a979ada8cec02082583a2386e3"
+    },
+    {
+      "NeuronUID": "251637::494.swc",
+      "computable": true,
+      "selected_edges": 478,
+      "original_axon_leaves": 9,
+      "selected_child_ids_sha256": "f46807501b830be27061a6727f0078ed406d02c66dec68b9fe8df20edcd5c034"
+    },
+    {
+      "NeuronUID": "251637::472.swc",
+      "computable": true,
+      "selected_edges": 27172,
+      "original_axon_leaves": 231,
+      "selected_child_ids_sha256": "d3f45591facf6a1e158667fe4e1db2c73536c2c1d0f1e9a5eac3b12ed2eb1085"
+    },
+    {
+      "NeuronUID": "251637::473.swc",
+      "computable": true,
+      "selected_edges": 1823,
+      "original_axon_leaves": 49,
+      "selected_child_ids_sha256": "acb0d567cb93f9ccc992c1e0e3b8d17de3d6b16c2cfc2fcc8f71b3c02be4b2d5"
+    },
+    {
+      "NeuronUID": "251637::474.swc",
+      "computable": true,
+      "selected_edges": 16422,
+      "original_axon_leaves": 361,
+      "selected_child_ids_sha256": "a709c00702851482707ac8b8d2709db26f423383bdfa6ece2412277e7a2e47f6"
+    },
+    {
+      "NeuronUID": "251637::475.swc",
+      "computable": true,
+      "selected_edges": 39478,
+      "original_axon_leaves": 440,
+      "selected_child_ids_sha256": "4220a4f785f956167a30d31fed3829c3d63676f213c8f0cf4e699c28bc640769"
+    },
+    {
+      "NeuronUID": "251637::476.swc",
+      "computable": true,
+      "selected_edges": 25778,
+      "original_axon_leaves": 293,
+      "selected_child_ids_sha256": "1bcff359e40b83d5af51380beedef2d48fe0b96ce0621992d7b2d3cfa907019b"
+    },
+    {
+      "NeuronUID": "251637::477.swc",
+      "computable": true,
+      "selected_edges": 13795,
+      "original_axon_leaves": 99,
+      "selected_child_ids_sha256": "d665b9f2db7e645b1f7e23145b393eeebb1b86018b9cbeefd03ab4a67b3a4e7c"
+    },
+    {
+      "NeuronUID": "251637::485.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::486.swc",
+      "computable": true,
+      "selected_edges": 236,
+      "original_axon_leaves": 4,
+      "selected_child_ids_sha256": "39b4ce4bf39bfef09875e46c53dc1497c3e55e13c1438920087f72dd4d6b1870"
+    },
+    {
+      "NeuronUID": "251637::487.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::488.swc",
+      "computable": true,
+      "selected_edges": 158,
+      "original_axon_leaves": 3,
+      "selected_child_ids_sha256": "fafd4f4d275866691253a94e1e52d180f3c5be0838f3b16a2f376271cb4c77f7"
+    },
+    {
+      "NeuronUID": "251637::489.swc",
+      "computable": true,
+      "selected_edges": 3309,
+      "original_axon_leaves": 9,
+      "selected_child_ids_sha256": "ee65f6aa60234a50fa666e2fea6ed96c9d721c7c6c124fe05e30c74ebeca3869"
+    },
+    {
+      "NeuronUID": "251637::493.swc",
+      "computable": true,
+      "selected_edges": 10432,
+      "original_axon_leaves": 106,
+      "selected_child_ids_sha256": "d541d98945fe2bf41a2e3d71426120605393f3e0ed833e0ad6ab315a7f462dca"
+    },
+    {
+      "NeuronUID": "251637::012.swc",
+      "computable": true,
+      "selected_edges": 10287,
+      "original_axon_leaves": 124,
+      "selected_child_ids_sha256": "2e601871fc331e8a153c6236385c98f8c4ef54af92913c4fcfa64a30e81ada24"
+    },
+    {
+      "NeuronUID": "251637::013.swc",
+      "computable": true,
+      "selected_edges": 43691,
+      "original_axon_leaves": 645,
+      "selected_child_ids_sha256": "cc36219b82e9edd9032a78d78898608c626ac954eff5932410013e42572b07a4"
+    },
+    {
+      "NeuronUID": "251637::016.swc",
+      "computable": true,
+      "selected_edges": 15395,
+      "original_axon_leaves": 146,
+      "selected_child_ids_sha256": "174e1a17f31e6e98395782f537075497c41b1b8e8a20b3180aeef95f4920c4c2"
+    },
+    {
+      "NeuronUID": "251637::042.swc",
+      "computable": true,
+      "selected_edges": 4814,
+      "original_axon_leaves": 27,
+      "selected_child_ids_sha256": "7c4fda116d4f933be08737c11a940077bff5f6a0f0de3f599cdfd2c49bd7c16a"
+    },
+    {
+      "NeuronUID": "251637::052.swc",
+      "computable": true,
+      "selected_edges": 25209,
+      "original_axon_leaves": 374,
+      "selected_child_ids_sha256": "1d6bf02d7546a0c51eb74f6fa887e8480604c0a0e85554d47fd975958552b072"
+    },
+    {
+      "NeuronUID": "251637::053.swc",
+      "computable": true,
+      "selected_edges": 2051,
+      "original_axon_leaves": 15,
+      "selected_child_ids_sha256": "c7e3110865925c54e6efee7477eae51148ae511bb9ab6e352dcae61f608b7b84"
+    },
+    {
+      "NeuronUID": "251637::062.swc",
+      "computable": true,
+      "selected_edges": 1905,
+      "original_axon_leaves": 19,
+      "selected_child_ids_sha256": "323dfe3436e456928cc95559c0d9ab208b95678340903a3b81c28620e2d942e1"
+    },
+    {
+      "NeuronUID": "251637::063.swc",
+      "computable": true,
+      "selected_edges": 242,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "1f495b73ab659b45c0b486462fb44c2562562744db736bcf5afebb5ce1123d3b"
+    },
+    {
+      "NeuronUID": "251637::095.swc",
+      "computable": true,
+      "selected_edges": 160,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "cae2214683c35aaa696abddfebaf9b0d15f26237d9a166b5955fe55ef51ad2d5"
+    },
+    {
+      "NeuronUID": "251637::001.swc",
+      "computable": true,
+      "selected_edges": 15695,
+      "original_axon_leaves": 166,
+      "selected_child_ids_sha256": "81b17e9619c3b398b2128e1895877bedbc5963d4fcaee6955e47c4568180a596"
+    },
+    {
+      "NeuronUID": "251637::002.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::007.swc",
+      "computable": true,
+      "selected_edges": 3943,
+      "original_axon_leaves": 30,
+      "selected_child_ids_sha256": "5909bfdd72836dfd9e448a33c6fbf2332b163817565049c24bcc5ac1470021af"
+    },
+    {
+      "NeuronUID": "251637::008.swc",
+      "computable": true,
+      "selected_edges": 3799,
+      "original_axon_leaves": 47,
+      "selected_child_ids_sha256": "4acc41b2b0bcb02624802149a337ad3a3b3918ddef61f73cbe2009d4f3d4f4cc"
+    },
+    {
+      "NeuronUID": "251637::009.swc",
+      "computable": true,
+      "selected_edges": 2930,
+      "original_axon_leaves": 46,
+      "selected_child_ids_sha256": "6e093a83150f83d91c955a95d180977714e21f5c9a7324c728fa5a234100b6da"
+    },
+    {
+      "NeuronUID": "251637::014.swc",
+      "computable": true,
+      "selected_edges": 2490,
+      "original_axon_leaves": 22,
+      "selected_child_ids_sha256": "64a043d4aaf54352611e088d27cab9480fca776b19482730c2a1685ce6a16157"
+    },
+    {
+      "NeuronUID": "251637::015.swc",
+      "computable": true,
+      "selected_edges": 5232,
+      "original_axon_leaves": 89,
+      "selected_child_ids_sha256": "0cb4ca0e2521cccde7235d2a761d7729ecf8326b3bb20e45f585861de19c6dc3"
+    },
+    {
+      "NeuronUID": "251637::018.swc",
+      "computable": true,
+      "selected_edges": 2959,
+      "original_axon_leaves": 40,
+      "selected_child_ids_sha256": "9bd7c90c6a54096d779c337f182cc5a8ee9a9016accf78f7e63efa31a274d37b"
+    },
+    {
+      "NeuronUID": "251637::039.swc",
+      "computable": true,
+      "selected_edges": 5420,
+      "original_axon_leaves": 71,
+      "selected_child_ids_sha256": "92836f31dc543a9a89c090d6dfdb8efdabc2298bd8be3a83fc5ea9727c13a884"
+    },
+    {
+      "NeuronUID": "251637::044.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::045.swc",
+      "computable": true,
+      "selected_edges": 749,
+      "original_axon_leaves": 4,
+      "selected_child_ids_sha256": "20567ca9ce1edbab219ee63dd9a6a886dd0c32f81260b6d33bcc98f9f8ad7d7e"
+    },
+    {
+      "NeuronUID": "251637::046.swc",
+      "computable": true,
+      "selected_edges": 965,
+      "original_axon_leaves": 8,
+      "selected_child_ids_sha256": "d9010f7646cad56a8bf230e1573052ba1ee6ff559ef0265bf2fa53727e46842a"
+    },
+    {
+      "NeuronUID": "251637::047.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::048.swc",
+      "computable": true,
+      "selected_edges": 3971,
+      "original_axon_leaves": 52,
+      "selected_child_ids_sha256": "1d3c11a13dfd3180b0d13594bef43ef12a489108d2cf63902ac5ece43c9a3b7f"
+    },
+    {
+      "NeuronUID": "251637::049.swc",
+      "computable": true,
+      "selected_edges": 1009,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "b9f86e3bd3f89d6d9d8e10aaef35daa817392eb6e252a97abe914321f8bd0326"
+    },
+    {
+      "NeuronUID": "251637::050.swc",
+      "computable": true,
+      "selected_edges": 231,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "a95f17eaf3f1919196121f89a059611bb2cc275b08caf730c892d0e6e814829d"
+    },
+    {
+      "NeuronUID": "251637::051.swc",
+      "computable": true,
+      "selected_edges": 8565,
+      "original_axon_leaves": 114,
+      "selected_child_ids_sha256": "131739d3b7af240a569e140d91094b2801ac0e97fc8cec57e7e5fbf7fac340b3"
+    },
+    {
+      "NeuronUID": "251637::054.swc",
+      "computable": true,
+      "selected_edges": 4139,
+      "original_axon_leaves": 21,
+      "selected_child_ids_sha256": "1c6fcfed8b861a13d8f0f362ecb9528e81b69ee0eeea32d5aa1ee356e18ca291"
+    },
+    {
+      "NeuronUID": "251637::055.swc",
+      "computable": true,
+      "selected_edges": 2527,
+      "original_axon_leaves": 30,
+      "selected_child_ids_sha256": "15075acec03cfa2dd66f348bf838ba3eb4ff6dfdb70c73f2b0068b316e8b6372"
+    },
+    {
+      "NeuronUID": "251637::056.swc",
+      "computable": true,
+      "selected_edges": 3318,
+      "original_axon_leaves": 14,
+      "selected_child_ids_sha256": "9c5bd6acac4cc5d98d39c9a3c8410fcbef6d3971036ae4ea448a3b79d39af29d"
+    },
+    {
+      "NeuronUID": "251637::057.swc",
+      "computable": true,
+      "selected_edges": 6352,
+      "original_axon_leaves": 69,
+      "selected_child_ids_sha256": "b0d191cc7c7357a3b11b895e2ab2249b8c8f1d55b485a0c308a53bbb13da4829"
+    },
+    {
+      "NeuronUID": "251637::058.swc",
+      "computable": true,
+      "selected_edges": 3286,
+      "original_axon_leaves": 49,
+      "selected_child_ids_sha256": "d1f64dcc31aeb8588b53a85ebea73ee36e582d1e91e6fb9719188eada5ebff57"
+    },
+    {
+      "NeuronUID": "251637::059.swc",
+      "computable": true,
+      "selected_edges": 931,
+      "original_axon_leaves": 6,
+      "selected_child_ids_sha256": "f80b24f9bfb087f3dc0211d96124267cab6cfe377b9f6f8b9d771011f8721f49"
+    },
+    {
+      "NeuronUID": "251637::060.swc",
+      "computable": true,
+      "selected_edges": 11148,
+      "original_axon_leaves": 113,
+      "selected_child_ids_sha256": "9a607b3b341e36933ace90d13865a0d7abb4e0e172bb4e25c69af04ec597dd07"
+    },
+    {
+      "NeuronUID": "251637::061.swc",
+      "computable": true,
+      "selected_edges": 21047,
+      "original_axon_leaves": 230,
+      "selected_child_ids_sha256": "2fe49d8a383ebcd4f429cac59c03a3663403d8d324e92fc7ab98907b9ff62aa7"
+    },
+    {
+      "NeuronUID": "251637::064.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::065.swc",
+      "computable": true,
+      "selected_edges": 1041,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "f2b15582295b49c14097bd445209efe776f69c2bfc4f581b938492ca5f03cb4e"
+    },
+    {
+      "NeuronUID": "251637::066.swc",
+      "computable": true,
+      "selected_edges": 4067,
+      "original_axon_leaves": 62,
+      "selected_child_ids_sha256": "5f1668e9bf3f8a07c5dc4db6d2afa04541aa75a78ff8a6faab2e286e0c6b032a"
+    },
+    {
+      "NeuronUID": "251637::067.swc",
+      "computable": true,
+      "selected_edges": 10757,
+      "original_axon_leaves": 117,
+      "selected_child_ids_sha256": "a21d3037c06d924d0e67a709aad0e4698ecd438c45a15ad866ac033961dbb8b8"
+    },
+    {
+      "NeuronUID": "251637::068.swc",
+      "computable": true,
+      "selected_edges": 1904,
+      "original_axon_leaves": 7,
+      "selected_child_ids_sha256": "d75fd3bd9ff4dc329f31965bc309807f20f6e0e8db460ae73d3525d381418892"
+    },
+    {
+      "NeuronUID": "251637::069.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::071.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::072.swc",
+      "computable": true,
+      "selected_edges": 34696,
+      "original_axon_leaves": 490,
+      "selected_child_ids_sha256": "39b7eddc26312372b1e6be7985cc8998f3d27b860b203363e8c6f7eced0d193e"
+    },
+    {
+      "NeuronUID": "251637::073.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::074.swc",
+      "computable": true,
+      "selected_edges": 1682,
+      "original_axon_leaves": 27,
+      "selected_child_ids_sha256": "bc57405219cbf2bc61b06e148d49f1a7febb68bea692c524e82e092232a2c7cf"
+    },
+    {
+      "NeuronUID": "251637::075.swc",
+      "computable": true,
+      "selected_edges": 1036,
+      "original_axon_leaves": 7,
+      "selected_child_ids_sha256": "1d649f277d4a546d26e58f77bb3977133553c26b2410a74050206c8175391ddd"
+    },
+    {
+      "NeuronUID": "251637::076.swc",
+      "computable": true,
+      "selected_edges": 2342,
+      "original_axon_leaves": 28,
+      "selected_child_ids_sha256": "5bf775df493bdedda3bfbf2c6a675312cd19cf871b603f688305b7455fd7285c"
+    },
+    {
+      "NeuronUID": "251637::077.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::078.swc",
+      "computable": true,
+      "selected_edges": 2386,
+      "original_axon_leaves": 36,
+      "selected_child_ids_sha256": "565b051ba170e83a4d29c56ba9ce3e94081c341cc44d99801f91e82849ca0882"
+    },
+    {
+      "NeuronUID": "251637::080.swc",
+      "computable": true,
+      "selected_edges": 1274,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "5b13463ffc64d2ebf4514cf6a0ca1daa853e26c0405e4d544214865a1ff1b360"
+    },
+    {
+      "NeuronUID": "251637::081.swc",
+      "computable": true,
+      "selected_edges": 1453,
+      "original_axon_leaves": 15,
+      "selected_child_ids_sha256": "cc8a4648e538b16f76a56f38308536963a13c7597a676e2a048c0ed3c9628159"
+    },
+    {
+      "NeuronUID": "251637::082.swc",
+      "computable": true,
+      "selected_edges": 10872,
+      "original_axon_leaves": 133,
+      "selected_child_ids_sha256": "2c5d411101b2717efed8c776f0033c46e4c561c0c852a9c931fb68a6e31d9f74"
+    },
+    {
+      "NeuronUID": "251637::083.swc",
+      "computable": true,
+      "selected_edges": 5221,
+      "original_axon_leaves": 24,
+      "selected_child_ids_sha256": "8423053b0bc326796a4788aa8e080b5f65fc1cb957663129c55eb9a860584981"
+    },
+    {
+      "NeuronUID": "251637::084.swc",
+      "computable": true,
+      "selected_edges": 3997,
+      "original_axon_leaves": 41,
+      "selected_child_ids_sha256": "4ea8051d2fa843e286eecb24f0528c350d371214bf268b5df0394ced33bb4066"
+    },
+    {
+      "NeuronUID": "251637::085.swc",
+      "computable": true,
+      "selected_edges": 23887,
+      "original_axon_leaves": 217,
+      "selected_child_ids_sha256": "5b362b4d75c71ddc17ef39067418e8d453f3026f02063eb1635ea1654715d251"
+    },
+    {
+      "NeuronUID": "251637::086.swc",
+      "computable": true,
+      "selected_edges": 138,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "b48eae91f181e3b28ad044c312edc578aa4e65a8e6afee113e863f4950f8bb50"
+    },
+    {
+      "NeuronUID": "251637::087.swc",
+      "computable": true,
+      "selected_edges": 4404,
+      "original_axon_leaves": 36,
+      "selected_child_ids_sha256": "af1163c7fae398971e63a47844da78f16f93c4abc3647f95268ca3ae4a273ead"
+    },
+    {
+      "NeuronUID": "251637::088.swc",
+      "computable": true,
+      "selected_edges": 147,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "35923f10e02e0fa29868c77a1204eb92557273c04b51f780804ede9ec6987bf0"
+    },
+    {
+      "NeuronUID": "251637::089.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::090.swc",
+      "computable": true,
+      "selected_edges": 1703,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "b3247bf318af6fed7e561a8018efcd088b68a03659663b7cd98dd067ba6e536d"
+    },
+    {
+      "NeuronUID": "251637::091.swc",
+      "computable": true,
+      "selected_edges": 16124,
+      "original_axon_leaves": 255,
+      "selected_child_ids_sha256": "f5c0602c19b496d80d9e977156b3cc6bbb652509d89d440903423fecaea53453"
+    },
+    {
+      "NeuronUID": "251637::003.swc",
+      "computable": true,
+      "selected_edges": 44,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "c15b645bb82554572fbbe23653191e50fbecaaa8db3ab966b09a528e3611276b"
+    },
+    {
+      "NeuronUID": "251637::004.swc",
+      "computable": true,
+      "selected_edges": 20110,
+      "original_axon_leaves": 183,
+      "selected_child_ids_sha256": "347715847c7c7126f8e39fed9471215f9208783d765548667c5feaec26e64fbe"
+    },
+    {
+      "NeuronUID": "251637::005.swc",
+      "computable": true,
+      "selected_edges": 6847,
+      "original_axon_leaves": 42,
+      "selected_child_ids_sha256": "5597bb61ecc26e8a0554d838b35545f0bba00329c98ee610e56b09ef3a79ef03"
+    },
+    {
+      "NeuronUID": "251637::006.swc",
+      "computable": true,
+      "selected_edges": 2006,
+      "original_axon_leaves": 17,
+      "selected_child_ids_sha256": "8e1d14088cbc17fffa6a2d2b8937bb01b084b5345ef8665d346cdea22ada2dcd"
+    },
+    {
+      "NeuronUID": "251637::010.swc",
+      "computable": true,
+      "selected_edges": 5711,
+      "original_axon_leaves": 45,
+      "selected_child_ids_sha256": "df00ef86db378324a7c6b57bfb544e96fd6878a7d17faed2a90ac127ed7e6861"
+    },
+    {
+      "NeuronUID": "251637::011.swc",
+      "computable": true,
+      "selected_edges": 277,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "3dea03248fc5bed1c4753d57944f15d34e31132c19cc193a5b8eab8386bd3554"
+    },
+    {
+      "NeuronUID": "251637::017.swc",
+      "computable": true,
+      "selected_edges": 1669,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "eadf2f97acc85e4eaad11f75479c644291611108dd957b7d9e63f483dc84e192"
+    },
+    {
+      "NeuronUID": "251637::019.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::020.swc",
+      "computable": true,
+      "selected_edges": 2351,
+      "original_axon_leaves": 20,
+      "selected_child_ids_sha256": "354e0b451cc23ceec7ef30263f9d084537d2d1d0a09b8bc10a1463a1d5c50003"
+    },
+    {
+      "NeuronUID": "251637::021.swc",
+      "computable": true,
+      "selected_edges": 112,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "8033c1372668bc0b6bc8b40d06b26a4f17bf16d70d38fdedb8905e61606f6d9a"
+    },
+    {
+      "NeuronUID": "251637::022.swc",
+      "computable": true,
+      "selected_edges": 1713,
+      "original_axon_leaves": 28,
+      "selected_child_ids_sha256": "441344a68d6017f4bc8bfd1ed4be478e821fd09eb09556cc592c3c30e4d0dddd"
+    },
+    {
+      "NeuronUID": "251637::023.swc",
+      "computable": true,
+      "selected_edges": 6901,
+      "original_axon_leaves": 86,
+      "selected_child_ids_sha256": "4590f21d48612b90f0dc683b838ff55434a478614e571d2bae8b3c580606affa"
+    },
+    {
+      "NeuronUID": "251637::024.swc",
+      "computable": true,
+      "selected_edges": 5831,
+      "original_axon_leaves": 62,
+      "selected_child_ids_sha256": "f668bc53434b7947bea556ab5de9527a2e6e60a4cfc5cae4e1299cd0c25a378b"
+    },
+    {
+      "NeuronUID": "251637::025.swc",
+      "computable": true,
+      "selected_edges": 7797,
+      "original_axon_leaves": 69,
+      "selected_child_ids_sha256": "f57fd8aedf537c571ac6381c4c27833705aa6278bd3c89d1229f06fa0cda67dd"
+    },
+    {
+      "NeuronUID": "251637::026.swc",
+      "computable": true,
+      "selected_edges": 23834,
+      "original_axon_leaves": 264,
+      "selected_child_ids_sha256": "ca3d92624a7663a4bd254356380b9182aada2b9c248621214ecde78f74ab63c1"
+    },
+    {
+      "NeuronUID": "251637::027.swc",
+      "computable": true,
+      "selected_edges": 450,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "afca0a7feae478bc18567561e01a231cfa6e45081ac677a1d682f44b04f5bf7d"
+    },
+    {
+      "NeuronUID": "251637::028.swc",
+      "computable": true,
+      "selected_edges": 8618,
+      "original_axon_leaves": 110,
+      "selected_child_ids_sha256": "a182f3e5451353369c65379351631a79d84eef026f7d8a74705bf016ddc2c75a"
+    },
+    {
+      "NeuronUID": "251637::029.swc",
+      "computable": true,
+      "selected_edges": 16043,
+      "original_axon_leaves": 187,
+      "selected_child_ids_sha256": "72cc4c0ac61d253b2510f9385f2e19c81b1e6699617a1944a36a2f8b85bf08cc"
+    },
+    {
+      "NeuronUID": "251637::030.swc",
+      "computable": true,
+      "selected_edges": 10616,
+      "original_axon_leaves": 24,
+      "selected_child_ids_sha256": "5b107ee076f9a3a8e8192e93556b917515c6eb2765165ce18ddba021e1de263d"
+    },
+    {
+      "NeuronUID": "251637::031.swc",
+      "computable": true,
+      "selected_edges": 13999,
+      "original_axon_leaves": 148,
+      "selected_child_ids_sha256": "80cef12c28d6adc2a0b8c0007aa66a589e9fbc0bf0b4a61f7e2f5829923a343e"
+    },
+    {
+      "NeuronUID": "251637::032.swc",
+      "computable": true,
+      "selected_edges": 2221,
+      "original_axon_leaves": 10,
+      "selected_child_ids_sha256": "65b3f88d229f6d32fcc3ff6da92dacf5c2d8d225945bca9983b48c47f4e17c47"
+    },
+    {
+      "NeuronUID": "251637::033.swc",
+      "computable": true,
+      "selected_edges": 11776,
+      "original_axon_leaves": 177,
+      "selected_child_ids_sha256": "1338c7ff3c0f4ed8e79138c6f092772c6fd3ca21b43f4e8868c65112f21c33d4"
+    },
+    {
+      "NeuronUID": "251637::034.swc",
+      "computable": true,
+      "selected_edges": 4889,
+      "original_axon_leaves": 106,
+      "selected_child_ids_sha256": "7ce7c385ed2fa6eae567d3e3e9f49086c529b5e21dd923c53059ffd354b4ab87"
+    },
+    {
+      "NeuronUID": "251637::035.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::036.swc",
+      "computable": true,
+      "selected_edges": 6876,
+      "original_axon_leaves": 101,
+      "selected_child_ids_sha256": "0cd21049b42c26696c0b1f7865abb07041909ec234776b8f978a23dc4c8107ad"
+    },
+    {
+      "NeuronUID": "251637::037.swc",
+      "computable": true,
+      "selected_edges": 2788,
+      "original_axon_leaves": 31,
+      "selected_child_ids_sha256": "e020a0de5b8e616397bcd59a063db2bdc9fd72238bef02f4cb220c608367abd6"
+    },
+    {
+      "NeuronUID": "251637::038.swc",
+      "computable": true,
+      "selected_edges": 6839,
+      "original_axon_leaves": 94,
+      "selected_child_ids_sha256": "4d196433798900ddab5ea5361a4ca787c8d64afb595890a15961b0182bcfeefe"
+    },
+    {
+      "NeuronUID": "251637::040.swc",
+      "computable": true,
+      "selected_edges": 10230,
+      "original_axon_leaves": 124,
+      "selected_child_ids_sha256": "d26156b204569fa5b0a5c1e93d66a41f57dc6bb2f0710d049731115edbb4da6a"
+    },
+    {
+      "NeuronUID": "251637::041.swc",
+      "computable": true,
+      "selected_edges": 1822,
+      "original_axon_leaves": 22,
+      "selected_child_ids_sha256": "4ef0bcb2e423a0d2867dbfafaccc08c5ab3fc9a9fff14da331fe739e12eeacd0"
+    },
+    {
+      "NeuronUID": "251637::043.swc",
+      "computable": true,
+      "selected_edges": 7174,
+      "original_axon_leaves": 78,
+      "selected_child_ids_sha256": "cad526acee650aad16e8ef068b57d40ef7e4dab15129f0b58cb1b846050c062c"
+    },
+    {
+      "NeuronUID": "251637::070.swc",
+      "computable": true,
+      "selected_edges": 1707,
+      "original_axon_leaves": 3,
+      "selected_child_ids_sha256": "f86387440e462f18e2b11c1bddd290d331daf0744baed54fc3a0b886277167b2"
+    },
+    {
+      "NeuronUID": "251637::079.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::092.swc",
+      "computable": true,
+      "selected_edges": 4362,
+      "original_axon_leaves": 45,
+      "selected_child_ids_sha256": "b261bbe839c033d61ec1f5e93ffc72c4ed1c5958c020ccbae6b55c50743feaec"
+    },
+    {
+      "NeuronUID": "251637::093.swc",
+      "computable": true,
+      "selected_edges": 1167,
+      "original_axon_leaves": 4,
+      "selected_child_ids_sha256": "3f32186ab2b9001cfa76c9cfa7c8f2ba1bf5bb4ac036dc1dc852b6293339ec1a"
+    },
+    {
+      "NeuronUID": "251637::094.swc",
+      "computable": true,
+      "selected_edges": 3709,
+      "original_axon_leaves": 60,
+      "selected_child_ids_sha256": "ef963cb2206f008360ddffaeb07d2dd988a3ea11df0ab5ff5589743e579405f3"
+    },
+    {
+      "NeuronUID": "251637::096.swc",
+      "computable": true,
+      "selected_edges": 13772,
+      "original_axon_leaves": 157,
+      "selected_child_ids_sha256": "6a475d06bf433de68b8fca40a8b2ef7afe302d2e24f150dd21c900d9c2d5d9a8"
+    },
+    {
+      "NeuronUID": "251637::097.swc",
+      "computable": true,
+      "selected_edges": 30516,
+      "original_axon_leaves": 411,
+      "selected_child_ids_sha256": "84cbd6b272f104e93bd121aa91ff79308aa2d390714a869a0f2231623cafbec5"
+    },
+    {
+      "NeuronUID": "251637::098.swc",
+      "computable": true,
+      "selected_edges": 26713,
+      "original_axon_leaves": 386,
+      "selected_child_ids_sha256": "e5aace2f73983726171e67e43e44da81ba1a9eb37fca625a68c65988b3cbe224"
+    },
+    {
+      "NeuronUID": "251637::099.swc",
+      "computable": true,
+      "selected_edges": 1129,
+      "original_axon_leaves": 15,
+      "selected_child_ids_sha256": "6c695e9d2b2df860f62f4f72aac49b70bf5ce89b2fd072643767d246a3297ff1"
+    },
+    {
+      "NeuronUID": "251637::100.swc",
+      "computable": true,
+      "selected_edges": 3013,
+      "original_axon_leaves": 44,
+      "selected_child_ids_sha256": "5bd0eb18db23a95b40d12a9e6ca49730de8202233472cc7bc0d040c9c6309241"
+    },
+    {
+      "NeuronUID": "251637::101.swc",
+      "computable": true,
+      "selected_edges": 344,
+      "original_axon_leaves": 6,
+      "selected_child_ids_sha256": "435f24da93d2471126af94688d0677f016ace4581da4b703b88e4049b612a7f4"
+    },
+    {
+      "NeuronUID": "251637::102.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::103.swc",
+      "computable": true,
+      "selected_edges": 17633,
+      "original_axon_leaves": 266,
+      "selected_child_ids_sha256": "8fc7e2d2fc8466e34317f4b0d9d1117ba6a5aa4ba880ab957e9a97089a8f9e7e"
+    },
+    {
+      "NeuronUID": "251637::104.swc",
+      "computable": true,
+      "selected_edges": 49130,
+      "original_axon_leaves": 861,
+      "selected_child_ids_sha256": "c9bd81216f99e239135b0db3dd8e624bcb4da8eab1af2432d43599bdf26b341f"
+    },
+    {
+      "NeuronUID": "251637::105.swc",
+      "computable": true,
+      "selected_edges": 9070,
+      "original_axon_leaves": 203,
+      "selected_child_ids_sha256": "da3224c53d5281c08180902f74c5e4088ad546ea3f56f007c3d300cce7b1e401"
+    },
+    {
+      "NeuronUID": "251637::106.swc",
+      "computable": true,
+      "selected_edges": 7705,
+      "original_axon_leaves": 187,
+      "selected_child_ids_sha256": "d5b5f63f25bb8767b50cae5145e3e6630de81eedfd1e90bf18def51c6479ec6f"
+    },
+    {
+      "NeuronUID": "251637::107.swc",
+      "computable": true,
+      "selected_edges": 1395,
+      "original_axon_leaves": 29,
+      "selected_child_ids_sha256": "4f5bb048546fb2eabd3922380e697b9d119c008e9b07f2ef6125069fe1425e30"
+    },
+    {
+      "NeuronUID": "251637::108.swc",
+      "computable": true,
+      "selected_edges": 4264,
+      "original_axon_leaves": 111,
+      "selected_child_ids_sha256": "4cafb97f3c337e763da98a7c2b53e8dfb02e476727f598dc044d583a037454d1"
+    },
+    {
+      "NeuronUID": "251637::109.swc",
+      "computable": true,
+      "selected_edges": 11616,
+      "original_axon_leaves": 250,
+      "selected_child_ids_sha256": "a4922e5db8f7094baf97ae2a4bf64ebd64f677d4dffb99ce200ca7ac81af931a"
+    },
+    {
+      "NeuronUID": "251637::110.swc",
+      "computable": true,
+      "selected_edges": 439,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "fbb4faca317e5ac4114d16f0dc958bc9d0de111545d214731354d5eeea02787b"
+    },
+    {
+      "NeuronUID": "251637::111.swc",
+      "computable": true,
+      "selected_edges": 8670,
+      "original_axon_leaves": 146,
+      "selected_child_ids_sha256": "e570e7411b9f419166a6cf76c5dd9cdae4a6f9424adfd296ff1758fd207e52fb"
+    },
+    {
+      "NeuronUID": "251637::113.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::116.swc",
+      "computable": true,
+      "selected_edges": 5226,
+      "original_axon_leaves": 49,
+      "selected_child_ids_sha256": "a3f5338aa3acd85faf19872094dcbebc35cdb72fdfc3d94a721b95f9e447695a"
+    },
+    {
+      "NeuronUID": "251637::117.swc",
+      "computable": true,
+      "selected_edges": 15657,
+      "original_axon_leaves": 387,
+      "selected_child_ids_sha256": "f627a09706e10ec6662b7ba2e19d3b5d627e69aa30906607ac5d738c287ccc15"
+    },
+    {
+      "NeuronUID": "251637::118.swc",
+      "computable": true,
+      "selected_edges": 4564,
+      "original_axon_leaves": 83,
+      "selected_child_ids_sha256": "04ab5b799809bbbce745d367619377d1a597b716fef27d6b6f53c7b14761cd13"
+    },
+    {
+      "NeuronUID": "251637::119.swc",
+      "computable": true,
+      "selected_edges": 4496,
+      "original_axon_leaves": 18,
+      "selected_child_ids_sha256": "196c9bb386a5f57d0a0741c93c6579aa767f66e5ddf7037c304c3aa5168310b0"
+    },
+    {
+      "NeuronUID": "251637::120.swc",
+      "computable": true,
+      "selected_edges": 279,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "505ba685d3dd00ba0b575e00b3bcaa44c0dbbc0a10d8e4c773bc95804d212da4"
+    },
+    {
+      "NeuronUID": "251637::121.swc",
+      "computable": true,
+      "selected_edges": 561,
+      "original_axon_leaves": 2,
+      "selected_child_ids_sha256": "fd8fb4028b454709f52e6c5b283082cf3f61985adde45c9a53a2870b889df25d"
+    },
+    {
+      "NeuronUID": "251637::122.swc",
+      "computable": true,
+      "selected_edges": 14827,
+      "original_axon_leaves": 375,
+      "selected_child_ids_sha256": "602659b1026aaa007cc67806736687ccbc1dc91511f16fa722440487de06de90"
+    },
+    {
+      "NeuronUID": "251637::123.swc",
+      "computable": true,
+      "selected_edges": 15459,
+      "original_axon_leaves": 324,
+      "selected_child_ids_sha256": "461d67ae87915a8e838640a7f47f03c2e5193a2047d5f041d07f0e1092ed8d51"
+    },
+    {
+      "NeuronUID": "251637::124.swc",
+      "computable": true,
+      "selected_edges": 21154,
+      "original_axon_leaves": 339,
+      "selected_child_ids_sha256": "4c87c59afc4f5cdbd12acd2b1ab8610e0365a4a335213b9d29e3c818f7c4d886"
+    },
+    {
+      "NeuronUID": "251637::125.swc",
+      "computable": true,
+      "selected_edges": 13255,
+      "original_axon_leaves": 285,
+      "selected_child_ids_sha256": "1e30c137345bcbebdef83792c869940738a2bdec3e9df9657debb1df16b2539a"
+    },
+    {
+      "NeuronUID": "251637::126.swc",
+      "computable": true,
+      "selected_edges": 12621,
+      "original_axon_leaves": 248,
+      "selected_child_ids_sha256": "4bc28ced0ca4e83fa0b0096c1f9c3045230cbc363dd0fc3dae6aa05c99b4bdff"
+    },
+    {
+      "NeuronUID": "251637::127.swc",
+      "computable": true,
+      "selected_edges": 3563,
+      "original_axon_leaves": 73,
+      "selected_child_ids_sha256": "a7936c7715156624c2d3520676ceb4a6fa45aed6e9b8091cda9d788dd8215d26"
+    },
+    {
+      "NeuronUID": "251637::128.swc",
+      "computable": true,
+      "selected_edges": 11604,
+      "original_axon_leaves": 266,
+      "selected_child_ids_sha256": "f2701a19843c975a0563983f76bf93edb9a9718c0fc7fb21155f37fe82ce6bd5"
+    },
+    {
+      "NeuronUID": "251637::129.swc",
+      "computable": true,
+      "selected_edges": 2113,
+      "original_axon_leaves": 44,
+      "selected_child_ids_sha256": "ccac83c80d3acf780263ece619b36f75f85d46961d2068e9208eb9b32c1cbf93"
+    },
+    {
+      "NeuronUID": "251637::130.swc",
+      "computable": true,
+      "selected_edges": 320,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "c7ccacef6ae3487e9ce9730a4f16f613e4e40a97c87c205a8158fd8453d747fc"
+    },
+    {
+      "NeuronUID": "251637::131.swc",
+      "computable": true,
+      "selected_edges": 20820,
+      "original_axon_leaves": 292,
+      "selected_child_ids_sha256": "dfe326ec23d311f144c656391322a427a1e19394c83c725dfc836163f8d17025"
+    },
+    {
+      "NeuronUID": "251637::132.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::133.swc",
+      "computable": true,
+      "selected_edges": 3838,
+      "original_axon_leaves": 42,
+      "selected_child_ids_sha256": "00374624dd0c9bdade3e989d289c737f49a8ee0770e5c2aef5c709763e08ef70"
+    },
+    {
+      "NeuronUID": "251637::134.swc",
+      "computable": true,
+      "selected_edges": 6416,
+      "original_axon_leaves": 135,
+      "selected_child_ids_sha256": "692ab5cca5e1003d40d456920d1520d5f7edaeaa9587ab2c098f1799aee3279b"
+    },
+    {
+      "NeuronUID": "251637::135.swc",
+      "computable": true,
+      "selected_edges": 13853,
+      "original_axon_leaves": 184,
+      "selected_child_ids_sha256": "bd9fdad7c73cd00a822df58c90b11ffb784189350b6fd7e84854c7b43a6322c7"
+    },
+    {
+      "NeuronUID": "251637::136.swc",
+      "computable": true,
+      "selected_edges": 3459,
+      "original_axon_leaves": 25,
+      "selected_child_ids_sha256": "d0efcd22d8363aa63721d65b0450e2b94b0edca20de8a644265f68bcaac460f3"
+    },
+    {
+      "NeuronUID": "251637::137.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::138.swc",
+      "computable": true,
+      "selected_edges": 569,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "903d1b9135a1674b6ea53172a03f4d67ca03b829d807a7a80dfd5b65a2e7a4a8"
+    },
+    {
+      "NeuronUID": "251637::139.swc",
+      "computable": true,
+      "selected_edges": 5394,
+      "original_axon_leaves": 116,
+      "selected_child_ids_sha256": "ff7e2bbbfdc31b15e8f2075272b43cc1f42852eb7a024c44de9461a8aa23fa17"
+    },
+    {
+      "NeuronUID": "251637::140.swc",
+      "computable": true,
+      "selected_edges": 2294,
+      "original_axon_leaves": 27,
+      "selected_child_ids_sha256": "4f3d2820b984d8a946b299f9bf8c073d8184b24c8c52f4cccbaf1921695bff9e"
+    },
+    {
+      "NeuronUID": "251637::141.swc",
+      "computable": true,
+      "selected_edges": 9239,
+      "original_axon_leaves": 239,
+      "selected_child_ids_sha256": "90c7e8dfe526810c42420e60d919eee7ef1251be5c92571e425f422fca5fe82c"
+    },
+    {
+      "NeuronUID": "251637::142.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::143.swc",
+      "computable": true,
+      "selected_edges": 19587,
+      "original_axon_leaves": 360,
+      "selected_child_ids_sha256": "20f1d087e1cce809171e6d5cd459626f8507a1c1ed59ac9296496d2a0c7affc3"
+    },
+    {
+      "NeuronUID": "251637::144.swc",
+      "computable": true,
+      "selected_edges": 2794,
+      "original_axon_leaves": 125,
+      "selected_child_ids_sha256": "8f8b055d8b256409210272e3c50df1c696c6abb71ad32e0adad49ebc538c88aa"
+    },
+    {
+      "NeuronUID": "251637::145.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::146.swc",
+      "computable": true,
+      "selected_edges": 2142,
+      "original_axon_leaves": 61,
+      "selected_child_ids_sha256": "30ff0e398dfa9b3c1d84e25a190422851f2da7a84b64bc5bd1a066fce4d10090"
+    },
+    {
+      "NeuronUID": "251637::147.swc",
+      "computable": true,
+      "selected_edges": 715,
+      "original_axon_leaves": 1,
+      "selected_child_ids_sha256": "6e039fa6c3e984bef9686deba202a62475b305d0f7b518e5134aaa640eac7848"
+    },
+    {
+      "NeuronUID": "251637::148.swc",
+      "computable": true,
+      "selected_edges": 7201,
+      "original_axon_leaves": 156,
+      "selected_child_ids_sha256": "138c6fe15a39aca2dc09ea942305467d473af442a4937a9ff2007d457bedd355"
+    },
+    {
+      "NeuronUID": "251637::149.swc",
+      "computable": true,
+      "selected_edges": 3670,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "f9e15d6634db7a2d0cac1f5a2a02509f8c8863292c390c568bba82c7f5bc6f5e"
+    },
+    {
+      "NeuronUID": "251637::150.swc",
+      "computable": true,
+      "selected_edges": 522,
+      "original_axon_leaves": 4,
+      "selected_child_ids_sha256": "31c4366bd1b106ca78b53f7832b7bd6f7688d8776abf859b2d00de3780161871"
+    },
+    {
+      "NeuronUID": "251637::151.swc",
+      "computable": true,
+      "selected_edges": 5340,
+      "original_axon_leaves": 502,
+      "selected_child_ids_sha256": "caa1ba92c5f634969c01862f2f08bfa39887147949cdb872fb3fe1a306a798a4"
+    },
+    {
+      "NeuronUID": "251637::152.swc",
+      "computable": true,
+      "selected_edges": 766,
+      "original_axon_leaves": 6,
+      "selected_child_ids_sha256": "cbdd06829d241f7d694b153c820d8467ed30bd43d5a426dd886546a618d2151b"
+    },
+    {
+      "NeuronUID": "251637::153.swc",
+      "computable": true,
+      "selected_edges": 899,
+      "original_axon_leaves": 5,
+      "selected_child_ids_sha256": "8ea69f1db76f47ca87d12d7d126e4f8fb9c51884813c29967596af61a4811f40"
+    },
+    {
+      "NeuronUID": "251637::154.swc",
+      "computable": true,
+      "selected_edges": 3970,
+      "original_axon_leaves": 22,
+      "selected_child_ids_sha256": "8f74a3050012b7c369053691624e56efd2c38e8fa72c6aa9ae8ee75df907798e"
+    },
+    {
+      "NeuronUID": "251637::155.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::156.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "251637::157.swc",
+      "computable": true,
+      "selected_edges": 6786,
+      "original_axon_leaves": 141,
+      "selected_child_ids_sha256": "b77bdbb30ff9ab72ae1732271afe0104440a0d9d25103347ffe304028429924c"
+    },
+    {
+      "NeuronUID": "251637::158.swc",
+      "computable": false,
+      "selected_edges": 0,
+      "original_axon_leaves": 0,
+      "selected_child_ids_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    {
+      "NeuronUID": "252527::088.swc",
+      "computable": true,
+      "selected_edges": 9515,
+      "original_axon_leaves": 341,
+      "selected_child_ids_sha256": "10b74c321c176da2c61f558a7b3ea4143e0131bc495f33fb49bf927c09657d93"
+    },
+    {
+      "NeuronUID": "252527::089.swc",
+      "computable": true,
+      "selected_edges": 17076,
+      "original_axon_leaves": 295,
+      "selected_child_ids_sha256": "2165d2b81f1f5bebc104e6d3b1aa8e313a48eeb70cd5c72a9eb2309471b44f55"
+    },
+    {
+      "NeuronUID": "252527::090.swc",
+      "computable": true,
+      "selected_edges": 14046,
+      "original_axon_leaves": 185,
+      "selected_child_ids_sha256": "bc8b3fcf9eeaaafdd7f3a4fa620597f13b9557dbdc83af37ba385bbbe96e2867"
+    },
+    {
+      "NeuronUID": "252527::091.swc",
+      "computable": true,
+      "selected_edges": 10444,
+      "original_axon_leaves": 110,
+      "selected_child_ids_sha256": "a5a14ae02b817eedc6c5d89ce67399151433c2c7770fb4ea4c2cbd87f5164a96"
+    },
+    {
+      "NeuronUID": "252527::092.swc",
+      "computable": true,
+      "selected_edges": 2644,
+      "original_axon_leaves": 23,
+      "selected_child_ids_sha256": "4ce28732a71f0aae4b78cae164c24a48570ca02b3c5f97a14d301790f465c22b"
+    },
+    {
+      "NeuronUID": "252527::094.swc",
+      "computable": true,
+      "selected_edges": 214,
+      "original_axon_leaves": 10,
+      "selected_child_ids_sha256": "e91b4b41d580bf4dfcc186166acd6581123ef76ea81360c5a03714917410c0ba"
+    },
+    {
+      "NeuronUID": "252527::095.swc",
+      "computable": true,
+      "selected_edges": 1538,
+      "original_axon_leaves": 25,
+      "selected_child_ids_sha256": "7095985b8fdb871e8ec933ea3c19c85710a62ce8c7a90888e46464f23b9582f8"
+    },
+    {
+      "NeuronUID": "252527::096.swc",
+      "computable": true,
+      "selected_edges": 8706,
+      "original_axon_leaves": 148,
+      "selected_child_ids_sha256": "ecfed396a010d63536fc30f8a830c2b59edfd0ddaa51203a96b6fd2d99304118"
+    },
+    {
+      "NeuronUID": "252527::097.swc",
+      "computable": true,
+      "selected_edges": 2322,
+      "original_axon_leaves": 23,
+      "selected_child_ids_sha256": "749159d10a35bf4ae59bd8aad669e66bbd0b4f46c6955746e9c41618724b0206"
+    },
+    {
+      "NeuronUID": "252527::098.swc",
+      "computable": true,
+      "selected_edges": 13560,
+      "original_axon_leaves": 211,
+      "selected_child_ids_sha256": "a1dc4b46a5f17ce9b3d29eba29f0a0ac696ce359405f132505fb412b5185e3ae"
+    },
+    {
+      "NeuronUID": "252527::099.swc",
+      "computable": true,
+      "selected_edges": 5869,
+      "original_axon_leaves": 139,
+      "selected_child_ids_sha256": "5aad5f89422f86244e2b73b9e3e345e0cd5f7163ffe808e39c009a9fc0cad797"
+    },
+    {
+      "NeuronUID": "252527::093.swc",
+      "computable": true,
+      "selected_edges": 10212,
+      "original_axon_leaves": 64,
+      "selected_child_ids_sha256": "3af9bbd6471c787a2f6f40ee003fd1aa0e87bd13e0bab26c4a8173860c64e4f0"
+    },
+    {
+      "NeuronUID": "252527::048.swc",
+      "computable": true,
+      "selected_edges": 690,
+      "original_axon_leaves": 25,
+      "selected_child_ids_sha256": "c2da2307b26bfccd3ce82c2ea430be49428b90968dc9c14036c5020bc20cba27"
+    },
+    {
+      "NeuronUID": "252527::049.swc",
+      "computable": true,
+      "selected_edges": 8437,
+      "original_axon_leaves": 90,
+      "selected_child_ids_sha256": "3b025504f132ede4e17d28f33f3a3295183479d17b30a73b9c8a7f0235af78ab"
+    },
+    {
+      "NeuronUID": "252527::050.swc",
+      "computable": true,
+      "selected_edges": 16373,
+      "original_axon_leaves": 253,
+      "selected_child_ids_sha256": "67181c093fec0fa75bcd7c4aa3f000a224f74afe5d6a9cb0aa5189ccdd68380e"
+    },
+    {
+      "NeuronUID": "252527::051.swc",
+      "computable": true,
+      "selected_edges": 6166,
+      "original_axon_leaves": 106,
+      "selected_child_ids_sha256": "e5d4d520e56332d34f54da0de6d1dce162b867c29dde682afc13b420c4c56d3e"
+    },
+    {
+      "NeuronUID": "252527::052.swc",
+      "computable": true,
+      "selected_edges": 6129,
+      "original_axon_leaves": 110,
+      "selected_child_ids_sha256": "5ad98cc7834604e05f1053cf3e1a0f15fb44127dba1164bb66a0e9fd825f4d37"
+    },
+    {
+      "NeuronUID": "252527::053.swc",
+      "computable": true,
+      "selected_edges": 13052,
+      "original_axon_leaves": 479,
+      "selected_child_ids_sha256": "b8f3ecedd19178ad9b58b6c6994b707c352165f3a97fb724dd64d7fe0bfff699"
+    },
+    {
+      "NeuronUID": "252527::054.swc",
+      "computable": true,
+      "selected_edges": 17288,
+      "original_axon_leaves": 344,
+      "selected_child_ids_sha256": "f2389492eefbebf197aca5d54bbb9a265a58d15ca0e9d88eed84e4900a86afd1"
+    },
+    {
+      "NeuronUID": "252527::055.swc",
+      "computable": true,
+      "selected_edges": 9917,
+      "original_axon_leaves": 212,
+      "selected_child_ids_sha256": "6396456cc74e679baab6b4ad35eedd8e5e6ed85891ee198634534c6d3d0fea13"
+    },
+    {
+      "NeuronUID": "252527::056.swc",
+      "computable": true,
+      "selected_edges": 7048,
+      "original_axon_leaves": 234,
+      "selected_child_ids_sha256": "3a6ab35d92ac8ef565268a36c7aa986893c3e4731b45e4d9f10c8d12252634cb"
+    },
+    {
+      "NeuronUID": "252527::057.swc",
+      "computable": true,
+      "selected_edges": 7934,
+      "original_axon_leaves": 118,
+      "selected_child_ids_sha256": "d29f9f2c7709352a2ef6b97be4268695364b53314c964342bd43a867e827d959"
+    },
+    {
+      "NeuronUID": "252527::058.swc",
+      "computable": true,
+      "selected_edges": 12264,
+      "original_axon_leaves": 130,
+      "selected_child_ids_sha256": "9c004c4ece1cfef90b98bb54f689d307af05121061ef399f8ddb5eef3e44cc92"
+    },
+    {
+      "NeuronUID": "252527::059.swc",
+      "computable": true,
+      "selected_edges": 17665,
+      "original_axon_leaves": 283,
+      "selected_child_ids_sha256": "22f306408acbcecf2d13c314c2ef8cdca29e68ed2fcbc8e97fb9a115be9fc2d9"
+    },
+    {
+      "NeuronUID": "252527::060.swc",
+      "computable": true,
+      "selected_edges": 6118,
+      "original_axon_leaves": 66,
+      "selected_child_ids_sha256": "80e57ed3ff3435ec8ced81eb47c107442bcf6f345a17b57c7bedc5960efaf35a"
+    },
+    {
+      "NeuronUID": "252384::047.swc",
+      "computable": true,
+      "selected_edges": 21594,
+      "original_axon_leaves": 149,
+      "selected_child_ids_sha256": "2b24ca93e1029ba97132f8c41e30b40f67b0a97e4c241afcd877ff9099e392de"
+    },
+    {
+      "NeuronUID": "252384::050.swc",
+      "computable": true,
+      "selected_edges": 1870,
+      "original_axon_leaves": 12,
+      "selected_child_ids_sha256": "0c3692ba2d4d00a1f95690611e519effe994aaaf96264cbb8d95ed4eb2625773"
+    },
+    {
+      "NeuronUID": "252384::051.swc",
+      "computable": true,
+      "selected_edges": 5764,
+      "original_axon_leaves": 45,
+      "selected_child_ids_sha256": "ac7c4f7905f1a4544d77b63d7473fb5b9230f7da86030745b3d26607310b9caa"
+    },
+    {
+      "NeuronUID": "252384::052.swc",
+      "computable": true,
+      "selected_edges": 1039,
+      "original_axon_leaves": 10,
+      "selected_child_ids_sha256": "04de0876da085ee3abdc9ce8550190a75d5675c1a2ed94983ae878f22588a7df"
+    },
+    {
+      "NeuronUID": "252384::076.swc",
+      "computable": true,
+      "selected_edges": 48517,
+      "original_axon_leaves": 536,
+      "selected_child_ids_sha256": "23406f5bff1587707f509da87b7bb53791fa6496bb68378cb4a9d859c6e02e01"
+    },
+    {
+      "NeuronUID": "252384::078.swc",
+      "computable": true,
+      "selected_edges": 44398,
+      "original_axon_leaves": 319,
+      "selected_child_ids_sha256": "4a6815c99d9724dc8c7e4c94ca5b001f1bbc5a4de68d8fb31de66da7a5ca8150"
+    },
+    {
+      "NeuronUID": "252384::081.swc",
+      "computable": true,
+      "selected_edges": 2676,
+      "original_axon_leaves": 100,
+      "selected_child_ids_sha256": "cacd74805a85e21fccdce77a11a1c3712c39e02ec405b95080527d1ead5775d6"
+    },
+    {
+      "NeuronUID": "252384::080.swc",
+      "computable": true,
+      "selected_edges": 23025,
+      "original_axon_leaves": 206,
+      "selected_child_ids_sha256": "85caf3b8aa430a3a5fe1075a2f2d9f88e0636d0b2ae8a8db7d50b779c6984774"
+    },
+    {
+      "NeuronUID": "252384::055.swc",
+      "computable": true,
+      "selected_edges": 28296,
+      "original_axon_leaves": 797,
+      "selected_child_ids_sha256": "b868e17127ff4fd3a8a71cb901b6cdcd44a50784f1fda9b95a5c16e46ccfdcd1"
+    },
+    {
+      "NeuronUID": "252384::071.swc",
+      "computable": true,
+      "selected_edges": 12580,
+      "original_axon_leaves": 217,
+      "selected_child_ids_sha256": "837a5dbeaf1f1d3f1787764d33374c30579f547f8e0d360f6edea8453c71aedb"
+    },
+    {
+      "NeuronUID": "252384::072.swc",
+      "computable": true,
+      "selected_edges": 5452,
+      "original_axon_leaves": 214,
+      "selected_child_ids_sha256": "0f3411305a4282a8c76d1b04352a36b44b3d46eab6dac523b5d6a6904309bd3b"
+    },
+    {
+      "NeuronUID": "252384::073.swc",
+      "computable": true,
+      "selected_edges": 1750,
+      "original_axon_leaves": 20,
+      "selected_child_ids_sha256": "47b90cddf5e7042f59349e77b12189f96910b469f4b7959f6bc9712170a3c8c0"
+    },
+    {
+      "NeuronUID": "252384::074.swc",
+      "computable": true,
+      "selected_edges": 33300,
+      "original_axon_leaves": 483,
+      "selected_child_ids_sha256": "1c8d2b8625a515ffeca8e5d5e812618e106b7325e31af9ddb2ef9fd6ed9f0d43"
+    },
+    {
+      "NeuronUID": "252384::048.swc",
+      "computable": true,
+      "selected_edges": 6348,
+      "original_axon_leaves": 37,
+      "selected_child_ids_sha256": "14e8a00f881a98a36f38c75a5bb5d9d0181292a65894ae847f40f46bd9e3f2e4"
+    },
+    {
+      "NeuronUID": "252384::049.swc",
+      "computable": true,
+      "selected_edges": 12066,
+      "original_axon_leaves": 84,
+      "selected_child_ids_sha256": "e053a761ffbe3efef342fe3fba01abbc37b90ac20014fb322e6a98bcd78fa0ba"
+    },
+    {
+      "NeuronUID": "252384::053.swc",
+      "computable": true,
+      "selected_edges": 4103,
+      "original_axon_leaves": 32,
+      "selected_child_ids_sha256": "e7a7a7119607487f2dabbd120968203dc6364b145101e2044add2e8f8f3ee499"
+    },
+    {
+      "NeuronUID": "252384::077.swc",
+      "computable": true,
+      "selected_edges": 2387,
+      "original_axon_leaves": 21,
+      "selected_child_ids_sha256": "4894d1121e5350aff53a1cb0a5bf24436677463dec7602ac2d2b38ea711640d4"
+    },
+    {
+      "NeuronUID": "252384::079.swc",
+      "computable": true,
+      "selected_edges": 840,
+      "original_axon_leaves": 6,
+      "selected_child_ids_sha256": "457bc07b5a0ed4b71a661656136c22584a361baadb05e871c6bd3fb7ba582d17"
+    }
+  ],
+  "anatomical_or_biological_acceptance": false
+}

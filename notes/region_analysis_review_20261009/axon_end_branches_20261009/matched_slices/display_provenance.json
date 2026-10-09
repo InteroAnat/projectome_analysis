@@ -1,0 +1,76 @@
+{
+  "created_utc": "2026-10-09T04:53:54.911892+00:00",
+  "run_provenance_sha256": "dcd92bcca80984568fc72a26314363fcdba8760a7ccd980c8c3e8a0fc7f2197d",
+  "readback_sha256": "18460f2ba5befdbab0228cd18f5fc77476429719abf5f03b75d1a8dad5723760",
+  "renderer_sha256": "5130b9da39676d8022c229aca1aa4c4a23a06f1695d8764c39d2925d2ec694b4",
+  "brain_mask": {
+    "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_brainmask.nii.gz",
+    "sha256": "c763cf9a54362eba55fc8d4a08d93d3487f56dc1e9fd821b87c2a0748320738d"
+  },
+  "background": {
+    "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+    "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+  },
+  "background_description": "symmetric NMT v2.1 T1-weighted MRI",
+  "MRI_percentile_window": [
+    1,
+    99.5
+  ],
+  "MRI_intensity_limits": [
+    75.0,
+    920.0
+  ],
+  "shared_XYZ_cuts": [
+    56,
+    200,
+    87
+  ],
+  "MIP": false,
+  "smoothing": null,
+  "overlay": "log10(1 + stored length / reference voxel volume); display only",
+  "color_percentile": 99.5,
+  "color_upper_limit": 1.474481525204806,
+  "unassigned_source_groups": "retained in full ledger and numerical outputs, excluded from named anatomy figures",
+  "scientific_anatomical_acceptance": false,
+  "figures": [
+    {
+      "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-01.png",
+      "sha256": "8fad3d77be63b0c7dc541ea2641c01b3b42c809b38c58db2495a240a39900d44",
+      "source_groups": [
+        "ARM6_1004_L",
+        "ARM6_1504_R",
+        "ARM6_228_L",
+        "ARM6_229_L"
+      ]
+    },
+    {
+      "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-02.png",
+      "sha256": "d27175636000cfed0a029e848ca0e01f592547720f71422e75e9d53cde180bc0",
+      "source_groups": [
+        "ARM6_41_L",
+        "ARM6_42_L",
+        "ARM6_43_L",
+        "ARM6_48_L"
+      ]
+    },
+    {
+      "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-03.png",
+      "sha256": "5b322eb22f39d08c0675d633c1c0b02db90ef4b44e7ab3f9ca34c084877ba36a",
+      "source_groups": [
+        "ARM6_541_R",
+        "ARM6_542_R",
+        "ARM6_548_R",
+        "ARM6_549_R"
+      ]
+    },
+    {
+      "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-04.png",
+      "sha256": "2229053a30fa95c2a3c36a26467c8d18e4d546e0517e7a061c93b8aa7d14c54c",
+      "source_groups": [
+        "ARM6_595_R",
+        "ARM6_728_R",
+        "ARM6_729_R"
+      ]
+    }
+  ]
+}

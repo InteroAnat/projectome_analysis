@@ -1,0 +1,894 @@
+{
+  "status": "software_verified_descriptive_end_branches",
+  "created_utc": "2026-10-09T04:41:22.493069+00:00",
+  "inputs": {
+    "manifest": {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+      "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+    },
+    "reference": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    "atlas": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    "atlas_key": {
+      "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    }
+  },
+  "selected_neurons": 462,
+  "shape": [
+    256,
+    312,
+    200
+  ],
+  "affine_mm": [
+    [
+      0.25,
+      -0.0,
+      -0.0,
+      -31.875
+    ],
+    [
+      -0.0,
+      0.25,
+      -0.0,
+      -27.75
+    ],
+    [
+      0.0,
+      0.0,
+      0.25,
+      -8.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "voxel_volume_mm3": 0.015625000000000007,
+  "measurement": "reconstructed axon end-branch trajectory length",
+  "chain_rule": "original non-root axon full-graph leaf to first original bifurcation/root/non-axon parent; final child-axon transition edge included; no non-axon chain bridging",
+  "regional_assignment": "length split at reference voxel faces and integrated in each actual ARM hierarchy volume",
+  "length_value_units": "reference-template mm per end-eligible neuron",
+  "density_conversion": "divide length values by reference voxel volume in mm3",
+  "animal_aggregation": "eligible neuron mean within animal/source group",
+  "group_aggregation": "equal mean of animals with at least one eligible neuron; absent/unassessed groups not zero-filled",
+  "hemisphere_policy": "unmirrored declared reference coordinates; official ARM source labels retained",
+  "missing_policy": "no eligible original axon end => NA matrix row and no contribution to conditional map mean",
+  "scientific_anatomical_acceptance": false,
+  "limitations": [
+    "unfinished unbranched shafts can qualify",
+    "no accepted terminal arbor/bouton/synapse",
+    "declared NMT export origin remains uncertain",
+    "template length is not calibrated native tissue length"
+  ],
+  "statistical_status": "descriptive; no t-map or independent-neuron inference",
+  "source_code_sha256": {
+    "group_analysis\\scripts\\build_axon_end_branch_maps.py": "9ca6303273969388af2935ea5916a6496349c981bf17efae4c54fc0a9f09c9be",
+    "main_scripts\\terminal_sites.py": "fbb7cf1c492710af676a0dded9341c25e829f04fd123a43732802a51eef99504",
+    "main_scripts\\projection_maps.py": "f47121c6732acbb088248ebabe597ee696a93157edf65d945ad0ff4a2c2a17cd",
+    "main_scripts\\swc_validation.py": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+    "group_analysis\\scripts\\export_arm_projection_tables.py": "01216c76c599301cb77eb0ed10601687278c70bd6c3d498af7786dc78bafb695",
+    "group_analysis\\scripts\\build_projection_maps.py": "c758d2daa427276436e07c1745daad00574e7e392a6f71516f179653ae623145"
+  },
+  "versions": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+    "numpy": "1.26.4",
+    "nibabel": "5.4.2",
+    "pandas": "2.3.3"
+  },
+  "animal_maps": [
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 3,
+      "eligible_neurons": 3,
+      "length_path": "animal_maps\\animal-331_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "bd97eb2763288443ea8d912595ff2aeba1904a9434dc9b3d66ce83122cf51ca7",
+      "mean_in_reference_length_mm": 97.23790954320985,
+      "stored_float32_sum_mm": 97.23790945568908
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-331_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "752e2c5f6e8b4a0ce488e041a7433e9697c7a88ce7ab24fe0e291f9d0ddee007",
+      "mean_in_reference_length_mm": 103.8792292208524,
+      "stored_float32_sum_mm": 103.87922941941906
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 3,
+      "eligible_neurons": 3,
+      "length_path": "animal_maps\\animal-331_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "3552618d6e4f454c3eb553f1d2712a01eb35b636b9bb77f9200ccda08cedb7f0",
+      "mean_in_reference_length_mm": 196.606643516854,
+      "stored_float32_sum_mm": 196.60664358986105
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 11,
+      "eligible_neurons": 11,
+      "length_path": "animal_maps\\animal-331_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "f0b24426523352e025aab9248f29cecd1b2067ea4755df3061436f88f95c20a0",
+      "mean_in_reference_length_mm": 97.34921889379513,
+      "stored_float32_sum_mm": 97.34921887950486
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 11,
+      "eligible_neurons": 11,
+      "length_path": "animal_maps\\animal-331_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "ebd65a5e6cf603b1ee4a104efb2c26271002658cadeafb0e89ef2932015d4388",
+      "mean_in_reference_length_mm": 40.50080366360247,
+      "stored_float32_sum_mm": 40.50080368963245
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-331_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "c3417115c43ff95f017925b29074914c6847c132ad0704fc94b525306d5d77c3",
+      "mean_in_reference_length_mm": 77.73350734542014,
+      "stored_float32_sum_mm": 77.73350740608294
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 21,
+      "eligible_neurons": 21,
+      "length_path": "animal_maps\\animal-331_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "6e19d0bde8c68b68bac1addd4fc3c02ddbb513dd5c34cc4234221933b8ad180d",
+      "mean_in_reference_length_mm": 31.144898997973968,
+      "stored_float32_sum_mm": 31.144899021416904
+    },
+    {
+      "AnimalID": "331",
+      "Subregion": "ARM6_729_R",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-331_source-ARM6_729_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "a6bb9364fc86145d1d7e13671b6c0e41e522db293ccdb3cb555cac31cd741e73",
+      "mean_in_reference_length_mm": 18.543360828902966,
+      "stored_float32_sum_mm": 18.543360766023397
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 5,
+      "eligible_neurons": 5,
+      "length_path": "animal_maps\\animal-605_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "122c32cebcd8d83ff1e6af39b9b9c3b30a06cb553dd3b068fe58c60082000e69",
+      "mean_in_reference_length_mm": 10.61441657220434,
+      "stored_float32_sum_mm": 10.614416591568443
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 10,
+      "eligible_neurons": 10,
+      "length_path": "animal_maps\\animal-605_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "9fbb274a61a2d2a0fe1d12ace2767d8c1dc97f9b04bd42a34323120a16723f36",
+      "mean_in_reference_length_mm": 29.072573385883942,
+      "stored_float32_sum_mm": 29.07257341609875
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-605_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "ceafc21ac25050a8822fd4522b428912122d5a49a1126429d41af4b581a3bb06",
+      "mean_in_reference_length_mm": 47.31239080316889,
+      "stored_float32_sum_mm": 47.3123908463167
+    },
+    {
+      "AnimalID": "605",
+      "Subregion": "ARM6_729_R",
+      "selected_neurons": 5,
+      "eligible_neurons": 5,
+      "length_path": "animal_maps\\animal-605_source-ARM6_729_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "433ebc7b4bf0678346e3fe911531cf6783f9b0d58a5d61a0c7b507c7e0ccd050",
+      "mean_in_reference_length_mm": 31.24298289562924,
+      "stored_float32_sum_mm": 31.242982958263383
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 3,
+      "eligible_neurons": 3,
+      "length_path": "animal_maps\\animal-631_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "701d8e5df5cdeb3118fb2dd4595ac4358fdd17d512303a213ed6012315fd326c",
+      "mean_in_reference_length_mm": 277.55467658263797,
+      "stored_float32_sum_mm": 277.55467676115586
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 7,
+      "eligible_neurons": 7,
+      "length_path": "animal_maps\\animal-631_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "dcb121d315403700312f9791b728e829317a668aea54c2a82a999810ffd89802",
+      "mean_in_reference_length_mm": 273.1595028906201,
+      "stored_float32_sum_mm": 273.15950272043074
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_548_R",
+      "selected_neurons": 5,
+      "eligible_neurons": 5,
+      "length_path": "animal_maps\\animal-631_source-ARM6_548_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "8ee1f278a22c753097a771f8b419f24bf9eab267fa0c3427a41bedde272d99b7",
+      "mean_in_reference_length_mm": 91.75182929636661,
+      "stored_float32_sum_mm": 91.75182935106204
+    },
+    {
+      "AnimalID": "631",
+      "Subregion": "ARM6_728_R",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-631_source-ARM6_728_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "9973db0db091a45d6ea35210c1388e68649deaead784398d7fc9d1d070a5789d",
+      "mean_in_reference_length_mm": 259.9659170251001,
+      "stored_float32_sum_mm": 259.9659172662068
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 9,
+      "eligible_neurons": 9,
+      "length_path": "animal_maps\\animal-797_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "3576641866f3022eb52fcbd22a0e88d4762c4f0fc14a0daa3002791346556bb4",
+      "mean_in_reference_length_mm": 102.82339710984473,
+      "stored_float32_sum_mm": 102.82339716546721
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-797_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "8b956036bc9ca063a93ddc2d053ce48e0dcae6bec1e22a2baffae55b0fae1f23",
+      "mean_in_reference_length_mm": 160.92072714529013,
+      "stored_float32_sum_mm": 160.92072718273448
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-797_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "aa263eea8813298325efdb73f1c27348800fff79bc8f45402f7bdcbf25987772",
+      "mean_in_reference_length_mm": 257.37173085015314,
+      "stored_float32_sum_mm": 257.37173112569144
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_1504_R",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-797_source-ARM6_1504_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "353a30eb4484c47be5112e85717aa41b8fd1cccfca1ce674030a2d6bb5af3efa",
+      "mean_in_reference_length_mm": 587.0161703315093,
+      "stored_float32_sum_mm": 587.0161709891108
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 5,
+      "eligible_neurons": 5,
+      "length_path": "animal_maps\\animal-797_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "36614040792b620285e2514f0801b207d0b0c63aa3dbf0af48ebe98867567097",
+      "mean_in_reference_length_mm": 212.1029759119154,
+      "stored_float32_sum_mm": 212.1029758285323
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_41_L",
+      "selected_neurons": 15,
+      "eligible_neurons": 15,
+      "length_path": "animal_maps\\animal-797_source-ARM6_41_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "62aaedfd54fa2d3e057732cfb06ee1ebb0ca651983a050dcd506d7a08ad1187d",
+      "mean_in_reference_length_mm": 159.65630678624697,
+      "stored_float32_sum_mm": 159.6563067326133
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-797_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "deb10f2724fe9c6c1bcf57ec2acb10c82be7c9a734952939e57f146f9c821640",
+      "mean_in_reference_length_mm": 5.416496361282639,
+      "stored_float32_sum_mm": 5.416496358579025
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-797_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "96b66e617cf7e447265108d8f491ad0c14165aadb1f834bd1fa0dcf8a93c80a5",
+      "mean_in_reference_length_mm": 112.12947045875991,
+      "stored_float32_sum_mm": 112.12947004084708
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 16,
+      "eligible_neurons": 16,
+      "length_path": "animal_maps\\animal-797_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "8c1602f7112cbef4d7fefde4dc66278fc6a8221575d40fbb13c3b590cda8b21c",
+      "mean_in_reference_length_mm": 172.53871832063004,
+      "stored_float32_sum_mm": 172.53871827594594
+    },
+    {
+      "AnimalID": "797",
+      "Subregion": "ARM6_595_R",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-797_source-ARM6_595_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "4e7574a462c05bc093ac1e2cadf5f441a9840d80c84cea470ee95720e829239e",
+      "mean_in_reference_length_mm": 503.56899723916814,
+      "stored_float32_sum_mm": 503.56899731179874
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-900_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "19dbb6da733857dd59080eec7f6d2756c014b1ae57bea6498ac65edcf4142f1c",
+      "mean_in_reference_length_mm": 3.305012304549552,
+      "stored_float32_sum_mm": 3.305012298747897
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 4,
+      "eligible_neurons": 4,
+      "length_path": "animal_maps\\animal-900_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "336e737d9b81b7f6cd1d9b570c10ba8219ba6a9c3fd9c37c7f59fd85f4b35e4b",
+      "mean_in_reference_length_mm": 45.632191876988124,
+      "stored_float32_sum_mm": 45.632191934611
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 7,
+      "eligible_neurons": 7,
+      "length_path": "animal_maps\\animal-900_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "9e49d68fdd471f1ca07dffd46a58675299179d6f4a095fc2f7b3fc6250fae537",
+      "mean_in_reference_length_mm": 24.846995120845126,
+      "stored_float32_sum_mm": 24.846995169184083
+    },
+    {
+      "AnimalID": "900",
+      "Subregion": "ARM6_548_R",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-900_source-ARM6_548_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "06762740f445b72df071a15a80489055fbeb7c29c164936f642cac75fb2c2eb3",
+      "mean_in_reference_length_mm": 14.090995874012362,
+      "stored_float32_sum_mm": 14.090995838399976
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 11,
+      "eligible_neurons": 10,
+      "length_path": "animal_maps\\animal-936_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "ad7155365a5c91dc663c797ec136c7e0532724828a2db137de5204f43f6b578a",
+      "mean_in_reference_length_mm": 45.13680732972942,
+      "stored_float32_sum_mm": 45.1368073069209
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 3,
+      "eligible_neurons": 3,
+      "length_path": "animal_maps\\animal-936_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "c02cab5963f289c9af135b5dee6ac767bdc703301bce9938c1b5db4e9fabea77",
+      "mean_in_reference_length_mm": 32.93113526097133,
+      "stored_float32_sum_mm": 32.931135376898965
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 45,
+      "eligible_neurons": 37,
+      "length_path": "animal_maps\\animal-936_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "ead742b8c144d618e52382edeab0c099c010f3328d185fae92c17f74bebb2beb",
+      "mean_in_reference_length_mm": 79.00055566278347,
+      "stored_float32_sum_mm": 79.00055569679313
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 24,
+      "eligible_neurons": 23,
+      "length_path": "animal_maps\\animal-936_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "2008bc0deae42beb167c534cbc9d8ec19ca7fdf5154e1592084961bb625abf62",
+      "mean_in_reference_length_mm": 61.51206111609974,
+      "stored_float32_sum_mm": 61.512061201340885
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_41_L",
+      "selected_neurons": 11,
+      "eligible_neurons": 11,
+      "length_path": "animal_maps\\animal-936_source-ARM6_41_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "ca41e4c2f1f792d3ddb8993f3dbd1d5a07159d284b1feb51e091e535d7ad0082",
+      "mean_in_reference_length_mm": 95.27224784942686,
+      "stored_float32_sum_mm": 95.27224783950714
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 12,
+      "eligible_neurons": 10,
+      "length_path": "animal_maps\\animal-936_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "a6c4512d1c53b2db0dc145f914c1bb3a89d5d336ba6e1bfb1c573e3c1dd7bd76",
+      "mean_in_reference_length_mm": 118.4196299161543,
+      "stored_float32_sum_mm": 118.41963000953547
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 9,
+      "eligible_neurons": 9,
+      "length_path": "animal_maps\\animal-936_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "5b8e6428de7f1c8b6fd1c0e5f7c6ecd0f82fd34f72bf8d39089290110a203392",
+      "mean_in_reference_length_mm": 110.71263076838365,
+      "stored_float32_sum_mm": 110.71263076130163
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 51,
+      "eligible_neurons": 42,
+      "length_path": "animal_maps\\animal-936_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "dcedbd34e83acd68febfb07f53824af3ec051d6aa7fc0917e279efa5bfb6fbb0",
+      "mean_in_reference_length_mm": 48.645141903858274,
+      "stored_float32_sum_mm": 48.64514192471188
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 35,
+      "eligible_neurons": 32,
+      "length_path": "animal_maps\\animal-936_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "ae11664f6ed9660930b9c666efb24e2627725d5eb38e36005a4560873cc1f2b2",
+      "mean_in_reference_length_mm": 54.1055548712124,
+      "stored_float32_sum_mm": 54.10555486965404
+    },
+    {
+      "AnimalID": "936",
+      "Subregion": "ARM6_728_R",
+      "selected_neurons": 60,
+      "eligible_neurons": 51,
+      "length_path": "animal_maps\\animal-936_source-ARM6_728_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "6010aa0264d0e62938be3eb8643f3889a39dbce26db9ab9319e8e2321711a77a",
+      "mean_in_reference_length_mm": 74.88224182211529,
+      "stored_float32_sum_mm": 74.88224185510467
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 11,
+      "eligible_neurons": 11,
+      "length_path": "animal_maps\\animal-945_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "265c1fa234e1989ac66efcc8b7dd13617b6fe089cec766fceaa54df9304c2083",
+      "mean_in_reference_length_mm": 71.24213307714075,
+      "stored_float32_sum_mm": 71.24213305697958
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_43_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-945_source-ARM6_43_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "07bf85d294150225d59f826eb7a8a806c395e3b3ff10e28f9c4d131b1bf0cd8a",
+      "mean_in_reference_length_mm": 95.49124194219802,
+      "stored_float32_sum_mm": 95.49124181451043
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-945_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "b915975e9953f1900ca9edf259f35de7eaffdde45c0520f259b4f235bd3400c4",
+      "mean_in_reference_length_mm": 41.19714405662726,
+      "stored_float32_sum_mm": 41.19714399258373
+    },
+    {
+      "AnimalID": "945",
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 11,
+      "eligible_neurons": 11,
+      "length_path": "animal_maps\\animal-945_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "1f649d8518d445c6f17650138f296e8e7d092646a31f411d55cfc93d510eca19",
+      "mean_in_reference_length_mm": 97.78169106344005,
+      "stored_float32_sum_mm": 97.78169105205825
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 4,
+      "eligible_neurons": 4,
+      "length_path": "animal_maps\\animal-948_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "fb02907769211ccd56a22b5cb4b159c43e7cca3b6526619414a95d293ef8e0e3",
+      "mean_in_reference_length_mm": 64.52358549111688,
+      "stored_float32_sum_mm": 64.5235855154151
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 4,
+      "eligible_neurons": 4,
+      "length_path": "animal_maps\\animal-948_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "dbd3823cb4e8c258702d9be08bffddef6cb4fab8531275736e73496dbeeb7cc3",
+      "mean_in_reference_length_mm": 243.49321261974487,
+      "stored_float32_sum_mm": 243.49321270052678
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "length_path": "animal_maps\\animal-948_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "d17058475c5ba9c80ce99757da63319c4e7987664903661fb7d7ed652c3a6292",
+      "mean_in_reference_length_mm": 209.11296177756552,
+      "stored_float32_sum_mm": 209.11296162207145
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_1504_R",
+      "selected_neurons": 4,
+      "eligible_neurons": 4,
+      "length_path": "animal_maps\\animal-948_source-ARM6_1504_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "0aed2ca8cb9387940e5a9fccf2452ccb698ca1549beb71ef7993ac0445c44b8c",
+      "mean_in_reference_length_mm": 115.07713972183998,
+      "stored_float32_sum_mm": 115.07713974968283
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 3,
+      "eligible_neurons": 3,
+      "length_path": "animal_maps\\animal-948_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "1947a7117befb8ce4117db5eeb0cdfba702a5e83dd24c0b752b2bf29c4c2b764",
+      "mean_in_reference_length_mm": 63.4181382719849,
+      "stored_float32_sum_mm": 63.418138346853084
+    },
+    {
+      "AnimalID": "948",
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 2,
+      "eligible_neurons": 2,
+      "length_path": "animal_maps\\animal-948_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz",
+      "length_sha256": "d0daf3309c70dc99d2429f30bb4b5e5c06fe0bb4c1bb0779bd8cd00abdc63589",
+      "mean_in_reference_length_mm": 13.911006136470732,
+      "stored_float32_sum_mm": 13.911006114969496
+    }
+  ],
+  "group_maps": [
+    {
+      "Subregion": "ARM6_0_L",
+      "selected_neurons": 33,
+      "eligible_neurons": 32,
+      "contributing_animals": [
+        "331",
+        "605",
+        "797",
+        "900",
+        "936",
+        "948"
+      ],
+      "n_animals": 6,
+      "length_path": "group_maps\\source-ARM6_0_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "fedbcf2a7209bdfa69beb598e84c5e1fd2b2420faff780e032f9caa934ab319d"
+    },
+    {
+      "Subregion": "ARM6_0_R",
+      "selected_neurons": 19,
+      "eligible_neurons": 19,
+      "contributing_animals": [
+        "605",
+        "797",
+        "936",
+        "948"
+      ],
+      "n_animals": 4,
+      "length_path": "group_maps\\source-ARM6_0_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "30506f5b092ea1eb5edbb39160cefd8c8f52b698c75bf451831cbf0f2ec19cd4"
+    },
+    {
+      "Subregion": "ARM6_1004_L",
+      "selected_neurons": 4,
+      "eligible_neurons": 4,
+      "contributing_animals": [
+        "331",
+        "797",
+        "948"
+      ],
+      "n_animals": 3,
+      "length_path": "group_maps\\source-ARM6_1004_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "ef9a5d1e69e3530d96f31cbd47585a06760d0708900d235c47adc292b2364d97"
+    },
+    {
+      "Subregion": "ARM6_1504_R",
+      "selected_neurons": 5,
+      "eligible_neurons": 5,
+      "contributing_animals": [
+        "797",
+        "948"
+      ],
+      "n_animals": 2,
+      "length_path": "group_maps\\source-ARM6_1504_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "c5ec6c6a50695b85fc9134100a95b8b58e281f58c90ff30113302321b05ab7c2"
+    },
+    {
+      "Subregion": "ARM6_228_L",
+      "selected_neurons": 51,
+      "eligible_neurons": 43,
+      "contributing_animals": [
+        "331",
+        "631",
+        "936"
+      ],
+      "n_animals": 3,
+      "length_path": "group_maps\\source-ARM6_228_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "f078d35789614ca4ad53e5484db6daff5204a879f84afbd999c36ab8d25c9a2f"
+    },
+    {
+      "Subregion": "ARM6_229_L",
+      "selected_neurons": 34,
+      "eligible_neurons": 33,
+      "contributing_animals": [
+        "605",
+        "797",
+        "900",
+        "936"
+      ],
+      "n_animals": 4,
+      "length_path": "group_maps\\source-ARM6_229_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "5abfce19b5a002eb4ff22d7160ad202a2c5102730c5564304a41729be3951d83"
+    },
+    {
+      "Subregion": "ARM6_41_L",
+      "selected_neurons": 26,
+      "eligible_neurons": 26,
+      "contributing_animals": [
+        "797",
+        "936"
+      ],
+      "n_animals": 2,
+      "length_path": "group_maps\\source-ARM6_41_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "84743a406d094ec945687074a80bf1b3d10a12e95bb458d58608a44492c2e82a"
+    },
+    {
+      "Subregion": "ARM6_42_L",
+      "selected_neurons": 38,
+      "eligible_neurons": 36,
+      "contributing_animals": [
+        "331",
+        "797",
+        "936",
+        "945",
+        "948"
+      ],
+      "n_animals": 5,
+      "length_path": "group_maps\\source-ARM6_42_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "1998115dc2518541dfe81d1b47eb48144552c8759b9acfb1883bb52604418875"
+    },
+    {
+      "Subregion": "ARM6_43_L",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "contributing_animals": [
+        "945"
+      ],
+      "n_animals": 1,
+      "length_path": "group_maps\\source-ARM6_43_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "07bf85d294150225d59f826eb7a8a806c395e3b3ff10e28f9c4d131b1bf0cd8a"
+    },
+    {
+      "Subregion": "ARM6_48_L",
+      "selected_neurons": 25,
+      "eligible_neurons": 25,
+      "contributing_animals": [
+        "331",
+        "631",
+        "900"
+      ],
+      "n_animals": 3,
+      "length_path": "group_maps\\source-ARM6_48_L_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "8d258bc35447b4455f1b09ffe594477eab01612e1080d66fce248a6ec20568d6"
+    },
+    {
+      "Subregion": "ARM6_541_R",
+      "selected_neurons": 12,
+      "eligible_neurons": 12,
+      "contributing_animals": [
+        "797",
+        "936",
+        "945"
+      ],
+      "n_animals": 3,
+      "length_path": "group_maps\\source-ARM6_541_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "508c44bb0d7913586cebf2d68d5f12c7441af380597f3aaa3172f680ff6ad505"
+    },
+    {
+      "Subregion": "ARM6_542_R",
+      "selected_neurons": 71,
+      "eligible_neurons": 62,
+      "contributing_animals": [
+        "331",
+        "797",
+        "936",
+        "948"
+      ],
+      "n_animals": 4,
+      "length_path": "group_maps\\source-ARM6_542_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "3edf10d0233e3f61058a818ac85b2da844fa1c86f23e62b39c3d84724045efd9"
+    },
+    {
+      "Subregion": "ARM6_548_R",
+      "selected_neurons": 7,
+      "eligible_neurons": 7,
+      "contributing_animals": [
+        "631",
+        "900"
+      ],
+      "n_animals": 2,
+      "length_path": "group_maps\\source-ARM6_548_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "ca3b7d9f6ff8cd488525ea2128d10f5e30d91a312832944ee6c50bd0e621adf2"
+    },
+    {
+      "Subregion": "ARM6_549_R",
+      "selected_neurons": 67,
+      "eligible_neurons": 64,
+      "contributing_animals": [
+        "331",
+        "936",
+        "945"
+      ],
+      "n_animals": 3,
+      "length_path": "group_maps\\source-ARM6_549_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "275e512bfb0b0048f9bdf70efc9e3d0ae17c47f134d87f2ed28736c02afe5715"
+    },
+    {
+      "Subregion": "ARM6_595_R",
+      "selected_neurons": 1,
+      "eligible_neurons": 1,
+      "contributing_animals": [
+        "797"
+      ],
+      "n_animals": 1,
+      "length_path": "group_maps\\source-ARM6_595_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "4e7574a462c05bc093ac1e2cadf5f441a9840d80c84cea470ee95720e829239e"
+    },
+    {
+      "Subregion": "ARM6_728_R",
+      "selected_neurons": 61,
+      "eligible_neurons": 52,
+      "contributing_animals": [
+        "631",
+        "936"
+      ],
+      "n_animals": 2,
+      "length_path": "group_maps\\source-ARM6_728_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "2d255ce09bc11cadaa3b3d0f58c2af4a507b181697166506eaa6726053ec445c"
+    },
+    {
+      "Subregion": "ARM6_729_R",
+      "selected_neurons": 7,
+      "eligible_neurons": 7,
+      "contributing_animals": [
+        "331",
+        "605"
+      ],
+      "n_animals": 2,
+      "length_path": "group_maps\\source-ARM6_729_R_desc-animalMeanAxonEndBranchLength_map.nii.gz",
+      "length_sha256": "18737ed7ef3caf0254aa5711381a5d42e60ef5c952025d415ac77f29847727ec"
+    }
+  ],
+  "artifacts": {
+    "arm_axon_end_branch_hierarchy_tables.xlsx": "a20e7f39b851e8752b613ada6b2be5ef0a15c4187e2faac3a9fe04c9f99aa96a",
+    "ARM_L1_axon_end_branch_length_mm.csv": "b0d9b42363055918c6a1e93283932563249c232ea97413abe27d9a1d7e437e29",
+    "ARM_L2_axon_end_branch_length_mm.csv": "ac80d28e6489fd32e65cf0f45f1345959831f92e4d6eda350b87edff5a81cb66",
+    "ARM_L3_axon_end_branch_length_mm.csv": "1eab83e1b2568ac17c039df880fc3e34a29a04b73ea26700e472b99d78cb8912",
+    "ARM_L4_axon_end_branch_length_mm.csv": "dd3ea28654a9cba412071d0ae36ac18c9e02b251892236b8200efbd827f8eb85",
+    "ARM_L5_axon_end_branch_length_mm.csv": "dcb4756dc1d56fce288d8f3384d258daec33d643b0c9bde7f8126a36a7d412aa",
+    "ARM_L6_axon_end_branch_length_mm.csv": "523386ec76c8019e8bfa66fa53443c02199478e8c6721eefc61dff5af52e6039",
+    "input_ledger.csv": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+    "per_neuron_measurements.csv": "550909dd49e93f0a3d39db38633bd964d25a3d600bdbff430338bccfed1dd481",
+    "targets.csv": "632da1c6e92b0f28bb7d94cb598752abe74a9277b83e50d526c2b84568d57547",
+    "animal_maps\\animal-331_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "bd97eb2763288443ea8d912595ff2aeba1904a9434dc9b3d66ce83122cf51ca7",
+    "animal_maps\\animal-331_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz": "752e2c5f6e8b4a0ce488e041a7433e9697c7a88ce7ab24fe0e291f9d0ddee007",
+    "animal_maps\\animal-331_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz": "3552618d6e4f454c3eb553f1d2712a01eb35b636b9bb77f9200ccda08cedb7f0",
+    "animal_maps\\animal-331_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "f0b24426523352e025aab9248f29cecd1b2067ea4755df3061436f88f95c20a0",
+    "animal_maps\\animal-331_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz": "ebd65a5e6cf603b1ee4a104efb2c26271002658cadeafb0e89ef2932015d4388",
+    "animal_maps\\animal-331_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "c3417115c43ff95f017925b29074914c6847c132ad0704fc94b525306d5d77c3",
+    "animal_maps\\animal-331_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz": "6e19d0bde8c68b68bac1addd4fc3c02ddbb513dd5c34cc4234221933b8ad180d",
+    "animal_maps\\animal-331_source-ARM6_729_R_desc-axonEndBranchLength_map.nii.gz": "a6bb9364fc86145d1d7e13671b6c0e41e522db293ccdb3cb555cac31cd741e73",
+    "animal_maps\\animal-605_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "122c32cebcd8d83ff1e6af39b9b9c3b30a06cb553dd3b068fe58c60082000e69",
+    "animal_maps\\animal-605_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "9fbb274a61a2d2a0fe1d12ace2767d8c1dc97f9b04bd42a34323120a16723f36",
+    "animal_maps\\animal-605_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "ceafc21ac25050a8822fd4522b428912122d5a49a1126429d41af4b581a3bb06",
+    "animal_maps\\animal-605_source-ARM6_729_R_desc-axonEndBranchLength_map.nii.gz": "433ebc7b4bf0678346e3fe911531cf6783f9b0d58a5d61a0c7b507c7e0ccd050",
+    "animal_maps\\animal-631_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz": "701d8e5df5cdeb3118fb2dd4595ac4358fdd17d512303a213ed6012315fd326c",
+    "animal_maps\\animal-631_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz": "dcb121d315403700312f9791b728e829317a668aea54c2a82a999810ffd89802",
+    "animal_maps\\animal-631_source-ARM6_548_R_desc-axonEndBranchLength_map.nii.gz": "8ee1f278a22c753097a771f8b419f24bf9eab267fa0c3427a41bedde272d99b7",
+    "animal_maps\\animal-631_source-ARM6_728_R_desc-axonEndBranchLength_map.nii.gz": "9973db0db091a45d6ea35210c1388e68649deaead784398d7fc9d1d070a5789d",
+    "animal_maps\\animal-797_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "3576641866f3022eb52fcbd22a0e88d4762c4f0fc14a0daa3002791346556bb4",
+    "animal_maps\\animal-797_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "8b956036bc9ca063a93ddc2d053ce48e0dcae6bec1e22a2baffae55b0fae1f23",
+    "animal_maps\\animal-797_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz": "aa263eea8813298325efdb73f1c27348800fff79bc8f45402f7bdcbf25987772",
+    "animal_maps\\animal-797_source-ARM6_1504_R_desc-axonEndBranchLength_map.nii.gz": "353a30eb4484c47be5112e85717aa41b8fd1cccfca1ce674030a2d6bb5af3efa",
+    "animal_maps\\animal-797_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "36614040792b620285e2514f0801b207d0b0c63aa3dbf0af48ebe98867567097",
+    "animal_maps\\animal-797_source-ARM6_41_L_desc-axonEndBranchLength_map.nii.gz": "62aaedfd54fa2d3e057732cfb06ee1ebb0ca651983a050dcd506d7a08ad1187d",
+    "animal_maps\\animal-797_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "deb10f2724fe9c6c1bcf57ec2acb10c82be7c9a734952939e57f146f9c821640",
+    "animal_maps\\animal-797_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz": "96b66e617cf7e447265108d8f491ad0c14165aadb1f834bd1fa0dcf8a93c80a5",
+    "animal_maps\\animal-797_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "8c1602f7112cbef4d7fefde4dc66278fc6a8221575d40fbb13c3b590cda8b21c",
+    "animal_maps\\animal-797_source-ARM6_595_R_desc-axonEndBranchLength_map.nii.gz": "4e7574a462c05bc093ac1e2cadf5f441a9840d80c84cea470ee95720e829239e",
+    "animal_maps\\animal-900_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "19dbb6da733857dd59080eec7f6d2756c014b1ae57bea6498ac65edcf4142f1c",
+    "animal_maps\\animal-900_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "336e737d9b81b7f6cd1d9b570c10ba8219ba6a9c3fd9c37c7f59fd85f4b35e4b",
+    "animal_maps\\animal-900_source-ARM6_48_L_desc-axonEndBranchLength_map.nii.gz": "9e49d68fdd471f1ca07dffd46a58675299179d6f4a095fc2f7b3fc6250fae537",
+    "animal_maps\\animal-900_source-ARM6_548_R_desc-axonEndBranchLength_map.nii.gz": "06762740f445b72df071a15a80489055fbeb7c29c164936f642cac75fb2c2eb3",
+    "animal_maps\\animal-936_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "ad7155365a5c91dc663c797ec136c7e0532724828a2db137de5204f43f6b578a",
+    "animal_maps\\animal-936_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "c02cab5963f289c9af135b5dee6ac767bdc703301bce9938c1b5db4e9fabea77",
+    "animal_maps\\animal-936_source-ARM6_228_L_desc-axonEndBranchLength_map.nii.gz": "ead742b8c144d618e52382edeab0c099c010f3328d185fae92c17f74bebb2beb",
+    "animal_maps\\animal-936_source-ARM6_229_L_desc-axonEndBranchLength_map.nii.gz": "2008bc0deae42beb167c534cbc9d8ec19ca7fdf5154e1592084961bb625abf62",
+    "animal_maps\\animal-936_source-ARM6_41_L_desc-axonEndBranchLength_map.nii.gz": "ca41e4c2f1f792d3ddb8993f3dbd1d5a07159d284b1feb51e091e535d7ad0082",
+    "animal_maps\\animal-936_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "a6c4512d1c53b2db0dc145f914c1bb3a89d5d336ba6e1bfb1c573e3c1dd7bd76",
+    "animal_maps\\animal-936_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz": "5b8e6428de7f1c8b6fd1c0e5f7c6ecd0f82fd34f72bf8d39089290110a203392",
+    "animal_maps\\animal-936_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "dcedbd34e83acd68febfb07f53824af3ec051d6aa7fc0917e279efa5bfb6fbb0",
+    "animal_maps\\animal-936_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz": "ae11664f6ed9660930b9c666efb24e2627725d5eb38e36005a4560873cc1f2b2",
+    "animal_maps\\animal-936_source-ARM6_728_R_desc-axonEndBranchLength_map.nii.gz": "6010aa0264d0e62938be3eb8643f3889a39dbce26db9ab9319e8e2321711a77a",
+    "animal_maps\\animal-945_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "265c1fa234e1989ac66efcc8b7dd13617b6fe089cec766fceaa54df9304c2083",
+    "animal_maps\\animal-945_source-ARM6_43_L_desc-axonEndBranchLength_map.nii.gz": "07bf85d294150225d59f826eb7a8a806c395e3b3ff10e28f9c4d131b1bf0cd8a",
+    "animal_maps\\animal-945_source-ARM6_541_R_desc-axonEndBranchLength_map.nii.gz": "b915975e9953f1900ca9edf259f35de7eaffdde45c0520f259b4f235bd3400c4",
+    "animal_maps\\animal-945_source-ARM6_549_R_desc-axonEndBranchLength_map.nii.gz": "1f649d8518d445c6f17650138f296e8e7d092646a31f411d55cfc93d510eca19",
+    "animal_maps\\animal-948_source-ARM6_0_L_desc-axonEndBranchLength_map.nii.gz": "fb02907769211ccd56a22b5cb4b159c43e7cca3b6526619414a95d293ef8e0e3",
+    "animal_maps\\animal-948_source-ARM6_0_R_desc-axonEndBranchLength_map.nii.gz": "dbd3823cb4e8c258702d9be08bffddef6cb4fab8531275736e73496dbeeb7cc3",
+    "animal_maps\\animal-948_source-ARM6_1004_L_desc-axonEndBranchLength_map.nii.gz": "d17058475c5ba9c80ce99757da63319c4e7987664903661fb7d7ed652c3a6292",
+    "animal_maps\\animal-948_source-ARM6_1504_R_desc-axonEndBranchLength_map.nii.gz": "0aed2ca8cb9387940e5a9fccf2452ccb698ca1549beb71ef7993ac0445c44b8c",
+    "animal_maps\\animal-948_source-ARM6_42_L_desc-axonEndBranchLength_map.nii.gz": "1947a7117befb8ce4117db5eeb0cdfba702a5e83dd24c0b752b2bf29c4c2b764",
+    "animal_maps\\animal-948_source-ARM6_542_R_desc-axonEndBranchLength_map.nii.gz": "d0daf3309c70dc99d2429f30bb4b5e5c06fe0bb4c1bb0779bd8cd00abdc63589",
+    "group_maps\\source-ARM6_0_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "fedbcf2a7209bdfa69beb598e84c5e1fd2b2420faff780e032f9caa934ab319d",
+    "group_maps\\source-ARM6_0_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "30506f5b092ea1eb5edbb39160cefd8c8f52b698c75bf451831cbf0f2ec19cd4",
+    "group_maps\\source-ARM6_1004_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "ef9a5d1e69e3530d96f31cbd47585a06760d0708900d235c47adc292b2364d97",
+    "group_maps\\source-ARM6_1504_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "c5ec6c6a50695b85fc9134100a95b8b58e281f58c90ff30113302321b05ab7c2",
+    "group_maps\\source-ARM6_228_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "f078d35789614ca4ad53e5484db6daff5204a879f84afbd999c36ab8d25c9a2f",
+    "group_maps\\source-ARM6_229_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "5abfce19b5a002eb4ff22d7160ad202a2c5102730c5564304a41729be3951d83",
+    "group_maps\\source-ARM6_41_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "84743a406d094ec945687074a80bf1b3d10a12e95bb458d58608a44492c2e82a",
+    "group_maps\\source-ARM6_42_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "1998115dc2518541dfe81d1b47eb48144552c8759b9acfb1883bb52604418875",
+    "group_maps\\source-ARM6_43_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "07bf85d294150225d59f826eb7a8a806c395e3b3ff10e28f9c4d131b1bf0cd8a",
+    "group_maps\\source-ARM6_48_L_desc-animalMeanAxonEndBranchLength_map.nii.gz": "8d258bc35447b4455f1b09ffe594477eab01612e1080d66fce248a6ec20568d6",
+    "group_maps\\source-ARM6_541_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "508c44bb0d7913586cebf2d68d5f12c7441af380597f3aaa3172f680ff6ad505",
+    "group_maps\\source-ARM6_542_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "3edf10d0233e3f61058a818ac85b2da844fa1c86f23e62b39c3d84724045efd9",
+    "group_maps\\source-ARM6_548_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "ca3b7d9f6ff8cd488525ea2128d10f5e30d91a312832944ee6c50bd0e621adf2",
+    "group_maps\\source-ARM6_549_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "275e512bfb0b0048f9bdf70efc9e3d0ae17c47f134d87f2ed28736c02afe5715",
+    "group_maps\\source-ARM6_595_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "4e7574a462c05bc093ac1e2cadf5f441a9840d80c84cea470ee95720e829239e",
+    "group_maps\\source-ARM6_728_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "2d255ce09bc11cadaa3b3d0f58c2af4a507b181697166506eaa6726053ec445c",
+    "group_maps\\source-ARM6_729_R_desc-animalMeanAxonEndBranchLength_map.nii.gz": "18737ed7ef3caf0254aa5711381a5d42e60ef5c952025d415ac77f29847727ec"
+  },
+  "eligible_neurons": 429,
+  "original_axon_ends": 75625,
+  "selected_original_axon_edges": 3992993,
+  "total_end_branch_length_mm": 36651.4599611809,
+  "finished_utc": "2026-10-09T04:45:46.650002+00:00"
+}

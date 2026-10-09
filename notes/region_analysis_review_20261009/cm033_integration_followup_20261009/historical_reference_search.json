@@ -1,0 +1,416 @@
+{
+  "started_utc": "2026-10-09T04:38:51.385915+00:00",
+  "code": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_integration_followup_20261009\\audit_reference_candidates.py",
+    "sha256": "c5f19ea76c100253201c2ee97d013025e19004020035f76bbeab7952042fc0fe",
+    "bytes": 6853
+  },
+  "bounded_search_roots": [
+    "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm"
+  ],
+  "archive_selected_first_frame_checks": [
+    {
+      "scanner_id": 57,
+      "archive": {
+        "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+        "sha256": "0728ab8727922b71d22461e6020d1c5add94b9ff5a80c984f736f0a7275de170",
+        "bytes": 188816256
+      },
+      "current_source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+        "sha256": "b8cb394a1925dac17a9c1373e5c7228144b7a7c0988b341789460beadafbefaa",
+        "bytes": 188816112
+      },
+      "archive_affine_matches_cachedSPM": true,
+      "first_frame_scaled_arrays_exact": false,
+      "first_frame_max_abs_difference": 319818.96875,
+      "first_frame_Pearson_r": 0.9978215514582025,
+      "scope": "First-frame counterexample only; no historical payload equality claimed."
+    },
+    {
+      "scanner_id": 58,
+      "archive": {
+        "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+        "sha256": "f254eb9d9ca49f9283388e6b734b0f717b963987d6fc8290cb11eda1d99465ca",
+        "bytes": 188816288
+      },
+      "current_source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+        "sha256": "156860eff8fc150913f7114cb3226de8c4e9e679d0765fe87a1b0d0d441f3825",
+        "bytes": 188816080
+      },
+      "archive_affine_matches_cachedSPM": true,
+      "first_frame_scaled_arrays_exact": false,
+      "first_frame_max_abs_difference": 323643.90625,
+      "first_frame_Pearson_r": 0.9978926922644543,
+      "scope": "First-frame counterexample only; no historical payload equality claimed."
+    },
+    {
+      "scanner_id": 60,
+      "archive": {
+        "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+        "sha256": "10aad3999f4660910144aff2193520f81e857782eb39ed90174e70300aec4c45",
+        "bytes": 453151840
+      },
+      "current_source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+        "sha256": "9badb77d90f271d849a659f67dfad49429c76bf2686c7f018374fbf26bb0e50d",
+        "bytes": 453151136
+      },
+      "archive_affine_matches_cachedSPM": true,
+      "first_frame_scaled_arrays_exact": false,
+      "first_frame_max_abs_difference": 320577.40625,
+      "first_frame_Pearson_r": 0.9980353116703891,
+      "scope": "First-frame counterexample only; no historical payload equality claimed."
+    },
+    {
+      "scanner_id": 61,
+      "archive": {
+        "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+        "sha256": "05cb3f29f40085850b4947906b9fee96246d66b90c09eb8eef6623ed91f4b77d",
+        "bytes": 453152048
+      },
+      "current_source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+        "sha256": "ac83876790d37280b6d2d27391dc81b462255589e02e4ee822a65403c1c83fe9",
+        "bytes": 453151328
+      },
+      "archive_affine_matches_cachedSPM": true,
+      "first_frame_scaled_arrays_exact": false,
+      "first_frame_max_abs_difference": 332190.125,
+      "first_frame_Pearson_r": 0.9978580676649981,
+      "scope": "First-frame counterexample only; no historical payload equality claimed."
+    },
+    {
+      "scanner_id": 64,
+      "archive": {
+        "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+        "sha256": "71da860e81e50c4314d588aba83532715c023facae859ca5c444059ed45a890b",
+        "bytes": 453152368
+      },
+      "current_source_binding": {
+        "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+        "sha256": "f29a2131fe21059ef088bf0d5fd02f65b7ef38f020d2077d56023a4735d68be6",
+        "bytes": 453151312
+      },
+      "archive_affine_matches_cachedSPM": true,
+      "first_frame_scaled_arrays_exact": false,
+      "first_frame_max_abs_difference": 340194.125,
+      "first_frame_Pearson_r": 0.9976672195937324,
+      "scope": "First-frame counterexample only; no historical payload equality claimed."
+    }
+  ],
+  "reference_candidates": [
+    {
+      "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "sha256": "20857a307f40b4e77916561b929435d253212ff12504833de34f1329f54251a1",
+      "bytes": 1183440,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "affine_matches_cachedSPM": true,
+      "all_values_finite": true,
+      "full_scaled_array_matches_current_reference": false,
+      "max_abs_difference_from_current_reference": 1228345.375
+    },
+    {
+      "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii.gz",
+      "sha256": "01d9aa709d19c14f97bff606301e3fb80ea49add6ecffcd83d6f44c05e95bedf",
+      "bytes": 1060454,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          0.75,
+          2.1769260258159792e-16,
+          -1.5823229961370013e-18,
+          -48.0
+        ],
+        [
+          3.651487898080609e-17,
+          -0.12378569692373276,
+          1.9725710153579712,
+          -2.4237139225006104
+        ],
+        [
+          2.1460920413024525e-16,
+          -0.7397142052650452,
+          -0.33009520173072815,
+          64.28160858154297
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "affine_matches_cachedSPM": false,
+      "all_values_finite": true,
+      "full_scaled_array_matches_current_reference": false,
+      "max_abs_difference_from_current_reference": 1228345.375
+    },
+    {
+      "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\epi_QCed\\ref_mean_epi.nii.gz",
+      "sha256": "01d9aa709d19c14f97bff606301e3fb80ea49add6ecffcd83d6f44c05e95bedf",
+      "bytes": 1060454,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          0.75,
+          2.1769260258159792e-16,
+          -1.5823229961370013e-18,
+          -48.0
+        ],
+        [
+          3.651487898080609e-17,
+          -0.12378569692373276,
+          1.9725710153579712,
+          -2.4237139225006104
+        ],
+        [
+          2.1460920413024525e-16,
+          -0.7397142052650452,
+          -0.33009520173072815,
+          64.28160858154297
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "affine_matches_cachedSPM": false,
+      "all_values_finite": true,
+      "full_scaled_array_matches_current_reference": false,
+      "max_abs_difference_from_current_reference": 1228345.375
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "sha256": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+      "bytes": 1183600,
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "affine_matches_cachedSPM": false,
+      "all_values_finite": true,
+      "full_scaled_array_matches_current_reference": true,
+      "max_abs_difference_from_current_reference": 0.0
+    }
+  ],
+  "archive_reference_geometry_gate": {
+    "path": "D:\\multimodal_fmri\\_archive\\cm033_redo_20260725_115901\\preproc_anat\\refmean_vs_aligned_gate.json",
+    "sha256": "dddf2a999ce233e24403fd92e3c9fffa7cab49d0a242fc3ad5f3428bf3694657",
+    "bytes": 1206
+  },
+  "archive_same_grid_is_not_current_estimation_payload_proof": true,
+  "current_rebuild_selected_sources": [
+    {
+      "scanner_id": 57,
+      "legacy_run": 8,
+      "task": "mstim",
+      "source": {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.nii",
+        "sha256": "fac573970be8e122c234fe56e2e551eab2b7a8fc98057d3d995aac682d5ba1fb",
+        "bytes": 377487712
+      },
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "TR_seconds": 3.0,
+      "staged_path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/func/sub-cm033_ses-20160120_task-mstim_acq-leftaic_run-57_bold.nii",
+      "source_hash_matches_manifest": true,
+      "staged_payload_equality_producer_claim": true,
+      "selected_scanner_identity_and_frame_count_match_old_model": true,
+      "old_smoothed_vs_new_alignment_payload_equality_established": false
+    },
+    {
+      "scanner_id": 58,
+      "legacy_run": 9,
+      "task": "mstim",
+      "source": {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-09_EPI.nii",
+        "sha256": "d8c075f6967ac74c03e1f1930c9871db1547f6c295aa874ed728c4a8f386e24e",
+        "bytes": 377487712
+      },
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "TR_seconds": 3.0,
+      "staged_path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/func/sub-cm033_ses-20160120_task-mstim_acq-leftaic_run-58_bold.nii",
+      "source_hash_matches_manifest": true,
+      "staged_payload_equality_producer_claim": true,
+      "selected_scanner_identity_and_frame_count_match_old_model": true,
+      "old_smoothed_vs_new_alignment_payload_equality_established": false
+    },
+    {
+      "scanner_id": 60,
+      "legacy_run": 10,
+      "task": "mstim",
+      "source": {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-10_EPI.nii",
+        "sha256": "6200cfc1a2960324cf584ce8f03f7a6a27bf96d1c6519df5f244b22140c6cef0",
+        "bytes": 905970016
+      },
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "TR_seconds": 3.0,
+      "staged_path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/func/sub-cm033_ses-20160120_task-mstim_acq-leftaic_run-60_bold.nii",
+      "source_hash_matches_manifest": true,
+      "staged_payload_equality_producer_claim": true,
+      "selected_scanner_identity_and_frame_count_match_old_model": true,
+      "old_smoothed_vs_new_alignment_payload_equality_established": false
+    },
+    {
+      "scanner_id": 61,
+      "legacy_run": 11,
+      "task": "mstim",
+      "source": {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-11_EPI.nii",
+        "sha256": "f9030701cbeaa152b0e9617676537ffb2401ed3c5f9ce3047e285bf9edbd8961",
+        "bytes": 905970016
+      },
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "TR_seconds": 3.0,
+      "staged_path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/func/sub-cm033_ses-20160120_task-mstim_acq-leftaic_run-61_bold.nii",
+      "source_hash_matches_manifest": true,
+      "staged_payload_equality_producer_claim": true,
+      "selected_scanner_identity_and_frame_count_match_old_model": true,
+      "old_smoothed_vs_new_alignment_payload_equality_established": false
+    },
+    {
+      "scanner_id": 64,
+      "legacy_run": 12,
+      "task": "mstim",
+      "source": {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-12_EPI.nii",
+        "sha256": "c15ed95edc0a97486724e3f2c60211c411f75519f2bd0461c2097c602ce14640",
+        "bytes": 905970016
+      },
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "TR_seconds": 3.0,
+      "staged_path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/func/sub-cm033_ses-20160120_task-mstim_acq-leftaic_run-64_bold.nii",
+      "source_hash_matches_manifest": true,
+      "staged_payload_equality_producer_claim": true,
+      "selected_scanner_identity_and_frame_count_match_old_model": true,
+      "old_smoothed_vs_new_alignment_payload_equality_established": false
+    }
+  ],
+  "Sept7_repair_receipt": {
+    "binding": {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\qc\\nii_reorientation_20260907_135316.json",
+      "sha256": "55587ed3cc08735bb4d1e8adb7c9aebd0a723200c8ffbb80e8981efe1b07d92e",
+      "bytes": 19032
+    },
+    "version": "1.0.0",
+    "selected_paths_present": true,
+    "geometry_gate_passed": true,
+    "per_selected_path_payload_hash_or_voxel_equality_check_recorded": false,
+    "implementation": {
+      "path": "D:\\multimodal_fmri\\code\\tools\\preproc\\nii_reorientation.py",
+      "sha256": "15c1a03f35718453ba614aa334a3c813b9594c359c31740d9deb31d8810cf807",
+      "bytes": 17973
+    },
+    "implementation_scope": "write_one loads scaled data, writes copied header/image/temp and replaces; session gate checks geometry. Separate smoke only checks first/last frames of small copied examples, not all installed selected model payloads."
+  },
+  "external_log_tail": "0.00 (mm) at sub-brick 49\n++ Max delta displ  in automask = 0.00 (mm) at sub-brick 229\n++ 3dTstat: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]\n++ Authored by: KR Hammett & RW Cox\n++ Output dataset /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/epi_QCed/mixed-grid-gpy0qj_o/run6_aligned_mean.nii\n++ 3dvolreg: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]\n++ Authored by: RW Cox\n\u001b[7m*+ WARNING:\u001b[0m No output dataset will be calculated\n++ edt_blur: sigx 2.25, dx 0.75, fwhm 5.29835, sfac 2.5, firx 8\n++ Max displacement in automask = 0.00 (mm) at sub-brick 122\n++ Max delta displ  in automask = 0.01 (mm) at sub-brick 76\n++ 3dTstat: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]\n++ Authored by: KR Hammett & RW Cox\n++ Output dataset /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/epi_QCed/mixed-grid-gpy0qj_o/run7_aligned_mean.nii\n++ 3dvolreg: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]\n++ Authored by: RW Cox\n\u001b[7m*+ WARNING:\u001b[0m No output dataset will be calculated\n++ edt_blur: sigx 2.25, dx 0.75, fwhm 5.29835, sfac 2.5, firx 8\n++ Max displacement in automask = 0.01 (mm) at sub-brick 262\n++ Max delta displ  in automask = 0.01 (mm) at sub-brick 209\n++ 3dTstat: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]\n++ Authored by: KR Hammett & RW Cox\n++ Output dataset /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/epi_QCed/mixed-grid-gpy0qj_o/run8_aligned_mean.nii\n++ 3dvolreg: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]\n++ Authored by: RW Cox\n\u001b[7m*+ WARNING:\u001b[0m No output dataset will be calculated\n++ edt_blur: sigx 2.25, dx 0.75, fwhm 5.29835, sfac 2.5, firx 8\n",
+  "PID405_snapshot": {
+    "returncode": 0,
+    "stdout": "PID    PPID ELAPSED STAT COMMAND\n    405     317    2062 Sl+  /home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python -u alignment_review/cm033_Dsource_20261009/run_spatial_rebuild.py",
+    "stderr": ""
+  },
+  "completion_receipts": {
+    "spatial_rebuild_completed.json": null,
+    "full_series_qc/full_series_checks.json": null,
+    "functional_normalization_qc/chain_checks.json": null
+  },
+  "ended_utc": "2026-10-09T04:38:57.047105+00:00",
+  "scientific_anatomical_acceptance": false
+}

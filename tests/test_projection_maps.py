@@ -78,6 +78,28 @@ class LineIntegralTests(unittest.TestCase):
         data, _ = self.measure(swc([-.5, 0, 0], [-.5, 2, 0]))
         self.assertEqual(data.sum(), 2)
 
+    def test_float_immediately_below_face_stays_in_lower_voxel_in_both_paths(self):
+        below = np.nextafter(0.5, -np.inf)
+        for end_y in (0.25, 2.0):
+            data, metrics = self.measure(swc([below, 0, 0], [below, end_y, 0]))
+            self.assertEqual(data[1:, :, :].sum(), 0)
+            self.assertAlmostEqual(data[0, :, :].sum(), end_y)
+            self.assertAlmostEqual(metrics["selected_axon_length_mm"], end_y)
+
+    def test_saved_description_is_explicit_without_changing_default_values(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            data = np.ones(self.grid.shape)
+            save_map(root / "default.nii.gz", data, self.grid)
+            save_map(root / "end_branch.nii.gz", data, self.grid,
+                     description="Reconstructed axon end-branch length; descriptive graph proxy")
+            for name in ("default.nii.gz", "end_branch.nii.gz"):
+                np.testing.assert_array_equal(nib.load(root / name).get_fdata(), data)
+            self.assertIn(b"end-branch", nib.load(root / "end_branch.nii.gz").header["descrip"].tobytes())
+            self.assertIn(b"not BOLD", nib.load(root / "default.nii.gz").header["descrip"].tobytes())
+            with self.assertRaises(ValueError):
+                save_map(root / "bad.nii.gz", data, self.grid, description="x" * 80)
+
     def test_world_and_index_frames_agree_after_explicit_transform(self):
         affine = np.diag([.25, .25, .25, 1])
         affine[:3, 3] = [-31.875, -27.75, -8]

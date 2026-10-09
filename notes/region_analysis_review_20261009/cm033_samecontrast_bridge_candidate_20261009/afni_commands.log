@@ -1,0 +1,31 @@
+["afni", "-ver"]
+Precompiled binary linux_ubuntu_24_64: Jun 17 2026 (Version AFNI_26.1.05 'Balbinus')
+
+["cat_matvec", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D", "-I"]
+     0.999573     0.0269931     0.0112321      -96.1552
+   -0.0267495      0.999415    -0.0213017      -53.6424
+   -0.0118005     0.0209921       0.99971      -75.7687
+
+["3dAllineate", "-source", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/derivatives/preproc/anat/sub-cm033_ses-20160120_desc-refmean_bold.nii", "-master", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/working_copy/sub-cm033_desc-currentPayload1472Mean_space-declaredCurrentWorld_bold.nii.gz", "-1Dmatrix_apply", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/fit/desc-scan39ToDeclaredCurrentApply.aff12.1D", "-final", "wsinc5", "-prefix", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-scan39InDeclaredCurrentWorld_bold.nii.gz"]
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+++ -1Dmatrix_apply: converting input 3x4 array to 1 row of 12 numbers
+++ Source dataset: /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/derivatives/preproc/anat/sub-cm033_ses-20160120_desc-refmean_bold.nii
+++ Base dataset:   (not given)
+++ Loading datasets into memory
+ +        -cmass x y z shifts =    0.000    0.000    0.000
+ +  shift search range is +/- =   30.575   30.575   10.914
+++ OpenMP thread count = 4
+++ ========== Applying transformation to 1 sub-bricks ==========
+++ wsinc5 interpolation setup:
+ +   taper function  = Min sidelobe 3 term
+ +   taper cut point = 0.000
+ +   window radius   = 5 voxels
+ +   window shape    = Cubical
+ +   The above can be altered via the AFNI_WSINC5_* environment variables.
+ +  (To avoid this message, 'setenv AFNI_WSINC5_SILENT YES'.)
+ +   wsinc5 CUBE(5) mask has 1000 points
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-scan39InDeclaredCurrentWorld_bold.nii.gz
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 0.4
+++ ###########################################################
+

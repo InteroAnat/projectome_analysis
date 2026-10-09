@@ -1,0 +1,43 @@
+["cat_matvec", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D", "-I"]
+     0.869529     0.0233888      0.493329      -28.5428
+     0.108866      0.965232     -0.237645      -37.5418
+    -0.481735      0.260347       0.83675      -61.5164
+
+["3dAllineate", "-source", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii", "-master", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz", "-1Dmatrix_apply", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-taskAToCachedEpiApply.aff12.1D", "-final", "wsinc5", "-prefix", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAInCachedEpi_brain.nii.gz"]
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+++ -1Dmatrix_apply: converting input 3x4 array to 1 row of 12 numbers
+++ Source dataset: /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii
+++ Base dataset:   (not given)
+++ Loading datasets into memory
+ +        -cmass x y z shifts =    0.000    0.000    0.000
+ +  shift search range is +/- =   30.575   30.575   16.692
+++ OpenMP thread count = 4
+++ ========== Applying transformation to 1 sub-bricks ==========
+++ wsinc5 interpolation setup:
+ +   taper function  = Min sidelobe 3 term
+ +   taper cut point = 0.000
+ +   window radius   = 5 voxels
+ +   window shape    = Cubical
+ +   The above can be altered via the AFNI_WSINC5_* environment variables.
+ +  (To avoid this message, 'setenv AFNI_WSINC5_SILENT YES'.)
+ +   wsinc5 CUBE(5) mask has 1000 points
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAInCachedEpi_brain.nii.gz
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 0.3
+++ ###########################################################
+
+["3dAllineate", "-source", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupport_mask.nii.gz", "-master", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_integration_followup_20261009/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz", "-1Dmatrix_apply", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-taskAToCachedEpiApply.aff12.1D", "-final", "NN", "-prefix", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupportInCachedEpi_mask.nii.gz"]
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+++ -1Dmatrix_apply: converting input 3x4 array to 1 row of 12 numbers
+++ Source dataset: /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupport_mask.nii.gz
+++ Base dataset:   (not given)
+++ Loading datasets into memory
+ +        -cmass x y z shifts =    0.000    0.000    0.000
+ +  shift search range is +/- =   30.575   30.575   16.692
+++ OpenMP thread count = 4
+++ ========== Applying transformation to 1 sub-bricks ==========
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-taskAPositiveSupportInCachedEpi_mask.nii.gz
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 0.2
+++ ###########################################################
+

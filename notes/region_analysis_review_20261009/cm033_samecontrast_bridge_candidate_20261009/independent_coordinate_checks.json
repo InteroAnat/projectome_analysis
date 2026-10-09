@@ -1,0 +1,27 @@
+{
+  "status": "pass",
+  "checked_utc": "2026-10-09T05:13:08.226710+00:00",
+  "checks": {
+    "exact_saved_scaled_array_equality": true,
+    "explicit_B_same_voxel_coordinate_identity": true,
+    "sequential_named_space_pullback_256_points": true,
+    "forward_pointmap_256_inverse_roundtrips": true,
+    "incorrect_order_and_missing_RAS_DICOM_conversion_detected": true,
+    "independent_residual_gate_check": true,
+    "seven_saved_source_artifact_hashes_match": true
+  },
+  "residual_rotation_degrees": 2.067773891766367,
+  "total_historical_physical_rotation_claim": false,
+  "code": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_samecontrast_bridge_candidate_20261009\\independent_coordinate_checks.py",
+    "sha256": "fbc7876bfba597a9063b2b8a55014401a71e20711761cd2d103f0b09b1efe599"
+  },
+  "provenance": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_samecontrast_bridge_candidate_20261009\\bridge_candidate_provenance.json",
+    "sha256": "2c7a55182005f0f33529ee7320149235139955c415665802f7a29709b6e2e619"
+  },
+  "composition": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_samecontrast_bridge_candidate_20261009\\prospective_coordinate_composition.json",
+    "sha256": "89264c89890c2e040726f07b498030c58aa8f0d7dcac4d5b07765a156fe7fba3"
+  }
+}

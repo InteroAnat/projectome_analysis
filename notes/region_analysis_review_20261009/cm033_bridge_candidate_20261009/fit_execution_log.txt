@@ -1,0 +1,367 @@
+COMMAND
+3dAllineate -cost lpa -verb -cmass -final wsinc5 -source /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/nipype_work/cm033_cachedSPM_to_taskA_candidate/allineate_refmean_to_brain/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz -master /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii -prefix /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii -1Dmatrix_save /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D -overwrite -base /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii -warp shift_rotate
+STDOUT
+
+STDERR
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+++ Option '-cmass' enables center-of-mass code = 7 = +xyz
+++ Source dataset: /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/nipype_work/cm033_cachedSPM_to_taskA_candidate/allineate_refmean_to_brain/sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz
+++ Base dataset:   /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii
+[7m*+ WARNING:[0m Cost 'ls' or 'lpc' or 'lpa' ==> turning '-autoweight' on
+          If you DO NOT want this to happen, then use one
+          of '-autobox' or '-automask' or '-noauto'.
+[7m*+ WARNING:[0m '-source_automask' is strongly recommended when using -lpc or -lpa
+++ Loading datasets into memory
+++ 47219 voxels in source_automask+0
+++ Zero-pad: zbot=16 ztop=16
+++ Computing -autobox
+ + Weightize: xfade=9 yfade=9 zfade=7
+ + Weightize: (unblurred) top clip=1.00812e+06
+ + Weightize: (blurred) bot clip=53258.6
+ + Weightize: 262215 voxels survive clip
+ + Weightize: 262189 voxels survive clusterize
+++ -autobox net CPU time = 0.0 s
+++ 262189 voxels [18.8%] in weight mask
+++ Number of points for matching = 123228
+++ NOTE: base and source coordinate systems have different handedness
+ +       Orientations: base=Left handed (LAI); source=Right handed (LAS)
+ +     - It is nothing to worry about: 3dAllineate aligns based on coordinates.
+ +     - But it is always important to check the alignment visually to be sure.
+++ Local correlation: blok type = 'TOHD(4.27351)'
+++ base center of mass = 63.449 69.961 41.238 (index)
+ + source center of mass = 61.600 66.714 9.475 (index)
+ + source-target CM = 1.762 50.212 45.163 (xyz)
+ + estimated center of mass shifts = 1.762 50.212 45.163
+++ shift param auto-range: -28.8..32.3 19.6..80.8 18.2..72.1
+ + 6 free parameters
+++ Normalized (unitless) convergence radius = 0.0000164
+++ Final parameter search ranges:
+ +       x-shift =  -28.813 ..   32.338
+ +       y-shift =   19.637 ..   80.787
+ +       z-shift =   18.199 ..   72.127
+ +       z-angle =  -30.000 ..   30.000
+ +       x-angle =  -30.000 ..   30.000
+ +       y-angle =  -30.000 ..   30.000
+++ OpenMP thread count = 4
+++ ======= Allineation of 1 sub-bricks using Local Pearson Correlation Abs =======
+++ ========== sub-brick #0 ========== [total CPU to here=0.0 s]
+++ *** Coarse pass begins ***
+ + - Search for coarse starting parameters
+ + 89086 total points stored in 324 'TOHD(4.81666)' bloks (0 duplicates)
+ + - Test (64+119)*64 params [top5=*o+-.]:#oo-.oo+-oo.o..o++.oo-*+--o-.--*.o+$-*. + - best 88 costs found:
+   o= 0 v= 0.725925:  20.26  58.11  48.21 -18.34  19.53 -18.43  [rand]
+   o= 1 v= 0.739824:  -3.33  55.31  49.66  -5.00   5.00 -20.00  [grid]
+   o= 2 v= 0.740176:  -3.33  55.31  49.66 -20.00   5.00 -20.00  [grid]
+   o= 3 v= 0.742793:  -3.33  55.31  49.66 -20.00  -5.00 -20.00  [grid]
+   o= 4 v= 0.744718:  15.70  61.48  39.31 -24.71   8.54 -22.87  [rand]
+   o= 5 v= 0.746106:  16.66  62.95  43.41 -20.36  13.06 -13.35  [rand]
+   o= 6 v= 0.748991:  22.15  55.31  40.67   5.00   5.00   5.00  [grid]
+   o= 7 v= 0.749366:  22.15  55.31  40.67   5.00   5.00  -5.00  [grid]
+   o= 8 v= 0.750456:   1.76  50.21  45.16   0.00   0.00   0.00  [grid]
+   o= 9 v= 0.752190: -12.17  61.48  39.31  24.71   8.54  22.87  [rand]
+   o=10 v= 0.753949:  -3.33  55.31  49.66  -5.00  -5.00 -20.00  [grid]
+   o=11 v= 0.756675: -13.14  62.95  43.41  20.36  13.06  13.35  [rand]
+   o=12 v= 0.757339:  17.85  53.29  42.26 -25.13  17.84   2.06  [rand]
+   o=13 v= 0.757386:  22.15  55.31  40.67  20.00   5.00  -5.00  [grid]
+   o=14 v= 0.760344:  22.15  55.31  40.67  20.00   5.00 -20.00  [grid]
+   o=15 v= 0.761326:  22.15  55.31  40.67   5.00  -5.00  -5.00  [grid]
+   o=16 v= 0.761544:  12.62  57.44  41.90 -10.66   9.02 -19.95  [rand]
+   o=17 v= 0.761752:  20.26  58.11  42.11  18.34  19.53 -18.43  [rand]
+   o=18 v= 0.761854:  17.85  53.29  42.26 -25.13  17.84  -2.06  [rand]
+   o=19 v= 0.762504:  22.15  55.31  40.67   5.00  20.00  -5.00  [grid]
+   o=20 v= 0.763479: -14.32  53.29  42.26  25.13 -17.84  -2.06  [rand]
+   o=21 v= 0.763972:  22.15  55.31  49.66  -5.00  20.00 -20.00  [grid]
+   o=22 v= 0.764843: -18.62  55.31  40.67   5.00   5.00  -5.00  [grid]
+   o=23 v= 0.765381:  22.15  55.31  40.67   5.00   5.00 -20.00  [grid]
+   o=24 v= 0.765541:  -3.33  55.31  49.66   5.00   5.00 -20.00  [grid]
+   o=25 v= 0.766297:  -2.90  55.07  56.23  11.20  18.77  27.60  [rand]
+   o=26 v= 0.766567:  22.15  55.31  40.67  20.00  20.00  -5.00  [grid]
+   o=27 v= 0.767504:  -1.36  54.97  50.42  -2.88  15.23 -12.63  [rand]
+   o=28 v= 0.767721: -18.62  55.31  40.67  -5.00   5.00  -5.00  [grid]
+   o=29 v= 0.769525: -18.62  55.31  40.67   5.00   5.00   5.00  [grid]
+   o=30 v= 0.770706:  22.15  55.31  40.67   5.00  -5.00   5.00  [grid]
+   o=31 v= 0.770795:  22.15  55.31  40.67   5.00  20.00 -20.00  [grid]
+   o=32 v= 0.771080:  -1.36  54.97  50.42   2.88  15.23 -12.63  [rand]
+   o=33 v= 0.771218: -18.62  55.31  49.66  20.00  20.00   5.00  [grid]
+   o=34 v= 0.771301:  13.98  65.11  41.30 -13.69   2.09  -6.72  [rand]
+   o=35 v= 0.771466:  22.15  55.31  49.66  -5.00   5.00 -20.00  [grid]
+   o=36 v= 0.771587:  -7.10  53.70  42.54 -16.35 -19.66 -17.40  [rand]
+   o=37 v= 0.771909: -18.62  55.31  40.67  -5.00  -5.00  -5.00  [grid]
+   o=38 v= 0.772171:  22.15  55.31  40.67   5.00  -5.00 -20.00  [grid]
+   o=39 v= 0.772279: -18.62  55.31  49.66  20.00  20.00  20.00  [grid]
+   o=40 v= 0.772347: -14.32  53.29  42.26  25.13 -17.84   2.06  [rand]
+   o=41 v= 0.773255: -18.62  55.31  40.67  20.00  20.00  -5.00  [grid]
+   o=42 v= 0.773275:  22.15  55.31  40.67  20.00  20.00 -20.00  [grid]
+   o=43 v= 0.773597: -18.62  55.31  40.67  20.00   5.00  -5.00  [grid]
+   o=44 v= 0.773813:  -3.50  57.15  47.51 -28.12  17.17 -13.03  [rand]
+   o=45 v= 0.773813:  12.62  57.44  41.90 -10.66  -9.02 -19.95  [rand]
+   o=46 v= 0.773948:  -4.76  61.02  46.62  -2.93  22.24  -2.74  [rand]
+   o=47 v= 0.773961:  22.15  55.31  49.66 -20.00  20.00 -20.00  [grid]
+   o=48 v= 0.774398: -18.62  55.31  40.67   5.00  -5.00  -5.00  [grid]
+   o=49 v= 0.774927:   4.88  45.45  39.91  -2.88 -15.23  12.63  [rand]
+   o=50 v= 0.774965:  22.15  55.31  40.67  -5.00   5.00   5.00  [grid]
+   o=51 v= 0.775105: -18.62  55.31  49.66  20.00   5.00   5.00  [grid]
+   o=52 v= 0.775354: -12.17  61.48  39.31  24.71  -8.54  22.87  [rand]
+   o=53 v= 0.775761:  22.15  55.31  40.67  20.00  -5.00 -20.00  [grid]
+   o=54 v= 0.775953: -14.32  47.13  42.26  25.13 -17.84  -2.06  [rand]
+   o=55 v= 0.776355:   7.03  43.27  42.82 -28.12 -17.17  13.03  [rand]
+   o=56 v= 0.776421:  22.15  55.31  40.67  20.00   5.00   5.00  [grid]
+   o=57 v= 0.776452:  17.85  47.13  42.26 -25.13 -17.84   2.06  [rand]
+   o=58 v= 0.776702:  -9.67  58.74  38.11  23.96 -16.68  -1.77  [rand]
+   o=59 v= 0.776836:   6.86  55.31  40.67   5.00  -5.00  -5.00  [grid]
+   o=60 v= 0.777079:  -3.33  55.31  49.66 -20.00  20.00 -20.00  [grid]
+   o=61 v= 0.777079: -16.73  58.11  48.21  18.34  19.53  18.43  [rand]
+   o=62 v= 0.777558:  -9.67  58.74  38.11  23.96 -16.68   1.77  [rand]
+   o=63 v= 0.777847:  22.15  55.31  40.67  -5.00  20.00   5.00  [grid]
+   o=64 v= 0.778636: -18.62  55.31  40.67   5.00  20.00   5.00  [grid]
+   o=65 v= 0.778687: -14.32  53.29  42.26  25.13  17.84   2.06  [rand]
+   o=66 v= 0.779047:   6.86  55.31  40.67  -5.00   5.00  -5.00  [grid]
+   o=67 v= 0.779421: -18.62  55.31  40.67   5.00  20.00  -5.00  [grid]
+   o=68 v= 0.779904:  -4.27  60.28  33.08  -3.02 -18.57  26.48  [rand]
+   o=69 v= 0.780316:   6.86  55.31  40.67  -5.00  -5.00  -5.00  [grid]
+   o=70 v= 0.780806:  -3.50  57.15  47.51 -28.12 -17.17 -13.03  [rand]
+   o=71 v= 0.781192:  -3.33  55.31  49.66   5.00  -5.00 -20.00  [grid]
+   o=72 v= 0.781378: -10.45  65.11  41.30  13.69   2.09   6.72  [rand]
+   o=73 v= 0.781478:   6.86  55.31  40.67   5.00  -5.00 -20.00  [grid]
+   o=74 v= 0.781932:  22.15  55.31  40.67  -5.00  20.00  -5.00  [grid]
+   o=75 v= 0.781962:   6.86  55.31  40.67   5.00   5.00 -20.00  [grid]
+   o=76 v= 0.782218: -18.62  55.31  40.67  -5.00   5.00   5.00  [grid]
+   o=77 v= 0.782248:  -3.33  45.12  40.67  20.00  -5.00 -20.00  [grid]
+   o=78 v= 0.782276:  17.85  47.13  42.26 -25.13 -17.84  -2.06  [rand]
+   o=79 v= 0.782440: -18.62  55.31  40.67  20.00  -5.00  -5.00  [grid]
+   o=80 v= 0.782441:   6.86  45.12  40.67 -20.00 -20.00  20.00  [grid]
+   o=81 v= 0.782596:  -3.33  55.31  40.67  -5.00  -5.00   5.00  [grid]
+   o=82 v= 0.782693:   6.86  45.12  40.67  -5.00 -20.00  20.00  [grid]
+   o=83 v= 0.782765:  22.15  55.31  40.67  20.00  -5.00  -5.00  [grid]
+   o=84 v= 0.782795:  -1.36  54.97  50.42   2.88  15.23  12.63  [rand]
+   o=85 v= 0.783065:  -3.33  55.31  49.66  -5.00  20.00 -20.00  [grid]
+   o=86 v= 0.783205: -18.62  55.31  40.67  20.00   5.00   5.00  [grid]
+   o=87 v= 0.783564: -14.32  53.29  42.26  25.13  17.84  -2.06  [rand]
+ + - A little optimization:........................................................................................
+ + - costs of the above after a little optimization:
+   o= 0 v= 0.724316:  20.47  58.13  48.17 -17.66  20.06 -17.69  [rand]  [f=42]
+   o= 1 v= 0.724303:  -1.75  55.94  48.29  -7.67   4.21 -18.18  [grid]  [f=49]
+   o= 2 v= 0.736901:  -3.39  55.95  48.91 -16.15   5.26 -19.84  [grid]  [f=36]
+   o= 3 v= 0.728506:  -3.54  57.18  49.76 -20.86  -4.15 -20.91  [grid]  [f=44]
+   o= 4 v= 0.709311:  13.97  62.58  40.56 -19.13  13.01 -19.64  [rand]  [f=37]
+   o= 5 v= 0.717072:  15.61  62.49  43.80 -21.84  15.96  -8.34  [rand]  [f=44]
+   o= 6 v= 0.715220:  21.88  54.84  42.71   4.18   5.07   3.37  [grid]  [f=45]
+   o= 7 v= 0.707946:  21.05  54.89  43.44   8.08   2.28  -3.36  [grid]  [f=43]
+   o= 8 v= 0.728764:   1.52  54.12  46.03   1.38   0.08  -0.04  [grid]  [f=34]
+   o= 9 v= 0.731653: -12.94  60.73  40.73  28.63   7.75  20.67  [rand]  [f=38]
+   o=10 v= 0.728787:  -1.89  55.54  48.59  -4.16   0.03 -17.03  [grid]  [f=62]
+   o=11 v= 0.739031: -12.61  61.80  43.71  24.70  13.44  13.80  [rand]  [f=36]
+   o=12 v= 0.751944:  17.80  53.18  42.14 -22.39  17.77   2.04  [rand]  [f=32]
+   o=13 v= 0.716374:  23.50  54.00  42.19  21.87   4.87  -5.91  [grid]  [f=54]
+   o=14 v= 0.749156:  22.68  55.26  40.83  16.34   4.64 -19.85  [grid]  [f=30]
+   o=15 v= 0.705674:  20.42  55.08  43.53   6.81  -0.95  -7.03  [grid]  [f=43]
+   o=16 v= 0.728992:  14.10  59.80  40.71 -11.98   6.90 -20.09  [rand]  [f=47]
+   o=17 v= 0.747320:  21.45  57.80  43.03  18.06  18.51 -18.78  [rand]  [f=42]
+   o=18 v= 0.736609:  16.58  53.10  41.96 -19.71  14.51  -0.77  [rand]  [f=60]
+   o=19 v= 0.754319:  21.98  54.76  40.08   3.96  19.85  -5.48  [grid]  [f=53]
+   o=20 v= 0.755613: -13.59  53.59  42.48  26.62 -16.28  -4.06  [rand]  [f=46]
+   o=21 v= 0.734792:  21.33  52.76  47.34  -4.64  19.52 -20.33  [grid]  [f=40]
+   o=22 v= 0.731323: -17.08  57.56  41.25   4.94   5.63   0.27  [grid]  [f=48]
+   o=23 v= 0.742202:  21.31  56.17  41.05   7.42   3.48 -13.10  [grid]  [f=47]
+   o=24 v= 0.726636:   1.38  52.91  48.87   3.98   2.64 -19.77  [grid]  [f=53]
+  *o=25 v= 0.668448:  -0.66  52.96  56.44   9.94  20.74  27.78  [rand]  [f=45]
+   o=26 v= 0.735562:  22.79  52.89  42.15  17.67  15.52  -9.46  [grid]  [f=48]
+   o=27 v= 0.732091:   0.19  54.90  47.67  -1.79  12.85 -11.54  [rand]  [f=44]
+   o=28 v= 0.740607: -19.46  55.46  42.97  -6.48   5.79  -5.35  [grid]  [f=35]
+   o=29 v= 0.738948: -16.89  56.73  42.63   7.14   8.60   5.97  [grid]  [f=42]
+   o=30 v= 0.714464:  21.20  54.63  42.87   6.31   0.48   2.50  [grid]  [f=70]
+   o=31 v= 0.755956:  21.82  56.26  39.58   4.93  21.01 -19.53  [grid]  [f=46]
+   o=32 v= 0.724120:   1.57  53.09  48.06   3.60  13.92  -9.89  [rand]  [f=48]
+   o=33 v= 0.738119: -17.56  55.07  47.18  18.87  17.54   8.69  [grid]  [f=44]
+   o=34 v= 0.722407:  16.11  60.44  44.48 -15.90  12.58  -7.49  [rand]  [f=53]
+   o=35 v= 0.712311:  21.32  52.94  48.11  -8.68   7.36 -21.30  [grid]  [f=46]
+   o=36 v= 0.734071:  -5.76  52.46  44.58 -13.30 -15.14 -22.15  [rand]  [f=47]
+   o=37 v= 0.738755: -20.16  55.09  41.47  -4.74   0.99  -4.89  [grid]  [f=55]
+   o=38 v= 0.711596:  19.38  55.23  42.80   5.23  -3.28 -10.12  [grid]  [f=50]
+   o=39 v= 0.742010: -18.09  56.65  47.58  19.89  22.32  14.72  [grid]  [f=47]
+   o=40 v= 0.767531: -14.33  52.81  42.41  27.60 -17.58   1.41  [rand]  [f=38]
+   o=41 v= 0.741554: -15.80  55.31  42.34  18.38  18.10  -7.32  [grid]  [f=43]
+   o=42 v= 0.740137:  21.77  55.82  43.72  19.91  20.31 -18.60  [grid]  [f=45]
+   o=43 v= 0.737504: -15.56  55.29  41.96  17.23   6.09  -1.25  [grid]  [f=55]
+   o=44 v= 0.737913:  -6.28  57.74  47.02 -26.31  17.26 -10.68  [rand]  [f=45]
+   o=45 v= 0.708720:  16.80  56.20  42.29 -10.57  -5.88 -15.99  [rand]  [f=68]
+   o=46 v= 0.752726:  -4.59  59.38  46.80  -7.95  21.27  -4.16  [rand]  [f=52]
+   o=47 v= 0.726073:  20.43  58.25  48.44 -20.61  19.54 -18.88  [grid]  [f=46]
+   o=48 v= 0.753811: -16.65  55.27  42.72   4.61  -5.72  -4.91  [grid]  [f=46]
+   o=49 v= 0.750735:   3.89  46.10  40.41  -6.26 -12.21  13.99  [rand]  [f=54]
+   o=50 v= 0.725148:  19.98  54.52  42.74  -6.16   3.62   2.24  [grid]  [f=41]
+   o=51 v= 0.725616: -15.72  55.45  43.13  17.57   2.02  10.65  [grid]  [f=60]
+   o=52 v= 0.741918: -10.67  59.86  38.10  27.21  -7.48  21.65  [rand]  [f=46]
+   o=53 v= 0.751608:  23.85  53.68  42.04  17.83  -1.73 -19.30  [grid]  [f=55]
+   o=54 v= 0.765456: -14.37  47.69  42.57  28.01 -18.78  -3.06  [rand]  [f=39]
+   o=55 v= 0.725221:   3.96  42.44  40.21 -29.39  -8.78  10.08  [rand]  [f=58]
+   o=56 v= 0.728561:  22.36  52.99  42.73  15.97   3.64   6.19  [grid]  [f=39]
+   o=57 v= 0.767240:  17.70  48.07  42.37 -25.38 -17.62   4.30  [rand]  [f=42]
+   o=58 v= 0.775884:  -9.70  58.72  38.10  26.90 -16.72  -1.70  [rand]  [f=31]
+   o=59 v= 0.732391:   4.24  49.65  42.08   6.00   2.50  -5.04  [grid]  [f=54]
+   o=60 v= 0.740298:  -3.48  57.68  50.87 -19.29  18.57 -17.70  [grid]  [f=43]
+   o=61 v= 0.739632: -18.25  55.61  48.28  20.49  21.71  10.20  [rand]  [f=58]
+   o=62 v= 0.774828:  -9.87  58.68  37.91  24.20 -14.06   1.24  [rand]  [f=33]
+   o=63 v= 0.753927:  20.91  53.93  40.70  -6.26  23.21   1.54  [grid]  [f=33]
+   o=64 v= 0.750478: -16.63  54.97  41.06   3.94  16.91   3.65  [grid]  [f=45]
+   o=65 v= 0.741065: -14.66  55.55  42.12  24.88   8.24   1.76  [rand]  [f=53]
+   o=66 v= 0.732543:   5.42  51.43  41.94  -5.30   5.57  -4.68  [grid]  [f=47]
+   o=67 v= 0.738905: -17.68  55.85  42.93   3.50  17.38  -6.70  [grid]  [f=42]
+   o=68 v= 0.749755:  -5.54  60.93  33.43  -2.64 -16.36  29.65  [rand]  [f=42]
+   o=69 v= 0.731151:   7.31  52.63  42.26  -4.54   1.66  -2.93  [grid]  [f=61]
+   o=70 v= 0.740822:  -3.05  57.61  49.13 -29.70 -10.38 -11.72  [rand]  [f=56]
+   o=71 v= 0.731960:   1.99  53.90  45.20  -0.84   0.51 -23.49  [grid]  [f=46]
+   o=72 v= 0.743017: -10.17  63.05  42.07  21.38   4.23  10.32  [rand]  [f=58]
+   o=73 v= 0.770451:   7.02  55.41  42.17   3.69  -1.28 -19.35  [grid]  [f=41]
+   o=74 v= 0.731953:  18.90  56.46  44.30  -2.11  19.43  -6.98  [grid]  [f=51]
+   o=75 v= 0.722323:   3.20  51.77  43.88   6.52   5.97 -16.56  [grid]  [f=76]
+   o=76 v= 0.751908: -15.11  55.86  41.94  -4.04   4.32   4.08  [grid]  [f=38]
+   o=77 v= 0.765356:  -2.62  45.36  41.51  17.67  -3.87 -15.99  [grid]  [f=60]
+   o=78 v= 0.763954:  16.79  49.28  42.55 -26.04 -17.76  -1.44  [rand]  [f=40]
+   o=79 v= 0.766587: -18.43  55.59  40.77  20.03  -1.82  -4.16  [grid]  [f=37]
+   o=80 v= 0.729995:   2.84  41.62  39.78 -22.29 -10.84  10.02  [grid]  [f=77]
+   o=81 v= 0.767384:  -6.54  55.68  41.03  -4.54  -5.06   3.94  [grid]  [f=32]
+   o=82 v= 0.742618:   7.33  47.70  42.65 -11.15 -25.22  19.42  [grid]  [f=83]
+   o=83 v= 0.720123:  20.87  53.14  43.93  13.54  -2.93  -3.40  [grid]  [f=66]
+   o=84 v= 0.705366:   1.68  53.21  51.28   0.30  17.31  10.86  [rand]  [f=59]
+   o=85 v= 0.734071:   0.37  54.57  48.01  -0.17  16.15 -14.27  [grid]  [f=81]
+   o=86 v= 0.728134: -15.43  55.07  42.46  17.97   5.65   4.09  [grid]  [f=47]
+   o=87 v= 0.754549: -15.48  57.13  42.25  25.89  12.40  -1.24  [rand]  [f=49]
+ + - Coarse startup search net CPU time = 0.0 s
+++ Start refinement #1 on 18 coarse parameter sets
+ + 134672 total points stored in 370 'TOHD(4.60967)' bloks (0 duplicates)
+ + - param set #1 has cost=0.728324 [o=25 t=0]
+ + - param set #2 has cost=0.761890 [o=84 t=1]
+ + - param set #3 has cost=0.767434 [o=15 t=2]
+ + - param set #4 has cost=0.761989 [o=7 t=3]
+ + - param set #5 has cost=0.766227 [o=45 t=4]
+ + - param set #6 has cost=0.755440 [o=4 t=5]
+ + - param set #7 has cost=0.764969 [o=38 t=6]
+ + - param set #8 has cost=0.773885 [o=35 t=7]
+ + - param set #9 has cost=0.767535 [o=30 t=8]
+ + - param set #10 has cost=0.765154 [o=6 t=9]
+ + - param set #11 has cost=0.773012 [o=13 t=10]
+ + - param set #12 has cost=0.756104 [o=5 t=11]
+ + - param set #13 has cost=0.773333 [o=83 t=12]
+ + - param set #14 has cost=0.775900 [o=75 t=13]
+ + - param set #15 has cost=0.753941 [o=34 t=14]
+ + - param set #16 has cost=0.754256 [o=32 t=15]
+ + - param set #17 has cost=0.777319 [o=1 t=16]
+ + - param set #18 has cost=0.762807 [o=-1 t=-1]
+ + - sorting parameter sets by cost
+ + - scanning for distances from #1
+++ Start refinement #2 on 18 coarse parameter sets
+ + 202599 total points stored in 400 'TOHD(4.47984)' bloks (0 duplicates)
+ + - param set #1 has cost=0.752794 [o=25 t=0]
+ + - param set #2 has cost=0.801832 [o=34 t=14]
+ + - param set #3 has cost=0.804265 [o=32 t=15]
+ + - param set #4 has cost=0.788713 [o=4 t=5]
+ + - param set #5 has cost=0.798475 [o=5 t=11]
+ + - param set #6 has cost=0.777448 [o=84 t=1]
+ + - param set #7 has cost=0.800081 [o=7 t=3]
+ + - param set #8 has cost=0.803859 [o=-1 t=-1]
+ + - param set #9 has cost=0.796745 [o=38 t=6]
+ + - param set #10 has cost=0.798952 [o=6 t=9]
+ + - param set #11 has cost=0.795692 [o=45 t=4]
+ + - param set #12 has cost=0.793342 [o=15 t=2]
+ + - param set #13 has cost=0.801989 [o=30 t=8]
+ + - param set #14 has cost=0.802140 [o=13 t=10]
+ + - param set #15 has cost=0.800230 [o=83 t=12]
+ + - param set #16 has cost=0.798904 [o=35 t=7]
+ + - param set #17 has cost=0.801306 [o=75 t=13]
+ + - param set #18 has cost=0.807899 [o=1 t=16]
+ + - sorting parameter sets by cost
+ + - scanning for distances from #1
+++ Start refinement #3 on 18 coarse parameter sets
+ + 240345 total points stored in 429 'TOHD(4.39946)' bloks (0 duplicates)
+ + - param set #1 has cost=0.775245 [o=25 t=0]
+ + - param set #2 has cost=0.803266 [o=84 t=1]
+ + - param set #3 has cost=0.820875 [o=4 t=5]
+ + - param set #4 has cost=0.818008 [o=15 t=2]
+ + - param set #5 has cost=0.822758 [o=45 t=4]
+ + - param set #6 has cost=0.826311 [o=38 t=6]
+ + - param set #7 has cost=0.819952 [o=5 t=11]
+ + - param set #8 has cost=0.821551 [o=35 t=7]
+ + - param set #9 has cost=0.818159 [o=6 t=9]
+ + - param set #10 has cost=0.819529 [o=7 t=3]
+ + - param set #11 has cost=0.820969 [o=83 t=12]
+ + - param set #12 has cost=0.832101 [o=75 t=13]
+ + - param set #13 has cost=0.818459 [o=34 t=14]
+ + - param set #14 has cost=0.821371 [o=30 t=8]
+ + - param set #15 has cost=0.826950 [o=13 t=10]
+ + - param set #16 has cost=0.834715 [o=-1 t=-1]
+ + - param set #17 has cost=0.837447 [o=32 t=15]
+ + - param set #18 has cost=0.841668 [o=1 t=16]
+ + - sorting parameter sets by cost
+ + - scanning for distances from #1
+ + - Total coarse refinement net CPU time = 0.0 s; 3200 funcs
+++ *** Fine pass begins ***
+++ Picking best parameter set out of 19 cases
+ + 110685 total points stored in 433 'TOHD(4.32009)' bloks (0 duplicates)
+ + - cost(#1)=0.819338 * [o=25 t=0]
+ + - cost(#2)=0.855878   [o=84 t=1]
+ + - cost(#3)=0.854029   [o=15 t=2]
+ + - cost(#4)=0.855467   [o=6 t=9]
+ + - cost(#5)=0.866347   [o=34 t=14]
+ + - cost(#6)=0.855726   [o=7 t=3]
+ + - cost(#7)=0.865979   [o=5 t=11]
+ + - cost(#8)=0.873170   [o=4 t=5]
+ + - cost(#9)=0.853066   [o=83 t=12]
+ + - cost(#10)=0.855244   [o=30 t=8]
+ + - cost(#11)=0.855819   [o=35 t=7]
+ + - cost(#12)=0.864834   [o=45 t=4]
+ + - cost(#13)=0.866141   [o=38 t=6]
+ + - cost(#14)=0.864789   [o=13 t=10]
+ + - cost(#15)=0.871723   [o=75 t=13]
+ + - cost(#16)=0.863742   [o=-1 t=-1]
+ + - cost(#17)=0.869265   [o=32 t=15]
+ + - cost(#18)=0.882720   [o=1 t=16]
+ + - cost(#19)=0.876175   [o=-2 t=-2]
+ + -num_rtb 99 ==> refine all 19 cases
+ + - cost(#1)=0.813831 * [o=25 t=0]
+ + - cost(#2)=0.852821   [o=84 t=1]
+ + - cost(#3)=0.852854   [o=15 t=2]
+ + - cost(#4)=0.850800   [o=6 t=9]
+ + - cost(#5)=0.862547   [o=34 t=14]
+ + - cost(#6)=0.850772   [o=7 t=3]
+ + - cost(#7)=0.861549   [o=5 t=11]
+ + - cost(#8)=0.862574   [o=4 t=5]
+ + - cost(#9)=0.852109   [o=83 t=12]
+ + - cost(#10)=0.845950   [o=30 t=8]
+ + - cost(#11)=0.850635   [o=35 t=7]
+ + - cost(#12)=0.864126   [o=45 t=4]
+ + - cost(#13)=0.863198   [o=38 t=6]
+ + - cost(#14)=0.858450   [o=13 t=10]
+ + - cost(#15)=0.860221   [o=75 t=13]
+ + - cost(#16)=0.857880   [o=-1 t=-1]
+ + - cost(#17)=0.855390   [o=32 t=15]
+ + - cost(#18)=0.881196   [o=1 t=16]
+ + - cost(#19)=0.852980   [o=-2 t=-2]
+ + - case #1 [o=25 t=0] is now the best
+ + - Initial  cost = 0.813831
+ + - Initial fine Parameters = -0.7271 52.9443 56.6120 -1.0216 15.0293 29.6654
+ + - Finalish cost = 0.813439 ; 98 funcs
+ + - ini Finalish Parameters = -0.7179 52.9154 56.6357 -1.3935 15.0881 29.9113
+ + - Final    cost = 0.813385 ; 187 funcs
+ + Final fine fit Parameters:
+       x-shift= -0.7288   y-shift= 52.9197   z-shift= 56.6332  ...  enorm= 77.5136 mm
+       z-angle= -1.3881   x-angle= 15.0906   y-angle= 29.9300  ...  total= 33.3054 deg
+[7m*+ WARNING:[0m Parameter y-angle =  29.92995 is close to edge of its search range -30.00000 ..  30.00000
+ + - Fine net CPU time = 0.0 s
+++ Computing output image
+++ wsinc5 interpolation setup:
+ +   taper function  = Min sidelobe 3 term
+ +   taper cut point = 0.000
+ +   window radius   = 5 voxels
+ +   window shape    = Cubical
+ +   The above can be altered via the AFNI_WSINC5_* environment variables.
+ +  (To avoid this message, 'setenv AFNI_WSINC5_SILENT YES'.)
+ +   wsinc5 CUBE(5) mask has 1000 points
+++ Unloading unneeded data
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii
+++ Wrote -1Dmatrix_save /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_bridge_candidate_20261009/fit/desc-epiToAnatAffine.aff12.1D
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 34.7
+++ ###########################################################
+++ #   PLEASE check results VISUALLY for alignment quality   #
+++ ###########################################################

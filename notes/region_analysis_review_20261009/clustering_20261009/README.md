@@ -1,5 +1,7 @@
 # ARM projection-profile clustering: results, scope and method
 
+The [new end-branch sensitivity](../axon_end_branches_20261009/profile_sensitivity/README.md) adds original distal-chain length on the same 462-neuron ledger. Its 428 mapped-positive source-relative profiles yield no balanced candidate partition; the 2-versus-426 diagnostic split and weak equal-animal stability reinforce the need to interpret graph measure and sampling separately. Existing fits, assignments and source labels remain unchanged.
+
 The [native-image coverage audit](native_image_coverage_20261009/README.md) adds a missing-evidence check without refitting: all 261 selected neurons from animal 936, including all 260 Henry visual INS cases, lack native SWCs in the designated cache. The other 201 selected neurons have native pairs; image-review availability is strongly confounded with animal and cannot independently validate the Henry-only sensitivity. Missing measurements remain NA.
 
 The saved analysis describes projection allocation in the existing 462-neuron selection; it does **not** establish insular cell types. The strongest absolute-target split follows left–right soma location. A separate ipsilateral/contralateral sensitivity substantially changes the axon partition and exposes animal/sample dependence. Candidate-end profiles contain sparse outliers and fail the display size safeguards. These limits are part of the result.

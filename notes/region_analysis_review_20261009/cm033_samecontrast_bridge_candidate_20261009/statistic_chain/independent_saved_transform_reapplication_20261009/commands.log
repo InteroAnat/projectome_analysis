@@ -1,0 +1,57 @@
+["/home/binbin/abin/afni", "-ver"]
+Precompiled binary linux_ubuntu_24_64: Jun 17 2026 (Version AFNI_26.1.05 'Balbinus')
+
+["/home/binbin/abin/3dAllineate", "-source", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_source_finite_actual_mask.nii.gz", "-master", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/derivatives/preproc/anat/sub-cm033_ses-20160120_desc-brain.nii", "-1Dmatrix_apply", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/desc-independentTaskAOutputToCachedInput.aff12.1D", "-final", "linear", "-prefix", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_space-taskA_reapplied.nii.gz"]
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_source_finite_actual_mask.nii.gz to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Source dataset: /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_source_finite_actual_mask.nii.gz
+++ Base dataset:   (not given)
+++ Loading datasets into memory
+ +        -cmass x y z shifts =    0.000    0.000    0.000
+ +  shift search range is +/- =   30.575   30.575   10.914
+++ OpenMP thread count = 4
+++ ========== Applying transformation to 1 sub-bricks ==========
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_space-taskA_reapplied.nii.gz
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 0.3
+++ ###########################################################
+
+["/home/binbin/ants-2.5.1/bin/antsApplyTransforms", "-d", "3", "-i", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_space-taskA_reapplied.nii.gz", "-r", "/mnt/d/projectome_analysis/atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "-o", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/contrast_space-NMT_reapplied.nii.gz", "-n", "Linear", "--default-value", "0", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_NMT_1Warp.nii.gz", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_NMT_0GenericAffine.mat", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_CMT_1Warp.nii.gz", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_CMT_0GenericAffine.mat"]
+
+["/home/binbin/abin/3dAllineate", "-source", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_source_finite_actual_mask.nii.gz", "-master", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/derivatives/preproc/anat/sub-cm033_ses-20160120_desc-brain.nii", "-1Dmatrix_apply", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/desc-independentTaskAOutputToCachedInput.aff12.1D", "-final", "linear", "-prefix", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_space-taskA_reapplied.nii.gz"]
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+** AFNI converts NIFTI_datatype=64 (FLOAT64) in file /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_source_finite_actual_mask.nii.gz to FLOAT32
+     Warnings of this type will be muted for this session.
+     Set AFNI_NIFTI_TYPE_WARN to YES to see them all, NO to see none.
+++ Source dataset: /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_source_finite_actual_mask.nii.gz
+++ Base dataset:   (not given)
+++ Loading datasets into memory
+ +        -cmass x y z shifts =    0.000    0.000    0.000
+ +  shift search range is +/- =   30.575   30.575   10.914
+++ OpenMP thread count = 4
+++ ========== Applying transformation to 1 sub-bricks ==========
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_space-taskA_reapplied.nii.gz
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 0.4
+++ ###########################################################
+
+["/home/binbin/ants-2.5.1/bin/antsApplyTransforms", "-d", "3", "-i", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_space-taskA_reapplied.nii.gz", "-r", "/mnt/d/projectome_analysis/atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "-o", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/T_space-NMT_reapplied.nii.gz", "-n", "Linear", "--default-value", "0", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_NMT_1Warp.nii.gz", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_NMT_0GenericAffine.mat", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_CMT_1Warp.nii.gz", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_CMT_0GenericAffine.mat"]
+
+["/home/binbin/abin/3dAllineate", "-source", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/analysis_coverage_source_finite_actual_mask.nii.gz", "-master", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/derivatives/preproc/anat/sub-cm033_ses-20160120_desc-brain.nii", "-1Dmatrix_apply", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/desc-independentTaskAOutputToCachedInput.aff12.1D", "-final", "NN", "-prefix", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/analysis_coverage_space-taskA_reapplied.nii.gz"]
+++ 3dAllineate: AFNI version=AFNI_26.1.05 (Jun 17 2026) [64-bit]
+++ Authored by: Zhark the Registrator
+++ Source dataset: /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/analysis_coverage_source_finite_actual_mask.nii.gz
+++ Base dataset:   (not given)
+++ Loading datasets into memory
+ +        -cmass x y z shifts =    0.000    0.000    0.000
+ +  shift search range is +/- =   30.575   30.575   10.914
+++ OpenMP thread count = 4
+++ ========== Applying transformation to 1 sub-bricks ==========
+++ Output dataset /mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/analysis_coverage_space-taskA_reapplied.nii.gz
+++ 3dAllineate: total CPU time = 0.0 sec  Elapsed = 0.3
+++ ###########################################################
+
+["/home/binbin/ants-2.5.1/bin/antsApplyTransforms", "-d", "3", "-i", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/analysis_coverage_space-taskA_reapplied.nii.gz", "-r", "/mnt/d/projectome_analysis/atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz", "-o", "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/statistic_chain/independent_saved_transform_reapplication_20261009/analysis_coverage_space-NMT_reapplied.nii.gz", "-n", "NearestNeighbor", "--default-value", "0", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_NMT_1Warp.nii.gz", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_NMT_0GenericAffine.mat", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_CMT_1Warp.nii.gz", "-t", "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/norm_reference/derivatives/norm/sub-cm033/ses-20160120_ana/cm033_20160120_Dsrc_taskA_ana_CMT_0GenericAffine.mat"]
+

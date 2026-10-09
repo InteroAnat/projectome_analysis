@@ -1,0 +1,117 @@
+{
+  "status": "independent_end_branch_profile_sensitivity_and_display_readback_passed",
+  "recorded_at": "2026-10-09T12:58:05.644366+08:00",
+  "producer_functions_imported": false,
+  "scope": "All462 exact UID/NA/QC; pinned official684 exclusive ARM6 targets/342 homologs; independent Hellinger/average k2-8 modulo permutation; all100 uniform/stratified/equal-cap replicates, eight-animal holdouts, diagnostics, compositions, top targets and prior common-UID ARIs; four actual PNG visual inspection plus independent data-window arithmetic. Software/descriptive evidence only.",
+  "selected_neurons": 462,
+  "graph_computable": 429,
+  "profile_eligible": 428,
+  "all_k_partition_ARI": {
+    "2": 1.0,
+    "3": 1.0,
+    "4": 1.0,
+    "5": 1.0,
+    "6": 1.0,
+    "7": 1.0,
+    "8": 1.0
+  },
+  "diagnostic_scalar_checks": 950,
+  "k2_stability_ARI_means": {
+    "2:uniform_source_subset": 0.8394653996755767,
+    "2:within_animal_stratified": 0.8160603232955258,
+    "2:equal_animal_cap": 0.06977011494252873
+  },
+  "display_k2_sizes": [
+    2,
+    426
+  ],
+  "figure_readback": {
+    "display_provenance_sha256": "a1e651fb8d7ef096eb4848e1ed8598cc4520745faf06929c7e60203e3da70b4c",
+    "figures": [
+      {
+        "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-01.png",
+        "sha256": "8fad3d77be63b0c7dc541ea2641c01b3b42c809b38c58db2495a240a39900d44",
+        "source_groups": [
+          "ARM6_1004_L",
+          "ARM6_1504_R",
+          "ARM6_228_L",
+          "ARM6_229_L"
+        ]
+      },
+      {
+        "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-02.png",
+        "sha256": "d27175636000cfed0a029e848ca0e01f592547720f71422e75e9d53cde180bc0",
+        "source_groups": [
+          "ARM6_41_L",
+          "ARM6_42_L",
+          "ARM6_43_L",
+          "ARM6_48_L"
+        ]
+      },
+      {
+        "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-03.png",
+        "sha256": "5b322eb22f39d08c0675d633c1c0b02db90ef4b44e7ab3f9ca34c084877ba36a",
+        "source_groups": [
+          "ARM6_541_R",
+          "ARM6_542_R",
+          "ARM6_548_R",
+          "ARM6_549_R"
+        ]
+      },
+      {
+        "path": "space-NMTv2p1_desc-axonEndBranchDensity_matchedSlices_page-04.png",
+        "sha256": "2229053a30fa95c2a3c36a26467c8d18e4d546e0517e7a061c93b8aa7d14c54c",
+        "source_groups": [
+          "ARM6_595_R",
+          "ARM6_728_R",
+          "ARM6_729_R"
+        ]
+      }
+    ],
+    "actual_all_four_PNGs_viewed": true,
+    "visual_QA": "Full official names, ARM indices, source eligibility/animal counts and colorbar text readable; no clipping observed. Declared reference-voxel axes only; no anatomical registration acceptance inferred.",
+    "planes_XYZ": [
+      56,
+      200,
+      87
+    ],
+    "MRI_mask_window": [
+      75.0,
+      920.0
+    ],
+    "shared_logdensity_upper": 1.4744815252048062,
+    "source_groups_shown": 15,
+    "denominator": "Per-animal mean across end-eligible source neurons, then equal mean across contributing animals; divided by0.015625 reference mm3 for display only. ARM0 groups retained in numerical outputs, excluded from named anatomy panels."
+  },
+  "profile_provenance": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\profile_sensitivity\\profile_sensitivity_provenance.json",
+    "sha256": "2d208bf218173e01abecf7039941a16646f7243634bb7550b1fd31f3ebb2a962"
+  },
+  "verified_input_bindings": {
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\selected462_ARM\\run_provenance.json": "dcd92bcca80984568fc72a26314363fcdba8760a7ccd980c8c3e8a0fc7f2197d",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\selected462_ARM\\input_ledger.csv": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\selected462_ARM\\per_neuron_measurements.csv": "550909dd49e93f0a3d39db38633bd964d25a3d600bdbff430338bccfed1dd481",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\selected462_ARM\\targets.csv": "632da1c6e92b0f28bb7d94cb598752abe74a9277b83e50d526c2b84568d57547",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\selected462_ARM\\ARM_L6_axon_end_branch_length_mm.csv": "523386ec76c8019e8bfa66fa53443c02199478e8c6721eefc61dff5af52e6039",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\independent_end_branch_readback.json": "18460f2ba5befdbab0228cd18f5fc77476429719abf5f03b75d1a8dad5723760",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\clustering_20261009\\ARM6_source_relative_sensitivity\\sensitivity_provenance.json": "dd8291819914a81e0240d89626c41e164c1487b7c493db587ff46773d902f6c2",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\clustering_20261009\\ARM6_source_relative_sensitivity\\source_relative_assignments.csv": "a8ad6e02db0a03973e9a5820b8ea1a535d832d137a64378b242e656c788f174b",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\export_provenance.json": "0f5c8e46b13cd96aec12ff5b415f1bdee498d5a10330bfb0cb7761243d446df6",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+    "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\projection_inputs\\arm_labels_20261009\\combined\\projection_manifest.csv": "6bffc5ba0380db0ea0caddf85c188af7b73c7409a274aa53e588cba0272ccdd8",
+    "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\axon_end_branches_20261009\\analyse_end_branch_profiles.py": "610927de63ff5d52dc5c2584e11fa96c3ed299f95eccd27b6e50867ad0ad5dc9",
+    "D:\\projectome_analysis\\group_analysis\\scripts\\cluster_arm_projection_profiles.py": "1b1d7e88291f6c305326e73ce7a6913ddbc6ad5828a3bb5665533c0c52104d53",
+    "D:\\projectome_analysis\\main_scripts\\clustering_validation.py": "37c60b661e4d856657bc7d3395c10a836ae96334c657a0c87f01e7d5cf35ddf5"
+  },
+  "verified_output_hashes": {
+    "all462_end_branch_eligibility_and_assignments.csv": "b9b935bb6165127249eb79ad00cc68b1431016f31037bdda7461af85ea4d6855",
+    "candidate_k_diagnostics.csv": "db9268d03e6e6fa61a33a9fe06d654c8eda5ef43334335d7c1391488e288e7c8",
+    "common_UID_k2_partition_comparisons.csv": "387f66648e097d6b8d92aa70b59e09e46b008f8562a8e1f0b84f0cc55bd3d0dd",
+    "display_cut_source_animal_composition.csv": "c65d2922202f2cd29337ded8decdc5ab78d0519ce5557dad709bbee107cd290c",
+    "display_cut_top20_relative_targets.csv": "017c50840a0d3cc9ef2ec28729433af704a991cc2e63a9c32bf996b69b4e9689",
+    "official_ARM6_bilateral_feature_dictionary.csv": "2559e790236cd944e3d98fd7c648ad2b8bf1b44a0fd1b2a7088ee2dd04980c2b",
+    "stacked_resampling_and_holdout_diagnostics.csv": "b3b0a59e6343921537eeacd979fb668c82d6500240e31071c238db43692b5501"
+  },
+  "independent_code_sha256": "248aaffcc7a9287af81f6325dd87b8fae6f41d54e1052f9746664cfa435263d6",
+  "anatomical_or_biological_acceptance": false
+}

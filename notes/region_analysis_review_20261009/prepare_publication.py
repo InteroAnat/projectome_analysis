@@ -44,12 +44,17 @@ MAP_SCRIPTS = {
     "prepare_arm_labeled_projection_manifest.py", "render_projection_slices.py",
     "review_endpoint_run.py", "review_projection_run.py", "verify_atlas_soma_audit.py",
     "export_arm_projection_tables.py", "cluster_arm_projection_profiles.py", "summarize_mstim_arm.py",
+    "build_axon_end_branch_maps.py",
 }
 CORE_MODULES = {"endpoint_atlas.py", "projection_maps.py", "terminal_sites.py"}
 OMIT_NAMES = {"publication_files.json", "publication_scan.json", "publication_local_artifacts.json", "publication_index_receipt.json"}
 LOCAL_NODE_LEDGERS = {"leaf_records.jsonl", "section_original_node_membership.jsonl"}
 OMIT_SUFFIXES = {".pyc", ".swc", ".tif", ".tiff", ".nii", ".gz", ".pdf"}
 TEXT_SUFFIXES = {".py", ".r", ".rmd", ".md", ".txt", ".json", ".csv", ".bib", ".patch", ".log", ".yml"}
+CM033_WORK_DIRECTORIES = {"nipype_work", "nipype_config", "mpl_config", "logs", "tmp"}
+# This interrupted supplement has no completed independent delivery. Preserve
+# it locally while the user-requested projectome phase is finalized first.
+DEFERRED_WORK_PREFIX = "notes/region_analysis_review_20261009/mstim_integration_20261009/cm032_end_branch_supplement/"
 # A token starts at a lexical boundary. Without this guard, BIDS task-opto
 # filenames match the sk- prefix embedded in the word task.
 ACCESS_TOKEN_PATTERN = (
@@ -70,6 +75,23 @@ def sha(path):
 def git_paths(arguments):
     result = subprocess.check_output(GIT + arguments, cwd=ROOT)
     return {value.decode("utf-8").replace("\\", "/") for value in result.split(b"\0") if value}
+
+
+def is_cm033_work_artifact(path):
+    """Exclude disposable fit caches while retaining named sources and receipts."""
+    parts = Path(path).as_posix().split("/")
+    prefix = ["notes", "region_analysis_review_20261009"]
+    return (parts[:2] == prefix and len(parts) > 3
+            and parts[2].startswith("cm033_")
+            and any(part in CM033_WORK_DIRECTORIES for part in parts[3:-1]))
+
+
+def is_cm033_earlier_display(path):
+    """Publish the readable candidate QC set; preserve earlier displays locally."""
+    parts = Path(path).as_posix().split("/")
+    return (parts[:4] == ["notes", "region_analysis_review_20261009",
+                         "cm033_bridge_candidate_20261009", "coarse_qc"]
+            and len(parts) == 5 and Path(path).suffix.lower() in {".png", ".json"})
 
 
 def main():
@@ -117,7 +139,11 @@ def main():
     archived_figures |= {path for path in candidates if path.startswith(terminal_prefix)
                         and Path(path).suffix.lower() == ".png"
                         and not path.startswith(terminal_prefix + "review_panels/")}
+    archived_figures |= {path for path in candidates if is_cm033_earlier_display(path)}
+    local_work = {path for path in candidates if is_cm033_work_artifact(path)
+                  or path.startswith(DEFERRED_WORK_PREFIX)}
     candidates -= archived_figures
+    candidates -= local_work
     for path in candidates:
         if not (ROOT / path).is_file():
             raise FileNotFoundError(path)
@@ -162,9 +188,15 @@ def main():
               "sha256": sha(path), "reason": (
                   "Archived display variant; its guide identifies the current figure set"
                   if str(path.relative_to(ROOT)).replace("\\", "/") in archived_figures else
+                  "Unfinished MSTIM supplement deferred by the user; preserved locally"
+                  if str(path.relative_to(ROOT)).replace("\\", "/").startswith(DEFERRED_WORK_PREFIX) else
+                  "Disposable registration workflow/cache; frozen commands, matrices and receipts are published"
+                  if is_cm033_work_artifact(str(path.relative_to(ROOT))) else
                   "Scientific binary/large local derivative; see bound run and reproduction workflow")}
              for directory in (EVOLUTION, AUDIT) for path in directory.rglob("*") if path.is_file()
              and (path.name in LOCAL_NODE_LEDGERS or path.suffix.lower() in {".nii", ".gz", ".swc", ".tif", ".tiff"}
+                  or is_cm033_work_artifact(str(path.relative_to(ROOT)))
+                  or str(path.relative_to(ROOT)).replace("\\", "/").startswith(DEFERRED_WORK_PREFIX)
                   or str(path.relative_to(ROOT)).replace("\\", "/") in archived_figures)]
     stamp = datetime.now(timezone.utc).isoformat()
     (AUDIT / "publication_files.json").write_text(json.dumps({"created_utc": stamp, "groups": groups}, indent=2) + "\n", encoding="utf-8")

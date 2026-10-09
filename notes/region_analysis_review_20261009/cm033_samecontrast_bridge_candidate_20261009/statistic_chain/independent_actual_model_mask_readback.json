@@ -1,0 +1,22 @@
+{
+  "status": "independent_actual_SPM_model_mask_pointset_readback_passed",
+  "chain_provenance_sha256": "48eb31071bfbb1e30ad9e7dc2d938b6f287b9f7d3830354ee3637d53d4067f94",
+  "SPM": {
+    "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat",
+    "sha256": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+    "bytes": 120497816
+  },
+  "mask": {
+    "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\mask.nii",
+    "sha256": "e6e3d90808d8607322cfa9ac72b58790535fc7e222145f1adc1ffdd74a4785a2",
+    "in_mask_voxels": 68267,
+    "in_mask_negative": 0,
+    "in_mask_positive": 68267,
+    "in_mask_zero": 0,
+    "outside_mask_nonfinite": 0
+  },
+  "model_mask_voxels": 68267,
+  "SPM_xVol_XYZ_exactly_matches_mask": true,
+  "SPM_one_based_M_matches_zero_based_mask_affine": true,
+  "code_sha256": "cd6c46819e5b57dcff6854587c3f0efe1ba457c7ade0e15a672ef0b5655fed10"
+}

@@ -1,0 +1,88 @@
+{
+  "status": "saved_software_readback_pass_image_review_pending",
+  "checked_utc": "2026-10-09T05:11:49.082553+00:00",
+  "provenance": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/bridge_candidate_provenance.json",
+    "sha256": "2c7a55182005f0f33529ee7320149235139955c415665802f7a29709b6e2e619"
+  },
+  "code": {
+    "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/review_saved_samecontrast_candidate.py",
+    "sha256": "d54b7cef501f5f353c2ad18d39796fa09cc084f535c111b77e9379c730c21daa"
+  },
+  "residual_rotation_degrees": 2.067773891766367,
+  "residual_30_degree_gate_pass": true,
+  "matrix_inverse_max_error": 2.965124998866031e-05,
+  "exact_saved_grids_and_finite_values": true,
+  "exact_scaled_array_preservation": true,
+  "displays": [
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/coarse_qc/cm033_forward_mean_intensity_correspondence.png",
+      "sha256": "b5e8d859c19aef24801d85d62a55951b252e4f07281d26c35b05035645127683",
+      "selected_canonical_z_indices": [
+        2,
+        5,
+        7,
+        10,
+        12,
+        15
+      ],
+      "image_intensity_display_ranges": [
+        [
+          18007.6598828125,
+          1305242.835
+        ],
+        [
+          224.47671508789062,
+          1244416.8275
+        ]
+      ],
+      "source_bindings": [
+        {
+          "path": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/bids/sub-cm033/ses-20160120/derivatives/preproc/anat/sub-cm033_ses-20160120_desc-refmean_bold.nii",
+          "sha256": "0d610e2c7e35723cbe55044d7a2f9161260cb0eb2cb6c5bce82d09c2ab887877"
+        },
+        {
+          "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/fit/desc-refmeanInAnat.nii",
+          "sha256": "b5ff08fa785e111a92d45f080cfcac93e64d3724c09f8de262cc48d3c272edbc"
+        }
+      ],
+      "header_only_display_directions": true
+    },
+    {
+      "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/coarse_qc/cm033_inverse_mean_intensity_correspondence.png",
+      "sha256": "9f1c0a2a43140d07c31f5a4e7484fe3311023880072f74470585416030559f1e",
+      "selected_canonical_z_indices": [
+        2,
+        5,
+        7,
+        10,
+        12,
+        15
+      ],
+      "image_intensity_display_ranges": [
+        [
+          9140.084667968753,
+          1243817.042499999
+        ],
+        [
+          11810.34765625,
+          1302927.4749999992
+        ]
+      ],
+      "source_bindings": [
+        {
+          "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/working_copy/sub-cm033_desc-currentPayload1472Mean_space-declaredCurrentWorld_bold.nii.gz",
+          "sha256": "f0e7f73feb6d8e4a6e7e27e27325c077b251fce24ccaa49aa589a1f44c1e2c1c"
+        },
+        {
+          "path": "/mnt/d/projectome_analysis/notes/region_analysis_review_20261009/cm033_samecontrast_bridge_candidate_20261009/coarse_qc/sub-cm033_desc-scan39InDeclaredCurrentWorld_bold.nii.gz",
+          "sha256": "e150869026427008f68f867a8d1c4677808d00b51091117e8fa19fce873c0a0b"
+        }
+      ],
+      "header_only_display_directions": true
+    }
+  ],
+  "statistics_or_masks_warped": false,
+  "third_fit_started": false,
+  "anatomical_acceptance": false
+}

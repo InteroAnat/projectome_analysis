@@ -1,0 +1,29 @@
+{
+  "checked_utc": "2026-10-09T04:41:32.512659+00:00",
+  "mask_positive_voxels": 68267,
+  "statistics": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+      "sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+      "nonfinite_total": 226645,
+      "nonfinite_inside_estimation_mask": 0,
+      "nonfinite_outside_estimation_mask": 226645,
+      "finite_inside_mask_min_max": [
+        -1.5024811029434204,
+        1.561536431312561
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii",
+      "sha256": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+      "nonfinite_total": 0,
+      "nonfinite_inside_estimation_mask": 0,
+      "nonfinite_outside_estimation_mask": 0,
+      "finite_inside_mask_min_max": [
+        -5.76219367980957,
+        6.581010341644287
+      ]
+    }
+  ],
+  "scope": "Actual estimation-mask finite-value check; no change to source arrays. Future continuous-image warps require an explicitly documented finite work copy plus separate nearest-neighbor estimation mask, avoiding propagation of outside-mask NaNs."
+}

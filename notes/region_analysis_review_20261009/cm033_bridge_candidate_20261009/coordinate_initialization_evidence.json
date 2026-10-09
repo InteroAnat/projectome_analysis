@@ -1,0 +1,580 @@
+{
+  "status": "read_only_declared_coordinate_recoding_supported_second_fit_not_started",
+  "checked_utc": "2026-10-09T05:03:50.415687+00:00",
+  "code": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\audit_coordinate_initialization.py",
+    "sha256": "aac456e877666961444200882a8e65ed8dc887f6c34a6d893cd5319f98933f85",
+    "bytes": 6689
+  },
+  "prior_input_audit": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_integration_followup_20261009\\spm_bridge_input_audit.json",
+    "sha256": "f43482ca6a68914e0b0cb60e3af5d4fbe331ae47505d34ba907351f40cf56ab8",
+    "bytes": 24289
+  },
+  "prepared_mean": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_integration_followup_20261009\\sub-cm033_ses-20160120_desc-currentPayload1472VolumeMean_space-cachedSPM_bold.nii.gz",
+    "sha256": "b964c0424e872e397e273851809c19d7ac5875c866736ff4250faffbae5157d8",
+    "bytes": 1064938,
+    "shape": [
+      128,
+      128,
+      18
+    ],
+    "affine_mm": [
+      [
+        0.75,
+        0.0,
+        0.0,
+        -48.0
+      ],
+      [
+        0.0,
+        -0.75,
+        0.0,
+        -5.022499084472656
+      ],
+      [
+        0.0,
+        0.0,
+        -1.999999761581421,
+        63.351417541503906
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "R",
+      "P",
+      "I"
+    ],
+    "qform_code": 2,
+    "sform_code": 2
+  },
+  "all_five_current_inputs_fresh_hash_and_affine_match": true,
+  "current_inputs": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+      "sha256": "b8cb394a1925dac17a9c1373e5c7228144b7a7c0988b341789460beadafbefaa",
+      "bytes": 188816112,
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "affine_mm": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "header_axcodes": [
+        "L",
+        "P",
+        "S"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "scanner_id": 57,
+      "cached_to_current_world_mm": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+      "sha256": "156860eff8fc150913f7114cb3226de8c4e9e679d0765fe87a1b0d0d441f3825",
+      "bytes": 188816080,
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "affine_mm": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "header_axcodes": [
+        "L",
+        "P",
+        "S"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "scanner_id": 58,
+      "cached_to_current_world_mm": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+      "sha256": "9badb77d90f271d849a659f67dfad49429c76bf2686c7f018374fbf26bb0e50d",
+      "bytes": 453151136,
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "affine_mm": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "header_axcodes": [
+        "L",
+        "P",
+        "S"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "scanner_id": 60,
+      "cached_to_current_world_mm": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+      "sha256": "ac83876790d37280b6d2d27391dc81b462255589e02e4ee822a65403c1c83fe9",
+      "bytes": 453151328,
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "affine_mm": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "header_axcodes": [
+        "L",
+        "P",
+        "S"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "scanner_id": 61,
+      "cached_to_current_world_mm": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+      "sha256": "f29a2131fe21059ef088bf0d5fd02f65b7ef38f020d2077d56023a4735d68be6",
+      "bytes": 453151312,
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "affine_mm": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "header_axcodes": [
+        "L",
+        "P",
+        "S"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "scanner_id": 64,
+      "cached_to_current_world_mm": [
+        [
+          -1.0,
+          0.0,
+          0.0,
+          -96.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          -1.0,
+          126.70283508300781
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ]
+    }
+  ],
+  "B_cached_world_to_current_world_mm": [
+    [
+      -1.0,
+      0.0,
+      0.0,
+      -96.0
+    ],
+    [
+      0.0,
+      1.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      -1.0,
+      126.70283508300781
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+    ]
+  ],
+  "B_meaning": "Same array index expressed in two declared world-coordinate descriptions; no array flip or interpolation and no proof of physical orientation.",
+  "actual_new_reference": {
+    "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii",
+    "sha256": "0d610e2c7e35723cbe55044d7a2f9161260cb0eb2cb6c5bce82d09c2ab887877",
+    "bytes": 1183504,
+    "shape": [
+      128,
+      128,
+      18
+    ],
+    "affine_mm": [
+      [
+        -0.7500000596046448,
+        -0.0,
+        -0.0,
+        46.792213439941406
+      ],
+      [
+        -0.0,
+        0.7500000596046448,
+        -0.0,
+        -43.179874420166016
+      ],
+      [
+        0.0,
+        0.0,
+        2.0,
+        -12.227444648742676
+      ],
+      [
+        0.0,
+        0.0,
+        0.0,
+        1.0
+      ]
+    ],
+    "header_axcodes": [
+      "L",
+      "A",
+      "S"
+    ],
+    "qform_code": 1,
+    "sform_code": 1,
+    "finite_values": true
+  },
+  "new_reference_equals_current_input_world_grid": false,
+  "external_source_bindings": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\spatial_rebuild_completed.json",
+      "sha256": "9603e022c0250b311e5cc39200aa68c7f2e92d1e48ef6be03df715abc9c1abf6",
+      "bytes": 659
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\full_series_qc\\full_series_checks.json",
+      "sha256": "e0810d4ec7687b3feab50e60c477d6917127f502f899ad45aaaeadb7ba6e4c4f",
+      "bytes": 28673
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\functional_normalization_qc\\chain_checks.json",
+      "sha256": "52845ffd6be371c9d00f335bacf02d31b884aa37bdf85d75722492ce65d3f3d6",
+      "bytes": 15679
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\code\\config\\analysis_cm033_20160120.json",
+      "sha256": "7f4606212eb9802e024718b88bd7e9b63c4c8364d98a30742c34494d2a483377",
+      "bytes": 740
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\qc\\epi_sform_manifest.json",
+      "sha256": "28491d80ed634ba42160b53d9e4d7bfd17308e9cb0c43a128c1e9d6e2f615708",
+      "bytes": 4862
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\qc\\epi_sform_spm.json",
+      "sha256": "a4f5313981ce982e154d53b07255ec93fd77133874eff737a745df542a74cedc",
+      "bytes": 5716
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\source_manifest.json",
+      "sha256": "079ce4df1e6e47e890003c1bb4101322c410b51c4f7aef96edceece6cab5d1e8",
+      "bytes": 90756
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\resume_spatial_after_windows_spm.py",
+      "sha256": "7f321ac1e5ce689748e74e83aa283daaefea8aa7584d450ae69b262ee05ce20d",
+      "bytes": 2455
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\preproc\\orientation_policy.py",
+      "sha256": "1b210a6a32693318d65bc98331a4674605dca14a2e408f9e773251ec636857a1",
+      "bytes": 5232
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\preproc\\nii_reorientation.py",
+      "sha256": "0216729a2f017812cb9471cb1969eeec2316d6af8527a43f6315463a38138071",
+      "bytes": 30595
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\preproc\\run_anat_epi_bids.py",
+      "sha256": "f7b6ccf2f9a16263d0a82afd1c72ba40b8bbdf7074cd40ea770a51e3512674ef",
+      "bytes": 20747
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\workflows\\nipype_anat_epi.py",
+      "sha256": "b50e42118ad6c461eb3c4be0e3c5c40c531e9f83914b8ede3d49bc11b4982bc1",
+      "bytes": 4232
+    }
+  ],
+  "external_spatial_completion_snapshot": {
+    "included_runs": 19,
+    "registration_direction": "epi_to_anat",
+    "norm_approach": "ana_based",
+    "normative_anatomy": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_Dsource_20261009/anatomy_candidates/sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii",
+    "native_anatomy_payload_and_affine_match_norm_input": true,
+    "spm_execution_recovery": "saved public MATLAB/SPM job run directly on Windows after WSL exec-format error; same post-SPM gate and QC writer applied",
+    "anatomical_status": "candidate; full QC and review required",
+    "slice_timing_status": "not reconstructed; spatial candidates are not GLM-ready"
+  },
+  "configured_reference_scan": 39,
+  "configured_orientation_policy": {
+    "signs": null,
+    "origin_mm": null
+  },
+  "spm_post_write_gate": true,
+  "spm_one_based_matrix_agrees_with_actual_zero_based_reference": true,
+  "proposal": "After root reviews the rejected direct fit and actual new reference, a fresh explicitly B-recoded work-copy mean could be fitted to the actual new same-contrast reference using verified public rigid LPA workflow. This is a separate candidate fit, not header substitution or established historical transform.",
+  "public_method": {
+    "warp_type": "shift_rotate",
+    "cost": "lpa",
+    "center_of_mass": true,
+    "final_interpolation": "wsinc5",
+    "rotation_review_gate_degrees": 30
+  },
+  "later_statistics_composition_requirement": "Retain B as a separate named coordinate step, followed by the candidate fitted transform; use appropriate inverse/pullback composition. Never use the rejected direct matrix or attach the new reference affine to old statistics.",
+  "physical_orientation_authoritatively_resolved": false,
+  "original_estimation_payload_byte_identity_independently_proven": false,
+  "second_fit_started": false,
+  "statistics_or_masks_warped": false,
+  "external_mutations": false
+}

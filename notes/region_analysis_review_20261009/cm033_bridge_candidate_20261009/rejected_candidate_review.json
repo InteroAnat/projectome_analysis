@@ -1,0 +1,121 @@
+{
+  "status": "rejected_direct_bridge_candidate_not_for_statistic_or_mask_propagation",
+  "reviewed_utc": "2026-10-09T05:05:06.061289+00:00",
+  "reviewers": [
+    "Codex projection_methods",
+    "Codex root (reported image inspection)"
+  ],
+  "actual_readable_pngs_inspected": true,
+  "visual_observation": "Broad contour/slab mismatch in forward and inverse views; readable titles and legends fit.",
+  "rotation_degrees": 33.30544079770782,
+  "unchanged_rotation_gate_degrees": 30,
+  "gate_pass": false,
+  "fit_execution_count": 1,
+  "finite_and_grid_software_checks_pass": true,
+  "statistical_images_warped": false,
+  "second_fit_started": false,
+  "anatomical_or_physical_laterality_acceptance": false,
+  "artifacts": [
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\run_projectome_cm033_bridge.py",
+      "sha256": "63ef80b8ac7528bfea315c24ae2cf36a11d8e34de959394c8f4cd58da672f735",
+      "bytes": 12106
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\bridge_candidate_provenance.json",
+      "sha256": "3d2d61f09b85e4ceea3956082043e2bb43e9ce83af6f769d8b1454a81eb5f61c",
+      "bytes": 10285
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\candidate_saved_readback.json",
+      "sha256": "61d8c2db3f381150bca6a0fc102f617d7224d02408ec9aa011ae4050f1fff1ba",
+      "bytes": 3934
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\finalize_bridge_candidate_qc.py",
+      "sha256": "28137767e9f2a544aa75914b208185a6c9388af5976b062b60b6900ce69862b2",
+      "bytes": 5592
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\fit_execution_log.txt",
+      "sha256": "e2c973ad11070ec5e154360125e6ede3a68fd37a5e97547bbc8545c8254b6db1",
+      "bytes": 23568
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\afni_commands.log",
+      "sha256": "8cabe020e72b2f0b0bb4b45872ac3885cea4236e6869e53e706982301be7a7db",
+      "bytes": 3998
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\afni_3dAllineate_help.txt",
+      "sha256": "817408ff19049f399a6b6112716606baa2d0a1d7f85ade52b0588bdeafc33e1a",
+      "bytes": 77549
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\fit\\desc-refmeanInAnat.nii",
+      "sha256": "276b1c673f3c3d0f4e6d5a52cd03adb82af32434fae0e8dd9cf3b2ddb8ede2c9",
+      "bytes": 3477760
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\fit\\desc-epiToAnatAffine.aff12.1D",
+      "sha256": "449a34a2f166ce68421f8dd1fa38389b75ea2cd4d2ea87bb1949e293f1cc3845",
+      "bytes": 222
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\fit\\desc-taskAToCachedEpiApply.aff12.1D",
+      "sha256": "4a97e5227dd81405f2d5a145bb776c2f55dc7318a57148b7ea0b36a77852c02e",
+      "bytes": 168
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coarse_qc\\sub-cm033_desc-taskAInCachedEpi_brain.nii.gz",
+      "sha256": "a9fa7038bdfd4ed139a05d7b86117c656078143b87ce7fee3fa3006d9c668282",
+      "bytes": 309594
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coarse_qc\\sub-cm033_desc-taskAPositiveSupportInCachedEpi_mask.nii.gz",
+      "sha256": "a9ab34bfe887a3f32e07e30ca75ae60dbca7e97255dd7c2bf9eaf7ec0cb48856",
+      "bytes": 5385
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coarse_qc\\readable\\cm033_cachedSPM_mean_on_taskA_candidate.png",
+      "sha256": "5742e568e8e011b7bcf06523a2407f3a19d16a8170a5ddcc19e6baa95b37b90e",
+      "bytes": 261078
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coarse_qc\\readable\\cm033_cachedSPM_mean_on_taskA_candidate.json",
+      "sha256": "d68787ee978daf87beae81b79b2cfaba681e665d96a28c6e9b37644eea2515f9",
+      "bytes": 1273
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coarse_qc\\readable\\cm033_taskA_support_on_cachedSPM_mean_candidate.png",
+      "sha256": "2611d08fa5f6753dbb4528f81a8702d59a39970a1c8ba5ae36697d8793b7efaf",
+      "bytes": 307725
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coarse_qc\\readable\\cm033_taskA_support_on_cachedSPM_mean_candidate.json",
+      "sha256": "c3a02e34679dd70df24e6ae8ac704018fd5d9411d06c028bd71edcfd284720bc",
+      "bytes": 1345
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\coordinate_initialization_evidence.json",
+      "sha256": "541e168db61d849154a69baf390bf9dd35189d70437a8366e7f3561e7918cf3f",
+      "bytes": 15220
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\audit_coordinate_initialization.py",
+      "sha256": "aac456e877666961444200882a8e65ed8dc887f6c34a6d893cd5319f98933f85",
+      "bytes": 6689
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\README.md",
+      "sha256": "1308c141446a34a4123a7d8541509c547f67129443c3c18f3ecba59903a1b8e3",
+      "bytes": 5834
+    },
+    {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\cm033_bridge_candidate_20261009\\freeze_rejected_candidate.py",
+      "sha256": "b8fd6f1e7f87fedef8ac6bc8a551367b9506e5846781cac868bff790ba64900b",
+      "bytes": 2745
+    }
+  ],
+  "scope": "Additive review only; original fit/producer provenance and external files unchanged."
+}

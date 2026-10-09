@@ -15,6 +15,7 @@ The SWC compartment code **2 means axon**, as defined in the [NeuroMorpho.Org SW
 | Endpoint-target regions | Legacy `Terminal_Regions`, `Terminal_Count` | Distinct region labels reached by the stored graph endpoints, including non-axon endpoints in this legacy method. The count is of region labels, not individual endpoints or reviewed biological terminal sites. |
 | Candidate axon ends | New endpoint maps | Non-root axon-labelled points with no children in the complete stored graph. Breaks, incomplete tracing and true endings can all produce this graph feature. |
 | Axon-labelled segment length | New axon maps | Physical length of segments selected by the declared SWC axon-label rule, rasterized in the reference grid. It includes passage and arbor segments; compartment and registration review remain necessary. |
+| Reconstructed axon end-branch length | End-branch supplement | Original axon ending to the first full-graph branch point, root or non-axon parent, with the final transition edge included and flagged. Length is allocated along the chain in template mm. It is a graph proxy; unfinished shafts can qualify and reviewed terminal fields are not established. |
 | Reviewed terminal arbor or field | Anatomical review, not the graph proxy | Target-local terminal morphology supported by source images and a recorded review. Graph leaves alone cannot establish this. |
 
 Do not convert a log-scaled value into millimetres by multiplying it by voxel size. Unit conversion, when justified by coordinate provenance, applies to the underlying lengths before logarithmic transformation.
@@ -50,7 +51,7 @@ Keep **human annotation**, **atlas label**, **coordinate-based candidate** and *
 
 Map headings use the official ARM source parcel and side. Historical `HumanINS`, `Candidate` and `G` strings remain original evidence/selection fields, not anatomical labels. Henry's recorded review covers sample 251637 only. The 52 unassigned locations retain 13 reviewed cases and 39 candidates in case QC.
 
-Projection matrices retain **ARM levels 1–6 as separate sheets**; overlapping levels cannot be summed. New axon matrices measure template-space type-2 edge length. Endpoint matrices count candidate graph ends or per-neuron presence. They preserve the separate legacy retained-length definition. Spatial data are NIfTI (`.nii.gz`); PNGs are displays. Summed voxel occupancy is not regional neuron frequency.
+Projection matrices retain **ARM levels 1–6 as separate sheets**; overlapping levels cannot be summed. New axon matrices measure template-space axon-labelled edge length. Endpoint matrices count candidate graph ends or per-neuron presence. The [end-branch supplement](../notes/region_analysis_review_20261009/axon_end_branches_20261009/README.md) retains the same ledger and six hierarchy levels, conditioning its means on end-eligible neurons. These measures preserve the separate legacy retained-length definition. Spatial data are NIfTI (`.nii.gz`); PNGs are displays. Summed voxel occupancy is not regional neuron frequency.
 
 Clustering uses an exclusive target set and retains total extent and outside/unassigned coverage as QC. Stable partitions are not accepted biological types. Signed MSTIM fitted contrasts, SPM T statistics, reconstructed lengths and candidate endpoints remain different measurements even when atlas labels match.
 

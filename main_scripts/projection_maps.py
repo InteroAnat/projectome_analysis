@@ -94,7 +94,11 @@ def segment_voxels(start, end, shape):
             cuts.extend(times[(times > lower) & (times < upper)])
     cuts = np.unique(cuts)
     for left, right in zip(cuts[:-1], cuts[1:]):
-        voxel = np.floor(start + (left + (right-left)/2) * delta + 0.5).astype(int)
+        point = start + (left + (right-left)/2) * delta
+        base = np.floor(point)
+        # Adding 0.5 can round the float immediately below a voxel face up
+        # to that face. Compare its fractional part to retain half-open bins.
+        voxel = (base + (point - base >= 0.5)).astype(int)
         if np.all(voxel >= 0) and np.all(voxel < shape):
             yield tuple(voxel), float(right - left)
 
@@ -137,8 +141,9 @@ def axon_length_map(swc_text, grid, *, coordinate_frame, index_scale_um=None,
     starts, ends, weights = coords[parents[selected]], coords[children[selected]], lengths[selected]
     # Dense traces mostly remain within one voxel. Accumulate those edges in
     # one vectorized operation, traversing voxel faces only for the remainder.
-    start_voxels = np.floor(starts + 0.5)
-    end_voxels = np.floor(ends + 0.5)
+    start_base, end_base = np.floor(starts), np.floor(ends)
+    start_voxels = start_base + (starts - start_base >= 0.5)
+    end_voxels = end_base + (ends - end_base >= 0.5)
     same = (np.all(start_voxels == end_voxels, axis=1)
             & np.all(start_voxels >= 0, axis=1)
             & np.all(start_voxels < grid.shape, axis=1))
@@ -179,11 +184,14 @@ def animal_mean(maps):
     return result
 
 
-def save_map(path, data, grid):
+def save_map(path, data, grid, *, description="Descriptive template axon length; not BOLD or t statistic"):
     """Write descriptive float32 NIfTI with the exact mm reference transform."""
     path = Path(path)
     if path.exists():
         raise FileExistsError(path)
+    if (not isinstance(description, str) or not description
+            or not description.isascii() or len(description) > 79):
+        raise ValueError("NIfTI description must be nonempty ASCII with at most 79 characters")
     stored = np.asarray(data, dtype=np.float32)
     if stored.shape != grid.shape or not np.isfinite(stored).all() or np.any(stored < 0):
         raise ValueError("Map must match the reference and remain finite and nonnegative")
@@ -193,7 +201,7 @@ def save_map(path, data, grid):
     # A sheared reference cannot be represented by a quaternion. Retain its
     # exact sform rather than silently stripping shear to create a qform.
     image.set_qform(None, code=0)
-    image.header["descrip"] = "Descriptive template axon length; not BOLD or t statistic"
+    image.header["descrip"] = description
     descriptor, temporary = tempfile.mkstemp(prefix=".axon-map-", suffix=".nii.gz", dir=path.parent)
     os.close(descriptor)
     try:

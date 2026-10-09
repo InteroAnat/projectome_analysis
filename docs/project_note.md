@@ -2,6 +2,30 @@
 
 **Purpose:** Living human-readable status for fMOST / insula projectome work. Agents **merge** updates; do not replace sections.
 
+## Projectome-first delivery; MSTIM integration deferred (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+The user requested finishing without CM032/CM033 first. The [current projectome delivery](../notes/region_analysis_review_20261009/projectome_delivery_20261009/README.md) consolidates the inventory, one 462-neuron classification ledger, region/table QC, descriptive ARM NIfTIs, all six hierarchy tables, native morphology evidence and animal-aware exploratory clustering. The latest saved live suite passes 437 tests with unchanged scientific source hashes; earlier counts below are dated snapshots. MSTIM interpretation/acceptance is deferred, not a gate for this phase. Completed CM033 alignment and independently checked intermediate comparisons remain preserved; no further fMRI computation is started. The interrupted CM032 supplement stays local until reviewed. Current bindings, resolved links and exact publication/remote status are recorded separately; scientific acceptance is not inferred from computational completion.
+
+## Completed CM033 alignment handoff verified (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+Following the user's correction, the conversation **Verify cm033 alignment and normalise** and its completed DEB report establish that the isolated D-source spatial reconstruction is complete: 19 included runs, all 7,376 frames checked, fresh EPI→native→CMT→NMT processing, and all 19 EPI and NMT mean boundary montages visually reviewed. The completed run explicitly used adaptive SPM reorientation. The earlier running/failed-handoff snapshots below are historical; Windows MATLAB recovery and the completed delivery supersede them. This is completed alignment with broad visual evidence, not an absent registration dependency.
+
+A [fresh handoff readback](../notes/region_analysis_review_20261009/cm033_integration_followup_20261009/completed_alignment_handoff_readback_20261009.json) reconciles the actual run identities, frame totals, recorded technical/visual checks and 25 source bindings. All 19 external bindings already used by the projectome bridge/statistic chain still match their saved hashes, including the installed reference mean, native anatomy, AFNI matrix and four ANTs transforms. The [CM033 regional comparison](../notes/region_analysis_review_20261009/mstim_integration_20261009/cm033_regional_comparison/README.md) therefore already reuses this completed fresh spatial chain; alignment need not be repeated to establish these outputs. The older GLM's original payload identity remains unproven, so its separate source-frame bridge and actual estimation mask remain explicit. Broad alignment completion does not establish physical laterality, fine INS registration accuracy or new GLM readiness; the source report retains the relevant coverage, sampling and temporal limits. This update changes documentation and records a readback only; images, transforms, tables and earlier receipts are unchanged.
+
+## Original axon end-branch maps and current CM033 bridge (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+The [new follow-up](../notes/region_analysis_review_20261009/end_branch_and_mstim_followup_20261009.md) adds an explicit original end-branch trajectory measure on the unchanged 462-neuron ledger: 429 eligible, 33 NA, 67 NIfTIs and separate ARM L1–L6 matrices. Independent forward graph selection and voxel interval reconstruction verify every selected edge, matrix cell and animal/group map voxel. The fresh live suite passes 427 tests. A focused voxel-face rounding defect is repaired; the complete 7,828,761-edge real-source audit finds no allocation changes, so old whole-axon maps need no regeneration. Four actual matched-slice sheets retain full official ARM names, the same MRI cuts, readable denominator labels and explicit graph-proxy status. Passing checks do not accept biological terminal fields or soma/registration anatomy.
+
+Source-relative end-branch profiles add feature sensitivity without a new cohort or forced cell types. Earlier source classifications, Henry evidence, original graphs, raw data and unrelated edits remain preserved. The [six-item scope audit](../notes/region_analysis_review_20261009/goal_completion_audit_20261009.md) distinguishes delivered exploratory analyses from pending CM033 integration and scientific acceptance.
+
+The [CM033 source-frame audit](../notes/region_analysis_review_20261009/cm033_integration_followup_20261009/README.md) prepares a current-payload mean in cached SPM geometry and records unequal historical/current scaling and array values. Exact old payload identity remains unproven. The external spatial job has now exited after all 19 alignment installs: Windows MATLAB could not execute from WSL. Earlier running snapshots are superseded by the additive terminal receipt. A separate projectome-only reference-to-taskA candidate fit progresses without external edits, source-array flips or a whole-series rerun; its actual fit/QC and eventual signed-statistic/estimation-mask warp remain separate steps. Full goal status remains active. Publication is recorded only after live remote readback.
+
 ## Whole-ledger axon morphology, expanded native review and current CM033 route (2026-10-09)
 
 **Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
