@@ -1,0 +1,140 @@
+{
+  "status": "source_supported_coarse_site_characterization_with_actual_figure_review",
+  "recorded_at": "2026-10-09T09:38:59.807936+08:00",
+  "subject": "CM032",
+  "session": "CM032.Aw1",
+  "acquisition_date": "2016-03-09",
+  "task": "MSTIM",
+  "site_group": "pos1",
+  "actual_model_runs": [
+    38,
+    39,
+    40,
+    41
+  ],
+  "actual_model_nscan": [
+    440,
+    440,
+    440,
+    440
+  ],
+  "actual_model_total_volumes": 1760,
+  "model_identity_method": "h5py read of SPM.nscan and UTF16 SPM.xY.P; unique run IDs38/39/40/41",
+  "user_statement": {
+    "text": "generally Ial",
+    "source": "current human steering reported in parent task on2026-10-09"
+  },
+  "record_characterization": {
+    "coarse_region": "Ial / lateral agranular insula; left vAIC pos1",
+    "hemisphere": "L",
+    "hemisphere_basis": "multimodal project note line223 explicitly states cm032 pos1=left vAIC; not screenshot screen side",
+    "MSTIM_assignment_basis": "explicit machine-readable site ontology + scan rows; workbook MSTIM row itself generic"
+  },
+  "nominal_ARM_terminology": {
+    "level": 6,
+    "index": 42,
+    "abbreviation": "CL_Ial",
+    "full_name": "CL_lateral_agranular_insula_area",
+    "right_homolog_index": 542,
+    "right_homolog_abbreviation": "CR_Ial",
+    "basis": "exact key entries only; not electrode coordinate lookup"
+  },
+  "workbook_anchors": {
+    "sheet": "cm032.Aw1",
+    "row7": "OPTO pos 1, in Ial",
+    "row19": "38-41 MSTIM;36+37 aborted; no explicit Ial or hemisphere",
+    "row21": "42-44 separate500um ventral",
+    "row27": "FLASH53 back to pos1"
+  },
+  "figures": [
+    {
+      "path": "D:\\multimodal_fmri\\docs\\assets\\project_note\\file-20260713153512400.png",
+      "sha256": "b5eff560440e74803929e0999cb900215a67490ff2e2955e7dc103e01633ba85",
+      "documented_flash_scan": 5,
+      "documented_role": "pos1 base QC",
+      "actually_viewed_with": "view_image",
+      "observation": "Dark narrow probe-like trajectory on displayed image-left reaches inferior/lateral cortical context; no L/R labels, tip marker, atlas contour or numeric coordinate.",
+      "anatomical_laterality_independently_established": false,
+      "exact_NMT_coordinate_available": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\docs\\assets\\project_note\\file-20260713153557162.png",
+      "sha256": "63791d6a5118e2d5e4047f9dc85b5d69382bb6a95cf1a0a7b3bd2c69f107e7d4",
+      "documented_flash_scan": 31,
+      "documented_role": "medial offset QC",
+      "actually_viewed_with": "view_image",
+      "observation": "Similar oblique coronal-looking image and probe-like trajectory; not base MSTIM group; no calibrated displacement or orientation labels.",
+      "anatomical_laterality_independently_established": false,
+      "exact_NMT_coordinate_available": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\docs\\assets\\project_note\\file-20260713154048629.png",
+      "sha256": "7ad8f43cd0b0c520f1137c931100fc2855477c4faf430d74176300a1035dab38",
+      "documented_flash_scan": 46,
+      "documented_role": "ventral0.5mm offset QC",
+      "actually_viewed_with": "view_image",
+      "observation": "Similar view with visible dark trajectory; source documents separate ventral group; screenshot does not measure exact offset or Ial border.",
+      "anatomical_laterality_independently_established": false,
+      "exact_NMT_coordinate_available": false
+    }
+  ],
+  "sources": {
+    "multimodal_project_note": {
+      "path": "D:\\multimodal_fmri\\docs\\project_note.md",
+      "sha256": "f1d3958902360ea0c31ee56a6f2a053e98c216ef53f2051b21e4aa6704d00d26"
+    },
+    "current_deb_fmri_project_note": {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\project_note.md",
+      "sha256": "506572563438976d98275ae4e3a9f6df909a26a71ee026ba68e9e314e65e1382"
+    },
+    "acquisition_workbook": {
+      "path": "D:\\multimodal_fmri\\docs\\tables\\opto-fMRI_sessions.xlsx",
+      "sha256": "92de4b397817ef13d5eca2ef96061d426e7b758549e175bb6998c35ca8e95d72"
+    },
+    "site_ontology": {
+      "path": "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm032.yaml",
+      "sha256": "600d4457e1feacf83d0a4a4afa10a3736b16a70c62e7aa723d5b354577ae96ed"
+    },
+    "scan_table": {
+      "path": "D:\\multimodal_fmri\\code\\config\\scans_cm032_20160309.tsv",
+      "sha256": "ebd427aa1ca77a256162a98e9620875538bd385fcdbb3a50174dce4dbe053082"
+    },
+    "model_summary": {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\glm_config_summary.txt",
+      "sha256": "2518148a7fd3ccfd5c06e7e2dc035667733fb14fc8cc4fd7b7601cb797e36a1c"
+    },
+    "SPM_model": {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm032\\ses-20160309\\glm-mstim-pos1\\SPM.mat",
+      "sha256": "433fda9bf22b7442478836498559605a58be730d155fa832f4a80a7db40583aa"
+    },
+    "rerun_log": {
+      "path": "D:\\multimodal_fmri\\docs\\subjects\\cm032\\ses-20160309\\reports\\glm_mstim_pos1_rerun_no52.log",
+      "sha256": "abf1944bf009799f8c7b47173f54d46e7eaadd3044f1fb88bcbb44484dbc30cd"
+    },
+    "current_raw_chain_review": {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm032_raw_chain_20260923\\review.md",
+      "sha256": "39c6304a986e88e3f888f59bfc3f3a717f5ed1a2c29cd532bf5af8dede42e59f"
+    },
+    "ARM_key": {
+      "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    }
+  },
+  "source_conflicts_retained": [
+    "Legacy run39 filename acq-pos3 is not physical-site truth",
+    "Historical code/config YAML path absent; actual saved YAML docs/provenance",
+    "Old scans table run52 include=yes superseded by four-run actual SPM model/later note",
+    "FLASH medial1mm vs EPI medial2mm wording unresolved but not basepos1"
+  ],
+  "exact_NMT_tip_coordinate": null,
+  "exact_coordinate_required_for_coarse_characterization": false,
+  "figure_cytoarchitectonic_Ial_confirmation": false,
+  "new_registration_acceptance": false,
+  "same_animal_fMOST_pairing_established": false,
+  "source_files_changed": false,
+  "new_registrations_or_image_fits": 0,
+  "network_requests": 0,
+  "external_writes": 0,
+  "report_path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\mstim_source_update_20261009\\cm032_site_figure_review.md",
+  "report_sha256": "b4b40f4e292c795ca2de580fdc8615fbdc345dc9de452e9b0e6ee38433f38bd2"
+}

@@ -1,0 +1,1716 @@
+{
+  "status": "passed_independent_software_graph_source_pixel_hash_and_selected_saved_display_review_only",
+  "historical_first_pass": {
+    "status": "software_graph_identity_length_and_cached_pixel_checks_pass_with_display_convention_caveat",
+    "checked_utc": "2026-10-09T01:46:36.728390+00:00",
+    "reviewer": "Codex independent region audit",
+    "no_producer_helper_imports_for_real_data_checks": true,
+    "focused_tests": {
+      "command": "python -B -m unittest discover -s notes/region_analysis_review_20261009/terminal_field_assessment_20261009 -p test_native_terminal_assessment.py -v",
+      "tests_run": 4,
+      "failures": 0,
+      "errors": 0
+    },
+    "source_and_output_receipt_checks": [
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+        "expected_sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+        "actual_sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+        "expected_sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "actual_sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+        "expected_sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "actual_sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\assess_native_terminal_fields.py",
+        "expected_sha256": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f",
+        "actual_sha256": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\main_scripts\\swc_validation.py",
+        "expected_sha256": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+        "actual_sha256": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\main_scripts\\fmost_image_geometry.py",
+        "expected_sha256": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce",
+        "actual_sha256": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\main_scripts\\Visual_toolkit.py",
+        "expected_sha256": "bbad8eb8dd3952d76c9970214171fc36135d51ea25d888bf780bd289c1c8c9ea",
+        "actual_sha256": "bbad8eb8dd3952d76c9970214171fc36135d51ea25d888bf780bd289c1c8c9ea",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\references\\fmost_full_methods_20261009.md",
+        "expected_sha256": "2e9d7ff0bd8a93713d80ecd5d031c77d41303065bae4e508c5fff26aa5bb9b38",
+        "actual_sha256": "2e9d7ff0bd8a93713d80ecd5d031c77d41303065bae4e508c5fff26aa5bb9b38",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\references\\fmost_full_methods_evidence_20261009.json",
+        "expected_sha256": "9bb74ef9cf117c32f92d2efb55add4d5b610375e65abcdcfb8bd573b9287116c",
+        "actual_sha256": "9bb74ef9cf117c32f92d2efb55add4d5b610375e65abcdcfb8bd573b9287116c",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\assessment_inputs.json",
+        "expected_sha256": "25d48ba45cb62e00329cc07024fb10be94303193caa15e155f9d3494bf7faf5b",
+        "actual_sha256": "25d48ba45cb62e00329cc07024fb10be94303193caa15e155f9d3494bf7faf5b",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\cached_cube_image_and_swc.png",
+        "expected_sha256": "87d6b5dad8aa2d84889bcf4bcb6391f28d05eba1a397c7ced3ca435961a64089",
+        "actual_sha256": "87d6b5dad8aa2d84889bcf4bcb6391f28d05eba1a397c7ced3ca435961a64089",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\selected_ending_image_and_swc.png",
+        "expected_sha256": "8b5158f609bbe1d97a58f3981b3b10c0c0a800ce93ab9a665673a80b65c35002",
+        "actual_sha256": "8b5158f609bbe1d97a58f3981b3b10c0c0a800ce93ab9a665673a80b65c35002",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\target_component_morphology.png",
+        "expected_sha256": "cf8912704204c8da34b27f378ab54859bc34f346d532c3b0c72d222934a29756",
+        "actual_sha256": "cf8912704204c8da34b27f378ab54859bc34f346d532c3b0c72d222934a29756",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\target_component_nodes.csv",
+        "expected_sha256": "0d852c01f7118572f1338b990d1f22c76d389458c7a502a425c737226d31ec8a",
+        "actual_sha256": "0d852c01f7118572f1338b990d1f22c76d389458c7a502a425c737226d31ec8a",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\assessment_inputs.json",
+        "expected_sha256": "889d445de95f0327bb0c7efa40d19ca2267a1058d328fba41fec477e75fde230",
+        "actual_sha256": "889d445de95f0327bb0c7efa40d19ca2267a1058d328fba41fec477e75fde230",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\cached_cube_image_and_swc.png",
+        "expected_sha256": "060d67b1b6a0e4df0cdd89945400c278c8237c23baeb2442454edb87c8e78dc1",
+        "actual_sha256": "060d67b1b6a0e4df0cdd89945400c278c8237c23baeb2442454edb87c8e78dc1",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\selected_ending_image_and_swc.png",
+        "expected_sha256": "065e598cedba6c898c33a81d963e6dc7c450dafd8bdafcc4a92c1eee56e44870",
+        "actual_sha256": "065e598cedba6c898c33a81d963e6dc7c450dafd8bdafcc4a92c1eee56e44870",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\target_component_morphology.png",
+        "expected_sha256": "40b1a1704e768e4cac0ad180df5af1e6d3720b7582072f2b9bb02f49758c6c5d",
+        "actual_sha256": "40b1a1704e768e4cac0ad180df5af1e6d3720b7582072f2b9bb02f49758c6c5d",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\target_component_nodes.csv",
+        "expected_sha256": "685485765fa81cc432d7806559af01403a512510e210b1cbc8615cfcfbd575f6",
+        "actual_sha256": "685485765fa81cc432d7806559af01403a512510e210b1cbc8615cfcfbd575f6",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\assessment_inputs.json",
+        "expected_sha256": "6da2cbef19dc6c88afe8eae52639307176114b637a2b55ccce6e2f1ed174e362",
+        "actual_sha256": "6da2cbef19dc6c88afe8eae52639307176114b637a2b55ccce6e2f1ed174e362",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\cached_cube_image_and_swc.png",
+        "expected_sha256": "960fae07b956902ed9a27e44b0c76fbe3e260d524463cc8c7157b6670951be1f",
+        "actual_sha256": "960fae07b956902ed9a27e44b0c76fbe3e260d524463cc8c7157b6670951be1f",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\selected_ending_image_and_swc.png",
+        "expected_sha256": "e5ef5b33d569a3b63bcdfa2508fd01d1754a21413655ba31492bee4812c62d18",
+        "actual_sha256": "e5ef5b33d569a3b63bcdfa2508fd01d1754a21413655ba31492bee4812c62d18",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\target_component_morphology.png",
+        "expected_sha256": "465a4fc30bbc2699f06d41e3b4ce65ef677a9e1b7cc74497512e9f0cb7f0cc95",
+        "actual_sha256": "465a4fc30bbc2699f06d41e3b4ce65ef677a9e1b7cc74497512e9f0cb7f0cc95",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\target_component_nodes.csv",
+        "expected_sha256": "9ab47a6afdc607e444fbcc0d6b62da0e2cfbd3b306f0048a5496beaefde06be8",
+        "actual_sha256": "9ab47a6afdc607e444fbcc0d6b62da0e2cfbd3b306f0048a5496beaefde06be8",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\assessment_inputs.json",
+        "expected_sha256": "c8278213a640ec000a7705b01b4bc44cb9f5c56076862bfa4071af18ebb6b341",
+        "actual_sha256": "c8278213a640ec000a7705b01b4bc44cb9f5c56076862bfa4071af18ebb6b341",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\cached_cube_image_and_swc.png",
+        "expected_sha256": "9c50d338b4ee28b953be0adc01abe03531d9735ee1daa10921594df1d3def081",
+        "actual_sha256": "9c50d338b4ee28b953be0adc01abe03531d9735ee1daa10921594df1d3def081",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\selected_ending_image_and_swc.png",
+        "expected_sha256": "486936e2dc62e7e86bc9f87cd05a9e1b1940c228cc880760ebc6a7d740fc9503",
+        "actual_sha256": "486936e2dc62e7e86bc9f87cd05a9e1b1940c228cc880760ebc6a7d740fc9503",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\target_component_morphology.png",
+        "expected_sha256": "09965bef2281f95b328225099a6347e82b59be8710d70ea8dd110923cbafcf44",
+        "actual_sha256": "09965bef2281f95b328225099a6347e82b59be8710d70ea8dd110923cbafcf44",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\target_component_nodes.csv",
+        "expected_sha256": "cb3bfcb9704051e8d439ab67dbbb3c8e4847b28afea0eb77d2e34aeb82efbd04",
+        "actual_sha256": "cb3bfcb9704051e8d439ab67dbbb3c8e4847b28afea0eb77d2e34aeb82efbd04",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\assessment_inputs.json",
+        "expected_sha256": "bc78cdfe8b45f3880ff6c7b5ae1b16bde6a7d42ab23dcaca6db8e86c6e83db1f",
+        "actual_sha256": "bc78cdfe8b45f3880ff6c7b5ae1b16bde6a7d42ab23dcaca6db8e86c6e83db1f",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\cached_cube_image_and_swc.png",
+        "expected_sha256": "9be5a8b2471ef4388cae42aeb2af0a5487033141daeb972eb7bcc90fe4d5816d",
+        "actual_sha256": "9be5a8b2471ef4388cae42aeb2af0a5487033141daeb972eb7bcc90fe4d5816d",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\selected_ending_image_and_swc.png",
+        "expected_sha256": "c12dc8243a48aed38266f9608e65388afb624398a53c2c5115f49b7bbeb3f66e",
+        "actual_sha256": "c12dc8243a48aed38266f9608e65388afb624398a53c2c5115f49b7bbeb3f66e",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\target_component_morphology.png",
+        "expected_sha256": "6a2d10567d29bcad120b880b300b4ef87601ee13af63b4d6626987b9ce34c912",
+        "actual_sha256": "6a2d10567d29bcad120b880b300b4ef87601ee13af63b4d6626987b9ce34c912",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\target_component_nodes.csv",
+        "expected_sha256": "df2def9b43aa7862ec4978bffbd4080ff78a77efc0f2ac7ba1b9dded0455cb4f",
+        "actual_sha256": "df2def9b43aa7862ec4978bffbd4080ff78a77efc0f2ac7ba1b9dded0455cb4f",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\pilot_inputs.json",
+        "expected_sha256": "ead283a8717fd9fa001e73774f1aeafcfdd71cbd2e09aac6e662bd3765ed39cc",
+        "actual_sha256": "ead283a8717fd9fa001e73774f1aeafcfdd71cbd2e09aac6e662bd3765ed39cc",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\selected462_native_image_coverage.csv",
+        "expected_sha256": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03",
+        "actual_sha256": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\inspect_native_optical_planes.py",
+        "expected_sha256": "7fab0c35a2f8e28b4c767a6132dba30bc11d909bb25678fe85a68c376b27dad1",
+        "actual_sha256": "7fab0c35a2f8e28b4c767a6132dba30bc11d909bb25678fe85a68c376b27dad1",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\assess_native_terminal_fields.py",
+        "expected_sha256": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f",
+        "actual_sha256": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252383_018_ending_optical_planes.png",
+        "expected_sha256": "2e0aa37e88d77ef845aae8192b4ba3875d2fe9c73d1fdc3c7a27268805813b1b",
+        "actual_sha256": "2e0aa37e88d77ef845aae8192b4ba3875d2fe9c73d1fdc3c7a27268805813b1b",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252383_121_ending_optical_planes.png",
+        "expected_sha256": "737e1e8e9d40d2768457675ef9a1febef74d83a8fa7f053950c40c5bc03c942a",
+        "actual_sha256": "737e1e8e9d40d2768457675ef9a1febef74d83a8fa7f053950c40c5bc03c942a",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252384_047_ending_optical_planes.png",
+        "expected_sha256": "1e5a58966fe673f175e5da5cba094bf2b92f30ec1a75da4d8fe57bfaa3af65f1",
+        "actual_sha256": "1e5a58966fe673f175e5da5cba094bf2b92f30ec1a75da4d8fe57bfaa3af65f1",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_014_ending_optical_planes.png",
+        "expected_sha256": "7504cd3692c842de1fdbbffdac04310de5d3e9adda6c7866817f4422ae6103dd",
+        "actual_sha256": "7504cd3692c842de1fdbbffdac04310de5d3e9adda6c7866817f4422ae6103dd",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_032_ending_optical_planes.png",
+        "expected_sha256": "6aa3be1746e5ca49c7114e20a5b61c6596fa2cff0e48d63fd42a92be4ecf0eef",
+        "actual_sha256": "6aa3be1746e5ca49c7114e20a5b61c6596fa2cff0e48d63fd42a92be4ecf0eef",
+        "matches": true
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_032_passage_image_and_swc.png",
+        "expected_sha256": "6caca25f4c0f9eaf94bf3658ecfc1c4583c4dca9fd6dd8dfedfe223c3ff37888",
+        "actual_sha256": "6caca25f4c0f9eaf94bf3658ecfc1c4583c4dca9fd6dd8dfedfe223c3ff37888",
+        "matches": true
+      }
+    ],
+    "coverage_counts": {
+      "selected_ledger_rows": 462,
+      "coverage_rows": 462,
+      "exact_ordered_UIDs_match": true,
+      "native_available": 201,
+      "identity_matched": 201,
+      "full_graph_candidate_leaves_with_native": 48574,
+      "leaves_with_any_cached_cube": 9209,
+      "purposive_pilot_examples": 5,
+      "reviewed_native_pixel_panels_in_this_independent_review": 2,
+      "biologically_accepted_terminal_fields": 0
+    },
+    "five_real_data_checks": [
+      {
+        "NeuronUID": "252790::014.swc",
+        "native_node_count": 38732,
+        "unique_identity_type_parent_equal": true,
+        "single_root": true,
+        "all_parents_exist": true,
+        "full_graph_type2_leaves": 217,
+        "selected_is_nonroot_type2_full_graph_leaf": true,
+        "selected_target_halfopen": 41,
+        "selected_target_rint": 41,
+        "component_node_count": 6689,
+        "component_nodes_match_export": true,
+        "component_count_matches_record": true,
+        "component_leaves_match_record": true,
+        "component_branch_nodes_match_record": true,
+        "nominal_component_length_um": 59704.68254715365,
+        "recorded_length_um": 59704.68254715366,
+        "length_abs_difference_um": 7.275957614183426e-12,
+        "cube_selection_matches": true,
+        "smallest_cached_target_leaf_matches": true,
+        "source_tiff_shape": [
+          90,
+          360,
+          360
+        ],
+        "source_tiff_dtype": "uint16",
+        "XYZ_ZYX_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          }
+        ],
+        "leaf_cube_membership_matches": true,
+        "leaf_nearest_voxel_XYZ": [
+          240,
+          300,
+          43
+        ],
+        "optical_planes_expected": [
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "halfopen_vs_rint_node_labels_differ": 4,
+        "halfopen_vs_rint_full_graph_leaf_labels_differ": 0,
+        "recorded_cube_hash_matches": true,
+        "declared_target_full_name": "CL_intermediate_agranular_insula_area"
+      },
+      {
+        "NeuronUID": "252790::032.swc",
+        "native_node_count": 23587,
+        "unique_identity_type_parent_equal": true,
+        "single_root": true,
+        "all_parents_exist": true,
+        "full_graph_type2_leaves": 253,
+        "selected_is_nonroot_type2_full_graph_leaf": true,
+        "selected_target_halfopen": 229,
+        "selected_target_rint": 229,
+        "component_node_count": 61,
+        "component_nodes_match_export": true,
+        "component_count_matches_record": true,
+        "component_leaves_match_record": true,
+        "component_branch_nodes_match_record": true,
+        "nominal_component_length_um": 479.41016263884956,
+        "recorded_length_um": 479.41016263884956,
+        "length_abs_difference_um": 0.0,
+        "cube_selection_matches": true,
+        "smallest_cached_target_leaf_matches": true,
+        "source_tiff_shape": [
+          90,
+          360,
+          360
+        ],
+        "source_tiff_dtype": "uint16",
+        "XYZ_ZYX_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          }
+        ],
+        "leaf_cube_membership_matches": true,
+        "leaf_nearest_voxel_XYZ": [
+          216,
+          238,
+          10
+        ],
+        "optical_planes_expected": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "halfopen_vs_rint_node_labels_differ": 1,
+        "halfopen_vs_rint_full_graph_leaf_labels_differ": 0,
+        "recorded_cube_hash_matches": true,
+        "declared_target_full_name": "CL_granular_insula"
+      },
+      {
+        "NeuronUID": "252383::018.swc",
+        "native_node_count": 8960,
+        "unique_identity_type_parent_equal": true,
+        "single_root": true,
+        "all_parents_exist": true,
+        "full_graph_type2_leaves": 78,
+        "selected_is_nonroot_type2_full_graph_leaf": true,
+        "selected_target_halfopen": 729,
+        "selected_target_rint": 729,
+        "component_node_count": 5649,
+        "component_nodes_match_export": true,
+        "component_count_matches_record": true,
+        "component_leaves_match_record": true,
+        "component_branch_nodes_match_record": true,
+        "nominal_component_length_um": 54304.70556743525,
+        "recorded_length_um": 54304.70556743546,
+        "length_abs_difference_um": 2.1100277081131935e-10,
+        "cube_selection_matches": true,
+        "smallest_cached_target_leaf_matches": true,
+        "source_tiff_shape": [
+          90,
+          360,
+          360
+        ],
+        "source_tiff_dtype": "uint16",
+        "XYZ_ZYX_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          }
+        ],
+        "leaf_cube_membership_matches": true,
+        "leaf_nearest_voxel_XYZ": [
+          268,
+          297,
+          77
+        ],
+        "optical_planes_expected": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81
+        ],
+        "halfopen_vs_rint_node_labels_differ": 0,
+        "halfopen_vs_rint_full_graph_leaf_labels_differ": 0,
+        "recorded_cube_hash_matches": true,
+        "declared_target_full_name": "CR_granular_insula"
+      },
+      {
+        "NeuronUID": "252383::121.swc",
+        "native_node_count": 1776,
+        "unique_identity_type_parent_equal": true,
+        "single_root": true,
+        "all_parents_exist": true,
+        "full_graph_type2_leaves": 1,
+        "selected_is_nonroot_type2_full_graph_leaf": true,
+        "selected_target_halfopen": 1556,
+        "selected_target_rint": 1556,
+        "component_node_count": 21,
+        "component_nodes_match_export": true,
+        "component_count_matches_record": true,
+        "component_leaves_match_record": true,
+        "component_branch_nodes_match_record": true,
+        "nominal_component_length_um": 168.6043655469108,
+        "recorded_length_um": 168.6043655469108,
+        "length_abs_difference_um": 0.0,
+        "cube_selection_matches": true,
+        "smallest_cached_target_leaf_matches": true,
+        "source_tiff_shape": [
+          90,
+          360,
+          360
+        ],
+        "source_tiff_dtype": "uint16",
+        "XYZ_ZYX_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          }
+        ],
+        "leaf_cube_membership_matches": true,
+        "leaf_nearest_voxel_XYZ": [
+          76,
+          278,
+          22
+        ],
+        "optical_planes_expected": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "halfopen_vs_rint_node_labels_differ": 0,
+        "halfopen_vs_rint_full_graph_leaf_labels_differ": 0,
+        "recorded_cube_hash_matches": true,
+        "declared_target_full_name": "SR_putamen"
+      },
+      {
+        "NeuronUID": "252384::047.swc",
+        "native_node_count": 41818,
+        "unique_identity_type_parent_equal": true,
+        "single_root": true,
+        "all_parents_exist": true,
+        "full_graph_type2_leaves": 149,
+        "selected_is_nonroot_type2_full_graph_leaf": true,
+        "selected_target_halfopen": 1004,
+        "selected_target_rint": 1004,
+        "component_node_count": 38,
+        "component_nodes_match_export": true,
+        "component_count_matches_record": true,
+        "component_leaves_match_record": true,
+        "component_branch_nodes_match_record": true,
+        "nominal_component_length_um": 257.576851358424,
+        "recorded_length_um": 257.576851358424,
+        "length_abs_difference_um": 0.0,
+        "cube_selection_matches": true,
+        "smallest_cached_target_leaf_matches": true,
+        "source_tiff_shape": [
+          90,
+          360,
+          360
+        ],
+        "source_tiff_dtype": "uint16",
+        "XYZ_ZYX_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX": 0,
+            "transposed_XYZ": 0
+          }
+        ],
+        "leaf_cube_membership_matches": true,
+        "leaf_nearest_voxel_XYZ": [
+          98,
+          354,
+          60
+        ],
+        "optical_planes_expected": [
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64
+        ],
+        "halfopen_vs_rint_node_labels_differ": 6,
+        "halfopen_vs_rint_full_graph_leaf_labels_differ": 0,
+        "recorded_cube_hash_matches": true,
+        "declared_target_full_name": "SL_claustrum"
+      }
+    ],
+    "passage_check": {
+      "node_count": 47,
+      "original_leaf_count": 0,
+      "entry_link": [
+        7081,
+        7082
+      ],
+      "exit_links": [
+        [
+          7128,
+          7129
+        ]
+      ],
+      "selected_is_internal": true
+    },
+    "actually_viewed_PNGs": [
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\selected_ending_image_and_swc.png",
+        "sha256": "c12dc8243a48aed38266f9608e65388afb624398a53c2c5115f49b7bbeb3f66e"
+      },
+      {
+        "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_032_ending_optical_planes.png",
+        "sha256": "6aa3be1746e5ca49c7114e20a5b61c6596fa2cff0e48d63fd42a92be4ecf0eef"
+      }
+    ],
+    "visual_observation": "Traced trajectory and selected leaf overlap visible fluorescence; unprojected planes distinguish Z extent. Does not establish boutons, synapses, cut status, calibrated origin or atlas anatomy.",
+    "display_coordinate_caveat": {
+      "location": "assess_native_terminal_fields.py draw_image_views imshow extent; inspect_native_optical_planes.py imshow extent",
+      "declared_index_to_native": "origin + index * spacing",
+      "imshow_pixel_center_with_current_extent": "origin + (index + 0.5) * spacing",
+      "half_source_pixel_shift_um_XYZ": [
+        0.325,
+        0.325,
+        1.5
+      ],
+      "severity": "Clarify/correct before precise source-pixel localization; broad uncalibrated descriptive inspection remains provisional."
+    },
+    "scientific_anatomical_acceptance": false,
+    "source_pixel_review_is_biological_acceptance": false,
+    "source_writes": false,
+    "errors": [],
+    "source_sha256": {
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\generation_provenance.json": "3146e5c4869164e42d697173d932e117fc6852e131e81cbb75cce06b791c77d8",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\optical_plane_provenance.json": "0ad16f541af7816e760e86bfc44e41465f6476d7a7ba3ac450606f14c6e69ec2",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+      "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+      "D:\\projectome_analysis\\atlas\\ARM_key_all.txt": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\assess_native_terminal_fields.py": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f",
+      "D:\\projectome_analysis\\main_scripts\\swc_validation.py": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+      "D:\\projectome_analysis\\main_scripts\\fmost_image_geometry.py": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce",
+      "D:\\projectome_analysis\\main_scripts\\Visual_toolkit.py": "bbad8eb8dd3952d76c9970214171fc36135d51ea25d888bf780bd289c1c8c9ea",
+      "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\references\\fmost_full_methods_20261009.md": "2e9d7ff0bd8a93713d80ecd5d031c77d41303065bae4e508c5fff26aa5bb9b38",
+      "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\references\\fmost_full_methods_evidence_20261009.json": "9bb74ef9cf117c32f92d2efb55add4d5b610375e65abcdcfb8bd573b9287116c",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\assessment_inputs.json": "25d48ba45cb62e00329cc07024fb10be94303193caa15e155f9d3494bf7faf5b",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\cached_cube_image_and_swc.png": "87d6b5dad8aa2d84889bcf4bcb6391f28d05eba1a397c7ced3ca435961a64089",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\selected_ending_image_and_swc.png": "8b5158f609bbe1d97a58f3981b3b10c0c0a800ce93ab9a665673a80b65c35002",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\target_component_morphology.png": "cf8912704204c8da34b27f378ab54859bc34f346d532c3b0c72d222934a29756",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_018\\target_component_nodes.csv": "0d852c01f7118572f1338b990d1f22c76d389458c7a502a425c737226d31ec8a",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\assessment_inputs.json": "889d445de95f0327bb0c7efa40d19ca2267a1058d328fba41fec477e75fde230",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\cached_cube_image_and_swc.png": "060d67b1b6a0e4df0cdd89945400c278c8237c23baeb2442454edb87c8e78dc1",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\selected_ending_image_and_swc.png": "065e598cedba6c898c33a81d963e6dc7c450dafd8bdafcc4a92c1eee56e44870",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\target_component_morphology.png": "40b1a1704e768e4cac0ad180df5af1e6d3720b7582072f2b9bb02f49758c6c5d",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252383_121\\target_component_nodes.csv": "685485765fa81cc432d7806559af01403a512510e210b1cbc8615cfcfbd575f6",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\assessment_inputs.json": "6da2cbef19dc6c88afe8eae52639307176114b637a2b55ccce6e2f1ed174e362",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\cached_cube_image_and_swc.png": "960fae07b956902ed9a27e44b0c76fbe3e260d524463cc8c7157b6670951be1f",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\selected_ending_image_and_swc.png": "e5ef5b33d569a3b63bcdfa2508fd01d1754a21413655ba31492bee4812c62d18",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\target_component_morphology.png": "465a4fc30bbc2699f06d41e3b4ce65ef677a9e1b7cc74497512e9f0cb7f0cc95",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252384_047\\target_component_nodes.csv": "9ab47a6afdc607e444fbcc0d6b62da0e2cfbd3b306f0048a5496beaefde06be8",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\assessment_inputs.json": "c8278213a640ec000a7705b01b4bc44cb9f5c56076862bfa4071af18ebb6b341",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\cached_cube_image_and_swc.png": "9c50d338b4ee28b953be0adc01abe03531d9735ee1daa10921594df1d3def081",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\selected_ending_image_and_swc.png": "486936e2dc62e7e86bc9f87cd05a9e1b1940c228cc880760ebc6a7d740fc9503",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\target_component_morphology.png": "09965bef2281f95b328225099a6347e82b59be8710d70ea8dd110923cbafcf44",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_014\\target_component_nodes.csv": "cb3bfcb9704051e8d439ab67dbbb3c8e4847b28afea0eb77d2e34aeb82efbd04",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\assessment_inputs.json": "bc78cdfe8b45f3880ff6c7b5ae1b16bde6a7d42ab23dcaca6db8e86c6e83db1f",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\cached_cube_image_and_swc.png": "9be5a8b2471ef4388cae42aeb2af0a5487033141daeb972eb7bcc90fe4d5816d",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\selected_ending_image_and_swc.png": "c12dc8243a48aed38266f9608e65388afb624398a53c2c5115f49b7bbeb3f66e",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\target_component_morphology.png": "6a2d10567d29bcad120b880b300b4ef87601ee13af63b4d6626987b9ce34c912",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\252790_032\\target_component_nodes.csv": "df2def9b43aa7862ec4978bffbd4080ff78a77efc0f2ac7ba1b9dded0455cb4f",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\pilot_inputs.json": "ead283a8717fd9fa001e73774f1aeafcfdd71cbd2e09aac6e662bd3765ed39cc",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot\\selected462_native_image_coverage.csv": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\inspect_native_optical_planes.py": "7fab0c35a2f8e28b4c767a6132dba30bc11d909bb25678fe85a68c376b27dad1",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252383_018_ending_optical_planes.png": "2e0aa37e88d77ef845aae8192b4ba3875d2fe9c73d1fdc3c7a27268805813b1b",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252383_121_ending_optical_planes.png": "737e1e8e9d40d2768457675ef9a1febef74d83a8fa7f053950c40c5bc03c942a",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252384_047_ending_optical_planes.png": "1e5a58966fe673f175e5da5cba094bf2b92f30ec1a75da4d8fe57bfaa3af65f1",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_014_ending_optical_planes.png": "7504cd3692c842de1fdbbffdac04310de5d3e9adda6c7866817f4422ae6103dd",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_032_ending_optical_planes.png": "6aa3be1746e5ca49c7114e20a5b61c6596fa2cff0e48d63fd42a92be4ecf0eef",
+      "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks\\252790_032_passage_image_and_swc.png": "6caca25f4c0f9eaf94bf3658ecfc1c4583c4dca9fd6dd8dfedfe223c3ff37888",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252790\\014.swc": "0e0f9accc27c2ac0ef78fc719bfb7a81b658fb025ddfeede64ebcd8d294e558e",
+      "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252790\\014.swc": "560810caabe46f95b0c07edec686439de6b86e7ad7445dd17ccaa42dba55f51a",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252790\\high_res_http\\70\\171_134_70.tif": "d0d830f47543205edbfce7f3427f8ff6ba38aca42fce8fa1a46432075f78dc29",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252790\\032.swc": "eff282b992e38e92f3948bb7e4e38599eb39f72bf6c97cfd6b5b5542ae811d00",
+      "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252790\\032.swc": "163a1c84c95339a1bf091ab7ce1aefe496dcf030b92e690f946af26770ce5ae6",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252790\\high_res_http\\109\\182_79_109.tif": "6ff7515bf73d8f5d409246fb7055673401305d6a9cf71681a5c2dabb4cb9ca23",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252383\\018.swc": "71b39380c9f82cfa36e0c766cb46ffb4c7c428fcf79708fa42df5572b5bfc69a",
+      "D:\\projectome_analysis\\group_analysis\\fnt\\nmt_swcs\\252383\\018.swc": "79d9c3c4785619f8e002ced5a85c71b97e5178aba5205d865072b3a34a6a4dc5",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252383\\high_res_http\\111\\77_83_111.tif": "e9562d3dfa9a2432aa66f7ee030f996ef8af4a788168b407d09526a086620fd7",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252383\\121.swc": "dd09bdfe9afa408d21e5f2644b3495790e632b242e31e75061f07be97e866a58",
+      "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252383\\121.swc": "32b7bb7b3a369ee34f550c9dfa094c2e0cb21b54c1acc5bb26a6ceefb0c9d7e0",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252383\\high_res_http\\112\\86_90_112.tif": "61d0e60ccf81cc71c6f8ecdd8c05931a353212b5555826c0f8cb6bab71aee202",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252384\\047.swc": "fa8411f43e20af4260a22eb01c80deb56bebab30bc010200f8ce025efd5b9778",
+      "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252384\\047.swc": "9d83804fb337e16eedf1761e4506fadc3491ad78b72d0b0b4bb6172dd46a0739",
+      "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\83\\180_157_83.tif": "0fc5e47c8f66a7f007b8271d61364fbf7d577bad1a0c1ac24b2c51e1fa501d2a"
+    }
+  },
+  "current_rint_review": {
+    "status": "passed_independent_current_policy_graph_source_pixel_and_hash_readback",
+    "checked_utc": "2026-10-09T01:51:24.060856+00:00",
+    "generation_provenance": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+    "generation_provenance_sha256": "66cbfd202b14822606b51fbf98642202ba4de04d16b86c726ea7929a17f786e0",
+    "optical_plane_provenance": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+    "optical_plane_provenance_sha256": "7fe778a1a2d9d15bb4d335e1f241402c6282bd122f57d494b9d487fb73346026",
+    "all_recorded_bindings": [
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/neuron_summary.csv",
+        "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz",
+        "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "atlas/ARM_key_all.txt",
+        "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/assess_native_terminal_fields_current_rint.py",
+        "sha256": "3022bb9b4747c0fced2008d5c8289d2a5997b8479b1ff54dd3ffcf2e92b5ef34",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "main_scripts/swc_validation.py",
+        "sha256": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "main_scripts/fmost_image_geometry.py",
+        "sha256": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "main_scripts/Visual_toolkit.py",
+        "sha256": "bbad8eb8dd3952d76c9970214171fc36135d51ea25d888bf780bd289c1c8c9ea",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "group_analysis/evolution_20261008/references/fmost_full_methods_20261009.md",
+        "sha256": "2e9d7ff0bd8a93713d80ecd5d031c77d41303065bae4e508c5fff26aa5bb9b38",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "group_analysis/evolution_20261008/references/fmost_full_methods_evidence_20261009.json",
+        "sha256": "9bb74ef9cf117c32f92d2efb55add4d5b610375e65abcdcfb8bd573b9287116c",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_018/assessment_inputs.json",
+        "sha256": "392af44c90e386aa28f61449fd784801d8940b60123e3e6b565d7893af3f2b29",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_018/cached_cube_image_and_swc.png",
+        "sha256": "0f8c90a3a259feb373d02ad884568b8f52fbbd244d21a8c4381f493c9ef413ee",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_018/selected_ending_image_and_swc.png",
+        "sha256": "015d6c8f2bc3cca445f54d14209a073c72d43abe6808aaf0e576dd6a7ef91dd4",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_018/target_component_morphology.png",
+        "sha256": "cf8912704204c8da34b27f378ab54859bc34f346d532c3b0c72d222934a29756",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_018/target_component_nodes.csv",
+        "sha256": "0d852c01f7118572f1338b990d1f22c76d389458c7a502a425c737226d31ec8a",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_121/assessment_inputs.json",
+        "sha256": "abe75b1407f0d102050e2c75db2f956fee3911e98ea7de90a98fe0eb4f148a73",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_121/cached_cube_image_and_swc.png",
+        "sha256": "3ed0f626cbe844ba231c62dde1bd51d1ab9d660082fc0d44af52037b0ff5e251",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_121/selected_ending_image_and_swc.png",
+        "sha256": "1a7bb26a3284ba3811f10a61deb4bc7a8691eab23be6201b22b786f8f76f97ee",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_121/target_component_morphology.png",
+        "sha256": "40b1a1704e768e4cac0ad180df5af1e6d3720b7582072f2b9bb02f49758c6c5d",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_121/target_component_nodes.csv",
+        "sha256": "685485765fa81cc432d7806559af01403a512510e210b1cbc8615cfcfbd575f6",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252384_047/assessment_inputs.json",
+        "sha256": "feaeab09af987b6f89c9b70125158ee88bdf72c7855b7ee8d8d0057d125eea51",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252384_047/cached_cube_image_and_swc.png",
+        "sha256": "078fe8ca2c1bfd6f9d95f0690aedd18630f8d6ee9b218f8555672f90299db758",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252384_047/selected_ending_image_and_swc.png",
+        "sha256": "9cd25db738d856fe7e13cf95afb89e58ec7f4c106f9ebb5c6b458701a6e66b35",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252384_047/target_component_morphology.png",
+        "sha256": "465a4fc30bbc2699f06d41e3b4ce65ef677a9e1b7cc74497512e9f0cb7f0cc95",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252384_047/target_component_nodes.csv",
+        "sha256": "9ab47a6afdc607e444fbcc0d6b62da0e2cfbd3b306f0048a5496beaefde06be8",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_014/assessment_inputs.json",
+        "sha256": "df830200ac3fcbaeb24ab5ed04cb3055d36eb35bcaa249e00d65d6d49626fecb",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_014/cached_cube_image_and_swc.png",
+        "sha256": "c5e65ebbce218428b1d3347347d465db866c7c0a04cf44694675008108d6c3a7",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_014/selected_ending_image_and_swc.png",
+        "sha256": "9c258fdd4cd9bf2eb3dcbe18a3c9723106c5849121aa37b9bb7e0c852c670be8",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_014/target_component_morphology.png",
+        "sha256": "09965bef2281f95b328225099a6347e82b59be8710d70ea8dd110923cbafcf44",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_014/target_component_nodes.csv",
+        "sha256": "cb3bfcb9704051e8d439ab67dbbb3c8e4847b28afea0eb77d2e34aeb82efbd04",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_032/assessment_inputs.json",
+        "sha256": "3a388104fd3c8805d0714645e2639ce61cad49d5e13b93356dd274562dbc1c53",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_032/cached_cube_image_and_swc.png",
+        "sha256": "3852c4e54ef889d6176e92c121fb444d3e8b1ed6e72bd1053d2a20dee003d183",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_032/selected_ending_image_and_swc.png",
+        "sha256": "be78e0e2144ae2f117868f9c887eb2e6a166d875d675d284ba2e739c4692d669",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_032/target_component_morphology.png",
+        "sha256": "6a2d10567d29bcad120b880b300b4ef87601ee13af63b4d6626987b9ce34c912",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_032/target_component_nodes.csv",
+        "sha256": "df2def9b43aa7862ec4978bffbd4080ff78a77efc0f2ac7ba1b9dded0455cb4f",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/pilot_inputs.json",
+        "sha256": "1b48d3734e472bc52703428ae21a5daff1d6104593b959b80b615a08b1662f21",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/selected462_native_image_coverage.csv",
+        "sha256": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/inspect_native_optical_planes_current_rint.py",
+        "sha256": "db2854eb74dff844e90805e977e7f8e2640b69ee32a06d40cb97d69be46917de",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/assess_native_terminal_fields_current_rint.py",
+        "sha256": "3022bb9b4747c0fced2008d5c8289d2a5997b8479b1ff54dd3ffcf2e92b5ef34",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/252383_018_ending_optical_planes.png",
+        "sha256": "a1d15652032e0b750405d8dcdcfdbfd7d3ee80cca65e2d3f5720bcdcb8ca3df7",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/252383_121_ending_optical_planes.png",
+        "sha256": "0e8a5e65c6c06b3dc28dabb686500837af85d50423a5d830728b7163a9738165",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/252384_047_ending_optical_planes.png",
+        "sha256": "d2c57f5676e17bd6f6539777d6a67c8547bcc3680e30b704fbe0440ee37f0ea1",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/252790_014_ending_optical_planes.png",
+        "sha256": "95973928123a98d62ae199fbcee096e037fe7dc7cf73c4f67c0844a107e22cfd",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/252790_032_ending_optical_planes.png",
+        "sha256": "4c29651c3d934524fcb27ded337dbc239f6daf0d32071951c6b831039fc6f049",
+        "match": true
+      },
+      {
+        "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\optical_plane_checks_current_rint\\optical_plane_provenance.json",
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/252790_032_passage_image_and_swc.png",
+        "sha256": "0398fa3a05521eb79de89ea6cc26dfc1880042f9fd09b02c6725193293f01868",
+        "match": true
+      }
+    ],
+    "five_real_data_checks": [
+      {
+        "NeuronUID": "252790::014.swc",
+        "target_index": 41,
+        "component_node_count": 6689,
+        "full_graph_leaf_ids": [
+          308,
+          973,
+          1322,
+          1498,
+          1548,
+          1559,
+          1608,
+          1664,
+          1727,
+          1746,
+          2042,
+          2284,
+          2323,
+          2351,
+          2511,
+          2529,
+          2714,
+          2991,
+          3297,
+          3580,
+          3637,
+          3717,
+          4224,
+          4430,
+          4462,
+          5145,
+          5181,
+          5184,
+          5373,
+          5644,
+          5648,
+          5689,
+          5690,
+          5744,
+          5747,
+          5828,
+          5855,
+          6020,
+          6177,
+          6182,
+          6188,
+          6330,
+          6415,
+          6475,
+          6687,
+          6697,
+          6752,
+          6943,
+          6990,
+          7090,
+          7670,
+          7711,
+          7718,
+          7720,
+          9143,
+          9255,
+          9409,
+          9468,
+          10084,
+          10272,
+          10330,
+          10472,
+          11174,
+          11244,
+          11278,
+          11310,
+          11345,
+          11353,
+          11363,
+          12856,
+          12883
+        ],
+        "branch_node_ids": [
+          44,
+          214,
+          608,
+          610,
+          777,
+          778,
+          793,
+          795,
+          904,
+          909,
+          910,
+          917,
+          921,
+          992,
+          1051,
+          1144,
+          1145,
+          1156,
+          1158,
+          1159,
+          1169,
+          1310,
+          1318,
+          1320,
+          1706,
+          1709,
+          1714,
+          1753,
+          1832,
+          1833,
+          1836,
+          1886,
+          1996,
+          2271,
+          2517,
+          2534,
+          2695,
+          2704,
+          2739,
+          2762,
+          2774,
+          2785,
+          3278,
+          3582,
+          3588,
+          3594,
+          3609,
+          4168,
+          4263,
+          4371,
+          4758,
+          4844,
+          4855,
+          4861,
+          4867,
+          4896,
+          4948,
+          5028,
+          5266,
+          5831,
+          5910,
+          5920,
+          5931,
+          5938,
+          6022,
+          6364,
+          6400,
+          6410,
+          6431,
+          6437,
+          6524,
+          6671,
+          6696,
+          6780,
+          6900,
+          7009,
+          7535,
+          7620,
+          7644,
+          8889,
+          9113,
+          9184,
+          9197,
+          10216,
+          10389,
+          10468,
+          10493,
+          11230
+        ],
+        "nominal_native_length_um": 59704.68254715365,
+        "length_absolute_difference_um": 7.275957614183426e-12,
+        "halfopen_vs_rint_changed_node_labels": 4,
+        "halfopen_vs_rint_changed_full_graph_leaf_labels": 0,
+        "selected_leaf_label_unchanged": true,
+        "ZYX_to_XYZ_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          }
+        ],
+        "unprojected_plane_indices": [
+          39,
+          40,
+          41,
+          42,
+          43,
+          44,
+          45,
+          46,
+          47
+        ],
+        "current_component_same_as_first_pass": true
+      },
+      {
+        "NeuronUID": "252790::032.swc",
+        "target_index": 229,
+        "component_node_count": 61,
+        "full_graph_leaf_ids": [
+          2344
+        ],
+        "branch_node_ids": [],
+        "nominal_native_length_um": 479.41016263884956,
+        "length_absolute_difference_um": 0.0,
+        "halfopen_vs_rint_changed_node_labels": 1,
+        "halfopen_vs_rint_changed_full_graph_leaf_labels": 0,
+        "selected_leaf_label_unchanged": true,
+        "ZYX_to_XYZ_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          }
+        ],
+        "unprojected_plane_indices": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "current_component_same_as_first_pass": true
+      },
+      {
+        "NeuronUID": "252383::018.swc",
+        "target_index": 729,
+        "component_node_count": 5649,
+        "full_graph_leaf_ids": [
+          801,
+          920,
+          1286,
+          1381,
+          1489,
+          1515,
+          1642,
+          1748,
+          1777,
+          1926,
+          1933,
+          1950,
+          2036,
+          2202,
+          2294,
+          2486,
+          2577,
+          2678,
+          2758,
+          2961,
+          3481,
+          3593,
+          3644,
+          4506,
+          4897,
+          4942,
+          5058,
+          5128,
+          5639,
+          5686,
+          5807,
+          5915,
+          6771,
+          6849,
+          6942,
+          7024,
+          7071,
+          7632,
+          7716,
+          7931,
+          7953,
+          8140,
+          8303,
+          8347,
+          8429
+        ],
+        "branch_node_ids": [
+          177,
+          458,
+          461,
+          464,
+          560,
+          577,
+          588,
+          631,
+          644,
+          653,
+          673,
+          687,
+          733,
+          735,
+          741,
+          834,
+          916,
+          928,
+          1026,
+          1048,
+          1171,
+          1191,
+          1215,
+          1227,
+          1317,
+          1438,
+          1497,
+          1542,
+          1826,
+          1985,
+          2086,
+          2236,
+          2427,
+          2445,
+          2497,
+          2849,
+          3198,
+          3287,
+          3308,
+          3368,
+          3371,
+          3565,
+          3665,
+          3686,
+          3688,
+          3754,
+          4819,
+          5187,
+          5247,
+          5983,
+          6017,
+          6245,
+          6702,
+          6794,
+          7118,
+          7999
+        ],
+        "nominal_native_length_um": 54304.70556743525,
+        "length_absolute_difference_um": 2.1100277081131935e-10,
+        "halfopen_vs_rint_changed_node_labels": 0,
+        "halfopen_vs_rint_changed_full_graph_leaf_labels": 0,
+        "selected_leaf_label_unchanged": true,
+        "ZYX_to_XYZ_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          }
+        ],
+        "unprojected_plane_indices": [
+          73,
+          74,
+          75,
+          76,
+          77,
+          78,
+          79,
+          80,
+          81
+        ],
+        "current_component_same_as_first_pass": true
+      },
+      {
+        "NeuronUID": "252383::121.swc",
+        "target_index": 1556,
+        "component_node_count": 21,
+        "full_graph_leaf_ids": [
+          867
+        ],
+        "branch_node_ids": [],
+        "nominal_native_length_um": 168.6043655469108,
+        "length_absolute_difference_um": 0.0,
+        "halfopen_vs_rint_changed_node_labels": 0,
+        "halfopen_vs_rint_changed_full_graph_leaf_labels": 0,
+        "selected_leaf_label_unchanged": true,
+        "ZYX_to_XYZ_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          }
+        ],
+        "unprojected_plane_indices": [
+          18,
+          19,
+          20,
+          21,
+          22,
+          23,
+          24,
+          25,
+          26
+        ],
+        "current_component_same_as_first_pass": true
+      },
+      {
+        "NeuronUID": "252384::047.swc",
+        "target_index": 1004,
+        "component_node_count": 38,
+        "full_graph_leaf_ids": [
+          6514
+        ],
+        "branch_node_ids": [],
+        "nominal_native_length_um": 257.576851358424,
+        "length_absolute_difference_um": 0.0,
+        "halfopen_vs_rint_changed_node_labels": 6,
+        "halfopen_vs_rint_changed_full_graph_leaf_labels": 0,
+        "selected_leaf_label_unchanged": true,
+        "ZYX_to_XYZ_pixel_probes": [
+          {
+            "XYZ": [
+              0,
+              0,
+              0
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              359,
+              359,
+              89
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          },
+          {
+            "XYZ": [
+              17,
+              31,
+              23
+            ],
+            "source_ZYX_value": 0,
+            "display_XYZ_value": 0
+          }
+        ],
+        "unprojected_plane_indices": [
+          56,
+          57,
+          58,
+          59,
+          60,
+          61,
+          62,
+          63,
+          64
+        ],
+        "current_component_same_as_first_pass": true
+      }
+    ],
+    "errors": [],
+    "focused_tests": {
+      "count": 6,
+      "failures": 0,
+      "errors": 0,
+      "command": "C:/Users/laika_yan/miniconda3/envs/projectome/python.exe -B -m unittest discover -s notes/region_analysis_review_20261009/terminal_field_assessment_20261009 -p test_native_terminal_assessment.py -v",
+      "seconds": 0.57
+    },
+    "historical_half_pixel_shift": "Corrected in current source extents: pixel centres origin + index*spacing. Calibration of nominal origin remains unverified.",
+    "visual_review": "Final review_panels replaces display-only unreadable titles; both 252790_032 optical-plane and passage PNGs actually viewed. Identity, all Z/plane titles and internal-passage wording are readable; historical figures preserved.",
+    "scientific_anatomical_acceptance": false
+  },
+  "coverage_counts": {
+    "selected_ledger_rows": 462,
+    "coverage_rows": 462,
+    "exact_ordered_UIDs_match": true,
+    "native_available": 201,
+    "identity_matched": 201,
+    "full_graph_candidate_leaves_with_native": 48574,
+    "leaves_with_any_cached_cube": 9209,
+    "purposive_pilot_examples": 5,
+    "reviewed_native_pixel_panels_in_this_independent_review": 2,
+    "biologically_accepted_terminal_fields": 0
+  },
+  "scientific_anatomical_acceptance": false,
+  "biological_terminal_or_bouton_acceptance": false,
+  "source_writes": false,
+  "display_only_review": {
+    "receipt": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\review_panels\\display_provenance.json",
+    "receipt_sha256": "1df380feb82056eed0ddf2d8d94832b74c435373321b370aaff27689c0c2eb21",
+    "bindings": [
+      {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/70/171_134_70.tif",
+        "sha256": "d0d830f47543205edbfce7f3427f8ff6ba38aca42fce8fa1a46432075f78dc29",
+        "match": true
+      },
+      {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/109/182_79_109.tif",
+        "sha256": "6ff7515bf73d8f5d409246fb7055673401305d6a9cf71681a5c2dabb4cb9ca23",
+        "match": true
+      },
+      {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252383/high_res_http/111/77_83_111.tif",
+        "sha256": "e9562d3dfa9a2432aa66f7ee030f996ef8af4a788168b407d09526a086620fd7",
+        "match": true
+      },
+      {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252383/high_res_http/112/86_90_112.tif",
+        "sha256": "61d0e60ccf81cc71c6f8ecdd8c05931a353212b5555826c0f8cb6bab71aee202",
+        "match": true
+      },
+      {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252384/high_res_http/83/180_157_83.tif",
+        "sha256": "0fc5e47c8f66a7f007b8271d61364fbf7d577bad1a0c1ac24b2c51e1fa501d2a",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/render_readable_review_panels.py",
+        "sha256": "5ea9a655af9d992bdf57c2278c920f7e7f61e836ef7fd9b0e8fa0ce0e74b0734",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/assess_native_terminal_fields_current_rint.py",
+        "sha256": "3022bb9b4747c0fced2008d5c8289d2a5997b8479b1ff54dd3ffcf2e92b5ef34",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/optical_plane_provenance.json",
+        "sha256": "7fe778a1a2d9d15bb4d335e1f241402c6282bd122f57d494b9d487fb73346026",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252383_018_ending_optical_planes.png",
+        "sha256": "91f601bf55adcfba62e447be5298abc397be160e08fecb0d55808dcbb534d494",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252383_121_ending_optical_planes.png",
+        "sha256": "7510335f68854d83567034daa40ca03d742ded0929ec5de2acaa3ee5c590a43d",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252384_047_ending_optical_planes.png",
+        "sha256": "9494f762030e54828e2a686964cbf19c8d69000571a373ea54e3a704174dea5d",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252790_014_ending_optical_planes.png",
+        "sha256": "7616d6b6f9b25ef3004e88a549e753b5096122edd3f6a0c98af155f23e45f138",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252790_032_ending_optical_planes.png",
+        "sha256": "ad3b127bf1f39400a097d668300b34133e17a13de7444a4733428a741df8b06c",
+        "match": true
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252790_032_passage_image_and_swc.png",
+        "sha256": "fc56f15d16da494376dc1c6bcef7dfb96d152c0bfb9dbd6897e06d01c988708b",
+        "match": true
+      }
+    ],
+    "actually_viewed_PNGs": [
+      {
+        "path": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\review_panels\\252790_032_ending_optical_planes.png",
+        "sha256": "ad3b127bf1f39400a097d668300b34133e17a13de7444a4733428a741df8b06c",
+        "actually_viewed": true
+      },
+      {
+        "path": "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\review_panels\\252790_032_passage_image_and_swc.png",
+        "sha256": "fc56f15d16da494376dc1c6bcef7dfb96d152c0bfb9dbd6897e06d01c988708b",
+        "actually_viewed": true
+      }
+    ],
+    "source_pixel_observations": "Optical XY planes 6\u201314 show a bright curved fluorescent trace near the ring, mainly planes 9\u201313; the repeated ring denotes the same leaf XY, not nine leaves. The passage display is explicitly three orthogonal MIPs with a marked internal node, not a biological-terminal or no-bouton claim.",
+    "review_scope": "Independent selected saved figures and source-pixel/coordinate/graph checks, not all-five expert anatomical review.",
+    "resolved_display_issues": [
+      "half-source-pixel deterministic display shift corrected in current-rint extents",
+      "clipped/overlapping panel titles corrected in review_panels without changing numerical receipts"
+    ],
+    "scientific_anatomical_acceptance": false
+  },
+  "review_completed_utc": "2026-10-09T01:52:15.323900+00:00"
+}

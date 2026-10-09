@@ -1,0 +1,32 @@
+{
+  "checked_utc": "2026-10-09T03:55:35.742259+00:00",
+  "status": "passed",
+  "verified_defect": "unbounded sk-prefix matched the suffix of BIDS task word",
+  "false_positive_matches_verified": 94,
+  "token_values_logged": false,
+  "text_and_index_scanners_share_boundary_rule": true,
+  "prior_scan_snapshot": "notes/region_analysis_review_20261009/publication_scan_bids_diagnostic_20261009.json",
+  "sources": [
+    {
+      "path": "notes/region_analysis_review_20261009/prepare_publication.py",
+      "sha256": "885def8db3238c5f99011e2aca1a2f691aed8f5ebdd4e7ee61463b902b3fe0c5"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/verify_publication_index.py",
+      "sha256": "7a6309a8cac2c42e0bd0a203f62d74423a7e1d20305582b13b2a58aa1c32a969"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/test_publication_credentials.py",
+      "sha256": "175d1b58dc7c6f56a89ddf4e29a65f852e70f128faf1898da80af753d5082d54"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/publication_scan_bids_diagnostic_20261009.json",
+      "sha256": "fc8619d67c34400438a3062f97ca2f6ff9d213c1e0a7912e15e330cb4cb90f94"
+    }
+  ],
+  "tests": {
+    "returncode": 0,
+    "output": "test_bids_task_paths_are_not_tokens (test_publication_credentials.PublicationCredentialBoundaries) ... ok\ntest_index_private_key_detection_remains_enabled (test_publication_credentials.PublicationCredentialBoundaries) ... ok\ntest_minimum_lengths_are_retained (test_publication_credentials.PublicationCredentialBoundaries) ... ok\ntest_standalone_supported_token_prefixes_remain_detected (test_publication_credentials.PublicationCredentialBoundaries) ... ok\n\n----------------------------------------------------------------------\nRan 4 tests in 0.001s\n\nOK\n"
+  },
+  "scientific_numeric_policy_changed": false
+}

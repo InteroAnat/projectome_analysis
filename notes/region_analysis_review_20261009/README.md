@@ -1,5 +1,7 @@
 # Region analysis and table review — 2026-10-09
 
+Start with the [current source clarification, local-PDF Methods and terminal/MSTIM evidence update](scope_update_20261009.md) for the latest reviewed scope. Earlier numerical receipts below retain their original byte snapshots and dates.
+
 Branch: `codex/insula-pipeline-evolution-20261008`, based on `78008cbaab71bf737dc7129c72e5fe284c3ba40f`. This review applies the [parsed primary Methods](../../group_analysis/evolution_20261008/references/scientific_basis_20261009.md) to the actual Python, R and saved-table contracts. It establishes specific repairs and reproducible checks; it cannot certify that every possible software or anatomical error has been excluded.
 
 ## Results and evidence

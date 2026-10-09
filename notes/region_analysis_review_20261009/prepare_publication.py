@@ -49,6 +49,13 @@ CORE_MODULES = {"endpoint_atlas.py", "projection_maps.py", "terminal_sites.py"}
 OMIT_NAMES = {"publication_files.json", "publication_scan.json", "publication_local_artifacts.json", "publication_index_receipt.json"}
 OMIT_SUFFIXES = {".pyc", ".swc", ".tif", ".tiff", ".nii", ".gz", ".pdf"}
 TEXT_SUFFIXES = {".py", ".r", ".rmd", ".md", ".txt", ".json", ".csv", ".bib", ".patch", ".log", ".yml"}
+# A token starts at a lexical boundary. Without this guard, BIDS task-opto
+# filenames match the sk- prefix embedded in the word task.
+ACCESS_TOKEN_PATTERN = (
+    r"(?<![A-Za-z0-9_])(?:gh[pousr]_[A-Za-z0-9]{24,}|"
+    r"github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{25,})"
+    r"(?![A-Za-z0-9_])"
+)
 
 
 def sha(path):
@@ -103,6 +110,12 @@ def main():
     archived_figures |= {path for path in candidates if
         "clustering_20261009/arm_L6_relative_profiles_selected462/" in path and
         Path(path).name in {"all_axon_hellinger_target_profiles.png", "all_endpoint_hellinger_target_profiles.png"}}
+    terminal_prefix = "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/"
+    # Keep one readable plane/passage/morphology set. Earlier rounding/display
+    # diagnostics remain local and hashed.
+    archived_figures |= {path for path in candidates if path.startswith(terminal_prefix)
+                        and Path(path).suffix.lower() == ".png"
+                        and not path.startswith(terminal_prefix + "review_panels/")}
     candidates -= archived_figures
     for path in candidates:
         if not (ROOT / path).is_file():
@@ -119,7 +132,7 @@ def main():
                 if isinstance(node.value.value, str) and len(node.value.value) >= 4:
                     secret_values.append(node.value.value)
     patterns = {
-        "access_token": re.compile(r"(?:gh[pousr]_[A-Za-z0-9]{24,}|github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{25,})"),
+        "access_token": re.compile(ACCESS_TOKEN_PATTERN),
         "private_key": re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----"),
         "credential_literal": re.compile(r"(?im)^\s*(?:[A-Z_]*PASSWORD|[A-Z_]*SSH_PASS|[A-Z_]*API_KEY|[A-Z_]*ACCESS_TOKEN)\s*=\s*[\"']([^\"']{4,})[\"']"),
     }

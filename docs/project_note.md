@@ -2,6 +2,18 @@
 
 **Purpose:** Living human-readable status for fMOST / insula projectome work. Agents **merge** updates; do not replace sections.
 
+## Local Gao/Liu Methods, native terminal assessment and updated MSTIM evidence (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+The [current scope/evidence update](../notes/region_analysis_review_20261009/scope_update_20261009.md) records the user's clarification: original fMOST-to-NMT transforms are unavailable, and recovery is not required for declared template-space exploration or native-image review. Existing coordinate policy, sensitivity, uncertain labels and original inputs remain preserved. Local Gao2022/2023, Gou2025, Yufeng Liu2024 and Rui-Feng Liu2026 PDF Methods are distinguished and hash-bound; Sang Liu2024's exact PDF remains unlocated within the checked local scope, without inferred algorithm details.
+
+The [native terminal-field candidate pilot](../notes/region_analysis_review_20261009/terminal_field_assessment_20261009/README.md) verifies all 201 available native/NMT topology pairs among the unchanged 462 selected neurons. Cached cubes cover 9,209 of 48,574 candidate leaves across 184 neurons; availability is not image acceptance. Codex actually reviewed five original endings/target sections: two branched-field morphology candidates, three simple endings, a separate passing-segment example and an unresolved block-edge case. Six focused tests and independent graph/pixel/display checks pass. Current optical-plane sheets use actual planes, with nominal sampling explicitly distinguished from optical resolution. A connected axon section within an ARM region is not automatically a terminal arbor. The remaining 457 neurons and most branches of the five cases remain unreviewed here; no whole-cohort biological terminal map or scientific acceptance is claimed.
+
+The [CM032 record/FLASH review](../notes/region_analysis_review_20261009/mstim_source_update_20261009/cm032_site_figure_review.md) supports coarse **left Ial / left vAIC pos1, MSTIM38–41**, attributed to user/session records; no exact NMT tip is required for that coarse context. Its exact warp/coverage checks and provisional regional summaries remain valid. The [updated CM033 DEB audit](../notes/region_analysis_review_20261009/mstim_source_update_20261009/cm033_updated_debfmri_audit.md) recognizes successful scan16/39 header repairs, but finds no configured current EPI normalization, incompatible historical-GLM/current-reference affines and no current atlas-ready statistic. The all-TR3 model mixes sites; separate native left/right models are preserved and identified. External fMRI projects were read only.
+
+The earlier completion record below is a historical pre-clarification snapshot. The full objective remains active where terminal review coverage or CM033 spatial lineage is incomplete; the unavailable fMOST transform and missing exact CM032 tip are not invented recovery gates. Source hashes, current document bindings, validation and publication are recorded in the linked current update and [publication log](../notes/region_analysis_review_20261009/publication_20261009.md).
+
 ## Full-goal audit and additional CM032 T-warp validation (2026-10-09)
 
 **Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**

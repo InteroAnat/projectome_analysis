@@ -1,0 +1,177 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-09",
+  "recorded_at": "2026-10-09T09:47:03.656326+08:00",
+  "status": "two_local_PDF_Methods_read_one_exact_PDF_unlocated",
+  "scope": "Read-only scientific literature input; no classifier, anatomical, synaptic or registration acceptance; no external writes or new PDF downloads.",
+  "sources": [
+    {
+      "first_author": "Yufeng Liu",
+      "year": 2024,
+      "title": "Neuronal diversity and stereotypy at multiple scales through whole brain morphometry",
+      "doi": "10.1038/s41467-024-54745-6",
+      "journal": "Nature Communications 15, 10269",
+      "zotero_item_key": null,
+      "zotero_attachment_key": null,
+      "path": "C:/Users/LAIKA_~1/AppData/Local/Temp/projectome-fmost-methods-20261009-eu03zm2k/liu2024_open_primary.pdf",
+      "pdf_pages": 23,
+      "read_pdf_pages": [
+        1,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20
+      ],
+      "read_status": "full_Methods_read_pages_16_to_20_plus_Discussion_15",
+      "source_url_recorded_in_prior_receipt": "https://repository.cshl.edu/id/eprint/41750/1/10.1038.s41467-024-54745-6.pdf",
+      "anchors": [
+        {
+          "pages": [
+            19
+          ],
+          "section": "Arbor detection and analysis",
+          "finding": "Dense subtree; spectral graph clustering with exp(-distance) edge weights; regional dominant arbor number by majority vote; 20 um maximal-density neighborhood; 750 um soma-distance proximal/distal split."
+        },
+        {
+          "pages": [
+            19
+          ],
+          "section": "Detect primary axonal tract motifs",
+          "finding": "Longest axonal path with iterative short-branch removal; 200 tract samples and 75th-percentile PCA cross-sectional radius; tract motif is distinct from bouton or reviewed terminal classification."
+        },
+        {
+          "pages": [
+            19,
+            20
+          ],
+          "section": "Detect axonal varicosities",
+          "finding": "Image intensity and radius co-peaks on 20 um fragments; radius 1.5 times surroundings; intensity above 120/255; remove candidates closer than five highest-resolution voxels; 235 expert-annotated blocks and 1450 reference varicosities."
+        },
+        {
+          "pages": [
+            15
+          ],
+          "section": "Discussion",
+          "finding": "Biological validation of predicted varicosities is beyond study scope."
+        },
+        {
+          "pages": [
+            20
+          ],
+          "section": "Cross-scale feature generation; Code availability",
+          "finding": "75-dimensional multi-scale features, standardized and compared using correlations; separate from current regional Hellinger profiles. Code links reported, not implementation-audited here."
+        }
+      ],
+      "sha256": "f5a5f495f535775a5adc192b4417d42fcee2b1ea67839fba6b40b037c7b0189b",
+      "size_bytes": 9726759
+    },
+    {
+      "first_author": "Rui-Feng Liu",
+      "year": 2026,
+      "title": "An atlas of primate insular cortex reveals a signal-processing strategy in von Economo neurons",
+      "doi": "10.1038/s41556-026-02009-4",
+      "journal": "Nature Cell Biology",
+      "zotero_item_key": "DFH77L3E",
+      "zotero_attachment_key": "JUAS5RLT",
+      "path": "C:/Users/laika_yan/Zotero/storage/JUAS5RLT/Liu et al. - 2026 - An atlas of primate insular cortex reveals a signal-processing strategy in von Economo neurons.pdf",
+      "pdf_pages": 47,
+      "read_pdf_pages": [
+        1,
+        14,
+        17,
+        18,
+        19,
+        20,
+        21
+      ],
+      "read_status": "relevant_full_Methods_read_pages_17_to_21_plus_Discussion_14",
+      "anchors": [
+        {
+          "pages": [
+            17,
+            18
+          ],
+          "section": "Animals; Cell cluster annotation and name assignment",
+          "finding": "Primate AIC tissue, cell-marker and cross-dataset homology annotation, with some layer-specific annotations confirmed by RNAscope."
+        },
+        {
+          "pages": [
+            19
+          ],
+          "section": "Electrophysiological recording",
+          "finding": "Simultaneous recordings from up to eight neurons test local unitary postsynaptic responses; not whole-brain projection tracing."
+        },
+        {
+          "pages": [
+            21
+          ],
+          "section": "Morphological reconstruction and anatomical annotation",
+          "finding": "Biocytin/Neurolucida reconstruction; soma-centered native slice coordinates and pial direction; Nissl/marker-supported layer boundaries and normalized soma depth; 40 morphology features and 20 x 20 x 300 um dendritic bins."
+        },
+        {
+          "pages": [
+            14
+          ],
+          "section": "Discussion",
+          "finding": "Subcerebral projection targets were not directly identified; molecular resemblance to L5 ET or L5/6 CT does not establish actual long-range projection patterns."
+        }
+      ],
+      "sha256": "ffacc6546626a73db9a88a79393861917d003d39498b9fe1d88bbf07742c9e2f",
+      "size_bytes": 40619548
+    }
+  ],
+  "missing_source": {
+    "first_author": "Sang Liu",
+    "year": 2024,
+    "title": "Single-neuron analysis of axon arbors reveals distinct presynaptic organizations between feedforward and feedback projections",
+    "doi": "10.1016/j.celrep.2023.113590",
+    "full_Methods_read": false,
+    "zotero_item_key": null,
+    "path": null,
+    "status": "not_located_in_bounded_search_not_global_absence",
+    "search": {
+      "local_API": "Zotero 9.0.6 read-only 127.0.0.1:23119 API3; focused title/DOI queries including children/fulltext; 113590 matched Gou reference only",
+      "storage_root": "C:/Users/laika_yan/Zotero/storage",
+      "PDF_first_page_identity_check_count": 832,
+      "PDF_unreadable_count": 0,
+      "exact_target_identity_matches": 0,
+      "filename_scopes": [
+        "D:/projectome_analysis/references",
+        "C:/Users/laika_yan/Zotero/storage",
+        "C:/Users/laika_yan/Downloads"
+      ],
+      "no_broad_disk_scan": true
+    },
+    "algorithm_details_inferred": false,
+    "required_next_evidence": "Exact local PDF path or authoritative attachment metadata if supplied by user"
+  },
+  "adaptation_limits": [
+    "Image-derived varicosities require calibrated native image intensity/radius and are not confirmed synapses.",
+    "SWC leaves are candidate axon ends, not reviewed terminal arbors or boutons.",
+    "Mouse CCFv3 methods do not replace macaque ARM-only source/target labels.",
+    "No unverified physical thresholds are silently transferred to deformed NMT-space coordinates.",
+    "Primate insula native tissue/layer/marker evidence does not validate a fluorescence-only fine parcel or VEN type.",
+    "Rui-Feng Liu2026 does not directly establish long-range projection targets.",
+    "Sang Liu2024 full Methods remain unassessed; no GNN parameters or thresholds invented."
+  ],
+  "prior_evidence": [
+    {
+      "path": "group_analysis/evolution_20261008/references/fmost_full_methods_evidence_20261009.json",
+      "sha256": "9bb74ef9cf117c32f92d2efb55add4d5b610375e65abcdcfb8bd573b9287116c"
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/insula_full_methods_20261009.md",
+      "sha256": "4d9273201ae93e3643f917589c5573e6d8f1882dfcb33728e0d0f600ae06999b"
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/insula_full_methods_20261009_evidence.json",
+      "sha256": "defa0f2544aca1f0e7fa2e9bec8ffac3a79a980db8890ca562f20b3cf7a61582"
+    }
+  ],
+  "note_path": "notes/region_analysis_review_20261009/literature_method_update_20261009/liu_local_methods.md",
+  "note_sha256": "016a42c3b3d17ed41c1d95dcc60bb33119a16f7db7c801d2f266f9659db9d68a",
+  "pdf_or_fulltext_written_to_repository": false,
+  "scientific_sources_modified": false
+}

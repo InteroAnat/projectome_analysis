@@ -1,0 +1,1161 @@
+{
+  "status": "completed_bounded_Codex_terminal_field_candidate_pilot",
+  "reviewer": "Codex",
+  "date": "2026-10-09",
+  "scope": "purposive five neuron/target fields and one same-neuron reconstructed passage example; no complete cohort review",
+  "cohort_unchanged": true,
+  "selected_neurons": 462,
+  "native_swcs_in_designated_cache": 201,
+  "not_in_designated_native_cache": 261,
+  "node_identity_type_parent_matches": 201,
+  "native_candidate_leaves": 48574,
+  "native_leaves_with_cached_cube": 9209,
+  "neurons_with_at_least_one_cube_covered_native_leaf": 184,
+  "availability_is_not_image_review": true,
+  "reviewed_neurons": 5,
+  "remaining_neurons_without_this_pilot_review": 457,
+  "individually_image_reviewed_axon_leaves": 5,
+  "branched_field_candidates": 2,
+  "simple_ending_examples": 3,
+  "reconstructed_passing_examples": 1,
+  "biologically_accepted_terminals_or_synapses": 0,
+  "registration_policy": "authoritative fMOST-to-NMT transform unavailable; recovery not required by current task; nominal native review plus declared ARM metadata",
+  "source_image_scope": "local TIFF cache only; nominal sampling, not calibrated optical resolution; no network source-image acquisition",
+  "current_target_lookup": "np.rint(atlas_xyz/250), existing current policy, ties-to-even, not anatomical acceptance",
+  "halfopen_sensitivity": [
+    {
+      "NeuronUID": "252790::014.swc",
+      "node_count": 38732,
+      "voxel_index_differences": 63,
+      "target_label_differences": 4,
+      "changed_nodes": [
+        {
+          "node_id": 9837,
+          "current_rint_label": 1056,
+          "halfopen_label": 1058
+        },
+        {
+          "node_id": 19850,
+          "current_rint_label": 1628,
+          "halfopen_label": 1621
+        },
+        {
+          "node_id": 28342,
+          "current_rint_label": 0,
+          "halfopen_label": 1071
+        },
+        {
+          "node_id": 28541,
+          "current_rint_label": 1044,
+          "halfopen_label": 1078
+        }
+      ]
+    },
+    {
+      "NeuronUID": "252790::032.swc",
+      "node_count": 23587,
+      "voxel_index_differences": 18,
+      "target_label_differences": 1,
+      "changed_nodes": [
+        {
+          "node_id": 18667,
+          "current_rint_label": 95,
+          "halfopen_label": 124
+        }
+      ]
+    },
+    {
+      "NeuronUID": "252383::018.swc",
+      "node_count": 8960,
+      "voxel_index_differences": 5,
+      "target_label_differences": 0,
+      "changed_nodes": []
+    },
+    {
+      "NeuronUID": "252383::121.swc",
+      "node_count": 1776,
+      "voxel_index_differences": 0,
+      "target_label_differences": 0,
+      "changed_nodes": []
+    },
+    {
+      "NeuronUID": "252384::047.swc",
+      "node_count": 41818,
+      "voxel_index_differences": 53,
+      "target_label_differences": 6,
+      "changed_nodes": [
+        {
+          "node_id": 125,
+          "current_rint_label": 0,
+          "halfopen_label": 42
+        },
+        {
+          "node_id": 4044,
+          "current_rint_label": 0,
+          "halfopen_label": 1004
+        },
+        {
+          "node_id": 25525,
+          "current_rint_label": 1039,
+          "halfopen_label": 1034
+        },
+        {
+          "node_id": 30636,
+          "current_rint_label": 159,
+          "halfopen_label": 1039
+        },
+        {
+          "node_id": 30666,
+          "current_rint_label": 159,
+          "halfopen_label": 1039
+        },
+        {
+          "node_id": 41471,
+          "current_rint_label": 0,
+          "halfopen_label": 1016
+        }
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "NeuronUID": "252790::014.swc",
+      "AnimalID": "797",
+      "SourceARMFullName": "CL_intermediate_agranular_insula_area",
+      "SourceARMStatus": "mapped",
+      "selection_purpose": "branched_field",
+      "selection_rule": "predeclared UID/target; cached cube with most target full-graph leaves, ties lexicographic cube XYZ; smallest leaf ID for detail",
+      "native_swc": {
+        "path": "group_analysis/visual_review_20261002/swc_raw/252790/014.swc",
+        "sha256": "0e0f9accc27c2ac0ef78fc719bfb7a81b658fb025ddfeede64ebcd8d294e558e"
+      },
+      "atlas_swc": {
+        "path": "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252790\\014.swc",
+        "sha256": "560810caabe46f95b0c07edec686439de6b86e7ad7445dd17ccaa42dba55f51a"
+      },
+      "node_identity_type_parent_match": true,
+      "full_graph_validated": true,
+      "declared_target": {
+        "level": 6,
+        "index": 41,
+        "full_name": "CL_intermediate_agranular_insula_area",
+        "sampling": "np.rint(atlas_xyz/250), current ARM lookup policy with ties-to-even; anatomical/origin acceptance unresolved"
+      },
+      "component_root_node_id": 35,
+      "component_node_count": 6689,
+      "component_branch_node_ids": [
+        44,
+        214,
+        608,
+        610,
+        777,
+        778,
+        793,
+        795,
+        904,
+        909,
+        910,
+        917,
+        921,
+        992,
+        1051,
+        1144,
+        1145,
+        1156,
+        1158,
+        1159,
+        1169,
+        1310,
+        1318,
+        1320,
+        1706,
+        1709,
+        1714,
+        1753,
+        1832,
+        1833,
+        1836,
+        1886,
+        1996,
+        2271,
+        2517,
+        2534,
+        2695,
+        2704,
+        2739,
+        2762,
+        2774,
+        2785,
+        3278,
+        3582,
+        3588,
+        3594,
+        3609,
+        4168,
+        4263,
+        4371,
+        4758,
+        4844,
+        4855,
+        4861,
+        4867,
+        4896,
+        4948,
+        5028,
+        5266,
+        5831,
+        5910,
+        5920,
+        5931,
+        5938,
+        6022,
+        6364,
+        6400,
+        6410,
+        6431,
+        6437,
+        6524,
+        6671,
+        6696,
+        6780,
+        6900,
+        7009,
+        7535,
+        7620,
+        7644,
+        8889,
+        9113,
+        9184,
+        9197,
+        10216,
+        10389,
+        10468,
+        10493,
+        11230
+      ],
+      "component_full_graph_axon_leaf_ids": [
+        308,
+        973,
+        1322,
+        1498,
+        1548,
+        1559,
+        1608,
+        1664,
+        1727,
+        1746,
+        2042,
+        2284,
+        2323,
+        2351,
+        2511,
+        2529,
+        2714,
+        2991,
+        3297,
+        3580,
+        3637,
+        3717,
+        4224,
+        4430,
+        4462,
+        5145,
+        5181,
+        5184,
+        5373,
+        5644,
+        5648,
+        5689,
+        5690,
+        5744,
+        5747,
+        5828,
+        5855,
+        6020,
+        6177,
+        6182,
+        6188,
+        6330,
+        6415,
+        6475,
+        6687,
+        6697,
+        6752,
+        6943,
+        6990,
+        7090,
+        7670,
+        7711,
+        7718,
+        7720,
+        9143,
+        9255,
+        9409,
+        9468,
+        10084,
+        10272,
+        10330,
+        10472,
+        11174,
+        11244,
+        11278,
+        11310,
+        11345,
+        11353,
+        11363,
+        12856,
+        12883
+      ],
+      "nominal_native_component_length_um": 59704.68254715366,
+      "selected_leaf_id": 1727,
+      "selected_leaf_type": 2,
+      "selected_leaf_parent_id": 1726,
+      "selected_leaf_native_xyz_um": [
+        40169.98828125,
+        31551.2890625,
+        19030.44921875
+      ],
+      "selected_leaf_distance_to_cube_faces_um": [
+        155.98828125,
+        195.2890625,
+        130.44921875,
+        78.01171875,
+        38.7109375,
+        139.55078125
+      ],
+      "local_cube_target_leaf_ids": [
+        1727,
+        1746,
+        3637,
+        6475
+      ],
+      "image": {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/70/171_134_70.tif",
+        "sha256": "d0d830f47543205edbfce7f3427f8ff6ba38aca42fce8fa1a46432075f78dc29",
+        "cube_index_xyz": [
+          171,
+          134,
+          70
+        ],
+        "source_array_order": "ZYX",
+        "source_shape": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "native_origin_um": [
+          40014.0,
+          31356.0,
+          18900.0
+        ],
+        "nominal_spacing_um": [
+          0.65,
+          0.65,
+          3.0
+        ],
+        "display_array_order": "XYZ",
+        "optical_resolution": "unverified",
+        "origin_convention": "existing client nominal block index times block shape times spacing; no calibrated image/SWC origin proof",
+        "adjacent_cube_availability": {
+          "170_133_69": true,
+          "170_133_70": true,
+          "170_133_71": true,
+          "170_134_69": true,
+          "170_134_70": true,
+          "170_134_71": true,
+          "170_135_69": true,
+          "170_135_70": true,
+          "170_135_71": true,
+          "171_133_69": true,
+          "171_133_70": true,
+          "171_133_71": true,
+          "171_134_69": true,
+          "171_134_70": true,
+          "171_134_71": true,
+          "171_135_69": true,
+          "171_135_70": true,
+          "171_135_71": true,
+          "172_133_69": true,
+          "172_133_70": true,
+          "172_133_71": true,
+          "172_134_69": true,
+          "172_134_70": true,
+          "172_134_71": true,
+          "172_135_69": true,
+          "172_135_70": true,
+          "172_135_71": true
+        }
+      },
+      "reviewer": "Codex",
+      "review_state": "completed_bounded_morphology_and_source_plane_assessment",
+      "biological_terminal_state": "unassessed",
+      "bouton_synapse_state": "not_assessed",
+      "morphology_assessment": "branched_terminal_field_candidate",
+      "image_assessment": "selected_ending_and_local_neurites_supported_by_fluorescence",
+      "observation": "The target-connected skeleton has many branches and endings, with clustered shorter branches and longer entry/exit trajectories. Local fluorescence follows several displayed trajectories. Leaf 1727 lies at a bright local neurite cap across nearby XY planes, including nominal Z 19029 and 19032 \u00b5m. No definite continuation beyond this selected end is resolved in the inspected planes. This is a spot-check of one cube, not validation of all 71 leaves or a closed arbor segmentation.",
+      "truncation_assessment": "no_definite_truncation_in_selected_views; weak_or_out_of_plane_continuation_not_excluded",
+      "review_date": "2026-10-09",
+      "primary_inspected_figures": [
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_014/target_component_morphology.png",
+          "sha256": "09965bef2281f95b328225099a6347e82b59be8710d70ea8dd110923cbafcf44"
+        },
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252790_014_ending_optical_planes.png",
+          "sha256": "7616d6b6f9b25ef3004e88a549e753b5096122edd3f6a0c98af155f23e45f138"
+        }
+      ],
+      "image_review_denominator": {
+        "selected_original_leaf_reviewed": 1,
+        "component_original_leaves": 71,
+        "complete_component_image_review": false
+      }
+    },
+    {
+      "NeuronUID": "252790::032.swc",
+      "AnimalID": "797",
+      "SourceARMFullName": "Atlas background",
+      "SourceARMStatus": "zero_unassigned",
+      "selection_purpose": "branched_field_candidate_source",
+      "selection_rule": "predeclared UID/target; cached cube with most target full-graph leaves, ties lexicographic cube XYZ; smallest leaf ID for detail",
+      "native_swc": {
+        "path": "group_analysis/visual_review_20261002/swc_raw/252790/032.swc",
+        "sha256": "eff282b992e38e92f3948bb7e4e38599eb39f72bf6c97cfd6b5b5542ae811d00"
+      },
+      "atlas_swc": {
+        "path": "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252790\\032.swc",
+        "sha256": "163a1c84c95339a1bf091ab7ce1aefe496dcf030b92e690f946af26770ce5ae6"
+      },
+      "node_identity_type_parent_match": true,
+      "full_graph_validated": true,
+      "declared_target": {
+        "level": 6,
+        "index": 229,
+        "full_name": "CL_granular_insula",
+        "sampling": "np.rint(atlas_xyz/250), current ARM lookup policy with ties-to-even; anatomical/origin acceptance unresolved"
+      },
+      "component_root_node_id": 2284,
+      "component_node_count": 61,
+      "component_branch_node_ids": [],
+      "component_full_graph_axon_leaf_ids": [
+        2344
+      ],
+      "nominal_native_component_length_um": 479.41016263884956,
+      "selected_leaf_id": 2344,
+      "selected_leaf_type": 2,
+      "selected_leaf_parent_id": 2343,
+      "selected_leaf_native_xyz_um": [
+        42728.5234375,
+        18640.44921875,
+        29461.17578125
+      ],
+      "selected_leaf_distance_to_cube_faces_um": [
+        140.5234375,
+        154.44921875,
+        31.17578125,
+        93.4765625,
+        79.55078125,
+        238.82421875
+      ],
+      "local_cube_target_leaf_ids": [
+        2344,
+        6585,
+        15905,
+        18090
+      ],
+      "image": {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/109/182_79_109.tif",
+        "sha256": "6ff7515bf73d8f5d409246fb7055673401305d6a9cf71681a5c2dabb4cb9ca23",
+        "cube_index_xyz": [
+          182,
+          79,
+          109
+        ],
+        "source_array_order": "ZYX",
+        "source_shape": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "native_origin_um": [
+          42588.0,
+          18486.0,
+          29430.0
+        ],
+        "nominal_spacing_um": [
+          0.65,
+          0.65,
+          3.0
+        ],
+        "display_array_order": "XYZ",
+        "optical_resolution": "unverified",
+        "origin_convention": "existing client nominal block index times block shape times spacing; no calibrated image/SWC origin proof",
+        "adjacent_cube_availability": {
+          "181_78_108": true,
+          "181_78_109": true,
+          "181_78_110": true,
+          "181_79_108": true,
+          "181_79_109": true,
+          "181_79_110": true,
+          "181_80_108": true,
+          "181_80_109": true,
+          "181_80_110": true,
+          "182_78_108": true,
+          "182_78_109": true,
+          "182_78_110": true,
+          "182_79_108": true,
+          "182_79_109": true,
+          "182_79_110": true,
+          "182_80_108": true,
+          "182_80_109": true,
+          "182_80_110": true,
+          "183_78_108": true,
+          "183_78_109": true,
+          "183_78_110": true,
+          "183_79_108": true,
+          "183_79_109": true,
+          "183_79_110": true,
+          "183_80_108": true,
+          "183_80_109": true,
+          "183_80_110": true
+        }
+      },
+      "reviewer": "Codex",
+      "review_state": "completed_bounded_morphology_and_source_plane_assessment",
+      "biological_terminal_state": "unassessed",
+      "bouton_synapse_state": "not_assessed",
+      "morphology_assessment": "simple_reconstructed_ending_not_branched_arbor",
+      "image_assessment": "selected_ending_supported_by_local_fluorescence",
+      "observation": "The selected target-connected component is an unbranched trajectory with one original leaf, 2344. Its curved terminal portion and bright end coincide locally with fluorescence in nominal Z 29457\u201329469 \u00b5m planes, especially 29460/29463. The clear local cap supports an image-backed ending candidate, not a terminal-field arbor or synapse. Other endings in the same cube do not belong to this selected connected component.",
+      "truncation_assessment": "no_definite_continuation_beyond_selected_end_seen; biological_completion_unassessed",
+      "review_date": "2026-10-09",
+      "primary_inspected_figures": [
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252790_032/target_component_morphology.png",
+          "sha256": "6a2d10567d29bcad120b880b300b4ef87601ee13af63b4d6626987b9ce34c912"
+        },
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252790_032_ending_optical_planes.png",
+          "sha256": "ad3b127bf1f39400a097d668300b34133e17a13de7444a4733428a741df8b06c"
+        }
+      ],
+      "image_review_denominator": {
+        "selected_original_leaf_reviewed": 1,
+        "component_original_leaves": 1,
+        "complete_component_image_review": false
+      }
+    },
+    {
+      "NeuronUID": "252383::018.swc",
+      "AnimalID": "605",
+      "SourceARMFullName": "CR_granular_insula",
+      "SourceARMStatus": "mapped",
+      "selection_purpose": "branched_field_second_animal",
+      "selection_rule": "predeclared UID/target; cached cube with most target full-graph leaves, ties lexicographic cube XYZ; smallest leaf ID for detail",
+      "native_swc": {
+        "path": "group_analysis/visual_review_20261002/swc_raw/252383/018.swc",
+        "sha256": "71b39380c9f82cfa36e0c766cb46ffb4c7c428fcf79708fa42df5572b5bfc69a"
+      },
+      "atlas_swc": {
+        "path": "D:\\projectome_analysis\\group_analysis\\fnt\\nmt_swcs\\252383\\018.swc",
+        "sha256": "79d9c3c4785619f8e002ced5a85c71b97e5178aba5205d865072b3a34a6a4dc5"
+      },
+      "node_identity_type_parent_match": true,
+      "full_graph_validated": true,
+      "declared_target": {
+        "level": 6,
+        "index": 729,
+        "full_name": "CR_granular_insula",
+        "sampling": "np.rint(atlas_xyz/250), current ARM lookup policy with ties-to-even; anatomical/origin acceptance unresolved"
+      },
+      "component_root_node_id": 170,
+      "component_node_count": 5649,
+      "component_branch_node_ids": [
+        177,
+        458,
+        461,
+        464,
+        560,
+        577,
+        588,
+        631,
+        644,
+        653,
+        673,
+        687,
+        733,
+        735,
+        741,
+        834,
+        916,
+        928,
+        1026,
+        1048,
+        1171,
+        1191,
+        1215,
+        1227,
+        1317,
+        1438,
+        1497,
+        1542,
+        1826,
+        1985,
+        2086,
+        2236,
+        2427,
+        2445,
+        2497,
+        2849,
+        3198,
+        3287,
+        3308,
+        3368,
+        3371,
+        3565,
+        3665,
+        3686,
+        3688,
+        3754,
+        4819,
+        5187,
+        5247,
+        5983,
+        6017,
+        6245,
+        6702,
+        6794,
+        7118,
+        7999
+      ],
+      "component_full_graph_axon_leaf_ids": [
+        801,
+        920,
+        1286,
+        1381,
+        1489,
+        1515,
+        1642,
+        1748,
+        1777,
+        1926,
+        1933,
+        1950,
+        2036,
+        2202,
+        2294,
+        2486,
+        2577,
+        2678,
+        2758,
+        2961,
+        3481,
+        3593,
+        3644,
+        4506,
+        4897,
+        4942,
+        5058,
+        5128,
+        5639,
+        5686,
+        5807,
+        5915,
+        6771,
+        6849,
+        6942,
+        7024,
+        7071,
+        7632,
+        7716,
+        7931,
+        7953,
+        8140,
+        8303,
+        8347,
+        8429
+      ],
+      "nominal_native_component_length_um": 54304.70556743546,
+      "selected_leaf_id": 2294,
+      "selected_leaf_type": 2,
+      "selected_leaf_parent_id": 2293,
+      "selected_leaf_native_xyz_um": [
+        18192.5234375,
+        19615.26953125,
+        30201.03515625
+      ],
+      "selected_leaf_distance_to_cube_faces_um": [
+        174.5234375,
+        193.26953125,
+        231.03515625,
+        59.4765625,
+        40.73046875,
+        38.96484375
+      ],
+      "local_cube_target_leaf_ids": [
+        2294,
+        3593,
+        3644
+      ],
+      "image": {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252383/high_res_http/111/77_83_111.tif",
+        "sha256": "e9562d3dfa9a2432aa66f7ee030f996ef8af4a788168b407d09526a086620fd7",
+        "cube_index_xyz": [
+          77,
+          83,
+          111
+        ],
+        "source_array_order": "ZYX",
+        "source_shape": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "native_origin_um": [
+          18018.0,
+          19422.0,
+          29970.0
+        ],
+        "nominal_spacing_um": [
+          0.65,
+          0.65,
+          3.0
+        ],
+        "display_array_order": "XYZ",
+        "optical_resolution": "unverified",
+        "origin_convention": "existing client nominal block index times block shape times spacing; no calibrated image/SWC origin proof",
+        "adjacent_cube_availability": {
+          "76_82_110": true,
+          "76_82_111": true,
+          "76_82_112": true,
+          "76_83_110": true,
+          "76_83_111": true,
+          "76_83_112": true,
+          "76_84_110": true,
+          "76_84_111": true,
+          "76_84_112": true,
+          "77_82_110": true,
+          "77_82_111": true,
+          "77_82_112": true,
+          "77_83_110": true,
+          "77_83_111": true,
+          "77_83_112": true,
+          "77_84_110": true,
+          "77_84_111": true,
+          "77_84_112": true,
+          "78_82_110": true,
+          "78_82_111": true,
+          "78_82_112": true,
+          "78_83_110": true,
+          "78_83_111": true,
+          "78_83_112": true,
+          "78_84_110": true,
+          "78_84_111": true,
+          "78_84_112": true
+        }
+      },
+      "reviewer": "Codex",
+      "review_state": "completed_bounded_morphology_and_source_plane_assessment",
+      "biological_terminal_state": "unassessed",
+      "bouton_synapse_state": "not_assessed",
+      "morphology_assessment": "branched_terminal_field_candidate",
+      "image_assessment": "selected_ending_supported; whole_field_image_review_incomplete",
+      "observation": "The skeleton shows multiple repeatedly branching local trajectories and many endings, supporting a morphology-reviewed field candidate. Leaf 2294 coincides with a short fluorescent ending near nominal Z 30198\u201330204 \u00b5m; nearby signal and other fibers require the plane sweep rather than a projected overlap claim. One cube/ending spot-check does not verify every branch or all 45 leaves.",
+      "truncation_assessment": "no_definite_continuation_beyond_selected_end_seen; incomplete_field_coverage_review",
+      "review_date": "2026-10-09",
+      "primary_inspected_figures": [
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_018/target_component_morphology.png",
+          "sha256": "cf8912704204c8da34b27f378ab54859bc34f346d532c3b0c72d222934a29756"
+        },
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252383_018_ending_optical_planes.png",
+          "sha256": "91f601bf55adcfba62e447be5298abc397be160e08fecb0d55808dcbb534d494"
+        }
+      ],
+      "image_review_denominator": {
+        "selected_original_leaf_reviewed": 1,
+        "component_original_leaves": 45,
+        "complete_component_image_review": false
+      }
+    },
+    {
+      "NeuronUID": "252383::121.swc",
+      "AnimalID": "605",
+      "SourceARMFullName": "Atlas background",
+      "SourceARMStatus": "zero_unassigned",
+      "selection_purpose": "single_ending",
+      "selection_rule": "predeclared UID/target; cached cube with most target full-graph leaves, ties lexicographic cube XYZ; smallest leaf ID for detail",
+      "native_swc": {
+        "path": "group_analysis/visual_review_20261002/swc_raw/252383/121.swc",
+        "sha256": "dd09bdfe9afa408d21e5f2644b3495790e632b242e31e75061f07be97e866a58"
+      },
+      "atlas_swc": {
+        "path": "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252383\\121.swc",
+        "sha256": "32b7bb7b3a369ee34f550c9dfa094c2e0cb21b54c1acc5bb26a6ceefb0c9d7e0"
+      },
+      "node_identity_type_parent_match": true,
+      "full_graph_validated": true,
+      "declared_target": {
+        "level": 6,
+        "index": 1556,
+        "full_name": "SR_putamen",
+        "sampling": "np.rint(atlas_xyz/250), current ARM lookup policy with ties-to-even; anatomical/origin acceptance unresolved"
+      },
+      "component_root_node_id": 847,
+      "component_node_count": 21,
+      "component_branch_node_ids": [],
+      "component_full_graph_axon_leaf_ids": [
+        867
+      ],
+      "nominal_native_component_length_um": 168.6043655469108,
+      "selected_leaf_id": 867,
+      "selected_leaf_type": 2,
+      "selected_leaf_parent_id": 866,
+      "selected_leaf_native_xyz_um": [
+        20173.47265625,
+        21240.375,
+        30306.22265625
+      ],
+      "selected_leaf_distance_to_cube_faces_um": [
+        49.47265625,
+        180.375,
+        66.22265625,
+        184.52734375,
+        53.625,
+        203.77734375
+      ],
+      "local_cube_target_leaf_ids": [
+        867
+      ],
+      "image": {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252383/high_res_http/112/86_90_112.tif",
+        "sha256": "61d0e60ccf81cc71c6f8ecdd8c05931a353212b5555826c0f8cb6bab71aee202",
+        "cube_index_xyz": [
+          86,
+          90,
+          112
+        ],
+        "source_array_order": "ZYX",
+        "source_shape": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "native_origin_um": [
+          20124.0,
+          21060.0,
+          30240.0
+        ],
+        "nominal_spacing_um": [
+          0.65,
+          0.65,
+          3.0
+        ],
+        "display_array_order": "XYZ",
+        "optical_resolution": "unverified",
+        "origin_convention": "existing client nominal block index times block shape times spacing; no calibrated image/SWC origin proof",
+        "adjacent_cube_availability": {
+          "85_89_111": true,
+          "85_89_112": true,
+          "85_89_113": true,
+          "85_90_111": true,
+          "85_90_112": true,
+          "85_90_113": true,
+          "85_91_111": true,
+          "85_91_112": false,
+          "85_91_113": false,
+          "86_89_111": false,
+          "86_89_112": false,
+          "86_89_113": false,
+          "86_90_111": false,
+          "86_90_112": true,
+          "86_90_113": true,
+          "86_91_111": true,
+          "86_91_112": true,
+          "86_91_113": true,
+          "87_89_111": false,
+          "87_89_112": false,
+          "87_89_113": false,
+          "87_90_111": false,
+          "87_90_112": false,
+          "87_90_113": false,
+          "87_91_111": true,
+          "87_91_112": false,
+          "87_91_113": false
+        }
+      },
+      "reviewer": "Codex",
+      "review_state": "completed_bounded_morphology_and_source_plane_assessment",
+      "biological_terminal_state": "unassessed",
+      "bouton_synapse_state": "not_assessed",
+      "morphology_assessment": "simple_reconstructed_ending_not_branched_arbor",
+      "image_assessment": "local_ending_candidate_with_noisy_weak_plane_support",
+      "observation": "The putamen-labelled component contains a single short unbranched trajectory ending at node 867. A curved fluorescent neurite and terminal bright spot are visible near its XY location. The plane sweep is noisy; the connecting shaft is stronger at Z 30294\u201330300 \u00b5m and the spot remains near the nominal leaf plane 30306 \u00b5m. Local support is weaker than the clean 252790::032 example, so this is an image-backed simple-ending candidate with depth uncertainty, not a putamen terminal arbor.",
+      "truncation_assessment": "unresolved_due_to_weak_depth_and_background_support; no_confirmed_truncation",
+      "review_date": "2026-10-09",
+      "primary_inspected_figures": [
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252383_121/target_component_morphology.png",
+          "sha256": "40b1a1704e768e4cac0ad180df5af1e6d3720b7582072f2b9bb02f49758c6c5d"
+        },
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252383_121_ending_optical_planes.png",
+          "sha256": "7510335f68854d83567034daa40ca03d742ded0929ec5de2acaa3ee5c590a43d"
+        }
+      ],
+      "image_review_denominator": {
+        "selected_original_leaf_reviewed": 1,
+        "component_original_leaves": 1,
+        "complete_component_image_review": false
+      }
+    },
+    {
+      "NeuronUID": "252384::047.swc",
+      "AnimalID": "948",
+      "SourceARMFullName": "Atlas background",
+      "SourceARMStatus": "zero_unassigned",
+      "selection_purpose": "limited_image_coverage",
+      "selection_rule": "predeclared UID/target; cached cube with most target full-graph leaves, ties lexicographic cube XYZ; smallest leaf ID for detail",
+      "native_swc": {
+        "path": "group_analysis/visual_review_20261002/swc_raw/252384/047.swc",
+        "sha256": "fa8411f43e20af4260a22eb01c80deb56bebab30bc010200f8ce025efd5b9778"
+      },
+      "atlas_swc": {
+        "path": "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252384\\047.swc",
+        "sha256": "9d83804fb337e16eedf1761e4506fadc3491ad78b72d0b0b4bb6172dd46a0739"
+      },
+      "node_identity_type_parent_match": true,
+      "full_graph_validated": true,
+      "declared_target": {
+        "level": 6,
+        "index": 1004,
+        "full_name": "SL_claustrum",
+        "sampling": "np.rint(atlas_xyz/250), current ARM lookup policy with ties-to-even; anatomical/origin acceptance unresolved"
+      },
+      "component_root_node_id": 6477,
+      "component_node_count": 38,
+      "component_branch_node_ids": [],
+      "component_full_graph_axon_leaf_ids": [
+        6514
+      ],
+      "nominal_native_component_length_um": 257.576851358424,
+      "selected_leaf_id": 6514,
+      "selected_leaf_type": 2,
+      "selected_leaf_parent_id": 6513,
+      "selected_leaf_native_xyz_um": [
+        42183.84765625,
+        36968.12109375,
+        22588.5
+      ],
+      "selected_leaf_distance_to_cube_faces_um": [
+        63.84765625,
+        230.12109375,
+        178.5,
+        170.15234375,
+        3.87890625,
+        91.5
+      ],
+      "local_cube_target_leaf_ids": [
+        6514
+      ],
+      "image": {
+        "path": "group_analysis/visual_review_20261002/cache/cubes/252384/high_res_http/83/180_157_83.tif",
+        "sha256": "0fc5e47c8f66a7f007b8271d61364fbf7d577bad1a0c1ac24b2c51e1fa501d2a",
+        "cube_index_xyz": [
+          180,
+          157,
+          83
+        ],
+        "source_array_order": "ZYX",
+        "source_shape": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "native_origin_um": [
+          42120.0,
+          36738.0,
+          22410.0
+        ],
+        "nominal_spacing_um": [
+          0.65,
+          0.65,
+          3.0
+        ],
+        "display_array_order": "XYZ",
+        "optical_resolution": "unverified",
+        "origin_convention": "existing client nominal block index times block shape times spacing; no calibrated image/SWC origin proof",
+        "adjacent_cube_availability": {
+          "179_156_82": false,
+          "179_156_83": false,
+          "179_156_84": false,
+          "179_157_82": false,
+          "179_157_83": false,
+          "179_157_84": false,
+          "179_158_82": false,
+          "179_158_83": false,
+          "179_158_84": false,
+          "180_156_82": true,
+          "180_156_83": true,
+          "180_156_84": true,
+          "180_157_82": true,
+          "180_157_83": true,
+          "180_157_84": true,
+          "180_158_82": false,
+          "180_158_83": false,
+          "180_158_84": false,
+          "181_156_82": true,
+          "181_156_83": true,
+          "181_156_84": true,
+          "181_157_82": true,
+          "181_157_83": true,
+          "181_157_84": true,
+          "181_158_82": true,
+          "181_158_83": true,
+          "181_158_84": false
+        }
+      },
+      "reviewer": "Codex",
+      "review_state": "completed_bounded_morphology_and_source_plane_assessment",
+      "biological_terminal_state": "unassessed",
+      "bouton_synapse_state": "not_assessed",
+      "morphology_assessment": "simple_reconstructed_ending_not_branched_arbor",
+      "image_assessment": "ambiguous_ending_correspondence_near_uncached_cube_boundary",
+      "observation": "Leaf 6514 is only 3.879 nominal \u00b5m below the cube's upper-Y block boundary. Fluorescence occurs nearby across Z 22578\u201322593 \u00b5m, but the projected trace-to-signal depth correspondence is not precise enough to validate the end. The immediately adjoining upper-Y cube is absent from the local cache. The displayed edge is a cache/crop limit, not established tissue damage or an anatomical boundary.",
+      "truncation_assessment": "possible_unresolved_continuation_or_tracing_truncation; missing_adjacent_image_prevents_decision",
+      "review_date": "2026-10-09",
+      "primary_inspected_figures": [
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/252384_047/target_component_morphology.png",
+          "sha256": "465a4fc30bbc2699f06d41e3b4ce65ef677a9e1b7cc74497512e9f0cb7f0cc95"
+        },
+        {
+          "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252384_047_ending_optical_planes.png",
+          "sha256": "9494f762030e54828e2a686964cbf19c8d69000571a373ea54e3a704174dea5d"
+        }
+      ],
+      "image_review_denominator": {
+        "selected_original_leaf_reviewed": 1,
+        "component_original_leaves": 1,
+        "complete_component_image_review": false
+      }
+    }
+  ],
+  "passage_review": {
+    "NeuronUID": "252790::032.swc",
+    "target_index": 229,
+    "node_ids": [
+      7082,
+      7083,
+      7084,
+      7085,
+      7086,
+      7087,
+      7088,
+      7089,
+      7090,
+      7091,
+      7092,
+      7093,
+      7094,
+      7095,
+      7096,
+      7097,
+      7098,
+      7099,
+      7100,
+      7101,
+      7102,
+      7103,
+      7104,
+      7105,
+      7106,
+      7107,
+      7108,
+      7109,
+      7110,
+      7111,
+      7112,
+      7113,
+      7114,
+      7115,
+      7116,
+      7117,
+      7118,
+      7119,
+      7120,
+      7121,
+      7122,
+      7123,
+      7124,
+      7125,
+      7126,
+      7127,
+      7128
+    ],
+    "entry_link": [
+      7081,
+      7082
+    ],
+    "exit_links": [
+      [
+        7128,
+        7129
+      ]
+    ],
+    "full_graph_leaves": [],
+    "branch_nodes_within_target_component": [],
+    "selected_internal_node_id": 7105,
+    "source_cube": {
+      "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/111/180_84_111.tif",
+      "sha256": "d3acdefd3c22af00175f71886b6326ee66462589e87b49a03183f80e38131b71"
+    },
+    "classification": "reconstructed_target_passing_segment_candidate; en_passant_boutons_unassessed",
+    "reviewer": "Codex",
+    "review_date": "2026-10-09",
+    "review_state": "completed_graph_and_projected_image_context_assessment",
+    "observation": "Original entry and exit links cross the target boundary, with no full-graph leaves or local branch points. This is reconstructed passage rather than a target-induced ending. The dense fluorescent projected context does not establish absence of en passant boutons or a uniquely resolved branch at every point.",
+    "biological_terminal_state": "unassessed",
+    "bouton_synapse_state": "not_assessed",
+    "primary_inspected_figure": {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/252790_032_passage_image_and_swc.png",
+      "sha256": "fc56f15d16da494376dc1c6bcef7dfb96d152c0bfb9dbd6897e06d01c988708b"
+    }
+  },
+  "tests": {
+    "returncode": 0,
+    "output": "......\n----------------------------------------------------------------------\nRan 6 tests in 0.446s\n\nOK\n"
+  },
+  "bindings": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/generation_provenance.json",
+      "sha256": "66cbfd202b14822606b51fbf98642202ba4de04d16b86c726ea7929a17f786e0"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks_current_rint/optical_plane_provenance.json",
+      "sha256": "7fe778a1a2d9d15bb4d335e1f241402c6282bd122f57d494b9d487fb73346026"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/review_panels/display_provenance.json",
+      "sha256": "1df380feb82056eed0ddf2d8d94832b74c435373321b370aaff27689c0c2eb21"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/test_native_terminal_assessment.py",
+      "sha256": "48710fc0a4ab8abb8ccecc40e2cd0f7bbec9004469add1254d033fa5991670fb"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/independent_terminal_review.json",
+      "sha256": "caf27d51d8abb869230a5cf1c69ce4c49bba3afcf9a6e3e8a2908ee41d99b49e"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/finalize_codex_review.py",
+      "sha256": "3921e6e5f1e55c31070d16bb649a091f3f6865ec3f1c538571a572187e7f94b0"
+    }
+  ]
+}

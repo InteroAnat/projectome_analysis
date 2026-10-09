@@ -1,0 +1,4163 @@
+{
+  "status": "refreshed_source_scope_local_data_available_CM033_spatial_integration_unaccepted",
+  "checked_utc": "2026-10-09T03:49:02.478378+00:00",
+  "historical_receipt": "notes\\region_analysis_review_20261009\\mstim_source_update_20261009\\cm033_updated_debfmri_evidence.json",
+  "historical_receipt_sha256": "658c537c9150844b553eca6c7267e8a81338fdc4e46c2ca9faecf4863e833849",
+  "historical_receipt_preserved": true,
+  "historical_binding_count": 90,
+  "unchanged_historical_bindings": 87,
+  "changed_historical_bindings": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\audit_manifest.json",
+      "historical_sha256": "b2c5b17d37d356b92e204459b5ea47e1e2f01bad214c8e5bbf0935363c572dd9",
+      "current_sha256": "7127132e55ed07adcd9bb5104345c49593810651a1b78a4e91496f14e856291c",
+      "unchanged": false
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_ALIGNMENT_NORMALIZATION_AUDIT_20261009.md",
+      "historical_sha256": "5bdb9cea24d6064b24a785942b06f5684c89e0d8209e099558afce6d528047e6",
+      "current_sha256": "0191ff4aa18c015854de938e973a9a630b862653b15155d6d4d93b54f62b949b",
+      "unchanged": false
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\project_note.md",
+      "historical_sha256": "506572563438976d98275ae4e3a9f6df909a26a71ee026ba68e9e314e65e1382",
+      "current_sha256": "9acf7eac1bdefbbb610faa3d2f27e3f81d17cb6823fb07ed599c9938be92109e",
+      "unchanged": false
+    }
+  ],
+  "historical_binding_checks": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\audit_manifest.json",
+      "historical_sha256": "b2c5b17d37d356b92e204459b5ea47e1e2f01bad214c8e5bbf0935363c572dd9",
+      "current_sha256": "7127132e55ed07adcd9bb5104345c49593810651a1b78a4e91496f14e856291c",
+      "unchanged": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-brainEpi_T1w.nii",
+      "historical_sha256": "84cd3bf8bd9a0c1d7130bfb98c5598bad1a8e38ae50f78b6334254be579246ec",
+      "current_sha256": "84cd3bf8bd9a0c1d7130bfb98c5598bad1a8e38ae50f78b6334254be579246ec",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii",
+      "historical_sha256": "7f44eaf9c50f1b7046690322ac73273fe03aa08b2fff7b19d037d82cbe9fceeb",
+      "current_sha256": "7f44eaf9c50f1b7046690322ac73273fe03aa08b2fff7b19d037d82cbe9fceeb",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "historical_sha256": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+      "current_sha256": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\analysis_cm033_20160120.json",
+      "historical_sha256": "61c3ccaf0a1e0755f9ab6ca082c81113e459da4303869076d54bbfb8244185ca",
+      "current_sha256": "61c3ccaf0a1e0755f9ab6ca082c81113e459da4303869076d54bbfb8244185ca",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\scans_cm033_20160120.tsv",
+      "historical_sha256": "194a0163e6780b58e71fc46dcd702e9d419da3ea990d1b9b3101fd29bb204359",
+      "current_sha256": "194a0163e6780b58e71fc46dcd702e9d419da3ea990d1b9b3101fd29bb204359",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\NMT2CMT_Warped.nii",
+      "historical_sha256": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+      "current_sha256": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_CMT_Warped.nii.gz",
+      "historical_sha256": "2d2ce2b1a76cf5bda34855373ac9ebd4a3db35784f0fec84eea68f3aad544375",
+      "current_sha256": "2d2ce2b1a76cf5bda34855373ac9ebd4a3db35784f0fec84eea68f3aad544375",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\NMT_v2.0_sym_SS.nii.gz",
+      "historical_sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "current_sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_NMT_Warped.nii.gz",
+      "historical_sha256": "29817e66e4434ec3763a3f606a5cf1e8edf32d5de56645725aa84e41a83c3be4",
+      "current_sha256": "29817e66e4434ec3763a3f606a5cf1e8edf32d5de56645725aa84e41a83c3be4",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_ALIGNMENT_NORMALIZATION_AUDIT_20261009.md",
+      "historical_sha256": "5bdb9cea24d6064b24a785942b06f5684c89e0d8209e099558afce6d528047e6",
+      "current_sha256": "0191ff4aa18c015854de938e973a9a630b862653b15155d6d4d93b54f62b949b",
+      "unchanged": false
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\project_note.md",
+      "historical_sha256": "506572563438976d98275ae4e3a9f6df909a26a71ee026ba68e9e314e65e1382",
+      "current_sha256": "9acf7eac1bdefbbb610faa3d2f27e3f81d17cb6823fb07ed599c9938be92109e",
+      "unchanged": false
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\docs\\project_note.md",
+      "historical_sha256": "9f86c10c305457f4b01590dba7904aeb39701aaf72bdaf656743190bf0f22dd2",
+      "current_sha256": "9f86c10c305457f4b01590dba7904aeb39701aaf72bdaf656743190bf0f22dd2",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\docs\\CM033_ORIENTATION_REPAIR_20260926.md",
+      "historical_sha256": "50ebb6bfcd6e8f4012f0e1f0729c27f492f80f2acc70af2d14e5c02ab66433f7",
+      "current_sha256": "50ebb6bfcd6e8f4012f0e1f0729c27f492f80f2acc70af2d14e5c02ab66433f7",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\sessions\\cm033_20160120.yaml",
+      "historical_sha256": "cecc4574cbf544a76a1fd49a7f5ee435fda7703d793e9dc9501d1862d71676b6",
+      "current_sha256": "cecc4574cbf544a76a1fd49a7f5ee435fda7703d793e9dc9501d1862d71676b6",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\sessions\\cm033_20160120.yaml",
+      "historical_sha256": "cecc4574cbf544a76a1fd49a7f5ee435fda7703d793e9dc9501d1862d71676b6",
+      "current_sha256": "cecc4574cbf544a76a1fd49a7f5ee435fda7703d793e9dc9501d1862d71676b6",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm033.yaml",
+      "historical_sha256": "ecb70fa576f387094fdcf8f6fa8bdb591e54bc6be5b33378e594688958d2ef25",
+      "current_sha256": "ecb70fa576f387094fdcf8f6fa8bdb591e54bc6be5b33378e594688958d2ef25",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\preproc\\nii_reorientation.py",
+      "historical_sha256": "0216729a2f017812cb9471cb1969eeec2316d6af8527a43f6315463a38138071",
+      "current_sha256": "0216729a2f017812cb9471cb1969eeec2316d6af8527a43f6315463a38138071",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\fmri_pipeline\\preproc\\nii_reorientation.py",
+      "historical_sha256": "1363a2a585081e681ff0c2db6d7d69e93f41f26510062091a911f5c750394861",
+      "current_sha256": "1363a2a585081e681ff0c2db6d7d69e93f41f26510062091a911f5c750394861",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\before.json",
+      "historical_sha256": "9fc1dcffcc0d49435207aacc8ac17e544bba81428ae27d73757a3b6af422b78d",
+      "current_sha256": "9fc1dcffcc0d49435207aacc8ac17e544bba81428ae27d73757a3b6af422b78d",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\verification.json",
+      "historical_sha256": "c0c969f69049ef7697ed50704851c9892c2f15bd46a34e274fdb213495072025",
+      "current_sha256": "c0c969f69049ef7697ed50704851c9892c2f15bd46a34e274fdb213495072025",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\qc\\epi_sform.json",
+      "historical_sha256": "73f71433554c4e4f0d1fe5706a41c3d3a9d7ef1221da6739ecf650ba80c9bead",
+      "current_sha256": "73f71433554c4e4f0d1fe5706a41c3d3a9d7ef1221da6739ecf650ba80c9bead",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.nii",
+      "historical_sha256": "c92970644fee0621304730a6cc358cb72f95ad4dbe5d84b12d9e84e79b5e4197",
+      "current_sha256": "c92970644fee0621304730a6cc358cb72f95ad4dbe5d84b12d9e84e79b5e4197",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.mat",
+      "historical_sha256": "3f23199127f46f8cd25ee94dd3c519612b55568eed379c30e28e6f187f94834c",
+      "current_sha256": "3f23199127f46f8cd25ee94dd3c519612b55568eed379c30e28e6f187f94834c",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.nii",
+      "historical_sha256": "a946ecc323354511e2331ba7bf926271a01aab14da10dde2ccdd118170113733",
+      "current_sha256": "a946ecc323354511e2331ba7bf926271a01aab14da10dde2ccdd118170113733",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.mat",
+      "historical_sha256": "2cda32b50ae4f53208f29e016be868449c830d8f81181b9bab2ce3779052600f",
+      "current_sha256": "2cda32b50ae4f53208f29e016be868449c830d8f81181b9bab2ce3779052600f",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii",
+      "historical_sha256": "fbe4e8e4c06d8888b14b9baa90bfab1e1011cd309c56a73e5df028e114ef9e05",
+      "current_sha256": "fbe4e8e4c06d8888b14b9baa90bfab1e1011cd309c56a73e5df028e114ef9e05",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-brainEpi.nii",
+      "historical_sha256": "5acc1416c9a26c1711933f905611dbc5cefcc96010982c681d05f2bc7f4695e4",
+      "current_sha256": "5acc1416c9a26c1711933f905611dbc5cefcc96010982c681d05f2bc7f4695e4",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii",
+      "historical_sha256": "edcd3774bdeede873e4eb2ec384e0c27be4ee60f6e55b08eaf4b97d5090c2370",
+      "current_sha256": "edcd3774bdeede873e4eb2ec384e0c27be4ee60f6e55b08eaf4b97d5090c2370",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-16_desc-brainBoundarySampled_qc.png",
+      "historical_sha256": "fef6cf2b7a4fada7c9d669e64cc3b0b90c0d097f132d593214647fa1d63edd76",
+      "current_sha256": "fef6cf2b7a4fada7c9d669e64cc3b0b90c0d097f132d593214647fa1d63edd76",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-16_desc-brainBoundarySampled_qc.json",
+      "historical_sha256": "6c4661d4aed67c93a65c1fa44ea616242e7672f6966f9c9bd970d4be297fdf2f",
+      "current_sha256": "6c4661d4aed67c93a65c1fa44ea616242e7672f6966f9c9bd970d4be297fdf2f",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\sampled_means\\sub-cm033_ses-20160120_run-16_desc-fiveFrameSampleMean_bold.nii.gz",
+      "historical_sha256": "f9e35bf9cc81917026a370818900ec0388ef111986c44331665001530176821d",
+      "current_sha256": "f9e35bf9cc81917026a370818900ec0388ef111986c44331665001530176821d",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-39_desc-brainBoundarySampled_qc.png",
+      "historical_sha256": "e7c92db98f4960df8c1bf6fa627443f58812151613ff4272806cb6c74b90ad53",
+      "current_sha256": "e7c92db98f4960df8c1bf6fa627443f58812151613ff4272806cb6c74b90ad53",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-39_desc-brainBoundarySampled_qc.json",
+      "historical_sha256": "e9dbbf757fc07f4709022734b4408f9dd41481e6deca63e4d6c908ed51576e9d",
+      "current_sha256": "e9dbbf757fc07f4709022734b4408f9dd41481e6deca63e4d6c908ed51576e9d",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\sampled_means\\sub-cm033_ses-20160120_run-39_desc-fiveFrameSampleMean_bold.nii.gz",
+      "historical_sha256": "6599c9f6d51201b2c8705d2d728d2c595db976b478070b7ac1dc19f10d7d8b80",
+      "current_sha256": "6599c9f6d51201b2c8705d2d728d2c595db976b478070b7ac1dc19f10d7d8b80",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_space-NMT_desc-historicalNormCheckerboard_qc.png",
+      "historical_sha256": "ae6bc9d30f35ad34bd44a5db05f5a2ea4234626dd7244e19cae1451f4d2f789f",
+      "current_sha256": "ae6bc9d30f35ad34bd44a5db05f5a2ea4234626dd7244e19cae1451f4d2f789f",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-aligned_bold.nii",
+      "historical_sha256": "0c66bb635b5631824fbdbc364c8b8c6e6efb9c4bc2491b7c8ac2fe705864c865",
+      "current_sha256": "0c66bb635b5631824fbdbc364c8b8c6e6efb9c4bc2491b7c8ac2fe705864c865",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-aligned_bold.mat",
+      "historical_sha256": "a822a484c0c783a2a2822eba2331c7b8d0e40f676732ac5dbf104ad30d38d666",
+      "current_sha256": "a822a484c0c783a2a2822eba2331c7b8d0e40f676732ac5dbf104ad30d38d666",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-pos1_run-39_desc-aligned_bold.nii",
+      "historical_sha256": "786fdc0ff9561e1ce8fdcbf65bbc78b1d25288d865bc1af97f0e3c1329b2c4af",
+      "current_sha256": "786fdc0ff9561e1ce8fdcbf65bbc78b1d25288d865bc1af97f0e3c1329b2c4af",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-pos1_run-39_desc-aligned_bold.mat",
+      "historical_sha256": "c8fc403929698b23d3b9d8762cde74f25f7c9fa133d9d2f053e4f6e3fe11d828",
+      "current_sha256": "c8fc403929698b23d3b9d8762cde74f25f7c9fa133d9d2f053e4f6e3fe11d828",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\timing_correction_manifest.json",
+      "historical_sha256": "089d33da6beba0d482a11949473b13ba40e2a89a24f7266cd911bca2e051c841",
+      "current_sha256": "089d33da6beba0d482a11949473b13ba40e2a89a24f7266cd911bca2e051c841",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-alignedTimingCorrected_bold.nii",
+      "historical_sha256": "185959520430c0bcc901ac77066c1f4f22cf1286ed7835f5bebedb7b6cff7ffc",
+      "current_sha256": "185959520430c0bcc901ac77066c1f4f22cf1286ed7835f5bebedb7b6cff7ffc",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-17_desc-aligned_bold.nii",
+      "historical_sha256": "96c8cf1fbfb1f253360da9176585c552f1f904e15777374c0a489e543fb8fd65",
+      "current_sha256": "96c8cf1fbfb1f253360da9176585c552f1f904e15777374c0a489e543fb8fd65",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-17_desc-alignedTimingCorrected_bold.nii",
+      "historical_sha256": "72a3589c394ce0dcd446d3cb50e8ae87497ae6e5b56156e1c789233a9266969b",
+      "current_sha256": "72a3589c394ce0dcd446d3cb50e8ae87497ae6e5b56156e1c789233a9266969b",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-18_desc-aligned_bold.nii",
+      "historical_sha256": "5a85da3cb8702620aac748962a5493a9872dbde878bd7cd744557d2599d61570",
+      "current_sha256": "5a85da3cb8702620aac748962a5493a9872dbde878bd7cd744557d2599d61570",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-18_desc-alignedTimingCorrected_bold.nii",
+      "historical_sha256": "874b9a2934bb1c286b9c810cc4d3fa1afada1310e9868612056041ce99d61a0f",
+      "current_sha256": "874b9a2934bb1c286b9c810cc4d3fa1afada1310e9868612056041ce99d61a0f",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-unset_run-23_desc-aligned_bold.nii",
+      "historical_sha256": "91c864384e040b65530da5b6f3d7a0eba12507f5f8c63ced7ff39ccf1976c8de",
+      "current_sha256": "91c864384e040b65530da5b6f3d7a0eba12507f5f8c63ced7ff39ccf1976c8de",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-mstim_acq-unset_run-23_desc-alignedTimingCorrected_bold.nii",
+      "historical_sha256": "ade8f8f62217b5b148589c150aa59edb34aaaf3e8dcb2365a0420eafff8446f4",
+      "current_sha256": "ade8f8f62217b5b148589c150aa59edb34aaaf3e8dcb2365a0420eafff8446f4",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-45_desc-aligned_bold.nii",
+      "historical_sha256": "cb48954297f09d98e82240f74f6c25f69ed61268f5686c1bbe3352a7daed7823",
+      "current_sha256": "cb48954297f09d98e82240f74f6c25f69ed61268f5686c1bbe3352a7daed7823",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-45_desc-alignedTimingCorrected_bold.nii",
+      "historical_sha256": "1c3578b60064287b0c7082bd161de7972f97424d95debbcd87c216609ea0d1c9",
+      "current_sha256": "1c3578b60064287b0c7082bd161de7972f97424d95debbcd87c216609ea0d1c9",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-46_desc-aligned_bold.nii",
+      "historical_sha256": "d01f2d93627ab9b9f36b4716216c89d97cd4d869d7c5e5a47c66d6a34705836f",
+      "current_sha256": "d01f2d93627ab9b9f36b4716216c89d97cd4d869d7c5e5a47c66d6a34705836f",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-46_desc-alignedTimingCorrected_bold.nii",
+      "historical_sha256": "deca4f3b85b13d3e93bc3e5bd7d29ead530b144a24af7c1812ea42164c8d5a1d",
+      "current_sha256": "deca4f3b85b13d3e93bc3e5bd7d29ead530b144a24af7c1812ea42164c8d5a1d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-all-tr3-smooth2mm.json",
+      "historical_sha256": "96fe3332bdc278bf05164f36d8d2190c5818b2444bf1a38530f510c447b3bdea",
+      "current_sha256": "96fe3332bdc278bf05164f36d8d2190c5818b2444bf1a38530f510c447b3bdea",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-all-tr3-smooth2mm-tapas.json",
+      "historical_sha256": "0195116771f6185a1f1c221dd07880bb6c75cbddddc2208afd5f37dbcf875935",
+      "current_sha256": "0195116771f6185a1f1c221dd07880bb6c75cbddddc2208afd5f37dbcf875935",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-pos1-short-tr3-smooth2mm.json",
+      "historical_sha256": "3c3618a8196ab6ae32248f1fa47e41848f2979ac402bcaae6ca1075dde39853b",
+      "current_sha256": "3c3618a8196ab6ae32248f1fa47e41848f2979ac402bcaae6ca1075dde39853b",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-pos1-short-tr3-smooth2mm-tapas.json",
+      "historical_sha256": "6b83c51f073b08ec8b3c37cdc88164149956a8e299ed6f17ae2df8bfab3af2ae",
+      "current_sha256": "6b83c51f073b08ec8b3c37cdc88164149956a8e299ed6f17ae2df8bfab3af2ae",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr2-smooth2mm.json",
+      "historical_sha256": "ef60771835114606c6c9929e8c99ebcfd12483e6ecc7a7fcac6b0aaf04c06868",
+      "current_sha256": "ef60771835114606c6c9929e8c99ebcfd12483e6ecc7a7fcac6b0aaf04c06868",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr2-smooth2mm-tapas.json",
+      "historical_sha256": "e94d924291c8b81ceb0dc31b3a6f902dd185293644c653d801e89f1f1407d2ad",
+      "current_sha256": "e94d924291c8b81ceb0dc31b3a6f902dd185293644c653d801e89f1f1407d2ad",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr6-smooth2mm.json",
+      "historical_sha256": "57f86434f519cc467d441a705e9d5b0abd60782b2820fd33b6d232221c17c731",
+      "current_sha256": "57f86434f519cc467d441a705e9d5b0abd60782b2820fd33b6d232221c17c731",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr6-smooth2mm-tapas.json",
+      "historical_sha256": "fc069c870a0ecb7896bb0dd8dc998a80de030b88b64125d2194c3007fbd8f03a",
+      "current_sha256": "fc069c870a0ecb7896bb0dd8dc998a80de030b88b64125d2194c3007fbd8f03a",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-pos1-tr3-smooth2mm.json",
+      "historical_sha256": "ca4e501db1ff2d249f931ff3d159b74ce0de7d1fb201ba88f87769e613f8c4a7",
+      "current_sha256": "ca4e501db1ff2d249f931ff3d159b74ce0de7d1fb201ba88f87769e613f8c4a7",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-pos1-tr3-smooth2mm-tapas.json",
+      "historical_sha256": "1f231c122f9fcec91d9baef4249fd188bc0ec7477cbac2afd6b24a588c4a2387",
+      "current_sha256": "1f231c122f9fcec91d9baef4249fd188bc0ec7477cbac2afd6b24a588c4a2387",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr1-smooth2mm.json",
+      "historical_sha256": "879f55fea98934f8289725a02092726f85b0f129265a27df557e684d2145b2ec",
+      "current_sha256": "879f55fea98934f8289725a02092726f85b0f129265a27df557e684d2145b2ec",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr1-smooth2mm-tapas.json",
+      "historical_sha256": "bb4f5d24c69aec2d3fa3cc24794798d38a677ae2a0299f6dff10becede09a132",
+      "current_sha256": "bb4f5d24c69aec2d3fa3cc24794798d38a677ae2a0299f6dff10becede09a132",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr6-smooth2mm.json",
+      "historical_sha256": "51caaf96b411835fb609b59c8a4f613ba7377bffb2b26f972221c19bccbaec2d",
+      "current_sha256": "51caaf96b411835fb609b59c8a4f613ba7377bffb2b26f972221c19bccbaec2d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr6-smooth2mm-tapas.json",
+      "historical_sha256": "ce208b425556ed98b063c93889e3844280497f02fe70ca8c345c8bbd5dce718b",
+      "current_sha256": "ce208b425556ed98b063c93889e3844280497f02fe70ca8c345c8bbd5dce718b",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\SPM.mat",
+      "historical_sha256": "11cd1bae73cb46aea1ddabeb6ee2be4ccc7f28e138e5b0d22fd4ac3e6cf4a8de",
+      "current_sha256": "11cd1bae73cb46aea1ddabeb6ee2be4ccc7f28e138e5b0d22fd4ac3e6cf4a8de",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\contrasts.json",
+      "historical_sha256": "fd48769331400bd739491197bdf07548e8fd90ce243b8914732fbc11e2569d64",
+      "current_sha256": "fd48769331400bd739491197bdf07548e8fd90ce243b8914732fbc11e2569d64",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\glm_config_summary.txt",
+      "historical_sha256": "6d62554139ad6ddcfc51e2fb93628bcecb79f2f51a2d9a40e987a11dac3fae3e",
+      "current_sha256": "6d62554139ad6ddcfc51e2fb93628bcecb79f2f51a2d9a40e987a11dac3fae3e",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\con_0001.nii",
+      "historical_sha256": "0cec3e612aed997ce1d1bb0b1bf2005727d182a2fa45b96cc71482778ea1321e",
+      "current_sha256": "0cec3e612aed997ce1d1bb0b1bf2005727d182a2fa45b96cc71482778ea1321e",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\spmT_0001.nii",
+      "historical_sha256": "65f8c1d56e83ec1f9e6c33c671a6001bd2fddc2a58df4ac65d0cac7d2bd99467",
+      "current_sha256": "65f8c1d56e83ec1f9e6c33c671a6001bd2fddc2a58df4ac65d0cac7d2bd99467",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\mask.nii",
+      "historical_sha256": "bba34100018bb4eb8220ec664a60463193d01f340e61703fa99c04c99f7b5edd",
+      "current_sha256": "bba34100018bb4eb8220ec664a60463193d01f340e61703fa99c04c99f7b5edd",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat",
+      "historical_sha256": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+      "current_sha256": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\contrasts.json",
+      "historical_sha256": "24180738fd9e65ff0ef9078dc2b1d5fd3d7ab501c59853978163de930094e4a4",
+      "current_sha256": "24180738fd9e65ff0ef9078dc2b1d5fd3d7ab501c59853978163de930094e4a4",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\glm_config_summary.txt",
+      "historical_sha256": "181f01ebbda3106473f0cd5f5a8589b6f823dc4de9c8c3ca80a232538a1d026f",
+      "current_sha256": "181f01ebbda3106473f0cd5f5a8589b6f823dc4de9c8c3ca80a232538a1d026f",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+      "historical_sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+      "current_sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii",
+      "historical_sha256": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+      "current_sha256": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\mask.nii",
+      "historical_sha256": "e6e3d90808d8607322cfa9ac72b58790535fc7e222145f1adc1ffdd74a4785a2",
+      "current_sha256": "e6e3d90808d8607322cfa9ac72b58790535fc7e222145f1adc1ffdd74a4785a2",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\SPM.mat",
+      "historical_sha256": "e34ac694e5744c20f56624dfbadd0ade5ee79b8a01466673e771a93b61ca4a51",
+      "current_sha256": "e34ac694e5744c20f56624dfbadd0ade5ee79b8a01466673e771a93b61ca4a51",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\contrasts.json",
+      "historical_sha256": "d5f001f4d21da5437bb0d64f4e2b75700136cf7ddf45f4bed004c9df40efc473",
+      "current_sha256": "d5f001f4d21da5437bb0d64f4e2b75700136cf7ddf45f4bed004c9df40efc473",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\glm_config_summary.txt",
+      "historical_sha256": "7dfb593dd3065524a8e51f8d682ab7da69d2fa7166202900eb971c4689ca79a0",
+      "current_sha256": "7dfb593dd3065524a8e51f8d682ab7da69d2fa7166202900eb971c4689ca79a0",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\con_0001.nii",
+      "historical_sha256": "1fd647b1e91355d609c3a6bfa4156ddfb16bebae798cdc56997b04317b2f2411",
+      "current_sha256": "1fd647b1e91355d609c3a6bfa4156ddfb16bebae798cdc56997b04317b2f2411",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\spmT_0001.nii",
+      "historical_sha256": "6c3faf618229fbb6b8741d9b5bb3847a77a02157de07b5a406bb1408bbd99848",
+      "current_sha256": "6c3faf618229fbb6b8741d9b5bb3847a77a02157de07b5a406bb1408bbd99848",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\mask.nii",
+      "historical_sha256": "6df27c0c56d1fe92554c31a7b145f31ea593205150c04675efc4abc7e9426b6b",
+      "current_sha256": "6df27c0c56d1fe92554c31a7b145f31ea593205150c04675efc4abc7e9426b6b",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\SPM.mat",
+      "historical_sha256": "f9207fcbac41cba2adbd35dd3c84c56ea19d2579eaaf1581c6393bb6c49febca",
+      "current_sha256": "f9207fcbac41cba2adbd35dd3c84c56ea19d2579eaaf1581c6393bb6c49febca",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\contrasts.json",
+      "historical_sha256": "cbf0504229b802d6ac8c1619f2e77a499653a2e1c5843c3021b2d2354363f7ca",
+      "current_sha256": "cbf0504229b802d6ac8c1619f2e77a499653a2e1c5843c3021b2d2354363f7ca",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\glm_config_summary.txt",
+      "historical_sha256": "0621081966a7198a38000a9489916f2e88ec82a92365d9c4b43d5120a28d8c46",
+      "current_sha256": "0621081966a7198a38000a9489916f2e88ec82a92365d9c4b43d5120a28d8c46",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\con_0001.nii",
+      "historical_sha256": "9feeef8f697a279adf2cd628d30c4dde83f8bbd68f5ae407a4d8db74dc66a1d8",
+      "current_sha256": "9feeef8f697a279adf2cd628d30c4dde83f8bbd68f5ae407a4d8db74dc66a1d8",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\spmT_0001.nii",
+      "historical_sha256": "ecb80ba5cfd128c2286094455e16b8f2e1a1c1ddff3f493bfacc8a922d797e0d",
+      "current_sha256": "ecb80ba5cfd128c2286094455e16b8f2e1a1c1ddff3f493bfacc8a922d797e0d",
+      "unchanged": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\mask.nii",
+      "historical_sha256": "f99ce7dd5826ad4874831cb27b220260a16a2f40c107be14bc95877041dc556f",
+      "current_sha256": "f99ce7dd5826ad4874831cb27b220260a16a2f40c107be14bc95877041dc556f",
+      "unchanged": true
+    }
+  ],
+  "current_acceptance_statement": "UNACCEPTED: local source mapping, image geometry and anatomical QC pending",
+  "current_manifest_scope": "All included saved production derivatives; no new registration or normalization fit.",
+  "user_designated_source_root": "D:/OPTO_fMRI_CM",
+  "additional_source_dataset_requested": false,
+  "current_manifest_summary": {
+    "aligned_unique": 19,
+    "same_ref_grid": 19,
+    "tr_matches": 15,
+    "raw_inputs_at_configured_path": 0,
+    "explicit_mm_seconds": 13,
+    "tr_and_units_match": 13
+  },
+  "current_configured_native_session_exists": false,
+  "current_configured_epi_norm_exists": false,
+  "historical_ana_norm_exists": true,
+  "old_configured_0of19_interpretation": "Old configured native BIDS paths are absent, not user-designated local source data. Another dataset is not required.",
+  "local_sources": {
+    "root_exists": true,
+    "plain_unprefixed_EPI_count": 36,
+    "task_counts": {
+      "MSTIM": 29,
+      "OPTO": 7
+    },
+    "matching_json_count": 36,
+    "anatomical_nii_count": 66,
+    "source_inventory": [
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-02_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          576
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          2.0
+        ],
+        "affine": [
+          [
+            -0.7497508525848389,
+            0.019212067127227783,
+            0.006377458572387695,
+            44.235801696777344
+          ],
+          [
+            0.019137263298034668,
+            0.7494039535522461,
+            -0.0680464506149292,
+            -45.75566101074219
+          ],
+          [
+            0.00273895263671875,
+            0.022903144359588623,
+            2.2211711406707764,
+            -12.356616973876953
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "caaef849ac66c26924ca197c46bffb03293d8a32315ef0d14018ca285167330a",
+        "bytes": 1358954848,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-02_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "d1b5a88d78a245f6a9cc1866f72457f4841649c612cddcd66142309b92916d5a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-03_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7499513626098633,
+            0.007939159870147705,
+            -0.009331583976745605,
+            44.97496032714844
+          ],
+          [
+            0.008051395416259766,
+            0.7494323253631592,
+            -0.08308601379394531,
+            -44.99024963378906
+          ],
+          [
+            -0.002850174903869629,
+            0.028073489665985107,
+            2.220648765563965,
+            -11.982229232788086
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "601d6b8fc1da46e19a73b2af83c1b831720f702b63b6b055b9f3af78d6773fec",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-03_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "c9912143b98011103c5a04dab2feb704910b1d70b5dea5e46a64eb3c858601cd",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-04_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7499504089355469,
+            0.008043527603149414,
+            -0.009262800216674805,
+            44.998199462890625
+          ],
+          [
+            0.008151888847351074,
+            0.7494601607322693,
+            -0.08076512813568115,
+            -45.030391693115234
+          ],
+          [
+            -0.002831578254699707,
+            0.027290403842926025,
+            2.2207348346710205,
+            -11.93310260772705
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "02cab4d70d32499a5deb367a1c0da516c5804dc20ecf08c1906d299d0555f9d3",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-04_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "c9912143b98011103c5a04dab2feb704910b1d70b5dea5e46a64eb3c858601cd",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-05_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494356632232666,
+            -0.019839763641357422,
+            -0.06303548812866211,
+            46.745059967041016
+          ],
+          [
+            -0.017184853553771973,
+            0.7445108890533447,
+            -0.263491153717041,
+            -42.84518051147461
+          ],
+          [
+            -0.02347111701965332,
+            0.08837389945983887,
+            2.2056450843811035,
+            -14.426494598388672
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "bf3f421661f377d933364a5e86211c713884a38b279e94f0b4dadfa5edd4263b",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-05_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-06_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494320869445801,
+            -0.01977849006652832,
+            -0.06357729434967041,
+            46.73196029663086
+          ],
+          [
+            -0.017061233520507812,
+            0.744357168674469,
+            -0.26734626293182373,
+            -42.866817474365234
+          ],
+          [
+            -0.02367532253265381,
+            0.08967292308807373,
+            2.2051658630371094,
+            -14.47050952911377
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "2c2266bbdaa9653203fab6f1b6c31e0b79946dcd10de8262ec9c48bc248f5716",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-06_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-07_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.749421238899231,
+            -0.01977717876434326,
+            -0.06469464302062988,
+            46.736751556396484
+          ],
+          [
+            -0.017036795616149902,
+            0.744439959526062,
+            -0.2653278112411499,
+            -42.8790397644043
+          ],
+          [
+            -0.02403390407562256,
+            0.08898299932479858,
+            2.2053771018981934,
+            -14.387541770935059
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "d11fde68514076729833820298773315817d48004aa9472829e2534275e23d26",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-07_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          160
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494339942932129,
+            -0.019567251205444336,
+            -0.06394374370574951,
+            46.7148551940918
+          ],
+          [
+            -0.016872882843017578,
+            0.7444984316825867,
+            -0.26397669315338135,
+            -42.96569061279297
+          ],
+          [
+            -0.02374708652496338,
+            0.08853942155838013,
+            2.2055611610412598,
+            -14.373309135437012
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "6874161e53d73f52c241a26cd2fe56a58ff511f6ef0831ad61eec5a56bd5fdda",
+        "bytes": 377487712,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "edee236f5a514ded4eb3cca09809520f203e35b43519fbb6c73c30e1ebd242f0",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-09_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          160
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494463920593262,
+            -0.019595980644226074,
+            -0.06257903575897217,
+            46.74308776855469
+          ],
+          [
+            -0.01697683334350586,
+            0.7445759177207947,
+            -0.2619919776916504,
+            -42.95845031738281
+          ],
+          [
+            -0.023277997970581055,
+            0.08787894248962402,
+            2.205836772918701,
+            -14.39555549621582
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "2b0c3106a737d20ab9ef64f36b0c6b19e749dba7ae55fb54e501ce25d5f02b2e",
+        "bytes": 377487712,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-09_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "edee236f5a514ded4eb3cca09809520f203e35b43519fbb6c73c30e1ebd242f0",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-10_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494450807571411,
+            -0.018880844116210938,
+            -0.06461286544799805,
+            46.713401794433594
+          ],
+          [
+            -0.016228079795837402,
+            0.744748055934906,
+            -0.2580834627151489,
+            -43.10341262817383
+          ],
+          [
+            -0.023846864700317383,
+            0.08656686544418335,
+            2.2062387466430664,
+            -14.281974792480469
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "79f9b69ae7f29292e3acf37269056a49c1db258bce6eab6cebf5cdc0542481c8",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-10_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-11_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494536638259888,
+            -0.018866300582885742,
+            -0.06377315521240234,
+            46.76809310913086
+          ],
+          [
+            -0.016199588775634766,
+            0.7445746660232544,
+            -0.2624540328979492,
+            -43.076011657714844
+          ],
+          [
+            -0.02359592914581299,
+            0.08804881572723389,
+            2.205747604370117,
+            -14.432927131652832
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "9e368c08d036198590c4ba97adb2b726939d404e7c88465a893c389941535803",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-11_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-12_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494068145751953,
+            -0.014819502830505371,
+            -0.07668137550354004,
+            46.64731979370117
+          ],
+          [
+            -0.011423707008361816,
+            0.7438520789146423,
+            -0.28192687034606934,
+            -43.09218978881836
+          ],
+          [
+            -0.02754795551300049,
+            0.09468084573745728,
+            2.2029318809509277,
+            -14.628076553344727
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "04979ccf89ded758da9a12f85a2859285cb53aa1862381b74b89baac133335fd",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-12_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-13_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494059801101685,
+            -0.0146256685256958,
+            -0.07708394527435303,
+            46.642906188964844
+          ],
+          [
+            -0.01121973991394043,
+            0.743874192237854,
+            -0.2814866304397583,
+            -43.13030242919922
+          ],
+          [
+            -0.027655959129333496,
+            0.09453731775283813,
+            2.202974319458008,
+            -14.647726058959961
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "b8b56e5689887f8ada698d96bb22882f3eb84e7a9e569269a39fbf67697fa2fc",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-13_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-14_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494077682495117,
+            -0.014321565628051758,
+            -0.07742917537689209,
+            46.59186553955078
+          ],
+          [
+            -0.010873198509216309,
+            0.7437764406204224,
+            -0.2838636636734009,
+            -43.16250991821289
+          ],
+          [
+            -0.02774488925933838,
+            0.09534949064254761,
+            2.2026572227478027,
+            -14.668261528015137
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "2bb96d61519a661c9977b30a17796e70bd916a01f11880d69d54e5d92f1d40bf",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-14_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-15_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494200468063354,
+            -0.014758706092834473,
+            -0.0756462812423706,
+            46.59935760498047
+          ],
+          [
+            -0.011407732963562012,
+            0.7438530921936035,
+            -0.2819098234176636,
+            -43.84461212158203
+          ],
+          [
+            -0.027193665504455566,
+            0.09468263387680054,
+            2.202970027923584,
+            -14.772014617919922
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "d7bcc10e747042f898f566cf92dce23da3e3d5b7639347c7331390c16d1fb7b0",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-15_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "714990b9f1043104269be31333336d336a685a135487fd6d8d9866b7ab0c9e04",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-16_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494158744812012,
+            -0.01433706283569336,
+            -0.07671201229095459,
+            46.553489685058594
+          ],
+          [
+            -0.010927200317382812,
+            0.7438031435012817,
+            -0.2832298278808594,
+            -43.88322448730469
+          ],
+          [
+            -0.02750372886657715,
+            0.09513843059539795,
+            2.202763795852661,
+            -14.764617919921875
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "e1d9c724b1882f42afc77646972fc43a68a69eaa5aa31a5f004bea78ecfc95c7",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-16_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "e21e8cd4b8c5e499940eb558460ff9031fa9a2452a5265238ed4bcc9f707bbb3",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-17_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494064569473267,
+            -0.014695525169372559,
+            -0.07692265510559082,
+            46.55592727661133
+          ],
+          [
+            -0.011319637298583984,
+            0.743954062461853,
+            -0.2795923948287964,
+            -43.89917755126953
+          ],
+          [
+            -0.027601003646850586,
+            0.09389591217041016,
+            2.203221082687378,
+            -14.732901573181152
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "158bd1e8099567d5bbd2f8d62b4ecca610c267189f6fb57f18f5617426c7d4a5",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-17_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "c02d416ab2c480fd09e71a03a51cf9177bc7c528394a611656378c07748c444c",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-18_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494027614593506,
+            -0.01469731330871582,
+            -0.07723188400268555,
+            46.58647155761719
+          ],
+          [
+            -0.011314034461975098,
+            0.7439732551574707,
+            -0.27914583683013916,
+            -44.08022689819336
+          ],
+          [
+            -0.02770256996154785,
+            0.09374350309371948,
+            2.2032668590545654,
+            -14.761929512023926
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "6e99ce17c941dcea28b1cea061e99d7f7f16f1ae7c90bd98d8fc0397d9f0f84d",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-18_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "e588378b16f0a0c4e035a3747b0a0d1e7ccb437e53224c2fc5fa882779d39378",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-19_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493995428085327,
+            -0.015015721321105957,
+            -0.07696771621704102,
+            46.60467529296875
+          ],
+          [
+            -0.011645793914794922,
+            0.7439837455749512,
+            -0.2787797451019287,
+            -43.94777297973633
+          ],
+          [
+            -0.02765190601348877,
+            0.0936095118522644,
+            2.203322410583496,
+            -14.731658935546875
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "1a0756f106ce5d2acb73e5794c9ab8b296ba7c86a311e12cdd32305ef765460d",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-19_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "a13d4b4ce1aea6d88f8bf1d160c27f44b1d37a3625bbd2b47864c22d655a26ba",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-20_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493865489959717,
+            -0.01531219482421875,
+            -0.07756483554840088,
+            46.62520217895508
+          ],
+          [
+            -0.011901497840881348,
+            0.7439342737197876,
+            -0.27984070777893066,
+            -43.96489334106445
+          ],
+          [
+            -0.02789461612701416,
+            0.09395360946655273,
+            2.203166961669922,
+            -14.740665435791016
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "d2f7dbacc1ee5b2240231bcb77d3c369408da2569a3ed67913962739c5c4e272",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-20_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "e1ef4968867f597c59be8b03ba7a19d48f41eddcecbfb12c2f6fe081ed1114e2",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-21_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494004964828491,
+            -0.01478731632232666,
+            -0.07727468013763428,
+            46.578338623046875
+          ],
+          [
+            -0.011374473571777344,
+            0.7438802719116211,
+            -0.28129148483276367,
+            -43.977882385253906
+          ],
+          [
+            -0.02773916721343994,
+            0.09446448087692261,
+            2.2029924392700195,
+            -14.807904243469238
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "4ab5c54dda048d6417a9815707f2489d1b428def1a96bc7aa62fb1b7472ce5cc",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-21_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "a3b8803721224764b1e872a15b098547def926fce97ef58cda65c74dcc374ccf",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-22_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493886947631836,
+            -0.014930129051208496,
+            -0.07803583145141602,
+            46.592628479003906
+          ],
+          [
+            -0.011479377746582031,
+            0.7438634634017944,
+            -0.2816430330276489,
+            -43.98623275756836
+          ],
+          [
+            -0.02801382541656494,
+            0.09457391500473022,
+            2.20292067527771,
+            -14.78093147277832
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "3eac59a292f84b75c05fac4e71f989a61c44dbad74f78e70309430f3e1b81df4",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-22_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "34f857ad97404ae55374c2f8cbd20cbcd3fa3050bde440156bb67242baddda2d",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-23_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493948936462402,
+            -0.0148850679397583,
+            -0.07759368419647217,
+            46.59082794189453
+          ],
+          [
+            -0.011443257331848145,
+            0.7438291311264038,
+            -0.2824516296386719,
+            -43.995582580566406
+          ],
+          [
+            -0.02786433696746826,
+            0.09485089778900146,
+            2.2028326988220215,
+            -14.816926956176758
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "5ee29ac108fe896ead9d6bf239e070acf019d0ab55afc6034fb0c18be1bb18f5",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-23_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "5b120b577c2c4f088914560a1d8e97f7abd1189c4d096cf02f5c73778347b098",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-24_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494010925292969,
+            -0.014671564102172852,
+            -0.0774163007736206,
+            46.5735969543457
+          ],
+          [
+            -0.01124727725982666,
+            0.7438610196113586,
+            -0.28178226947784424,
+            -44.02092742919922
+          ],
+          [
+            -0.027774572372436523,
+            0.09463375806808472,
+            2.2029247283935547,
+            -14.810550689697266
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "1f1fbd2969150218530296ed87061984348be864fc78a2cfce4aeb38f400da24",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-24_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "cbfe28138b6cdc31f46ed52399b4047cea125c61dde48086b51fed3bcb874c41",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-25_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494016885757446,
+            -0.014861106872558594,
+            -0.07705545425415039,
+            46.57898712158203
+          ],
+          [
+            -0.011465907096862793,
+            0.7439092397689819,
+            -0.28058505058288574,
+            -43.984371185302734
+          ],
+          [
+            -0.027671456336975098,
+            0.09422433376312256,
+            2.203090190887451,
+            -14.785785675048828
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "9498b04a67d6a5c95a5cd1aa1ee0b03ce3b25b3bd00f0ba61ecb2452f0361a21",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-25_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "a2e43d3b5456ec12c02c92be922a13054defd10381e3c15293a9aec3fd0ada82",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-26_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494028806686401,
+            -0.014975547790527344,
+            -0.076759934425354,
+            46.590606689453125
+          ],
+          [
+            -0.011585474014282227,
+            0.7438849210739136,
+            -0.2811068296432495,
+            -43.831298828125
+          ],
+          [
+            -0.02758967876434326,
+            0.09439784288406372,
+            2.203033924102783,
+            -14.778481483459473
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "36da471645e3630ad4bd361f48713bddefd5b5868ec3d5e402268cb5c0605b2e",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-26_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "58d660373a4789e58ca0e50a1d120dcf44253d170210a724e1a53fb76fc7404f",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-27_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494027614593506,
+            -0.014478564262390137,
+            -0.07759809494018555,
+            46.5850715637207
+          ],
+          [
+            -0.011087775230407715,
+            0.7439984679222107,
+            -0.2786339521408081,
+            -44.00086212158203
+          ],
+          [
+            -0.02779519557952881,
+            0.09357690811157227,
+            2.2033188343048096,
+            -14.772750854492188
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "9c5055587213dc80600020c2475f5794c6a81aa504f1078779607b58cc590291",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-27_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "966b9e287fd37ae760f9d7d8fe820c39716b52197300d4e055707ab9adab0a4b",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-28_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494022846221924,
+            -0.014352798461914062,
+            -0.07783913612365723,
+            46.6079216003418
+          ],
+          [
+            -0.010968804359436035,
+            0.7440539598464966,
+            -0.27737128734588623,
+            -44.07691955566406
+          ],
+          [
+            -0.027853965759277344,
+            0.09315401315689087,
+            2.203469753265381,
+            -14.788961410522461
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "7e7d7a69ecb08cc39c30c9d8d24bca5952287909030ea15f02ae848c17c188e7",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-28_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "f7e13bab9aabeca8e318e522e6aa4bd2ac87f1d66c1bb8db3f7db1717f55f100",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-29_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7494033575057983,
+            -0.01440119743347168,
+            -0.07767581939697266,
+            46.62430953979492
+          ],
+          [
+            -0.011024713516235352,
+            0.7440569996833801,
+            -0.2772810459136963,
+            -43.98749542236328
+          ],
+          [
+            -0.02780473232269287,
+            0.09312254190444946,
+            2.203486680984497,
+            -14.788450241088867
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "9f8c61f1cac6238e9440d97729063f2d6580147e9ec82bb3e88584a07d35e6e1",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-29_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "54231d81b852da18995087b4ae144ea9f4599070dc16096d2a70d12ee76adbb3",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-30_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493966817855835,
+            -0.014659762382507324,
+            -0.07781565189361572,
+            46.6165657043457
+          ],
+          [
+            -0.011248469352722168,
+            0.7439625263214111,
+            -0.2794191837310791,
+            -43.94456100463867
+          ],
+          [
+            -0.02789461612701416,
+            0.09383422136306763,
+            2.203211784362793,
+            -14.827010154724121
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "fed7d67db833a3f16e039a531d7a0fb64d4f4aa455601af6237e26eeccaa15cf",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-30_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "29f274763a5862a827c6cba9e743e6716db8868e1520ba4f852b428364db2005",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.nii",
+        "shape": [
+          128,
+          128,
+          19,
+          96
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.1052632331848145,
+          6.0
+        ],
+        "affine": [
+          [
+            -0.7495779991149902,
+            -0.004454374313354492,
+            -0.06949341297149658,
+            45.91007614135742
+          ],
+          [
+            -0.0043457746505737305,
+            0.7499798536300659,
+            -0.009427666664123535,
+            -43.894100189208984
+          ],
+          [
+            -0.024776339530944824,
+            0.0032132863998413086,
+            2.104094982147217,
+            -8.306814193725586
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "f2c367cd0e6561aa3aa9ace5f8681810a7b9ca4be531415fb8321bac384598bc",
+        "bytes": 239075680,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "8faf534b56a1723c09cbfe6fc9abf073170ebaac35c37169b435c6f4c265127c",
+        "SequenceName": "EPI13_standard",
+        "SliceTiming_count": 19,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-02_EPI.nii",
+        "shape": [
+          128,
+          128,
+          19,
+          96
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.1052632331848145,
+          6.0
+        ],
+        "affine": [
+          [
+            -0.749719500541687,
+            -0.005259990692138672,
+            -0.05564224720001221,
+            45.9864501953125
+          ],
+          [
+            -0.005141139030456543,
+            0.7499685287475586,
+            -0.012799620628356934,
+            -43.93975067138672
+          ],
+          [
+            -0.019853711128234863,
+            0.004422307014465332,
+            2.1044888496398926,
+            -8.719773292541504
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "108100165737b2928291f0e7ccfc229d20bbb9b369a2daf324e01aef1aa9d36f",
+        "bytes": 239075680,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-02_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "41e768ff1c282d064c320c78ab598f3d9da33b8d498d1fff9d5d11b41b70317c",
+        "SequenceName": "EPI13_standard",
+        "SliceTiming_count": 19,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-03_EPI.nii",
+        "shape": [
+          128,
+          128,
+          19,
+          96
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.1052632331848145,
+          6.0
+        ],
+        "affine": [
+          [
+            -0.7497348785400391,
+            -0.007360100746154785,
+            -0.052017807960510254,
+            46.07255935668945
+          ],
+          [
+            -0.0072242021560668945,
+            0.7499444484710693,
+            -0.01566624641418457,
+            -43.78982925415039
+          ],
+          [
+            -0.018584728240966797,
+            0.005400598049163818,
+            2.104562282562256,
+            -8.851082801818848
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "783602e9828d636a84a1f1da63cc8d849ac103371a1a1353663818ddbfb57a45",
+        "bytes": 239075680,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-03_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "ccde1e15a7408b39c238b9af28e0fd56b815b9476a154d6024266aaef3401ae4",
+        "SequenceName": "EPI13_standard",
+        "SliceTiming_count": 19,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493817806243896,
+            -0.021019697189331055,
+            -0.06526386737823486,
+            46.847686767578125
+          ],
+          [
+            -0.018305659294128418,
+            0.7446190118789673,
+            -0.26012539863586426,
+            -42.95876693725586
+          ],
+          [
+            -0.024329066276550293,
+            0.08718234300613403,
+            2.205979824066162,
+            -14.102527618408203
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "dc92d19cd7e5a5c2f16a4920061e8a6b12df08151bc26057c7a4abd6d0d7b6fe",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-05_EPI.nii",
+        "shape": [
+          128,
+          128,
+          25,
+          1152
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          1.600000023841858,
+          1.0
+        ],
+        "affine": [
+          [
+            -0.7497590780258179,
+            -0.0166018009185791,
+            -0.01974165439605713,
+            45.964393615722656
+          ],
+          [
+            -0.01597118377685547,
+            0.7482653856277466,
+            -0.10328221321105957,
+            -43.78425979614258
+          ],
+          [
+            -0.01030421257019043,
+            0.04820096492767334,
+            1.596540927886963,
+            -12.853156089782715
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "a1ee23cf28eeaeeff55488a0c5c48dc8b1d91034c1a113a24799eb9a5f10c336",
+        "bytes": 3774873952,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-05_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "f68c5c0754b97f951ea1c60e56c310311f672189e3f70585f2b6e4455c1c9fa3",
+        "SequenceName": "EPI_1.5mmiso",
+        "SliceTiming_count": 25,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-06_EPI.nii",
+        "shape": [
+          128,
+          128,
+          25,
+          1152
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          1.600000023841858,
+          1.0
+        ],
+        "affine": [
+          [
+            -0.7497516870498657,
+            -0.016883373260498047,
+            -0.019943714141845703,
+            45.9914436340332
+          ],
+          [
+            -0.016261696815490723,
+            0.7483310699462891,
+            -0.10088109970092773,
+            -43.89211654663086
+          ],
+          [
+            -0.010392308235168457,
+            0.047069668769836426,
+            1.5966919660568237,
+            -12.817959785461426
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "09d7a6adfa660261583aa18442bc6c1c76dd6c1bdd3915372a55eca4dffb5935",
+        "bytes": 3774873952,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-06_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "f68c5c0754b97f951ea1c60e56c310311f672189e3f70585f2b6e4455c1c9fa3",
+        "SequenceName": "EPI_1.5mmiso",
+        "SliceTiming_count": 25,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          384
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          3.0
+        ],
+        "affine": [
+          [
+            -0.7493441104888916,
+            -0.021904945373535156,
+            -0.06649601459503174,
+            47.02119827270508
+          ],
+          [
+            -0.01924300193786621,
+            0.7449640035629272,
+            -0.25068676471710205,
+            -43.03868865966797
+          ],
+          [
+            -0.024762749671936035,
+            0.08395695686340332,
+            2.207035541534424,
+            -14.078365325927734
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "4e6754c8e8ecd1cb476fd39bbdc9353ff5ff97656df1c1d2cec94cca869cefab",
+        "bytes": 905970016,
+        "json_path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.json",
+        "json_exists": true,
+        "json_SHA256": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+        "SequenceName": "EPI_NATURE",
+        "SliceTiming_count": 18,
+        "image_hash_scope": "header fingerprint only; no full-payload hash for inventory"
+      }
+    ],
+    "Bruker_metadata_files_found": [],
+    "conversion_CSV_rows": 109,
+    "record_file_hashes": [
+      {
+        "path": "D:\\OPTO_fMRI_CM\\cm033.csv",
+        "sha256": "a31d9d722c8b16f552aff3fa5e6ab6e16804b9488e2d4810ba9547e5d23f3329"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\Info_tables&sheets\\CM033.xlsx",
+        "sha256": "78747b8c6346387ade1df488a2505330f9e492608c5f49a5b5cbb8e82d811fc1"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\Info_tables&sheets\\opto-fMRI_sessions.xlsx",
+        "sha256": "92de4b397817ef13d5eca2ef96061d426e7b758549e175bb6998c35ca8e95d72"
+      }
+    ],
+    "selected_workbook_rows": {
+      "D:\\OPTO_fMRI_CM\\Info_tables&sheets\\CM033.xlsx": {
+        "sheet": "Sheet1",
+        "dimensions": [
+          110,
+          15
+        ],
+        "selected_rows": [
+          {
+            "excel_row": 7,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              16,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 8,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              16,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 9,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              17,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 10,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              17,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 11,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              18,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 12,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              18,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 17,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              23,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 18,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              23,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 20,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              25,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 21,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              25,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 23,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              27,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 24,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              27,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 25,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              28,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 26,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              28,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 37,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              39,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 38,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              39,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 43,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              45,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 44,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              45,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 45,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              46,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 46,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              46,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 47,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              47,
+              1,
+              "reco1",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 48,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              47,
+              2,
+              "func",
+              "OPTO",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 54,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              53,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 55,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              53,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 56,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              54,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 57,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              54,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 58,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              55,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 59,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              55,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 61,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              57,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 62,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              57,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 63,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              58,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 64,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              58,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 66,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              60,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 67,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              60,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 68,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              61,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 69,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              61,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 72,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              64,
+              1,
+              "reco1",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "poorEPI",
+              null,
+              null
+            ]
+          },
+          {
+            "excel_row": 73,
+            "values": [
+              "CM033.zJ1",
+              "CM033",
+              2016,
+              64,
+              2,
+              "func",
+              "MSTIM",
+              null,
+              null,
+              null,
+              null,
+              null,
+              "EPI",
+              null,
+              null
+            ]
+          }
+        ]
+      },
+      "D:\\OPTO_fMRI_CM\\Info_tables&sheets\\opto-fMRI_sessions.xlsx": {
+        "sheet": "cm033.zJ1",
+        "dimensions": [
+          62,
+          256
+        ],
+        "selected_rows": [
+          {
+            "excel_row": 9,
+            "values": [
+              "16",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "128x128x19",
+              "9.5",
+              "47,6",
+              "8",
+              "750",
+              "18",
+              "120k",
+              "1",
+              "96",
+              "12,4",
+              "4",
+              "(3x3)x16, (blank x stim)xrepeat",
+              "optogenetics stim. 40Hz, 8ms pulse, ",
+              null
+            ]
+          },
+          {
+            "excel_row": 11,
+            "values": [
+              "17",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "128x128x19",
+              "9.5",
+              "47,6",
+              "8",
+              "750",
+              "18",
+              "120k",
+              "1",
+              "96",
+              "12,4",
+              "4",
+              "(3x3)x16, (blank x stim)xrepeat",
+              "optogenetics stim. 20Hz, 50ms pulse",
+              null
+            ]
+          },
+          {
+            "excel_row": 13,
+            "values": [
+              "18",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "128x128x19",
+              "9.5",
+              "47,6",
+              "8",
+              "750",
+              "18",
+              "120k",
+              "1",
+              "96",
+              "12,4",
+              "4",
+              "(3x3)x16, (blank x stim)xrepeat",
+              "optogenetics stim. 20Hz, 8ms pulse",
+              null
+            ]
+          },
+          {
+            "excel_row": 17,
+            "values": [
+              "23",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "128x128x19",
+              "9.5",
+              "47,6",
+              "8",
+              "750",
+              "18",
+              "119kHz",
+              "1",
+              "48",
+              "12,4",
+              "4",
+              "(2x1)x16, (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 450uA",
+              null
+            ]
+          },
+          {
+            "excel_row": 19,
+            "values": [
+              "25",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "53",
+              "2",
+              "2000",
+              "18",
+              "150kHz",
+              "1",
+              "576",
+              "11.5",
+              "4",
+              "(6x3)x64 (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 450uA",
+              null
+            ]
+          },
+          {
+            "excel_row": 21,
+            "values": [
+              "27, 28",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "47",
+              "4",
+              "3000",
+              "18",
+              "92kHz",
+              "1",
+              "384",
+              "8.1",
+              "4",
+              "(4x2)x64 (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 450uA",
+              null
+            ]
+          },
+          {
+            "excel_row": 23,
+            "values": [
+              "39,47",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "47",
+              "4",
+              "3000",
+              "18",
+              "92kHz",
+              "1",
+              "384",
+              "8.1",
+              "4",
+              "(4x2)x64 (blank x stim)xrepeat",
+              "optogenetics 20Hz, 50ms pulse",
+              "left aic"
+            ]
+          },
+          {
+            "excel_row": 25,
+            "values": [
+              "45,46",
+              "EPI_GE",
+              "9.6x9.6x0.15",
+              "64x64x25",
+              "9.5",
+              "53",
+              "1",
+              "1000",
+              "18",
+              "144kHz",
+              "1",
+              "1152",
+              null,
+              "4",
+              "(12x6)x64 (blank x stim)xrepeat",
+              "optogenetics 20Hz, 50ms pulse",
+              null
+            ]
+          },
+          {
+            "excel_row": 27,
+            "values": [
+              "53,54,55",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "47",
+              "4",
+              "3000",
+              "18",
+              "92kHz",
+              "1",
+              "384",
+              "8.1",
+              "4",
+              "(4x2)x64 (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 450uA",
+              null
+            ]
+          },
+          {
+            "excel_row": 31,
+            "values": [
+              57,
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "47",
+              "4",
+              "3000",
+              "18",
+              "92kHz",
+              "1",
+              "384",
+              "8.1",
+              "4",
+              "(8x2)x16 (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 200uA",
+              null
+            ]
+          },
+          {
+            "excel_row": 33,
+            "values": [
+              "58",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "47",
+              "4",
+              "3000",
+              "18",
+              "92kHz",
+              "1",
+              "384",
+              "8.1",
+              "4",
+              "(8x2)x16 (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 450uA",
+              null
+            ]
+          },
+          {
+            "excel_row": 35,
+            "values": [
+              "60,61, 64",
+              "EPI_GE",
+              "9.6x9.6x0.2",
+              "96x96x18",
+              "9.5",
+              "47",
+              "4",
+              "3000",
+              "18",
+              "92kHz",
+              "1",
+              "384",
+              "8.1",
+              "4",
+              "(4x2)x64 (blank x stim)xrepeat",
+              "microstim. 100Hz, 200us pulse, 450uA",
+              "went down before 60 (to arouse)"
+            ]
+          }
+        ]
+      }
+    },
+    "representative_full_source_hashes": [
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-02_EPI.nii",
+        "shape": [
+          128,
+          128,
+          18,
+          576
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.222222328186035,
+          2.0
+        ],
+        "affine": [
+          [
+            -0.7497508525848389,
+            0.019212067127227783,
+            0.006377458572387695,
+            44.235801696777344
+          ],
+          [
+            0.019137263298034668,
+            0.7494039535522461,
+            -0.0680464506149292,
+            -45.75566101074219
+          ],
+          [
+            0.00273895263671875,
+            0.022903144359588623,
+            2.2211711406707764,
+            -12.356616973876953
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "caaef849ac66c26924ca197c46bffb03293d8a32315ef0d14018ca285167330a",
+        "sha256": "7c5368774e9f288a964e5b58a5e6c7b2c5cd8b3de7961951d4a9c56e855ac657"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.nii",
+        "shape": [
+          128,
+          128,
+          19,
+          96
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          2.1052632331848145,
+          6.0
+        ],
+        "affine": [
+          [
+            -0.7495779991149902,
+            -0.004454374313354492,
+            -0.06949341297149658,
+            45.91007614135742
+          ],
+          [
+            -0.0043457746505737305,
+            0.7499798536300659,
+            -0.009427666664123535,
+            -43.894100189208984
+          ],
+          [
+            -0.024776339530944824,
+            0.0032132863998413086,
+            2.104094982147217,
+            -8.306814193725586
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 2,
+        "header_SHA256": "f2c367cd0e6561aa3aa9ace5f8681810a7b9ca4be531415fb8321bac384598bc",
+        "sha256": "8b05ee394f1348493c047d03668ccde5e83fd9106732623a154ea67e981ec1ef"
+      },
+      {
+        "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\anat\\sub-CM033_run-01_FLASH_BETss_corrected_brain.nii",
+        "shape": [
+          128,
+          128,
+          53
+        ],
+        "zooms": [
+          0.75,
+          0.75,
+          0.7547169923782349
+        ],
+        "affine": [
+          [
+            128.0,
+            0.0,
+            0.0,
+            50.0
+          ],
+          [
+            0.0,
+            -128.0,
+            0.0,
+            50.0
+          ],
+          [
+            0.0,
+            0.0,
+            53.0,
+            -10.0
+          ],
+          [
+            0.0,
+            0.0,
+            0.0,
+            1.0
+          ]
+        ],
+        "units": [
+          "mm",
+          "sec"
+        ],
+        "qform_code": 0,
+        "sform_code": 1,
+        "header_SHA256": "10c4d12592af55dc3fe6bbebd3070ca302f9c34aa9855cf8fcfe378eefd5a86e",
+        "sha256": "7432bdad19ebd4bb5b772af5a32160856d8d5982846c3f1115e62cadb5ce644b"
+      }
+    ],
+    "legacy_run_to_scanner_ID_mapping": "Available records; exact image-to-scanner mapping not inferred/accepted by this refresh."
+  },
+  "current_native_contrast_geometry_checks": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\con_0001.nii",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.999999761581421
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "header_SHA256": "a480f79fae9cc44cb847fd620f39eec57b74fd1334800a354f07afbbb56b3950",
+      "model": "glm-mstim-all-tr3-smooth2mm",
+      "sha256": "0cec3e612aed997ce1d1bb0b1bf2005727d182a2fa45b96cc71482778ea1321e",
+      "refmean": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "refmean_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "same_refmean_grid": false,
+      "runs_in_saved_SPM": [
+        27,
+        28,
+        53,
+        54,
+        55,
+        57,
+        58
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.999999761581421
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "header_SHA256": "a480f79fae9cc44cb847fd620f39eec57b74fd1334800a354f07afbbb56b3950",
+      "model": "glm-mstim-pos1-short-tr3-smooth2mm",
+      "sha256": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+      "refmean": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "refmean_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "same_refmean_grid": false,
+      "runs_in_saved_SPM": [
+        57,
+        58,
+        60,
+        61,
+        64
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\con_0001.nii",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.999999761581421
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "header_SHA256": "a480f79fae9cc44cb847fd620f39eec57b74fd1334800a354f07afbbb56b3950",
+      "model": "glm-mstim-tr2-smooth2mm",
+      "sha256": "1fd647b1e91355d609c3a6bfa4156ddfb16bebae798cdc56997b04317b2f2411",
+      "refmean": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "refmean_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "same_refmean_grid": false,
+      "runs_in_saved_SPM": [
+        25
+      ]
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\con_0001.nii",
+      "shape": [
+        128,
+        128,
+        19
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.999999761581421
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -6.008784294128418
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.51647186279297
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "header_SHA256": "ff3687e4652a6c0cde87a9b59d93d807460115eda3e2fac5cba561b300246327",
+      "model": "glm-mstim-tr6-smooth2mm",
+      "sha256": "9feeef8f697a279adf2cd628d30c4dde83f8bbd68f5ae407a4d8db74dc66a1d8",
+      "refmean": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "refmean_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "same_refmean_grid": false,
+      "runs_in_saved_SPM": [
+        23
+      ]
+    }
+  ],
+  "before_vs_now": {
+    "input_requirement": "Existing D:/OPTO_fMRI_CM converted NIfTIs and acquisition/conversion records are designated sources. Old Z/Bruker route and mandatory corrected-reference prerequisite superseded; corrected NIfTI optional corroboration.",
+    "normalization": "Unchanged: configured epi-based norm absent; historical ana-based products lack current moving-image provenance.",
+    "anatomical_acceptance": "Unchanged false; source mapping, image geometry and anatomical QC pending.",
+    "model_site_partition": "No changed image/code/model binding; all-tr3 remains mixed-site and left-only short-tr3 native-only candidate.",
+    "technical_responsibility": "Codex source mapping/geometry/reproducibility QC, then Binbin anatomical figure review; no additional dataset requested.",
+    "fMOST_transform": "Confirmed unavailable: limitation, not recovery gate."
+  },
+  "scientific_anatomical_acceptance": false,
+  "eligible_CM033_NMT_statistics": [],
+  "new_registration_or_model_fit": false,
+  "external_source_writes": false,
+  "anchors": {
+    "dated_audit_lines": [
+      3,
+      9,
+      11,
+      23,
+      24,
+      25,
+      65,
+      67,
+      77,
+      84
+    ],
+    "project_note_lines": [
+      1486,
+      1491
+    ]
+  },
+  "changed_bindings": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\audit_manifest.json",
+      "previous_sha256": "b2c5b17d37d356b92e204459b5ea47e1e2f01bad214c8e5bbf0935363c572dd9",
+      "current_sha256": "7127132e55ed07adcd9bb5104345c49593810651a1b78a4e91496f14e856291c"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_ALIGNMENT_NORMALIZATION_AUDIT_20261009.md",
+      "previous_sha256": "5bdb9cea24d6064b24a785942b06f5684c89e0d8209e099558afce6d528047e6",
+      "current_sha256": "0191ff4aa18c015854de938e973a9a630b862653b15155d6d4d93b54f62b949b"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\project_note.md",
+      "previous_sha256": "506572563438976d98275ae4e3a9f6df909a26a71ee026ba68e9e314e65e1382",
+      "current_sha256": "9acf7eac1bdefbbb610faa3d2f27e3f81d17cb6823fb07ed599c9938be92109e"
+    }
+  ],
+  "refresh_interpretation": "Additive time-bounded snapshot. Exactly three external documentation/manifest bindings changed; all other 87 of the original 90 bindings matched at refresh. No accepted CM033 normalization/model/site repair demonstrated."
+}

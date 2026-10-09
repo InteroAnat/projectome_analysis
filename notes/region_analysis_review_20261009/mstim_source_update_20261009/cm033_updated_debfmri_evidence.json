@@ -1,0 +1,1013 @@
+{
+  "status": "updated_checkout_audited_CM033_spatial_integration_not_ready",
+  "checked_utc": "2026-10-09T01:39:44.193884+00:00",
+  "external_projects_read_only": true,
+  "no_registration_or_model_fit": true,
+  "scientific_anatomical_acceptance": false,
+  "fMOST_transform": "user confirms unavailable; acknowledged limitation, not a recovery gate",
+  "checkouts": {
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri": {
+      "HEAD": {
+        "exit_code": 128,
+        "stdout": "",
+        "stderr": "fatal: Needed a single revision"
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "master",
+        "stderr": ""
+      }
+    },
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout": {
+      "HEAD": {
+        "exit_code": 0,
+        "stdout": "73544f327c0f03b3c70700939a517049dcc1e0e7",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "main",
+        "stderr": ""
+      },
+      "tracked_status": {
+        "exit_code": 0,
+        "stdout": "",
+        "stderr": ""
+      },
+      "cached_origin_main": {
+        "exit_code": 0,
+        "stdout": "73544f327c0f03b3c70700939a517049dcc1e0e7",
+        "stderr": ""
+      }
+    },
+    "D:\\deb_fmri": {
+      "HEAD": {
+        "exit_code": 0,
+        "stdout": "175015f52fc85d216ad7a89c4b0dabb308679c8b",
+        "stderr": ""
+      },
+      "branch": {
+        "exit_code": 0,
+        "stdout": "2026-09-09-single-wsl-env",
+        "stderr": ""
+      }
+    }
+  },
+  "current_dated_audit": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_ALIGNMENT_NORMALIZATION_AUDIT_20261009.md",
+  "current_audit_acceptance": "UNACCEPTED: trusted physical orientation and corrected-source identity pending",
+  "current_production_summary": {
+    "aligned_unique": 19,
+    "same_ref_grid": 19,
+    "tr_matches": 15,
+    "raw_inputs_at_configured_path": 0,
+    "explicit_mm_seconds": 13,
+    "tr_and_units_match": 13
+  },
+  "current_configured_native_session_exists": false,
+  "current_configured_epi_norm_exists": false,
+  "historical_ana_norm_exists": true,
+  "Oct9_bound_sources_current_hash_checks": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-brainEpi_T1w.nii",
+      "recorded_sha256": "84cd3bf8bd9a0c1d7130bfb98c5598bad1a8e38ae50f78b6334254be579246ec",
+      "current_sha256": "84cd3bf8bd9a0c1d7130bfb98c5598bad1a8e38ae50f78b6334254be579246ec",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii",
+      "recorded_sha256": "7f44eaf9c50f1b7046690322ac73273fe03aa08b2fff7b19d037d82cbe9fceeb",
+      "current_sha256": "7f44eaf9c50f1b7046690322ac73273fe03aa08b2fff7b19d037d82cbe9fceeb",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii",
+      "recorded_sha256": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+      "current_sha256": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\analysis_cm033_20160120.json",
+      "recorded_sha256": "61c3ccaf0a1e0755f9ab6ca082c81113e459da4303869076d54bbfb8244185ca",
+      "current_sha256": "61c3ccaf0a1e0755f9ab6ca082c81113e459da4303869076d54bbfb8244185ca",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\code\\config\\scans_cm033_20160120.tsv",
+      "recorded_sha256": "194a0163e6780b58e71fc46dcd702e9d419da3ea990d1b9b3101fd29bb204359",
+      "current_sha256": "194a0163e6780b58e71fc46dcd702e9d419da3ea990d1b9b3101fd29bb204359",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\NMT2CMT_Warped.nii",
+      "recorded_sha256": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+      "current_sha256": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_CMT_Warped.nii.gz",
+      "recorded_sha256": "2d2ce2b1a76cf5bda34855373ac9ebd4a3db35784f0fec84eea68f3aad544375",
+      "current_sha256": "2d2ce2b1a76cf5bda34855373ac9ebd4a3db35784f0fec84eea68f3aad544375",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\NMT_v2.0_sym_SS.nii.gz",
+      "recorded_sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "current_sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "matches": true
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_NMT_Warped.nii.gz",
+      "recorded_sha256": "29817e66e4434ec3763a3f606a5cf1e8edf32d5de56645725aa84e41a83c3be4",
+      "current_sha256": "29817e66e4434ec3763a3f606a5cf1e8edf32d5de56645725aa84e41a83c3be4",
+      "matches": true
+    }
+  ],
+  "real_scan16_39_handoff_saved_verification": {
+    "exit_code": 0,
+    "source_revision": "b6c1aaaa10e2261db48f82da6e5cfc5fb8f73827 plus local policy-handoff patch",
+    "writer_sha256": "16d9a1b884630caf928bb3114bfb70ece279403fbce87a4b7b605ef602adc2f3",
+    "gate_passed": true,
+    "orientation_policy": {
+      "signs": null,
+      "origin_mm": null,
+      "matched_references": {
+        "16": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_overlay_recheck_20260928/historical_refs/sub-CM033_task-OPTO_run-01_EPI.nii",
+        "39": "/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri/alignment_review/cm033_overlay_recheck_20260928/historical_refs/sub-CM033_task-OPTO_run-04_EPI.nii"
+      }
+    },
+    "checks": [
+      {
+        "path": "sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.nii",
+        "frames": 384,
+        "payload_unchanged": true,
+        "shape_dtype_scaling_unchanged": true,
+        "affine_change_mm": 0.0,
+        "coded_forms_agree": true,
+        "spm_sidecar_shape": [
+          4,
+          4,
+          384
+        ],
+        "all_frame_matrix_diff": 0.0
+      },
+      {
+        "path": "sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.nii",
+        "frames": 96,
+        "payload_unchanged": true,
+        "shape_dtype_scaling_unchanged": true,
+        "affine_change_mm": 0.0,
+        "coded_forms_agree": true,
+        "spm_sidecar_shape": [
+          4,
+          4,
+          96
+        ],
+        "all_frame_matrix_diff": 0.0
+      },
+      {
+        "path": "sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii",
+        "frames": 1,
+        "payload_unchanged": true,
+        "shape_dtype_scaling_unchanged": true,
+        "affine_change_mm": 0.0,
+        "coded_forms_agree": true
+      },
+      {
+        "path": "sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-brainEpi.nii",
+        "frames": 1,
+        "payload_unchanged": true,
+        "shape_dtype_scaling_unchanged": true,
+        "affine_change_mm": 0.0,
+        "coded_forms_agree": true
+      },
+      {
+        "path": "sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii",
+        "frames": 1,
+        "payload_unchanged": true,
+        "shape_dtype_scaling_unchanged": true,
+        "affine_change_mm": 0.0,
+        "coded_forms_agree": true
+      }
+    ]
+  },
+  "current_writer_hashes": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\preproc\\nii_reorientation.py",
+      "raw_sha256": "0216729a2f017812cb9471cb1969eeec2316d6af8527a43f6315463a38138071",
+      "normalized_LF_sha256": "27c029b86d56d2599a4c7e661419f205ba2b422504f776abf72815ca186d7630"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\fmri_pipeline\\preproc\\nii_reorientation.py",
+      "raw_sha256": "1363a2a585081e681ff0c2db6d7d69e93f41f26510062091a911f5c750394861",
+      "normalized_LF_sha256": "1363a2a585081e681ff0c2db6d7d69e93f41f26510062091a911f5c750394861"
+    }
+  ],
+  "independent_readonly_handoff_checks": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.nii",
+      "sha256": "c92970644fee0621304730a6cc358cb72f95ad4dbe5d84b12d9e84e79b5e4197",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "payload_matches_before": true,
+      "affine_max_difference_mm": 0.0,
+      "dtype_scaling_match": true,
+      "spm_sidecar": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.mat",
+      "spm_sidecar_sha256": "3f23199127f46f8cd25ee94dd3c519612b55568eed379c30e28e6f187f94834c",
+      "all_frame_spm_shape": [
+        4,
+        4,
+        384
+      ],
+      "all_frame_spm_max_difference": 0.0
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.nii",
+      "sha256": "a946ecc323354511e2331ba7bf926271a01aab14da10dde2ccdd118170113733",
+      "shape": [
+        128,
+        128,
+        18,
+        96
+      ],
+      "payload_matches_before": true,
+      "affine_max_difference_mm": 0.0,
+      "dtype_scaling_match": true,
+      "spm_sidecar": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.mat",
+      "spm_sidecar_sha256": "2cda32b50ae4f53208f29e016be868449c830d8f81181b9bab2ce3779052600f",
+      "all_frame_spm_shape": [
+        4,
+        4,
+        96
+      ],
+      "all_frame_spm_max_difference": 0.0
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii",
+      "sha256": "fbe4e8e4c06d8888b14b9baa90bfab1e1011cd309c56a73e5df028e114ef9e05",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "payload_matches_before": true,
+      "affine_max_difference_mm": 0.0,
+      "dtype_scaling_match": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-brainEpi.nii",
+      "sha256": "5acc1416c9a26c1711933f905611dbc5cefcc96010982c681d05f2bc7f4695e4",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "payload_matches_before": true,
+      "affine_max_difference_mm": 0.0,
+      "dtype_scaling_match": true
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii",
+      "sha256": "edcd3774bdeede873e4eb2ec384e0c27be4ee60f6e55b08eaf4b97d5090c2370",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "payload_matches_before": true,
+      "affine_max_difference_mm": 0.0,
+      "dtype_scaling_match": true
+    }
+  ],
+  "Oct9_timing_copy_hash_checks": [
+    {
+      "scan": 16,
+      "source": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-aligned_bold.nii",
+      "copy": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-alignedTimingCorrected_bold.nii",
+      "source_sha256_matches": true,
+      "copy_sha256_matches": true,
+      "corrected_TR_s": 6.0,
+      "recorded_changed_header_offsets": [
+        94,
+        95,
+        123
+      ],
+      "acceptance": "UNACCEPTED: inherited historical registration; orientation, landmarks, full-series QC and fresh normalization pending"
+    },
+    {
+      "scan": 17,
+      "source": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-17_desc-aligned_bold.nii",
+      "copy": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-17_desc-alignedTimingCorrected_bold.nii",
+      "source_sha256_matches": true,
+      "copy_sha256_matches": true,
+      "corrected_TR_s": 6.0,
+      "recorded_changed_header_offsets": [
+        94,
+        95,
+        123
+      ],
+      "acceptance": "UNACCEPTED: inherited historical registration; orientation, landmarks, full-series QC and fresh normalization pending"
+    },
+    {
+      "scan": 18,
+      "source": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-18_desc-aligned_bold.nii",
+      "copy": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-18_desc-alignedTimingCorrected_bold.nii",
+      "source_sha256_matches": true,
+      "copy_sha256_matches": true,
+      "corrected_TR_s": 6.0,
+      "recorded_changed_header_offsets": [
+        94,
+        95,
+        123
+      ],
+      "acceptance": "UNACCEPTED: inherited historical registration; orientation, landmarks, full-series QC and fresh normalization pending"
+    },
+    {
+      "scan": 23,
+      "source": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-unset_run-23_desc-aligned_bold.nii",
+      "copy": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-mstim_acq-unset_run-23_desc-alignedTimingCorrected_bold.nii",
+      "source_sha256_matches": true,
+      "copy_sha256_matches": true,
+      "corrected_TR_s": 6.0,
+      "recorded_changed_header_offsets": [
+        94,
+        95,
+        123
+      ],
+      "acceptance": "UNACCEPTED: inherited historical registration; orientation, landmarks, full-series QC and fresh normalization pending"
+    },
+    {
+      "scan": 45,
+      "source": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-45_desc-aligned_bold.nii",
+      "copy": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-45_desc-alignedTimingCorrected_bold.nii",
+      "source_sha256_matches": true,
+      "copy_sha256_matches": true,
+      "corrected_TR_s": 1.0,
+      "recorded_changed_header_offsets": [
+        123
+      ],
+      "acceptance": "UNACCEPTED: inherited historical registration; orientation, landmarks, full-series QC and fresh normalization pending"
+    },
+    {
+      "scan": 46,
+      "source": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-46_desc-aligned_bold.nii",
+      "copy": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-46_desc-alignedTimingCorrected_bold.nii",
+      "source_sha256_matches": true,
+      "copy_sha256_matches": true,
+      "corrected_TR_s": 1.0,
+      "recorded_changed_header_offsets": [
+        123
+      ],
+      "acceptance": "UNACCEPTED: inherited historical registration; orientation, landmarks, full-series QC and fresh normalization pending"
+    }
+  ],
+  "Oct9_figures_inspected": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-16_desc-brainBoundarySampled_qc.png",
+      "sha256": "fef6cf2b7a4fada7c9d669e64cc3b0b90c0d097f132d593214647fa1d63edd76",
+      "visually_inspected": true,
+      "sidecar": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-16_desc-brainBoundarySampled_qc.json",
+      "sidecar_sha256": "6c4661d4aed67c93a65c1fa44ea616242e7672f6966f9c9bd970d4be297fdf2f"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-39_desc-brainBoundarySampled_qc.png",
+      "sha256": "e7c92db98f4960df8c1bf6fa627443f58812151613ff4272806cb6c74b90ad53",
+      "visually_inspected": true,
+      "sidecar": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-39_desc-brainBoundarySampled_qc.json",
+      "sidecar_sha256": "e9dbbf757fc07f4709022734b4408f9dd41481e6deca63e4d6c908ed51576e9d"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_space-NMT_desc-historicalNormCheckerboard_qc.png",
+      "sha256": "ae6bc9d30f35ad34bd44a5db05f5a2ea4234626dd7244e19cae1451f4d2f789f",
+      "visually_inspected": true
+    }
+  ],
+  "current_native_model_inventory": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-all-tr3-smooth2mm.json",
+      "run_ids": [
+        27,
+        28,
+        53,
+        54,
+        55,
+        57,
+        58
+      ],
+      "TR_s": 3.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "left_aic",
+        "right_aic"
+      ],
+      "mixed_site": true,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-all-tr3-smooth2mm-tapas.json",
+      "run_ids": [
+        27,
+        28,
+        53,
+        54,
+        55,
+        57,
+        58
+      ],
+      "TR_s": 3.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "left_aic",
+        "right_aic"
+      ],
+      "mixed_site": true,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-pos1-short-tr3-smooth2mm.json",
+      "run_ids": [
+        57,
+        58,
+        60,
+        61,
+        64
+      ],
+      "TR_s": 3.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "left_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-pos1-short-tr3-smooth2mm-tapas.json",
+      "run_ids": [
+        57,
+        58,
+        60,
+        61,
+        64
+      ],
+      "TR_s": 3.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "left_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr2-smooth2mm.json",
+      "run_ids": [
+        25
+      ],
+      "TR_s": 2.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "right_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr2-smooth2mm-tapas.json",
+      "run_ids": [
+        25
+      ],
+      "TR_s": 2.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "right_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr6-smooth2mm.json",
+      "run_ids": [
+        23
+      ],
+      "TR_s": 6.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "right_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr6-smooth2mm-tapas.json",
+      "run_ids": [
+        23
+      ],
+      "TR_s": 6.0,
+      "task": "mstim",
+      "sites_from_locked_ontology": [
+        "right_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-opto-pos1-tr3-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-pos1-tr3-smooth2mm.json",
+      "run_ids": [
+        39,
+        47
+      ],
+      "TR_s": 3.0,
+      "task": "opto",
+      "sites_from_locked_ontology": [
+        "left_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-opto-pos1-tr3-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-pos1-tr3-smooth2mm-tapas.json",
+      "run_ids": [
+        39,
+        47
+      ],
+      "TR_s": 3.0,
+      "task": "opto",
+      "sites_from_locked_ontology": [
+        "left_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-opto-tr1-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr1-smooth2mm.json",
+      "run_ids": [
+        45,
+        46
+      ],
+      "TR_s": 1.0,
+      "task": "opto",
+      "sites_from_locked_ontology": [
+        "left_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-opto-tr1-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr1-smooth2mm-tapas.json",
+      "run_ids": [
+        45,
+        46
+      ],
+      "TR_s": 1.0,
+      "task": "opto",
+      "sites_from_locked_ontology": [
+        "left_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-opto-tr6-smooth2mm",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr6-smooth2mm.json",
+      "run_ids": [
+        16,
+        17,
+        18
+      ],
+      "TR_s": 6.0,
+      "task": "opto",
+      "sites_from_locked_ontology": [
+        "right_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-opto-tr6-smooth2mm-tapas",
+      "config": "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr6-smooth2mm-tapas.json",
+      "run_ids": [
+        16,
+        17,
+        18
+      ],
+      "TR_s": 6.0,
+      "task": "opto",
+      "sites_from_locked_ontology": [
+        "right_aic"
+      ],
+      "mixed_site": false,
+      "native_contrast_exists": true,
+      "native_T_exists": true,
+      "native_mask_exists": true,
+      "NMT_statistic_paths": []
+    }
+  ],
+  "selected_actual_SPM_metadata": [
+    {
+      "model": "glm-mstim-all-tr3-smooth2mm",
+      "SPM": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\SPM.mat",
+      "SPM_sha256": "11cd1bae73cb46aea1ddabeb6ee2be4ccc7f28e138e5b0d22fd4ac3e6cf4a8de",
+      "contrast_name": "stimulus > implicit baseline - All Sessions",
+      "nonzero_weights": [
+        {
+          "column": "Sn(1) stimulus",
+          "weight": 0.14285714285714285
+        },
+        {
+          "column": "Sn(2) stimulus",
+          "weight": 0.14285714285714285
+        },
+        {
+          "column": "Sn(3) stimulus",
+          "weight": 0.14285714285714285
+        },
+        {
+          "column": "Sn(4) stimulus",
+          "weight": 0.14285714285714285
+        },
+        {
+          "column": "Sn(5) stimulus",
+          "weight": 0.14285714285714285
+        },
+        {
+          "column": "Sn(6) stimulus",
+          "weight": 0.14285714285714285
+        },
+        {
+          "column": "Sn(7) stimulus",
+          "weight": 0.14285714285714285
+        }
+      ],
+      "TR_s": 3.0,
+      "runs_in_saved_input_paths": [
+        27,
+        28,
+        53,
+        54,
+        55,
+        57,
+        58
+      ],
+      "residual_df": 2079.9999999979545,
+      "native_shape": [
+        128,
+        128,
+        18
+      ],
+      "native_affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "mask_voxels": 59427,
+      "contrast_finite_inside_mask": true
+    },
+    {
+      "model": "glm-mstim-pos1-short-tr3-smooth2mm",
+      "SPM": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat",
+      "SPM_sha256": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+      "contrast_name": "stimulus > implicit baseline - All Sessions",
+      "nonzero_weights": [
+        {
+          "column": "Sn(1) stimulus",
+          "weight": 0.2
+        },
+        {
+          "column": "Sn(2) stimulus",
+          "weight": 0.2
+        },
+        {
+          "column": "Sn(3) stimulus",
+          "weight": 0.2
+        },
+        {
+          "column": "Sn(4) stimulus",
+          "weight": 0.2
+        },
+        {
+          "column": "Sn(5) stimulus",
+          "weight": 0.2
+        }
+      ],
+      "TR_s": 3.0,
+      "runs_in_saved_input_paths": [
+        57,
+        58,
+        60,
+        61,
+        64
+      ],
+      "residual_df": 1363.99999999768,
+      "native_shape": [
+        128,
+        128,
+        18
+      ],
+      "native_affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "mask_voxels": 68267,
+      "contrast_finite_inside_mask": true
+    },
+    {
+      "model": "glm-mstim-tr2-smooth2mm",
+      "SPM": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\SPM.mat",
+      "SPM_sha256": "e34ac694e5744c20f56624dfbadd0ade5ee79b8a01466673e771a93b61ca4a51",
+      "contrast_name": "stimulus > implicit baseline - All Sessions",
+      "nonzero_weights": [
+        {
+          "column": "Sn(1) stimulus",
+          "weight": 1.0
+        }
+      ],
+      "TR_s": 2.0,
+      "runs_in_saved_input_paths": [
+        25
+      ],
+      "residual_df": 549.9999999979613,
+      "native_shape": [
+        128,
+        128,
+        18
+      ],
+      "native_affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "mask_voxels": 65542,
+      "contrast_finite_inside_mask": true
+    },
+    {
+      "model": "glm-mstim-tr6-smooth2mm",
+      "SPM": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\SPM.mat",
+      "SPM_sha256": "f9207fcbac41cba2adbd35dd3c84c56ea19d2579eaaf1581c6393bb6c49febca",
+      "contrast_name": "stimulus > implicit baseline - All Sessions",
+      "nonzero_weights": [
+        {
+          "column": "Sn(1) stimulus",
+          "weight": 1.0
+        }
+      ],
+      "TR_s": 6.0,
+      "runs_in_saved_input_paths": [
+        23
+      ],
+      "residual_df": 35.999999999988546,
+      "native_shape": [
+        128,
+        128,
+        19
+      ],
+      "native_affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -6.008784294128418
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.51647186279297
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "mask_voxels": 110135,
+      "contrast_finite_inside_mask": true
+    }
+  ],
+  "current_eligible_CM033_NMT_statistics": [],
+  "reconciliation": {
+    "D_debfmri": "older code checkout, not authoritative for updated CM033 software",
+    "C_loose_tree": "current local audit/source context; unborn master, distinct from published commit",
+    "published_checkout": "clean main at recorded local/cached-origin revision; no live remote verification performed",
+    "header_sync": "real 16/39 mechanical repair verified; not physical orientation acceptance",
+    "production_today": "19 surviving aligned runs; no configured native session/epi-based norm, old ana-based normalization without source-binding manifest",
+    "mixed_site_model": "all-tr3 includes right27/28 and left53/54/55/57/58; unsuitable for one site-specific comparison",
+    "future_left_only_native_candidate": "pos1-short-tr3 runs57/58/60/61/64, native contrast/mask/SPM exist but no accepted transform or NMT statistics"
+  },
+  "source_sha256": {
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\audit_manifest.json": "b2c5b17d37d356b92e204459b5ea47e1e2f01bad214c8e5bbf0935363c572dd9",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-brainEpi_T1w.nii": "84cd3bf8bd9a0c1d7130bfb98c5598bad1a8e38ae50f78b6334254be579246ec",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii": "7f44eaf9c50f1b7046690322ac73273fe03aa08b2fff7b19d037d82cbe9fceeb",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\anat\\sub-cm033_ses-20160120_desc-refmean_epi.nii": "de3e1a8297a4e56efae8cb18f5cf17d8a6aedb97ca4d90859a490204a5328d40",
+    "D:\\multimodal_fmri\\code\\config\\analysis_cm033_20160120.json": "61c3ccaf0a1e0755f9ab6ca082c81113e459da4303869076d54bbfb8244185ca",
+    "D:\\multimodal_fmri\\code\\config\\scans_cm033_20160120.tsv": "194a0163e6780b58e71fc46dcd702e9d419da3ea990d1b9b3101fd29bb204359",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\NMT2CMT_Warped.nii": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_CMT_Warped.nii.gz": "2d2ce2b1a76cf5bda34855373ac9ebd4a3db35784f0fec84eea68f3aad544375",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\_ants_inputs\\NMT_v2.0_sym_SS.nii.gz": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+    "D:\\multimodal_fmri\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_ana_NMT_Warped.nii.gz": "29817e66e4434ec3763a3f606a5cf1e8edf32d5de56645725aa84e41a83c3be4",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_ALIGNMENT_NORMALIZATION_AUDIT_20261009.md": "5bdb9cea24d6064b24a785942b06f5684c89e0d8209e099558afce6d528047e6",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\project_note.md": "506572563438976d98275ae4e3a9f6df909a26a71ee026ba68e9e314e65e1382",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\docs\\project_note.md": "9f86c10c305457f4b01590dba7904aeb39701aaf72bdaf656743190bf0f22dd2",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\docs\\CM033_ORIENTATION_REPAIR_20260926.md": "50ebb6bfcd6e8f4012f0e1f0729c27f492f80f2acc70af2d14e5c02ab66433f7",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\sessions\\cm033_20160120.yaml": "cecc4574cbf544a76a1fd49a7f5ee435fda7703d793e9dc9501d1862d71676b6",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\sessions\\cm033_20160120.yaml": "cecc4574cbf544a76a1fd49a7f5ee435fda7703d793e9dc9501d1862d71676b6",
+    "D:\\multimodal_fmri\\docs\\provenance\\stim_sites_cm033.yaml": "ecb70fa576f387094fdcf8f6fa8bdb591e54bc6be5b33378e594688958d2ef25",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\fmri_pipeline\\preproc\\nii_reorientation.py": "0216729a2f017812cb9471cb1969eeec2316d6af8527a43f6315463a38138071",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\publish_checkout\\fmri_pipeline\\preproc\\nii_reorientation.py": "1363a2a585081e681ff0c2db6d7d69e93f41f26510062091a911f5c750394861",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\before.json": "9fc1dcffcc0d49435207aacc8ac17e544bba81428ae27d73757a3b6af422b78d",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\verification.json": "c0c969f69049ef7697ed50704851c9892c2f15bd46a34e274fdb213495072025",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\qc\\epi_sform.json": "73f71433554c4e4f0d1fe5706a41c3d3a9d7ef1221da6739ecf650ba80c9bead",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.nii": "c92970644fee0621304730a6cc358cb72f95ad4dbe5d84b12d9e84e79b5e4197",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_desc-aligned_bold.mat": "3f23199127f46f8cd25ee94dd3c519612b55568eed379c30e28e6f187f94834c",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.nii": "a946ecc323354511e2331ba7bf926271a01aab14da10dde2ccdd118170113733",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\func\\sub-cm033_ses-20160120_task-opto_run-16_desc-aligned_bold.mat": "2cda32b50ae4f53208f29e016be868449c830d8f81181b9bab2ce3779052600f",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-refmean_bold.nii": "fbe4e8e4c06d8888b14b9baa90bfab1e1011cd309c56a73e5df028e114ef9e05",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_desc-brainEpi.nii": "5acc1416c9a26c1711933f905611dbc5cefcc96010982c681d05f2bc7f4695e4",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_sform_handoff_repair_20260929\\bids\\sub-cm033\\ses-20160120\\derivatives\\preproc\\anat\\sub-cm033_ses-20160120_space-EPI_desc-brain_mask.nii": "edcd3774bdeede873e4eb2ec384e0c27be4ee60f6e55b08eaf4b97d5090c2370",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-16_desc-brainBoundarySampled_qc.png": "fef6cf2b7a4fada7c9d669e64cc3b0b90c0d097f132d593214647fa1d63edd76",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-16_desc-brainBoundarySampled_qc.json": "6c4661d4aed67c93a65c1fa44ea616242e7672f6966f9c9bd970d4be297fdf2f",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\sampled_means\\sub-cm033_ses-20160120_run-16_desc-fiveFrameSampleMean_bold.nii.gz": "f9e35bf9cc81917026a370818900ec0388ef111986c44331665001530176821d",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-39_desc-brainBoundarySampled_qc.png": "e7c92db98f4960df8c1bf6fa627443f58812151613ff4272806cb6c74b90ad53",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_run-39_desc-brainBoundarySampled_qc.json": "e9dbbf757fc07f4709022734b4408f9dd41481e6deca63e4d6c908ed51576e9d",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\sampled_means\\sub-cm033_ses-20160120_run-39_desc-fiveFrameSampleMean_bold.nii.gz": "6599c9f6d51201b2c8705d2d728d2c595db976b478070b7ac1dc19f10d7d8b80",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\figures\\sub-cm033_ses-20160120_space-NMT_desc-historicalNormCheckerboard_qc.png": "ae6bc9d30f35ad34bd44a5db05f5a2ea4234626dd7244e19cae1451f4d2f789f",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-aligned_bold.nii": "0c66bb635b5631824fbdbc364c8b8c6e6efb9c4bc2491b7c8ac2fe705864c865",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-aligned_bold.mat": "a822a484c0c783a2a2822eba2331c7b8d0e40f676732ac5dbf104ad30d38d666",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-pos1_run-39_desc-aligned_bold.nii": "786fdc0ff9561e1ce8fdcbf65bbc78b1d25288d865bc1af97f0e3c1329b2c4af",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-pos1_run-39_desc-aligned_bold.mat": "c8fc403929698b23d3b9d8762cde74f25f7c9fa133d9d2f053e4f6e3fe11d828",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\timing_correction_manifest.json": "089d33da6beba0d482a11949473b13ba40e2a89a24f7266cd911bca2e051c841",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-16_desc-alignedTimingCorrected_bold.nii": "185959520430c0bcc901ac77066c1f4f22cf1286ed7835f5bebedb7b6cff7ffc",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-17_desc-aligned_bold.nii": "96c8cf1fbfb1f253360da9176585c552f1f904e15777374c0a489e543fb8fd65",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-17_desc-alignedTimingCorrected_bold.nii": "72a3589c394ce0dcd446d3cb50e8ae87497ae6e5b56156e1c789233a9266969b",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-18_desc-aligned_bold.nii": "5a85da3cb8702620aac748962a5493a9872dbde878bd7cd744557d2599d61570",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-18_desc-alignedTimingCorrected_bold.nii": "874b9a2934bb1c286b9c810cc4d3fa1afada1310e9868612056041ce99d61a0f",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-unset_run-23_desc-aligned_bold.nii": "91c864384e040b65530da5b6f3d7a0eba12507f5f8c63ced7ff39ccf1976c8de",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-mstim_acq-unset_run-23_desc-alignedTimingCorrected_bold.nii": "ade8f8f62217b5b148589c150aa59edb34aaaf3e8dcb2365a0420eafff8446f4",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-45_desc-aligned_bold.nii": "cb48954297f09d98e82240f74f6c25f69ed61268f5686c1bbe3352a7daed7823",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-45_desc-alignedTimingCorrected_bold.nii": "1c3578b60064287b0c7082bd161de7972f97424d95debbcd87c216609ea0d1c9",
+    "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-46_desc-aligned_bold.nii": "d01f2d93627ab9b9f36b4716216c89d97cd4d869d7c5e5a47c66d6a34705836f",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_alignment_norm_audit_procdate-20261009\\isolated_timing_corrected\\func\\sub-cm033_ses-20160120_task-opto_acq-unset_run-46_desc-alignedTimingCorrected_bold.nii": "deca4f3b85b13d3e93bc3e5bd7d29ead530b144a24af7c1812ea42164c8d5a1d",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-all-tr3-smooth2mm.json": "96fe3332bdc278bf05164f36d8d2190c5818b2444bf1a38530f510c447b3bdea",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-all-tr3-smooth2mm-tapas.json": "0195116771f6185a1f1c221dd07880bb6c75cbddddc2208afd5f37dbcf875935",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-pos1-short-tr3-smooth2mm.json": "3c3618a8196ab6ae32248f1fa47e41848f2979ac402bcaae6ca1075dde39853b",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-pos1-short-tr3-smooth2mm-tapas.json": "6b83c51f073b08ec8b3c37cdc88164149956a8e299ed6f17ae2df8bfab3af2ae",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr2-smooth2mm.json": "ef60771835114606c6c9929e8c99ebcfd12483e6ecc7a7fcac6b0aaf04c06868",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr2-smooth2mm-tapas.json": "e94d924291c8b81ceb0dc31b3a6f902dd185293644c653d801e89f1f1407d2ad",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr6-smooth2mm.json": "57f86434f519cc467d441a705e9d5b0abd60782b2820fd33b6d232221c17c731",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-mstim-tr6-smooth2mm-tapas.json": "fc069c870a0ecb7896bb0dd8dc998a80de030b88b64125d2194c3007fbd8f03a",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-pos1-tr3-smooth2mm.json": "ca4e501db1ff2d249f931ff3d159b74ce0de7d1fb201ba88f87769e613f8c4a7",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-pos1-tr3-smooth2mm-tapas.json": "1f231c122f9fcec91d9baef4249fd188bc0ec7477cbac2afd6b24a588c4a2387",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr1-smooth2mm.json": "879f55fea98934f8289725a02092726f85b0f129265a27df557e684d2145b2ec",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr1-smooth2mm-tapas.json": "bb4f5d24c69aec2d3fa3cc24794798d38a677ae2a0299f6dff10becede09a132",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr6-smooth2mm.json": "51caaf96b411835fb609b59c8a4f613ba7377bffb2b26f972221c19bccbaec2d",
+    "D:\\multimodal_fmri\\code\\config\\glm\\analysis_cm033_20160120_glm-opto-tr6-smooth2mm-tapas.json": "ce208b425556ed98b063c93889e3844280497f02fe70ca8c345c8bbd5dce718b",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\SPM.mat": "11cd1bae73cb46aea1ddabeb6ee2be4ccc7f28e138e5b0d22fd4ac3e6cf4a8de",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\contrasts.json": "fd48769331400bd739491197bdf07548e8fd90ce243b8914732fbc11e2569d64",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\glm_config_summary.txt": "6d62554139ad6ddcfc51e2fb93628bcecb79f2f51a2d9a40e987a11dac3fae3e",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\con_0001.nii": "0cec3e612aed997ce1d1bb0b1bf2005727d182a2fa45b96cc71482778ea1321e",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\spmT_0001.nii": "65f8c1d56e83ec1f9e6c33c671a6001bd2fddc2a58df4ac65d0cac7d2bd99467",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-all-tr3-smooth2mm\\maps\\mask.nii": "bba34100018bb4eb8220ec664a60463193d01f340e61703fa99c04c99f7b5edd",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\contrasts.json": "24180738fd9e65ff0ef9078dc2b1d5fd3d7ab501c59853978163de930094e4a4",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\glm_config_summary.txt": "181f01ebbda3106473f0cd5f5a8589b6f823dc4de9c8c3ca80a232538a1d026f",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\mask.nii": "e6e3d90808d8607322cfa9ac72b58790535fc7e222145f1adc1ffdd74a4785a2",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\SPM.mat": "e34ac694e5744c20f56624dfbadd0ade5ee79b8a01466673e771a93b61ca4a51",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\contrasts.json": "d5f001f4d21da5437bb0d64f4e2b75700136cf7ddf45f4bed004c9df40efc473",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\glm_config_summary.txt": "7dfb593dd3065524a8e51f8d682ab7da69d2fa7166202900eb971c4689ca79a0",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\con_0001.nii": "1fd647b1e91355d609c3a6bfa4156ddfb16bebae798cdc56997b04317b2f2411",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\spmT_0001.nii": "6c3faf618229fbb6b8741d9b5bb3847a77a02157de07b5a406bb1408bbd99848",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr2-smooth2mm\\maps\\mask.nii": "6df27c0c56d1fe92554c31a7b145f31ea593205150c04675efc4abc7e9426b6b",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\SPM.mat": "f9207fcbac41cba2adbd35dd3c84c56ea19d2579eaaf1581c6393bb6c49febca",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\contrasts.json": "cbf0504229b802d6ac8c1619f2e77a499653a2e1c5843c3021b2d2354363f7ca",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\glm_config_summary.txt": "0621081966a7198a38000a9489916f2e88ec82a92365d9c4b43d5120a28d8c46",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\con_0001.nii": "9feeef8f697a279adf2cd628d30c4dde83f8bbd68f5ae407a4d8db74dc66a1d8",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\spmT_0001.nii": "ecb80ba5cfd128c2286094455e16b8f2e1a1c1ddff3f493bfacc8a922d797e0d",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-tr6-smooth2mm\\maps\\mask.nii": "f99ce7dd5826ad4874831cb27b220260a16a2f40c107be14bc95877041dc556f"
+  },
+  "source_hashes_unchanged_at_finish": true
+}

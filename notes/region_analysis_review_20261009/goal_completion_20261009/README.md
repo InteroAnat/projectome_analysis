@@ -2,6 +2,10 @@
 
 Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)
 
+**Scope update after the user's source clarification:** the original fMOST transform is known unavailable and is no longer a recovery requirement. Coarse CM032 left Ial/left vAIC pos1 characterization is now source-backed, without an invented exact NMT tip. CM033 has been rechecked against the updated DEB source and today's audit, including real header repairs and a historical-model/current-reference affine mismatch. New Codex terminal/image assessment and local-PDF Methods evidence are recorded separately. The paragraphs and original completion receipt below preserve the pre-clarification snapshot; consult the [current scope and evidence update](../scope_update_20261009.md) for present status.
+
+## Historical pre-clarification completion snapshot
+
 The validated pipeline, inventory, candidate classifications, six-level ARM tables, descriptive NIfTI maps, exploratory clustering and provisional CM032 comparison are delivered. **The full refined scientific goal is not yet achieved:** reviewed target-local terminal fields and accepted anatomical localization/correspondence remain unsupported by the checked records. These are not replaced by passing tests or by the candidate-endpoint proxy. The original request explicitly permits exploratory outputs and an unresolved-dependency report; those deliverables are complete within their stated source coverage.
 
 This assessment checks the seven original workstreams, the later six-part active goal, and the user's map/label/terminology/publication corrections. It does not impose biological-type discovery, a new registration fit, inferential maps or canonical-cohort promotion as extra completion requirements.

@@ -6,10 +6,15 @@ import hashlib
 import json
 import re
 import subprocess
+from prepare_publication import ACCESS_TOKEN_PATTERN
 
 ROOT = Path(__file__).resolve().parents[2]
 AUDIT = Path(__file__).resolve().parent
 GIT = ["git", "-c", f"safe.directory={ROOT.as_posix()}"]
+INDEX_CREDENTIAL_PATTERN = re.compile(
+    b"(?:" + ACCESS_TOKEN_PATTERN.encode("ascii") +
+    rb"|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)"
+)
 
 
 def main():
@@ -28,7 +33,7 @@ def main():
                if isinstance(node, ast.Assign) and isinstance(node.value, ast.Constant)
                and isinstance(node.value.value, str) and len(node.value.value) >= 4
                and any(isinstance(target, ast.Name) and target.id == "SSH_PASS" for target in node.targets)]
-    pattern = re.compile(rb"(?:gh[pousr]_[A-Za-z0-9]{24,}|github_pat_[A-Za-z0-9_]{30,}|sk-(?:proj-)?[A-Za-z0-9_-]{25,}|-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----)")
+    pattern = INDEX_CREDENTIAL_PATTERN
     checked, total, findings = {}, 0, []
     process = subprocess.Popen(GIT + ["cat-file", "--batch"], cwd=ROOT, stdin=subprocess.PIPE, stdout=subprocess.PIPE)
     try:

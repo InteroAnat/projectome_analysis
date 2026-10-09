@@ -1,0 +1,115 @@
+{
+  "NeuronUID": "252790::032.swc",
+  "AnimalID": "797",
+  "SourceARMFullName": "Atlas background",
+  "SourceARMStatus": "zero_unassigned",
+  "selection_purpose": "branched_field_candidate_source",
+  "selection_rule": "predeclared UID/target; cached cube with most target full-graph leaves, ties lexicographic cube XYZ; smallest leaf ID for detail",
+  "native_swc": {
+    "path": "group_analysis/visual_review_20261002/swc_raw/252790/032.swc",
+    "sha256": "eff282b992e38e92f3948bb7e4e38599eb39f72bf6c97cfd6b5b5542ae811d00"
+  },
+  "atlas_swc": {
+    "path": "D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252790\\032.swc",
+    "sha256": "163a1c84c95339a1bf091ab7ce1aefe496dcf030b92e690f946af26770ce5ae6"
+  },
+  "node_identity_type_parent_match": true,
+  "full_graph_validated": true,
+  "declared_target": {
+    "level": 6,
+    "index": 229,
+    "full_name": "CL_granular_insula",
+    "sampling": "floor(atlas_xyz/250 + 0.5), existing declared export convention; anatomical/origin acceptance unresolved"
+  },
+  "component_root_node_id": 2284,
+  "component_node_count": 61,
+  "component_branch_node_ids": [],
+  "component_full_graph_axon_leaf_ids": [
+    2344
+  ],
+  "nominal_native_component_length_um": 479.41016263884956,
+  "selected_leaf_id": 2344,
+  "selected_leaf_type": 2,
+  "selected_leaf_parent_id": 2343,
+  "selected_leaf_native_xyz_um": [
+    42728.5234375,
+    18640.44921875,
+    29461.17578125
+  ],
+  "selected_leaf_distance_to_cube_faces_um": [
+    140.5234375,
+    154.44921875,
+    31.17578125,
+    93.4765625,
+    79.55078125,
+    238.82421875
+  ],
+  "local_cube_target_leaf_ids": [
+    2344,
+    6585,
+    15905,
+    18090
+  ],
+  "image": {
+    "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/109/182_79_109.tif",
+    "sha256": "6ff7515bf73d8f5d409246fb7055673401305d6a9cf71681a5c2dabb4cb9ca23",
+    "cube_index_xyz": [
+      182,
+      79,
+      109
+    ],
+    "source_array_order": "ZYX",
+    "source_shape": [
+      90,
+      360,
+      360
+    ],
+    "dtype": "uint16",
+    "native_origin_um": [
+      42588.0,
+      18486.0,
+      29430.0
+    ],
+    "nominal_spacing_um": [
+      0.65,
+      0.65,
+      3.0
+    ],
+    "display_array_order": "XYZ",
+    "optical_resolution": "unverified",
+    "origin_convention": "existing client nominal block index times block shape times spacing; no calibrated image/SWC origin proof",
+    "adjacent_cube_availability": {
+      "181_78_108": true,
+      "181_78_109": true,
+      "181_78_110": true,
+      "181_79_108": true,
+      "181_79_109": true,
+      "181_79_110": true,
+      "181_80_108": true,
+      "181_80_109": true,
+      "181_80_110": true,
+      "182_78_108": true,
+      "182_78_109": true,
+      "182_78_110": true,
+      "182_79_108": true,
+      "182_79_109": true,
+      "182_79_110": true,
+      "182_80_108": true,
+      "182_80_109": true,
+      "182_80_110": true,
+      "183_78_108": true,
+      "183_78_109": true,
+      "183_78_110": true,
+      "183_79_108": true,
+      "183_79_109": true,
+      "183_79_110": true,
+      "183_80_108": true,
+      "183_80_109": true,
+      "183_80_110": true
+    }
+  },
+  "reviewer": "Codex",
+  "review_state": "awaiting_saved_figure_inspection",
+  "biological_terminal_state": "unassessed",
+  "bouton_synapse_state": "not_assessed"
+}

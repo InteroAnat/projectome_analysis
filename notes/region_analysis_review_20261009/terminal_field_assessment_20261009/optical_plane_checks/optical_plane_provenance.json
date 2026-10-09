@@ -1,0 +1,110 @@
+{
+  "passage": {
+    "NeuronUID": "252790::032.swc",
+    "target_index": 229,
+    "node_ids": [
+      7082,
+      7083,
+      7084,
+      7085,
+      7086,
+      7087,
+      7088,
+      7089,
+      7090,
+      7091,
+      7092,
+      7093,
+      7094,
+      7095,
+      7096,
+      7097,
+      7098,
+      7099,
+      7100,
+      7101,
+      7102,
+      7103,
+      7104,
+      7105,
+      7106,
+      7107,
+      7108,
+      7109,
+      7110,
+      7111,
+      7112,
+      7113,
+      7114,
+      7115,
+      7116,
+      7117,
+      7118,
+      7119,
+      7120,
+      7121,
+      7122,
+      7123,
+      7124,
+      7125,
+      7126,
+      7127,
+      7128
+    ],
+    "entry_link": [
+      7081,
+      7082
+    ],
+    "exit_links": [
+      [
+        7128,
+        7129
+      ]
+    ],
+    "full_graph_leaves": [],
+    "branch_nodes_within_target_component": [],
+    "selected_internal_node_id": 7105,
+    "source_cube": {
+      "path": "group_analysis/visual_review_20261002/cache/cubes/252790/high_res_http/111/180_84_111.tif",
+      "sha256": "d3acdefd3c22af00175f71886b6326ee66462589e87b49a03183f80e38131b71"
+    },
+    "classification": "reconstructed_target_passing_segment_candidate; en_passant_boutons_unassessed"
+  },
+  "source_generation_sha256": "3146e5c4869164e42d697173d932e117fc6852e131e81cbb75cce06b791c77d8",
+  "scripts": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/inspect_native_optical_planes.py",
+      "sha256": "7fab0c35a2f8e28b4c767a6132dba30bc11d909bb25678fe85a68c376b27dad1"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/assess_native_terminal_fields.py",
+      "sha256": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks/252383_018_ending_optical_planes.png",
+      "sha256": "2e0aa37e88d77ef845aae8192b4ba3875d2fe9c73d1fdc3c7a27268805813b1b"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks/252383_121_ending_optical_planes.png",
+      "sha256": "737e1e8e9d40d2768457675ef9a1febef74d83a8fa7f053950c40c5bc03c942a"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks/252384_047_ending_optical_planes.png",
+      "sha256": "1e5a58966fe673f175e5da5cba094bf2b92f30ec1a75da4d8fe57bfaa3af65f1"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks/252790_014_ending_optical_planes.png",
+      "sha256": "7504cd3692c842de1fdbbffdac04310de5d3e9adda6c7866817f4422ae6103dd"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks/252790_032_ending_optical_planes.png",
+      "sha256": "6aa3be1746e5ca49c7114e20a5b61c6596fa2cff0e48d63fd42a92be4ecf0eef"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/optical_plane_checks/252790_032_passage_image_and_swc.png",
+      "sha256": "6caca25f4c0f9eaf94bf3658ecfc1c4583c4dca9fd6dd8dfedfe223c3ff37888"
+    }
+  ]
+}

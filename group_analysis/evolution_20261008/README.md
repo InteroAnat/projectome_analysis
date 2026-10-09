@@ -1,5 +1,7 @@
 # Insula pipeline evolution — 2026-10-08
 
+**Current evidence update:** [local Gao/Liu Methods, native terminal assessment and CM032/updated CM033 review](../../notes/region_analysis_review_20261009/scope_update_20261009.md). Original fMOST transforms are unavailable, without a recovery gate. The five-neuron native pilot adds image-backed morphology evidence; it does not convert all candidate ends into reviewed terminal fields. Existing ARM NIfTIs, six-level tables and the single selected-neuron ledger remain unchanged.
+
 Active branch: `codex/insula-pipeline-evolution-20261008`, created from `78008cbaab71bf737dc7129c72e5fe284c3ba40f`. Existing unrelated edits and source data are preserved. [Publication status](../../notes/region_analysis_review_20261009/publication_20261009.md) records scoped commits and remote verification; cohort promotion and scientific acceptance are separate decisions.
 
 The subsequent [region/table audit](../../notes/region_analysis_review_20261009/README.md) records assessed tables, focused repairs and final checks. Start with the [primary ARM map index](arm_mapping_20261009/README.md), [six-level projection matrices](../../notes/region_analysis_review_20261009/hierarchy_tables_20261009/README.md), [projection-profile clustering](../../notes/region_analysis_review_20261009/clustering_20261009/README.md) and [MSTIM integration](../../notes/region_analysis_review_20261009/mstim_integration_20261009/README.md). Earlier test counts and derivatives retain their dated scope.

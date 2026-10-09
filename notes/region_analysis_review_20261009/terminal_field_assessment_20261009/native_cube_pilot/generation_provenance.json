@@ -1,0 +1,170 @@
+{
+  "status": "software_generated_pending_Codex_image_review",
+  "selected_neurons": 462,
+  "native_swcs_available": 201,
+  "exact_node_identity_type_parent_matches": 201,
+  "available_native_candidate_leaves": 48574,
+  "native_leaves_with_cached_cube": 9209,
+  "cache_cube_counts_by_sample": {
+    "250432": 14372,
+    "251730": 14676,
+    "252383": 10407,
+    "252384": 640,
+    "252385": 502,
+    "252527": 411,
+    "252714": 855,
+    "252718": 11141,
+    "252790": 15209
+  },
+  "pilot_units": 5,
+  "no_downloads": true,
+  "no_source_changes": true,
+  "inputs": [
+    {
+      "path": "notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/neuron_summary.csv",
+      "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+    },
+    {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    {
+      "path": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/assess_native_terminal_fields.py",
+      "sha256": "7e3ab03f9b7d9a61c680d398b07ec74c0eb61a6154a7211d5559c9d07d666e7f"
+    },
+    {
+      "path": "main_scripts/swc_validation.py",
+      "sha256": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64"
+    },
+    {
+      "path": "main_scripts/fmost_image_geometry.py",
+      "sha256": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce"
+    },
+    {
+      "path": "main_scripts/Visual_toolkit.py",
+      "sha256": "bbad8eb8dd3952d76c9970214171fc36135d51ea25d888bf780bd289c1c8c9ea"
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/fmost_full_methods_20261009.md",
+      "sha256": "2e9d7ff0bd8a93713d80ecd5d031c77d41303065bae4e508c5fff26aa5bb9b38"
+    },
+    {
+      "path": "group_analysis/evolution_20261008/references/fmost_full_methods_evidence_20261009.json",
+      "sha256": "9bb74ef9cf117c32f92d2efb55add4d5b610375e65abcdcfb8bd573b9287116c"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_018/assessment_inputs.json",
+      "sha256": "25d48ba45cb62e00329cc07024fb10be94303193caa15e155f9d3494bf7faf5b"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_018/cached_cube_image_and_swc.png",
+      "sha256": "87d6b5dad8aa2d84889bcf4bcb6391f28d05eba1a397c7ced3ca435961a64089"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_018/selected_ending_image_and_swc.png",
+      "sha256": "8b5158f609bbe1d97a58f3981b3b10c0c0a800ce93ab9a665673a80b65c35002"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_018/target_component_morphology.png",
+      "sha256": "cf8912704204c8da34b27f378ab54859bc34f346d532c3b0c72d222934a29756"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_018/target_component_nodes.csv",
+      "sha256": "0d852c01f7118572f1338b990d1f22c76d389458c7a502a425c737226d31ec8a"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_121/assessment_inputs.json",
+      "sha256": "889d445de95f0327bb0c7efa40d19ca2267a1058d328fba41fec477e75fde230"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_121/cached_cube_image_and_swc.png",
+      "sha256": "060d67b1b6a0e4df0cdd89945400c278c8237c23baeb2442454edb87c8e78dc1"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_121/selected_ending_image_and_swc.png",
+      "sha256": "065e598cedba6c898c33a81d963e6dc7c450dafd8bdafcc4a92c1eee56e44870"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_121/target_component_morphology.png",
+      "sha256": "40b1a1704e768e4cac0ad180df5af1e6d3720b7582072f2b9bb02f49758c6c5d"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252383_121/target_component_nodes.csv",
+      "sha256": "685485765fa81cc432d7806559af01403a512510e210b1cbc8615cfcfbd575f6"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252384_047/assessment_inputs.json",
+      "sha256": "6da2cbef19dc6c88afe8eae52639307176114b637a2b55ccce6e2f1ed174e362"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252384_047/cached_cube_image_and_swc.png",
+      "sha256": "960fae07b956902ed9a27e44b0c76fbe3e260d524463cc8c7157b6670951be1f"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252384_047/selected_ending_image_and_swc.png",
+      "sha256": "e5ef5b33d569a3b63bcdfa2508fd01d1754a21413655ba31492bee4812c62d18"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252384_047/target_component_morphology.png",
+      "sha256": "465a4fc30bbc2699f06d41e3b4ce65ef677a9e1b7cc74497512e9f0cb7f0cc95"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252384_047/target_component_nodes.csv",
+      "sha256": "9ab47a6afdc607e444fbcc0d6b62da0e2cfbd3b306f0048a5496beaefde06be8"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_014/assessment_inputs.json",
+      "sha256": "c8278213a640ec000a7705b01b4bc44cb9f5c56076862bfa4071af18ebb6b341"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_014/cached_cube_image_and_swc.png",
+      "sha256": "9c50d338b4ee28b953be0adc01abe03531d9735ee1daa10921594df1d3def081"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_014/selected_ending_image_and_swc.png",
+      "sha256": "486936e2dc62e7e86bc9f87cd05a9e1b1940c228cc880760ebc6a7d740fc9503"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_014/target_component_morphology.png",
+      "sha256": "09965bef2281f95b328225099a6347e82b59be8710d70ea8dd110923cbafcf44"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_014/target_component_nodes.csv",
+      "sha256": "cb3bfcb9704051e8d439ab67dbbb3c8e4847b28afea0eb77d2e34aeb82efbd04"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_032/assessment_inputs.json",
+      "sha256": "bc78cdfe8b45f3880ff6c7b5ae1b16bde6a7d42ab23dcaca6db8e86c6e83db1f"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_032/cached_cube_image_and_swc.png",
+      "sha256": "9be5a8b2471ef4388cae42aeb2af0a5487033141daeb972eb7bcc90fe4d5816d"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_032/selected_ending_image_and_swc.png",
+      "sha256": "c12dc8243a48aed38266f9608e65388afb624398a53c2c5115f49b7bbeb3f66e"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_032/target_component_morphology.png",
+      "sha256": "6a2d10567d29bcad120b880b300b4ef87601ee13af63b4d6626987b9ce34c912"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/252790_032/target_component_nodes.csv",
+      "sha256": "df2def9b43aa7862ec4978bffbd4080ff78a77efc0f2ac7ba1b9dded0455cb4f"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/pilot_inputs.json",
+      "sha256": "ead283a8717fd9fa001e73774f1aeafcfdd71cbd2e09aac6e662bd3765ed39cc"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot/selected462_native_image_coverage.csv",
+      "sha256": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03"
+    }
+  ]
+}

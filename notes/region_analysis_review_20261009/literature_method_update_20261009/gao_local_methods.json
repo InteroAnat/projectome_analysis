@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "checked_utc": "2026-10-09T01:43:20.790936+00:00",
+  "reviewer": "Codex",
+  "papers": [
+    {
+      "zotero_item_key": "L5TALCAJ",
+      "zotero_attachment_key": "IQ5H7F89",
+      "doi": "10.1038/s41593-022-01041-5",
+      "pdf_path": "C:\\Users\\laika_yan\\Zotero\\storage\\IQ5H7F89\\Gao et al. - 2022 - Single-neuron projectome of mouse prefrontal cortex.pdf",
+      "pdf_sha256": "b82da7326c193bff72f1342f83894ee9a9d13f4d8ecf881f94c8003ebde813a0",
+      "pdf_pages": 39,
+      "relevant_methods_pages_one_based": [
+        16
+      ],
+      "methods_page_text_sha256": {
+        "16": "e8ffb8b9e4b87ed0c91c737cbcfedeb975b669888468bc89a0a97ccfd9b8b99b"
+      },
+      "methods_status": "relevant_full_methods_read_from_local_pdf",
+      "library_mutation": false
+    },
+    {
+      "zotero_item_key": "SAKZIAKG",
+      "zotero_attachment_key": "CJUA8PUK",
+      "doi": "10.1038/s41593-023-01339-y",
+      "pdf_path": "C:\\Users\\laika_yan\\Zotero\\storage\\CJUA8PUK\\Gao et al. - 2023 - Single-neuron analysis of dendrites and axons reveals the network organization in mouse prefrontal c.pdf",
+      "pdf_sha256": "9895ec558a941ad814aa7819935fba7e38d19498940dc39c8ff2692c34794910",
+      "pdf_pages": 35,
+      "relevant_methods_pages_one_based": [
+        17,
+        18
+      ],
+      "methods_page_text_sha256": {
+        "17": "edd568df093e488cf1d054a979fe3e79fc3d61634f5be0ae1231bbf573cd9a76",
+        "18": "9663a68e128c9f9b07949a2c0703edac0e2d4dff955bbd5be3259377e132f81c"
+      },
+      "methods_status": "relevant_full_methods_read_from_local_pdf",
+      "library_mutation": false
+    },
+    {
+      "zotero_item_key": "JWB4MYBC",
+      "zotero_attachment_key": "8BNNG4KV",
+      "doi": "10.1016/j.cell.2025.06.005",
+      "pdf_path": "C:\\Users\\laika_yan\\Zotero\\storage\\8BNNG4KV\\Single-neuron projectomes of macaque prefrontal cortex reveal refined axon targeting and arborization.pdf",
+      "pdf_sha256": "c2577ec60ecafacd918d7a24dec7411a5af5b4f0dee6442da239f139cb976b31",
+      "pdf_pages": 42,
+      "relevant_methods_pages_one_based": [
+        22,
+        23,
+        24,
+        25
+      ],
+      "methods_page_text_sha256": {
+        "22": "99774f5e84af2acf0a83ba3be5d30eb7381976a4c1f4296c9dc8541e96d7c502",
+        "23": "8c4acb9e6bd778face337e456cc1ea430259a68e0a4f49019f77b43eb756e5ce",
+        "24": "8ac0275801b17ca68c4b3ec5d7292013b2a912499bd55f0d6d02d565629c14c7",
+        "25": "ae599b9dd67fc054a822eea2567b7739a78f1cd4363822ac2a053d18054fa66a"
+      },
+      "methods_status": "relevant_full_methods_read_from_local_pdf",
+      "library_mutation": false
+    }
+  ],
+  "pdfs_or_fulltext_redistributed": false,
+  "source_transform_status": "user_confirmed_unavailable",
+  "anatomical_acceptance": false,
+  "author_arbor_model_reproduction": false,
+  "extraction": {
+    "library": "PyMuPDF",
+    "version": "1.28.0",
+    "method": "Page.get_text()"
+  },
+  "review_md_sha256": "df2faa0ad8746b053f105ebce096ef3b249a31a8fc7c34f3449562621b80b4f7"
+}
