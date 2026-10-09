@@ -1,0 +1,77 @@
+{
+  "selected_neurons": 462,
+  "animals": 8,
+  "axon_nodes": 7828761,
+  "connected_axon_sections": 47044,
+  "section_status_counts": {
+    "mapped": 31570,
+    "atlas_background": 15473,
+    "outside_reference": 1
+  },
+  "ending_status_counts": {
+    "atlas_background": 11669,
+    "mapped": 63955,
+    "outside_reference": 1
+  },
+  "topology_descriptions": {
+    "unbranched_without_original_ends": 22781,
+    "original_end_without_local_bifurcation": 12881,
+    "branching_with_original_ends": 8942,
+    "branching_without_original_ends": 2440
+  },
+  "sections_with_native_identity_pair": 25652,
+  "sections_with_at_least_one_end_in_cached_cube": 1947,
+  "native_pairs": 201,
+  "missing_designated_native_pairs": 261,
+  "all_selected_original_ends": 75625,
+  "native_original_ends": 48574,
+  "covered_native_original_ends": 9209,
+  "neurons_with_native_end_cube": 184,
+  "availability_is_not_image_review": true,
+  "inputs": {
+    "connected_axon_sections.csv": "54ca233576e6d2b99927ef9c6e73343579bd574d3ee990a0c58cd89d87e35ebb",
+    "neuron_morphology_and_coverage.csv": "79806e397c1bf1d7b619cd059aaf6ed091a79405c53c4a38acdcadba868a363c"
+  },
+  "animal_totals": {
+    "331": {
+      "selected_neurons": 55,
+      "original_ends": 8551,
+      "native_pairs": 55
+    },
+    "605": {
+      "selected_neurons": 21,
+      "original_ends": 1766,
+      "native_pairs": 21
+    },
+    "631": {
+      "selected_neurons": 16,
+      "original_ends": 11048,
+      "native_pairs": 16
+    },
+    "797": {
+      "selected_neurons": 52,
+      "original_ends": 18382,
+      "native_pairs": 52
+    },
+    "900": {
+      "selected_neurons": 14,
+      "original_ends": 1515,
+      "native_pairs": 14
+    },
+    "936": {
+      "selected_neurons": 261,
+      "original_ends": 27051,
+      "native_pairs": 0
+    },
+    "945": {
+      "selected_neurons": 25,
+      "original_ends": 4024,
+      "native_pairs": 25
+    },
+    "948": {
+      "selected_neurons": 18,
+      "original_ends": 3288,
+      "native_pairs": 18
+    }
+  }
+}

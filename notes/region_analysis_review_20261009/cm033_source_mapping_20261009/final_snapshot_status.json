@@ -1,0 +1,398 @@
+{
+  "checked_utc": "2026-10-09T04:08:51.585022+00:00",
+  "snapshot_status": "new_candidate_anatomical_normalization_and19_source_mapping_verified_spatial_rebuild_active_old_left_GLM_bridge_pending",
+  "live_WSL_process_lines": [
+    "317     316     257 bash -lc cd /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri && export PYTHONPATH=/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri && /home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python -u alignment_review/cm033_Dsource_20261009/run_spatial_rebuild.py > alignment_review/cm033_Dsource_20261009/spatial_rebuild.log 2>&1",
+    "405     317     256 /home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python -u alignment_review/cm033_Dsource_20261009/run_spatial_rebuild.py"
+  ],
+  "process_control_actions": false,
+  "external_source_manifest": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\source_manifest.json",
+  "external_source_manifest_sha256": "079ce4df1e6e47e890003c1bb4101322c410b51c4f7aef96edceece6cab5d1e8",
+  "external_manifest19_mapping_readback": [
+    {
+      "scanner_id": 16,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 17,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 18,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 23,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 25,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 27,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 28,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 39,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 45,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 46,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 47,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 53,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 54,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 55,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 57,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 58,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 60,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 61,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    },
+    {
+      "scanner_id": 64,
+      "task_matches": true,
+      "legacy_index_matches": true,
+      "source_path_matches": true,
+      "payload_byte_identical_producer_claim": true,
+      "sampling_correction_recorded": true
+    }
+  ],
+  "spatial_rebuild_completed": false,
+  "freshGLM_SPM_files": [],
+  "root_actually_viewed_images": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_forward_checkerboard_slices.png",
+      "sha256": "f748fe9bb04e9c4d48b5462c1519a3d69bec31581ba3cb2767b759a49e6c1021",
+      "actually_viewed_by": "root",
+      "observation_scope": "Broad envelope/central fissures/ventricular-region correspondence plausible; residual peripheral/inferior/cerebellar/brainstem and contrast differences; no physicalLR/fineIal/oldGLMbridge acceptance."
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_forward_checkerboard.png",
+      "sha256": "1c5d493402795dc0613743ed0b72c1d2fae6d8a73d23205cbdd3373960add481",
+      "actually_viewed_by": "root",
+      "observation_scope": "Broad envelope/central fissures/ventricular-region correspondence plausible; residual peripheral/inferior/cerebellar/brainstem and contrast differences; no physicalLR/fineIal/oldGLMbridge acceptance."
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_forward_checkerboard.png",
+      "sha256": "522ecb009de2f0aedf57d1e9d00a6be2b0a7f14d5840ff53d78f68d014211917",
+      "actually_viewed_by": "root",
+      "observation_scope": "Broad envelope/central fissures/ventricular-region correspondence plausible; residual peripheral/inferior/cerebellar/brainstem and contrast differences; no physicalLR/fineIal/oldGLMbridge acceptance."
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_forward_checkerboard_slices.png",
+      "sha256": "249bcdccdfd9c96ff8bc32de41dcc86e0726e7e1f2faf0710781f236ce56f426",
+      "actually_viewed_by": "root",
+      "observation_scope": "Broad envelope/central fissures/ventricular-region correspondence plausible; residual peripheral/inferior/cerebellar/brainstem and contrast differences; no physicalLR/fineIal/oldGLMbridge acceptance."
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_inverse_checkerboard.png",
+      "sha256": "5cc707966df2f28223e8ebe0459d687cdf18b55dff70aac36d030d0bf5186a58",
+      "actually_viewed_by": "root",
+      "observation_scope": "Broad envelope/central fissures/ventricular-region correspondence plausible; residual peripheral/inferior/cerebellar/brainstem and contrast differences; no physicalLR/fineIal/oldGLMbridge acceptance."
+    }
+  ],
+  "old_left_GLM_input_current_header_checks": [
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_desc-aligned_bold.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "current_header_binaryblock_SHA256": "536dd61e7834ff5e6f2337544a9d1cfac2dcc78bd75ef295a5bb4ea8a771a6be",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_old_contrast_affine": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-58_desc-aligned_bold.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "current_header_binaryblock_SHA256": "9e17c880b452e0fad1c090a2259a75b2c6f0e679448c6510e9ba2979577d1f72",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_old_contrast_affine": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-60_desc-aligned_bold.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "current_header_binaryblock_SHA256": "bd35b348462df04530c6d3cb8ebab5e97c53dc9abea27538472fc5a4d419333b",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_old_contrast_affine": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-61_desc-aligned_bold.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "current_header_binaryblock_SHA256": "bab609b65a50a37dcb5a705b7630a264ed9e43faaed65792b8678944598d11ea",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_old_contrast_affine": false
+    },
+    {
+      "path": "D:\\multimodal_fmri\\derivatives\\preproc\\sub-cm033\\ses-20160120\\func\\smoothed_sub-cm033_ses-20160120_task-mstim_acq-pos1_run-64_desc-aligned_bold.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "current_header_binaryblock_SHA256": "271fb189b09934d308d76d1d191a0879116948f30ca7f66e9d99c8763a14fdf4",
+      "current_affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "matches_old_contrast_affine": false
+    }
+  ],
+  "local_audit_output_sha256": {
+    "all37_conversion_source_mapping.csv": "170ef3bda48dbe01202c5ad0fe5ac2193a8b01c81a350720f23dfe7b3aeef0f3",
+    "audit_local_mapping.py": "e808f13f0a205097dd37256da3f2120e1c7087c6c9b36ffcecf59ad4a262830f",
+    "check_content_correspondence.py": "22a83ccad4110a864d55c1280cdb5eb9487f639c77948c73f3ed7b52447a2c4f",
+    "full_array_correspondence.json": "03e250c844b2a1df133c4be00041202eaf47b8f91827ed1d69418e584da7b19b",
+    "mapping_and_normalization_snapshot.json": "4df74adf3137d6708fc460dbc946d778e79ea670e9d390230308e07bda326734",
+    "selected19_source_mapping.csv": "84eb4692f0b1b5528732a17b7d23c8a436d851f906247d463b40f1491a197a71",
+    "storage_order_intensity_correspondence.json": "8a3d4204b5f3672df4ffe37b4d30e4b3719c9245cebdac7c5b992ce6b374e0d6"
+  },
+  "scientific_anatomical_acceptance": false,
+  "direct_old_left_GLM_to_new_norm_supported": false,
+  "safe_next_step": "Keep live rebuild isolated. Independently verify completion/full-series geometry and saved EPI-to-anatomy fit. Either fit a source-provenance-bound old-SPM-coordinate reference to the frozen taskA candidate in a fresh derivative, or fit a new site-specific GLM after temporal/data-quality prerequisites are explicit; never simply flip or attach normalization to old con/T. Then warp contrast, T and actual estimation mask under the verified chain into fresh projectome derivatives and label provisional."
+}

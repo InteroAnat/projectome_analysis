@@ -2,6 +2,14 @@
 
 User authorization: “Ensure all updates are logged and pushed.” Work is scoped to `codex/insula-pipeline-evolution-20261008`, based on `78008cbaab71bf737dc7129c72e5fe284c3ba40f`; the default branch is `master` and is not the push target.
 
+## Whole-ledger morphology and expanded native-review follow-up
+
+This scoped follow-up starts from published `ef1b819773dba9c230b8f989d8f0c1fb11a5d372`. It adds the complete 462-neuron/47,044-section/75,625-original-end census, six new native leaf reviews and a passage example, the animal-confounded native-evidence audit for saved clusters, and current CM033 19-run mapping/candidate-normalization evidence. Existing scientific maps, labels, cohorts and external jobs are unchanged. The consolidated report is [terminal_coverage_followup_20261009.md](terminal_coverage_followup_20261009.md).
+
+Seven census tests and four missingness/identity coverage tests pass, with independent graph/arithmetic receipts. Root's fresh readback passes 814 source/artifact paths, separately recording one external live-job note change; immutable scientific inputs and outputs agree. Fifty links in six new report files resolve, and all four publication-token regressions pass. The historical 409-test suite is not presented as freshly rerun. Eleven individual leaves across seven animals and two passage locations are actual image-review coverage, not whole-field biological acceptance.
+
+Publish compact ledgers, seven new readable panels, methods and validation records under the standing public-payload approval. The exact 87,831,295-byte section-node membership ledger remains local and hash-recorded, alongside the existing large endpoint ledgers. Publication inventory, exact index readback and remote verification are required before this follow-up is described as pushed. The verified commit/remote values will be appended after publication.
+
 ## Scope
 
 Publish reviewed pipeline sources and their necessary tested baseline dependencies, focused regressions, complete dated inventory/QC, citation/methods records, corrected diagnostic derivatives, one primary ARM figure set, six-level matrices, compact clustering/MSTIM outputs, reproduction commands and reports. Native-context and FNT dependencies receive a separate reviewable baseline commit. Preserve unrelated journals/configuration, scratch work, original data and canonical inputs. Redundant historical/animal/QC figure variants remain archived locally with hashes; their provenance remains published.

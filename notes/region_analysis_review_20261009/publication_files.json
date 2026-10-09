@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-09T03:55:50.591920+00:00",
+  "created_utc": "2026-10-09T04:20:38.863362+00:00",
   "groups": {
     "baseline": [
       {
@@ -1358,8 +1358,8 @@
       },
       {
         "path": "docs/project_note.md",
-        "bytes": 121855,
-        "sha256": "9e194c7e440d5f1aa2541d1496e4447d7164e2dc7c9aa71c370915b20321d575"
+        "bytes": 124005,
+        "sha256": "36bfc6189dbebaff9848c0c0f054b228df10ee50e450ae8602b66ac9086f1bbe"
       },
       {
         "path": "docs/region_analysis_terminology.md",
@@ -1368,8 +1368,8 @@
       },
       {
         "path": "group_analysis/evolution_20261008/README.md",
-        "bytes": 8984,
-        "sha256": "5754725d2fcca02a45a647d3db2ad96bbcb6ba087d6eed79eff7370580ed9068"
+        "bytes": 9495,
+        "sha256": "3c17b668d5e60b4ab8fb87a543acbae9107a42256a25c155c22356d5d2059a89"
       },
       {
         "path": "group_analysis/evolution_20261008/arm_mapping_20261009/README.md",
@@ -3193,8 +3193,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/README.md",
-        "bytes": 12887,
-        "sha256": "6d8847667f0147328331e8dc044b773c8120fe89ad6e84249b78f0aa341f5106"
+        "bytes": 13155,
+        "sha256": "37b726e946dfcad8d80bf344f72a27576aeb243163d59e77743a9cee22ccc303"
       },
       {
         "path": "notes/region_analysis_review_20261009/clustering_20261009/ARM6_source_relative_sensitivity/absolute_vs_relative_comparison.csv",
@@ -3233,8 +3233,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/clustering_20261009/README.md",
-        "bytes": 11831,
-        "sha256": "9f0119c7512d41964145ba0c62338f8b0000c447e7b3dcc2dae2bb68b55a09de"
+        "bytes": 12288,
+        "sha256": "36da540dbbbc458ea6cc45dd4a399467559d03b2353db58f319ff496a76cb86a"
       },
       {
         "path": "notes/region_analysis_review_20261009/clustering_20261009/arm_L6_relative_profiles_selected462/all462_feature_eligibility_and_assignments.csv",
@@ -3312,6 +3312,11 @@
         "sha256": "614fbb1c4560da7971f9df253f1fa0c7e2cfbcf36f38171e25187d9eb57230e0"
       },
       {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/audit_native_image_coverage.py",
+        "bytes": 9256,
+        "sha256": "3c296119fce3c7b892c38930a5fd9b1c2d10d4b8e12e50dc9462652df551c500"
+      },
+      {
         "path": "notes/region_analysis_review_20261009/clustering_20261009/display_readability_correction/all_axon_hellinger_target_profiles.png",
         "bytes": 137713,
         "sha256": "a03e62671b49bf71a9ce355503c2bba4352bf5d6064b4a5ed3cd6987cb92e5fe"
@@ -3342,6 +3347,31 @@
         "sha256": "0e465eac50f631b6369eed0573f062935da16ba6b7b9993c3a1c31309b2f923c"
       },
       {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/README.md",
+        "bytes": 3999,
+        "sha256": "d8c45b7a6819c189afdc46b48c48ca844fed5c19bd9bfc51949cda06c50f885f"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/all462_native_image_coverage.csv",
+        "bytes": 61538,
+        "sha256": "372928c2a51fe6bcf8832b0c312a52b24baba336394e7a45d4a8115bee532b4e"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/coverage_audit_provenance.json",
+        "bytes": 2672,
+        "sha256": "b971df97397169e7197d48a40fd939319fd6dedb93450883f13ec1cc5f3a39af"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/independent_native_coverage_readback.json",
+        "bytes": 12076,
+        "sha256": "1e4640e011b6d15874bd479d8a6bb6411d8ab1253562f0464da4f7b2e14f912f"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/native_image_coverage_by_animal_evidence_cluster.csv",
+        "bytes": 1365,
+        "sha256": "34f6ef5d5f648116444c24263906a6e4d1fcf480f69deaca93b0aeb331c122e9"
+      },
+      {
         "path": "notes/region_analysis_review_20261009/clustering_20261009/primary_producer_code_20261009.py",
         "bytes": 34972,
         "sha256": "1c0b0a4ea28d1f2d731062e3c76584b012d74c17cb0e558f80a17a3089ce56bc"
@@ -3350,6 +3380,56 @@
         "path": "notes/region_analysis_review_20261009/clustering_20261009/render_saved_profile_display.py",
         "bytes": 4641,
         "sha256": "916ac816dd344af9137cae38644bdb2f076164094b4652f1563b6809c0c46902"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/clustering_20261009/test_native_image_coverage.py",
+        "bytes": 3067,
+        "sha256": "35f61a0cbae6da333a911291bca78c692edd66d1bff4b54b230f98aa4b791fdd"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/README.md",
+        "bytes": 8676,
+        "sha256": "3455e0ee541e0b6d3aeabcbaed058aca6be4a2a47bc38e412c1a31eff51eb39a"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/all37_conversion_source_mapping.csv",
+        "bytes": 9164,
+        "sha256": "170ef3bda48dbe01202c5ad0fe5ac2193a8b01c81a350720f23dfe7b3aeef0f3"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/audit_local_mapping.py",
+        "bytes": 14931,
+        "sha256": "e808f13f0a205097dd37256da3f2120e1c7087c6c9b36ffcecf59ad4a262830f"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/check_content_correspondence.py",
+        "bytes": 3041,
+        "sha256": "22a83ccad4110a864d55c1280cdb5eb9487f639c77948c73f3ed7b52447a2c4f"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/final_snapshot_status.json",
+        "bytes": 14172,
+        "sha256": "eac806419049f3254d1c7b0b94392c80babf394410442915f65f402259f4128a"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/full_array_correspondence.json",
+        "bytes": 3931,
+        "sha256": "03e250c844b2a1df133c4be00041202eaf47b8f91827ed1d69418e584da7b19b"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/mapping_and_normalization_snapshot.json",
+        "bytes": 68780,
+        "sha256": "4df74adf3137d6708fc460dbc946d778e79ea670e9d390230308e07bda326734"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/selected19_source_mapping.csv",
+        "bytes": 2945,
+        "sha256": "84eb4692f0b1b5528732a17b7d23c8a436d851f906247d463b40f1491a197a71"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/cm033_source_mapping_20261009/storage_order_intensity_correspondence.json",
+        "bytes": 28457,
+        "sha256": "8a3d4204b5f3672df4ffe37b4d30e4b3719c9245cebdac7c5b992ce6b374e0d6"
       },
       {
         "path": "notes/region_analysis_review_20261009/code_audit/actual_source_formula_inventory.json",
@@ -4603,8 +4683,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/mstim_integration_20261009/README.md",
-        "bytes": 8289,
-        "sha256": "2beed3e0bf6f372c747209f6b74c165e7b80b1b4afd3134630f8fb1d616acd1f"
+        "bytes": 8862,
+        "sha256": "0bf2faa70dad798354be73127f55c2699140c78b90084b8aa57e6be66734d704"
       },
       {
         "path": "notes/region_analysis_review_20261009/mstim_integration_20261009/ancillary_source_readback.json",
@@ -4713,13 +4793,13 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/prepare_publication.py",
-        "bytes": 11742,
-        "sha256": "885def8db3238c5f99011e2aca1a2f691aed8f5ebdd4e7ee61463b902b3fe0c5"
+        "bytes": 11845,
+        "sha256": "4d4344121c8a74506eb8db33586786e790f52635346c7ec1a0f9a17e0e1214a8"
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_20261009.md",
-        "bytes": 20022,
-        "sha256": "a01433bc6f6ad62b3616895bcd885e5e62026b0222c870d4bea3cf7813a09630"
+        "bytes": 22463,
+        "sha256": "2d27651b9bad865d80e81b9f1cb5b6e36fc202f69431ea9b747d4906ac5bb73d"
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_filename_regression_20261009.json",
@@ -4753,8 +4833,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/scope_update_20261009.md",
-        "bytes": 9125,
-        "sha256": "b33f842c5cc8c7f6b519dda9a5ab40739edaa0e6f70db95d2fb290dfaa084550"
+        "bytes": 9440,
+        "sha256": "08494c59ad706d2609c7cf4f2d0b2408987ac8759f19f44673fd15312dea1b73"
       },
       {
         "path": "notes/region_analysis_review_20261009/scope_update_20261009_initial_readback.json",
@@ -4940,6 +5020,21 @@
         "path": "notes/region_analysis_review_20261009/table_audit/test_audit_region_tables.py",
         "bytes": 1834,
         "sha256": "9be0a88d709424e3d8698c6033a1c01415b54313828bdb0f6f15fe1b35c04a61"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_coverage_followup_20261009.md",
+        "bytes": 8298,
+        "sha256": "641621c5d9ed925be75d3cf9ff6141fd98ca1d60ccd4dc92f88884f9c9dc6a5b"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_coverage_followup_initial_readback_20261009.json",
+        "bytes": 3573,
+        "sha256": "509cd51a794d22b7cca9853d2c266d3cfe6e9400ec16b820883bb3697e378e03"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_coverage_followup_readback_20261009.json",
+        "bytes": 3652,
+        "sha256": "8c1bd2c819249975ae8c2170244b5a08d6ed919d4e53d7bf5ce06aedd6b16445"
       },
       {
         "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/README.md",
@@ -5207,6 +5302,221 @@
         "sha256": "48710fc0a4ab8abb8ccecc40e2cd0f7bbec9004469add1254d033fa5991670fb"
       },
       {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/README.md",
+        "bytes": 11394,
+        "sha256": "af2c6d5f48e087b80361f362c4ebaf568189010f1d18998ceab51bb2f1455a90"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/additional_image_review_cues.csv",
+        "bytes": 6964,
+        "sha256": "85f879714dd630e868e55ccac5f43cd3fc58bfeb98a8f4380a1dcf5d7759e391"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/census_connected_axon_sections.py",
+        "bytes": 21787,
+        "sha256": "6f99d265323c1352e7ab12428589cb0d1bcb169c799f2c861046a518ffc6929c"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/delivery_validation.json",
+        "bytes": 5872,
+        "sha256": "d2ebfbff8d15ea1a03b881bcad2debddc45132c327fb147ee1f47b2f3eef0174"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/descriptive_census_summary.json",
+        "bytes": 2082,
+        "sha256": "681acc9d63404b71da0b77c314f367ba693e4badd78bee70dee53568af107f9d"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/focused_tests_20261009.log",
+        "bytes": 870,
+        "sha256": "b9e35879870466602b1abc26b4518523fce9450cbe744ab238f69d45d83ab062"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/independent_census_readback.json",
+        "bytes": 3482,
+        "sha256": "7a61fa12375f7a1992539bcde471862c3b3ae49fe5fd3c501d628df25074b510"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/independent_census_readback.py",
+        "bytes": 6772,
+        "sha256": "afea357aa22db05ed289858fa70a93b6cb26870cff6d05bb07b158326d5a1a21"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/census_provenance.json",
+        "bytes": 5309,
+        "sha256": "774f98d8a8ea65a287187770f1a8ae78f415f24d60f6f6008142b1a339431898"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/connected_axon_sections.csv",
+        "bytes": 18687418,
+        "sha256": "54ca233576e6d2b99927ef9c6e73343579bd574d3ee990a0c58cd89d87e35ebb"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/native_original_end_cube_coverage.csv",
+        "bytes": 8232010,
+        "sha256": "f37c17ce3bedc77c92ca9315a84e03bb6f53d032d712baf926043b5b749fded5"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/neuron_morphology_and_coverage.csv",
+        "bytes": 3764541,
+        "sha256": "79806e397c1bf1d7b619cd059aaf6ed091a79405c53c4a38acdcadba868a363c"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/original_target_and_type_crossing_edges.csv",
+        "bytes": 10707473,
+        "sha256": "e96333ad147e9f2ff303432b67baa43a2339f48c82b04191bc91bb3f9f747726"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/per_neuron_reconciliation.json",
+        "bytes": 90571,
+        "sha256": "acfa00be1a64a3a4f39732436c19b7ed672d38a92e56b1e76f444041bbd40e38"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/source_swc_bindings.csv",
+        "bytes": 97612,
+        "sha256": "9b8e093bbba6af30453c381a9c62a1cefb9e2a1b25d70d661d03cbfa630c5e0d"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/summarize_census.py",
+        "bytes": 4910,
+        "sha256": "f7b38a123f7d0133ebb478fa74b9e8a1fff50a6d1d192ea5b83db9ade6fd8505"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/summary_provenance.json",
+        "bytes": 634,
+        "sha256": "a420fb5c9e2a022c8fe75c8cc712b31be0d78583a2c11c39ac1465cba5f06fc0"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/test_connected_axon_census.py",
+        "bytes": 5896,
+        "sha256": "c2da5ccc09545a9c524965efba96d788a2c6a12c4b3d3fb8531ce42b0c8157ad"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/README.md",
+        "bytes": 9419,
+        "sha256": "94a05dce77895f734441f6e6664697b2df713bf45187f2174631cdb1085a2a1d"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/assessment_inputs.json",
+        "bytes": 37949,
+        "sha256": "216f89a433920c59d1e84a2ffebe928f8fca5eeba96dae10053f322b9b57ff5c"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/build_expanded_native_review.py",
+        "bytes": 12161,
+        "sha256": "ab2e5804b897f4488f1620042bc49924b0598d4854a5ee451b883812090f96f0"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/codex_image_assessments.json",
+        "bytes": 9974,
+        "sha256": "c640b16fb06947517a89cb44d8b2b68ad830f1d85b6cd5378d2911f704cd9eaa"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/delivery_receipt.json",
+        "bytes": 4559,
+        "sha256": "6bb419fc5d69f440fdba34d66169f9945dff78ece0d4c220dcb0197572e72d79"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/finalize_expansion_review.py",
+        "bytes": 12214,
+        "sha256": "9beb25f1e756ed222e3b681589960f72eaf866ed82dbcf7d821918240042ad62"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/generation_provenance.json",
+        "bytes": 4706,
+        "sha256": "d882d3ddc0308e4ec3eae749eca42f0a0f82f87749136d464bcd51c278af28bb"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/independent_saved_readback.json",
+        "bytes": 6569,
+        "sha256": "e0c7738117143404fd79742439f0f962cf59d6afe1862ed2f827da59039c40ac"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/passage_inputs.json",
+        "bytes": 2246,
+        "sha256": "03933617dbb15e7a231de23b503ccabbaf40891eed6d453f101f1e106534929f"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/render_additional_passage.py",
+        "bytes": 5006,
+        "sha256": "851668b5f41c2ec2ecc66bb0bea2011f5e1382e7ab75e69ea3d700e795e98dd0"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252383_124_section_and_optical_planes.png",
+        "bytes": 1435716,
+        "sha256": "92f776d7b8461206726387da48f283361f2b5632f503a0d7448d1fa64187e87e"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252383_124_section_nodes.csv",
+        "bytes": 2546,
+        "sha256": "4bd9958a48109fc6c5eb36a3501aa15b9e2938a2a07c217a50fc6cd5bda43799"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252385_056_section_and_optical_planes.png",
+        "bytes": 1798599,
+        "sha256": "a57370f7dd9a3b785f6a3b670f499137ddbdcbe3d873f4d0d5a51e9b901f32d4"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252385_056_section_nodes.csv",
+        "bytes": 280048,
+        "sha256": "57e6eea914872a44359d371f4e7852b8081dc3ca1dc09d3237cf3900feb8139a"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252527_056_section_and_optical_planes.png",
+        "bytes": 1407000,
+        "sha256": "e644a618ec4155060c80f94c65b02676d791bddf6531e2b0f5a224ab54780cab"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252527_056_section_nodes.csv",
+        "bytes": 801468,
+        "sha256": "510a2d1b21c90fddcb04fd02c947490720301354dffe3e90b5c79e729732a353"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252714_099_section_and_optical_planes.png",
+        "bytes": 1665474,
+        "sha256": "c6b8081f419e18dd367d6fce0a93781b703d2b687417af4d360f84147377860c"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252714_099_section_nodes.csv",
+        "bytes": 554119,
+        "sha256": "e265261f220de76f5a21da3e603c10e53af39c1ad07d8b131b91d2e1bf6fbcd8"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252718_162_section_and_optical_planes.png",
+        "bytes": 1589784,
+        "sha256": "7b4de44d6d4906f5fb1b7131db4bf68ae6847591bbb3a84eded644e5fd03cf33"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252718_162_section_nodes.csv",
+        "bytes": 7152,
+        "sha256": "b2b55141039fb8e0ec6b6af2f61e43a407bf340074d78a2a38560de499a20f91"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252790_037_internal_passage_optical_planes.png",
+        "bytes": 320195,
+        "sha256": "c94124744d4a1bf94543621547ab3927956a3c8a05a7a3c5c191f7a1f1208ada"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252790_037_section_and_optical_planes.png",
+        "bytes": 408798,
+        "sha256": "e9f270fef535d7c43ddcd3773c49e972411bdfc5efbf4dc3f50c32f090c824f6"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252790_037_section_nodes.csv",
+        "bytes": 3919,
+        "sha256": "a5013834ce7afc49c296a01700fa657faf3d5383fd6eaa6297ce318f602c0df6"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/root_visual_review.json",
+        "bytes": 3335,
+        "sha256": "a1ad3efecbc88ee25506ad2edaa86fc7d2cb2e02c0308542902580e3d86b3737"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/root_visual_review.md",
+        "bytes": 1448,
+        "sha256": "b1249268c6b0a65f413da64c633b70cd3470086985935030abb7ed85002fc8e4"
+      },
+      {
         "path": "notes/region_analysis_review_20261009/test_publication_credentials.py",
         "bytes": 1775,
         "sha256": "175d1b58dc7c6f56a89ddf4e29a65f852e70f128faf1898da80af753d5082d54"
@@ -5335,6 +5645,11 @@
         "path": "notes/region_analysis_review_20261009/verify_scope_update.py",
         "bytes": 10771,
         "sha256": "7ee6f39168a0f6363dd1acc81c030027a75e127c9fe3c0ba5997f7a2ce2cfda7"
+      },
+      {
+        "path": "notes/region_analysis_review_20261009/verify_terminal_coverage_followup.py",
+        "bytes": 7020,
+        "sha256": "54040458503516d9c5b15d030c036c2283f1f01864438c7e276b85841bc8a896"
       }
     ]
   }

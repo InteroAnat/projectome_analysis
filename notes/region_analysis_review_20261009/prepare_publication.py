@@ -47,6 +47,7 @@ MAP_SCRIPTS = {
 }
 CORE_MODULES = {"endpoint_atlas.py", "projection_maps.py", "terminal_sites.py"}
 OMIT_NAMES = {"publication_files.json", "publication_scan.json", "publication_local_artifacts.json", "publication_index_receipt.json"}
+LOCAL_NODE_LEDGERS = {"leaf_records.jsonl", "section_original_node_membership.jsonl"}
 OMIT_SUFFIXES = {".pyc", ".swc", ".tif", ".tiff", ".nii", ".gz", ".pdf"}
 TEXT_SUFFIXES = {".py", ".r", ".rmd", ".md", ".txt", ".json", ".csv", ".bib", ".patch", ".log", ".yml"}
 # A token starts at a lexical boundary. Without this guard, BIDS task-opto
@@ -88,13 +89,13 @@ def main():
         for path in directory.rglob("*"):
             if not path.is_file() or "__pycache__" in path.parts:
                 continue
-            if (path.name in OMIT_NAMES or path.name == "leaf_records.jsonl"
+            if (path.name in OMIT_NAMES or path.name in LOCAL_NODE_LEDGERS
                     or path.suffix.lower() in OMIT_SUFFIXES or path.name.startswith("publication_paths_")):
                 continue
             candidates.add(str(path.relative_to(ROOT)).replace("\\", "/"))
     # Previously committed publication manifests also appear in the Git diff.
     # Exclude them here as well as during discovery to avoid self-hash cycles.
-    candidates = {path for path in candidates if Path(path).name not in OMIT_NAMES
+    candidates = {path for path in candidates if Path(path).name not in OMIT_NAMES | LOCAL_NODE_LEDGERS
                   and not Path(path).name.startswith("publication_paths_")}
     # Publish one current ARM figure set. Earlier display variants and animal/QC
     # panels remain immutable local derivatives with hashes in the manifest.
@@ -163,7 +164,7 @@ def main():
                   if str(path.relative_to(ROOT)).replace("\\", "/") in archived_figures else
                   "Scientific binary/large local derivative; see bound run and reproduction workflow")}
              for directory in (EVOLUTION, AUDIT) for path in directory.rglob("*") if path.is_file()
-             and (path.name == "leaf_records.jsonl" or path.suffix.lower() in {".nii", ".gz", ".swc", ".tif", ".tiff"}
+             and (path.name in LOCAL_NODE_LEDGERS or path.suffix.lower() in {".nii", ".gz", ".swc", ".tif", ".tiff"}
                   or str(path.relative_to(ROOT)).replace("\\", "/") in archived_figures)]
     stamp = datetime.now(timezone.utc).isoformat()
     (AUDIT / "publication_files.json").write_text(json.dumps({"created_utc": stamp, "groups": groups}, indent=2) + "\n", encoding="utf-8")

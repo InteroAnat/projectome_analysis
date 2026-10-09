@@ -2,6 +2,16 @@
 
 **Purpose:** Living human-readable status for fMOST / insula projectome work. Agents **merge** updates; do not replace sections.
 
+## Whole-ledger axon morphology, expanded native review and current CM033 route (2026-10-09)
+
+**Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**
+
+The [current follow-up](../notes/region_analysis_review_20261009/terminal_coverage_followup_20261009.md) adds a complete 462-neuron graph census: 47,044 connected axon sections and 75,625 original full-graph axon ends. All saved endpoint counts and child-type-2 NMT lengths reconcile; seven new tests and independent real-graph checks pass. Sections are review units, not accepted terminal arbors. Six new optical-plane cases and a passage example bring actual review to 11 individual leaves across seven animals, plus two passage locations; ending completeness and fine anatomy remain unresolved.
+
+The native-image/cluster join exposes an important missing-evidence limit: all 261 selected animal-936 neurons, including all 260 Henry visual INS neurons, lack native SWCs in the designated cache. Their native measurements remain NA; the other 201 neurons have native pairs and 184 have a cached ending location. Four new tests and independent join/group readback pass. Cache availability is confounded with animal and cannot validate the Henry-only clustering sensitivity. No label, cohort or cluster was changed.
+
+Current CM033 sources now have a record-backed 19-run mapping, four exact full-array scanner/source correspondences and completed candidate anatomy→CMT→NMT normalization. Root inspected the forward/inverse overlays without accepting fine Ial or physical laterality. Its existing all-run spatial job is verified live; the historical left-only GLM still needs a source-frame bridge to the new anatomy. External projects were read only. [Fresh source readback](../notes/region_analysis_review_20261009/terminal_coverage_followup_readback_20261009.json) checks 814 paths and records the external progress-note change separately. Existing ARM NIfTIs and L1–L6 tables remain intact; compact outputs, review figures and hashes are [logged for publication](../notes/region_analysis_review_20261009/publication_20261009.md). Full-goal completion and scientific acceptance are not claimed.
+
 ## Local Gao/Liu Methods, native terminal assessment and updated MSTIM evidence (2026-10-09)
 
 **Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)**

@@ -1,5 +1,7 @@
 # Current scope and evidence after source clarification
 
+**Subsequent checkpoint:** [whole-ledger census, 11-leaf/seven-animal review, native-coverage clustering QC and fresh CM033 source/normalization evidence](terminal_coverage_followup_20261009.md). The five-case counts and CM033 state below describe the earlier checkpoint; their original receipts remain preserved.
+
 Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)
 
 The requested incremental pipeline, official ARM maps, six-level matrices, inventory, exploratory clustering and provisional CM032 comparison remain delivered. This update adds **actual native-image terminal assessment**, local Gao/Liu Methods readback, source-backed coarse CM032 site interpretation and a current-source CM033 audit. It does not claim that five inspected endings complete a whole-cohort terminal-field analysis. The full scientific objective remains open where review coverage or compatible CM033 spatial data is insufficient.

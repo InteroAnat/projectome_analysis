@@ -1,0 +1,1709 @@
+{
+  "status": "documented_local_mapping_and_fresh_candidate_norm_verified_old_GLM_bridge_unestablished",
+  "snapshot_started_utc": "2026-10-09T04:05:27.929901+00:00",
+  "snapshot_finished_utc": "2026-10-09T04:05:52.263385+00:00",
+  "task_scanner_ID_order_derived_from_workbook": {
+    "opto": [
+      16,
+      17,
+      18,
+      39,
+      45,
+      46,
+      47
+    ],
+    "mstim": [
+      23,
+      25,
+      27,
+      28,
+      53,
+      54,
+      55,
+      57,
+      58,
+      60,
+      61,
+      64,
+      65,
+      66,
+      67,
+      68,
+      69,
+      70,
+      71,
+      72,
+      73,
+      74,
+      75,
+      76,
+      77,
+      78,
+      79,
+      80,
+      81,
+      82
+    ]
+  },
+  "selected_mapping_count": 19,
+  "mapping_rows": [
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.nii",
+      "shape": [
+        128,
+        128,
+        19,
+        96
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.1052632331848145,
+        6.0
+      ],
+      "affine": [
+        [
+          -0.7495779991149902,
+          -0.004454374313354492,
+          -0.06949341297149658,
+          45.91007614135742
+        ],
+        [
+          -0.0043457746505737305,
+          0.7499798536300659,
+          -0.009427666664123535,
+          -43.894100189208984
+        ],
+        [
+          -0.024776339530944824,
+          0.0032132863998413086,
+          2.104094982147217,
+          -8.306814193725586
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "f2c367cd0e6561aa3aa9ace5f8681810a7b9ca4be531415fb8321bac384598bc",
+      "scanner_id": 16,
+      "task": "opto",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 1,
+      "reconstruction": 2,
+      "conversion_workbook_row": 8,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.json",
+      "SequenceName": "EPI13_standard",
+      "three_frame_fingerprint_sha256": "87d71f733c6563bc2edc4dbb7669e41bfdc3de51f1d43204201a6d08ad39cc46",
+      "curated_TR_s": 6.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 9,
+        "matrix": "128x128x19",
+        "segments": "8",
+        "recorded_TR_ms": "750",
+        "recorded_NR": "96",
+        "stimulation": "(3x3)x16, (blank x stim)xrepeat",
+        "comments": "optogenetics stim. 40Hz, 8ms pulse, "
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-02_EPI.nii",
+      "shape": [
+        128,
+        128,
+        19,
+        96
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.1052632331848145,
+        6.0
+      ],
+      "affine": [
+        [
+          -0.749719500541687,
+          -0.005259990692138672,
+          -0.05564224720001221,
+          45.9864501953125
+        ],
+        [
+          -0.005141139030456543,
+          0.7499685287475586,
+          -0.012799620628356934,
+          -43.93975067138672
+        ],
+        [
+          -0.019853711128234863,
+          0.004422307014465332,
+          2.1044888496398926,
+          -8.719773292541504
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "108100165737b2928291f0e7ccfc229d20bbb9b369a2daf324e01aef1aa9d36f",
+      "scanner_id": 17,
+      "task": "opto",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 2,
+      "reconstruction": 2,
+      "conversion_workbook_row": 10,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-02_EPI.json",
+      "SequenceName": "EPI13_standard",
+      "three_frame_fingerprint_sha256": "0afaabf8fa95a7da04d12500360414c0f2e6e029608469fad37ab3135b9d3330",
+      "curated_TR_s": 6.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 11,
+        "matrix": "128x128x19",
+        "segments": "8",
+        "recorded_TR_ms": "750",
+        "recorded_NR": "96",
+        "stimulation": "(3x3)x16, (blank x stim)xrepeat",
+        "comments": "optogenetics stim. 20Hz, 50ms pulse"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-03_EPI.nii",
+      "shape": [
+        128,
+        128,
+        19,
+        96
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.1052632331848145,
+        6.0
+      ],
+      "affine": [
+        [
+          -0.7497348785400391,
+          -0.007360100746154785,
+          -0.052017807960510254,
+          46.07255935668945
+        ],
+        [
+          -0.0072242021560668945,
+          0.7499444484710693,
+          -0.01566624641418457,
+          -43.78982925415039
+        ],
+        [
+          -0.018584728240966797,
+          0.005400598049163818,
+          2.104562282562256,
+          -8.851082801818848
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "783602e9828d636a84a1f1da63cc8d849ac103371a1a1353663818ddbfb57a45",
+      "scanner_id": 18,
+      "task": "opto",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 3,
+      "reconstruction": 2,
+      "conversion_workbook_row": 12,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-03_EPI.json",
+      "SequenceName": "EPI13_standard",
+      "three_frame_fingerprint_sha256": "e5dd10953338312c42e24b4865d895f8fe7e5bb3023ce47b7b09ae4c34531bf6",
+      "curated_TR_s": 6.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 13,
+        "matrix": "128x128x19",
+        "segments": "8",
+        "recorded_TR_ms": "750",
+        "recorded_NR": "96",
+        "stimulation": "(3x3)x16, (blank x stim)xrepeat",
+        "comments": "optogenetics stim. 20Hz, 8ms pulse"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\rsub-CM033_task-MSTIM_run-01_EPI.nii",
+      "shape": [
+        128,
+        128,
+        19,
+        48
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.1052632331848145,
+        6.0
+      ],
+      "affine": [
+        [
+          -0.75,
+          0.0,
+          0.0,
+          45.25
+        ],
+        [
+          0.0,
+          0.75,
+          0.0,
+          -45.25
+        ],
+        [
+          0.0,
+          0.0,
+          2.1052632331848145,
+          -10.0
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "header_sha256": "ebb90969123bbdf395a10df40b690fcb3cf8c70236c0521070261881f14a61f4",
+      "scanner_id": 23,
+      "task": "mstim",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 1,
+      "reconstruction": 2,
+      "conversion_workbook_row": 18,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": false,
+      "source_kind": "legacy_resliced_series",
+      "source_json": null,
+      "SequenceName": null,
+      "three_frame_fingerprint_sha256": "0a61d2889ed8ed5dd74c97794c9273d4c9ec8bd30397e1820094f50b9509a93d",
+      "curated_TR_s": 6.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 17,
+        "matrix": "128x128x19",
+        "segments": "8",
+        "recorded_TR_ms": "750",
+        "recorded_NR": "48",
+        "stimulation": "(2x1)x16, (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-02_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        576
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        2.0
+      ],
+      "affine": [
+        [
+          -0.7497508525848389,
+          0.019212067127227783,
+          0.006377458572387695,
+          44.235801696777344
+        ],
+        [
+          0.019137263298034668,
+          0.7494039535522461,
+          -0.0680464506149292,
+          -45.75566101074219
+        ],
+        [
+          0.00273895263671875,
+          0.022903144359588623,
+          2.2211711406707764,
+          -12.356616973876953
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "caaef849ac66c26924ca197c46bffb03293d8a32315ef0d14018ca285167330a",
+      "scanner_id": 25,
+      "task": "mstim",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 2,
+      "reconstruction": 2,
+      "conversion_workbook_row": 21,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-02_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "f342af4cc4285b3deb43f51ed2df1dc83665e01df03c01dc904f1e4c2f7dbea1",
+      "curated_TR_s": 2.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 19,
+        "matrix": "96x96x18",
+        "segments": "2",
+        "recorded_TR_ms": "2000",
+        "recorded_NR": "576",
+        "stimulation": "(6x3)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-03_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7499513626098633,
+          0.007939159870147705,
+          -0.009331583976745605,
+          44.97496032714844
+        ],
+        [
+          0.008051395416259766,
+          0.7494323253631592,
+          -0.08308601379394531,
+          -44.99024963378906
+        ],
+        [
+          -0.002850174903869629,
+          0.028073489665985107,
+          2.220648765563965,
+          -11.982229232788086
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "601d6b8fc1da46e19a73b2af83c1b831720f702b63b6b055b9f3af78d6773fec",
+      "scanner_id": 27,
+      "task": "mstim",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 3,
+      "reconstruction": 2,
+      "conversion_workbook_row": 24,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-03_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "03bea00e74156e7405719fe9d6d9c27ef60cb60d4fff1ce8040a96018ed2e0d1",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 21,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-04_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7499504089355469,
+          0.008043527603149414,
+          -0.009262800216674805,
+          44.998199462890625
+        ],
+        [
+          0.008151888847351074,
+          0.7494601607322693,
+          -0.08076512813568115,
+          -45.030391693115234
+        ],
+        [
+          -0.002831578254699707,
+          0.027290403842926025,
+          2.2207348346710205,
+          -11.93310260772705
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "02cab4d70d32499a5deb367a1c0da516c5804dc20ecf08c1906d299d0555f9d3",
+      "scanner_id": 28,
+      "task": "mstim",
+      "curated_side": "right_aic",
+      "legacy_task_run_index": 4,
+      "reconstruction": 2,
+      "conversion_workbook_row": 26,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-04_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "ac814713ced283c81ec6e602cb01509f2a681cacf6efd7388f78e1de9acc1108",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 21,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7493817806243896,
+          -0.021019697189331055,
+          -0.06526386737823486,
+          46.847686767578125
+        ],
+        [
+          -0.018305659294128418,
+          0.7446190118789673,
+          -0.26012539863586426,
+          -42.95876693725586
+        ],
+        [
+          -0.024329066276550293,
+          0.08718234300613403,
+          2.205979824066162,
+          -14.102527618408203
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "dc92d19cd7e5a5c2f16a4920061e8a6b12df08151bc26057c7a4abd6d0d7b6fe",
+      "scanner_id": 39,
+      "task": "opto",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 4,
+      "reconstruction": 2,
+      "conversion_workbook_row": 38,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "d26d4c00641d01f253ae72b7efb90231a93c56a0c23dd666f73c9caba3fea393",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 23,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "optogenetics 20Hz, 50ms pulse"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-05_EPI.nii",
+      "shape": [
+        128,
+        128,
+        25,
+        1152
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.600000023841858,
+        1.0
+      ],
+      "affine": [
+        [
+          -0.7497590780258179,
+          -0.0166018009185791,
+          -0.01974165439605713,
+          45.964393615722656
+        ],
+        [
+          -0.01597118377685547,
+          0.7482653856277466,
+          -0.10328221321105957,
+          -43.78425979614258
+        ],
+        [
+          -0.01030421257019043,
+          0.04820096492767334,
+          1.596540927886963,
+          -12.853156089782715
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "a1ee23cf28eeaeeff55488a0c5c48dc8b1d91034c1a113a24799eb9a5f10c336",
+      "scanner_id": 45,
+      "task": "opto",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 5,
+      "reconstruction": 2,
+      "conversion_workbook_row": 44,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-05_EPI.json",
+      "SequenceName": "EPI_1.5mmiso",
+      "three_frame_fingerprint_sha256": "84cc841a546dc935712f1ca5881b9493a1fa0da94d050ec4bf294d816a9f3c8d",
+      "curated_TR_s": 1.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 25,
+        "matrix": "64x64x25",
+        "segments": "1",
+        "recorded_TR_ms": "1000",
+        "recorded_NR": "1152",
+        "stimulation": "(12x6)x64 (blank x stim)xrepeat",
+        "comments": "optogenetics 20Hz, 50ms pulse"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-06_EPI.nii",
+      "shape": [
+        128,
+        128,
+        25,
+        1152
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.600000023841858,
+        1.0
+      ],
+      "affine": [
+        [
+          -0.7497516870498657,
+          -0.016883373260498047,
+          -0.019943714141845703,
+          45.9914436340332
+        ],
+        [
+          -0.016261696815490723,
+          0.7483310699462891,
+          -0.10088109970092773,
+          -43.89211654663086
+        ],
+        [
+          -0.010392308235168457,
+          0.047069668769836426,
+          1.5966919660568237,
+          -12.817959785461426
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "09d7a6adfa660261583aa18442bc6c1c76dd6c1bdd3915372a55eca4dffb5935",
+      "scanner_id": 46,
+      "task": "opto",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 6,
+      "reconstruction": 2,
+      "conversion_workbook_row": 46,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-06_EPI.json",
+      "SequenceName": "EPI_1.5mmiso",
+      "three_frame_fingerprint_sha256": "2d3206caf324bf64af1d0c94812ecc234e177ef16d9752361cb7e399bb9fba10",
+      "curated_TR_s": 1.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 25,
+        "matrix": "64x64x25",
+        "segments": "1",
+        "recorded_TR_ms": "1000",
+        "recorded_NR": "1152",
+        "stimulation": "(12x6)x64 (blank x stim)xrepeat",
+        "comments": "optogenetics 20Hz, 50ms pulse"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7493441104888916,
+          -0.021904945373535156,
+          -0.06649601459503174,
+          47.02119827270508
+        ],
+        [
+          -0.01924300193786621,
+          0.7449640035629272,
+          -0.25068676471710205,
+          -43.03868865966797
+        ],
+        [
+          -0.024762749671936035,
+          0.08395695686340332,
+          2.207035541534424,
+          -14.078365325927734
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "4e6754c8e8ecd1cb476fd39bbdc9353ff5ff97656df1c1d2cec94cca869cefab",
+      "scanner_id": 47,
+      "task": "opto",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 7,
+      "reconstruction": 2,
+      "conversion_workbook_row": 48,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "fba8016dc8f10ff3e5bd0d6266c2367d02de1d2fbd7d65700d5a4c21ff4dbe2f",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 23,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "optogenetics 20Hz, 50ms pulse"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-05_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494356632232666,
+          -0.019839763641357422,
+          -0.06303548812866211,
+          46.745059967041016
+        ],
+        [
+          -0.017184853553771973,
+          0.7445108890533447,
+          -0.263491153717041,
+          -42.84518051147461
+        ],
+        [
+          -0.02347111701965332,
+          0.08837389945983887,
+          2.2056450843811035,
+          -14.426494598388672
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "bf3f421661f377d933364a5e86211c713884a38b279e94f0b4dadfa5edd4263b",
+      "scanner_id": 53,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 5,
+      "reconstruction": 2,
+      "conversion_workbook_row": 55,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-05_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "d5613ab3f94a0e69a5bacd967d81d58ab3ba6669ceb332b2380dd32f05810e2e",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 27,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-06_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494320869445801,
+          -0.01977849006652832,
+          -0.06357729434967041,
+          46.73196029663086
+        ],
+        [
+          -0.017061233520507812,
+          0.744357168674469,
+          -0.26734626293182373,
+          -42.866817474365234
+        ],
+        [
+          -0.02367532253265381,
+          0.08967292308807373,
+          2.2051658630371094,
+          -14.47050952911377
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "2c2266bbdaa9653203fab6f1b6c31e0b79946dcd10de8262ec9c48bc248f5716",
+      "scanner_id": 54,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 6,
+      "reconstruction": 2,
+      "conversion_workbook_row": 57,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-06_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "df53d4340b69df2ae4560279fcf16f55f80b31f8be255f1b74b969590849506f",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 27,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-07_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.749421238899231,
+          -0.01977717876434326,
+          -0.06469464302062988,
+          46.736751556396484
+        ],
+        [
+          -0.017036795616149902,
+          0.744439959526062,
+          -0.2653278112411499,
+          -42.8790397644043
+        ],
+        [
+          -0.02403390407562256,
+          0.08898299932479858,
+          2.2053771018981934,
+          -14.387541770935059
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "d11fde68514076729833820298773315817d48004aa9472829e2534275e23d26",
+      "scanner_id": 55,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 7,
+      "reconstruction": 2,
+      "conversion_workbook_row": 59,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-07_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "a9dcad9dc3045ffea7b7dfd122cc284090c28edf4be67c269f7a0e18a4c18a4f",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 27,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494339942932129,
+          -0.019567251205444336,
+          -0.06394374370574951,
+          46.7148551940918
+        ],
+        [
+          -0.016872882843017578,
+          0.7444984316825867,
+          -0.26397669315338135,
+          -42.96569061279297
+        ],
+        [
+          -0.02374708652496338,
+          0.08853942155838013,
+          2.2055611610412598,
+          -14.373309135437012
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "6874161e53d73f52c241a26cd2fe56a58ff511f6ef0831ad61eec5a56bd5fdda",
+      "scanner_id": 57,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 8,
+      "reconstruction": 2,
+      "conversion_workbook_row": 62,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "68dab68a58bbe86fcba92034c55c5b55de20fd74f9b9fc2797177e9b97f50fbe",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 31,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(8x2)x16 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 200uA"
+      },
+      "recorded_NR_matches_actual": false,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-09_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494463920593262,
+          -0.019595980644226074,
+          -0.06257903575897217,
+          46.74308776855469
+        ],
+        [
+          -0.01697683334350586,
+          0.7445759177207947,
+          -0.2619919776916504,
+          -42.95845031738281
+        ],
+        [
+          -0.023277997970581055,
+          0.08787894248962402,
+          2.205836772918701,
+          -14.39555549621582
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "2b0c3106a737d20ab9ef64f36b0c6b19e749dba7ae55fb54e501ce25d5f02b2e",
+      "scanner_id": 58,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 9,
+      "reconstruction": 2,
+      "conversion_workbook_row": 64,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-09_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "2597cde7c84ae6c72c94a0817951a1f37083a166de48522b132dc8a2a63d0ebe",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 33,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(8x2)x16 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": false,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-10_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494450807571411,
+          -0.018880844116210938,
+          -0.06461286544799805,
+          46.713401794433594
+        ],
+        [
+          -0.016228079795837402,
+          0.744748055934906,
+          -0.2580834627151489,
+          -43.10341262817383
+        ],
+        [
+          -0.023846864700317383,
+          0.08656686544418335,
+          2.2062387466430664,
+          -14.281974792480469
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "79f9b69ae7f29292e3acf37269056a49c1db258bce6eab6cebf5cdc0542481c8",
+      "scanner_id": 60,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 10,
+      "reconstruction": 2,
+      "conversion_workbook_row": 67,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-10_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "bb060525a1c042ab66007480340090a977f9050778a346b39573f4b4ffc8bb1a",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 35,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-11_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494536638259888,
+          -0.018866300582885742,
+          -0.06377315521240234,
+          46.76809310913086
+        ],
+        [
+          -0.016199588775634766,
+          0.7445746660232544,
+          -0.2624540328979492,
+          -43.076011657714844
+        ],
+        [
+          -0.02359592914581299,
+          0.08804881572723389,
+          2.205747604370117,
+          -14.432927131652832
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "9e368c08d036198590c4ba97adb2b726939d404e7c88465a893c389941535803",
+      "scanner_id": 61,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 11,
+      "reconstruction": 2,
+      "conversion_workbook_row": 69,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-11_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "2764ba277655e23064bb1d5d127d7a697a4207a5bdfe73f60580e3b648f1b5b3",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 35,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-12_EPI.nii",
+      "shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        2.222222328186035,
+        3.0
+      ],
+      "affine": [
+        [
+          -0.7494068145751953,
+          -0.014819502830505371,
+          -0.07668137550354004,
+          46.64731979370117
+        ],
+        [
+          -0.011423707008361816,
+          0.7438520789146423,
+          -0.28192687034606934,
+          -43.09218978881836
+        ],
+        [
+          -0.02754795551300049,
+          0.09468084573745728,
+          2.2029318809509277,
+          -14.628076553344727
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 0,
+      "sform_code": 2,
+      "header_sha256": "04979ccf89ded758da9a12f85a2859285cb53aa1862381b74b89baac133335fd",
+      "scanner_id": 64,
+      "task": "mstim",
+      "curated_side": "left_aic",
+      "legacy_task_run_index": 12,
+      "reconstruction": 2,
+      "conversion_workbook_row": 73,
+      "conversion_csv_scan_reco_present": true,
+      "original_unprefixed_exists": true,
+      "source_kind": "local_converted_series",
+      "source_json": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-12_EPI.json",
+      "SequenceName": "EPI_NATURE",
+      "three_frame_fingerprint_sha256": "d476e66a626050eca233d2239d8c11dd03ecb6e3d39ffb45aca77181854f6327",
+      "curated_TR_s": 3.0,
+      "TR_matches_curated": true,
+      "acquisition_record": {
+        "excel_row": 35,
+        "matrix": "96x96x18",
+        "segments": "4",
+        "recorded_TR_ms": "3000",
+        "recorded_NR": "384",
+        "stimulation": "(4x2)x64 (blank x stim)xrepeat",
+        "comments": "microstim. 100Hz, 200us pulse, 450uA"
+      },
+      "recorded_NR_matches_actual": true,
+      "mapping_basis": "reconstruction-2 task order, explicit MATLAB index method, acquisition/header corroboration",
+      "individual_source_identity_acceptance": "documented mapping; content comparison status below; physical LR unconfirmed"
+    }
+  ],
+  "scanner_ID_preserved_source_content_checks": [
+    {
+      "scanner_id": 16,
+      "preserved_scanner_source": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_run-16_bold.nii.gz",
+      "local_source": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.nii",
+      "same_array_shape": true,
+      "exact_all_voxel_values_equal": false,
+      "maximum_absolute_value_difference": 778813.7592355666,
+      "first_frame_exact": false,
+      "interpretation": "voxel content correspondence does not establish physical orientation"
+    },
+    {
+      "scanner_id": 23,
+      "preserved_scanner_source": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-pos1_run-23_bold.nii.gz",
+      "local_source": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\rsub-CM033_task-MSTIM_run-01_EPI.nii",
+      "same_array_shape": true,
+      "exact_all_voxel_values_equal": false,
+      "maximum_absolute_value_difference": 736760.6768379222,
+      "first_frame_exact": false,
+      "interpretation": "voxel content correspondence does not establish physical orientation"
+    },
+    {
+      "scanner_id": 39,
+      "preserved_scanner_source": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_bold.nii.gz",
+      "local_source": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.nii",
+      "same_array_shape": true,
+      "exact_all_voxel_values_equal": false,
+      "maximum_absolute_value_difference": 1928761.5517380214,
+      "first_frame_exact": false,
+      "interpretation": "voxel content correspondence does not establish physical orientation"
+    },
+    {
+      "scanner_id": 47,
+      "preserved_scanner_source": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-47_bold.nii.gz",
+      "local_source": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.nii",
+      "same_array_shape": true,
+      "exact_all_voxel_values_equal": false,
+      "maximum_absolute_value_difference": 1861288.5811232117,
+      "first_frame_exact": false,
+      "interpretation": "voxel content correspondence does not establish physical orientation"
+    },
+    {
+      "scanner_id": 57,
+      "preserved_scanner_source": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_bold.nii.gz",
+      "local_source": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.nii",
+      "same_array_shape": true,
+      "exact_all_voxel_values_equal": false,
+      "maximum_absolute_value_difference": 1845628.0075083177,
+      "first_frame_exact": false,
+      "interpretation": "voxel content correspondence does not establish physical orientation"
+    }
+  ],
+  "fresh_normalization_inputs": [
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\anatomy_candidates\\sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii",
+      "expected_sha256": "f0a95a6b7e666c3b58a5e80fd179178bdca1da6e9b8405cbba730c26cb49c576",
+      "actual_sha256": "f0a95a6b7e666c3b58a5e80fd179178bdca1da6e9b8405cbba730c26cb49c576",
+      "match": true
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\Templates\\CMT\\NMT_warped\\NMT2CMT_Warped.nii",
+      "expected_sha256": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+      "actual_sha256": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+      "match": true
+    },
+    {
+      "path": "D:\\OPTO_fMRI_CM\\Templates\\NMT_v2.0_sym\\NMT_v2.0_sym\\NMT_v2.0_sym_SS.nii.gz",
+      "expected_sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "actual_sha256": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+      "match": true
+    }
+  ],
+  "fresh_normalization_independent_checks": [
+    {
+      "label": "CMT",
+      "forward": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_Warped.nii.gz",
+      "grid_matches_bound_reference": true,
+      "forward_all_finite": true,
+      "nonlinear_jacobian_all_finite": true,
+      "nonlinear_jacobian_min": 0.24963309436744802,
+      "nonlinear_jacobian_nonpositive": 0,
+      "jacobian_scope": "nonlinear only; excludes affine"
+    },
+    {
+      "label": "NMT",
+      "forward": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_Warped.nii.gz",
+      "grid_matches_bound_reference": true,
+      "forward_all_finite": true,
+      "nonlinear_jacobian_all_finite": true,
+      "nonlinear_jacobian_min": 0.28832240796635966,
+      "nonlinear_jacobian_nonpositive": 0,
+      "jacobian_scope": "nonlinear only; excludes affine"
+    }
+  ],
+  "producer_normalization_QC_status": "fresh fine forward and inverse technical QC; anatomical and laterality acceptance pending",
+  "live_process_snapshot_lines": [
+    "317     316      78 bash -lc cd /mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri && export PYTHONPATH=/mnt/c/Users/laika_yan/Documents/ChatGPT/deb_fmri && /home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python -u alignment_review/cm033_Dsource_20261009/run_spatial_rebuild.py > alignment_review/cm033_Dsource_20261009/spatial_rebuild.log 2>&1",
+    "405     317      77 /home/binbin/miniconda3/envs/deb_fmri_pipeline/bin/python -u alignment_review/cm033_Dsource_20261009/run_spatial_rebuild.py"
+  ],
+  "source_manifest_exists_at_finish": true,
+  "spatial_rebuild_completed_exists_at_finish": false,
+  "new_fitted_GLMs_found_in_rebuild": [],
+  "left_native_model": {
+    "SPM": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat",
+    "contrast": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+    "statistic": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii",
+    "runs_and_frames_in_actual_SPM": {
+      "57": 160,
+      "58": 160,
+      "60": 384,
+      "61": 384,
+      "64": 384
+    },
+    "all_1472_SPM_input_matrices_match_contrast_after_one_based_conversion": true,
+    "contrast_geometry": {
+      "path": "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii",
+      "shape": [
+        128,
+        128,
+        18
+      ],
+      "zooms": [
+        0.75,
+        0.75,
+        1.999999761581421
+      ],
+      "affine": [
+        [
+          0.75,
+          0.0,
+          0.0,
+          -48.0
+        ],
+        [
+          0.0,
+          -0.75,
+          0.0,
+          -5.022499084472656
+        ],
+        [
+          0.0,
+          0.0,
+          -1.999999761581421,
+          63.351417541503906
+        ],
+        [
+          0.0,
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "units": [
+        "mm",
+        "sec"
+      ],
+      "qform_code": 2,
+      "sform_code": 2,
+      "header_sha256": "a480f79fae9cc44cb847fd620f39eec57b74fd1334800a354f07afbbb56b3950"
+    },
+    "all_recorded_input_paths_exist": true,
+    "bridge_to_new_candidate_anatomy": "not verified; no saved fit/input lineage connects this old SPM frame to fresh task-A candidate",
+    "direct_new_norm_application_supported": false
+  },
+  "root_visual_observations": {
+    "actually_viewed_by_root": [
+      "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_forward_checkerboard_slices.png",
+      "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_forward_checkerboard.png"
+    ],
+    "scope": "CMT forward only; not NMT/inverse/Jacobian image acceptance",
+    "observation": "Broad brain envelope/fissures/central structures correspond; contrast differs; residual peripheral/inferior/cerebellar/brainstem mismatch visible.",
+    "physical_LR_or_fine_Ial_acceptance": false
+  },
+  "source_sha256": {
+    "D:\\OPTO_fMRI_CM\\Info_tables&sheets\\CM033.xlsx": "78747b8c6346387ade1df488a2505330f9e492608c5f49a5b5cbb8e82d811fc1",
+    "D:\\OPTO_fMRI_CM\\Info_tables&sheets\\opto-fMRI_sessions.xlsx": "92de4b397817ef13d5eca2ef96061d426e7b758549e175bb6998c35ca8e95d72",
+    "D:\\OPTO_fMRI_CM\\cm033.csv": "a31d9d722c8b16f552aff3fa5e6ab6e16804b9488e2d4810ba9547e5d23f3329",
+    "D:\\multimodal_fmri\\code\\config\\scans_cm033_20160120.tsv": "194a0163e6780b58e71fc46dcd702e9d419da3ea990d1b9b3101fd29bb204359",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.json": "8faf534b56a1723c09cbfe6fc9abf073170ebaac35c37169b435c6f4c265127c",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-02_EPI.json": "41e768ff1c282d064c320c78ab598f3d9da33b8d498d1fff9d5d11b41b70317c",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-03_EPI.json": "ccde1e15a7408b39c238b9af28e0fd56b815b9476a154d6024266aaef3401ae4",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-02_EPI.json": "d1b5a88d78a245f6a9cc1866f72457f4841649c612cddcd66142309b92916d5a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-03_EPI.json": "c9912143b98011103c5a04dab2feb704910b1d70b5dea5e46a64eb3c858601cd",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-04_EPI.json": "c9912143b98011103c5a04dab2feb704910b1d70b5dea5e46a64eb3c858601cd",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-05_EPI.json": "f68c5c0754b97f951ea1c60e56c310311f672189e3f70585f2b6e4455c1c9fa3",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-06_EPI.json": "f68c5c0754b97f951ea1c60e56c310311f672189e3f70585f2b6e4455c1c9fa3",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-05_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-06_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-07_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.json": "edee236f5a514ded4eb3cca09809520f203e35b43519fbb6c73c30e1ebd242f0",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-09_EPI.json": "edee236f5a514ded4eb3cca09809520f203e35b43519fbb6c73c30e1ebd242f0",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-10_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-11_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-12_EPI.json": "2663693c8c35468c8e9749c26f73390136232b87346b648300551dce64d4309a",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_run-16_bold.nii.gz": "e5d94c72c36ccdc37ebff8a780a5519d332d56fabf40f45cc847ed26875edbff",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.nii": "8b05ee394f1348493c047d03668ccde5e83fd9106732623a154ea67e981ec1ef",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-pos1_run-23_bold.nii.gz": "6bc77a38d6b64c8895f14fca2c5a5a84d08e345f5172f37ae3d47bf3d4500c8e",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\rsub-CM033_task-MSTIM_run-01_EPI.nii": "c9c4e0b588864ce391146bb9d2767bc067a493411a268abae58c057478414170",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_bold.nii.gz": "2cfe770f88f85a68b99b046157abdbe2736cdc8164cfacd044b03291c7beaee8",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.nii": "37a556f8fdc2ed1bfae9fc83c252ff56934a66e6596010425ad11ea7f185c2ca",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-47_bold.nii.gz": "fb131dac584d2bcf1b47b236f8b77ff9f8f47941a9ac22dc04c5fea9617ccf1e",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.nii": "e7724d47368018051c419f3aab606fe33c586fa3b7127b3a836ffc475e81df74",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_bold.nii.gz": "453493f2742f21278564980cf5d8dbdd29f00f88bac5e810c2c43284cf42504c",
+    "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.nii": "fac573970be8e122c234fe56e2e551eab2b7a8fc98057d3d995aac682d5ba1fb",
+    "D:\\OPTO_fMRI_CM\\Code\\AccuMRNorm_ver_Binbin\\Analysis\\construct_GLM_scaninfo_033.m": "68b4491df4d33b3d0130ec4cf14bddfacf60d08f5839ed8ba8433e7b8183a29f",
+    "D:\\OPTO_fMRI_CM\\Code\\AccuMRNorm_ver_Binbin\\Analysis\\construct_idinfo.m": "f70cb6597fed882faf7202fdd9fe3b3c758bd0dab6f1fb0665fa15c3568f5319",
+    "D:\\OPTO_fMRI_CM\\Code\\AccuMRNorm_ver_Binbin\\Analysis\\concatenate_ids.m": "3c85409bbcd3481158f5f0d5fd7c2fc6b0ee0c106607232e34d58bc74489076f",
+    "D:\\OPTO_fMRI_CM\\Code\\AccuMRNorm_ver_Binbin\\Analysis\\first_level_GLM_cm033.m": "23112ebbeaf4f21e55b3d62165f0b7aed5add99882991b2276f6d3058c3b7bdb",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_0GenericAffine.mat": "67ce5a1f61d719706b18c82a2409e522278aa07bf5926d6e2c0c88f40f8d0de4",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_1InverseWarp.nii.gz": "b9fe08ec4b4c8c1e936c2a26105c14d059d4ed68e41eac0edad663582ff80f55",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_1Warp.nii.gz": "bf9c315b0a38e34428732f650bd43d2a6d617bf433282ad89ad5e5edf249e0ec",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_InverseWarped.nii.gz": "a52fa95f86e1df333f9fdf7f8e87af2ee5c145e7e64a9bb80906122c362956a6",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_CMT_Warped.nii.gz": "ea8699654bc628a20ffd238eba5cdf8cc6bb4b9c9c033ddb7084447e451349a9",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_0GenericAffine.mat": "8c15444b6bf0cbecb9f03a4ba94974d9feb70bff7b0799c36e1693900d90f857",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_1InverseWarp.nii.gz": "3d21b37a820d2c2cf284f37d56d7f3ac33a9fd2e14177136e86f212a597dd527",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_1Warp.nii.gz": "21e642cdcb9c00c9bed775b2547a1a6976c2039a58036d513b5461b26db95ea7",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_InverseWarped.nii.gz": "045bbe6e537029a342d9d44f58a5ca37c70de4df82cea30c88de53b2931d60b5",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_NMT_Warped.nii.gz": "5c6ca9a0ea048e36359a482101f235f4f9412b0eba3b0cf63607c762b6dfcde9",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\norm_reference\\derivatives\\norm\\sub-cm033\\ses-20160120_ana\\cm033_20160120_Dsrc_taskA_ana_norm_manifest.json": "69ae63d63475f60be448dc5c802fa92b0427046509e15c94f2b43e34dcab3946",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\anatomy_candidates\\sub-cm033_srcdate-unknown_desc-taskAHeaderRepair_brain.nii": "f0a95a6b7e666c3b58a5e80fd179178bdca1da6e9b8405cbba730c26cb49c576",
+    "D:\\OPTO_fMRI_CM\\Templates\\CMT\\NMT_warped\\NMT2CMT_Warped.nii": "af56e440b0602fc92c99bd04adcc959e8e0e3389b8b5aeb8f0f9660155bf45ae",
+    "D:\\OPTO_fMRI_CM\\Templates\\NMT_v2.0_sym\\NMT_v2.0_sym\\NMT_v2.0_sym_SS.nii.gz": "a45d0041f0cc1d77e8daaf9ca79cf08a17e8d3088741b4411732c6a91ad47056",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_nonlinear_jacobian.nii.gz": "7df31ead0d1c91bf47f32edd3d210c90ac50ccb03f988ae12617980deee956dc",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_nonlinear_jacobian.nii.gz": "25e6c2488ae86ed820d9a9663658bd431d76814c880e7149e23962598ed5bb4a",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_forward_checkerboard.png": "1c5d493402795dc0613743ed0b72c1d2fae6d8a73d23205cbdd3373960add481",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_forward_checkerboard_slices.png": "f748fe9bb04e9c4d48b5462c1519a3d69bec31581ba3cb2767b759a49e6c1021",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_inverse_checkerboard.png": "ee2d099f3164fef248c85c515ded82dc710e1b2f17ae1c26e30593ad5edb09b3",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_inverse_checkerboard_slices.png": "0495aee69f153785bb480aaef760eecbc358e3930c1322fa248ecd6863fa425d",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\CMT_preliminary_checkerboard.png": "6d52e8c26d30752318337d970648fd702df9bce87eb5733d5414ae2f809bb1a7",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_forward_checkerboard.png": "522ecb009de2f0aedf57d1e9d00a6be2b0a7f14d5840ff53d78f68d014211917",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_forward_checkerboard_slices.png": "249bcdccdfd9c96ff8bc32de41dcc86e0726e7e1f2faf0710781f236ce56f426",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_inverse_checkerboard.png": "5cc707966df2f28223e8ebe0459d687cdf18b55dff70aac36d030d0bf5186a58",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\NMT_inverse_checkerboard_slices.png": "4abeba067b3d829a2861697a99fb97420e2abf4cda936831ee83ec836128e80d",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_completed.json": "9db5fefa611c025fe46da01d74b04aa6607920ac92467870cb1d5b513e388920",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_input_hashes.json": "fbbfc26be5024517094ee487b6cf24aea5dce6ea616d2e8031fd5ce3b27a672c",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\normalization_qc\\normalization_checks.json": "a99bdb0082f5365e35adec34cf3b19a30dc0ace5f261992f4e5613e384a9ca0a",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\stage_local_sources.py": "6a5d0a09a1c7fda2dee54e40e470846c05518500f4da7bc0a991f7e7d3eadc97",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\run_candidate_norm.py": "6eae358aaedf728b04fd4cb3d1a88e811c65c1d0dfc1deb13db26acead2f18b1",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\run_spatial_rebuild.py": "e80742ce2f1c2cf77500d6d83133507d3c2769dd24e7c869579eed060071790d",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\repair_staged_epi_sampling.py": "42252d8359875719bf79544312db4b4fff40910e478276fb6ed8c06450570e08",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_Dsource_20261009\\acquisition_records.json": "fc895828f36617520cef98883957b7426f927d338b7982ce5f209e60de6412fc",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_D_SOURCE_SPATIAL_REBUILD_20261009.md": "4d5cffc310d97ea198cb9a881921157aa6adce5554fa9f72e8dd289f3dbdd39f",
+    "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_ALIGNMENT_NORMALIZATION_AUDIT_20261009.md": "f25dd4bb855fb6efbe3f7ad1b3528a5f4a7654dfae3917e49125cf44ece74c1f",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\SPM.mat": "3b4e836369ba165b83525d863795916cfeb713adf47993d2c56248e9d66f84df",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\con_0001.nii": "3457aee1a21b9da0b7ea9de27e6ff2af15b94475d3f151b4f0d0371bd2534e56",
+    "D:\\multimodal_fmri\\derivatives\\glm\\sub-cm033\\ses-20160120\\glm-mstim-pos1-short-tr3-smooth2mm\\maps\\spmT_0001.nii": "7d90fe1c2a6bb16ab09debe17d83a1c21caafaf99b283be529a90fafd6555107"
+  },
+  "external_source_writes": false,
+  "new_fitting_registration_or_warping": false,
+  "scientific_anatomical_acceptance": false
+}

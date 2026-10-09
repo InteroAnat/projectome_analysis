@@ -1,0 +1,124 @@
+{
+  "status": "software_verified_complete_selected462_graph_census",
+  "focused_tests_passed": 7,
+  "independent_saved_readback": "pass",
+  "independent_actual_graphs": 10,
+  "all_462_endpoint_and_total_length_matches": true,
+  "native_pairs": 201,
+  "native_leaves": 48574,
+  "covered_leaves": 9209,
+  "coverage_neurons": 184,
+  "images_inspected_by_census": 0,
+  "biological_terminal_acceptance": false,
+  "no_scientific_source_or_cohort_mutation": true,
+  "files": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/additional_image_review_cues.csv",
+      "sha256": "85f879714dd630e868e55ccac5f43cd3fc58bfeb98a8f4380a1dcf5d7759e391",
+      "bytes": 6964,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/census_connected_axon_sections.py",
+      "sha256": "6f99d265323c1352e7ab12428589cb0d1bcb169c799f2c861046a518ffc6929c",
+      "bytes": 21787,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/descriptive_census_summary.json",
+      "sha256": "681acc9d63404b71da0b77c314f367ba693e4badd78bee70dee53568af107f9d",
+      "bytes": 2082,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/focused_tests_20261009.log",
+      "sha256": "b9e35879870466602b1abc26b4518523fce9450cbe744ab238f69d45d83ab062",
+      "bytes": 870,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/independent_census_readback.json",
+      "sha256": "7a61fa12375f7a1992539bcde471862c3b3ae49fe5fd3c501d628df25074b510",
+      "bytes": 3482,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/independent_census_readback.py",
+      "sha256": "afea357aa22db05ed289858fa70a93b6cb26870cff6d05bb07b158326d5a1a21",
+      "bytes": 6772,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/README.md",
+      "sha256": "af2c6d5f48e087b80361f362c4ebaf568189010f1d18998ceab51bb2f1455a90",
+      "bytes": 11394,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/census_provenance.json",
+      "sha256": "774f98d8a8ea65a287187770f1a8ae78f415f24d60f6f6008142b1a339431898",
+      "bytes": 5309,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/connected_axon_sections.csv",
+      "sha256": "54ca233576e6d2b99927ef9c6e73343579bd574d3ee990a0c58cd89d87e35ebb",
+      "bytes": 18687418,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/native_original_end_cube_coverage.csv",
+      "sha256": "f37c17ce3bedc77c92ca9315a84e03bb6f53d032d712baf926043b5b749fded5",
+      "bytes": 8232010,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/neuron_morphology_and_coverage.csv",
+      "sha256": "79806e397c1bf1d7b619cd059aaf6ed091a79405c53c4a38acdcadba868a363c",
+      "bytes": 3764541,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/original_target_and_type_crossing_edges.csv",
+      "sha256": "e96333ad147e9f2ff303432b67baa43a2339f48c82b04191bc91bb3f9f747726",
+      "bytes": 10707473,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/per_neuron_reconciliation.json",
+      "sha256": "acfa00be1a64a3a4f39732436c19b7ed672d38a92e56b1e76f444041bbd40e38",
+      "bytes": 90571,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/section_original_node_membership.jsonl",
+      "sha256": "83e6465741918c2fb4c28eb04602b1993f4eb9950e70eca610134ad78f2b573d",
+      "bytes": 87831295,
+      "publication_scope": "local_only_node_memberships"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/source_swc_bindings.csv",
+      "sha256": "9b8e093bbba6af30453c381a9c62a1cefb9e2a1b25d70d661d03cbfa630c5e0d",
+      "bytes": 97612,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/summarize_census.py",
+      "sha256": "f7b38a123f7d0133ebb478fa74b9e8a1fff50a6d1d192ea5b83db9ade6fd8505",
+      "bytes": 4910,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/summary_provenance.json",
+      "sha256": "a420fb5c9e2a022c8fe75c8cc712b31be0d78583a2c11c39ac1465cba5f06fc0",
+      "bytes": 634,
+      "publication_scope": "compact_evidence"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/test_connected_axon_census.py",
+      "sha256": "c2da5ccc09545a9c524965efba96d788a2c6a12c4b3d3fb8531ce42b0c8157ad",
+      "bytes": 5896,
+      "publication_scope": "compact_evidence"
+    }
+  ]
+}

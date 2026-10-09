@@ -1,0 +1,313 @@
+{
+  "status": "independent_native_coverage_saved_readback_passed",
+  "recorded_at": "2026-10-09T12:10:47.426520+08:00",
+  "scope": "Exact-UID join, saved count/missingness/group arithmetic, source CSV/code/receipt hash bindings and focused software tests. Independent arithmetic does not import producer. No raw image review, graph reparsing, refit, cohort change or anatomical acceptance.",
+  "selected_neurons": 462,
+  "unique_exact_UIDs": 462,
+  "exact_source_join_fields": [
+    "NeuronUID",
+    "AnimalID",
+    "SWCPath/atlas_swc_path",
+    "SWCSHA256/atlas_swc_sha256",
+    "ARMFullName/SourceARMFullName"
+  ],
+  "native_found": 201,
+  "native_missing": 261,
+  "native_missing_counts_preserved_NA": 261,
+  "all_missing_native_animal": "936",
+  "Henry_visual_INS_neurons": 260,
+  "Henry_animal": "936",
+  "Henry_native_missing": 260,
+  "native_leaf_counts_equal_saved_atlas_endpoint_counts_for_all_found": 201,
+  "native_original_axon_leaves": 48574,
+  "cached_leaf_positions": 9209,
+  "neurons_with_cached_leaf_cube": 184,
+  "image_review_not_encoded_in_availability_states": true,
+  "grouping_rows_independently_reconciled": 16,
+  "grouping_results": [
+    {
+      "SummaryType": "Henry_visual_evidence",
+      "SummaryValue": "False",
+      "SelectedNeurons": 202,
+      "Animals": 8,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 201,
+      "NativeSWCsNotFoundHere": 1,
+      "NeuronsWithAnyCachedEndCube": 184,
+      "NativeEndCountAmongFoundSWCs": 48574,
+      "CachedEndCountAmongFoundSWCs": 9209,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.1895870218635484,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "Henry_visual_evidence",
+      "SummaryValue": "True",
+      "SelectedNeurons": 260,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 260,
+      "NativeSWCsFoundHere": 0,
+      "NativeSWCsNotFoundHere": 260,
+      "NeuronsWithAnyCachedEndCube": 0,
+      "NativeEndCountAmongFoundSWCs": null,
+      "CachedEndCountAmongFoundSWCs": null,
+      "PooledCachedEndFractionAmongFoundSWCs": null,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "331",
+      "SelectedNeurons": 55,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 55,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 50,
+      "NativeEndCountAmongFoundSWCs": 8551,
+      "CachedEndCountAmongFoundSWCs": 1402,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.16395743187931236,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "605",
+      "SelectedNeurons": 21,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 21,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 20,
+      "NativeEndCountAmongFoundSWCs": 1766,
+      "CachedEndCountAmongFoundSWCs": 1206,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.6828992072480181,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "631",
+      "SelectedNeurons": 16,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 16,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 16,
+      "NativeEndCountAmongFoundSWCs": 11048,
+      "CachedEndCountAmongFoundSWCs": 466,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.04217958001448226,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "797",
+      "SelectedNeurons": 52,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 52,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 47,
+      "NativeEndCountAmongFoundSWCs": 18382,
+      "CachedEndCountAmongFoundSWCs": 5100,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.27744532695027746,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "900",
+      "SelectedNeurons": 14,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 14,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 12,
+      "NativeEndCountAmongFoundSWCs": 1515,
+      "CachedEndCountAmongFoundSWCs": 206,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.13597359735973596,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "936",
+      "SelectedNeurons": 261,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 260,
+      "NativeSWCsFoundHere": 0,
+      "NativeSWCsNotFoundHere": 261,
+      "NeuronsWithAnyCachedEndCube": 0,
+      "NativeEndCountAmongFoundSWCs": null,
+      "CachedEndCountAmongFoundSWCs": null,
+      "PooledCachedEndFractionAmongFoundSWCs": null,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "945",
+      "SelectedNeurons": 25,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 25,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 25,
+      "NativeEndCountAmongFoundSWCs": 4024,
+      "CachedEndCountAmongFoundSWCs": 542,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.13469184890656064,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "animal",
+      "SummaryValue": "948",
+      "SelectedNeurons": 18,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 18,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 14,
+      "NativeEndCountAmongFoundSWCs": 3288,
+      "CachedEndCountAmongFoundSWCs": 287,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.08728710462287105,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "axon_Hellinger_k2",
+      "SummaryValue": "1.0",
+      "SelectedNeurons": 229,
+      "Animals": 8,
+      "HenryVisualINSNeurons": 137,
+      "NativeSWCsFoundHere": 91,
+      "NativeSWCsNotFoundHere": 138,
+      "NeuronsWithAnyCachedEndCube": 85,
+      "NativeEndCountAmongFoundSWCs": 19083,
+      "CachedEndCountAmongFoundSWCs": 4764,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.24964628203112718,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "axon_Hellinger_k2",
+      "SummaryValue": "2.0",
+      "SelectedNeurons": 199,
+      "Animals": 8,
+      "HenryVisualINSNeurons": 90,
+      "NativeSWCsFoundHere": 109,
+      "NativeSWCsNotFoundHere": 90,
+      "NeuronsWithAnyCachedEndCube": 98,
+      "NativeEndCountAmongFoundSWCs": 29486,
+      "CachedEndCountAmongFoundSWCs": 4440,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.1505799362409279,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "axon_Hellinger_k2",
+      "SummaryValue": "unassigned_profile",
+      "SelectedNeurons": 34,
+      "Animals": 2,
+      "HenryVisualINSNeurons": 33,
+      "NativeSWCsFoundHere": 1,
+      "NativeSWCsNotFoundHere": 33,
+      "NeuronsWithAnyCachedEndCube": 1,
+      "NativeEndCountAmongFoundSWCs": 5,
+      "CachedEndCountAmongFoundSWCs": 5,
+      "PooledCachedEndFractionAmongFoundSWCs": 1.0,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "endpoint_Hellinger_k2",
+      "SummaryValue": "1.0",
+      "SelectedNeurons": 424,
+      "Animals": 8,
+      "HenryVisualINSNeurons": 224,
+      "NativeSWCsFoundHere": 199,
+      "NativeSWCsNotFoundHere": 225,
+      "NeuronsWithAnyCachedEndCube": 183,
+      "NativeEndCountAmongFoundSWCs": 48568,
+      "CachedEndCountAmongFoundSWCs": 9204,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.18950749464668093,
+      "CompleteGroupNativeCoverage": "False"
+    },
+    {
+      "SummaryType": "endpoint_Hellinger_k2",
+      "SummaryValue": "2.0",
+      "SelectedNeurons": 1,
+      "Animals": 1,
+      "HenryVisualINSNeurons": 0,
+      "NativeSWCsFoundHere": 1,
+      "NativeSWCsNotFoundHere": 0,
+      "NeuronsWithAnyCachedEndCube": 0,
+      "NativeEndCountAmongFoundSWCs": 1,
+      "CachedEndCountAmongFoundSWCs": 0,
+      "PooledCachedEndFractionAmongFoundSWCs": 0.0,
+      "CompleteGroupNativeCoverage": "True"
+    },
+    {
+      "SummaryType": "endpoint_Hellinger_k2",
+      "SummaryValue": "unassigned_profile",
+      "SelectedNeurons": 37,
+      "Animals": 2,
+      "HenryVisualINSNeurons": 36,
+      "NativeSWCsFoundHere": 1,
+      "NativeSWCsNotFoundHere": 36,
+      "NeuronsWithAnyCachedEndCube": 1,
+      "NativeEndCountAmongFoundSWCs": 5,
+      "CachedEndCountAmongFoundSWCs": 5,
+      "PooledCachedEndFractionAmongFoundSWCs": 1.0,
+      "CompleteGroupNativeCoverage": "False"
+    }
+  ],
+  "source_receipts_verified": [
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/arm_L6_relative_profiles_selected462/run_provenance.json",
+      "sha256": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/generation_provenance.json",
+      "sha256": "66cbfd202b14822606b51fbf98642202ba4de04d16b86c726ea7929a17f786e0"
+    }
+  ],
+  "audited_artifacts": [
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/audit_native_image_coverage.py",
+      "sha256": "3c296119fce3c7b892c38930a5fd9b1c2d10d4b8e12e50dc9462652df551c500"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/arm_L6_relative_profiles_selected462/all462_feature_eligibility_and_assignments.csv",
+      "sha256": "02018838c04942541e4e6c83d46978e6be27febf434f1a161c756c583ef7e399"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/selected462_native_image_coverage.csv",
+      "sha256": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/all462_native_image_coverage.csv",
+      "sha256": "372928c2a51fe6bcf8832b0c312a52b24baba336394e7a45d4a8115bee532b4e"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/native_image_coverage_by_animal_evidence_cluster.csv",
+      "sha256": "34f6ef5d5f648116444c24263906a6e4d1fcf480f69deaca93b0aeb331c122e9"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/coverage_audit_provenance.json",
+      "sha256": "b971df97397169e7197d48a40fd939319fd6dedb93450883f13ec1cc5f3a39af"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/clustering_20261009/native_image_coverage_20261009/README.md",
+      "sha256": "d8c45b7a6819c189afdc46b48c48ca844fed5c19bd9bfc51949cda06c50f885f"
+    }
+  ],
+  "focused_tests": {
+    "command": [
+      "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+      "-X",
+      "utf8",
+      "-B",
+      "notes/region_analysis_review_20261009/clustering_20261009/test_native_image_coverage.py"
+    ],
+    "count": 4,
+    "passed": 4,
+    "exit_code": 0,
+    "source_sha256": "35f61a0cbae6da333a911291bca78c692edd66d1bff4b54b230f98aa4b791fdd",
+    "stdout": "",
+    "stderr": "....\n----------------------------------------------------------------------\nRan 4 tests in 0.030s\n\nOK\n"
+  },
+  "underlying_SWCs_rehashed_this_audit": false,
+  "underlying_SWCs_graph_parsed_this_audit": false,
+  "source_bindings_scope": "Original hash-bound tables/receipts/code rehashed; per-UID native/atlas declared source hashes compared exactly. No repeat of existing physical SWC or image audits.",
+  "defects": [],
+  "anatomical_or_biological_acceptance": false
+}

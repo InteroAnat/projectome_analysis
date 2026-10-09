@@ -1,0 +1,100 @@
+{
+  "status": "software_verified_graph_morphology_and_image_availability_census",
+  "selected_neurons": 462,
+  "native_identity_pairs": 201,
+  "native_original_axon_ends": 48574,
+  "native_original_ends_with_cached_cube": 9209,
+  "neurons_with_native_end_cube_coverage": 184,
+  "sections": 47044,
+  "all_selected_original_axon_ends": 75625,
+  "topology_descriptions": {
+    "branching_with_original_ends": 8942,
+    "unbranched_without_original_ends": 22781,
+    "original_end_without_local_bifurcation": 12881,
+    "branching_without_original_ends": 2440
+  },
+  "target_lookup": "np.rint(XYZ / declared IndexScaleUm), ties-to-even; current declared policy, not registration acceptance",
+  "length_definition": "Euclidean NMT reference-world edge length in mm; child type 2 selects edges. Internal section lengths require both original endpoint nodes in same sampled ARM6 label; not exact voxel-overlap regional lengths.",
+  "native_length_definition": "Euclidean nominal acquisition \u00b5m when exact native node correspondence exists; not calibrated tissue length",
+  "image_coverage": "existence in designated local high_res_http cube-name index, not image inspection, tracing completion or biological acceptance",
+  "missing_native": "null/blank coverage and native length, not zero",
+  "biological_terminal_state": "unassessed",
+  "source_labels_preserved": true,
+  "images_downloaded": false,
+  "plots_generated": 0,
+  "python_version": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+  "numpy_version": "1.26.4",
+  "nibabel_version": "5.4.2",
+  "inputs": [
+    {
+      "path": "notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/neuron_summary.csv",
+      "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_assessment_20261009/native_cube_pilot_current_rint/selected462_native_image_coverage.csv",
+      "sha256": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03"
+    },
+    {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    {
+      "path": "atlas/NMT_v2.1_sym/NMT_v2.1_sym/NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    {
+      "path": "atlas/ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/census_connected_axon_sections.py",
+      "sha256": "6f99d265323c1352e7ab12428589cb0d1bcb169c799f2c861046a518ffc6929c"
+    },
+    {
+      "path": "main_scripts/swc_validation.py",
+      "sha256": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64"
+    },
+    {
+      "path": "main_scripts/projection_maps.py",
+      "sha256": "e47a54bfe5e8159c8e4a4f70d687b845a0810f073189a26f60c5945a65aa90da"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/literature_method_update_20261009/gao_local_methods.md",
+      "sha256": "df2faa0ad8746b053f105ebce096ef3b249a31a8fc7c34f3449562621b80b4f7"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/literature_method_update_20261009/liu_local_methods.md",
+      "sha256": "016a42c3b3d17ed41c1d95dcc60bb33119a16f7db7c801d2f266f9659db9d68a"
+    }
+  ],
+  "outputs": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/connected_axon_sections.csv",
+      "sha256": "54ca233576e6d2b99927ef9c6e73343579bd574d3ee990a0c58cd89d87e35ebb"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/native_original_end_cube_coverage.csv",
+      "sha256": "f37c17ce3bedc77c92ca9315a84e03bb6f53d032d712baf926043b5b749fded5"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/neuron_morphology_and_coverage.csv",
+      "sha256": "79806e397c1bf1d7b619cd059aaf6ed091a79405c53c4a38acdcadba868a363c"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/original_target_and_type_crossing_edges.csv",
+      "sha256": "e96333ad147e9f2ff303432b67baa43a2339f48c82b04191bc91bb3f9f747726"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/per_neuron_reconciliation.json",
+      "sha256": "acfa00be1a64a3a4f39732436c19b7ed672d38a92e56b1e76f444041bbd40e38"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/section_original_node_membership.jsonl",
+      "sha256": "83e6465741918c2fb4c28eb04602b1993f4eb9950e70eca610134ad78f2b573d"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_field_census_20261009/selected462_ARM6_sections/source_swc_bindings.csv",
+      "sha256": "9b8e093bbba6af30453c381a9c62a1cefb9e2a1b25d70d661d03cbfa630c5e0d"
+    }
+  ]
+}

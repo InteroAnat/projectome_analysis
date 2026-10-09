@@ -1,5 +1,7 @@
 # Insula pipeline evolution — 2026-10-08
 
+**Latest checkpoint:** [whole-ledger morphology, expanded native review, clustering-evidence coverage and CM033 source follow-up](../../notes/region_analysis_review_20261009/terminal_coverage_followup_20261009.md). All 462 graphs are now censused; actual image review covers 11 individual leaves across seven animals. New CM033 candidate anatomical normalization exists, with the historical statistic bridge still unresolved. Existing ARM NIfTIs and six-level tables retain their declared measures and values.
+
 **Current evidence update:** [local Gao/Liu Methods, native terminal assessment and CM032/updated CM033 review](../../notes/region_analysis_review_20261009/scope_update_20261009.md). Original fMOST transforms are unavailable, without a recovery gate. The five-neuron native pilot adds image-backed morphology evidence; it does not convert all candidate ends into reviewed terminal fields. Existing ARM NIfTIs, six-level tables and the single selected-neuron ledger remain unchanged.
 
 Active branch: `codex/insula-pipeline-evolution-20261008`, created from `78008cbaab71bf737dc7129c72e5fe284c3ba40f`. Existing unrelated edits and source data are preserved. [Publication status](../../notes/region_analysis_review_20261009/publication_20261009.md) records scoped commits and remote verification; cohort promotion and scientific acceptance are separate decisions.

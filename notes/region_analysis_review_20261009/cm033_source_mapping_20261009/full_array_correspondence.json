@@ -1,0 +1,103 @@
+{
+  "checked_utc": "2026-10-09T04:07:34.922567+00:00",
+  "source_snapshot_SHA256": "4df74adf3137d6708fc460dbc946d778e79ea670e9d390230308e07bda326734",
+  "checks": [
+    {
+      "scanner_id": 16,
+      "raw": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_run-16_bold.nii.gz",
+      "local": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-01_EPI.nii",
+      "comparison_only_storage_axes_reversed": [
+        0,
+        1
+      ],
+      "full_volume_shape": [
+        128,
+        128,
+        19,
+        96
+      ],
+      "all_voxel_values_exactly_equal": true,
+      "unequal_values": 0,
+      "maximum_absolute_value_difference": 0.0,
+      "first_frame_exactly_equal": true
+    },
+    {
+      "scanner_id": 23,
+      "raw": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-pos1_run-23_bold.nii.gz",
+      "local": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\rsub-CM033_task-MSTIM_run-01_EPI.nii",
+      "comparison_only_storage_axes_reversed": [
+        0,
+        1
+      ],
+      "full_volume_shape": [
+        128,
+        128,
+        19,
+        48
+      ],
+      "all_voxel_values_exactly_equal": false,
+      "unequal_values": 14938927,
+      "maximum_absolute_value_difference": 15747.534103316138,
+      "first_frame_exactly_equal": false
+    },
+    {
+      "scanner_id": 39,
+      "raw": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-39_bold.nii.gz",
+      "local": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-04_EPI.nii",
+      "comparison_only_storage_axes_reversed": [
+        0,
+        1
+      ],
+      "full_volume_shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "all_voxel_values_exactly_equal": true,
+      "unequal_values": 0,
+      "maximum_absolute_value_difference": 0.0,
+      "first_frame_exactly_equal": true
+    },
+    {
+      "scanner_id": 47,
+      "raw": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-opto_acq-leftaic_run-47_bold.nii.gz",
+      "local": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-OPTO_run-07_EPI.nii",
+      "comparison_only_storage_axes_reversed": [
+        0,
+        1
+      ],
+      "full_volume_shape": [
+        128,
+        128,
+        18,
+        384
+      ],
+      "all_voxel_values_exactly_equal": true,
+      "unequal_values": 0,
+      "maximum_absolute_value_difference": 0.0,
+      "first_frame_exactly_equal": true
+    },
+    {
+      "scanner_id": 57,
+      "raw": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\alignment_review\\cm033_stc_probe_20260924\\bids\\sub-cm033\\ses-20160120\\func\\sub-cm033_ses-20160120_task-mstim_acq-pos1_run-57_bold.nii.gz",
+      "local": "D:\\OPTO_fMRI_CM\\BIDS_data\\CM033_BIDS\\sub-CM033\\func\\sub-CM033_task-MSTIM_run-08_EPI.nii",
+      "comparison_only_storage_axes_reversed": [
+        0,
+        1
+      ],
+      "full_volume_shape": [
+        128,
+        128,
+        18,
+        160
+      ],
+      "all_voxel_values_exactly_equal": true,
+      "unequal_values": 0,
+      "maximum_absolute_value_difference": 0.0,
+      "first_frame_exactly_equal": true
+    }
+  ],
+  "interpretation": "Pure stored-array correspondence test, not anatomical/physical laterality acceptance or a transform for old GLM maps. No image bytes or geometry modified.",
+  "source_writes": false
+}

@@ -1,0 +1,788 @@
+{
+  "scope": "Independent sampled array-order and affine intensity-scale correspondence to preserved scanner-ID sources",
+  "source_snapshot_sha256": "4df74adf3137d6708fc460dbc946d778e79ea670e9d390230308e07bda326734",
+  "results": [
+    {
+      "scanner_id": 16,
+      "frames": [
+        0,
+        48,
+        95
+      ],
+      "sample_stride_xyz": [
+        4,
+        4,
+        2
+      ],
+      "best": {
+        "storage_array_axis_reversals_xyz": [
+          true,
+          true,
+          false
+        ],
+        "sample_correlation": 1.0,
+        "raw_from_local_slope": 1.0000000000000013,
+        "raw_from_local_intercept": 1.9363634122943737e-12,
+        "maximum_absolute_sample_residual": 1.0477378964424133e-09,
+        "sample_residual_RMSE": 2.6346513804249216e-10,
+        "raw_sample_standard_deviation": 153245.42453821533,
+        "sample_count": 30720
+      },
+      "next_best": {
+        "storage_array_axis_reversals_xyz": [
+          false,
+          true,
+          false
+        ],
+        "sample_correlation": 0.8537472177720862,
+        "raw_from_local_slope": 0.8595244315153302,
+        "raw_from_local_intercept": 18282.38527983129,
+        "maximum_absolute_sample_residual": 523610.0785320501,
+        "sample_residual_RMSE": 79793.00870008238,
+        "raw_sample_standard_deviation": 153245.42453821533,
+        "sample_count": 30720
+      },
+      "all_storage_order_tests": [
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            false
+          ],
+          "sample_correlation": 1.0,
+          "raw_from_local_slope": 1.0000000000000013,
+          "raw_from_local_intercept": 1.9363634122943737e-12,
+          "maximum_absolute_sample_residual": 1.0477378964424133e-09,
+          "sample_residual_RMSE": 2.6346513804249216e-10,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            false
+          ],
+          "sample_correlation": 0.8537472177720862,
+          "raw_from_local_slope": 0.8595244315153302,
+          "raw_from_local_intercept": 18282.38527983129,
+          "maximum_absolute_sample_residual": 523610.0785320501,
+          "sample_residual_RMSE": 79793.00870008238,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            true
+          ],
+          "sample_correlation": 0.5797194256019413,
+          "raw_from_local_slope": 0.5797194256019442,
+          "raw_from_local_intercept": 52675.77944374967,
+          "maximum_absolute_sample_residual": 531996.7555480246,
+          "sample_residual_RMSE": 124866.84958064162,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            true
+          ],
+          "sample_correlation": 0.557368695834806,
+          "raw_from_local_slope": 0.5611403486409297,
+          "raw_from_local_intercept": 55445.651136033994,
+          "maximum_absolute_sample_residual": 561006.0808619686,
+          "sample_residual_RMSE": 127234.32778647989,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            true
+          ],
+          "sample_correlation": 0.3221361340725474,
+          "raw_from_local_slope": 0.32280445300441574,
+          "raw_from_local_intercept": 84911.72204213378,
+          "maximum_absolute_sample_residual": 659421.543486774,
+          "sample_residual_RMSE": 145076.42531492605,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            false
+          ],
+          "sample_correlation": 0.3193108044050144,
+          "raw_from_local_slope": 0.319973261773692,
+          "raw_from_local_intercept": 85266.25695429482,
+          "maximum_absolute_sample_residual": 665707.9203462962,
+          "sample_residual_RMSE": 145223.0336538762,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            true
+          ],
+          "sample_correlation": 0.31245824132394884,
+          "raw_from_local_slope": 0.31596465692673653,
+          "raw_from_local_intercept": 85988.74875512022,
+          "maximum_absolute_sample_residual": 647014.0684777761,
+          "sample_residual_RMSE": 145572.65541383994,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            false
+          ],
+          "sample_correlation": 0.29683796894778797,
+          "raw_from_local_slope": 0.3001690933931155,
+          "raw_from_local_intercept": 87955.7186438653,
+          "maximum_absolute_sample_residual": 663297.4511101948,
+          "sample_residual_RMSE": 146338.32550058237,
+          "raw_sample_standard_deviation": 153245.42453821533,
+          "sample_count": 30720
+        }
+      ],
+      "interpretation": "Storage-order/intensity diagnostic only; not physical orientation, registration or anatomical acceptance. No source was flipped or rewritten."
+    },
+    {
+      "scanner_id": 23,
+      "frames": [
+        0,
+        24,
+        47
+      ],
+      "sample_stride_xyz": [
+        4,
+        4,
+        2
+      ],
+      "best": {
+        "storage_array_axis_reversals_xyz": [
+          true,
+          true,
+          false
+        ],
+        "sample_correlation": 0.9999806836661416,
+        "raw_from_local_slope": 1.000098324660887,
+        "raw_from_local_intercept": -17.100789663023075,
+        "maximum_absolute_sample_residual": 12538.378840453748,
+        "sample_residual_RMSE": 958.6098123153416,
+        "raw_sample_standard_deviation": 154229.20431440603,
+        "sample_count": 30720
+      },
+      "next_best": {
+        "storage_array_axis_reversals_xyz": [
+          false,
+          true,
+          false
+        ],
+        "sample_correlation": 0.8454410234100984,
+        "raw_from_local_slope": 0.8531648103216449,
+        "raw_from_local_intercept": 20185.256631026383,
+        "maximum_absolute_sample_residual": 500311.239002562,
+        "sample_residual_RMSE": 82369.00503380268,
+        "raw_sample_standard_deviation": 154229.20431440603,
+        "sample_count": 30720
+      },
+      "all_storage_order_tests": [
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            false
+          ],
+          "sample_correlation": 0.9999806836661416,
+          "raw_from_local_slope": 1.000098324660887,
+          "raw_from_local_intercept": -17.100789663023075,
+          "maximum_absolute_sample_residual": 12538.378840453748,
+          "sample_residual_RMSE": 958.6098123153416,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            false
+          ],
+          "sample_correlation": 0.8454410234100984,
+          "raw_from_local_slope": 0.8531648103216449,
+          "raw_from_local_intercept": 20185.256631026383,
+          "maximum_absolute_sample_residual": 500311.239002562,
+          "sample_residual_RMSE": 82369.00503380268,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            true
+          ],
+          "sample_correlation": 0.5751296297550644,
+          "raw_from_local_slope": 0.5751972898837604,
+          "raw_from_local_intercept": 55162.48448658314,
+          "maximum_absolute_sample_residual": 537930.2512365447,
+          "sample_residual_RMSE": 126169.09593979461,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            true
+          ],
+          "sample_correlation": 0.5439597310794437,
+          "raw_from_local_slope": 0.5489292427721387,
+          "raw_from_local_intercept": 59294.964769984595,
+          "maximum_absolute_sample_residual": 560782.811352534,
+          "sample_residual_RMSE": 129415.47154673992,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            true
+          ],
+          "sample_correlation": 0.40798960007719653,
+          "raw_from_local_slope": 0.4099468821306238,
+          "raw_from_local_intercept": 76439.900384581,
+          "maximum_absolute_sample_residual": 576146.9154867477,
+          "sample_residual_RMSE": 140809.1930203145,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            true
+          ],
+          "sample_correlation": 0.38379565418800365,
+          "raw_from_local_slope": 0.38773698570313514,
+          "raw_from_local_intercept": 79767.12528137425,
+          "maximum_absolute_sample_residual": 579474.740106174,
+          "sample_residual_RMSE": 142418.03116457807,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            false
+          ],
+          "sample_correlation": 0.38092046103551663,
+          "raw_from_local_slope": 0.3827478820825923,
+          "raw_from_local_intercept": 79984.21189879139,
+          "maximum_absolute_sample_residual": 631519.910099981,
+          "sample_residual_RMSE": 142601.52684348018,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            false
+          ],
+          "sample_correlation": 0.3529173181526087,
+          "raw_from_local_slope": 0.356541549258646,
+          "raw_from_local_intercept": 83797.37314333624,
+          "maximum_absolute_sample_residual": 637073.8342255917,
+          "sample_residual_RMSE": 144305.25095845058,
+          "raw_sample_standard_deviation": 154229.20431440603,
+          "sample_count": 30720
+        }
+      ],
+      "interpretation": "Storage-order/intensity diagnostic only; not physical orientation, registration or anatomical acceptance. No source was flipped or rewritten."
+    },
+    {
+      "scanner_id": 39,
+      "frames": [
+        0,
+        192,
+        383
+      ],
+      "sample_stride_xyz": [
+        4,
+        4,
+        2
+      ],
+      "best": {
+        "storage_array_axis_reversals_xyz": [
+          true,
+          true,
+          false
+        ],
+        "sample_correlation": 1.0,
+        "raw_from_local_slope": 1.0,
+        "raw_from_local_intercept": -1.4397712735364248e-12,
+        "maximum_absolute_sample_residual": 1.8189894035458565e-12,
+        "sample_residual_RMSE": 4.201999405175899e-13,
+        "raw_sample_standard_deviation": 369982.9561030252,
+        "sample_count": 27648
+      },
+      "next_best": {
+        "storage_array_axis_reversals_xyz": [
+          false,
+          true,
+          false
+        ],
+        "sample_correlation": 0.8488681098012691,
+        "raw_from_local_slope": 0.8547583399577481,
+        "raw_from_local_intercept": 46924.27905669142,
+        "maximum_absolute_sample_residual": 1259982.5746046216,
+        "sample_residual_RMSE": 195574.73067094278,
+        "raw_sample_standard_deviation": 369982.9561030252,
+        "sample_count": 27648
+      },
+      "all_storage_order_tests": [
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            false
+          ],
+          "sample_correlation": 1.0,
+          "raw_from_local_slope": 1.0,
+          "raw_from_local_intercept": -1.4397712735364248e-12,
+          "maximum_absolute_sample_residual": 1.8189894035458565e-12,
+          "sample_residual_RMSE": 4.201999405175899e-13,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            false
+          ],
+          "sample_correlation": 0.8488681098012691,
+          "raw_from_local_slope": 0.8547583399577481,
+          "raw_from_local_intercept": 46924.27905669142,
+          "maximum_absolute_sample_residual": 1259982.5746046216,
+          "sample_residual_RMSE": 195574.73067094278,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            true
+          ],
+          "sample_correlation": 0.49002117050717603,
+          "raw_from_local_slope": 0.47769758567623705,
+          "raw_from_local_intercept": 160780.1403836985,
+          "maximum_absolute_sample_residual": 1584278.436969609,
+          "sample_residual_RMSE": 322518.0396769575,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            true
+          ],
+          "sample_correlation": 0.47252560830116586,
+          "raw_from_local_slope": 0.462905297068207,
+          "raw_from_local_intercept": 165944.97278159723,
+          "maximum_absolute_sample_residual": 1624768.759759664,
+          "sample_residual_RMSE": 326072.24688621477,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            false
+          ],
+          "sample_correlation": 0.46091336559660223,
+          "raw_from_local_slope": 0.4606651791271504,
+          "raw_from_local_intercept": 169761.6318517492,
+          "maximum_absolute_sample_residual": 1713304.4282791067,
+          "sample_residual_RMSE": 328339.5747974389,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            false
+          ],
+          "sample_correlation": 0.4431650265404816,
+          "raw_from_local_slope": 0.44559198674918626,
+          "raw_from_local_intercept": 175273.99576196642,
+          "maximum_absolute_sample_residual": 1707390.822064341,
+          "sample_residual_RMSE": 331667.53884421557,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            true
+          ],
+          "sample_correlation": 0.35399549470180597,
+          "raw_from_local_slope": 0.3462799159105327,
+          "raw_from_local_intercept": 203897.4699918971,
+          "maximum_absolute_sample_residual": 1592014.1023715402,
+          "sample_residual_RMSE": 346025.49696556287,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            true
+          ],
+          "sample_correlation": 0.34148028921167495,
+          "raw_from_local_slope": 0.33258354296623066,
+          "raw_from_local_intercept": 207880.45531064132,
+          "maximum_absolute_sample_residual": 1576383.055814176,
+          "sample_residual_RMSE": 347742.88696254126,
+          "raw_sample_standard_deviation": 369982.9561030252,
+          "sample_count": 27648
+        }
+      ],
+      "interpretation": "Storage-order/intensity diagnostic only; not physical orientation, registration or anatomical acceptance. No source was flipped or rewritten."
+    },
+    {
+      "scanner_id": 47,
+      "frames": [
+        0,
+        192,
+        383
+      ],
+      "sample_stride_xyz": [
+        4,
+        4,
+        2
+      ],
+      "best": {
+        "storage_array_axis_reversals_xyz": [
+          true,
+          true,
+          false
+        ],
+        "sample_correlation": 1.0,
+        "raw_from_local_slope": 0.9999999999999989,
+        "raw_from_local_intercept": -5.4771783038129994e-12,
+        "maximum_absolute_sample_residual": 2.0954757928848267e-09,
+        "sample_residual_RMSE": 5.340645180328754e-10,
+        "raw_sample_standard_deviation": 364667.8923334287,
+        "sample_count": 27648
+      },
+      "next_best": {
+        "storage_array_axis_reversals_xyz": [
+          false,
+          true,
+          false
+        ],
+        "sample_correlation": 0.8411054774339998,
+        "raw_from_local_slope": 0.8470816389683079,
+        "raw_from_local_intercept": 49355.12749814779,
+        "maximum_absolute_sample_residual": 1240046.719149378,
+        "sample_residual_RMSE": 197238.33384246263,
+        "raw_sample_standard_deviation": 364667.8923334287,
+        "sample_count": 27648
+      },
+      "all_storage_order_tests": [
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            false
+          ],
+          "sample_correlation": 1.0,
+          "raw_from_local_slope": 0.9999999999999989,
+          "raw_from_local_intercept": -5.4771783038129994e-12,
+          "maximum_absolute_sample_residual": 2.0954757928848267e-09,
+          "sample_residual_RMSE": 5.340645180328754e-10,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            false
+          ],
+          "sample_correlation": 0.8411054774339998,
+          "raw_from_local_slope": 0.8470816389683079,
+          "raw_from_local_intercept": 49355.12749814779,
+          "maximum_absolute_sample_residual": 1240046.719149378,
+          "sample_residual_RMSE": 197238.33384246263,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            true
+          ],
+          "sample_correlation": 0.48247115283451014,
+          "raw_from_local_slope": 0.471095307727636,
+          "raw_from_local_intercept": 162284.7464889777,
+          "maximum_absolute_sample_residual": 1631218.7754546395,
+          "sample_residual_RMSE": 319416.9318964121,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            true
+          ],
+          "sample_correlation": 0.4642566790180745,
+          "raw_from_local_slope": 0.455178776250009,
+          "raw_from_local_intercept": 167816.01725411473,
+          "maximum_absolute_sample_residual": 1620750.6310068183,
+          "sample_residual_RMSE": 322986.6087437894,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            false
+          ],
+          "sample_correlation": 0.458215116062444,
+          "raw_from_local_slope": 0.45873066344135033,
+          "raw_from_local_intercept": 169885.9406167551,
+          "maximum_absolute_sample_residual": 1659355.6930063807,
+          "sample_residual_RMSE": 324131.89391622035,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            false
+          ],
+          "sample_correlation": 0.43677032837414287,
+          "raw_from_local_slope": 0.44064374048237553,
+          "raw_from_local_intercept": 176498.2632264083,
+          "maximum_absolute_sample_residual": 1655308.6443515955,
+          "sample_residual_RMSE": 328045.40975800523,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            true
+          ],
+          "sample_correlation": 0.34065075582032106,
+          "raw_from_local_slope": 0.33411078087462354,
+          "raw_from_local_intercept": 206964.83763647772,
+          "maximum_absolute_sample_residual": 1618917.8633991182,
+          "sample_residual_RMSE": 342857.0720376319,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            true
+          ],
+          "sample_correlation": 0.328391959005371,
+          "raw_from_local_slope": 0.32046291111974207,
+          "raw_from_local_intercept": 210946.32620892115,
+          "maximum_absolute_sample_residual": 1561096.0563703564,
+          "sample_residual_RMSE": 344443.97270487313,
+          "raw_sample_standard_deviation": 364667.8923334287,
+          "sample_count": 27648
+        }
+      ],
+      "interpretation": "Storage-order/intensity diagnostic only; not physical orientation, registration or anatomical acceptance. No source was flipped or rewritten."
+    },
+    {
+      "scanner_id": 57,
+      "frames": [
+        0,
+        80,
+        159
+      ],
+      "sample_stride_xyz": [
+        4,
+        4,
+        2
+      ],
+      "best": {
+        "storage_array_axis_reversals_xyz": [
+          true,
+          true,
+          false
+        ],
+        "sample_correlation": 1.0,
+        "raw_from_local_slope": 0.9999999999999993,
+        "raw_from_local_intercept": -2.273519969941285e-12,
+        "maximum_absolute_sample_residual": 1.1641532182693481e-09,
+        "sample_residual_RMSE": 3.162042938166124e-10,
+        "raw_sample_standard_deviation": 360175.6050988187,
+        "sample_count": 27648
+      },
+      "next_best": {
+        "storage_array_axis_reversals_xyz": [
+          false,
+          true,
+          false
+        ],
+        "sample_correlation": 0.8500128884891692,
+        "raw_from_local_slope": 0.8548482745316037,
+        "raw_from_local_intercept": 46845.135291064915,
+        "maximum_absolute_sample_residual": 1179357.256851602,
+        "sample_residual_RMSE": 189726.7826945751,
+        "raw_sample_standard_deviation": 360175.6050988187,
+        "sample_count": 27648
+      },
+      "all_storage_order_tests": [
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            false
+          ],
+          "sample_correlation": 1.0,
+          "raw_from_local_slope": 0.9999999999999993,
+          "raw_from_local_intercept": -2.273519969941285e-12,
+          "maximum_absolute_sample_residual": 1.1641532182693481e-09,
+          "sample_residual_RMSE": 3.162042938166124e-10,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            false
+          ],
+          "sample_correlation": 0.8500128884891692,
+          "raw_from_local_slope": 0.8548482745316037,
+          "raw_from_local_intercept": 46845.135291064915,
+          "maximum_absolute_sample_residual": 1179357.256851602,
+          "sample_residual_RMSE": 189726.7826945751,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            true,
+            true
+          ],
+          "sample_correlation": 0.47786054324092686,
+          "raw_from_local_slope": 0.4654649023093216,
+          "raw_from_local_intercept": 162302.93417743943,
+          "maximum_absolute_sample_residual": 1591240.1957669912,
+          "sample_residual_RMSE": 316391.11433481274,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            true,
+            true
+          ],
+          "sample_correlation": 0.4617699971252255,
+          "raw_from_local_slope": 0.45149790481673974,
+          "raw_from_local_intercept": 167134.19399031257,
+          "maximum_absolute_sample_residual": 1613700.0076116782,
+          "sample_residual_RMSE": 319475.6540668704,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            false
+          ],
+          "sample_correlation": 0.44964413730068864,
+          "raw_from_local_slope": 0.4492947733310079,
+          "raw_from_local_intercept": 171040.56074276136,
+          "maximum_absolute_sample_residual": 1640692.8155890517,
+          "sample_residual_RMSE": 321711.6549668736,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            false
+          ],
+          "sample_correlation": 0.4328903215626076,
+          "raw_from_local_slope": 0.4357425308529572,
+          "raw_from_local_intercept": 175904.03903399908,
+          "maximum_absolute_sample_residual": 1633887.0727306334,
+          "sample_residual_RMSE": 324679.07398915035,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            false,
+            false,
+            true
+          ],
+          "sample_correlation": 0.33358006754033126,
+          "raw_from_local_slope": 0.32571888370959456,
+          "raw_from_local_intercept": 207281.48043095224,
+          "maximum_absolute_sample_residual": 1598163.0487365932,
+          "sample_residual_RMSE": 339545.3845050659,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        },
+        {
+          "storage_array_axis_reversals_xyz": [
+            true,
+            false,
+            true
+          ],
+          "sample_correlation": 0.31924194419007873,
+          "raw_from_local_slope": 0.3105658792185585,
+          "raw_from_local_intercept": 211801.2401659913,
+          "maximum_absolute_sample_residual": 1484802.9522940237,
+          "sample_residual_RMSE": 341328.7847922648,
+          "raw_sample_standard_deviation": 360175.6050988187,
+          "sample_count": 27648
+        }
+      ],
+      "interpretation": "Storage-order/intensity diagnostic only; not physical orientation, registration or anatomical acceptance. No source was flipped or rewritten."
+    }
+  ],
+  "scientific_anatomical_acceptance": false,
+  "source_writes": false
+}

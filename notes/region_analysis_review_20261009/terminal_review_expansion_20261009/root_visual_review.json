@@ -1,0 +1,49 @@
+{
+  "status": "parent_root_actual_seven_panel_visual_review_recorded",
+  "recorded_at": "2026-10-09T12:08:45.571504+08:00",
+  "reviewer": "root agent; parent explicitly reported actual image inspection",
+  "evidence_kind": "independent second-agent qualitative image review, not independent biological acceptance",
+  "observations": {
+    "252790::037.swc": "Local fluorescence near nominated XY across relevant Z; apparent nearby/continuing shafts require retaining continuation uncertainty.",
+    "252527::056.swc": "Local fluorescence near nominated XY across relevant Z; apparent nearby/continuing shafts require retaining continuation uncertainty.",
+    "252714::099.swc": "More diffuse/noisy image; local correspondence plausible. The 7050-node connected section includes multiple spatial fields, not a single accepted arbor domain.",
+    "other_three_leaf_cases": "Root observed local fluorescence near nominated XY across relevant Z; completion and biological terminal identity remain unassessed.",
+    "252790::037.swc_passage_7419": "Strong nearby fluorescence but original graph entry/exit and no section leaves; punctate brightness cannot demonstrate a bouton.",
+    "source_ARM0_cases": "INS-labelled target sections do not determine soma/source identity."
+  },
+  "panels": [
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252383_124_section_and_optical_planes.png",
+      "sha256": "92f776d7b8461206726387da48f283361f2b5632f503a0d7448d1fa64187e87e"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252385_056_section_and_optical_planes.png",
+      "sha256": "a57370f7dd9a3b785f6a3b670f499137ddbdcbe3d873f4d0d5a51e9b901f32d4"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252527_056_section_and_optical_planes.png",
+      "sha256": "e644a618ec4155060c80f94c65b02676d791bddf6531e2b0f5a224ab54780cab"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252714_099_section_and_optical_planes.png",
+      "sha256": "c6b8081f419e18dd367d6fce0a93781b703d2b687417af4d360f84147377860c"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252718_162_section_and_optical_planes.png",
+      "sha256": "7b4de44d6d4906f5fb1b7131db4bf68ae6847591bbb3a84eded644e5fd03cf33"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252790_037_internal_passage_optical_planes.png",
+      "sha256": "c94124744d4a1bf94543621547ab3927956a3c8a05a7a3c5c191f7a1f1208ada"
+    },
+    {
+      "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/review_panels/252790_037_section_and_optical_planes.png",
+      "sha256": "e9f270fef535d7c43ddcd3773c49e972411bdfc5efbf4dc3f50c32f090c824f6"
+    }
+  ],
+  "independent_graph_hash_readback": {
+    "path": "notes/region_analysis_review_20261009/terminal_review_expansion_20261009/independent_saved_readback.json",
+    "sha256": "e0c7738117143404fd79742439f0f962cf59d6afe1862ed2f827da59039c40ac"
+  },
+  "anatomical_or_biological_acceptance": false
+}

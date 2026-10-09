@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-10-09T04:16:21.343329+00:00",
+  "status": "failed",
+  "source_and_artifact_paths_rehashed": 805,
+  "failures": [
+    {
+      "path": "D:\\projectome_analysis\\README.md",
+      "snapshot_sha256": "94a05dce77895f734441f6e6664697b2df713bf45187f2174631cdb1085a2a1d",
+      "current_sha256": "f8b417147a5771a1ac32ba645b109e5c52c869d80e504421462aa145df2777f1"
+    },
+    {
+      "path": "C:\\Users\\laika_yan\\Documents\\ChatGPT\\deb_fmri\\docs\\CM033_D_SOURCE_SPATIAL_REBUILD_20261009.md",
+      "snapshot_sha256": "4d5cffc310d97ea198cb9a881921157aa6adce5554fa9f72e8dd289f3dbdd39f",
+      "current_sha256": "d7f148644736d4b2d592f5acdbcbdd962f01201a297dd9c373dc6988284761bf"
+    }
+  ],
+  "changed_time_bounded_external_logs": [],
+  "selected_neurons": 462,
+  "all_selected_original_axon_ends": 75625,
+  "connected_axon_sections": 47044,
+  "missing_native_counts_preserved_NA": 261,
+  "expanded_leaf_locations": 6,
+  "combined_individually_reviewed_leaves": 11,
+  "combined_reviewed_animals": 7,
+  "new_software_tests": {
+    "census": 7,
+    "coverage_join": 4
+  },
+  "test_evidence": "separate independent census and native-coverage receipts; prior 409-test suite not rerun",
+  "verifier_sha256": "461510117e70002a7489cdbfdb1c54240dd69ac8ad1126cd5cccc7b7f64f1ad1",
+  "receipt_hashes": {
+    "notes\\region_analysis_review_20261009\\terminal_field_census_20261009\\selected462_ARM6_sections\\census_provenance.json": "774f98d8a8ea65a287187770f1a8ae78f415f24d60f6f6008142b1a339431898",
+    "notes\\region_analysis_review_20261009\\terminal_field_census_20261009\\independent_census_readback.json": "7a61fa12375f7a1992539bcde471862c3b3ae49fe5fd3c501d628df25074b510",
+    "notes\\region_analysis_review_20261009\\terminal_review_expansion_20261009\\generation_provenance.json": "d882d3ddc0308e4ec3eae749eca42f0a0f82f87749136d464bcd51c278af28bb",
+    "notes\\region_analysis_review_20261009\\terminal_review_expansion_20261009\\assessment_inputs.json": "216f89a433920c59d1e84a2ffebe928f8fca5eeba96dae10053f322b9b57ff5c",
+    "notes\\region_analysis_review_20261009\\terminal_review_expansion_20261009\\delivery_receipt.json": "6bb419fc5d69f440fdba34d66169f9945dff78ece0d4c220dcb0197572e72d79",
+    "notes\\region_analysis_review_20261009\\terminal_review_expansion_20261009\\root_visual_review.json": "a1ad3efecbc88ee25506ad2edaa86fc7d2cb2e02c0308542902580e3d86b3737",
+    "notes\\region_analysis_review_20261009\\clustering_20261009\\native_image_coverage_20261009\\coverage_audit_provenance.json": "b971df97397169e7197d48a40fd939319fd6dedb93450883f13ec1cc5f3a39af",
+    "notes\\region_analysis_review_20261009\\clustering_20261009\\native_image_coverage_20261009\\independent_native_coverage_readback.json": "1e4640e011b6d15874bd479d8a6bb6411d8ab1253562f0464da4f7b2e14f912f",
+    "notes\\region_analysis_review_20261009\\cm033_source_mapping_20261009\\mapping_and_normalization_snapshot.json": "4df74adf3137d6708fc460dbc946d778e79ea670e9d390230308e07bda326734",
+    "notes\\region_analysis_review_20261009\\cm033_source_mapping_20261009\\final_snapshot_status.json": "eac806419049f3254d1c7b0b94392c80babf394410442915f65f402259f4128a"
+  },
+  "anatomical_acceptance": false,
+  "biological_terminal_acceptance": false,
+  "full_goal_achieved": false,
+  "remaining": [
+    "Broader terminal-field completeness/segmentation remains unresolved; graph sections are not accepted arbors.",
+    "CM033 historical-left-GLM-to-new-anatomy bridge remains unverified; existing spatial job is separately monitored."
+  ]
+}

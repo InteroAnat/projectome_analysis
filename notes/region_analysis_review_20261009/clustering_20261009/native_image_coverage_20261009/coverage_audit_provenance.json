@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-10-09T04:05:52.717098+00:00",
+  "status": "descriptive_audit_completed",
+  "source_hashes": {
+    "notes\\region_analysis_review_20261009\\clustering_20261009\\arm_L6_relative_profiles_selected462\\all462_feature_eligibility_and_assignments.csv": "02018838c04942541e4e6c83d46978e6be27febf434f1a161c756c583ef7e399",
+    "notes\\region_analysis_review_20261009\\clustering_20261009\\arm_L6_relative_profiles_selected462\\run_provenance.json": "19d8057645c2fa707d3cc6accbd1c384a00382cc7161f0e09cd5fbba150c6735",
+    "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\selected462_native_image_coverage.csv": "667ed757dfb5c15e13f1d9bfc24ed5797080b7b72444b29675feb72fca2a2d03",
+    "notes\\region_analysis_review_20261009\\terminal_field_assessment_20261009\\native_cube_pilot_current_rint\\generation_provenance.json": "66cbfd202b14822606b51fbf98642202ba4de04d16b86c726ea7929a17f786e0",
+    "notes\\region_analysis_review_20261009\\clustering_20261009\\audit_native_image_coverage.py": "3c296119fce3c7b892c38930a5fd9b1c2d10d4b8e12e50dc9462652df551c500"
+  },
+  "versions": {
+    "python": "3.10.20 | packaged by conda-forge | (main, Jun 11 2026, 03:28:51) [MSC v.1944 64 bit (AMD64)]",
+    "pandas": "2.3.3",
+    "numpy": "1.26.4"
+  },
+  "selected_neurons": 462,
+  "native_swcs_found_here": 201,
+  "native_swcs_not_found_here": 261,
+  "native_original_axon_ends_among_found": 48574,
+  "cached_end_positions_among_found": 9209,
+  "parameters": {
+    "clusters": "saved primary Hellinger k2 labels; no refit",
+    "new_cohorts": false,
+    "missing_native_measurements": "NA, never zero",
+    "end_coverage": "cached TIFF exists at nominal original leaf position"
+  },
+  "scientific_limits": [
+    "Native cache availability is confounded with animal; it is not tracing-quality acceptance.",
+    "A cached cube is available evidence, not a completed image review or proof of termination.",
+    "Pooled endpoint coverage weights neurons and ends unequally; it is not an animal-level prevalence estimate.",
+    "Unknown availability elsewhere is retained; no missing case is removed or assigned zero innervation.",
+    "Existing atlas assignments, cluster labels, maps, sources and their historical receipts remain unchanged."
+  ],
+  "canonical_changes": false,
+  "anatomical_acceptance": false,
+  "output_hashes": {
+    "all462_native_image_coverage.csv": "372928c2a51fe6bcf8832b0c312a52b24baba336394e7a45d4a8115bee532b4e",
+    "native_image_coverage_by_animal_evidence_cluster.csv": "34f6ef5d5f648116444c24263906a6e4d1fcf480f69deaca93b0aeb331c122e9"
+  }
+}
