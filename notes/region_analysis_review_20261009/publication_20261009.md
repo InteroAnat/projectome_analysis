@@ -48,3 +48,13 @@ On 2026-10-09, a fresh read-only check found no drift in all 126 current source-
 | MSTIM integration | CM032's signed-contrast warp reproduces exactly, and all 1,676 regional/25,140 joint rows pass independent readback. Accepted registration/site coordinates and the corrected CM033 orientation/model remain unresolved. The saved T image is descriptive; its warp has not independently been reproduced. |
 
 Remote readback still contains no feature branch, and `master` remains `f096e8165da18f84e91ea69d6e5cbfd58f248e75`. The outstanding public-push request has not been answered. This automatic goal continuation is not approval to publish the scientific payload. The goal remains active; neither full scientific acceptance nor remote publication is claimed.
+
+## User-directed continuation and publication refresh
+
+The user subsequently instructed “continue” after the explicit public-destination/payload approval request. This is taken as approval to publish the prepared branch to public `InteroAnat/projectome_analysis`, including the reviewed code, scientific tables, inventories, figures and QC. The scope remains the disclosed approximately 306 MB of reviewed files; original reconstructions, NIfTI volumes and credentials remain excluded.
+
+A temporary approval-service usage failure prevented two read-only checks. The account usage tool subsequently reported ordinary usage allowed, and a fresh branch read succeeded. No approval check was bypassed and no usage-reset credit was consumed. The verified local head before this refresh was `867ce05d8248e5ad6e3e3bb6ea4709bb7802f8a5`.
+
+Publication preparation now excludes its own manifest/receipt/path-list files after collecting previously committed paths as well as during filesystem discovery. This prevents a self-hash cycle when refreshing an already committed publication package. The exact refreshed Git-index bytes are checked again before pushing. Scientific producers, data and validation receipts are unchanged.
+
+Current status: user-approved publication refresh and push in progress; remote completion will be recorded after verification.

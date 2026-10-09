@@ -85,6 +85,10 @@ def main():
                     or path.suffix.lower() in OMIT_SUFFIXES or path.name.startswith("publication_paths_")):
                 continue
             candidates.add(str(path.relative_to(ROOT)).replace("\\", "/"))
+    # Previously committed publication manifests also appear in the Git diff.
+    # Exclude them here as well as during discovery to avoid self-hash cycles.
+    candidates = {path for path in candidates if Path(path).name not in OMIT_NAMES
+                  and not Path(path).name.startswith("publication_paths_")}
     # Publish one current ARM figure set. Earlier display variants and animal/QC
     # panels remain immutable local derivatives with hashes in the manifest.
     def primary_figure(path):
