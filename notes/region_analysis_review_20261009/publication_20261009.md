@@ -68,3 +68,15 @@ Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)
 The user replied “I approve” directly to the request to publish the disclosed scientific payload to the public `InteroAnat/projectome_analysis` repository. This authorizes the prepared feature-branch push, including inventories, projection tables, figures, QC and source paths. The previously disclosed exclusions remain in place. The public-publication approval dependency is resolved; scientific acceptance dependencies remain as recorded above.
 
 The publication manifest and exact index-byte check are refreshed before committing and pushing. Remote publication is recorded only after live branch readback agrees with the local commit.
+
+## Verified public publication
+
+Agent: Codex | Date: 2026-10-09 (Asia/Shanghai)
+
+The approved feature-branch push succeeded. Live `git ls-remote` readback returned `9b4db60c8f6e6942ab68f5c227dca70f4408bff3` for `refs/heads/codex/insula-pipeline-evolution-20261008`, exactly matching local `HEAD`. GitHub readback confirms repository `InteroAnat/projectome_analysis`, visibility `PUBLIC`, default branch `master`; `master` remains `f096e8165da18f84e91ea69d6e5cbfd58f248e75`.
+
+Immediately before publication, all 126 scientific source hashes, 14 report hashes and 36 test hashes matched the final delivery receipt. The refreshed publication check passed for 991 files (306,144,456 bytes), with no credential findings or unexpected staged paths. An independent read-only specialist check found no new publication blocker. The saved 409-test suite remains applicable because the scientific sources and tests are unchanged.
+
+The manifest/index receipts describe the prepared byte snapshot committed at `9b4db60c8f6e6942ab68f5c227dca70f4408bff3`. This publication-log append is a documentation-only follow-up and does not rewrite those historical receipts. The follow-up is also committed, pushed and checked against the live feature branch before final delivery. Unrelated local journal/bytecode changes are preserved.
+
+Publication is complete for the disclosed Git payload. The NIfTI volumes, raw reconstructions and other declared local artifacts remain local, with their hashes and reproduction commands published. Publication resolves the approval dependency; the anatomical, terminal-field and MSTIM scientific dependencies recorded above remain unresolved.
