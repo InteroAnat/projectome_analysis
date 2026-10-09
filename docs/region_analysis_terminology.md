@@ -2,6 +2,8 @@
 
 These definitions separate what the pipeline measures from anatomical interpretation. Existing script filenames, column keys and metric IDs remain stable for compatibility. New help text, reports and figures use the plain-language terms below.
 
+The SWC compartment code **2 means axon**, as defined in the [NeuroMorpho.Org SWC format documentation](https://www.neuromorpho.org/myfaq.jsp?id=qr3). It describes a reconstructed part of a neuron, not a neuronal cell type. Use **axon** in readable labels. A **connected axon section within an ARM region** means original axon-labelled points joined by original links inside the sampled region; it can include passing shafts and branching fields. Keep numeric compartment codes in technical definitions/provenance, and retain unresolved/custom labels as supplied.
+
 ## What is measured
 
 | Display term | Stored name or workflow | Meaning and limit |
@@ -11,7 +13,7 @@ These definitions separate what the pipeline measures from anatomical interpreta
 | Log-scaled retained length | `Projection_Strength_*` | `log10(1 + retained length)`, calculated after anatomical aggregation. This is a descriptive scale, not a count of terminals, synapses or response amplitude. |
 | Share of log-scaled retained length | R `prop`, `mean_prop`, normalized profiles | A feature's log-scaled value divided by the sum of selected features. It is not the fraction of raw axonal length. Overlapping L3 ancestors and L6 descendants do not form an exclusive anatomical partition. |
 | Endpoint-target regions | Legacy `Terminal_Regions`, `Terminal_Count` | Distinct region labels reached by the stored graph endpoints, including non-axon endpoints in this legacy method. The count is of region labels, not individual endpoints or reviewed biological terminal sites. |
-| Candidate axon ends | New endpoint maps | Non-root SWC type-2 nodes with no children in the complete stored graph. Breaks, incomplete tracing and true endings can all produce this graph feature. |
+| Candidate axon ends | New endpoint maps | Non-root axon-labelled points with no children in the complete stored graph. Breaks, incomplete tracing and true endings can all produce this graph feature. |
 | Axon-labelled segment length | New axon maps | Physical length of segments selected by the declared SWC axon-label rule, rasterized in the reference grid. It includes passage and arbor segments; compartment and registration review remain necessary. |
 | Reviewed terminal arbor or field | Anatomical review, not the graph proxy | Target-local terminal morphology supported by source images and a recorded review. Graph leaves alone cannot establish this. |
 
