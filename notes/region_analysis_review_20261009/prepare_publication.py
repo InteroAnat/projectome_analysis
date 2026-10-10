@@ -46,6 +46,8 @@ MAP_SCRIPTS = {
     "export_arm_projection_tables.py", "cluster_arm_projection_profiles.py", "summarize_mstim_arm.py",
     "build_axon_end_branch_maps.py",
     "build_monkey_insula_inventory.py",
+    "map_projections_by_soma_origin.py", "map_insula_origin_evidence.py",
+    "map_legacy_strength_to_arm_parcels.py",
 }
 CORE_MODULES = {"endpoint_atlas.py", "projection_maps.py", "terminal_sites.py"}
 OMIT_NAMES = {"publication_files.json", "publication_scan.json", "publication_local_artifacts.json", "publication_index_receipt.json"}
@@ -109,7 +111,7 @@ def main():
     candidates.add("group_analysis/data_progress/insula_inventory.py")
     candidates |= {"docs/region_analysis_terminology.md", "requirements-validation.txt",
                    "notes/whole_insula_lr_continuation_plan_v2.md"}
-    for directory in (AUDIT, EVOLUTION, ROOT / "notes/clustering_review_20261002", ROOT / "notes/projection_map_review_round2"):
+    for directory in (AUDIT, EVOLUTION, ROOT / "notes/clustering_review_20261002", ROOT / "notes/projection_map_review_round2", ROOT / "notes/projection_maps_by_origin"):
         for path in directory.rglob("*"):
             if not path.is_file() or "__pycache__" in path.parts:
                 continue
@@ -126,7 +128,9 @@ def main():
     def primary_figure(path):
         prefix = "group_analysis/evolution_20261008/arm_mapping_20261009/main/figures/"
         family = path[len(prefix):].split("/", 1)[0] if path.startswith(prefix) else ""
-        return (path == "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/per_monkey_insula_overview.png"
+        return (path.startswith("group_analysis/evolution_20261008/soma_origin_maps_20261010/")
+                or path.startswith("group_analysis/evolution_20261008/arm_target_strength_20261010/")
+                or path == "group_analysis/evolution_20261008/inventory/legacy_overview_20261009/per_monkey_insula_overview.png"
                 or family in {"endpoint-density_group", "endpoint-occupancy_group", "axon-density_group"}
                 and "unresolvedQC" not in path)
 

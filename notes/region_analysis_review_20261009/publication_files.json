@@ -1,5 +1,5 @@
 {
-  "created_utc": "2026-10-09T23:13:44.255861+00:00",
+  "created_utc": "2026-10-10T00:07:21.103864+00:00",
   "groups": {
     "baseline": [
       {
@@ -1100,6 +1100,21 @@
         "sha256": "590f359bd3d1de34ce168f1974c61f02f4e68ba916103f4a7976db72d9ead12d"
       },
       {
+        "path": "group_analysis/scripts/map_insula_origin_evidence.py",
+        "bytes": 10408,
+        "sha256": "c90318f9070e2d1c0cb4321b2732a55666c27cc70ee83918a16192e1b1d9f7b2"
+      },
+      {
+        "path": "group_analysis/scripts/map_legacy_strength_to_arm_parcels.py",
+        "bytes": 14851,
+        "sha256": "1235428a7fed07ee8a50f31d1c6337589b48d858d3967a6163680be141df2aa2"
+      },
+      {
+        "path": "group_analysis/scripts/map_projections_by_soma_origin.py",
+        "bytes": 20900,
+        "sha256": "9031df7dd12a148d541bf20d8d708bd455c093d406638b88d0d6e7973079ca30"
+      },
+      {
         "path": "group_analysis/scripts/prepare_arm_labeled_projection_manifest.py",
         "bytes": 14219,
         "sha256": "3c4271c6d35e4b1e3594dde523e4986a220cf51432439db12d27ae3636cdaae7"
@@ -1365,6 +1380,111 @@
         "sha256": "732f7443c4ebf9cae97def27525f937c5bfc12a4701169648e2de78876575542"
       },
       {
+        "path": "notes/projection_maps_by_origin/README.md",
+        "bytes": 10531,
+        "sha256": "2e097a9721dfff43e75c9432901a6136d7bc5ff4d44628689f5a5613fd46bd3e"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/delivery_receipt.json",
+        "bytes": 1108,
+        "sha256": "be7c19c0e35f7af236cf6089a3e4edd221dec5215008648b0681064bf15103e2"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/independent_readback.json",
+        "bytes": 95913,
+        "sha256": "1edfe9355604c5891233cb080e0d20060aa9822789e2cb81ac4d589771694be7"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/investigate_source_additions.py",
+        "bytes": 9514,
+        "sha256": "c0c17d10498418c91bf6bd712d9e9b87dc556682b218ee247e104b2f38f9475b"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/legacy_parcel_delivery_receipt.json",
+        "bytes": 1179,
+        "sha256": "ea5a315e25f9420cc950149fd25619aad1fbdba0c6ac21af28d05502a141fb6e"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/legacy_parcel_independent_readback.json",
+        "bytes": 10536,
+        "sha256": "22147236840db4fee4bcb4aeeca9274bc4d5240164c022378e32b256707628b5"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/legacy_parcel_qc_archive_mapping.json",
+        "bytes": 532,
+        "sha256": "ef3f237687a9a4363d1fe90b720a42bab5aeb3452f880cb90576bac0b723b8be"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/legacy_parcel_visual_review.json",
+        "bytes": 2849,
+        "sha256": "203d9cb5a7586bf0633852814a8b6bced3b157b73838b993513760658e99c69d"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/legacy_target_strength_literature.json",
+        "bytes": 2838,
+        "sha256": "dde1918ca335bf242ea6bfd3f4e469a2114c1a03657d931f2e652e0a278eb19c"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/legacy_target_strength_methods.md",
+        "bytes": 10428,
+        "sha256": "95f76a509b778416d4bd6dd7ceb7ca72a94fd3deabc7bdf1b6003e2a4b52deae"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/map_scale.md",
+        "bytes": 4030,
+        "sha256": "3ec41e62f12077dccb3d707d4f0f95582ec040ec47bd2075ef29191b9b92dc44"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/own_draft_archive_mapping.json",
+        "bytes": 98248,
+        "sha256": "d40088fd27477b9477c3701380663257c8519905ff09dd3b806eafb1f0f078ba"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/reconcile_neuron_counts.py",
+        "bytes": 9579,
+        "sha256": "095cc7ee7e55e31d99df2a797d724c1347fe8982e1a984e0290bf9cf118abfd4"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/reproduction.md",
+        "bytes": 4966,
+        "sha256": "505c5aec9ec58048c455c2d0a7f1443fbdccf9380d1a23c8e1f3bd6965ef6d9b"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/scale_display_qc.csv",
+        "bytes": 6837,
+        "sha256": "1b756987813cdbf9cf8e1bfb4722dc29e0efa2ffe2309128ec0e893bdd9374b0"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/summarize_display_scale.py",
+        "bytes": 2671,
+        "sha256": "14e5f9c57736c4609ed8c6edc7b5bab98dc417574f4719a24c22188d821ac755"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/test_legacy_parcel_strength.py",
+        "bytes": 2448,
+        "sha256": "8bc273b881a1129c28d6df50ad039bebf4807734a18544b543107d720c944940"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/test_origin_membership.py",
+        "bytes": 2252,
+        "sha256": "27a104c807f29d3963073b1f60dd82db8c011fca875e0926dc4c285d326fced9"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/verify_legacy_parcel_strength.py",
+        "bytes": 7432,
+        "sha256": "341b6d186fc7d79f9f392813f134ac4ff5a9073cab83917fad23a93c0b040347"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/verify_origin_maps.py",
+        "bytes": 12208,
+        "sha256": "664b6d3a881d7dbd16450aa9ae92755d3bd34b2f0966f192f55e2e8292afb4eb"
+      },
+      {
+        "path": "notes/projection_maps_by_origin/visual_review.json",
+        "bytes": 4335,
+        "sha256": "eb66dc0665ad57cd42a19c35c22dc81fae281f3103e4058f5de62c71a6723779"
+      },
+      {
         "path": "notes/whole_insula_lr_continuation_plan_v2.md",
         "bytes": 6126,
         "sha256": "be2632e4e43866971ad52be923776463025f948f0e542848f835ddf95459eb55"
@@ -1513,18 +1633,18 @@
     "evidence": [
       {
         "path": ".gitignore",
-        "bytes": 3799,
-        "sha256": "f3091112473c8bec3595748d204947f4e030bebcb701ca2f48900c048d67abed"
+        "bytes": 3841,
+        "sha256": "3f4db095b6cf12ff5d47f8734ee31020a68eac31a167dcb9878bb39eda2dcf9d"
       },
       {
         "path": "README.md",
-        "bytes": 23884,
-        "sha256": "9fe931bb6384ba463c87cd506acafe8a45ba827afb43617042cb7913cbbdf95f"
+        "bytes": 24231,
+        "sha256": "3c95cf611e5347f80984bf1213c73f9647fb67220a1fbdd6662fc56c37697f89"
       },
       {
         "path": "docs/project_note.md",
-        "bytes": 133898,
-        "sha256": "f9ef6d59546bfe62578eb45d38942f7757f4e6b8cb2b6eb75ad97dff249ed647"
+        "bytes": 138061,
+        "sha256": "03d2ecb4aa44347433a6e62e44cb93e5b14674c1cc2ea351963714b6c0847348"
       },
       {
         "path": "docs/region_analysis_terminology.md",
@@ -1730,6 +1850,151 @@
         "path": "group_analysis/evolution_20261008/arm_mapping_20261009/workflow_checkpoint.json",
         "bytes": 11285,
         "sha256": "4390ffb3f36d8841337c3b8a904859bba9e5ddd98ece7336f3bbfae82d68aa8e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-228_target-ARM1to6_legacy_strength.png",
+        "bytes": 1323458,
+        "sha256": "a2ab7bb4cf081832cde59231ddda921a8c688e70532e43c62000e3f89c90b7b3"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-229_target-ARM1to6_legacy_strength.png",
+        "bytes": 1296889,
+        "sha256": "45c089ea90098b3d8fc6e9281497e439a63c76663e2a1953ea298eadf1329fef"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-41_target-ARM1to6_legacy_strength.png",
+        "bytes": 1323455,
+        "sha256": "d2b757d214d29f4ded60365dd7e13f1842eebdc13905b48c480882afa0554eb9"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-42_target-ARM1to6_legacy_strength.png",
+        "bytes": 1302649,
+        "sha256": "72b1175f029c482533d7a1ee4d5abe779067bf84e8e5516ef7ca1658a4e914b1"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-43_target-ARM1to6_legacy_strength.png",
+        "bytes": 1241248,
+        "sha256": "d0b92021ac8780171a76d7f4edd7ed60375efd24f28a11cc7a29e9c19f7c0cba"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-541_target-ARM1to6_legacy_strength.png",
+        "bytes": 1236447,
+        "sha256": "9fb44589dce7c3e8943915d4375ebecd69551af906590b06ef4b659a4535e0e5"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-542_target-ARM1to6_legacy_strength.png",
+        "bytes": 1275006,
+        "sha256": "1a6a5a494ef4a2372af173606b65300b0ab20fb2e2f42b4ffcfe9163031a6a4a"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-728_target-ARM1to6_legacy_strength.png",
+        "bytes": 1260054,
+        "sha256": "297844bacbc067bad9352ec345f62c13432d8ce0ed94dd9138d389bdff2d0232"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/figures/from-ARM6-729_target-ARM1to6_legacy_strength.png",
+        "bytes": 1218948,
+        "sha256": "915bdf4bc805ef0a1e0b86ad6c5aed7e4e9cd4bdccad42d9b047c069277ca11e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/map_index.csv",
+        "bytes": 15165,
+        "sha256": "123e50777386c654ed86e0fbd9d0eb076479520c6db15f6291b6f405fe2c2173"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_membership.csv",
+        "bytes": 3711540,
+        "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L1_legacy_strength.csv",
+        "bytes": 28915,
+        "sha256": "f4e29ca1e32a2e3432d6a07acece09f675e7fac1a7a1580b721033898465aa52"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L1_retained_length_voxel.csv",
+        "bytes": 35941,
+        "sha256": "f23b4a7b07b451ba142e5d01835719e243990826801b48e16db1a4caf8653786"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L2_legacy_strength.csv",
+        "bytes": 86129,
+        "sha256": "b2b6f4259f1889c7588f4e13432b457e73fddd6ad589f47628feb6c3ecb580bc"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L2_retained_length_voxel.csv",
+        "bytes": 95966,
+        "sha256": "235daa03adceb9a3c145981a61f263b07d96524234497aa6107bbd6a7e135645"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L3_legacy_strength.csv",
+        "bytes": 182621,
+        "sha256": "051c9cfcd504ce28d814965aad2ef220f1d68b7852437026ea906cc8b8604e1f"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L3_retained_length_voxel.csv",
+        "bytes": 194132,
+        "sha256": "d9fefaca7bbd2b7871c153bad08bcd3c057ca447b624e1401c930f15c6198380"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L4_legacy_strength.csv",
+        "bytes": 316174,
+        "sha256": "64e1a00545ace258e18615e0426dfc2ed890f6b741d87ff3e25698e785ddd0e9"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L4_retained_length_voxel.csv",
+        "bytes": 330079,
+        "sha256": "1a601c7be4580da3f34346159c9ffc5615663ddeeab45d36296995fa1f4feca3"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L5_legacy_strength.csv",
+        "bytes": 639178,
+        "sha256": "9a64ab5f62a898a356da99b44bb4cd21d6051b7592411aed95e1428920377b89"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L5_retained_length_voxel.csv",
+        "bytes": 655501,
+        "sha256": "bc13f742329a7de30a413b99501a9f30a186ff0c8493212347067f6d4bc3d867"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L6_legacy_strength.csv",
+        "bytes": 851821,
+        "sha256": "7bd19244d060d31539a5504c0d129770a826618a445ed39e15b50308b647042c"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/neuron_target_L6_retained_length_voxel.csv",
+        "bytes": 870997,
+        "sha256": "01d968cd750d9559539733f174f490bce02ea736020f01ab7f16c79449062aa7"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/per_animal_source_target_strength.csv",
+        "bytes": 1614685,
+        "sha256": "b387aa9182c31839242b1c23a46c8e5f23eab907bd40dbfb12053a2789e39767"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/per_neuron_graph_qc.csv",
+        "bytes": 52229,
+        "sha256": "5579eef60b8bd61998698d5ea1228c26545d213fcdf4aa0b71f1e682adf8c858"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/per_neuron_legacy_regional_measures.csv",
+        "bytes": 704709,
+        "sha256": "50dfd22e4612988193496d90b225d0c1cfaaeb8b5f5f4b0a58e0eb956059d606"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/run_provenance.json",
+        "bytes": 58180,
+        "sha256": "bb6f044ab5196cb612b34641805f49bda2b07baaff3de7257d0ba9cb7a3f465a"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/source_target_strength.csv",
+        "bytes": 2295840,
+        "sha256": "1b75dd64692bfe5afbed80236f1b2e2f53061c48ceab6512c3b0964112e18d3d"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/arm_target_strength_20261010/targets.csv",
+        "bytes": 168839,
+        "sha256": "632da1c6e92b0f28bb7d94cb598752abe74a9277b83e50d526c2b84568d57547"
       },
       {
         "path": "group_analysis/evolution_20261008/atlas_locations/soma_audit_20261009/README.md",
@@ -3215,6 +3480,156 @@
         "path": "group_analysis/evolution_20261008/reports/mapping_workflow_20261009.md",
         "bytes": 7998,
         "sha256": "802beabed57b402365f3409d8d5ebad3b2fd2a2d93d5d76f1c451b5901bc1a03"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/count_reconciliation/September_entries_outside_current_monkey_maps.csv",
+        "bytes": 1331,
+        "sha256": "3a2ace5effe5257b05bb421c3e71f8d36b2089a43b6916cf07d071e44ed7e69b"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/count_reconciliation/current462_identity_comparison.csv",
+        "bytes": 45813,
+        "sha256": "213a60287cebf5ac970c07edfe96e01ab89c4c409e07df1700eecf48d60e6ef1"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/count_reconciliation/per_monkey_counts_history_and_evidence.csv",
+        "bytes": 734,
+        "sha256": "1898b619bdd14357754f9492fb3da96da72c1420f1d3e4a8163783633ba5d9ad"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/count_reconciliation/per_monkey_history_and_evidence.png",
+        "bytes": 132987,
+        "sha256": "ea1c865edce37659503fa5f2f670e1a30917c9294f3c5afb59285f39c55cd4cd"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/count_reconciliation/reconciliation_provenance.json",
+        "bytes": 3300,
+        "sha256": "0bda1d62b04f5b75e7973994a427c8dd2c35b4789393121ab23c5c0f18e03b1e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/count_reconciliation/retained_and_added_by_evidence.csv",
+        "bytes": 164,
+        "sha256": "0c7739c21bfbfed2585fdc074334d2d3d58156f64cf0162a5b9b44f09327f134"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/category_counts_and_map_index.csv",
+        "bytes": 3396,
+        "sha256": "c566f9d6de1ac7e51d4ff64c96cff7b2345ca66dd654f25ba6b64912297a9d93"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/figures/space-NMTv2p1_sourceEvidence-HenryPrCOConflict_to-wholeBrain_desc-candidateEnds.png",
+        "bytes": 284990,
+        "sha256": "da4631637835953f41834027dd54b0e72fd870d3cc8d2f161c35e3a1d1a8beea"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/figures/space-NMTv2p1_sourceEvidence-HenryUnassigned_to-wholeBrain_desc-candidateEnds.png",
+        "bytes": 279847,
+        "sha256": "e3e96ad1e60d971a45065a2ef62bf1f7ea292de095082ba1add8c9ad986538a9"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/figures/space-NMTv2p1_sourceEvidence-atlasAndHenry_to-wholeBrain_desc-candidateEnds.png",
+        "bytes": 356968,
+        "sha256": "410566f106b4f3a50321e3ea31e2b66b92a0871b50f051d7e8c7080d7688631d"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/figures/space-NMTv2p1_sourceEvidence-atlasOnly_to-wholeBrain_desc-candidateEnds.png",
+        "bytes": 361758,
+        "sha256": "dcd73ecc8107a4bbdf897400ccb68cc2da42cb32a6e462dce99a3971e5980b12"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/figures/space-NMTv2p1_sourceEvidence-neighborCandidate_to-wholeBrain_desc-candidateEnds.png",
+        "bytes": 327951,
+        "sha256": "f26f2ace1c4de5cdf8beef2de43a1da82e23b6426dbf0ced80efc428e70e258b"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/figures/space-NMTv2p1_sourceEvidence-unassignedCandidate_to-wholeBrain_desc-candidateEnds.png",
+        "bytes": 299298,
+        "sha256": "b677eab7ae5e6b68f72473c507d85dfa3fd4b40c103aa2172bbc0c1ad810e80e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/evidence_categories/run_provenance.json",
+        "bytes": 13352,
+        "sha256": "22c4b94aa986a4833ff38631594637b32683d8a3429a18a55d7301e2afe7dd43"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_228_L_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 576474,
+        "sha256": "256ece0b16c758120d020c95d1f4a37eee07ac352688c1d393be89336826cfe8"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_229_L_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 556884,
+        "sha256": "05ea67acbf412bd72ed6adcc6f466c42eff4d8d14f4572033f99e3b7f08f2d25"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_41_L_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 561625,
+        "sha256": "522085d182c16a836075b5320531ac7b89795603e7d85057d38c436ade5412e0"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_42_L_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 560567,
+        "sha256": "452ab11c6717c084275476f89f0a7a5ecaaadaddf2083021ad1543a946842b4d"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_43_L_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 531836,
+        "sha256": "31e13a494d06e48be15bb4d157c493c6ebfe328ef2d45ce9dd3d5b0d89b41d30"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_541_R_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 538841,
+        "sha256": "f226afa875de6ef07de7970b7f6b783a3cf343678030e0551ba4c622154e0e20"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_542_R_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 564720,
+        "sha256": "2d1cfbea81bea754ec2ff0dec68d784c28066c991dda2144398883e2a51a0d8e"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_728_R_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 557462,
+        "sha256": "452b740fde49e57b6006d6c1911cff60ac09ff17f77195c35e9a804097096c57"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/figures/space-NMTv2p1_from-ARM6_729_R_to-wholeBrain_desc-somaOriginAndCandidateEnds.png",
+        "bytes": 544867,
+        "sha256": "4898aa980a17448eae907498ace39cddf3735a99f93661a80f4d90489b9a5f1a"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/neuron_origin_membership.csv",
+        "bytes": 240642,
+        "sha256": "a8b1a97d90dada00c2521e486033e30b999603f09b975a96beb2186340f92264"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/origin_map_index.csv",
+        "bytes": 3362,
+        "sha256": "9432f3a80fe1ba5b01d0f73a1d64db713fc00429eef9715cce2b5023de3bfdff"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/named_ARM_origins/run_provenance.json",
+        "bytes": 35829,
+        "sha256": "d897976080d9a8c51ff6b964dc6784a822d2d153582459fb7f1f38b56922f1fc"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/source_investigation/dataset250432_all234_source_inventory.csv",
+        "bytes": 76377,
+        "sha256": "be1433540e57751dfebbc108f3a90d909fe8e13dde8dc30326287932140dd91f"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/source_investigation/dataset250432_selected29_candidates.csv",
+        "bytes": 9710,
+        "sha256": "8951a88403715c0714e2ca62d5e5171dfa76f414544104afa47e97d6097cb8cd"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/source_investigation/dataset251637_added115_evidence.csv",
+        "bytes": 984,
+        "sha256": "1d40a1a6e561b2e089b914b07ea6df4c3bdd87ee90f6964f2590facae8a0ae8f"
+      },
+      {
+        "path": "group_analysis/evolution_20261008/soma_origin_maps_20261010/source_investigation/source_investigation_provenance.json",
+        "bytes": 4499,
+        "sha256": "9b13514687f28707f5b63bb99c6e8f38a3c3892d1d269745471daf9042a34f53"
       },
       {
         "path": "group_analysis/evolution_20261008/terminal_projection_goal_20261008.md",
@@ -5623,8 +6038,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/prepare_publication.py",
-        "bytes": 14157,
-        "sha256": "d8a81eec7a03dd34b2c8949a8fce136455e5a0852dd2cdb5a0828cfa0144172b"
+        "bytes": 14519,
+        "sha256": "93e893d1b0d3c3fe5d31a36c19c45c381166f367421ce1795942af65c1890cfb"
       },
       {
         "path": "notes/region_analysis_review_20261009/projectome_delivery_20261009/README.md",
@@ -5648,8 +6063,8 @@
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_20261009.md",
-        "bytes": 29962,
-        "sha256": "47fd8bf3193744cdbb23f294fa27016c57c99fd3ab72c9211774cb830fe2f9b8"
+        "bytes": 32340,
+        "sha256": "e2540c667c8dbffe70e9fdc98d8ea44028e0d5f4c121c77b2ff1ac220dbb9086"
       },
       {
         "path": "notes/region_analysis_review_20261009/publication_artifact_tests_20261009.json",

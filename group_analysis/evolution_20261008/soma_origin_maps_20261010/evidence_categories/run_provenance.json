@@ -1,0 +1,370 @@
+{
+  "status": "created_all462_source_evidence_maps",
+  "created_utc": "2026-10-09T23:48:16.364393+00:00",
+  "producer_sha256": "c90318f9070e2d1c0cb4321b2732a55666c27cc70ee83918a16192e1b1d9f7b2",
+  "classification_helper_sha256": "9031df7dd12a148d541bf20d8d708bd455c093d406638b88d0d6e7973079ca30",
+  "ledger": {
+    "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+    "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+  },
+  "inspection_sha256": "26a0c4632e8263498328951d366590b4798bc4c99097a8be5e5288823963dd55",
+  "leaf_records": [
+    {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\leaf_records.jsonl",
+      "sha256": "836ac94c7565c427f0f33aa0a51303c8d50cce43ba857f9b2abb4712458d5e2c",
+      "run_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\arm_mapping_20261009\\main\\endpoints\\run_provenance.json",
+      "run_sha256": "4007fe92d5e8d96471779110530052e4920183849a0a195eed12263980444b0a"
+    },
+    {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\leaf_records.jsonl",
+      "sha256": "a6382de29814a56d2a11bc2f25f098174296f199cf7007069eacf9d83a5e0d12",
+      "run_path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\endpoint_maps\\additional_candidates_20261009\\run_provenance.json",
+      "run_sha256": "28fb32f1db2c25a061d1c045d8e272c45992d19f196ecf540cae5b18cefc6b3b"
+    }
+  ],
+  "background": {
+    "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+    "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+  },
+  "selected_neurons": 462,
+  "eligible_neurons": 429,
+  "INS_supported_by_atlas_or_Henry": 349,
+  "remaining_candidates": 113,
+  "original_candidate_endings": 75625,
+  "category_partition": "six exhaustive non-overlapping groups; no new independent cohorts",
+  "aggregation": "eligible-neuron mean per animal/category, then equal contributing-animal mean",
+  "MRI_intensity_limits": [
+    75.0,
+    920.0
+  ],
+  "projection_colour_upper": 2.1105897426605225,
+  "MIP": false,
+  "smoothing": null,
+  "anatomical_acceptance": false,
+  "source_data_modified": false,
+  "outputs": {
+    "atlasAndHenry": {
+      "category": "atlasAndHenry",
+      "title": "ARM insula assignment and Henry coarse INS evidence",
+      "selected_neurons": 212,
+      "eligible_neurons": 183,
+      "selected_animals": 1,
+      "contributing_animals": 1,
+      "per_animal_eligible": {
+        "936": 183
+      },
+      "ARM_origins": [
+        "CL_agranular_and_dysgranular_insula",
+        "CL_granular_insula",
+        "CL_intermediate_agranular_insula_area",
+        "CL_lateral_agranular_insula_area",
+        "CR_agranular_and_dysgranular_insula",
+        "CR_intermediate_agranular_insula_area",
+        "CR_lateral_agranular_insula_area"
+      ],
+      "panels": [
+        {
+          "axis": 2,
+          "cut": 87,
+          "occupied_voxels": 400,
+          "slice_density_sum": 194.44808149337769
+        },
+        {
+          "axis": 1,
+          "cut": 200,
+          "occupied_voxels": 231,
+          "slice_density_sum": 105.61748310923576
+        },
+        {
+          "axis": 0,
+          "cut": 56,
+          "occupied_voxels": 215,
+          "slice_density_sum": 91.27868592739105
+        }
+      ],
+      "artifacts": {
+        "soma_count": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-atlasAndHenry_desc-selectedSomaCount_map.nii.gz",
+          "sha256": "5e5ead3bb64ba1c583cc1cf29b277d8ec1e63f8f438488a2da6ff33559e56ff2"
+        },
+        "projection_density": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-atlasAndHenry_to-wholeBrain_desc-candidateAxonEndDensity_map.nii.gz",
+          "sha256": "8c8330b7a1220c8ecd89ebd754f6cd0aa02137cf9e7f3cec9b4497bce4dad890"
+        },
+        "figure": {
+          "path": "figures/space-NMTv2p1_sourceEvidence-atlasAndHenry_to-wholeBrain_desc-candidateEnds.png",
+          "sha256": "410566f106b4f3a50321e3ea31e2b66b92a0871b50f051d7e8c7080d7688631d"
+        }
+      }
+    },
+    "atlasOnly": {
+      "category": "atlasOnly",
+      "title": "ARM insula assignment without a Henry note",
+      "selected_neurons": 89,
+      "eligible_neurons": 89,
+      "selected_animals": 7,
+      "contributing_animals": 7,
+      "per_animal_eligible": {
+        "605": 6,
+        "948": 5,
+        "331": 18,
+        "945": 14,
+        "631": 4,
+        "900": 4,
+        "797": 38
+      },
+      "ARM_origins": [
+        "CL_agranular_and_dysgranular_insula",
+        "CL_granular_insula",
+        "CL_intermediate_agranular_insula_area",
+        "CL_lateral_agranular_insula_area",
+        "CL_posterior_lateral_agranular_insula_area",
+        "CR_agranular_and_dysgranular_insula",
+        "CR_granular_insula",
+        "CR_intermediate_agranular_insula_area",
+        "CR_lateral_agranular_insula_area"
+      ],
+      "panels": [
+        {
+          "axis": 2,
+          "cut": 87,
+          "occupied_voxels": 417,
+          "slice_density_sum": 367.7670450806618
+        },
+        {
+          "axis": 1,
+          "cut": 200,
+          "occupied_voxels": 270,
+          "slice_density_sum": 274.84521731734276
+        },
+        {
+          "axis": 0,
+          "cut": 56,
+          "occupied_voxels": 286,
+          "slice_density_sum": 490.3210543990135
+        }
+      ],
+      "artifacts": {
+        "soma_count": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-atlasOnly_desc-selectedSomaCount_map.nii.gz",
+          "sha256": "f5bd00b70709888769dc18319146256d0c3eab03217c3b6be1e5e4b538e0d916"
+        },
+        "projection_density": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-atlasOnly_to-wholeBrain_desc-candidateAxonEndDensity_map.nii.gz",
+          "sha256": "0e89b0d629c426650fafd360c4e41a7294f2b1a2f2729f7e4a39abbd86c1effd"
+        },
+        "figure": {
+          "path": "figures/space-NMTv2p1_sourceEvidence-atlasOnly_to-wholeBrain_desc-candidateEnds.png",
+          "sha256": "dcd73ecc8107a4bbdf897400ccb68cc2da42cb32a6e462dce99a3971e5980b12"
+        }
+      }
+    },
+    "HenryPrCOConflict": {
+      "category": "HenryPrCOConflict",
+      "title": "Henry coarse INS evidence; ARM precentral operular assignment conflicts",
+      "selected_neurons": 35,
+      "eligible_neurons": 32,
+      "selected_animals": 1,
+      "contributing_animals": 1,
+      "per_animal_eligible": {
+        "936": 32
+      },
+      "ARM_origins": [
+        "CR_precentral_operular_area"
+      ],
+      "panels": [
+        {
+          "axis": 2,
+          "cut": 87,
+          "occupied_voxels": 54,
+          "slice_density_sum": 120.0
+        },
+        {
+          "axis": 1,
+          "cut": 200,
+          "occupied_voxels": 19,
+          "slice_density_sum": 38.0
+        },
+        {
+          "axis": 0,
+          "cut": 56,
+          "occupied_voxels": 0,
+          "slice_density_sum": 0.0
+        }
+      ],
+      "artifacts": {
+        "soma_count": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-HenryPrCOConflict_desc-selectedSomaCount_map.nii.gz",
+          "sha256": "34b376f8608abae1e463fa7a869332005a6241599b1dd9313ba6608de61f7456"
+        },
+        "projection_density": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-HenryPrCOConflict_to-wholeBrain_desc-candidateAxonEndDensity_map.nii.gz",
+          "sha256": "388be65209062fa6e615b08562980a964b43a4b4615913dc9066d2eeeb607233"
+        },
+        "figure": {
+          "path": "figures/space-NMTv2p1_sourceEvidence-HenryPrCOConflict_to-wholeBrain_desc-candidateEnds.png",
+          "sha256": "da4631637835953f41834027dd54b0e72fd870d3cc8d2f161c35e3a1d1a8beea"
+        }
+      }
+    },
+    "HenryUnassigned": {
+      "category": "HenryUnassigned",
+      "title": "Henry coarse INS evidence; ARM source label unassigned",
+      "selected_neurons": 13,
+      "eligible_neurons": 12,
+      "selected_animals": 1,
+      "contributing_animals": 1,
+      "per_animal_eligible": {
+        "936": 12
+      },
+      "ARM_origins": [
+        "Atlas background"
+      ],
+      "panels": [
+        {
+          "axis": 2,
+          "cut": 87,
+          "occupied_voxels": 34,
+          "slice_density_sum": 336.00000286102295
+        },
+        {
+          "axis": 1,
+          "cut": 200,
+          "occupied_voxels": 0,
+          "slice_density_sum": 0.0
+        },
+        {
+          "axis": 0,
+          "cut": 56,
+          "occupied_voxels": 33,
+          "slice_density_sum": 234.666672706604
+        }
+      ],
+      "artifacts": {
+        "soma_count": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-HenryUnassigned_desc-selectedSomaCount_map.nii.gz",
+          "sha256": "e6ab13b5142ca9bb7b82ec8fcd1991d84d6871e66894016faa76c0d90b08eefa"
+        },
+        "projection_density": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-HenryUnassigned_to-wholeBrain_desc-candidateAxonEndDensity_map.nii.gz",
+          "sha256": "76452d0be5583a045d0d1fd2ab796cf3f1f9eb4f3f4549303a6f8d85929c91c1"
+        },
+        "figure": {
+          "path": "figures/space-NMTv2p1_sourceEvidence-HenryUnassigned_to-wholeBrain_desc-candidateEnds.png",
+          "sha256": "e3e96ad1e60d971a45065a2ef62bf1f7ea292de095082ba1add8c9ad986538a9"
+        }
+      }
+    },
+    "neighborCandidate": {
+      "category": "neighborCandidate",
+      "title": "Neighboring ARM origin; candidate without a Henry note",
+      "selected_neurons": 74,
+      "eligible_neurons": 74,
+      "selected_animals": 6,
+      "contributing_animals": 6,
+      "per_animal_eligible": {
+        "948": 5,
+        "331": 34,
+        "945": 11,
+        "631": 12,
+        "900": 9,
+        "797": 3
+      },
+      "ARM_origins": [
+        "CL_gustatory_cortex",
+        "CR_gustatory_cortex",
+        "CR_precentral_operular_area",
+        "CR_secondary_somatosensory_cortex",
+        "SL_claustrum",
+        "SR_claustrum"
+      ],
+      "panels": [
+        {
+          "axis": 2,
+          "cut": 87,
+          "occupied_voxels": 258,
+          "slice_density_sum": 683.8886240422726
+        },
+        {
+          "axis": 1,
+          "cut": 200,
+          "occupied_voxels": 265,
+          "slice_density_sum": 421.87427842617035
+        },
+        {
+          "axis": 0,
+          "cut": 56,
+          "occupied_voxels": 199,
+          "slice_density_sum": 317.00218307971954
+        }
+      ],
+      "artifacts": {
+        "soma_count": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-neighborCandidate_desc-selectedSomaCount_map.nii.gz",
+          "sha256": "01cf8015bcb65580b14b5356c4b7629db2907b76cc2b7afbc75bd3635436da9b"
+        },
+        "projection_density": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-neighborCandidate_to-wholeBrain_desc-candidateAxonEndDensity_map.nii.gz",
+          "sha256": "5a74e79c8dc7365c4b91caa6209ffeba4158036032cf29596adf8eeea166e20d"
+        },
+        "figure": {
+          "path": "figures/space-NMTv2p1_sourceEvidence-neighborCandidate_to-wholeBrain_desc-candidateEnds.png",
+          "sha256": "f26f2ace1c4de5cdf8beef2de43a1da82e23b6426dbf0ced80efc428e70e258b"
+        }
+      }
+    },
+    "unassignedCandidate": {
+      "category": "unassignedCandidate",
+      "title": "Unassigned ARM origin; candidate without a Henry note",
+      "selected_neurons": 39,
+      "eligible_neurons": 39,
+      "selected_animals": 6,
+      "contributing_animals": 6,
+      "per_animal_eligible": {
+        "936": 1,
+        "948": 8,
+        "331": 3,
+        "797": 11,
+        "900": 1,
+        "605": 15
+      },
+      "ARM_origins": [
+        "Atlas background"
+      ],
+      "panels": [
+        {
+          "axis": 2,
+          "cut": 87,
+          "occupied_voxels": 71,
+          "slice_density_sum": 137.260608792305
+        },
+        {
+          "axis": 1,
+          "cut": 200,
+          "occupied_voxels": 79,
+          "slice_density_sum": 168.6464672088623
+        },
+        {
+          "axis": 0,
+          "cut": 56,
+          "occupied_voxels": 43,
+          "slice_density_sum": 124.76767897605896
+        }
+      ],
+      "artifacts": {
+        "soma_count": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-unassignedCandidate_desc-selectedSomaCount_map.nii.gz",
+          "sha256": "de6dae3da129969d16aa1e1af9c96a651f7a15e40864a08806c3221fc47b2b50"
+        },
+        "projection_density": {
+          "path": "nifti/space-NMTv2p1_sourceEvidence-unassignedCandidate_to-wholeBrain_desc-candidateAxonEndDensity_map.nii.gz",
+          "sha256": "0179e30b2378319f157caadeb7702a6dd6b225fbd781256dd6c59d063d5bb0af"
+        },
+        "figure": {
+          "path": "figures/space-NMTv2p1_sourceEvidence-unassignedCandidate_to-wholeBrain_desc-candidateEnds.png",
+          "sha256": "b677eab7ae5e6b68f72473c507d85dfa3fd4b40c103aa2172bbc0c1ad810e80e"
+        }
+      }
+    }
+  }
+}

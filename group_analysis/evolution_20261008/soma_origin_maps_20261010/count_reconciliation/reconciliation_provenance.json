@@ -1,0 +1,62 @@
+{
+  "created_utc": "2026-10-09T23:36:11.077043+00:00",
+  "producer_sha256": "095cc7ee7e55e31d99df2a797d724c1347fe8982e1a984e0290bf9cf118abfd4",
+  "sources": {
+    "July13_tracker": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\data_progress_table_20260713_1649.csv",
+      "sha256": "2b1843e9685b52924b2509bc07b3d47621a88854e4db22c4fe6044d14adfa599"
+    },
+    "July27_tracker": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\data_progress_table_20260727_1620.csv",
+      "sha256": "d2712659d510239923346afad766b7c328674aae1e6c39c391c27f8485a35c1a"
+    },
+    "older_combined306": {
+      "path": "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined.xlsx",
+      "sha256": "a4ef7d74bd3729ece755a9543c6cfd42c720e294ccd37ec6b03eb12332089df3"
+    },
+    "older_harmonized353": {
+      "path": "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx",
+      "sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178"
+    },
+    "September26_staging420": {
+      "path": "D:\\projectome_analysis\\group_analysis\\staging_20260926\\combined\\multi_monkey_INS_combined_harmonized.xlsx",
+      "sha256": "29fb507ce89b25c2edaaaf07b3f65e33b9989fd096e5782d25e0789866109229"
+    },
+    "current462": {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+      "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+    },
+    "registry": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d"
+    },
+    "all_neuron_inventory": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\all_neuron_review_manifest.csv",
+      "sha256": "822d184e83869f4b78516a8b1ac5e2439ed1fc2bb21d0cc1fa0606269fb8e781"
+    }
+  },
+  "counts": {
+    "July_tracker": 353,
+    "September_staging": 420,
+    "current": 462,
+    "older353_retained": 353,
+    "added_vs_older353": 109,
+    "September_retained": 412,
+    "added_vs_September": 50,
+    "September_unregistered_outside_maps": 8,
+    "older353_current_ARM_insula": 258,
+    "added_current_ARM_insula": 43,
+    "current_ARM_insula": 301,
+    "current_INS_supported_union": 349,
+    "other_candidates": 113
+  },
+  "date_limit": "July tracker is dated; the local 353-workbook identity comparison is not proof of identical July workbook bytes.",
+  "anatomical_acceptance": false,
+  "artifacts": {
+    "current462_identity_comparison.csv": "213a60287cebf5ac970c07edfe96e01ab89c4c409e07df1700eecf48d60e6ef1",
+    "per_monkey_counts_history_and_evidence.csv": "1898b619bdd14357754f9492fb3da96da72c1420f1d3e4a8163783633ba5d9ad",
+    "per_monkey_history_and_evidence.png": "ea1c865edce37659503fa5f2f670e1a30917c9294f3c5afb59285f39c55cd4cd",
+    "retained_and_added_by_evidence.csv": "0c7739c21bfbfed2585fdc074334d2d3d58156f64cf0162a5b9b44f09327f134",
+    "September_entries_outside_current_monkey_maps.csv": "3a2ace5effe5257b05bb421c3e71f8d36b2089a43b6916cf07d071e44ed7e69b"
+  }
+}

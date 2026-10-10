@@ -1,0 +1,56 @@
+{
+  "status": "reviewed_contact_sheet_all_nine_and_full_size_examples",
+  "checked_utc": "2026-10-10T00:04:50.492059+00:00",
+  "reviewer": "Codex",
+  "all_figures": [
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-228_target-ARM1to6_legacy_strength.png",
+      "sha256": "a2ab7bb4cf081832cde59231ddda921a8c688e70532e43c62000e3f89c90b7b3"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-229_target-ARM1to6_legacy_strength.png",
+      "sha256": "45c089ea90098b3d8fc6e9281497e439a63c76663e2a1953ea298eadf1329fef"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-41_target-ARM1to6_legacy_strength.png",
+      "sha256": "d2b757d214d29f4ded60365dd7e13f1842eebdc13905b48c480882afa0554eb9"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-42_target-ARM1to6_legacy_strength.png",
+      "sha256": "72b1175f029c482533d7a1ee4d5abe779067bf84e8e5516ef7ca1658a4e914b1"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-43_target-ARM1to6_legacy_strength.png",
+      "sha256": "d0b92021ac8780171a76d7f4edd7ed60375efd24f28a11cc7a29e9c19f7c0cba"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-541_target-ARM1to6_legacy_strength.png",
+      "sha256": "9fb44589dce7c3e8943915d4375ebecd69551af906590b06ef4b659a4535e0e5"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-542_target-ARM1to6_legacy_strength.png",
+      "sha256": "1a6a5a494ef4a2372af173606b65300b0ab20fb2e2f42b4ffcfe9163031a6a4a"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-728_target-ARM1to6_legacy_strength.png",
+      "sha256": "297844bacbc067bad9352ec345f62c13432d8ce0ed94dd9138d389bdff2d0232"
+    },
+    {
+      "path": "group_analysis\\evolution_20261008\\arm_target_strength_20261010\\figures\\from-ARM6-729_target-ARM1to6_legacy_strength.png",
+      "sha256": "915bdf4bc805ef0a1e0b86ad6c5aed7e4e9cd4bdccad42d9b047c069277ca11e"
+    }
+  ],
+  "full_size_examples": [
+    41,
+    43,
+    728
+  ],
+  "checks": [
+    "All six hierarchy rows and three physical-coordinate planes present",
+    "Official full ARM source names and actual source/monkey counts visible",
+    "Shared colour scale 0 to 2.5667130303030303; no clipped values",
+    "Coloured receiving parcels rather than axon traces; MRI reference visible",
+    "One-neuron source remains explicitly one monkey; no inference"
+  ],
+  "scientific_anatomical_acceptance": false
+}

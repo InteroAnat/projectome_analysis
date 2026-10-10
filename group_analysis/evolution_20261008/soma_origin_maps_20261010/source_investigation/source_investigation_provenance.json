@@ -1,0 +1,82 @@
+{
+  "created_utc": "2026-10-09T23:46:45.398675+00:00",
+  "producer_sha256": "c0c17d10498418c91bf6bd712d9e9b87dc556682b218ee247e104b2f38f9475b",
+  "sources": {
+    "review": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\distance_priority_v2_20261009\\all_neuron_review_manifest_distance_corrected.csv",
+      "sha256": "4145991757fae32a820de4294fa3073c94371708dc170aca42382b0a299d5533"
+    },
+    "catalog": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\inventory\\live_inventory_20261008\\live_snapshots\\20261008T152413Z\\catalog_sample_info.json",
+      "sha256": "53d1e798f409d4cbc10a4c91f1701d84579a0bd988bad4392a59c18aa13061fc"
+    },
+    "sample_inventory": {
+      "path": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\inventory\\live_inventory_20261008\\sample_inventory.csv",
+      "sha256": "44f298d1616582d19e902a83f0766d613eaf101b16ce84bcf4ab35c9f4a7f7bf"
+    },
+    "older353": {
+      "path": "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined_harmonized.xlsx",
+      "sha256": "dea7146bf74af7f605ab2a8ff8f75c46de3ba9d388ca38f78ba8af5de316b178"
+    },
+    "current462": {
+      "path": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+      "sha256": "d98c4b5aa76b72d7d93a172883954187b50ea792055d5dc105d04cc95b9d2c5c"
+    },
+    "registry": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\dataset_status_manifest.csv",
+      "sha256": "f222feb565d6d97bb5fc598fd12c1c1d7c706e67367ae34cd5b9e6257821738d"
+    },
+    "experiment_summary": {
+      "path": "D:\\projectome_analysis\\group_analysis\\docs\\monkey_experiment_data_summary.xlsx",
+      "sha256": "5f30364221ee1c7ae5d8ad4364af83290e5f77135de4fa1064405413c6bbd55e"
+    },
+    "atlas": {
+      "path": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    "key": {
+      "path": "D:\\projectome_analysis\\atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    }
+  },
+  "dataset250432": {
+    "portal_sample_alias": "ION2508004",
+    "listed_reconstructions": 234,
+    "metadata_tracing_count": 128,
+    "fresh_source_hash_and_direct_ARM_lookups": 234,
+    "atlas_insula": 8,
+    "spatial_screen_total_including_INS": 29,
+    "other_spatial_candidates": 21,
+    "atlas_INS_distribution": {
+      "CR_granular_insula": 6,
+      "CL_agranular_and_dysgranular_insula": 2
+    },
+    "registered_monkey_id": null,
+    "injection_region_metadata": "empty",
+    "injection_structure_metadata": "M1; F5; area 3a/b; claustrum; putamen; lateral dorsal amygdala; dorsal endopiriform; ventral endopiriform",
+    "injection_claim_validation": "Metadata only; no explicit INS injection evidence recovered",
+    "nominal5um_copied_source": "absent at checked root in dated October 8 snapshot; global availability unknown",
+    "pooling": "excluded from animal means until a verified animal identity/independence record exists; sources retained"
+  },
+  "dataset251637_single_addition": {
+    "NeuronUID": "251637::115.swc",
+    "classification": "spatial candidate; not an additional accepted INS neuron",
+    "direct_ARM_current": "label 0",
+    "alternative_origin_policy_ARM": "CR_agranular_and_dysgranular_insula",
+    "Henry_evidence": false,
+    "bbox_hits": "IDD5;IDM",
+    "other_Henry_anchor": "251637|114.swc",
+    "fresh_source_root_anchor_distance_mm": 0.4134753801618683,
+    "original_candidate_axon_ends": 31,
+    "saved_portal_coordinate_anchor_distance_mm": 0.41347532270238474,
+    "native_pair_available": false,
+    "recorded_visual_manifest_present": false,
+    "addition_meaning": "New inclusion relative to older353 ledger; not proof of newly traced or newly reconstructed neuron"
+  },
+  "anatomical_acceptance": false,
+  "artifacts": {
+    "dataset250432_all234_source_inventory.csv": "be1433540e57751dfebbc108f3a90d909fe8e13dde8dc30326287932140dd91f",
+    "dataset250432_selected29_candidates.csv": "8951a88403715c0714e2ca62d5e5171dfa76f414544104afa47e97d6097cb8cd",
+    "dataset251637_added115_evidence.csv": "1d40a1a6e561b2e089b914b07ea6df4c3bdd87ee90f6964f2590facae8a0ae8f"
+  }
+}
