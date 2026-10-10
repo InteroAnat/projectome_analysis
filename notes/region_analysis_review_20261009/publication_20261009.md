@@ -178,3 +178,6 @@ The user explicitly approved the reviewed public payload with "Publish". The fea
 ## 2026-10-10 | Development-history audit documentation
 
 The user-requested [14-step audit walkthrough](../../docs/insula_pipeline_development_audit_20261010.md) follows the substantive development history through the frozen scientific snapshot 1eba0fd. Its 58 local links, 16 commit anchors and ten bound receipt hashes were checked. This update comprises only the new guide, its README entry and dated project/publication notes; numerical analysis and earlier prepared-content/index receipts remain unchanged. It is published under the standing authorization to log and push project updates. Exact content-commit and live remote verification follow the push.
+
+
+Audit-guide content commit `efd69f9df3b9808ddfa576cdb0d9f9f50db1f3a2` was pushed and matched the live feature-branch SHA exactly. Only four documentation paths were committed; exact staged/working bytes and whitespace checks passed. Remote master/HEAD remained `f096e8165da18f84e91ea69d6e5cbfd58f248e75`. Source data, maps, scientific classifications and unrelated local work are unchanged. This publication-verification append is a separate documentation commit; the guide retains the earlier scientific evidence snapshot and does not claim new analysis or anatomical acceptance.
