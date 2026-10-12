@@ -1,0 +1,305 @@
+{
+  "pipeline": "group_analysis.data_progress.track.write_progress_overview",
+  "plot_function": "group_analysis.data_progress.plot.plot_progress_table",
+  "figure_title": "Data progress — insula multi-monkey cohort",
+  "include_online_sheet": true,
+  "online_sheet": {
+    "url": "https://docs.qq.com/sheet/DQXFTS21ieUVGTEpJ?tab=BB08J2&login_t=1791780626031",
+    "tab_id": "BB08J2",
+    "tab_name": "Progress Details",
+    "fetch": "tsv_fallback",
+    "fetch_error": "Progress Details opendoc returned HTTP 401. A link without the share query is rejected with 401.",
+    "snapshot": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\overview_sheet_20261012\\progress_details_BB08J2.tsv",
+    "animal_rows": 40
+  },
+  "workbook": "D:\\projectome_analysis\\group_analysis\\docs\\monkey_experiment_data_summary.xlsx",
+  "neuron_table_loader": "group_analysis.evolution_20261008.insula_summary_20261012.analysis_table.load_analysis_neuron_table",
+  "neuron_table_ledger": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+  "neuron_table_summary": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\insula_summary_20261012\\per_animal_insula_summary.csv",
+  "ledger_rows": 462,
+  "reality_bars": {
+    "old_ion_traced": 1205,
+    "new_ion_traced": 1498,
+    "old_insula_corrected": 353,
+    "new_insula_arm": 301,
+    "expected_ion_unchanged": 2429,
+    "plan_target_unchanged": 2400
+  },
+  "insula_neuron_rule": "ARM_insula_n > 0 or Henry_coarse_INS_n > 0; spatial-only is not enough",
+  "progress_table_animals": 9,
+  "dropped_no_insula_neuron": [
+    {
+      "monkey_id": "49",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "83",
+      "fmost_id": "221059",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "65",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "138",
+      "fmost_id": "221720  221747",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "549",
+      "fmost_id": "231623",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "917 (2023.02.03)",
+      "fmost_id": "232717",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "97",
+      "fmost_id": "233001",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "670",
+      "fmost_id": "234162",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "462",
+      "fmost_id": "234197",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "401 (2023.04.28)",
+      "fmost_id": "240025",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "23",
+      "fmost_id": "240901",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "493",
+      "fmost_id": "240941",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "654",
+      "fmost_id": "240984",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "758",
+      "fmost_id": "241349",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "846",
+      "fmost_id": "241334",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "712",
+      "fmost_id": "242161",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "732",
+      "fmost_id": "242443",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "786",
+      "fmost_id": "242521",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "2"
+    },
+    {
+      "monkey_id": "951",
+      "fmost_id": "242693",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "布布",
+      "fmost_id": "250433",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "茸茸",
+      "fmost_id": "250442",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "935",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "529",
+      "fmost_id": "251440",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "842",
+      "fmost_id": "251636",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "狗狗/enterprise(rhesus)",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "746",
+      "fmost_id": "251730",
+      "ARM_insula_n": "0",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": "0"
+    },
+    {
+      "monkey_id": "688",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "795",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "874",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "532",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    },
+    {
+      "monkey_id": "681",
+      "fmost_id": "",
+      "ARM_insula_n": "",
+      "Henry_coarse_INS_n": "",
+      "spatial_only_n": ""
+    }
+  ],
+  "status_changes_from_july_manifest": [
+    {
+      "animal": "605",
+      "fmost": "252383",
+      "july_manifest_status": "re-tracking",
+      "shown_status": "Pending",
+      "source": "Monkey Data workbook"
+    },
+    {
+      "animal": "331",
+      "fmost": "252385",
+      "july_manifest_status": "re-tracking",
+      "shown_status": "Completed",
+      "source": "Monkey Data workbook"
+    },
+    {
+      "animal": "948",
+      "fmost": "252384",
+      "july_manifest_status": "re-tracking",
+      "shown_status": "Completed",
+      "source": "Monkey Data workbook"
+    },
+    {
+      "animal": "945",
+      "fmost": "252527",
+      "july_manifest_status": "re-tracking",
+      "shown_status": "Pending",
+      "source": "Monkey Data workbook"
+    },
+    {
+      "animal": "631",
+      "fmost": "252714",
+      "july_manifest_status": "tracking",
+      "shown_status": "Pending",
+      "source": "Monkey Data workbook"
+    }
+  ],
+  "insula_summary": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\insula_summary_20261012\\per_animal_insula_summary.csv",
+  "row_747": {
+    "monkey_id": "747",
+    "fmost_id": "250432",
+    "neurons_screened": "234",
+    "ARM_insula_n": "8",
+    "spatial_only_n": "21",
+    "both_n": "2",
+    "Henry_coarse_INS_n": "",
+    "data_status": "completed"
+  },
+  "animals_outside_eight": [
+    {
+      "monkey_id": "747",
+      "fmost_id": "250432"
+    }
+  ],
+  "anatomical_acceptance": false,
+  "added_to_462_ledger": false
+}

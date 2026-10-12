@@ -1,0 +1,17 @@
+---
+description: Merge a new entry at the top of docs/project_note.md after substantive projectome analysis
+alwaysApply: true
+---
+
+# Project note update
+
+After substantive projectome analysis or overview changes, merge a new entry at the top of `docs/project_note.md`. Do not wipe older sections.
+
+- Match the existing heading style in that file: dated heading, agent, what changed, evidence links, limits.
+- Record decisions, paths, counts, and what was not accepted.
+- Do not invent results. If a file was not written, do not claim it.
+- Keep the note in English.
+
+```markdown
+## 2026-10-12 | Agent Cursor | Short title of what changed
+```

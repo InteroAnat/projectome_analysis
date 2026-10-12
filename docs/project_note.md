@@ -1,3 +1,83 @@
+## 2026-10-12 | Agent Cursor | Cohort label is Other lab
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+Animals outside the DEB lab eight are labeled `Other lab` on the progress overview. 747/250432 is Other lab. The eight stay `DEB lab`.
+
+## 2026-10-12 | Agent Cursor | Progress overview layout made readable
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The overview PNG was redrawn with wider spacing and larger type. The injection-plan grid is one aligned row per Done monkey, without the hypothesis text inside the cells. 605 and 900 no longer have IDFP marks, and 797 no longer has an IDFM R mark. Numbers and who is included are unchanged.
+
+## 2026-10-12 | Agent Cursor | DEB lab cohort summary restored
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The overview again has an Insula cohort size panel for the DEB lab eight only: 8 monkeys, screened 1498, ARM insula 301, plan target 2400. 747 stays on the progress table and off that summary. The injection-plan grid is the attached sheet, one row per those eight.
+
+## 2026-10-12 | Agent Cursor | Progress table keeps animals with insula neurons
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The progress table now drops an animal unless `ARM_insula_n` > 0 or `Henry_coarse_INS_n` > 0. Spatial-only rows, including 786/242521 (2 spatial-only), are off the table. Nine animals remain: the eight DEB lab monkeys plus 747/250432. The injection-plan grid is still those eight only.
+
+## 2026-10-12 | Agent Cursor | DEB lab cohort and injection-plan grid
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The cohort mark is **DEB lab**, not "Ins 8". The eight Done animals on the plan (936/251637, 605/252383, 900/252718, 945/252527, 797/252790, 948/252384, 331/252385, 631/252714) are `DEB lab` in the Cohort column, purple `#D1C4E9`. The other 32 rows are `not DEB lab`.
+
+`group_analysis/docs/injection_plan_reference.md` was checked and does not match the attached grid (it gives 936 a vAIC R mark and leaves 900 without vAIC L). The figure panel follows the attached image. No extra 1s were added. The grid sits between the bars and the status table: VEN in green (vAIC L/R, Cingulate) and interoceptive cortex in FIDA / FIDI / FIDP. Printed totals stay 14 injections, 1050 cells, 3% VENs, 6+6+6 injections, 450+450+450 cells, and 2400.
+
+The ION expected bar is **2429**, labeled July plan expectation. The saved July CSV total is 1225; that manifest sum is kept as `analysis_expected_manifest_sum` and is not the bar. The insula expected bar stays the **2400** cell target. Reality for the DEB lab eight is unchanged: 1498 screened and 301 ARM insula, from `load_analysis_neuron_table`. Figure: [data_progress_table.png](../group_analysis/evolution_20261008/overview_legacy_plot_20261012/data_progress_table.png). This is not anatomical acceptance.
+
+## 2026-10-12 | Agent Cursor | Progress overview uses the analysis neuron table
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+`load_analysis_neuron_table` in [analysis_table.py](../group_analysis/evolution_20261008/insula_summary_20261012/analysis_table.py) reads the 462-neuron ledger [neuron_summary.csv](../notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/neuron_summary.csv) and the saved recount [per_animal_insula_summary.csv](../group_analysis/evolution_20261008/insula_summary_20261012/per_animal_insula_summary.csv). `write_progress_overview` calls that loader, then `plot_progress_table` draws the saved table. Each side names the other: the loader docstring points at `write_progress_overview` / `plot_progress_table`, and those two docstrings point back at `load_analysis_neuron_table`. The July combined workbook is not the reality-bar source. The ledger file was not edited.
+
+Reality bars, eight animals only: ION traced 1205 → 1498 (recount `neurons_screened`); insula 353 → 301 (recount `ARM_insula_n`). Expected ION stays 1225. Plan target stays 2400. 747 and the other animals stay on the table and off those bars.
+
+Monkey Data changed five July/manifest status words: 605 and 945 re-tracking → Pending; 331 and 948 re-tracking → Completed; 631 tracking → Pending. 936 Completed, 900 Pending, and 797 Pending are unchanged. Progress Details tracing text was not copied over those eight status cells. Other animals, including 747, keep the sheet tracing word. Completed `#C6EFCE` and Pending `#B8CCE4` stay on the status cell. The eight are marked in a separate Cohort column (`Ins 8`, fill `#D1C4E9`) versus `Other`.
+
+The figure also has the plan reminder: VEN 14 injections / 1050 cells / 3% VENs; FIDA, FIDI, and FIDP 6 injections and 450 cells each; total 2400. Live Progress Details still returned HTTP 401; the saved TSV was used and is recorded on the table. Outputs were regenerated in [overview_legacy_plot_20261012](../group_analysis/evolution_20261008/overview_legacy_plot_20261012/data_progress_table.png). This is not anatomical acceptance.
+
+## 2026-10-12 | Agent Cursor | Progress overview loads workbook and Progress Details
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The progress-overview figure is `plot_progress_table` in `group_analysis/data_progress/plot.py` (title "Data progress — insula multi-monkey cohort"). `write_progress_overview` in `group_analysis/data_progress/track.py` is the single pipeline: it reads Monkey Data and Progress Details, saves the table, then calls `plot_progress_table` on that saved workbook. `run(output_dir=...)` uses this path. Bare `run()` without an output folder was not executed, so the July `data_progress_table_20260701_1416.csv` was not rewritten.
+
+The live opendoc request returned HTTP 401. Rows came from the saved extract [progress_details_BB08J2.tsv](../group_analysis/evolution_20261008/overview_sheet_20261012/progress_details_BB08J2.tsv). A missing snapshot still raises and does not invent animal 747. `--offline` skips the sheet.
+
+Outputs in [overview_legacy_plot_20261012](../group_analysis/evolution_20261008/overview_legacy_plot_20261012/): [data_progress_table.csv](../group_analysis/evolution_20261008/overview_legacy_plot_20261012/data_progress_table.csv), [data_progress_table.xlsx](../group_analysis/evolution_20261008/overview_legacy_plot_20261012/data_progress_table.xlsx), [data_progress_table.png](../group_analysis/evolution_20261008/overview_legacy_plot_20261012/data_progress_table.png). `legacy_overview_20261009` and `insula_summary_20261012` were not overwritten.
+
+The eight pairs still resolve. Thirty-two animals outside that eight are on the figure, including 747/250432 (234 screened, 8 ARM insula, 21 spatial-only, 2 both, Henry blank, tracing status `completed`) and 786/242521 (355 screened, 2 spatial-only). Counts are copied from the 2026-10-12 summary, not rescreened. 250432ch2 is not on the tab and is not assigned to 747. Completed `#C6EFCE` (3 cells) and Pending `#B8CCE4` (5 cells) are applied only where the status word is exactly that; lowercase `completed` is not filled. This is not anatomical acceptance and does not add rows to the 462-neuron ledger.
+
+## 2026-10-12 | Agent Cursor | Per-animal insula recount and status colours
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+Progress Details tab BB08J2 of the Tencent sheet, spreadsheet row 141: animal 747, fMOST 250432, first injection L-CLA-1, tracing completed. The portal sample alias remains ION2508004. 250432ch2 / ION2508005 is not on that tab; 73 neurons, no insula hit, animal unresolved.
+
+Full recount of 8,746 manifest neurons with the existing ARM rule and folded spatial screen. 250432 matches the prior screen: 234 screened, 8 ARM insula, 21 spatial-only, 2 both, union 29.
+
+The per-animal summary is in [per_animal_insula_summary.csv](../group_analysis/evolution_20261008/insula_summary_20261012/per_animal_insula_summary.csv) and [per_animal_insula_summary.xlsx](../group_analysis/evolution_20261008/insula_summary_20261012/per_animal_insula_summary.xlsx). Completed `#C6EFCE` and Pending `#B8CCE4` are applied only where Monkey Data has that status. [per_animal_insula_summary.png](../group_analysis/evolution_20261008/insula_summary_20261012/per_animal_insula_summary.png) was drawn by `main()` in `render_per_animal_insula_summary_png.py` (outside this repo) with matplotlib `fig.savefig`, not by `plot_progress_table` or `render_overview`.
+
+ARM counts for the original eight match the old atlas counts. The folded-screen pass matches the 2026-10-09 spatial lower bound for 936, 945, and 948, and differs for 605 (0 vs 6), 900 (1 vs 4), 797 (40 vs 45), 331 (48 vs 50), and 631 (0 vs 4). Animal 786 / 242521 has 2 spatial-only hits.
+
+The Monkey Data sheet still has the fills. Commit 2075426 read values only, so the [legacy_overview_20261009](../group_analysis/evolution_20261008/inventory/legacy_overview_20261009/README.md) CSV/PNG dropped Completed green and Pending blue. The new xlsx puts those status colours back. The old `plot.py` palette was not deleted.
+
+Evidence: the CSV, xlsx, and PNG linked above. This is not anatomical acceptance and does not add rows to the 462-neuron ledger.
+
+## 2026-10-12 | Reconciliation CSVs are generated bookkeeping
+
+`legacy_reconciliation.csv`, the stamped `data_progress_table_*.csv` files, and `per_monkey_counts_history_and_evidence.csv` are outputs of `build_progress_table`, `build_monkey_view`, and `reconcile_neuron_counts.py`. The shared status string and the July 0s for 797 and 631 are fields those writers filled. They are bookkeeping byproducts, not a source table and not a separate data defect.
+
+The July 0 is `insula_in_combined_n` copied out of the 27 July progress snapshot. That snapshot was built while `dataset_status_manifest.csv` still had `ion_n` 0 for 252790 and 252714. Monkey Data, the reconstruction lists, and the 462-neuron ledger stay the records. Do not audit the byproduct status column as its own finding.
+
 ## 2026-10-10 | Agent Codex | Projection maps: second inspection and additive endpoint markers
 
 User-authorized scope: reinspect projection validity, document exact reproduction/scripts, improve endpoint indication using primary paper figures, sort/archive safely and push the reviewed branch. CM032/CM033 integration remains deferred.
@@ -20,7 +100,7 @@ Evidence: [round-2 index](../notes/projection_map_review_round2/README.md), [rep
 
 Following the user's instruction to use legacy overview tools, the [per-monkey inventory](../group_analysis/evolution_20261008/inventory/legacy_overview_20261009/README.md) now reuses the original Monkey Data workbook and `build_progress_table`, joining exact monkey/fMOST identities to the complete saved inventory and existing selected ledger. It keeps atlas INS, Henry visual evidence, spatial lower bounds, legacy claims and current combined rows separate. The view includes all eight overview monkeys; the complete 49-identity catalog/channel inventory remains intact. The legacy cleanup runner was not invoked, and original workbooks, scientific outputs and unrelated work were preserved.
 
-Independent direct-source readback verifies 72 count cells, all animal/sample identities, 32 source bindings, the 462 selected identities and eight focused regressions. The actual PNG is readable and was inspected. Fifteen source differences remain explicit: legacy reconstruction zeros for 797/252790 and 631/252714 versus saved lists of 123 and 144; 353 legacy review claims versus 306 current combined rows; and two claimed versus five verified local nominal5µm copies. Missing local copies do not establish unavailability elsewhere. The priority without a verified local copy is 797,605,900. Henry's 261 INS rows represent 260 unique neurons; duplicated neuron114 retains its L-IDD5/L-IDM fine-label conflict. No anatomical acceptance or new cohort is inferred. Existing scientific source hashes remain unchanged; the prior delivery/document receipt retains its earlier snapshot scope. CM032/CM033 integration stays deferred.
+Independent direct-source readback verifies 72 count cells, all animal/sample identities, 32 source bindings, the 462 selected identities and eight focused regressions. The actual PNG is readable and was inspected. Fifteen source differences remain explicit: legacy reconstruction zeros for 797/252790 and 631/252714 versus saved lists of 123 and 144; 353 legacy review claims versus 306 current combined rows; and two claimed versus five verified local nominal5µm copies. The 2026-10-12 section above treats the reconciliation CSV and the July progress snapshot as generated bookkeeping. Missing local copies do not establish unavailability elsewhere. The priority without a verified local copy is 797,605,900. Henry's 261 INS rows represent 260 unique neurons; duplicated neuron114 retains its L-IDD5/L-IDM fine-label conflict. No anatomical acceptance or new cohort is inferred. Existing scientific source hashes remain unchanged; the prior delivery/document receipt retains its earlier snapshot scope. CM032/CM033 integration stays deferred.
 
 ## Projectome-first delivery; MSTIM integration deferred (2026-10-09)
 

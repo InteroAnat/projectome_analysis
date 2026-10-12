@@ -56,6 +56,9 @@ def _pipeline_info(row: pd.Series) -> tuple[int, str]:
 def build_progress_table(
     manifest: pd.DataFrame | None = None,
     generated_at: datetime | None = None,
+    include_online_sheet: bool = False,
+    online_sheet_url: str | None = None,
+    online_sheet_snapshot: str | None = None,
 ) -> tuple[pd.DataFrame, dict]:
     if generated_at is None:
         generated_at = datetime.now(timezone.utc).astimezone()
@@ -146,6 +149,16 @@ def build_progress_table(
         "five_um_ready": int(progress["five_um_local"].astype(str).str.lower().str.startswith("yes").sum()),
     }
 
+    if not include_online_sheet:
+        return progress, totals
+
+    from .online_sheet import load_progress_details, merge_sheet_into_progress
+
+    animals, sheet_meta = load_progress_details(online_sheet_url, online_sheet_snapshot)
+    progress = merge_sheet_into_progress(progress, animals)
+    totals["cohort_monkeys"] = totals["monkeys"]
+    totals["monkeys"] = len(progress)
+    totals["online_sheet"] = sheet_meta
     return progress, totals
 
 
