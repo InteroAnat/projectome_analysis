@@ -1,3 +1,5 @@
+## 2026-10-15 | Agent Cursor | CH00DS coronal 180: ins_monkeys NIfTIs flip voxel axes i (L–R) and k (S–I); affine stays nibabel LPS (−1,−1,+1), ITK-SNAP RAI.
+
 ## 2026-10-15 | Agent Cursor | CH00DS cause: `X:/fMOST/ch00ds_100x100x90/nifti/transform_from_corrected.txt` is an X flip plus Y/Z swap of the corrected LPS volumes (the Z=1→90 edit only changed magnitude on an axis that was not superior). Original NRRDs were reordered that way, then nibabel LPS / ITK-SNAP RAI, in `nifti/ins_monkeys/`.
 
 ## 2026-10-15 | Agent Cursor | CH00DS NIfTI in `X:/fMOST/ch00ds_100x100x90/nifti/`: ITK-SNAP RAI = nibabel LPS [-1,-1,+1] via `nii_reorientation.build_cardinal_affine`; each NRRD header spacing kept, no resample.
