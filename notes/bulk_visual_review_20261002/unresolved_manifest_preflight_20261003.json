@@ -1,0 +1,25 @@
+{
+  "observed_utc": "2026-10-03T03:52:39.689143+00:00",
+  "status": "passed",
+  "original_identities": 746,
+  "preview_identities": 832,
+  "added_metadata_unresolved": 86,
+  "added_by_sample": {
+    "251730": 84,
+    "252383": 2
+  },
+  "all_original_fields_unchanged": true,
+  "live_manifest_unchanged": true,
+  "default_regeneration_retains_extension": true,
+  "live_manifest_sha256": "ca7b00a17aa53b64280239904d8259d22c7684b15b91208da953ff295b6c2632",
+  "preview_manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "report_sha256": "a04416087d8d154f3b8e7ced776738e37b4919ca2917e0b6f271653ee242a8a0",
+  "anatomical_acceptance": false,
+  "activation": "Only after current producer and Cursor return terminal results; preserve terminal ledger first",
+  "code_sha256": {
+    "group_analysis\\scripts\\visual_review_20261002.py": "fd6971bbac12a50d7a8e2c764e73e72c99c1481f97b9fc28d3f0782bff6e8489",
+    "group_analysis\\scripts\\regional_context_batch_20261003.py": "2c6c2548d92604144f704ac8c677243b78250e45cd7276c06b86c50588fd7247",
+    "main_scripts\\fmost_review_lock.py": "0d251e44cf492a2ad63d981a3c7b495c3f2e33c1038dcc2fe9e3d3c8c2d6d141",
+    "tests\\test_visual_review_manifest.py": "17a7f948148372327e3ddb2abdd83ac9799013a3bd0eb2f32cce843c5e85b705"
+  }
+}

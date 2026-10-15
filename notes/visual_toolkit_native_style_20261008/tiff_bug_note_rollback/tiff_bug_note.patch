@@ -1,0 +1,25 @@
+--- a/docs/project_note.md
++++ b/docs/project_note.md
+@@ -21,6 +21,22 @@
+ 
+ **Related:** multimodal opto living note → `D:/multimodal_fmri/docs/project_note.md`  
+ **Env (cross-modal):** prefer `multimodal_ins_win` for new shared scripts; `projectome` env still OK for projectome-only work.
++
++### Known source TIFF defect: 252384 overview sections (2026-10-08; OPEN)
++
++**Agent: Codex | Date: 2026-10-08 (Asia/Shanghai)**
++
++**Confirmed defect in stored resampled overview pixels:** sections **12461-12464** show abrupt horizontal seams and displaced tissue strips. The central section used for the **252384/003.swc** locator is **12464**. Its apparent outside-brain marker placement cannot be used to accept a soma region or coordinate rescue. The exact affected TIFF is:
++
++```text
++\\10.102.8.200\microscopy_data\fMOST\5micron_datasets\252384_CH1_resample\resample_5um\252384_12464_CH1_resample.tif
++```
++
++The ten inspected sections are 12459-12468; 12459-12460 and 12465-12468 appear substantially more continuous. This is a targeted finding, not an audit of every TIFF in the dataset. Section 12464 is a single-page, 16-bit unsigned, LZW-compressed image of **16,266 x 10,653 pixels**, **27,764,445 bytes**, SHA-256 `3c183670016158cde76ec4a62fdb8cc53e78e3945504944ce643494068961621`. Independent tifffile/imagecodecs and Pillow readers produced identical decoded arrays, without decoding errors; all 333 compressed segments lie within the file. The observed defect is present before plotting, with no detected decoder/truncation explanation. The upstream acquisition, stitching, resampling or export cause remains unresolved.
++
++**Review consequence:** flag this single-section locator as **unsuitable for anatomical placement review**. A multi-section MIP can conceal the discontinuities and is not a repair or registration validation. `context_complete=true` means requested files loaded, not that stitching/tissue coverage passed. No source TIFF, SWC coordinates, original bulk image, region assignment or cohort membership was changed. Correct native-to-overview alignment remains unverified; repairing or replacing the affected overview requires source-provenance review first.
++
++Evidence: [unmarked TIFF preview](../notes/visual_toolkit_native_style_20261008/sample-252384_section-12464_desc-unmarkedOverview_display.png), [ten individual sections](../notes/visual_toolkit_native_style_20261008/sample-252384_neuron-003_desc-individualSections_alignmentQC.png), [independent decoding check](../notes/visual_toolkit_native_style_20261008/section-12464_independent_decode_check.json). The inline preview is contrast-adjusted and downsampled only; original TIFF bytes are unchanged. The pre-edit note and scoped rollback manifest are under `notes/visual_toolkit_native_style_20261008/tiff_bug_note_rollback/`.
+ 
+ ### Native toolkit presentation and locator review (2026-10-08)
+ 

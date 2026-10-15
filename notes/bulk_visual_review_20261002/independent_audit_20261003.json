@@ -1,0 +1,22 @@
+{
+  "agent": "Codex",
+  "date_utc": "2026-10-02T23:28:57.963393+00:00",
+  "phase": "independent audit before Cursor follow-up corrections",
+  "manifest_sha256": "67c77734192974705d8197b0afa0069dbc8e3ce3a2ddeed1190cf3c5abe5d0b1",
+  "manifest_unchanged_during_audit": true,
+  "counts": {
+    "provenance": 301,
+    "png": 2905,
+    "nifti_headers": 581,
+    "swc": 299
+  },
+  "issues": [],
+  "coverage_mislabeled": [
+    "252385|086.swc",
+    "252385|101.swc",
+    "252527|087.swc",
+    "252384|079.swc",
+    "252714|071.swc"
+  ],
+  "limits": "PNG decoding, SWC/root correspondence and NIfTI headers checked across available rows; this is not independent anatomical acceptance or full pixel correspondence."
+}

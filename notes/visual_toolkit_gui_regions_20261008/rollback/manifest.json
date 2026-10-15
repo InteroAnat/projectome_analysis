@@ -1,0 +1,20 @@
+{
+  "scope": "Optional GUI region annotation only; preserve inherited edits",
+  "files": [
+    {
+      "path": "main_scripts/Visual_toolkit_gui.py",
+      "before_copy": "notes\\visual_toolkit_gui_regions_20261008\\rollback\\main_scripts__Visual_toolkit_gui.py.before",
+      "before_sha256": "0ea2b96bc7100450ba67fa30cb4425f028705fbaf41db8ea0339ed609abd67b0"
+    },
+    {
+      "path": "docs/project_note.md",
+      "before_copy": "notes\\visual_toolkit_gui_regions_20261008\\rollback\\docs__project_note.md.before",
+      "before_sha256": "47198b1d0c7f6f9b3daf61b51a5b66ae62cd639ac47577b67bd9d5737f70e562"
+    }
+  ],
+  "status": "reverted_at_user_request",
+  "gui_restored_sha256": "0ea2b96bc7100450ba67fa30cb4425f028705fbaf41db8ea0339ed609abd67b0",
+  "removed_helper_sha256": "2dd4ffdc877937c503bab1ad46f1352bf524be8732c635ab6e8f171981ab2e45",
+  "project_note_unchanged": true,
+  "prior_work_preserved": true
+}

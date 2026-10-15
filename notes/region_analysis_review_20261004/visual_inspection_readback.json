@@ -1,0 +1,75 @@
+{
+  "status": "all_rendered_figures_inspected",
+  "inspected_figures": 11,
+  "rendered_figures": 11,
+  "remaining_monkey_sheets": 0,
+  "scope": "Display and atlas-frame side consistency; no native registration acceptance",
+  "figures": [
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-251637_neuron-112_space-NMTv2p1_desc-labelSideConflict_somaEndpoints.png",
+      "sha256": "dd9e339fe025eef6d23322297d1d97aa0d401fc50d75a3afd0f320a2df34fb6e",
+      "inspection": "actual image viewed by Codex",
+      "finding": "Root and clustered endpoints lie on the R side in the declared NMT grid; refined L-IDM conflicts. Overlay and labels agree after corrected palette."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-251637_neuron-114_space-NMTv2p1_desc-labelSideConflict_somaEndpoints.png",
+      "sha256": "ac30285060819b68c10b845c62358b4b9df2b3dbb30b0c06dc58287c472a27c2",
+      "inspection": "actual image viewed by Codex",
+      "finding": "Root and all displayed endpoint projections lie on the R side in the declared NMT grid; refined L-IDD5 conflicts. Overlay and labels agree after corrected palette."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252790_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "886198db5ad08c85ea68b19863755cc47c23536c5641a41fa9e00efd224faa0b",
+      "inspection": "actual image viewed by Codex",
+      "finding": "001.swc CL_area_44 appears in L mask, 048.swc CR_Ial appears in R mask, 011.swc Unknown_0 appears on L side. Three orthogonal actual slices agree with declared coordinates."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-250432_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "15f913cdb447df4409af0af566c3840dbc76afe0ae7e1fc91dc1d1ac3fb8bbc9",
+      "inspection": "actual image viewed by Codex",
+      "finding": "184.swc CL_Ia/Id is L; 001.swc CR_M1 and 111.swc Unknown_0 are R. Orthogonal soma markers and corrected masks agree."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-251730_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "2441015bd7952be5d5a245a48d7d0fcc37ef6867510cd0890e7e3a6a64bf2889",
+      "inspection": "actual image viewed by Codex",
+      "finding": "001.swc SL_DGA is L; 301.swc SR_SA is R. The historical table has no Unknown-label example. Orthogonal slices agree."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252383_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "37a728703ee3a3fc577ddcae40114db41d63c7ceb423b1dfc22ed49fec7f1bf4",
+      "inspection": "actual image viewed by Codex",
+      "finding": "043.swc CL_M1 is L; 001.swc CR_F4 and 006.swc Unknown_0 are R. The unknown soma is near/outside the cortical outline; do not infer tissue-region acceptance from its side."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252384_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "9f23ef685d3711bd759b6afdc792fb62b25e59b4cd4356e76de53268261dec6a",
+      "inspection": "actual image viewed by Codex",
+      "finding": "008.swc CL_Tpt and 001.swc Unknown_0 are L; 056.swc CR_F5 is R. Orthogonal slices agree."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252385_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "9030b290643a4e388bc558f055f57785e62cd7fb6498da3ce0ef1334d5d4f46c",
+      "inspection": "actual image viewed by Codex",
+      "finding": "001.swc CL_area_45a and 011.swc Unknown_0 are L; 050.swc CR_PrCO is R. Orthogonal slices agree."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252527_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "4eeb3934f55673ed543391e926df8aa939df93dba24441771d586b0ad6f9f05e",
+      "inspection": "actual image viewed by Codex",
+      "finding": "061.swc CL_M1 is L; 001.swc CR_M1 and 003.swc Unknown_0 are R. Orthogonal slices agree."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252714_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "b118658c4e3a865ede1da5b48a7a7143cc8c5cab092c2dcba66209e4bdfb8871",
+      "inspection": "actual image viewed by Codex",
+      "finding": "050.swc CL_area_7a is L; 001.swc CR_Tpt and 012.swc Unknown_0 are R. Orthogonal slices agree."
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252718_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "232d115225f58795e898482808275200609afb9768649be94f3cc48dc933e3b4",
+      "inspection": "actual image viewed by Codex",
+      "finding": "089.swc CL_G is L; 001.swc SR_CAA and 070.swc Unknown_0 are R. Unknown-region identity does not imply unknown hemisphere; orthogonal slices agree."
+    }
+  ]
+}

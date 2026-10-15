@@ -1,0 +1,65 @@
+{
+  "uid": "250432|123.swc",
+  "status": "passed",
+  "pngs_fully_decoded": 6,
+  "dimensions": {
+    "context_unmarked.png": {
+      "width": 769,
+      "height": 769,
+      "mode": "L"
+    },
+    "context_marked.png": {
+      "width": 655,
+      "height": 573,
+      "mode": "RGBA"
+    },
+    "context_trace.png": {
+      "width": 655,
+      "height": 621,
+      "mode": "RGBA"
+    },
+    "context_stack.png": {
+      "width": 3869,
+      "height": 785,
+      "mode": "L"
+    },
+    "context_ortho.png": {
+      "width": 1418,
+      "height": 525,
+      "mode": "RGBA"
+    },
+    "context_coverage.png": {
+      "width": 769,
+      "height": 829,
+      "mode": "RGB"
+    }
+  },
+  "unmarked_display_extrema": [
+    0,
+    255
+  ],
+  "constant_unmarked_display": false,
+  "unmarked_pixels_checked": 591361,
+  "source_plane_id": 8727,
+  "central_depth_index": 4,
+  "display_quantiles": [
+    0.0,
+    68.0
+  ],
+  "maximum_display_error_8bit": 0,
+  "display_tolerance_8bit": 1,
+  "artifact_hashes": {
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context_unmarked.png": "f8f7113b00f2753e25f2e1e00e182ab074e5cbb341a9dfe464eb4d11161b47ad",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context_marked.png": "48411f506b87bcf131a95bac0123eb7f6b00482348c692292b4855b510834075",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context_trace.png": "b9d7164cb9cca1094fd456b4658cb5d572d1aa575e09aa0e36f28237820e49e8",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context_stack.png": "d18e82da0a1644b32d82bef765a380c663cfde1d499715bc3aa850832d359ff5",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context_ortho.png": "a142e6b1c11177885108e85a71256e168fb8e93236eb9565d5ae2b6a890ad27b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context_coverage.png": "392ed6e4bbdcd8b69fc5d3d59aec7a87b97f80b6da863cb3c502bab34c79e423",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context.nii.gz": "b081d114eb269a4d6c5d0035584d3ad2a32cac16f45f9f2c60a72d53da402f59",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\context.nii.gz.json": "29dc3666c29573955b0c422df20f3cd2471a122953f997d196aa3d6feec31705",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\250432\\123\\provenance.json": "d71643553d8b958caa5a83405e50da212fcb269b233322e33898c30861096167",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_250432_123.json": "ec0e03068435e6e5d9085051ecccdc3407c565a05eb9391a7f97180262750808"
+  },
+  "stable_during_read": true,
+  "anatomical_acceptance": false
+}

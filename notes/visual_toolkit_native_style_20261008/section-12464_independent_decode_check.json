@@ -1,0 +1,26 @@
+{
+  "date": "2026-10-08",
+  "source": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12464_CH1_resample.tif",
+  "size_bytes": 27764445,
+  "sha256": "3c183670016158cde76ec4a62fdb8cc53e78e3945504944ce643494068961621",
+  "unchanged_since_section_review": true,
+  "metadata": {
+    "pages": 1,
+    "shape_yx": [
+      10653,
+      16266
+    ],
+    "dtype": "uint16",
+    "compression": "COMPRESSION.LZW",
+    "segments": 333,
+    "all_compressed_segments_within_file": true
+  },
+  "independent_decoders": [
+    "tifffile/imagecodecs",
+    "Pillow"
+  ],
+  "pillow_mode": "I;16",
+  "decoded_arrays_identical": true,
+  "decoding_errors": false,
+  "conclusion": "Source overview image contains the visible discontinuities. Independent decoders agree; no detected decode/truncation explanation. Upstream stitching/resampling/export or original acquisition cause remains unresolved. Does not validate coordinate alignment."
+}

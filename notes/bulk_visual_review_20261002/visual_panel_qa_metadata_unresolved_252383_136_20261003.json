@@ -1,0 +1,52 @@
+{
+  "observed_utc": "2026-10-03T11:39:37.272239+00:00",
+  "uid": "252383|136.swc",
+  "scope": "representative saved soma geometry, raw-root/hash agreement, full PNG decode and direct marked-panel inspection; not full source-pixel verification",
+  "status": "passed",
+  "nominal_geometry_matches_metadata": true,
+  "own_raw_root_matches_validation": true,
+  "own_raw_sha256": "f9252b8c880e7bc0ea7277ecb5ea9f26323e7a5d085d05f464fbe6f963fdaa7b",
+  "production_status": "partial",
+  "coverage_status": "partial_neighbor",
+  "marked_panel_observation": "Branching fluorescence passes through the cyan root marker. Rectangular black acquisition gaps appear to the upper left; the caption explicitly reports 21 loaded and 6 missing cubes.",
+  "panels": {
+    "soma_marked.png": {
+      "sha256": "41efa79e47520f49404e31e6731730ebbe5f4d6844857aa43494e8344418af20",
+      "size": [
+        675,
+        728
+      ]
+    },
+    "soma_unmarked.png": {
+      "sha256": "ed38e555e77e906c2d58ff42606818e4f143b390fcb3e2c1bf3c66c135c5be98",
+      "size": [
+        1080,
+        1080
+      ]
+    },
+    "soma_trace.png": {
+      "sha256": "2ba66ffbfa4ac6f474f59275b7f2d5a8813eed6e93affa68887d965c23dbab5d",
+      "size": [
+        675,
+        777
+      ]
+    },
+    "soma_stack.png": {
+      "sha256": "e5b13588701e49289fffcc24e428e3f3d651fecb781820d75c4b151ed88781b0",
+      "size": [
+        5424,
+        1096
+      ]
+    },
+    "soma_ortho.png": {
+      "sha256": "f037f1a28488645e1670ed9711028a9b87f56b3be11fe7789ea5184da98afea9",
+      "size": [
+        1418,
+        595
+      ]
+    }
+  },
+  "human_region_assignment": false,
+  "anatomical_acceptance": false,
+  "network_requests": 0
+}

@@ -1,0 +1,107 @@
+{
+  "sample_id": "251637",
+  "source": "exported native microscopy crop",
+  "coordinate_frame": "native microscopy acquisition XYZ; anatomical orientation and laterality unverified",
+  "coordinate_units": "micrometre",
+  "array_axis_order": "XYZ",
+  "center_xyz_um": [
+    9413.76171875,
+    28645.63671875,
+    27356.71875
+  ],
+  "origin_xyz_um": [
+    9360.0,
+    28548.0,
+    27270.0
+  ],
+  "spacing_xyz_um": [
+    0.65,
+    0.65,
+    3.0
+  ],
+  "spacing_status": "nominal repository configuration; not independently calibrated",
+  "shape_zyx": [
+    90,
+    360,
+    360
+  ],
+  "requested": [
+    [
+      40,
+      122,
+      101
+    ]
+  ],
+  "loaded": [
+    [
+      40,
+      122,
+      101
+    ]
+  ],
+  "missing": [],
+  "complete": true,
+  "source_paths": [
+    "http://bap.cebsit.ac.cn/monkeydata/251637/cube/101/40_122_101.tif"
+  ],
+  "index_convention": "XYZ index=(native_um-origin_um)/spacing_um; Z section filename index maps to index*spacing_z; no axis flip",
+  "missing_data_policy": "reject missing central data; partial zero-filled gaps only with explicit allow_partial=True",
+  "source_array_axis_order": "ZYX",
+  "nifti_axis_order": "XYZ",
+  "shape_xyz": [
+    360,
+    360,
+    90
+  ],
+  "acquisition": {
+    "sample_id": "251637",
+    "source": "HTTP native cubes",
+    "coordinate_frame": "native microscopy acquisition XYZ; anatomical orientation and laterality unverified",
+    "coordinate_units": "micrometre",
+    "array_axis_order": "ZYX",
+    "center_xyz_um": [
+      9413.76171875,
+      28645.63671875,
+      27356.71875
+    ],
+    "origin_xyz_um": [
+      9360.0,
+      28548.0,
+      27270.0
+    ],
+    "spacing_xyz_um": [
+      0.65,
+      0.65,
+      3.0
+    ],
+    "spacing_status": "nominal repository configuration; not independently calibrated",
+    "shape_zyx": [
+      90,
+      360,
+      360
+    ],
+    "requested": [
+      [
+        40,
+        122,
+        101
+      ]
+    ],
+    "loaded": [
+      [
+        40,
+        122,
+        101
+      ]
+    ],
+    "missing": [],
+    "complete": true,
+    "source_paths": [
+      "http://bap.cebsit.ac.cn/monkeydata/251637/cube/101/40_122_101.tif"
+    ],
+    "index_convention": "XYZ index=(native_um-origin_um)/spacing_um; Z section filename index maps to index*spacing_z; no axis flip",
+    "missing_data_policy": "reject missing central data; partial zero-filled gaps only with explicit allow_partial=True",
+    "missing_errors": {}
+  },
+  "output_file": "D:\\projectome_analysis\\notes\\region_analysis_review_20261004\\case_112_114_20261004\\neuron-112\\251637_112.swc_L-IDM_SomaBlock.nii.gz"
+}

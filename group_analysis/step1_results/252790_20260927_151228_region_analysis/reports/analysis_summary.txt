@@ -1,0 +1,75 @@
+============================================================
+REGION ANALYSIS REPORT - 252790
+============================================================
+Generated: 2026-09-27 15:16:18
+
+--- OVERVIEW ---
+Total neurons: 123
+
+--- Neuron Types ---
+  ITi: 58 (47.2%)
+  ITs: 35 (28.5%)
+  Unclassified: 11 (8.9%)
+  CT: 9 (7.3%)
+  PT: 7 (5.7%)
+  ITc: 3 (2.4%)
+
+--- Soma Regions (Top 10) ---
+  Unknown_0: 23
+  CL_area_44: 18
+  CR_SII: 17
+  CR_Ial: 16
+  CL_Iai: 15
+  CR_Tpt: 11
+  CL_MST: 9
+  CL_Ig: 5
+  SL_Cl: 3
+  CR_Iai: 1
+
+--- Laterality ---
+  Soma side L: 67
+  Soma side R: 56
+  Total ipsi terminals:   984
+  Total contra terminals: 88
+  Laterality Index - mean: 0.041, median: 0.000
+
+--- Projection Strength (Population) ---
+  Raw length: mean=141.48, median=45.38, max=2313.15 mm
+  Log strength: mean=1.658, median=1.666, max=3.364
+
+--- Morphology ---
+Total length - Mean: 1507.37, Std: 1110.35
+Terminal count - Mean: 9.68, Max: 44
+
+--- Outliers ---
+Neurons with outliers: 120 (97.6%)
+Total outlier events: 8670
+
+--- Hierarchy Columns Status ---
+  L1: MISSING
+  L2: MISSING
+  L3: OK
+  L4: OK
+  L5: OK
+  L6: OK
+
+--- Excel Workbook Contents ---
+  Sheet 1: Summary                    (scalar overview)
+  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)
+  Sheet 3: Terminal_Sites             (one row per terminal)
+  Sheet 4: Laterality                 (ipsi/contra scalars)
+  Sheet 5: Outliers                   (one row per outlier)
+
+  Projection Length Sheets (split by laterality):
+    Projection_Length_ipsi          (ipsilateral regions only)
+    Projection_Length_contra        (contralateral regions only)
+    Projection_Length_L{n}_ipsi     (level n, ipsilateral)
+    Projection_Length_L{n}_contra   (level n, contralateral)
+
+  Projection Strength Sheets (split by laterality):
+    Projection_Strength_ipsi        (ipsilateral regions, log10)
+    Projection_Strength_contra      (contralateral regions, log10)
+    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)
+    Projection_Strength_L{n}_contra (level n, contralateral, log10)
+
+============================================================

@@ -1,0 +1,476 @@
+{
+  "status": "passed",
+  "observed_utc": "2026-10-03T22:37:30.857761+00:00",
+  "run_id": "d93cc551074743e291f4229543b0d888",
+  "manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "earlier_missing_centers_reconciled": 20,
+  "source_verified_copied_contexts": 17,
+  "dated_regional_root_failures": 3,
+  "regional_root_recoveries": 0,
+  "requires_soma_regeneration": false,
+  "requires_terminal_reassessment": false,
+  "server_requests_in_this_reconciliation": 0,
+  "global_source_availability_reprobed": false,
+  "anatomical_acceptance": false,
+  "current_input_hashes": {
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\identity_manifest.csv": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\regional_context_run_20261003.json": "127350ec1d9567aa6ba16eec14a4cb1aec97af3e6eb2f8ce18efbb5801ffeadc",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\regional_checkpoint_watcher_20261003.json": "63316fe0742e96302522cafe52cfe5de6a9eebbbb27ef94a1874d2f950303b32",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\copied_source_audit_queue_20261003.json": "13fef2d9d3bc447d0755b8b2b413b745c57af4384e13e2c8e2f6396a8adebe23",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\all_soma_source_pixel_readback_20261003.json": "bd3d68e63cb3ffb3879f687b617b8e9cdb190eaf16af8b95af01af2921816fc2",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\copied_context_package_readback_20261003.json": "dd25d9284b65016a11f675aa8ccaec46daea2fcff112e40db238343f2e161c6f",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\copied_context_source_pixel_readback_20261003.json": "35f5c7023c8d368d9f378612082e175f1e689cdb09b11cf2d6d6aeb809b9d130",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\center_unavailable_reconciliation_20261004.json": "80dcc9f50aab5b4e34059739a4b8843a94347bfbbc0d3926b8d3bd0cf73d8598",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\088.swc": "7cd050bbe3dba56d42d00ad56cc6b7ce22704af3922344fb64b26886be3ef3c8",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\provenance.json": "c1aee413be35076192f887693f4ccf7acde59f95e442d62fba4296733092a2a5",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context.nii.gz": "ee51df9c64233a4e7abb7f8d6f8aedf39f8643ab4c1a6aca1121c3ccab952f06",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context.nii.gz.json": "9cc8e52a006075079651cc654e50c7dfea43923eb460a44f263adcebd3f5dcaa",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_unmarked.png": "305a2c0625d8e32f21b301fe6ff5009e9fc848ffddee991c4b89f41de61a2ead",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_marked.png": "593fd1207bd161086f6451fdc64d67792e5748efb88186ea5f79c41dbfd91b47",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_trace.png": "a0eb5dea5ab47c5797d29aab5b4cb2c66c3e54f92991ad837f21af224ef9945a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_stack.png": "8afc45a7cc84702f39873ab6b278936b7b684da56099368d6dfe7824d58dad60",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\section_locator.png": "7c6614fbaeabddad97acb14fde89e1cc92191ba094e4220c20629d61952bf905",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\089.swc": "f042f3ea94870b0e48797ca45b8cdd6c96453e6f6b30ebd1751a8fe3df620090",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\provenance.json": "a1e783d7bf01035531458376fca8c2ea4148f666f977bc47a99589fb403e8d6f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\context.nii.gz": "bd75fcd515e2d3cf8f6dda380a84b48e390d4f3087e27aadb7e0f230e57ea0a8",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\context.nii.gz.json": "221f00990287883e7c98ed26a116a64854dcbed04a097c2358a3bbd202b24e10",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\context_unmarked.png": "6f64f7a639c95eba847e7008d3cd04cdff8d56bc150cb1e0ecea7838b19cab2c",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\context_marked.png": "fc0448ea0db16d2f1c8a74cf8caf60fd4d97179c27cfd55f22cbaaceae5a0023",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\context_trace.png": "976156ea0672645e3be6043c8633880c15e78edaf1040ae2edfa4ec81d3e847d",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\context_stack.png": "ab9f83d68229ea7e002d8db44163a7997b85e99e55fc9750e02bc37c8cd1a38f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\089\\section_locator.png": "b1631f85d66a027334ebfa2aa125a98fd689d7be6c9cb737f22673754f207bc3",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\090.swc": "3fd3570c088217f39ca8ecf61b42b2e58f51aaa3a18a738af34ab082155e84d4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\provenance.json": "4e0e42fa0e99f65911708241a22b90ecbe34fcf4eee05540a57abb0dc8cc1205",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\context.nii.gz": "2453a2a74109a0c3affe90719a26e90cbe1086e747d45ca0cb47f5bdce88c935",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\context.nii.gz.json": "feafa446dd8de8888b537dcbc80adf87edc0ff19408cc9affa75a3e10f28912e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\context_unmarked.png": "a2347f2aa3fe8730438a612b6cc21208abca1f5fa4c896c2ceba941909a3028b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\context_marked.png": "e1f4ff32841642b07fd7d82b5f812d6865ceeba75f36511d7c3467fd452a1117",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\context_trace.png": "b21132cace1c426f6c6c427d9bc3c31e3723280ace3b2f642bb69b79f59bb26b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\context_stack.png": "fad1a207f3b3cbdee82ac43e32e3adc35a7b63a844cbd8d971c1a606c7f7798e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\090\\section_locator.png": "1ba2095618e64c64a476df3b535aa3b5f4fe3c61c80bae25a67dfdfb8de3c196",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\093.swc": "4071903d667aae2f9ff5198a2138e5e15b3c0b83d651e2a9603a0637c52679fb",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\provenance.json": "bbc64a434e40722fb6fc06cc2405b5ff3a8989efef4a0ba9198b42f4f41e11b1",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\context.nii.gz": "ed9fc4ef5f0fe0c51376f6c093b9f966304b1054b4b5de6e1579fc64129fa22d",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\context.nii.gz.json": "042f9397b35050b342968c34f439286c050b209fff87ab3ff68f8c283147e9d5",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\context_unmarked.png": "ad44b2566dc05b15b90c091a18bc1ea1760687911ee73e5d38afcb23fed285b9",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\context_marked.png": "dc1546583bc66bced6441ee2ace74d78494ba9bfbbc1ed7aeff815d4ab8dfd33",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\context_trace.png": "8c74db19147c1c581069722749c526705f8f8fbc7d50604e2540142f35e77d89",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\context_stack.png": "458d517add9a7b7ec63ebc682d22f50c2ddc55a112948b5c72291bb7dd1dddc6",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\093\\section_locator.png": "408d9d1f4a4f0d6b38ad945dc5cd7f0ea00ad87b05d40801a022f2d4a1833599",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\094.swc": "8e7579fa6691e0ce5770a2b0a798bbae28b7bd4c42ed09e74641e92699b164d4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\provenance.json": "62816580e723082ec2f08c9d6ed9cd9963b819cb3f4bc3e07d2ecfa32ba1c504",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\context.nii.gz": "4e3d3045b6a0c4fc2494337626498d5f6654dfa34e6aa45b154ca73b19047d9e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\context.nii.gz.json": "e51191bc5ee20b5d807089c6d9570a2c2b8f83ba7d16c1da22d131b94adf48a9",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\context_unmarked.png": "dcb39c6a0fa1c3b7472852725483bd9ec922e7238cac4e6696d6b00e1182c63b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\context_marked.png": "8ba7d2c089791e13f1d44872219282d2bcb3f4569113dec8d6c4ac5dc531c862",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\context_trace.png": "d8deada7d58650a80963b6146c2b7cfc87e132ea626033bf0855d662882f461e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\context_stack.png": "89dea04990a651fa9a228327fe5ed60e5674cbcef3385696fd0a54f5832da148",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\094\\section_locator.png": "4de0b83592add9a40bd60aaa6a4ce5cc41f9144a5538b44facaf6cead7d5b8a3",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\096.swc": "0d11343d442e1adda196fd62c2bf496c0113c74d40e6c9edb66326e6ab6e5c1e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\provenance.json": "4eb3b46a180b3657d928571b556439abc23f6b2760445477d327a2630e221a46",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\context.nii.gz": "b10cb77c0ace3bd29a4a311b6d890850074e8d04d37b056980fba0c75634bfde",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\context.nii.gz.json": "adc135256e831d62db124d6795a0e8fc5dd8f4032c4b2f3dd488dc96d92a0790",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\context_unmarked.png": "0f7e405b4ec05613042517d1440686fb2ea836ecad5a8628f104340b61ebe328",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\context_marked.png": "b57fac6f87296e4aa99efb012d202cdd23f4f503e40b03732dd47e473689cfb0",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\context_trace.png": "6f0ce7306922e41901885f4fa4ebe3951cdc43303e76171b8ab4d23607adf59e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\context_stack.png": "3499991bdee5f2b4d1482345285f8df30e5831757536eb4e8b8bf93843cc5067",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\096\\section_locator.png": "e27317e73041b97a7966c65e80dbcc601aa6d67994e11956d08d757365e4d8ed",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\097.swc": "e100e033bf6e5675ebedf76898d1a011e00db7231ea5c7c86cd5063ab03a134e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\provenance.json": "1142c64945986b6b7a3c631e5f376a927b77e123c6feef3365432ba89d7800fc",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\context.nii.gz": "d9ffc21a94c4e749884e21c81ec163327aa0c7d86948bc518cff4ace10d78185",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\context.nii.gz.json": "8180d9903df3dad3be346b447be0895b37c0caec31159419fb43b103409fa399",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\context_unmarked.png": "16df5b85208d646a0b7803fa02cd70d67f784694a69224dab23f4276dfca002a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\context_marked.png": "40be8db175201087a56ae89086146322040e32d7b1ec8dcfddb15daf7a374e66",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\context_trace.png": "5c391a6cc7bb1f13de34422babd5551046bd10d5da3acccf7b1143e9cb0e77ce",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\context_stack.png": "a124ff602f44e07bd5aea05bede401453f2d700da7f0a078461e537ea724d39a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\097\\section_locator.png": "114d4fcaa892995fc3855a46c51d94e307e7eb65c9277d7e37bb2100bd324c32",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\098.swc": "96631ac50ac0cdd0b2ed5f2214e278914105c7a0eb99f04075c946e204e46d5a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\provenance.json": "aad34779eb5f38ed882d54679309cd2a38392827e7bb91c42c2b712a3c8eefa4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\context.nii.gz": "27a81ff21af3b78683667e77e0507ee510ccee213622d3f4e46f82d9b075686e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\context.nii.gz.json": "d05d217f94e6765279e4391328e6aabf6ad7172d8e042b2f175494390d10ce8c",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\context_unmarked.png": "1105acd7ab5d3a8d5a64f6d98f2b1f0ba80f7ac3a324f03ce4190e6c62d90ac7",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\context_marked.png": "ec9331208bd683bc8b810bc3daca3b6afc1de57f33d25ce280761583c8c7c684",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\context_trace.png": "1b86e171a01b676a40e1898f207a59ff9655d8fad9779be8b7343a57fbf61b44",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\context_stack.png": "51f9e6d5e143e822e0dcdcd54be325938c6f911ca5600d1af9f9b25f2297354c",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\098\\section_locator.png": "f94de68ee2179d053908f4e31cf59cf6096d8682bb34cc526ada61cb2470bdf3",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\099.swc": "ddd2b7aa5ba726c251a9ba7b7b235c62ed1c9965bcd286bc6512ccc35eae58f7",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\provenance.json": "0a1bab9fd43900f12ba2773fa14805a61f5dfa0e5ca61531031fe0e8a4c08faf",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\context.nii.gz": "23db1d97e08da46f144c20e92fae49e1b5b087c4b0deb97565307aa5d55f6bf4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\context.nii.gz.json": "92ca62bf3da35a7bb797449491dfaa6c32c23a0f82b5a3a5bb4fd9729fda38b3",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\context_unmarked.png": "e353b18181aae5e04f8e161038669b59ff6bc47feb155e6a730a18d2de32a92b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\context_marked.png": "89609eb758f2f51110e9c7d0a68c1966828dc8ccfc7ce42a3ca0a0506c418185",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\context_trace.png": "d6d809a42473c778c7d445a3b58a9e39068af969ec2cfb7b84de6c740e6e2f83",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\context_stack.png": "5380a6784c75ccda9592b50077269ce14626f01bd93383f18b8525ffc2107358",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\099\\section_locator.png": "213a3dbfd805e76ffdff3e9cd50aba15f63d5db16cb5ab502e56f639af4554f4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\102.swc": "c5dc93fe9bdaf186c5ea346d2290fe185bccc475bbd816ed2f05615592a0c129",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\provenance.json": "7bb1573bd10cd1c3cc30b4fec07373695eb67446625c34d1c83570b74802e764",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\context.nii.gz": "bff720ce7b118e86d17bcb99118811c0ec499744d2cb45102f9d6e306062422a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\context.nii.gz.json": "6d970afc0bbf2c9fe079a47822447daa76b8ebbc416e2c70743dee66002d9448",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\context_unmarked.png": "dc488d166029af86cc688d91c60f3cb99f288d952000505b19116bcf537e0bf4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\context_marked.png": "a66c83fb5499f963b19e2434a083803ea27011ef643a414516b63375b45d3c83",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\context_trace.png": "15c39fc981c0e7c5f3428b1e70836ea0d8e91757cc74745f36a5da70c6496bad",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\context_stack.png": "d2d02b8a431550143981946eb664fb46b1b163b772948089a6d94adb869d0784",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\102\\section_locator.png": "3735ec4f60bc0777fd8f42437a1f6c45b803221a7fc672de3c007beb83bb9f92",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\104.swc": "e58e1e33ff04f8a28198fe674fd092f38b0c0536d7917839824ef199b00a067a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\provenance.json": "b3284005aa7dba4fcdd27c5245ad096edfd7256cfa17404c855bf4afdff0e114",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\context.nii.gz": "20d83909e13fc0a07f0513a22a456c6de1ba58088e3eadea0ec0598bb263f17e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\context.nii.gz.json": "78bda009330805ed2865d7bdfbf3ac0b7021451367ffe34d1deb84fc76734034",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\context_unmarked.png": "9b7c45cc2444c4fd6f24f1cff0c3512ecbb67f590e82e12548c9bd76fb91fd83",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\context_marked.png": "164108edbfad02d4835efbd955119a879ff917e893ff935b63c1bd009b91649f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\context_trace.png": "434cfa4d87cb9b342684331ac56857ce2444133116d6d16780999b48df40e03f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\context_stack.png": "5bc24ca087dc3e8da64fd513082a73a3fd07019cadb9848bc632346088c72015",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\104\\section_locator.png": "37fbc4f1d38957f4a46a3be68b2ff3275392d3fb8b5951670e230acd1d4ca8b2",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\107.swc": "5d893ffba216048e7b2c5cd5412b57a442b8e512e51870c275666f7510a1a510",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\provenance.json": "57c18f8d17e88b58cffb7c30900b5c6bf238dd29e5f0efd22c9bb1a6c3f17f84",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\context.nii.gz": "5cd98011e0d529db524a488ef2a61d9c32f0dd116d6415f281e02ed791983ef4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\context.nii.gz.json": "4c652f4ffc0eff15aecdeb8a9170d25ff31c7265a369aced8005ee2e163d2072",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\context_unmarked.png": "0bc6820cd845bb1649afef79f9061cc0c82c8b0c1a467db4306409a8187cfb5a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\context_marked.png": "d299b731a9b6679a75177b8a8a89f9c029203a9ef7704f209d4881540d344eb5",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\context_trace.png": "f09dd5ed18a4707eda248fcaf5ed0ba8ec777c4496293fcb454877ae1008de78",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\context_stack.png": "2f6d2835534aa020614df92cccce34b68fe0aac0344201b8924dbd55c7a8562c",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\107\\section_locator.png": "e2c4341d1ee16b3805a92cce9306daa80191233fbc9e6afab196c2afd7d86a82",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\111.swc": "9aaf117cb4c227a253220948c86814928da552567eaa79fc8d65a0e4c9ebf069",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\provenance.json": "09da1084fc6d0de2c79a9bec361d2bd0001ec616cd64ae787ecee3da8ebd0d23",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\context.nii.gz": "1af98a32a9489b02b5b926ad7a114f17c6cc397f7286aa60e0e0b14a46741f1e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\context.nii.gz.json": "e927b9cba6825d8258e4e7395bc76ce0bd5a2c3912845e4df9f57b1b4d2e6698",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\context_unmarked.png": "f112c331e1a5128c1e73e7b008f772cf6dda8b485ea1059a727d58b986f9bca5",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\context_marked.png": "30590afc1994afe868b3979d4d28bcfc68ef3e9ab329012a79a56b8871ab99b7",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\context_trace.png": "21c040fad95b8a4fe6a9179e22808aa80b8aeb08f5ffd63a0d5a256d40cfbfdc",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\context_stack.png": "5fcfe26c0b1e84d11720980fd30b930acd24eda0c44a38f8e4ad1813cdbe6b36",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\111\\section_locator.png": "24723158c6deaa2fa4a85b2aa2327a91168846aba570aef1061ead5d52b09f0e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\112.swc": "b827ffe31d73c547900dae5f0258da13eaf3f04dbfd02e01d2666c320cb142de",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\provenance.json": "044af6815df83930a3926e8fcc1d67c9409784e318249adde7a6de4212f0831d",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\context.nii.gz": "91ef85bff553555c0c54d7e5d86a57b51f18d1b896a80f6ea20ee8fb47a13395",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\context.nii.gz.json": "c4444a588a34ebaebc0202f76e9fda742a661e036eaf738a88c09afe7744cfc6",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\context_unmarked.png": "92e8fab9e2b75e7b93b598825add2d2dee710039eee546118aa1ce76500337dc",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\context_marked.png": "b7f90075bab48f24a8346f01bfea0f1b5048091afa1efb4191e5edaef430dd63",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\context_trace.png": "bebb5734eaa6680231b5c3447928918829eef7720e73ea67c8ca77e3bcd5bb56",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\context_stack.png": "44893fda6d32e3fda06ad26a20d0dae0568c52b0d4ed0efa96f14bb0c4eca033",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\112\\section_locator.png": "a496cb5df481e41b80b405d189ba22d415c9e86341e547070268366c1ef975c1",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\113.swc": "8626ab629688bed8d25f3dbc3a830343b22badf5e8c0955b12bf57f397d52331",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\provenance.json": "0a4e1f531a4f0e898d501b28bf2e20a4b0fc48e7936ddc59969f90b485595d50",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\context.nii.gz": "c16404c25efcb219aa175e98362b9f40be980a52688e039a9ab23c220c2fe86f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\context.nii.gz.json": "08f04a510d8458da069a6d9cb56ada1b18c8fbd2f7aee8354dc5f056bfff08ca",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\context_unmarked.png": "1e452628f8a961b4917bb4cf4f0f8b65c3a9175bd7404e3b139a4f242709b122",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\context_marked.png": "d47d601143c7d147b3e45e340c6e227605f9d339e070ca38d4f28a48d37b203a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\context_trace.png": "4956e3fda63544dd00cdb589cd67e566e1ac5b00a2c3ccf12c9fcfe04c1b9c02",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\context_stack.png": "cd714e4e01e5ea77330f82fae11c8e04ff30ebd0a2c29ea31a8d5fac187e1990",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\113\\section_locator.png": "6dd9632e09291449f58b349e26df4fabc10368d8c701efc3b211db066551fd54",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\114.swc": "81653a55e87059e84723b81549e0901a281885a79b45651f2e6af6217929cd21",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\provenance.json": "9135c189c95e5b5cb98e212b2bb5205ce1053fc8c555749a03e405114cbfc992",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\context.nii.gz": "793ee180a33f75450c9af12115fbd2a293bfc0cac226dd9f44027e9b56ccc9be",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\context.nii.gz.json": "ae1573df6d3cd911a13393f2288a6135379c905d1f89b6c8251fcac23ced530a",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\context_unmarked.png": "bd3175f3170787091ec4f2bbc223d53a69d0d70c5cef78b6583033070fff10fa",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\context_marked.png": "650e13c224ff18901fd711881a7cb9c240bdcec23bb9b37ddef62dc71fa63316",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\context_trace.png": "2416122a978bb0461310bf9237395e76b8e9a6c6de4fe89fabac669836897665",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\context_stack.png": "adf3ec93690237cf7dc299a78753762074f29c1e6d35ea9a02727f501b4230b9",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\114\\section_locator.png": "9dbb14da6681da097321bd595ef3fc87a676c18f9041aecc65d066485323b281",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\126.swc": "72f13feee9943321b297b6399facc124d2efe8918bd6dd11f23bbfc19080021d",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\provenance.json": "b1bcce63fc153a11c5e400fb8a979d42f0f20161bef9fbefbe0252599c29ec40",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\context.nii.gz": "3c5bda1338cf7b8dbb7da84d98333fab3bffbdb0d159f450fbe8cc85273915d4",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\context.nii.gz.json": "11a2b444809539f89ffec704a6e9ca75eb55e6ef218a48e699066c98159edf10",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\context_unmarked.png": "0ae5f2f89f714364c8b7b7ace3aaead741347e33a122e26cf613934b39636193",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\context_marked.png": "ed7b1b38bb8d105263955f2dbc990bbd27f64f5d1cce7d87c2d7c982a6cc058f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\context_trace.png": "a61cab46160ef016a404ce67ca0ac2b97a743d38a19b6b388733d3a87f4bdc48",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\context_stack.png": "a278c86c026548c0383c344f6ff37973751ef12a36c3b53d1564fdbea04a8ba6",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\126\\section_locator.png": "7d3ce30c8e9c17974a23013e7c7a723fc28e6ddf30be81450784052496af1122",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252718\\161.swc": "a32e4867409296f6bbc869100075130fd0de072cd17f1af4a75560a3a5b87449",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252718\\161\\provenance.json": "7946258b5c9d22f3ad4e6def6f6da658a5efa6d6d010a0e40402b2a0fe136b5c",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_252718_161.json": "6db744a7e13639ab9fe042f08de4fae5e4dcbcaf9f36115d7c61d157ea00811f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252718\\145.swc": "fe05e0e43a72dd3758b79efb719c88204c9fb9e52e6ba254b60733a35b88cef0",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252718\\145\\provenance.json": "628a82e43c76d7fe506fb86a0e55f9ed3095a1dde427008c503d1b89b81b87ec",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_252718_145.json": "88d0f7775219bd20c803a6f27e0c5e893d484b886073f396f4b3b3a87ce25f67",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252718\\169.swc": "119075ddeaa42e0d9c57bc3312999f66f7505916905b3b76a0533a78dd72c09b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252718\\169\\provenance.json": "ddec4eeae66efe30ba12f4428f4e93a0a87fe1efebe1e0f0292962361a086929",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_252718_169.json": "e3cec9a7cb335dcf1d91eddc0a69297ba48f1b70c12528999bc0f27f5a45691f"
+  },
+  "records": [
+    {
+      "uid": "252385|088.swc",
+      "earlier_soma_root_cube": [
+        214,
+        93,
+        161
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|089.swc",
+      "earlier_soma_root_cube": [
+        207,
+        84,
+        159
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|090.swc",
+      "earlier_soma_root_cube": [
+        207,
+        84,
+        159
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|093.swc",
+      "earlier_soma_root_cube": [
+        208,
+        86,
+        162
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|094.swc",
+      "earlier_soma_root_cube": [
+        209,
+        86,
+        162
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|096.swc",
+      "earlier_soma_root_cube": [
+        211,
+        89,
+        162
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|097.swc",
+      "earlier_soma_root_cube": [
+        212,
+        90,
+        161
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|098.swc",
+      "earlier_soma_root_cube": [
+        209,
+        91,
+        161
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|099.swc",
+      "earlier_soma_root_cube": [
+        209,
+        90,
+        156
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|102.swc",
+      "earlier_soma_root_cube": [
+        98,
+        105,
+        209
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|104.swc",
+      "earlier_soma_root_cube": [
+        99,
+        106,
+        207
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|107.swc",
+      "earlier_soma_root_cube": [
+        100,
+        103,
+        212
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|111.swc",
+      "earlier_soma_root_cube": [
+        95,
+        102,
+        209
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|112.swc",
+      "earlier_soma_root_cube": [
+        95,
+        105,
+        208
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|113.swc",
+      "earlier_soma_root_cube": [
+        98,
+        102,
+        210
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|114.swc",
+      "earlier_soma_root_cube": [
+        97,
+        104,
+        210
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252385|126.swc",
+      "earlier_soma_root_cube": [
+        205,
+        84,
+        152
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": null,
+      "regional_root_failure_checked": false,
+      "usable_copied_context": true,
+      "copied_source_voxels_checked": 6400000
+    },
+    {
+      "uid": "252718|161.swc",
+      "earlier_soma_root_cube": [
+        225,
+        124,
+        80
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": false,
+      "regional_root_failure_checked": true,
+      "recorded_source_errors": [
+        {
+          "cube_xyz": [
+            225,
+            124,
+            80
+          ],
+          "reason": "HTTP Error 404: Not Found"
+        }
+      ],
+      "usable_copied_context": false
+    },
+    {
+      "uid": "252718|145.swc",
+      "earlier_soma_root_cube": [
+        195,
+        84,
+        96
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": false,
+      "regional_root_failure_checked": true,
+      "recorded_source_errors": [
+        {
+          "cube_xyz": [
+            195,
+            84,
+            96
+          ],
+          "reason": "HTTP Error 404: Not Found"
+        }
+      ],
+      "usable_copied_context": false
+    },
+    {
+      "uid": "252718|169.swc",
+      "earlier_soma_root_cube": [
+        178,
+        93,
+        142
+      ],
+      "soma_center_still_unavailable": true,
+      "regional_root_recovered": false,
+      "regional_root_failure_checked": true,
+      "recorded_source_errors": [
+        {
+          "cube_xyz": [
+            178,
+            93,
+            142
+          ],
+          "reason": "HTTP Error 404: Not Found"
+        }
+      ],
+      "usable_copied_context": false
+    }
+  ]
+}

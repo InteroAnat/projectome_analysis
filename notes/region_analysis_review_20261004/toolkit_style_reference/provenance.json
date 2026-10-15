@@ -1,0 +1,31 @@
+{
+  "public_methods": [
+    "plot_soma_block",
+    "plot_widefield_context"
+  ],
+  "inputs": [
+    {
+      "path": "group_analysis/visual_review_20261002/252385/050/soma.nii.gz",
+      "sha256": "7793ed892814a9162db7079b0a5db56d2ef4758bec2440c881e822c9a376abeb"
+    },
+    {
+      "path": "group_analysis/visual_review_20261002/252385/050/context.nii.gz",
+      "sha256": "ae390f388d890d8d2d32cd1410c507cacd9dfb503526ac03688a1094c08dfed3"
+    }
+  ],
+  "raw_swc_sha256": "ec1492a7a03231b6d7f5ce981d11a9682fc8f6cf1e0ecba57c48eb851c9f1f57",
+  "outputs": [
+    {
+      "path": "notes/region_analysis_review_20261004/toolkit_style_reference/252385_050.swc_CR_PrCO_SomaBlock_Plot.png",
+      "sha256": "1a72f97e787cbe61e722d80f0d29232a241444d374df60a7efaaeca829bb400d"
+    },
+    {
+      "path": "notes/region_analysis_review_20261004/toolkit_style_reference/252385_050.swc_CR_PrCO_WideField_Plot.png",
+      "sha256": "775ff18ae33cd9866698f540fdf6e01a7b8ef6b28ec159f7c69ca012fbed4e30"
+    }
+  ],
+  "toolkit_sha256": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+  "style": "Existing toolkit grayscale soma MIP/cyan marker and green wide-field signal/red SWC edges",
+  "bulk_outputs_modified": false,
+  "registration_acceptance": "not established"
+}

@@ -1,0 +1,7 @@
+# Recoverable conda env for projectome_analysis (Miniconda).
+#
+# Strategy: conda for Python 3.10; uv for all pip packages.
+#   conda env create -f environment-minimal.yml
+#   uv pip install -r requirements.txt --python %CONDA_PREFIX%\python.exe
+#   uv pip install -r requirements-gui.txt --python %CONDA_PREFIX%\python.exe  # optional
+#

@@ -1,0 +1,30 @@
+{
+  "observed_utc": "2026-10-03T10:14:22.1085903Z",
+  "uid": "252718|114.swc",
+  "review_type": "Direct representative panel inspection by Codex; no human region assignment",
+  "context_status": "derived_partial",
+  "requested_field_um_xyz": [
+    4000.0,
+    4000.0,
+    30.0
+  ],
+  "coverage_fraction": 0.8026636859718513,
+  "missing_regional_cubes": 142,
+  "unattempted_regional_cubes": 0,
+  "soma_missing_cubes": 3,
+  "png_sha256": {
+    "context_marked.png": "eeb9cbb7a6fd1300db0cfb1b186ff53264364b3ee2acb207d6bfc4a9ef61a51a",
+    "context_coverage.png": "a8cb5721faa42f2d0b83cd005b62c00a7760591a16d6fba5165fd62273bb357d",
+    "soma_marked.png": "c6ef160c1d2d46c055d0a29fb3513f8e43997f871bde0ed74c3d3e84000f73fd"
+  },
+  "findings": [
+    "Regional fluorescence is visible across the acquired field; upper-left acquisition gaps correspond visually to black regions of the source-coverage mask.",
+    "The cyan raw-root marker lies within acquired central coverage.",
+    "Soma panel retains branching fluorescence around the marker and shows an upper-left neighboring-cube gap; its caption reports 24 loaded cubes and three missing cubes.",
+    "Both regional and soma packages are partial; missing-neighbor regions cannot establish anatomical absence.",
+    "Regional caption is from the prior loaded producer code and remains pending the final saved-volume caption refresh."
+  ],
+  "scope": "Representative visual usability only; source/pixel/mask verification is in successor_regional_readback_20261003.json",
+  "anatomical_acceptance": false,
+  "human_fields_modified": false
+}

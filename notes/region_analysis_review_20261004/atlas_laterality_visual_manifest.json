@@ -1,0 +1,192 @@
+{
+  "status": "rendered_pending_visual_inspection",
+  "coordinate_mapping": "cached atlas SWC micrometres / 250 -> NMT voxels; not affine world-coordinate conversion",
+  "sources": [
+    {
+      "path": "group_analysis\\step1_results\\250432_20260927_151627_region_analysis\\tables\\250432_results_20260927_152045.xlsx",
+      "sha256": "1153b8d53693ae00171758a8b9abbf8532508211fceae22703ae990794f9b218"
+    },
+    {
+      "path": "group_analysis\\step1_results\\251730_20260427_130355_region_analysis\\tables\\251730_results_20260427_130546.xlsx",
+      "sha256": "16a9512b048d236ad2af5f56698ba0a085718b9870cca4f24d4f6e1bf79f102d"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252383_20260604_142929_region_analysis\\tables\\252383_results_20260604_143044.xlsx",
+      "sha256": "d0b8afa611026a3232293f1beea9e5cb64bc6e5bccce8c06033b4860c52f3c07"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252384_20260427_130819_region_analysis\\tables\\252384_results_20260427_131130.xlsx",
+      "sha256": "7cee63610b05f52a51f1691497d8f9beca1b075ed98e38e6ec05b2b7a5ff8132"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252385_20260604_142929_region_analysis\\tables\\252385_results_20260604_143044.xlsx",
+      "sha256": "cd86f1a34b75376de8e7e917361e727b280c764ed390698d1a764138ed9a790f"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252527_20260604_142929_region_analysis\\tables\\252527_results_20260604_143153.xlsx",
+      "sha256": "3f285cdc48671f9140e2a17c13c384bb0efd90efa97d3e73537b27d8fd337a78"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252714_20260927_152050_region_analysis\\tables\\252714_results_20260927_152449.xlsx",
+      "sha256": "dc0e5e04116a3627dc0a839bc4db82eb22f3662b3b4b934ebd3153dfe65e9094"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252718_20260701_115420_region_analysis\\tables\\252718_results_20260701_115545.xlsx",
+      "sha256": "4513d515137c149a18e9cbcd8f9e6680b475f69e136fc7769eb5cdee6dd04d99"
+    },
+    {
+      "path": "group_analysis\\step1_results\\252790_20260927_151228_region_analysis\\tables\\252790_results_20260927_151623.xlsx",
+      "sha256": "02a7f0bd7609d288b195e961b20e48aaa5430566656952cd21be77839b09b31b"
+    },
+    {
+      "path": "neuron_tables_new\\251637_INS_HE_inferred.xlsx",
+      "sha256": "e230985cb218f78577d099a33801e4b68cf7d17f0eb3b055416788b11f7a6cc3"
+    },
+    {
+      "path": "atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\NMT_v2.1_sym_SS.nii.gz",
+      "sha256": "9e37a94c4b9e5865aabb9fd3b51dcc3b2cb16f3daed39c967e68acf16cf92bee"
+    },
+    {
+      "path": "atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    {
+      "path": "atlas\\ARM_in_NMT_v2.1_sym.nii.gz",
+      "sha256": "8f7f1dec9fe6ccd1b6c8fce45e3b2cbc7d542ce4a4256500ee562e7e25ddbac7"
+    },
+    {
+      "path": "atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\supplemental_masks\\NMT_v2.1_sym_LR_brainmask.nii.gz",
+      "sha256": "fa12c333697632bc6fbb1297070b1c5513b47e2b454d106afcce161f0095faf1"
+    },
+    {
+      "path": "atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\supplemental_masks\\NMT_v2.1_sym_LR_plane.nii.gz",
+      "sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea"
+    },
+    {
+      "path": "atlas\\ARM_key_all.txt",
+      "sha256": "be343eacb2418f2493f740f4039adf068c110a3cb71465645cedadcf2866c972"
+    },
+    {
+      "path": "atlas\\NMT_v2.1_sym\\readme.md",
+      "sha256": "2d95671d798e11fb01609603cde44efd037b747e0c7f16260e422b09e1f083c7"
+    }
+  ],
+  "official_analysis_arm_level6_equal": true,
+  "all_reference_grids_equal": true,
+  "mask_value_to_side": {
+    "1": "R",
+    "2": "L"
+  },
+  "mask_semantic_contingency": {
+    "1": {
+      "L": 0,
+      "R": 1891157
+    },
+    "2": {
+      "L": 1891157,
+      "R": 0
+    }
+  },
+  "overlay_palette": {
+    "1": "#ff9f4540",
+    "2": "#3a9ae040"
+  },
+  "checked_rows": 1483,
+  "label_mask_conflicts": 2,
+  "stored_side_mask_conflicts": 0,
+  "figures": [
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-250432_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "15f913cdb447df4409af0af566c3840dbc76afe0ae7e1fc91dc1d1ac3fb8bbc9",
+      "neurons": [
+        "184.swc",
+        "001.swc",
+        "111.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-251730_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "2441015bd7952be5d5a245a48d7d0fcc37ef6867510cd0890e7e3a6a64bf2889",
+      "neurons": [
+        "001.swc",
+        "301.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252383_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "37a728703ee3a3fc577ddcae40114db41d63c7ceb423b1dfc22ed49fec7f1bf4",
+      "neurons": [
+        "043.swc",
+        "001.swc",
+        "006.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252384_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "9f23ef685d3711bd759b6afdc792fb62b25e59b4cd4356e76de53268261dec6a",
+      "neurons": [
+        "008.swc",
+        "056.swc",
+        "001.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252385_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "9030b290643a4e388bc558f055f57785e62cd7fb6498da3ce0ef1334d5d4f46c",
+      "neurons": [
+        "001.swc",
+        "050.swc",
+        "011.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252527_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "4eeb3934f55673ed543391e926df8aa939df93dba24441771d586b0ad6f9f05e",
+      "neurons": [
+        "061.swc",
+        "001.swc",
+        "003.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252714_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "b118658c4e3a865ede1da5b48a7a7143cc8c5cab092c2dcba66209e4bdfb8871",
+      "neurons": [
+        "050.swc",
+        "001.swc",
+        "012.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252718_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "232d115225f58795e898482808275200609afb9768649be94f3cc48dc933e3b4",
+      "neurons": [
+        "089.swc",
+        "001.swc",
+        "070.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-252790_space-NMTv2p1_desc-somaLaterality_examples.png",
+      "sha256": "886198db5ad08c85ea68b19863755cc47c23536c5641a41fa9e00efd224faa0b",
+      "neurons": [
+        "001.swc",
+        "048.swc",
+        "011.swc"
+      ]
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-251637_neuron-112_space-NMTv2p1_desc-labelSideConflict_somaEndpoints.png",
+      "sha256": "dd9e339fe025eef6d23322297d1d97aa0d401fc50d75a3afd0f320a2df34fb6e",
+      "swc_source": "neuron-vis\\resource\\swc\\251637\\112.swc",
+      "swc_sha256": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99"
+    },
+    {
+      "path": "notes\\region_analysis_review_20261004\\figures\\sample-251637_neuron-114_space-NMTv2p1_desc-labelSideConflict_somaEndpoints.png",
+      "sha256": "ac30285060819b68c10b845c62358b4b9df2b3dbb30b0c06dc58287c472a27c2",
+      "swc_source": "neuron-vis\\resource\\swc\\251637\\114.swc",
+      "swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602"
+    }
+  ],
+  "scope_limit": "Atlas-frame consistency; original fMOST-to-NMT registration and human refined-label validity require source review."
+}

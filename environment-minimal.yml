@@ -1,0 +1,10 @@
+# Minimal bootstrap — create this first, then run scripts/setup_conda_env.ps1
+#   conda env create -f environment-minimal.yml
+#   conda activate projectome
+#
+name: projectome
+channels:
+  - conda-forge
+dependencies:
+  - python=3.10
+  - pip

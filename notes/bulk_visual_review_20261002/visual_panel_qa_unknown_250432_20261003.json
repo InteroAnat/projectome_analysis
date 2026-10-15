@@ -1,0 +1,25 @@
+{
+  "observed_utc": "2026-10-03T07:09:12.1958043Z",
+  "uids": [
+    "250432|111.swc",
+    "250432|132.swc"
+  ],
+  "method": "Direct visual inspection of persisted Unknown-category regional marked, coverage and soma panels",
+  "panels": {
+    "250432/111/context_marked.png": "c7b104a8faf833e14696a047fbfa0c58d5e9ed88b8bd16f7ce1314e4eb367255",
+    "250432/111/context_coverage.png": "6b59554f8bcc858456a358986469a3bed0c3e0f6db8f36d754bbf751df074d0a",
+    "250432/132/context_marked.png": "5494a6eec98b78f7522462b15e7ecf28b685d1882dadc0d849efcdc0a1754c44",
+    "250432/132/context_coverage.png": "979ae529b1a9ca0ac5c844dbfb40c2149d7318fe086e8530dbe18c91f8fb3af7",
+    "250432/132/soma_marked.png": "a2f447199aa381bd532472c884971203c7fa41f9e3917ccd8f2074aee840b237"
+  },
+  "findings": [
+    "Regional captions, scale bars and cyan raw-root markers are visible.",
+    "The large unavailable regions in 111 match its coverage mask; the root marker lies in acquired territory.",
+    "The 132 regional coverage panel shows complete sampled coverage and its marked regional panel shows fluorescence throughout the field.",
+    "The 132 soma crop shows bright branching fluorescence at the marked raw-root location.",
+    "Regional panels retain the earlier loaded caption format and require the already planned post-production caption refresh."
+  ],
+  "scope": "Representative image usability check; independent full source, pixel and geometry verification is separate.",
+  "anatomical_acceptance": false,
+  "human_region_correction": null
+}

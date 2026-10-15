@@ -1,0 +1,16 @@
+# Optional GUI / OpenGL stack for neuron-vis (step3.3, RenderMacaqueGL, vispy).
+# Install AFTER core env:
+#   .\scripts\uv_sync.ps1 -Gui
+#   # or: uv pip install -r requirements-gui.txt --python %CONDA_PREFIX%\python.exe
+#
+# Pinned to match deb_fmost.yml / neuron-vis lab setup (Python 3.8–3.11).
+# Use Python 3.10 or 3.11 for this env — NOT 3.13 (PyQt5 wheels incomplete).
+vispy==0.14.2
+PyOpenGL==3.1.10
+pyqt5==5.15.11
+pyqt5-qt5==5.15.2
+pyqt5-sip==12.15.0
+glfw>=2.5.0
+pyglm>=2.7.0
+trimesh>=4.0.0
+pillow>=10.0.0

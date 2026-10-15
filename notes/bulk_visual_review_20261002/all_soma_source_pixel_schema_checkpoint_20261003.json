@@ -1,0 +1,1287 @@
+{
+  "observed_utc": "2026-10-03T13:16:11.952927+00:00",
+  "status": "running",
+  "scope": "All manifest identities",
+  "manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "selected_identities": 832,
+  "network_requests": 0,
+  "anatomical_acceptance": false,
+  "records": [
+    {
+      "uid": "252385|086.swc",
+      "outcome": "partial_neighbor",
+      "usable_soma": true,
+      "source_voxels_checked": 209952000,
+      "gap_voxels_checked": 104976000,
+      "all_saved_voxels_checked": 314928000,
+      "loaded_cubes": 18,
+      "missing_cubes": 9,
+      "unmarked_pixels_checked": 1166400,
+      "maximum_display_error_8bit": 0,
+      "pngs_fully_decoded": 5,
+      "panel_sizes": {
+        "soma_unmarked.png": [
+          1080,
+          1080
+        ],
+        "soma_marked.png": [
+          675,
+          728
+        ],
+        "soma_trace.png": [
+          675,
+          760
+        ],
+        "soma_stack.png": [
+          5424,
+          1096
+        ],
+        "soma_ortho.png": [
+          1418,
+          595
+        ]
+      },
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma.nii.gz": "c742e06fe30c13177bb29e9792ffd5c89e7e1f59347cf13a2e9f746f8d9e4d8e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma.nii.gz.json": "6c5a4dd5423154f2d8705757af243419935317e2dfeb904b901cd08ee43cb75f",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\086.swc": "543e800152b66130d51b1b62174c568f19e1f621a003e809150839c5a70539be",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma_unmarked.png": "02bc1088a4956e313963b5b216949b9c8d54a21e4cfe31f29ab4c11170694114",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma_marked.png": "716466d4dd6312dcaa1a70ac6196f1ca5cce96985a8fddaf0f3417135204e826",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma_trace.png": "9eabce0d922adc4966eb9a210de14e4c61edad0f7c7eca27deca219de01225a0",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma_stack.png": "702b376e340a48d0b16f43140fd3189c59f73911638e1809708cb28e7985f157",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\086\\soma_ortho.png": "b9914811a93149f3871bce491140ff71e407fe235f6f295e7403f09613d3f80f"
+      },
+      "cached_source_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\155\\212_86_155.tif": "736a8d2916f240ee7f3465a7a74ccd722d48ac046101d9f0245a8b7920eb9927",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\156\\212_86_156.tif": "70db91c356f1cac05085b1e4f6ebd89bf4f6b72ffa4414a25591df41657bbece",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\157\\212_86_157.tif": "675ecfc083e93bcdec14dd0ddbb1eba05cd48fd91aca56dfdf0d64c1b23de914",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\155\\212_87_155.tif": "2071bf9d922c522e0bff626611ec615f56f918a3bf054d37f0caea800f125445",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\156\\212_87_156.tif": "43774060bf2019ec077b1ac31e4c66455dd370f0299757e0b8e492d1d82ecdf5",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\157\\212_87_157.tif": "498f3b7761fa9f26224d0459f06fd4daaf84f766278f36adf124d16d56e0b40e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\155\\213_86_155.tif": "e1154d5ff57a8451e524a832210772a40a1ac0fd93c74f22e2ad4d4721d39fb6",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\156\\213_86_156.tif": "97607dbf496baffe3d6f9787d34c928f6e1362a89ed86cf20a2add83d96d5384",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\157\\213_86_157.tif": "3a1569698e0ea395409cb08f3badb7e6f1df7011253bdddc2d62ab620b2c1117",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\155\\213_87_155.tif": "04fc0e65529f7ff279b72d653861b7cfba347fa9b7b67c804e7784b5b7a04526",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\156\\213_87_156.tif": "759dc08cdb09425181c18479d2c1fb7c674288985e979e4dc93f733cd57af8bc",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\157\\213_87_157.tif": "d3793db7409418230253ac8714ee1a86ac9d058037241d01f30505e047b91a1f",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\155\\214_86_155.tif": "8233f07e82c89d19498f0acd194123e952aeef6bca8ac38d177a78dae39539af",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\156\\214_86_156.tif": "3fc3bb1bb5b3da8f963c229504144f2a73c95764dd0099909716bdb878d817ef",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\157\\214_86_157.tif": "9cc52e8bd26ba369721f0f6e42138f135d8938f175e2ab3e65680f70cfc88051",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\155\\214_87_155.tif": "3281ba25509acf637975e20155424de8fdab692f32ecdf95522c3a3ca885b280",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\156\\214_87_156.tif": "a74a09203f0dcf12ef444608246fb71daa3ff53563da31679ef60c1a6535326c",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\157\\214_87_157.tif": "bad3219466c6f07609554ebf720a44e0fd89618fd405336b76461649c344df90"
+      },
+      "stable_during_read": true
+    },
+    {
+      "uid": "252385|088.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "7cd050bbe3dba56d42d00ad56cc6b7ce22704af3922344fb64b26886be3ef3c8",
+      "root_cube": [
+        214,
+        93,
+        161
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "214_93_161": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|089.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "f042f3ea94870b0e48797ca45b8cdd6c96453e6f6b30ebd1751a8fe3df620090",
+      "root_cube": [
+        207,
+        84,
+        159
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "207_84_159": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|090.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "3fd3570c088217f39ca8ecf61b42b2e58f51aaa3a18a738af34ab082155e84d4",
+      "root_cube": [
+        207,
+        84,
+        159
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "207_84_159": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|093.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "4071903d667aae2f9ff5198a2138e5e15b3c0b83d651e2a9603a0637c52679fb",
+      "root_cube": [
+        208,
+        86,
+        162
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "208_86_162": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|094.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "8e7579fa6691e0ce5770a2b0a798bbae28b7bd4c42ed09e74641e92699b164d4",
+      "root_cube": [
+        209,
+        86,
+        162
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "209_86_162": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|096.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "0d11343d442e1adda196fd62c2bf496c0113c74d40e6c9edb66326e6ab6e5c1e",
+      "root_cube": [
+        211,
+        89,
+        162
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "211_89_162": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|097.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "e100e033bf6e5675ebedf76898d1a011e00db7231ea5c7c86cd5063ab03a134e",
+      "root_cube": [
+        212,
+        90,
+        161
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "212_90_161": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|098.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "96631ac50ac0cdd0b2ed5f2214e278914105c7a0eb99f04075c946e204e46d5a",
+      "root_cube": [
+        209,
+        91,
+        161
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "209_91_161": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|101.swc",
+      "outcome": "partial_neighbor",
+      "usable_soma": true,
+      "source_voxels_checked": 209952000,
+      "gap_voxels_checked": 104976000,
+      "all_saved_voxels_checked": 314928000,
+      "loaded_cubes": 18,
+      "missing_cubes": 9,
+      "unmarked_pixels_checked": 1166400,
+      "maximum_display_error_8bit": 0,
+      "pngs_fully_decoded": 5,
+      "panel_sizes": {
+        "soma_unmarked.png": [
+          1080,
+          1080
+        ],
+        "soma_marked.png": [
+          675,
+          728
+        ],
+        "soma_trace.png": [
+          675,
+          760
+        ],
+        "soma_stack.png": [
+          5424,
+          1096
+        ],
+        "soma_ortho.png": [
+          1418,
+          595
+        ]
+      },
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma.nii.gz": "8cd33bf2bf9d4a296e3bdc85c2be9d2c392b7bbc45b74f519951f43b5317d5e1",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma.nii.gz.json": "ed8d5b7cb9e5274883895c3ccae8e3212afb4845b7785c7e775bb753d21f1f7d",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\101.swc": "fd28ae6a6404fcfdb81eb542d52a3be8b5912735616159b817751e6a4bebf5d9",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma_unmarked.png": "234770940a9c2b0bab03261f9c98fe178f92fb4cca02ebad7d46b3c386b86cb7",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma_marked.png": "86a1cf773a065a109a43cdac53122892841b174555e1466cc3dce6e1525b8e6f",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma_trace.png": "faef3de6fda488a10d41cad76817d3d353527ba4147dc7935a83824af994dd4a",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma_stack.png": "68b886fbb649fe78fdc58c832a321416d7292f10cfb03f37e7d0c600b814671e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\101\\soma_ortho.png": "d8359604c15939b547bd6dfc2090c805b2df35781dbb9f9518987c6e96497449"
+      },
+      "cached_source_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\214_85_158.tif": "92adb024057a65aaeb110cb7805f6c3b6fce105308a2f8d51adf852728be9f40",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\214_85_159.tif": "c58a8547e1cccb4ceea71bfaaa15db3e297887dbb36c4af0f7fff2b2bb500f00",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\214_86_158.tif": "2acb61e80ee1cbb965bb962e4bf85cb0a03b44c574625146055a53b94357a1d5",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\214_86_159.tif": "d1250068c88666b4a144e63289aadcc1b92810810fecabc3c4c92c632afbc60a",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\214_87_158.tif": "4b9f285d5af63d70e42b099562368328115a48fccf1bda9568665453b4c4fa98",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\214_87_159.tif": "08038eeeb36f40da2316e76442a67fcc620ea48080c5c2a4858c27ef22b134fe",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\215_85_158.tif": "7479d1d77e52cc18e8c4dcc0166edd788cede9d3fff3ce39747efda6cd38ed82",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\215_85_159.tif": "c6ca9009034015e5a296674572e2e35a85aa3558bed67a8856a302eb8b2eb614",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\215_86_158.tif": "c91f95dd5abfc02a091cf024d470115964f52ca11633457248042eb16251e9c7",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\215_86_159.tif": "60c4cbf69048c2933410b31ce1409b43206404bd3eca675d151c7e932f89f45d",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\215_87_158.tif": "ce685073c7e4fa04529ec72c7e3435583853d8802a80b52d91a352865580550e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\215_87_159.tif": "efccb96aacdee367c30630ea5cb9e41c1f76d2bab1e6820efc50f9059cfc2c15",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\216_85_158.tif": "2c0508abc2b1d9a3b03775b3cb821b7ba496036c97dc116cbf9bb287d36ff46c",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\216_85_159.tif": "7c7d10cb02342a3b556d5168312592d825e0020e8ac0040d0f6320b88d7bfa63",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\216_86_158.tif": "64d387004c26904c15ad24fd9604f1127c7d8858aa93cd118f9eda4dd695ef01",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\216_86_159.tif": "11f96d193e9759fc77570c9d02959d75672b5ccdc6f799f7d3db45d30cbd0ba6",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\158\\216_87_158.tif": "f2823b6ec11446755cdbd1900d6425e58da04b90c4854283be1e25311683bc2f",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252385\\high_res_http\\159\\216_87_159.tif": "208c270872576dcd6ac66ba812d2de29b06374fbaeaf3390e1c24c5bb0176d63"
+      },
+      "stable_during_read": true
+    },
+    {
+      "uid": "252385|099.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "ddd2b7aa5ba726c251a9ba7b7b235c62ed1c9965bcd286bc6512ccc35eae58f7",
+      "root_cube": [
+        209,
+        90,
+        156
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "209_90_156": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|102.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "c5dc93fe9bdaf186c5ea346d2290fe185bccc475bbd816ed2f05615592a0c129",
+      "root_cube": [
+        98,
+        105,
+        209
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "98_105_209": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|104.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "e58e1e33ff04f8a28198fe674fd092f38b0c0536d7917839824ef199b00a067a",
+      "root_cube": [
+        99,
+        106,
+        207
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "99_106_207": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|107.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "5d893ffba216048e7b2c5cd5412b57a442b8e512e51870c275666f7510a1a510",
+      "root_cube": [
+        100,
+        103,
+        212
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "100_103_212": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|111.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "9aaf117cb4c227a253220948c86814928da552567eaa79fc8d65a0e4c9ebf069",
+      "root_cube": [
+        95,
+        102,
+        209
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "95_102_209": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|112.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "b827ffe31d73c547900dae5f0258da13eaf3f04dbfd02e01d2666c320cb142de",
+      "root_cube": [
+        95,
+        105,
+        208
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "95_105_208": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|113.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "8626ab629688bed8d25f3dbc3a830343b22badf5e8c0955b12bf57f397d52331",
+      "root_cube": [
+        98,
+        102,
+        210
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "98_102_210": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|114.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "81653a55e87059e84723b81549e0901a281885a79b45651f2e6af6217929cd21",
+      "root_cube": [
+        97,
+        104,
+        210
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "97_104_210": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|126.swc",
+      "outcome": "center_unavailable",
+      "raw_sha256": "72f13feee9943321b297b6399facc124d2efe8918bd6dd11f23bbfc19080021d",
+      "root_cube": [
+        205,
+        84,
+        152
+      ],
+      "usable_soma": false,
+      "source_errors": {
+        "205_84_152": "HTTP Error 404: Not Found"
+      }
+    },
+    {
+      "uid": "252385|d001.swc",
+      "outcome": "swc_unavailable",
+      "provenance_sha256": "4282e91344da55d458a7cd6d881b5933d53a2f563ba300451d0cd82a427df1e5",
+      "source_errors": [
+        "swc: raw SWC unavailable for 252385/d001.swc after 3 requests to http://10.10.31.31/swc/newswc/Monkey/252385/swc_raw/d001.swc; own-sample raw caches checked: ['D:\\\\projectome_analysis\\\\group_analysis\\\\visual_review_20261002\\\\swc_raw\\\\252385\\\\d001.swc', 'D:\\\\projectome_analysis\\\\resource\\\\swc_raw\\\\252385\\\\d001.swc', 'D:\\\\projectome_analysis\\\\neuron-vis\\\\resource\\\\swc_raw\\\\252385\\\\d001.swc']; processed SWC cache D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252385\\d001.swc is present but not used; NMT coordinates were not used. HTTP Error 500: Internal Server Error"
+      ],
+      "usable_soma": false
+    },
+    {
+      "uid": "252385|d002.swc",
+      "outcome": "swc_unavailable",
+      "provenance_sha256": "1572189806547dc0bf4077633043a50c76a2835c131a426669dc805b66cdf3a0",
+      "source_errors": [
+        "swc: raw SWC unavailable for 252385/d002.swc after 3 requests to http://10.10.31.31/swc/newswc/Monkey/252385/swc_raw/d002.swc; own-sample raw caches checked: ['D:\\\\projectome_analysis\\\\group_analysis\\\\visual_review_20261002\\\\swc_raw\\\\252385\\\\d002.swc', 'D:\\\\projectome_analysis\\\\resource\\\\swc_raw\\\\252385\\\\d002.swc', 'D:\\\\projectome_analysis\\\\neuron-vis\\\\resource\\\\swc_raw\\\\252385\\\\d002.swc']; processed SWC cache D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252385\\d002.swc is present but not used; NMT coordinates were not used. HTTP Error 500: Internal Server Error"
+      ],
+      "usable_soma": false
+    },
+    {
+      "uid": "252527|087.swc",
+      "outcome": "partial_neighbor",
+      "usable_soma": true,
+      "source_voxels_checked": 244944000,
+      "gap_voxels_checked": 69984000,
+      "all_saved_voxels_checked": 314928000,
+      "loaded_cubes": 21,
+      "missing_cubes": 6,
+      "unmarked_pixels_checked": 1166400,
+      "maximum_display_error_8bit": 0,
+      "pngs_fully_decoded": 5,
+      "panel_sizes": {
+        "soma_unmarked.png": [
+          1080,
+          1080
+        ],
+        "soma_marked.png": [
+          675,
+          728
+        ],
+        "soma_trace.png": [
+          675,
+          760
+        ],
+        "soma_stack.png": [
+          5424,
+          1096
+        ],
+        "soma_ortho.png": [
+          1418,
+          595
+        ]
+      },
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma.nii.gz": "b1b17d8c620398695b85cb62a76c0fad36a3aec9c96fd106d7289fb4d6ab2230",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma.nii.gz.json": "a87abe5c9d547a8f1d67f8a9c17995ab7c8727c2fb40483013633eaed2a64850",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252527\\087.swc": "e6a7efd8f8e4972ad31cd9423ef3ec37330aec5fba251722b8ff0febd00834bb",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma_unmarked.png": "a3e63cf9dafd596c872d4ccc4279d9ba78251a335c7af1c1f515e044dd1d00cc",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma_marked.png": "2d3de4d98107b03682d856bfea28c562301e040ce74a001dd406f1b577e96336",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma_trace.png": "23229ea6c34c870445947b2c00d1f90667af68d36856f4574168d237a3ad1dd8",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma_stack.png": "311f007ce94b9c8010c99988ccb7d06e4d5034dab96108b40697ddd8792023c9",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\087\\soma_ortho.png": "1471d1a72f73b2b00fbce7c77e811c078f39a4747f13d939d5ed31e276204820"
+      },
+      "cached_source_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\198_86_101.tif": "1eb0481a47f9552c745cf29000e2d7dd3c9f6176480d8ff15f782f8bf93fee93",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\198_86_102.tif": "08d91a4d90878c2a7778f6b03fe7f683bd61907b8b28410519cbd6675eea9423",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\198_86_103.tif": "ebade818545695ccc940c1007ffd6f6ae519dee14d85fb23b957c0bc81d7eec8",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\198_87_101.tif": "dfcc6513ef6784d16f607eb4db95ecf133b296eca241886d90c7fda398a03959",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\198_87_102.tif": "2699217b3d255843f9a25e8d6c62097e4e8ea7dde6d962ae45bd8428ed553ed6",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\198_87_103.tif": "8b023be1fbe43c319545409866f4b2ca9137a08309d9aad3b3cde9fa35511ff6",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\198_88_101.tif": "bdbc065208acbe3117f6f15d196894e84376b72d748452b6112eb7976e9b9b79",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\198_88_102.tif": "7342c9bfddbb46add023d8e559e0da6041e29e7bce503a8c429f7b56a137dbd5",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\198_88_103.tif": "8f9b1d0348bb3d9eae3b4c8e8f190d124e1ace141d91c2911f753b545596fb3e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\199_87_101.tif": "4a00121f79b5ba1cd23e9da3ee6a7b7604d2f379844a15954c5d8d81220fef7c",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\199_87_102.tif": "85b251b0e9aace3eb74eebfd4d4830bd6d0e502a911b4cb42c8a46e70ed09a74",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\199_87_103.tif": "7c931c69d982c40164fdfb84b702070f26b91cca83b2d66701f252860368a4e5",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\199_88_101.tif": "1ea7575385fa68ca616fa6ac855e798bad5ae9b9138b86a13035b5c822a78838",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\199_88_102.tif": "89092a97d0d70e7aca820eb2fcb0195eda839b9f57ac08a055fceab2a0cdb6b1",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\199_88_103.tif": "f79837b5e3ac402d07c508580b269db483c73d3dd5091fdc32dc974fe47f07f8",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\200_87_101.tif": "46f12ead3c7f41a14694a7054cb827ce345ff977ae2622a35ea36db4c7e891f3",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\200_87_102.tif": "892124c16148fbcd0dabd64c4b762167a8f0a331ea692e9c0729279bae5be7b2",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\200_87_103.tif": "35011ae19e1cb31850559ebb5ae6622ffb90d03f8236c0b061f0cec7a51c8994",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\101\\200_88_101.tif": "7c30f1b31e5a88483df128fddd44311c6c146fbcf9538701afc055e2f4a9f4c7",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\102\\200_88_102.tif": "f4372070c3d4014d81eaf33193d0c1cae52f0faba119357ceb1604d09096a606",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252527\\high_res_http\\103\\200_88_103.tif": "5f881d581ab202706b0cceb6ab0c8852f4f9f5ccf5f896004ab9a5b492e4f629"
+      },
+      "stable_during_read": true
+    },
+    {
+      "uid": "252384|079.swc",
+      "outcome": "partial_neighbor",
+      "usable_soma": true,
+      "source_voxels_checked": 279936000,
+      "gap_voxels_checked": 34992000,
+      "all_saved_voxels_checked": 314928000,
+      "loaded_cubes": 24,
+      "missing_cubes": 3,
+      "unmarked_pixels_checked": 1166400,
+      "maximum_display_error_8bit": 0,
+      "pngs_fully_decoded": 5,
+      "panel_sizes": {
+        "soma_unmarked.png": [
+          1080,
+          1080
+        ],
+        "soma_marked.png": [
+          675,
+          728
+        ],
+        "soma_trace.png": [
+          675,
+          760
+        ],
+        "soma_stack.png": [
+          5424,
+          1096
+        ],
+        "soma_ortho.png": [
+          1418,
+          595
+        ]
+      },
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma.nii.gz": "94141639178fec5076fa9ddf36e188eb07dfeb2d2cc67ce0f4a633306b333b4a",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma.nii.gz.json": "e3f50cfce1f6a4bc501e99c8b80d620e99f606d74b5f89d0d4229d11b21126b3",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252384\\079.swc": "cd59a11119a0b23f965e523a00cf22a62244630017297f334f90f5c8e2934e7e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma_unmarked.png": "3888682becada846ecdb6e5e85c79cfbddd73d26d4e53fca291a6dafb4bd0855",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma_marked.png": "7098a1c460bd28687648f473af90a916256215f8b11950ae830d6f795a5a0d07",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma_trace.png": "84a25c52ee3a7a0141a587aad4f536942b1f478d5675c32cdae75427656a0b04",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma_stack.png": "679e64f767cfffc44613baf7519b7014db29489b2aea4b638a56ef3d7ce5446e",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\079\\soma_ortho.png": "5f437ec16d8ffcb093e651f21d65cf1ffa1b1f96acdba9fb1dcca8523f604c7b"
+      },
+      "cached_source_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\78_150_75.tif": "71dfe24f2f5feb734f3710b68b75414998d2c0cd731ac4a2e688cc9f81a285d1",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\78_150_76.tif": "4a64168aed07e1857e6f312ae30710793d53c848d5e476d093815e09b7403b21",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\78_150_77.tif": "c5bae98b269a62ec8703645fcfc5fec1a283337aecdbcf655c5f566d9a30ea2b",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\78_151_75.tif": "afb3c5612109a9ffe60c25f88adb1af8d8a0ad34988952bba565df970ea3b54a",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\78_151_76.tif": "a7d90f2148d08d8fe12a53405f966f682b251bc64aa541c0a0e7567221655cd3",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\78_151_77.tif": "7edd3ef0f1c5c02595d7c649629083122e290f66b97e1a10a421e7878a516b3b",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\79_149_75.tif": "7d93433ff8d287ac36b21777ebda5581c4c0948f03060bed0af3d168000cdece",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\79_149_76.tif": "a592d1910df79633da87819d1941c7da59a3d404f56a2107d091009d8ef098b1",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\79_149_77.tif": "b807c23e6404fce1b11d68ee286b0ab8a6c82208986f2836bfb91eb14f3fe350",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\79_150_75.tif": "4fe8e7b626b194d5d4113010c92f1252a8d98ed766f29b731987f49dd0ba571b",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\79_150_76.tif": "c8c61fb9af7f358cd68ce44c97a3ec2664e68c53f2bd552d5bec58d370f8c869",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\79_150_77.tif": "a0c4eafb8cbdf42e7d2f0e9545e5494f1bd44e4d3d04bb0a5a212556469d38e3",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\79_151_75.tif": "7f09f220b2ca773283e3053a50c9154fd8bb662e13ded6f60c66801dde30fe35",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\79_151_76.tif": "67ef45c841db52505115faadc242f0c0b34ff595147fee5850485c6ac01fe915",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\79_151_77.tif": "cc4769be8fc7dd3f93734219bcf2c280f252e29fa305f6c1652adb5818f13fe1",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\80_149_75.tif": "7f30b21fe00aca4cf2c10ffa991f4b1a37216ba028657defa84a34e69c2178d8",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\80_149_76.tif": "be63618759f57526e6ce17878170c51b7735e5a94dda27a9751ddb6d014ac986",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\80_149_77.tif": "70b859fdf6823e52923a281616a6301cafb312104238cf054413850796842c5d",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\80_150_75.tif": "646544e8e4cbe8187c1a5c56ec09160d9a878522a16062e71139bcda1a462113",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\80_150_76.tif": "6e15c89e301fadec6dff9de206a50b40f714906c9d2c6e05fd839c8548653704",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\80_150_77.tif": "7629158c4197e4111a9bd4fa1f7fb6f2b575b9046dc1d6eb8699e22fd0bd8571",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\75\\80_151_75.tif": "96a6ebe529b371717b6cc84b3460f781716ed21d89f52e0167684339ddb7a377",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\76\\80_151_76.tif": "dec2ddef9404ae675a21bbe81f432d143add56cd52e9e89990cbfa1b1d79a077",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\cache\\cubes\\252384\\high_res_http\\77\\80_151_77.tif": "5ca972e47d4eb03903fabd83da2d5d5b56355bc753bd40c7d8345b826da511a4"
+      },
+      "stable_during_read": true
+    }
+  ],
+  "failures": [
+    {
+      "uid": "252385|025.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|026.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|027.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|036.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|037.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|038.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|039.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|040.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|041.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|042.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|043.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|044.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|045.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|046.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|050.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|051.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|052.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|053.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|054.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|055.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|056.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|057.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|058.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|059.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|060.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|061.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|062.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|063.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|064.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|065.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|066.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|067.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|068.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|069.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|070.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|071.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|072.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|073.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|074.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|020.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|023.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|024.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|028.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|029.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|030.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|031.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|032.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|033.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|034.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|035.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|003.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|008.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|009.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|010.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|014.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|015.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|016.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|017.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|047.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|049.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|075.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|076.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|077.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|078.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|079.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|080.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|081.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|082.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|083.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|084.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|085.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|087.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|100.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|125.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|011.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|012.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|013.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|018.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|019.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|021.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|022.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252385|048.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|048.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|049.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|050.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|051.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|052.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|053.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|054.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|055.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|056.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|057.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|058.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|059.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|060.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|088.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|089.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|090.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|091.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|092.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|093.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|094.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|095.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|096.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|097.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|098.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|099.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|075.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|076.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|077.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|078.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|086.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|003.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|043.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|046.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|047.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252527|085.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|048.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|049.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|053.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|077.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|008.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|010.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|011.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|017.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|018.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|019.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|020.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|021.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|022.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|023.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|024.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|025.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|026.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|027.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|028.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|029.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|030.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|031.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|032.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|033.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|034.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|035.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|036.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|037.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|038.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|039.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|040.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    },
+    {
+      "uid": "252384|041.swc",
+      "error": "'soma_complete'",
+      "type": "KeyError"
+    }
+  ]
+}

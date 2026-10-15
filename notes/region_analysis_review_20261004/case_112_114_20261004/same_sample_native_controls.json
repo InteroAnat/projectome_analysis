@@ -1,0 +1,38 @@
+{
+  "status": "rendered_pending_actual_inspection",
+  "started_at": "2026-10-04T08:21:16.553781+08:00",
+  "controls": [
+    {
+      "NeuronID": "111.swc",
+      "manual_area": "R-IDD5",
+      "side": "R",
+      "native_root_xyz_um": [
+        9928.95703125,
+        28292.953125,
+        27001.5
+      ],
+      "native_section_index": 9000,
+      "source_path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09000_CH1_resample.tif",
+      "source_sha256": "1c615be92b98ee060df9ef1fc8c77b0c68dccf2deb8e1fc150e5cbf369640417",
+      "raw_sha256": "6f67410787a3e936e12ac61ea8bb6853efe3979d130bee8edbe8fca28822fb0e",
+      "figure": "notes/region_analysis_review_20261004/case_112_114_20261004/control_111_native_locator.png",
+      "figure_sha256": "e501bdf951756104193f0c9b2108a13d7c2c1da3816a8ab6aaaad6a49b51df32"
+    },
+    {
+      "NeuronID": "422.swc",
+      "manual_area": "L-IDD5",
+      "side": "L",
+      "native_root_xyz_um": [
+        45990.3203125,
+        27255.234375,
+        28519.5
+      ],
+      "native_section_index": 9506,
+      "source_path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09506_CH1_resample.tif",
+      "source_sha256": "2b4a0a428489cca63b762d08a34133cad4896f428164d15f1742eccbacf9c0d1",
+      "raw_sha256": "2017dae49b6c7e3e52aae27e676a5e03f6fddd4c2473ceb699c26d6216a8a721",
+      "figure": "notes/region_analysis_review_20261004/case_112_114_20261004/control_422_native_locator.png",
+      "figure_sha256": "815d7ea1adfc24cad83d6f3654add4909eedf2d1bd437fd74148e1a7809d9005"
+    }
+  ]
+}

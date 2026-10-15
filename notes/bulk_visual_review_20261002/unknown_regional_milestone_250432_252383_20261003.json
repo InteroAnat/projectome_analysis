@@ -1,0 +1,581 @@
+{
+  "observed_utc": "2026-10-03T09:40:30.5341510Z",
+  "scope": "All original live-manifest Unknown-labelled candidates for 250432 and 252383",
+  "sample_counts": {
+    "250432": 19,
+    "252383": 28
+  },
+  "verified_fields": 47,
+  "manifest_sha256": "ca7b00a17aa53b64280239904d8259d22c7684b15b91208da953ff295b6c2632",
+  "readback_path": "notes/bulk_visual_review_20261002/successor_regional_readback_20261003.json",
+  "readback_sha256": "0c5b0eaddb589b2f41cc0fe939a4cea780edfac2f8b1378cf3be2f87c055307d",
+  "fields": [
+    {
+      "uid": "250432|111.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.47222062722712915,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_111.json",
+      "report_sha256": "f4b186e44d3e5ff890c115859839c4920fa2298d51342c9567090baae93695a3"
+    },
+    {
+      "uid": "250432|121.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7995116350249678,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_121.json",
+      "report_sha256": "bef5a97b818d23b59e504dd5490c16cf5398ff661bc277a95e3b825b69a6366d"
+    },
+    {
+      "uid": "250432|125.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7107155523280361,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_125.json",
+      "report_sha256": "969eca62b2e19932ec69145fa0136cf376666bd7fcfda994f17f5174a6c4e984"
+    },
+    {
+      "uid": "250432|127.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8876766926181751,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_127.json",
+      "report_sha256": "6ff327ca5e2823786c1361896f1b512a2df18ecbf16492d2139e679c77067555"
+    },
+    {
+      "uid": "250432|129.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8564386198976576,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_129.json",
+      "report_sha256": "1fc192f8eb2224994e90f5c60a6d825cac80a3ebe1977c1211f7712de4814f06"
+    },
+    {
+      "uid": "250432|130.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8606426041490977,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_130.json",
+      "report_sha256": "ff7e1dd47414f4e38fc8566a2d341e3785d8ebf09a794b929b9097a095c910e9"
+    },
+    {
+      "uid": "250432|132.swc",
+      "status": "derived_highres",
+      "coverage_fraction": 1.0,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_132.json",
+      "report_sha256": "b370df9a612e455d777c4ac6cd0244f4fa476cf308e90ea50643ce2f199f21c1"
+    },
+    {
+      "uid": "250432|136.swc",
+      "status": "derived_highres",
+      "coverage_fraction": 1.0,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_136.json",
+      "report_sha256": "8ebb6ecb6139d66ab13510a8fd5615f8989ab525b6e04aa15997db35c253c7c0"
+    },
+    {
+      "uid": "250432|137.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.9997717130483749,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_137.json",
+      "report_sha256": "7df3eac480a56f83e475f347e8940cc9477aaa2c15edeb55b5f8b68a2eb65a0f"
+    },
+    {
+      "uid": "250432|143.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.9999492695663055,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_143.json",
+      "report_sha256": "f1ba37f9609d2699c694d986841243959555b9a079ffe91e0461895e3426625a"
+    },
+    {
+      "uid": "250432|168.swc",
+      "status": "derived_highres",
+      "coverage_fraction": 1.0,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_168.json",
+      "report_sha256": "0fee91005bbac06b8fd3b5f6e3bd595d23898c8fbbb69a2910b95d340938edfa"
+    },
+    {
+      "uid": "250432|169.swc",
+      "status": "derived_highres",
+      "coverage_fraction": 1.0,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_169.json",
+      "report_sha256": "355d2eed7a540f8de6856698f0e1832fdbf5e1ea72efb798a5e902d3b9d3afbd"
+    },
+    {
+      "uid": "250432|182.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7821204802999341,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_182.json",
+      "report_sha256": "a632671428e8ced2156e9ff1e1a02f9b01ac08bb90d0ab1a713ad08132576642"
+    },
+    {
+      "uid": "250432|183.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7973251533327358,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_183.json",
+      "report_sha256": "fc0ec8ecd254e95a6f3cd336c2659ac9b8575615783208b595ac095e079a6f74"
+    },
+    {
+      "uid": "250432|193.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7551833820627333,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_193.json",
+      "report_sha256": "769ad2893c44a2cc66d37051ad817e586aad1c5a9b6e74f03b1339c831af5dab"
+    },
+    {
+      "uid": "250432|195.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6621961881152122,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_195.json",
+      "report_sha256": "c6224175939f0c326e2e6988a2dc6770d351bb209bddaa69d2d594395618f049"
+    },
+    {
+      "uid": "250432|205.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6284181743469724,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_205.json",
+      "report_sha256": "85f4c5df7eab3f59d39f06210832d1ec8ac0c1b7e80d190db42705b4b40c884c"
+    },
+    {
+      "uid": "250432|210.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8264468951074933,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_210.json",
+      "report_sha256": "54bcbff5d33fe357e34343784b10119410a2df2171022e8943efa5955aa7dc5e"
+    },
+    {
+      "uid": "250432|231.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8630131896711871,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_250432_231.json",
+      "report_sha256": "8ef9dd830da517090b9f856c6446f0344f80b05d70c794b73c9bb82fdec1e8aa"
+    },
+    {
+      "uid": "252383|006.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.4877290459865232,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_006.json",
+      "report_sha256": "e1c312f1ce970b205e042ca856a15c1d7c7febc4e13c5231e0670c943e5a8a39"
+    },
+    {
+      "uid": "252383|007.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.43411750797966664,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_007.json",
+      "report_sha256": "63e46a57994884d5d0f05f714e73908c85eda112baf01442672a251ecdc23095"
+    },
+    {
+      "uid": "252383|010.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.43739272627041687,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_010.json",
+      "report_sha256": "1e4095a917505c07e57fa6eedb937b8f88593f25be2554580a5f1ca05f06e664"
+    },
+    {
+      "uid": "252383|012.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.33251770069382325,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_012.json",
+      "report_sha256": "9dc0ffa5922da40c5d5510786014e13e37cef4af19c3ba07c57877071cc3740f"
+    },
+    {
+      "uid": "252383|013.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.43539087700336077,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_013.json",
+      "report_sha256": "c304ac17e12384b7606d4ab4e7243d13dd7a093cba8e3e2e55cc0020e7b24943"
+    },
+    {
+      "uid": "252383|036.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6423994730886798,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_036.json",
+      "report_sha256": "a3be3539e1f381fbd170880d72c54e23767054d7c054a8ab656d8b6e01c1cf79"
+    },
+    {
+      "uid": "252383|041.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.403652914056035,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_041.json",
+      "report_sha256": "e54c457c4d09f6b2b7776240df3e303426c0d3cbcf318ef000e762fe5be39445"
+    },
+    {
+      "uid": "252383|050.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7359312988701805,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_050.json",
+      "report_sha256": "004767fe466b1493867f62de3b9d9d94b752a3c1b3a268b86275aa8e6c515277"
+    },
+    {
+      "uid": "252383|051.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7182854466222832,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_051.json",
+      "report_sha256": "c683c48c40eeaebbe8b8b8c1813cb2257cea80bcbde7204285c01d02a6c0de2c"
+    },
+    {
+      "uid": "252383|075.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7673486254005735,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_075.json",
+      "report_sha256": "2c86205467d3edce1d0665b122be6bcb6c9bc2eb1e0bfb7160e7367fa4166cdc"
+    },
+    {
+      "uid": "252383|076.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7639521726647864,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_076.json",
+      "report_sha256": "8a2fd4c01d3399f1f0e557cfc99b129040fabfad77a610752e0911bbe4b83479"
+    },
+    {
+      "uid": "252383|085.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7785959164372689,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_085.json",
+      "report_sha256": "fb4cdb2c355f1a64b3c054fef7c1c397679b9fd03476354bcc80d2a0c9dd85a7"
+    },
+    {
+      "uid": "252383|090.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.4963161250065527,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_090.json",
+      "report_sha256": "1696309a379d4c64857efdc6b75ffba12676d06868890b48c6e9e0b47bc6f934"
+    },
+    {
+      "uid": "252383|092.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.4851097722034426,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_092.json",
+      "report_sha256": "4b5a2c50a927b3889344f7ff719200c6bdd9888ef0f823e0067b7a4a8bda9f88"
+    },
+    {
+      "uid": "252383|093.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.46684849610727375,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_093.json",
+      "report_sha256": "6fda4466eac61ffe0bc78764c2c8ac1df2708d14e796b2e0d21bce7660055af4"
+    },
+    {
+      "uid": "252383|094.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.45347305490348405,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_094.json",
+      "report_sha256": "2bed88ed009ee251c764c9337f9fa2cd4ebc762d222776df4fa4d81a8866c6ca"
+    },
+    {
+      "uid": "252383|095.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.46895043805729497,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_095.json",
+      "report_sha256": "c3a1dde50774c2de11626a9d6976d0a76b9bb3b2f4e196af3ec492240e67823c"
+    },
+    {
+      "uid": "252383|096.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.48911556583858273,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_096.json",
+      "report_sha256": "ab4674a21c5a2fffc8114a594b9158d987cd698ef0fa341d00fce927071b494b"
+    },
+    {
+      "uid": "252383|097.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.4516491311029672,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_097.json",
+      "report_sha256": "51c61ced5b434945c324364992eb64740a8354e3b41258ec04cc62d8f7cf3aed"
+    },
+    {
+      "uid": "252383|117.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5771165115768497,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_117.json",
+      "report_sha256": "3f82e035d8fd50e8c0f78f896803db1cf51a4e18b0e2428e591004aeeb48cd0d"
+    },
+    {
+      "uid": "252383|118.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.613902506252526,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_118.json",
+      "report_sha256": "ff97e13d598014b3ea1466e37af0f1b9cb2f3805a02d1f7fbaf2023f29314cc3"
+    },
+    {
+      "uid": "252383|119.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6038325151641721,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_119.json",
+      "report_sha256": "784c575c05ce7a25ba9413c035ecc19af6e0cfa14627c92fb0bc14b6c8c4b3d0"
+    },
+    {
+      "uid": "252383|120.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5473291338050766,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_120.json",
+      "report_sha256": "16c5eafda1ae2a63b4f17dbf2abff6c757f3f257ee30aef0716c2ccc862a58fd"
+    },
+    {
+      "uid": "252383|121.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5632701513965243,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_121.json",
+      "report_sha256": "5222e507c302633b66304c40b6e65f031350a21f7e672701caa9e8381f4b574c"
+    },
+    {
+      "uid": "252383|123.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5378903281374022,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_123.json",
+      "report_sha256": "14f4d361b67bf61f09f904a6b706835085d4d48daceec62cdfac7318023f4cdb"
+    },
+    {
+      "uid": "252383|124.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5842973671322176,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_124.json",
+      "report_sha256": "376245542c9e6378c35ab7c77dbc5c7e880a33daf40ab63f7186cf05531611df"
+    },
+    {
+      "uid": "252383|126.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6641760836566032,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_126.json",
+      "report_sha256": "3bd6848b3c7ff883776962c70acaded2c52ef15055441495880b7fe4287ac0d5"
+    },
+    {
+      "uid": "252383|127.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6458863536824376,
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_path": "group_analysis/visual_review_20261002/manifest/derived_context_pilot_252383_127.json",
+      "report_sha256": "c94c20f1f001add0f23cbcb131f6eafac9018c63f1bc30b35a15783f36f55111"
+    }
+  ],
+  "anatomical_acceptance": false,
+  "human_region_assignment": false,
+  "metadata_unresolved_additions_included": false
+}

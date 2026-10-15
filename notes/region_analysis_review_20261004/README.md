@@ -1,0 +1,66 @@
+# Region assignment and laterality review, 2026-10-04
+
+Agent: Codex. Branch: `codex/fmost-methods-review-20261002`.
+
+## Current provisional IDM assignment, 2026-10-08
+
+Agent: Codex. Date: 2026-10-08 (Asia/Shanghai).
+
+The user selected **IDM provisionally for 251637/114.swc**: "make it IDM first,". With its confirmed R hemisphere and supplied layer 3, its working assignment is now **R-IDM, layer 3**. 112 retains IDM/layer 3 with confirmed R. The [reviewed assignment record](case_112_114_20261004/idm_assignment_20261008/reviewed_soma_assignments.json) was applied through the existing analysis interface to both cached atlas graphs. [Fresh readback](case_112_114_20261004/idm_assignment_20261008/assignment_readback.json) passes both as **R-IDM / R / ITi**, with zero hemisphere conflicts. Original duplicate annotations, historical workbooks and bulk figures are preserved; full cohort tables were not regenerated. Fine parcel anatomy still needs validation. The earlier entry below describes the state before this provisional choice.
+
+## Human confirmation update, 2026-10-08
+
+Agent: Codex. Date: 2026-10-08 (Asia/Shanghai).
+
+The user confirmed **251637/112.swc and 251637/114.swc are anatomically R**, after direct NeuronView inspection. Their supplied manual L prefixes are therefore incorrect. **114's IDD5-versus-IDM parcel remains unresolved.** The [dated case record](case_112_114_20261004/README.md) separates this accepted hemisphere finding from original source annotations and the historical Unknown/Unclassified derivative rows, which have not been regenerated. This update changes notes only and does not establish global source calibration or registration accuracy. The baseline and October 4 evidence below retain their original scope.
+
+## Current evidence
+
+The read-only baseline checked 1,743 rows in eleven existing workbooks: nine monkey step-1 outputs (1,223 rows), plus the older and regenerated 251637 inferred tables (260 rows each). All direct atlas soma labels agree with ARM level-6 lookup using persisted voxel coordinates. All five new-monkey rounding-boundary rows have now been reconciled with full-precision SWC roots; direct soma labels are unchanged. Refined labels are not direct atlas labels and are not treated as atlas lookup passes.
+
+The official bundled ARM level 6 and the analysis ARM level 6 are voxel-for-voxel equal. Their grids match the official template and hemisphere masks. The mask-value semantics are **1=R, 2=L**, established against the documented official CL/CR/SL/SR labels across the volume; the complete contingency and source hashes are in `atlas_laterality_visual_manifest.json`. The local distribution README documents those prefix meanings. The [official AFNI NMT documentation](https://afni.nimh.nih.gov/pub/dist/doc/htmldoc/nonhuman/macaque/template_nmtv2.html) describes the supplied hemisphere masks.
+
+The hemisphere audit checked 1,483 rows (all nine monkey tables plus the regenerated 251637 inferred table). It found **two refined-label versus mask conflicts**, and **zero persisted Soma_Side versus mask conflicts**. The two conflicts are 251637 `112.swc` and `114.swc`: refined names `L-IDM` / `L-IDD5` disagree with the cached atlas-space roots, which lie in the right hemisphere. The previously recorded L-to-R side drift is therefore not sufficient evidence that R is wrong. The original label, native source, and transformation provenance need reconciliation before changing accepted annotations.
+
+## Visual evidence
+
+`figures/` contains deterministic L/R/Unknown examples for each of the nine monkeys, on actual coronal, axial and sagittal NMT slices, plus separate soma-and-endpoint panels for the two historical conflicts. No coordinates are mirrored. The conflict panels use the original cached atlas-space SWC roots and all 92 / 198 graph endpoints, respectively; endpoint views are explicitly projection views. These are atlas-frame checks, not proof of native fMOST-to-NMT registration accuracy or insular cytoarchitecture.
+
+The first rendering incorrectly assigned colors by mask value instead of its meaning. That rendering was rejected and regenerated with 1=orange/R and 2=blue/L. All current figure hashes refer to the corrected rendering. Actual image inspection has covered both historical conflict panels and all nine monkey example sheets (11 figures total). The displayed hemisphere masks and soma positions agree; the two refined-label conflicts remain explicit. The 252383 Unknown example is near/outside the cortical outline and is not an accepted tissue-region assignment. See `visual_inspection_readback.json` for the exact inspected figure hashes and observations.
+
+## Code changes and verification
+
+- The shared laterality parser recognizes refined `L-`, `R-`, `L_`, and `R_` labels. The neuron classifier uses the same parser. Invalid soma-side values remain unknown.
+- Automatic side inference from the sample's L/R coordinate medians has been removed. An optional side reference requires exact row-index alignment, explicit provenance and valid L/R/Unknown values; label/reference conflicts are flagged and remain unclassified.
+- Out-of-bounds terminal nodes are retained as explicit missing-label targets rather than silently dropped.
+- Per-neuron analysis requires a selected 3D atlas and unique label indices.
+- Population analysis accepts explicit local neuron lists/SWC sources, records load failures, and writes derived neuron exports into its own output folder. This enables isolated real-data verification without refetching or overwriting the original caches.
+- Soma and terminal hierarchy columns are now actually generated. Real list cells no longer fail the terminal hierarchy's scalar missing-value test. Length outputs explicitly record their existing voxel unit.
+
+Sixteen regression tests pass using `python -B -m unittest discover -s tests -p test_region_analysis.py -v`. The suite includes historical label cases, population-independence of unknown assignments, mask calibration, provenance/alignment/conflict validation, shuffled label indices, outside-atlas endpoints, hierarchy list cells, correct ARM level metadata semantics and actual XLSX export readback including unknown-side lengths. `pytest` is not installed in the projectome environment; unittest ran successfully. This test evidence does not establish anatomical correctness.
+
+The official mask reference is now wired into the existing editable step1 entrypoint. Import no longer starts two analyses or reads a legacy workbook. Its two-neuron real-data smoke passed, preserving the manual labels for 112/114 and flagging both conflicts. All projection exports honor the resolved side, including Unknown, instead of bypassing a conflict by re-parsing its label. The regeneration script now uses a fresh local-SWC master analysis and writes new subtables, recomputing dependent fields together while preserving template membership. Its full 562-neuron real-data execution and every sheet of eleven rebuilt subtables pass independent saved-output readback.
+
+The historical-notes crosswalk is in `prior_decisions_crosswalk.md`, with 19 source hashes and all twelve April manual type-correction IDs in `historical_notes_readback.json`. It preserves mirrored flatmap presentation, SQ4 proportion normalization/SQ5 rank mismatch, family-specific BH, manual label provenance, canonical/staging separation, and the explicit August decision to retain editable step scripts. First/Last_Level in the ARM key are availability metadata, not parent names; the fallback parser now respects that meaning. Existing voxel-based lengths are labelled as atlas voxels rather than incorrectly described as millimetres; numerical length policy is unchanged.
+
+`native_bulk_laterality_readback.json` records eight actual full-section locators (one atlas-L and one atlas-R example per copied sample), plus actual inspection of the existing 252385/050 wide-field and soma trace panels. Native atlas-L examples are on viewer-right and atlas-R examples on viewer-left. Screen side and anatomical side remain separate observations. Bulk high-resolution soma and wider trace contexts remain the primary native review package; these NMT panels are supplementary coordinate checks. The other five samples have high-resolution-derived local context and no full-section locator. All existing bulk outputs remain unchanged.
+
+## Terminal real-data verification
+
+`final_actual_region_readback.json` passes 1,912 distinct neurons / 2,172 exported rows: 1,483 cached-source rows, 127 recovered-source rows, and a 562-neuron historical master (260 overlap). Every sheet of all eleven rebuilt subtables matches its fresh-master membership subset. Bound source SWCs and protected workbooks/manifest/cohort inputs are unchanged. The original vector-rounding checker findings remain preserved; the corrected scalar-rounding independent checker passes without changing production length policy.
+
+`final_boundary_and_manual_cases.json` reconciles seven baseline rounding-boundary instances and all twelve April correction cases, with no direct atlas soma-label changes. Ten correction cases recompute as ITi. The two retained L-label / R-mask conflicts resolve to Unknown/Unclassified in isolated derivatives; accepted annotations remain unchanged.
+
+`native_contact_sheet_visual_readback.json` records actual inspection of all seventeen pages containing 299 available native locators. Relative side matches the atlas annotations at locator scale; 252384/003's crop is in/adjacent to a blank rectangular source area and needs tissue review. The other five samples lack full-section locators in the copied source set. No absolute native orientation or fine cytoarchitectural acceptance is inferred.
+
+See `visual_methods_and_style.md` for the public toolkit versus custom bulk and supplementary QC distinction. GUI source is unchanged; toolkit backend changes are substantive. The public-style actual 252385/050 soma/wide-field pair was visually inspected, with hashed input/output provenance. Existing bulk packages were not overwritten.
+
+Software/output review is complete. After the October 8 human hemisphere confirmation, scientific follow-up is reconciliation of preserved L prefixes with confirmed R in reviewed derivatives, validation of 114's provisional IDM parcel, tissue review of the flagged crop, broader native orientation/registration evidence, accepted membership and biological cluster count. These are not software-test conclusions.
+
+## Reversibility
+
+`rollback/` holds pre-review versions of seven changed production files and a scoped `region_review.patch`, with before/after hashes. The population snapshot preserves its earlier uncommitted edits, and the regenerator snapshot preserves its inherited untracked content. `git apply --reverse --check notes/region_analysis_review_20261004/rollback/region_review.patch` passed without changing files. New tests, scripts, hemisphere module and reports are separately identifiable. No commit, push or cohort promotion has occurred.
+
+## Targeted follow-up for 112/114
+
+The October 4 [native and original-source case review](case_112_114_20261004/README.md) favored localized manual L-prefix errors: both match the R side of same-sample controls, while 293/295 distinct Henry annotations agree with atlas sides. On **2026-10-08 the user confirmed both are anatomical R in NeuronView**, resolving their hemisphere question. Original annotations and historical Unknown/Unclassified derivatives remain unchanged. The duplicate 114 parcel entry is preserved; the current working parcel is IDM by the subsequent provisional user decision above. Fine parcel validation and broader acquisition/transform provenance remain open. See [human confirmation provenance](case_112_114_20261004/human_laterality_confirmation_20261008.json).

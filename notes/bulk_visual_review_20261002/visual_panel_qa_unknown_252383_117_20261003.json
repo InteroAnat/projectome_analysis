@@ -1,0 +1,29 @@
+{
+  "observed_utc": "2026-10-03T09:12:56.0510964Z",
+  "uid": "252383|117.swc",
+  "review_type": "Direct representative panel inspection by Codex; no human region assignment",
+  "context_status": "derived_partial",
+  "requested_field_um_xyz": [
+    4000.0,
+    4000.0,
+    30.0
+  ],
+  "coverage_fraction": 0.5771165115768497,
+  "requested_cubes": null,
+  "missing_cubes": 149,
+  "png_sha256": {
+    "context_marked.png": "1c0142b8e670fc59108b10ffabda7f01b717c7076237854c8479f62194fcc617",
+    "context_coverage.png": "01aa7cc08c626eb6b6634217ed85d4f9b5a9fe99f2a2cabb73c84238bb52e052",
+    "soma_marked.png": "1935f1cd4a50ebdc58cb661a46232403365e3ef8727fb271fdb0736286ee06dc"
+  },
+  "findings": [
+    "Regional context has conspicuous rectangular acquisition gaps; these correspond visually to black regions of the displayed source-coverage mask.",
+    "Cyan raw-root marker is within acquired central coverage.",
+    "Soma panel shows branching fluorescence around the cyan raw-root marker; caption reports 27 loaded cubes and zero missing soma cubes.",
+    "Regional context is partial; surrounding black regions cannot establish anatomical absence.",
+    "Regional marked caption retains the prior producer code and requires the scheduled final saved-volume caption refresh."
+  ],
+  "scope": "Representative visual usability only; independent source/pixel/mask checks are in successor_regional_readback_20261003.json",
+  "anatomical_acceptance": false,
+  "human_fields_modified": false
+}

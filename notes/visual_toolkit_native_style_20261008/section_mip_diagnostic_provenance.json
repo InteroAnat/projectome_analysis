@@ -1,0 +1,77 @@
+{
+  "status": "rendered_pending_actual_inspection",
+  "source_sections": [
+    {
+      "z_index": 12459,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12459_CH1_resample.tif",
+      "sha256": "59d1ae53140981eccd92728d6400a6dd03d66c2b0a2cbcf0a21811ce2786a630"
+    },
+    {
+      "z_index": 12460,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12460_CH1_resample.tif",
+      "sha256": "918f999d4e79c243c8d57a7441b3183b10c2d86f7d285a8cebd8c7e985526082"
+    },
+    {
+      "z_index": 12461,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12461_CH1_resample.tif",
+      "sha256": "5b77689a52d32dd32e2958f7ac0f675badc584d00a4b0b1341c8c7f0fe1cb4ee"
+    },
+    {
+      "z_index": 12462,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12462_CH1_resample.tif",
+      "sha256": "acb3335e663d201f42023abf1cd0e292363b00e687d99e10979eae9d7fe880d9"
+    },
+    {
+      "z_index": 12463,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12463_CH1_resample.tif",
+      "sha256": "bcad053462019a4b5349c326a216a2e0276532d4845868eec6cf7e15627f0692"
+    },
+    {
+      "z_index": 12464,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12464_CH1_resample.tif",
+      "sha256": "3c183670016158cde76ec4a62fdb8cc53e78e3945504944ce643494068961621"
+    },
+    {
+      "z_index": 12465,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12465_CH1_resample.tif",
+      "sha256": "91ae3e269c8397e1b8378a69ff6f0f7851d8bf6e31e1b4db55ea4ae9d71e1cbb"
+    },
+    {
+      "z_index": 12466,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12466_CH1_resample.tif",
+      "sha256": "344dba205ba0d4dfc44adfbbd880178e1f1a3ed71473f46d8ff47885b5d9afa2"
+    },
+    {
+      "z_index": 12467,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12467_CH1_resample.tif",
+      "sha256": "c6ea4c050b53fd7d855941f9fe93df78fd2c2b209633c9de9e61d610882a3e3e"
+    },
+    {
+      "z_index": 12468,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\252384_CH1_resample\\resample_5um\\252384_12468_CH1_resample.tif",
+      "sha256": "bac4c52241a5dc96863f3127f296fc8e5b40caab29949880de0b4e1c4d992f78"
+    }
+  ],
+  "soma_display_xy": [
+    576.748388671875,
+    225.180712890625
+  ],
+  "soma_native_xyz_um": [
+    46139.87109375,
+    18014.45703125,
+    37393.5
+  ],
+  "downsample_method": "16x16 maximum aggregation for display only",
+  "full_section_projection": "voxelwise maximum over available same-sample context source sections",
+  "coordinates_shifted": false,
+  "source_data_modified": false,
+  "tissue_mask_or_anatomical_acceptance": false,
+  "figure": {
+    "path": "notes/visual_toolkit_native_style_20261008/sample-252384_neuron-003_desc-sectionVsMIP_alignmentQC.png",
+    "sha256": "307cd7c637326dddd9bb128234671aece2ca1bd7cdf0c0c3ec1c659d94dbd4c7"
+  },
+  "actual_visual_inspection": {
+    "status": "inspected",
+    "observation": "Ten-section MIP conceals source-section discontinuities; signal under marker is insufficient for mapping acceptance. See individual_section_readback.json."
+  }
+}

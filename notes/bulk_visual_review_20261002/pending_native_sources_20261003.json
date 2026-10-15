@@ -1,0 +1,66 @@
+{
+  "agent": "Codex",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "scope": "Read-only bounded network probes; only this local report written. No full SWC/image download, source regeneration or server writes.",
+  "records": [
+    {
+      "raw_head_status": 200,
+      "raw_prefix_get_status": 206,
+      "cube_head_status": 200,
+      "cube_prefix_get_status": 206,
+      "prefix_request_range": "bytes=0-4095",
+      "raw_prefix_bytes_read": 4096,
+      "cube_prefix_bytes_read": 4096,
+      "cube_content_type": "image/tiff",
+      "cube_magic_hex": "49492a00",
+      "sample": "252790",
+      "neuron": "014.swc",
+      "checked_at": "2026-10-03T07:32:17.276007+08:00",
+      "raw_swc_url": "http://10.10.31.31/swc/newswc/Monkey/252790/swc_raw/014.swc",
+      "cube_url": "http://bap.cebsit.ac.cn/monkeydata/252790/cube/70/171_135_70.tif",
+      "raw_content_length": 3618624,
+      "cube_content_length": 5057646,
+      "raw_content_range": "bytes 0-4095/3618624",
+      "cube_content_range": "bytes 0-4095/5057646",
+      "request_methods": [
+        "raw HEAD",
+        "raw GET Range",
+        "cube HEAD",
+        "cube GET Range"
+      ]
+    },
+    {
+      "raw_head_status": 200,
+      "raw_prefix_get_status": 206,
+      "cube_head_status": 200,
+      "cube_prefix_get_status": 206,
+      "prefix_request_range": "bytes=0-4095",
+      "raw_prefix_bytes_read": 4096,
+      "cube_prefix_bytes_read": 4096,
+      "cube_content_type": "image/tiff",
+      "cube_magic_hex": "49492a00",
+      "sample": "250432",
+      "neuron": "116.swc",
+      "checked_at": "2026-10-03T07:32:17.277007+08:00",
+      "raw_swc_url": "http://10.10.31.31/swc/newswc/Monkey/250432/swc_raw/116.swc",
+      "cube_url": "http://bap.cebsit.ac.cn/monkeydata/250432/cube/95/95_98_95.tif",
+      "raw_content_length": 534933,
+      "cube_content_length": 3925367,
+      "raw_content_range": "bytes 0-4095/534933",
+      "cube_content_range": "bytes 0-4095/3925367",
+      "request_methods": [
+        "raw HEAD",
+        "raw GET Range",
+        "cube HEAD",
+        "cube GET Range"
+      ]
+    }
+  ],
+  "interpretation": "Own-sample raw-SWC and high-resolution TIFF routes remain accessible for these two selected neurons. Copied overview absence is not absence of all native imagery. Soma-only partial packages can be attempted independently of overview sources.",
+  "limits": [
+    "Headers and 4096-byte prefixes do not validate full SWC topology, full TIFF pixel decoding, all selected-neuron coverage, calibration or raw-SWC/image correspondence.",
+    "The remaining three overview-pending samples have successful saved 2026-10-02 probes in portal_snapshot/native_source_probe.json; they were not freshly reprobed here.",
+    "Regional context, architecture-bearing channel and anatomical acceptance remain separate requirements."
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-08",
+  "scope": "Native plotting presentation and documentation only; preserve inherited backend fixes",
+  "files": [
+    {
+      "path": "main_scripts/Visual_toolkit.py",
+      "before_copy": "notes/visual_toolkit_native_style_20261008/rollback/main_scripts__Visual_toolkit.py.before",
+      "before_sha256": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+      "after_sha256": "c5758c95c3d01d00bd752ccba9d8e21df01f42cc8a15aff0af4f10d59a8f1fc3"
+    },
+    {
+      "path": "docs/project_note.md",
+      "before_copy": "notes/visual_toolkit_native_style_20261008/rollback/docs__project_note.md.before",
+      "before_sha256": "ca93759a6a6320df2a931908563aa7dd1b67f3c5a80f451bb5e11282393fe97a",
+      "after_sha256": "47198b1d0c7f6f9b3daf61b51a5b66ae62cd639ac47577b67bd9d5737f70e562"
+    },
+    {
+      "path": "notes/region_analysis_review_20261004/visual_methods_and_style.md",
+      "before_copy": "notes/visual_toolkit_native_style_20261008/rollback/notes__region_analysis_review_20261004__visual_methods_and_style.md.before",
+      "before_sha256": "309c37d62ae771aac0efe0ead1204527f4230877054407784a878ad294ab729c",
+      "after_sha256": "32e9a0d39eac7f90d043f82968a12e00e3443e859d962bea4b8863da19750b55"
+    }
+  ],
+  "patch": "notes/visual_toolkit_native_style_20261008/rollback/native_style_turn.patch",
+  "patch_sha256": "5518fcfe0dd5a5e7d89a796f90a2a4abe75dbfc10a740df0e9292c316a6fa036",
+  "new_renderer": {
+    "path": "main_scripts/render_cached_toolkit_pair.py",
+    "sha256": "b810f4cdd473bc0ab89b872c6162a3b789af2ef2b311b53ed9187c42c802def6",
+    "rollback": "Restore only scoped snapshots after matching current after hashes. Added renderer and turn-specific output folders can be removed separately after checking for subsequent work."
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "status": "passed",
+  "observed_utc": "2026-10-03T22:42:16.292957+00:00",
+  "source_verifier_bindings_checked": 3,
+  "network_requests": 0,
+  "records": [
+    {
+      "component": "soma",
+      "audit": "notes\\bulk_visual_review_20261002\\terminal_all_soma_source_pixel_readback_20261003.json",
+      "audit_sha256": "85fb8ea4fcc15bdfc98201962acb28c265798c4e44f76872e1b8b2970cb4b270",
+      "script": "notes\\bulk_visual_review_20261002\\verify_all_soma_pixels_20261003.py",
+      "recorded_script_sha256": "8c9cd262f057786214169a45e91a3d9b65cda997c36428fdd9b5ca0bec2e840e",
+      "current_script_sha256": "8c9cd262f057786214169a45e91a3d9b65cda997c36428fdd9b5ca0bec2e840e"
+    },
+    {
+      "component": "copied_local",
+      "audit": "notes\\bulk_visual_review_20261002\\terminal_copied_context_readback_20261003.json",
+      "audit_sha256": "03ceb5e40fb1fbd3991d3c457b1f9335ffb9843b1e7d5bf61eaf89feb26c2d2c",
+      "script": "notes\\bulk_visual_review_20261002\\verify_copied_context_packages_20261003.py",
+      "recorded_script_sha256": "b9d52db13d14324cfb26cb58e13d7ff8d5c589bd697ba9d6d1b70213ae002225",
+      "current_script_sha256": "b9d52db13d14324cfb26cb58e13d7ff8d5c589bd697ba9d6d1b70213ae002225"
+    },
+    {
+      "component": "copied_source",
+      "audit": "notes\\bulk_visual_review_20261002\\copied_context_source_pixel_readback_20261003.json",
+      "audit_sha256": "35f5c7023c8d368d9f378612082e175f1e689cdb09b11cf2d6d6aeb809b9d130",
+      "script": "notes\\bulk_visual_review_20261002\\verify_copied_context_source_pixels_20261003.py",
+      "recorded_script_sha256": "b887abede1ed1194a535d7a6c82157d4a3f60a3be55e5814428c9bef772df7e1",
+      "current_script_sha256": "b887abede1ed1194a535d7a6c82157d4a3f60a3be55e5814428c9bef772df7e1"
+    }
+  ]
+}

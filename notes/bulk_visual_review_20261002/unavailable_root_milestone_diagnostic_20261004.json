@@ -1,0 +1,61 @@
+{
+  "status": "passed",
+  "observed_utc": "2026-10-03T22:21:55.192483+00:00",
+  "real_failure_cases": 3,
+  "altered_evidence_rejections": 24,
+  "network_requests": 0,
+  "image_validation_passed": false,
+  "verifier_sha256": "659c77046fc222f8209832af62e93ba89d6b1d3b8c65edf6d4be81607629afc9",
+  "input_hashes": {
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_252718_145.json": "88d0f7775219bd20c803a6f27e0c5e893d484b886073f396f4b3b3a87ce25f67",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252718\\145.swc": "fe05e0e43a72dd3758b79efb719c88204c9fb9e52e6ba254b60733a35b88cef0",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_252718_169.json": "e3cec9a7cb335dcf1d91eddc0a69297ba48f1b70c12528999bc0f27f5a45691f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252718\\169.swc": "119075ddeaa42e0d9c57bc3312999f66f7505916905b3b76a0533a78dd72c09b",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_252718_161.json": "6db744a7e13639ab9fe042f08de4fae5e4dcbcaf9f36115d7c61d157ea00811f",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252718\\161.swc": "a32e4867409296f6bbc869100075130fd0de072cd17f1af4a75560a3a5b87449"
+  },
+  "cases": [
+    {
+      "uid": "252718|145.swc",
+      "actual_failure_validated": true,
+      "altered_evidence_rejected": [
+        "borrowed_root_coordinates",
+        "wrong_root_cube",
+        "false_root_coverage",
+        "acquired_pixels",
+        "missing_source_error",
+        "wrong_error_class",
+        "omitted_unattempted_tile",
+        "duplicate_requested_tile"
+      ]
+    },
+    {
+      "uid": "252718|169.swc",
+      "actual_failure_validated": true,
+      "altered_evidence_rejected": [
+        "borrowed_root_coordinates",
+        "wrong_root_cube",
+        "false_root_coverage",
+        "acquired_pixels",
+        "missing_source_error",
+        "wrong_error_class",
+        "omitted_unattempted_tile",
+        "duplicate_requested_tile"
+      ]
+    },
+    {
+      "uid": "252718|161.swc",
+      "actual_failure_validated": true,
+      "altered_evidence_rejected": [
+        "borrowed_root_coordinates",
+        "wrong_root_cube",
+        "false_root_coverage",
+        "acquired_pixels",
+        "missing_source_error",
+        "wrong_error_class",
+        "omitted_unattempted_tile",
+        "duplicate_requested_tile"
+      ]
+    }
+  ]
+}

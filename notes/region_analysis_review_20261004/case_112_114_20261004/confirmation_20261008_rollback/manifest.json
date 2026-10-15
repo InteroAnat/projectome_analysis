@@ -1,0 +1,30 @@
+{
+  "recorded_date": "2026-10-08",
+  "timezone": "Asia/Shanghai",
+  "purpose": "Revert only the three documentation updates for the user NeuronView hemisphere confirmation; preserve inherited edits",
+  "files": [
+    {
+      "path": "docs/project_note.md",
+      "before_copy": "notes/region_analysis_review_20261004/case_112_114_20261004/confirmation_20261008_rollback/docs__project_note.md.before",
+      "before_sha256": "32ca11e7642405ccdc2d144e96f0fa41647152feabb7bb52e4163f2e035f94a9",
+      "after_sha256": "0979b02311a212e446ba15bba2c5baa739703f16742a5c9c5b2cdf8c79f0ff6a"
+    },
+    {
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/README.md",
+      "before_copy": "notes/region_analysis_review_20261004/case_112_114_20261004/confirmation_20261008_rollback/notes__region_analysis_review_20261004__case_112_114_20261004__README.md.before",
+      "before_sha256": "6d1d211218081a201b195f0950ea17fb0e3906e80adb58d1c419b75958092a33",
+      "after_sha256": "bbf6e37db53f801793fa6aecd8121728e03bd577921727162ca8c445a02f2035"
+    },
+    {
+      "path": "notes/region_analysis_review_20261004/README.md",
+      "before_copy": "notes/region_analysis_review_20261004/case_112_114_20261004/confirmation_20261008_rollback/notes__region_analysis_review_20261004__README.md.before",
+      "before_sha256": "ebdaaac17fb35b3bbae3817b0672f3e5f6fd70f276a97c5914cf4f7067df8b70",
+      "after_sha256": "65e962dbf059e6d153e28f01513b128898676810e7ff8390fcba8570d39b9f17"
+    }
+  ],
+  "protected_henry_workbook": {
+    "path": "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx",
+    "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6"
+  },
+  "new_confirmation_file": "notes/region_analysis_review_20261004/case_112_114_20261004/human_laterality_confirmation_20261008.json"
+}

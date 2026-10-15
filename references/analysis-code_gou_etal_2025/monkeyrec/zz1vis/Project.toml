@@ -1,0 +1,22 @@
+name = "zz1vis"
+uuid = "324f5f1e-938e-4098-963f-9610bdb26f85"
+authors = ["GOU Lingfeng <goulf.3m@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+Clustering = "aaaa29a8-35af-508c-8bc3-b662a17a0fe5"
+ColorTypes = "3da002f7-5984-5a60-b8a6-cbb66c0b333f"
+DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
+Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
+FileIO = "5789e2e9-d7fb-5bc7-8068-2c6fae9b9549"
+GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+NRRD = "9bb6cfbd-7763-5393-b1b5-1c8e09872146"
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
+RPRMakie = "22d9f318-5e34-4b44-b769-6e3734a732a6"
+SharedArrays = "1a1011a3-84de-559e-8e89-a11a2f7dc383"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+Gapr = "59672b9a-9d3e-4f6d-9aeb-c8db432f251b"
+zz1data = "48b45bb4-b80d-4971-84a6-2289501aa4d6"
+
+[compat]

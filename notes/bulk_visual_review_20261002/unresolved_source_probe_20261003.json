@@ -1,0 +1,91 @@
+{
+  "captured_utc": "2026-10-03T03:37:08.230864+00:00",
+  "metadata_queue_size": 86,
+  "probed_identities": 4,
+  "prefix_bytes_read": 16384,
+  "records": [
+    {
+      "uid": "251730|226.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/226.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/4086705",
+      "prefix_sha256": "d877e6ab6cafe9482231bd2efe60d0120cd34305498b49913698081a25c56d1b",
+      "candidate_root_xyz": [
+        42971.83203125,
+        35652.1875,
+        38971.12890625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|743.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/743.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/216722",
+      "prefix_sha256": "ee0cb2bc89af3c2dde72532f735f52d31193091a28184c58372dd3729cf58e21",
+      "candidate_root_xyz": [
+        19680.96484375,
+        15237.43359375,
+        26232.5546875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "252383|136.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/252383/swc_raw/136.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/514600",
+      "prefix_sha256": "a8abf46983da84fca784b1841dc660d3995b3aefb085fbc9529878610105dfc4",
+      "candidate_root_xyz": [
+        10287.5625,
+        16923.84375,
+        22659.36328125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "252383|140.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/252383/swc_raw/140.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1350508",
+      "prefix_sha256": "99bf788bba97560764a127f87fbcb21960775a035bad0298e497df9d3c5bf42b",
+      "candidate_root_xyz": [
+        32444.26953125,
+        5712.8203125,
+        27770.30078125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    }
+  ],
+  "manifest_modified": false,
+  "image_requests": 0,
+  "scope": "Four unresolved-metadata examples only; no full SWC, graph, anatomical, or cohort acceptance"
+}

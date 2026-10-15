@@ -1,0 +1,24 @@
+{
+  "state": "source_audit_passed",
+  "queue_pid": 118764,
+  "regional_run_id": "d93cc551074743e291f4229543b0d888",
+  "producer_pid": 114580,
+  "producer_created": 1791028297.1489239,
+  "manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "verifier_sha256": "b887abede1ed1194a535d7a6c82157d4a3f60a3be55e5814428c9bef772df7e1",
+  "source_audit_pid": 27664,
+  "error": null,
+  "started_utc": "2026-10-03T15:33:57.051387+00:00",
+  "observed_utc": "2026-10-03T22:35:41.131968+00:00",
+  "command": [
+    "C:\\Users\\laika_yan\\miniconda3\\envs\\projectome\\python.exe",
+    "-B",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\verify_copied_context_source_pixels_20261003.py"
+  ],
+  "stdout": "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\copied_context_source_pixel_stdout_20261003.log",
+  "stderr": "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\copied_context_source_pixel_stderr_20261003.log",
+  "source_audit_started_utc": "2026-10-03T22:24:55.064059+00:00",
+  "exit_code": 0,
+  "report": "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\copied_context_source_pixel_readback_20261003.json",
+  "report_sha256": "35f5c7023c8d368d9f378612082e175f1e689cdb09b11cf2d6d6aeb809b9d130"
+}

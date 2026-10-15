@@ -1,0 +1,131 @@
+---
+title: Gou Flatmap Pipeline — gou_flatmap_minimal.jl
+---
+
+flowchart TB
+    classDef input fill:#e3f2fd,stroke:#1565c0,color:#000
+    classDef gou fill:#fff3e0,stroke:#ef6c00,color:#000
+    classDef local fill:#e8f5e9,stroke:#2e7d32,color:#000
+    classDef cache fill:#f3e5f5,stroke:#7b1fa2,color:#000
+    classDef output fill:#fce4ec,stroke:#c2185b,color:#000
+    classDef config fill:#fffde7,stroke:#f9a825,color:#000
+
+    subgraph INPUTS["Input Data"]
+        direction LR
+        SURF["GIFTI Surfaces<br/>lh.gray/mid/white_surface.rsl.gii"]
+        ATLAS["NMT v2.0 Symmetric Atlas<br/>CHARM, SARM, segmentation NIfTI"]
+        SOMA["Neuron Table (.xlsx)<br/>Soma_Phys_X/Y/Z, Soma_Side,<br/>Neuron_Type, Soma_Region"]
+    end
+
+    subgraph GOU_CODE["Gou et al. 2025 Codebase (reused directly)"]
+        direction TB
+        MONKEYREC["monkeyrec.jl<br/>master include — loads all deps"]
+        MESHES0["0-meshes.jl<br/>clip_mesh, flatten_mesh,<br/>refine_mesh, sample_mesh,<br/>dijkstra_vertex, fix_mesh_object"]
+        UNIBRAIN["1-unibrain.jl<br/>xyz2uvw, xyz2dxyz, dxyz2uvw"]
+        MESHES2["2-meshes.jl<br/>mesh_annotate_vert, flatmap_data"]
+        ZZ0["zz0atlas (NmtDat)<br/>load_images, getter, ann2hier,<br/>pos2idx, idx2pos, isleft, mirror"]
+        ZZ1["zz1data<br/>get_flatmap_highlights,<br/>cached_result"]
+        ZZ2["zz2fig<br/>plot_flatmap_base!,<br/>plot_flatmap_soma!,<br/>typ2color_func"]
+        COORDS["flatmap-brainarea-coords.jl<br/>PFC label positions (Dict)"]
+    end
+
+    subgraph MAIN_SCRIPT["gou_flatmap_minimal.jl"]
+        direction TB
+
+        PATCH["Patch NmtDat.load_images()<br/>redirect to local atlas paths"]
+
+        subgraph STEP1["Step 1: Geometric Depth Model"]
+            BDM["build_depth_model()<br/>gray − white → column direction<br/>dot products → ti, te extents"]
+        end
+
+        subgraph STEP2["Step 2: Depth Volume Rasterization"]
+            BDV["build_depth_volume(model, obj)<br/>Gou's exact ray-tracing algorithm<br/>→ 4D depthimg (depth + xyz)"]
+        end
+
+        subgraph STEP3["Step 3: Region-Specific Flatmap"]
+            BFM["build_flatmap(tag, niter)<br/>refine_mesh → clip_mesh → flatten_mesh"]
+            CLIP_CFG["Clip Configs:<br/>:lefths — all cortex, dist 10000<br/>:leftfrontal — CHARM L1==1, dist 60000<br/>:leftinsula — CHARM L3∈{224,37}, dist 25000"]
+        end
+
+        subgraph STEP4["Step 4: Soma Projection"]
+            LOAD_SOMA["load_somata()<br/>read XLSX, mirror R→L,<br/>preserve original_side"]
+            PROJ["xyz2uvw(soma_pos, depthimg,<br/>depthres, objflat, objphy)<br/>→ somauv (2D) + somaw (depth)"]
+        end
+
+        subgraph STEP5["Step 5: Visualization"]
+            HL_PFC["PFC highlights<br/>(get_flatmap_highlights)"]
+            HL_INS["Insula highlights<br/>(get_insula_highlights)<br/>CHARM paths → contours + gray fill"]
+            LABELS["add_insula_labels!()<br/>atlas lookup → vertex centroids<br/>→ text! on UV coordinates"]
+            ZOOM["insula_axis_limits()<br/>tight bbox from annotated verts"]
+            PLOTS["4 output figures:<br/>base, LR combined,<br/>LR split, type-colored"]
+        end
+    end
+
+    subgraph CACHE["JLD2 Cache (reusable across regions)"]
+        DC["depth_volume.jld2<br/>~2 GB, built once"]
+        FC["flatmap_{tag}_n{niter}.jld2<br/>per-region, ~minutes each"]
+    end
+
+    subgraph OUTPUTS["Output Figures"]
+        direction LR
+        O_BASE["insula_base.png"]
+        O_LR["insula_soma_LR_combined.png/svg"]
+        O_SPLIT["insula_soma_LR_split.png/svg"]
+        O_TYPE["insula_soma_type.png"]
+    end
+
+    %% Data flow
+    SURF --> BDM
+    SURF --> BFM
+    ATLAS --> PATCH --> BDV
+    ATLAS --> BFM
+    SOMA --> LOAD_SOMA
+
+    BDM --> BDV
+    BDV --> DC
+    DC --> PROJ
+    BFM --> FC
+    FC --> PROJ
+
+    CLIP_CFG --> BFM
+    LOAD_SOMA --> PROJ
+    PROJ --> STEP5
+
+    HL_PFC --> PLOTS
+    HL_INS --> PLOTS
+    LABELS --> PLOTS
+    ZOOM --> PLOTS
+    PLOTS --> OUTPUTS
+
+    %% Gou code dependencies
+    MONKEYREC -.-> MESHES0
+    MONKEYREC -.-> UNIBRAIN
+    MONKEYREC -.-> MESHES2
+    MONKEYREC -.-> ZZ0
+    MONKEYREC -.-> ZZ1
+    MONKEYREC -.-> ZZ2
+    ZZ2 -.-> COORDS
+
+    MESHES0 -.-> BFM
+    UNIBRAIN -.-> PROJ
+    MESHES2 -.-> HL_PFC
+    MESHES2 -.-> HL_INS
+    ZZ2 -.-> PLOTS
+
+    %% Styles
+    class SURF,ATLAS,SOMA input
+    class MONKEYREC,MESHES0,UNIBRAIN,MESHES2,ZZ0,ZZ1,ZZ2,COORDS gou
+    class PATCH,BDM,BDV,BFM,CLIP_CFG,LOAD_SOMA,PROJ,HL_PFC,HL_INS,LABELS,ZOOM,PLOTS local
+    class DC,FC cache
+    class O_BASE,O_LR,O_SPLIT,O_TYPE output
+
+    style INPUTS fill:#1565c0,stroke:#0d47a1,color:#fff
+    style GOU_CODE fill:#ef6c00,stroke:#e65100,color:#fff
+    style MAIN_SCRIPT fill:#2e7d32,stroke:#1b5e20,color:#fff
+    style CACHE fill:#7b1fa2,stroke:#4a148c,color:#fff
+    style OUTPUTS fill:#c62828,stroke:#b71c1c,color:#fff
+    style STEP1 fill:#c8e6c9,stroke:#2e7d32,color:#000
+    style STEP2 fill:#c8e6c9,stroke:#2e7d32,color:#000
+    style STEP3 fill:#c8e6c9,stroke:#2e7d32,color:#000
+    style STEP4 fill:#c8e6c9,stroke:#2e7d32,color:#000
+    style STEP5 fill:#c8e6c9,stroke:#2e7d32,color:#000

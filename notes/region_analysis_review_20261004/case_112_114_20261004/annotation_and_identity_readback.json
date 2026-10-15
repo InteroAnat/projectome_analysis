@@ -1,0 +1,300 @@
+{
+  "status": "annotation_and_identity_readback_complete",
+  "observed_at": "2026-10-04T08:17:23.903509+08:00",
+  "henry_source": "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx",
+  "henry_sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+  "mask_sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea",
+  "checked_annotation_rows": 296,
+  "unique_neurons": 295,
+  "conflict_rows": [
+    {
+      "excel_row": 113,
+      "NeuronID": "112.swc",
+      "Area": "L-IDM",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        211.5384,
+        178.426,
+        95.54
+      ],
+      "source_swc_sha256": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99",
+      "conflict": true
+    },
+    {
+      "excel_row": 115,
+      "NeuronID": "114.swc",
+      "Area": "L-IDD5",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.52439999999999,
+        185.2728,
+        97.744
+      ],
+      "source_swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+      "conflict": true
+    },
+    {
+      "excel_row": 116,
+      "NeuronID": "114.swc",
+      "Area": "L-IDM",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.52439999999999,
+        185.2728,
+        97.744
+      ],
+      "source_swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+      "conflict": true
+    }
+  ],
+  "unavailable_source_ids": [],
+  "case_rows": [
+    {
+      "excel_row": 113,
+      "NeuronID": "112.swc",
+      "Area": "L-IDM",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        211.5384,
+        178.426,
+        95.54
+      ],
+      "source_swc_sha256": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99",
+      "conflict": true
+    },
+    {
+      "excel_row": 115,
+      "NeuronID": "114.swc",
+      "Area": "L-IDD5",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.52439999999999,
+        185.2728,
+        97.744
+      ],
+      "source_swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+      "conflict": true
+    },
+    {
+      "excel_row": 116,
+      "NeuronID": "114.swc",
+      "Area": "L-IDM",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.52439999999999,
+        185.2728,
+        97.744
+      ],
+      "source_swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+      "conflict": true
+    }
+  ],
+  "neighboring_annotation_rows": [
+    {
+      "excel_row": 111,
+      "NeuronID": "110.swc",
+      "Area": "R-IDD5",
+      "Layer": 3,
+      "manual_side": "R",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        208.286,
+        179.16320000000002,
+        97.846
+      ],
+      "source_swc_sha256": "7f3d426c82ea28ec214e111ba1411b4eab5469397145bd276bea5a1401bd14cb",
+      "conflict": false
+    },
+    {
+      "excel_row": 112,
+      "NeuronID": "111.swc",
+      "Area": "R-IDD5",
+      "Layer": 3,
+      "manual_side": "R",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.28879999999998,
+        179.288,
+        97.4112
+      ],
+      "source_swc_sha256": "97d9e52ab7e67566628eb33c82369ad2e96df96707447d22a1a11357693560d5",
+      "conflict": false
+    },
+    {
+      "excel_row": 113,
+      "NeuronID": "112.swc",
+      "Area": "L-IDM",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        211.5384,
+        178.426,
+        95.54
+      ],
+      "source_swc_sha256": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99",
+      "conflict": true
+    },
+    {
+      "excel_row": 114,
+      "NeuronID": "113.swc",
+      "Area": "R-IDD5",
+      "Layer": 3,
+      "manual_side": "R",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.9568,
+        180.296,
+        97.32
+      ],
+      "source_swc_sha256": "9a560d220f16cda0fa3bb51679c2064476e36a4c9d6457e327b5320324f203f5",
+      "conflict": false
+    },
+    {
+      "excel_row": 115,
+      "NeuronID": "114.swc",
+      "Area": "L-IDD5",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.52439999999999,
+        185.2728,
+        97.744
+      ],
+      "source_swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+      "conflict": true
+    },
+    {
+      "excel_row": 116,
+      "NeuronID": "114.swc",
+      "Area": "L-IDM",
+      "Layer": 3,
+      "manual_side": "L",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        209.52439999999999,
+        185.2728,
+        97.744
+      ],
+      "source_swc_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+      "conflict": true
+    },
+    {
+      "excel_row": 117,
+      "NeuronID": "116.swc",
+      "Area": "R-IDM",
+      "Layer": 3,
+      "manual_side": "R",
+      "atlas_mask_side": "R",
+      "root_voxel_xyz": [
+        211.4276,
+        186.00320000000002,
+        95.218
+      ],
+      "source_swc_sha256": "ead83b8208ccd4b530397d9e3c5411a69e3724f53a96604000dbf60eafb2b889",
+      "conflict": false
+    }
+  ],
+  "duplicate_rows": [
+    {
+      "excel_row": 115,
+      "SWC": 114,
+      "Area": "L-IDD5",
+      "Layer": 3
+    },
+    {
+      "excel_row": 116,
+      "SWC": 114,
+      "Area": "L-IDM",
+      "Layer": 3
+    }
+  ],
+  "graphs": [
+    {
+      "NeuronID": "112.swc",
+      "same_node_identity_type_radius_parent": true,
+      "variants": [
+        {
+          "path": "main_scripts/processed_neurons/251637/112.swc",
+          "sha256": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99",
+          "numeric_graph_equal_live_atlas": true,
+          "root_xyz": [
+            52884.6,
+            44606.5,
+            23885.0
+          ]
+        },
+        {
+          "path": "group_analysis/fnt/nmt_swcs/251637/112.swc",
+          "sha256": "418ff7b32448e71023321672218339b5a6dc37dfc1442f559ecf611362fc9bac",
+          "numeric_graph_equal_live_atlas": true,
+          "root_xyz": [
+            52884.6,
+            44606.5,
+            23885.0
+          ]
+        },
+        {
+          "path": "group_analysis/fnt/mirrored_swcs/251637_112.swc",
+          "sha256": "19b068a906524a855f72c6f96bd424b537a473a6d6c1903a854d23d46e1a802f",
+          "numeric_graph_equal_live_atlas": false,
+          "root_xyz": [
+            11115.4,
+            44606.5,
+            23885.0
+          ]
+        }
+      ]
+    },
+    {
+      "NeuronID": "114.swc",
+      "same_node_identity_type_radius_parent": true,
+      "variants": [
+        {
+          "path": "main_scripts/processed_neurons/251637/114.swc",
+          "sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602",
+          "numeric_graph_equal_live_atlas": true,
+          "root_xyz": [
+            52381.1,
+            46318.2,
+            24436.0
+          ]
+        },
+        {
+          "path": "group_analysis/fnt/nmt_swcs/251637/114.swc",
+          "sha256": "7beb8f314de649c6d310d7ec042b039ceeca197f456fe6f6384cac16856e2213",
+          "numeric_graph_equal_live_atlas": true,
+          "root_xyz": [
+            52381.1,
+            46318.2,
+            24436.0
+          ]
+        },
+        {
+          "path": "group_analysis/fnt/mirrored_swcs/251637_114.swc",
+          "sha256": "6f641edf15d84728559e8fc6e31e005470a14015e25fd40bc5c9a8fd058f8167",
+          "numeric_graph_equal_live_atlas": false,
+          "root_xyz": [
+            11618.9,
+            46318.2,
+            24436.0
+          ]
+        }
+      ]
+    }
+  ],
+  "interpretation": "Identity/cached atlas geometry and manual annotations checked; source-provided registration transforms and absolute native orientation still required for anatomical acceptance"
+}

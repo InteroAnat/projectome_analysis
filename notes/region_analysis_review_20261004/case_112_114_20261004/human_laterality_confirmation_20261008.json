@@ -1,0 +1,45 @@
+{
+  "record_type": "human_laterality_confirmation",
+  "recorded_date": "2026-10-08",
+  "timezone": "Asia/Shanghai",
+  "recorded_by": "Codex",
+  "confirmation_source": "user statement in this conversation",
+  "inspection_method": "user-reported direct NeuronView inspection",
+  "source_statement_verbatim": "confirmed, those two are indeed on the right, as I checked using neuronview",
+  "sample_id": "251637",
+  "neurons": [
+    {
+      "neuron_id": "112.swc",
+      "confirmed_anatomical_hemisphere": "R",
+      "original_manual_annotations": [
+        "L-IDM"
+      ],
+      "source_excel_rows": [
+        113
+      ],
+      "layer": 3,
+      "parcel_status": "IDM retained as supplied; not independently confirmed by this statement"
+    },
+    {
+      "neuron_id": "114.swc",
+      "confirmed_anatomical_hemisphere": "R",
+      "original_manual_annotations": [
+        "L-IDD5",
+        "L-IDM"
+      ],
+      "source_excel_rows": [
+        115,
+        116
+      ],
+      "layer": 3,
+      "parcel_status": "IDD5 versus IDM unresolved; duplicate row not reassigned to 115.swc"
+    }
+  ],
+  "scope": "anatomical hemisphere of these two neurons only",
+  "codex_repeated_neuronview_inspection": false,
+  "historical_derivative_status": "October 4 isolated exports retain original L labels and resolved Unknown/Unclassified; no regeneration in this update",
+  "source_annotations_modified": false,
+  "production_code_modified": false,
+  "existing_derivatives_modified": false,
+  "global_acquisition_orientation_or_registration_accepted": false
+}

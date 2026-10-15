@@ -1,0 +1,177 @@
+{
+  "uid": "251730|656.swc",
+  "status": "passed",
+  "sources_hash_verified": 277,
+  "sampled_pixel_checks": [
+    {
+      "index_xyz": [
+        0,
+        0,
+        0
+      ],
+      "fine_index_xyz": [
+        53032,
+        10136,
+        10104
+      ],
+      "cube_xyz": [
+        147,
+        28,
+        112
+      ],
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "index_xyz": [
+        768,
+        768,
+        9
+      ],
+      "cube_xyz": [
+        164,
+        45,
+        112
+      ],
+      "source_missing": true
+    },
+    {
+      "index_xyz": [
+        0,
+        768,
+        0
+      ],
+      "fine_index_xyz": [
+        53032,
+        16280,
+        10104
+      ],
+      "cube_xyz": [
+        147,
+        45,
+        112
+      ],
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "index_xyz": [
+        768,
+        0,
+        9
+      ],
+      "fine_index_xyz": [
+        59176,
+        10136,
+        10113
+      ],
+      "cube_xyz": [
+        164,
+        28,
+        112
+      ],
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "index_xyz": [
+        384,
+        384,
+        4
+      ],
+      "fine_index_xyz": [
+        56104,
+        13208,
+        10108
+      ],
+      "cube_xyz": [
+        155,
+        36,
+        112
+      ],
+      "expected": 49008,
+      "actual": 49008
+    },
+    {
+      "index_xyz": [
+        192,
+        576,
+        4
+      ],
+      "cube_xyz": [
+        151,
+        40,
+        112
+      ],
+      "source_missing": true
+    },
+    {
+      "index_xyz": [
+        576,
+        192,
+        4
+      ],
+      "fine_index_xyz": [
+        57640,
+        11672,
+        10108
+      ],
+      "cube_xyz": [
+        160,
+        32,
+        112
+      ],
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "index_xyz": [
+        77,
+        461,
+        2
+      ],
+      "fine_index_xyz": [
+        53648,
+        13824,
+        10106
+      ],
+      "cube_xyz": [
+        149,
+        38,
+        112
+      ],
+      "expected": 0,
+      "actual": 0
+    },
+    {
+      "index_xyz": [
+        691,
+        307,
+        7
+      ],
+      "fine_index_xyz": [
+        58560,
+        12592,
+        10111
+      ],
+      "cube_xyz": [
+        162,
+        34,
+        112
+      ],
+      "expected": 0,
+      "actual": 0
+    }
+  ],
+  "artifact_hashes": {
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\251730\\656\\context.nii.gz": "9ca5aa241225c3d2dd04a94350ab3962caf534cede9111f7763d4b56c2ba652e",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\251730\\656\\context.nii.gz.json": "5c72014556bee24c909f775dd2e9e1ea2cd869b7a8dfbed47afbde7e66209e95",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\derived_context_pilot_251730_656.json": "033906381396d7f96f98ca99994db091b69348bff69ec28892a68b3784684bc9",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\251730\\656\\provenance.json": "4e068afc5fa2ce4c9061f8b02a842ed9d55728560cf2209a5100a2ff82424ef0"
+  },
+  "stable_during_read": true,
+  "limitations": [
+    "Nominal source coordinate convention only; absolute calibration and orientation unverified.",
+    "Full-section locator and fine anatomical acceptance remain unavailable."
+  ]
+}

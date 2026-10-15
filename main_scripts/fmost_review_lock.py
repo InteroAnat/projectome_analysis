@@ -1,30 +1,9 @@
-"""Shared OS ownership for regional production and candidate manifest replacement."""
-from contextlib import contextmanager
-import os
+"""Compatibility import. Implementation: Visual_toolkit/review_lock.py."""
+import importlib.util
 from pathlib import Path
 
-
-@contextmanager
-def exclusive_batch(path):
-    """A retained lock file is harmless; a live OS lock prevents concurrent writes."""
-    path = Path(path)
-    path.parent.mkdir(parents=True, exist_ok=True)
-    with path.open("a+b") as stream:
-        if stream.tell() == 0:
-            stream.write(b"0")
-            stream.flush()
-        stream.seek(0)
-        if os.name == "nt":
-            import msvcrt
-            msvcrt.locking(stream.fileno(), msvcrt.LK_NBLCK, 1)
-        else:
-            import fcntl
-            fcntl.flock(stream.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
-        try:
-            yield
-        finally:
-            stream.seek(0)
-            if os.name == "nt":
-                msvcrt.locking(stream.fileno(), msvcrt.LK_UNLCK, 1)
-            else:
-                fcntl.flock(stream.fileno(), fcntl.LOCK_UN)
+_path = Path(__file__).resolve().parent / "Visual_toolkit" / "review_lock.py"
+_spec = importlib.util.spec_from_file_location("_fmost_review_lock_impl", _path)
+_mod = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_mod)
+globals().update({name: getattr(_mod, name) for name in dir(_mod) if not name.startswith("_")})

@@ -1,0 +1,82 @@
+{
+  "status": "passed",
+  "observed_utc": "2026-10-03T22:28:19.126487+00:00",
+  "run_id": "d93cc551074743e291f4229543b0d888",
+  "selected": 531,
+  "usable_fields_verified": 528,
+  "explicit_unavailable_roots": [
+    "252718|145.swc",
+    "252718|161.swc",
+    "252718|169.swc"
+  ],
+  "outcome_counts": {
+    "derived_partial": 468,
+    "derived_highres": 60,
+    "context_unavailable": 3
+  },
+  "samples": {
+    "250432": {
+      "selected": 108,
+      "usable_fields_verified": 108,
+      "outcome_counts": {
+        "derived_partial": 104,
+        "derived_highres": 4
+      },
+      "current_artifact_hashes_checked": 1404
+    },
+    "251730": {
+      "selected": 117,
+      "usable_fields_verified": 117,
+      "outcome_counts": {
+        "derived_partial": 70,
+        "derived_highres": 47
+      },
+      "current_artifact_hashes_checked": 1521
+    },
+    "252383": {
+      "selected": 104,
+      "usable_fields_verified": 104,
+      "outcome_counts": {
+        "derived_partial": 104
+      },
+      "current_artifact_hashes_checked": 1352
+    },
+    "252718": {
+      "selected": 89,
+      "usable_fields_verified": 86,
+      "outcome_counts": {
+        "derived_partial": 85,
+        "derived_highres": 1,
+        "context_unavailable": 3
+      },
+      "current_artifact_hashes_checked": 1124
+    },
+    "252790": {
+      "selected": 113,
+      "usable_fields_verified": 113,
+      "outcome_counts": {
+        "derived_partial": 105,
+        "derived_highres": 8
+      },
+      "current_artifact_hashes_checked": 1469
+    }
+  },
+  "current_artifact_hashes_checked": 6870,
+  "producer_exited": true,
+  "watcher_exited": true,
+  "network_requests": 0,
+  "source_pixels_recomputed_in_this_readback": false,
+  "anatomical_acceptance": false,
+  "input_hashes": {
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\identity_manifest.csv": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+    "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\regional_context_run_20261003.json": "127350ec1d9567aa6ba16eec14a4cb1aec97af3e6eb2f8ce18efbb5801ffeadc",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\regional_checkpoint_watcher_20261003.json": "63316fe0742e96302522cafe52cfe5de6a9eebbbb27ef94a1874d2f950303b32",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\successor_regional_readback_20261003.json": "5d6b3ac34cc1557000e260b87c959e34f7f4bdeebd68fb1351918781cd4388de",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\verify_sample_regional_milestone_20261004.py": "659c77046fc222f8209832af62e93ba89d6b1d3b8c65edf6d4be81607629afc9",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\terminal_sample_250432_regional_readback_20261004.json": "77fd6a5e89b9e4d85314386a5a4a6a0eb6f365821e458f97cc0f97e053be0754",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\terminal_sample_251730_regional_readback_20261004.json": "79f5f7983bef7468afea61299feeb45e87979d07395e30b90ee4238dd064e0dd",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\terminal_sample_252383_regional_readback_20261004.json": "066adf987b41f096550edf7cc68b904ac5898cefdde3d5a8a96fb1bdb73baafe",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\terminal_sample_252718_regional_readback_20261004.json": "96cdd09f78aeb765e751371b0d950eb77d81994bf0e834f5043078431fe78d9a",
+    "D:\\projectome_analysis\\notes\\bulk_visual_review_20261002\\terminal_sample_252790_regional_readback_20261004.json": "ec52ce0709fd46244fb5ba42410622f04ceaa1f86b725bbe018d8be36905b47d"
+  }
+}

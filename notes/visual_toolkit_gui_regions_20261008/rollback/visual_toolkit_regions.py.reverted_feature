@@ -1,0 +1,38 @@
+"""Resolve supplied soma annotations without inferring or selecting anatomy."""
+
+def neuron_key(value):
+    text = str(value).strip()
+    if text.lower().endswith('.swc'):
+        text = text[:-4]
+    return str(int(text)) if text.isdigit() else text
+
+
+def region_labels_for_sample(table, sample_id):
+    """Read bulk-compatible columns; reject conflicting annotations per neuron.
+
+    Tables without SampleID are explicitly bound to the selected GUI sample.
+    Numeric spreadsheet IDs and zero-padded SWC filenames identify the same cell.
+    """
+    import pandas as pd
+    required = {'NeuronID', 'Soma_Region'}
+    if not required.issubset(table.columns):
+        raise ValueError('Table must contain NeuronID and Soma_Region columns.')
+    rows = table
+    if 'SampleID' in rows.columns:
+        rows = rows[rows['SampleID'].map(
+            lambda value: '' if pd.isna(value) else str(value).strip().removesuffix('.0')
+        ) == str(sample_id).strip()]
+    labels = {}
+    for _, row in rows.iterrows():
+        if pd.isna(row['NeuronID']) or pd.isna(row['Soma_Region']):
+            continue
+        value = row['NeuronID']
+        if isinstance(value, (int, float)) and float(value).is_integer():
+            value = str(int(value))
+        key, label = neuron_key(value), str(row['Soma_Region']).strip()
+        if not key or not label:
+            continue
+        if key in labels and labels[key] != label:
+            raise ValueError('Conflicting Soma_Region entries for neuron ' + key)
+        labels[key] = label
+    return labels

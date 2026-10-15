@@ -1,0 +1,24 @@
+{
+  "date": "2026-10-08",
+  "purpose": "Revert only note changes for the provisional IDM selection; preserve previous hemisphere confirmation",
+  "files": [
+    {
+      "path": "docs/project_note.md",
+      "before_copy": "notes/region_analysis_review_20261004/case_112_114_20261004/idm_assignment_20261008/note_rollback/docs__project_note.md.before",
+      "before_sha256": "0979b02311a212e446ba15bba2c5baa739703f16742a5c9c5b2cdf8c79f0ff6a",
+      "after_sha256": "ca93759a6a6320df2a931908563aa7dd1b67f3c5a80f451bb5e11282393fe97a"
+    },
+    {
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/README.md",
+      "before_copy": "notes/region_analysis_review_20261004/case_112_114_20261004/idm_assignment_20261008/note_rollback/notes__region_analysis_review_20261004__case_112_114_20261004__README.md.before",
+      "before_sha256": "bbf6e37db53f801793fa6aecd8121728e03bd577921727162ca8c445a02f2035",
+      "after_sha256": "93050c0c5cfd2f64460786793ac1c67bf900982e95e5586bc0da86e36084448e"
+    },
+    {
+      "path": "notes/region_analysis_review_20261004/README.md",
+      "before_copy": "notes/region_analysis_review_20261004/case_112_114_20261004/idm_assignment_20261008/note_rollback/notes__region_analysis_review_20261004__README.md.before",
+      "before_sha256": "65e962dbf059e6d153e28f01513b128898676810e7ff8390fcba8570d39b9f17",
+      "after_sha256": "13c5c8218d3f0cf0b8c2ed4e08cd910a05ed81f059cd9894435c3e468472438e"
+    }
+  ]
+}

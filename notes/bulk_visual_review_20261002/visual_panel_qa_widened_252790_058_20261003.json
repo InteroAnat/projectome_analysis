@@ -1,0 +1,24 @@
+{
+  "observed_utc": "2026-10-03T11:56:26.388276+00:00",
+  "uid": "252790|058.swc",
+  "scope": "first 2.8-to-4 mm field upgrade; direct marked and coverage panel inspection plus passing independent readback",
+  "requested_field_um_xyz": [
+    4000.0,
+    4000.0,
+    30.0
+  ],
+  "coverage_fraction": 0.9376624430762258,
+  "loaded_cubes": 606,
+  "missing_cubes": 42,
+  "unattempted_cubes": 0,
+  "raw_root_covered": true,
+  "observations": "Marked panel discloses actual 4 mm field, 93.8 percent sampled coverage and 42 missing cubes. Upper-right acquisition gaps match the coverage mask; cyan root is in acquired coverage.",
+  "panel_sha256": {
+    "context_marked.png": "5133f9265b71a0ec0100d5677024386a327b1b9954f8d12e5b332b75e5d8762a",
+    "context_coverage.png": "9914b638d953491a1011ea83c1a97a06432ec2218adcb885ead40acde0720dbd"
+  },
+  "report_sha256": "79048cbd2ff8da5e1603768d462408abad3a87b5eabf40321168dc64de4c4fb3",
+  "independent_audit_sha256": "f5a70e95c75604ca683722081c4b246b98700b4c31607f722d685743ba676b6e",
+  "human_fields_modified": false,
+  "anatomical_acceptance": false
+}

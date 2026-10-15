@@ -1,0 +1,23 @@
+{
+  "agent": "Codex",
+  "checked_at": "2026-10-03T11:57:03.908928+08:00",
+  "scope": "Read-only source/manifest/CSV comparison; only this verification JSON written",
+  "expected_uids": 160,
+  "unchanged_source_files": 10,
+  "tables": {
+    "manifest": {
+      "rows": 746,
+      "expected_uids_checked": 160,
+      "sha256": "ca7b00a17aa53b64280239904d8259d22c7684b15b91208da953ff295b6c2632",
+      "stable_during_read": true
+    },
+    "correction_table": {
+      "rows": 746,
+      "expected_uids_checked": 160,
+      "sha256": "9998d70f115aabd70b5ccd3c59f44fc2d5f262afe11993ab9798362bea8da5a1",
+      "stable_during_read": true
+    }
+  },
+  "problems": [],
+  "scientific_acceptance": false
+}

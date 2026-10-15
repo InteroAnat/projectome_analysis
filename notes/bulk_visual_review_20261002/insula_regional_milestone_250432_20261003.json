@@ -1,0 +1,104 @@
+{
+  "observed_utc": "2026-10-03T05:19:17.972670+00:00",
+  "sample": "250432",
+  "selection": "INS review candidates, not accepted anatomy",
+  "selected": 8,
+  "all_selected_independently_verified": true,
+  "all_requested_xy_fields_at_least_4000_um": true,
+  "status_counts": {
+    "derived_partial": 8
+  },
+  "readback_path": "notes\\bulk_visual_review_20261002\\successor_regional_readback_20261003.json",
+  "readback_sha256": "af0a11ed331e4a166553b1f3d93172747c101cd9405edefb7c4396ca6c95cc2b",
+  "fields": [
+    {
+      "uid": "250432|116.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8472666475267255,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "8294972b7aaccdddc5c8ca095ba1f28ff4e70f842d075f4954c567279469aabf"
+    },
+    {
+      "uid": "250432|117.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.7592842787901305,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "385f2f9236cc4c00cf5bcad7ad70c02d77bd3d5d0230eb2d68428b2a0eca3f3b"
+    },
+    {
+      "uid": "250432|123.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8026298656827218,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "ec0e03068435e6e5d9085051ecccdc3407c565a05eb9391a7f97180262750808"
+    },
+    {
+      "uid": "250432|126.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8639893266681303,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "f1f226613c5612f65b63eb2e0d3cb25a0a004b7008f86cd99ddb4f05549648b8"
+    },
+    {
+      "uid": "250432|128.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8897120371482056,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "c6e78382f2c90a966e70a0395db098757b6a80ca0a3373c47ca71c51cf64feac"
+    },
+    {
+      "uid": "250432|131.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6962204245689291,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "6c09970fd0fc5c73e0129d15a4e069ec3d413a2743fb8bd43c5492b6700d0334"
+    },
+    {
+      "uid": "250432|184.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8503502936446604,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "26184805772db9415379e383ab9a6f0181a9240fb1b8491a2aac86e6d55ce976"
+    },
+    {
+      "uid": "250432|188.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.8090963049643112,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "b4f273009a73122a45d7ac741771e92bfcb6194b75ac838f2beee9a206c412b9"
+    }
+  ],
+  "anatomical_acceptance": false
+}

@@ -1,0 +1,219 @@
+{
+  "status": "historical_decisions_cross_referenced",
+  "recorded_at": "2026-10-04T07:09:36.257428+08:00",
+  "sources": [
+    {
+      "path": ".cursor/agent-journal/2026-04-10.md",
+      "sha256": "eaaee72a70a617cf26996dec674b2f17898dfa15f784814949328c4ba5fa2bb1"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-04-16.md",
+      "sha256": "07008ad85080d05f35e76842b9fda4279796d6e3faabe7fd444b540a418b9355"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-04-20.md",
+      "sha256": "303595e2b007cad5c5930e13bc9e8418ce3478764f65eef70eafaf0d5c22deff"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-04-22.md",
+      "sha256": "6746489c9f60062304dadebfe3a8711feeb8b1fcc81819d3b24c03857817f94f"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-04-23.md",
+      "sha256": "fe4d803af1478f8ea645f38965071d72270853ae4428d0c6f0926ebf62f966c6"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-04-24.md",
+      "sha256": "a3c80c310436fb5ea43f9928e118a14b51b105627989a204290503ae7042b75c"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-04-27.md",
+      "sha256": "b49ce1d6f8ca95276ee2cd9420ef5bb4bcdf4897624529a582380036dc3fe1ad"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-07-22.md",
+      "sha256": "4a78dd2633825e7180b55e0ce0ab1ae63e5c9c9cf110dc28c585506dc8338ff2"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-08-04.md",
+      "sha256": "b02d5b63217d28152cef9a8a1b3eb90b5b97d510f65afb5e3f8876ae6b0dc7b1"
+    },
+    {
+      "path": ".cursor/agent-journal/2026-08-05.md",
+      "sha256": "f4ff39aef4e031447f350ff613a365d898f9580cb138564e484bc12db5584504"
+    },
+    {
+      "path": ".cursor/agent-journal/QC_neuron_table_diff_old_vs_new.md",
+      "sha256": "97c1f23cdab5456a0ae804f88164d8acab1d21f406b4871df841f01a5b29c9e0"
+    },
+    {
+      "path": "notes/qc_neuron_table_diff_old_vs_new.md",
+      "sha256": "d00bd25fd3f4961f36f128db1e53940ad110d24dd2f2c1f901d8e539f999d340"
+    },
+    {
+      "path": "notes/sq3d_mixed_method_note.md",
+      "sha256": "12c33ceca3ec7e69892e613bb67d3373e47729b95854ef63020577e06af75932"
+    },
+    {
+      "path": "notes/sq4_sq5_distance_digest.md",
+      "sha256": "87186dc69d251db8db9f4b2a914a9e547cd2936ed7faa1dd40d1ced5f16f8afe"
+    },
+    {
+      "path": "notes/whole_insula_lr_continuation_plan_v2.md",
+      "sha256": "be2632e4e43866971ad52be923776463025f948f0e542848f835ddf95459eb55"
+    },
+    {
+      "path": "notes/projectome_latest_update_progress.md",
+      "sha256": "052b0ce93ea21f9d84be6c892b434fcbb03988c1f8712c98475180041b5e5d89"
+    },
+    {
+      "path": "notes/LR_insula_analysis_review.md",
+      "sha256": "817e6673b291d564ac6337d8dd8d885ee42b94912bd823a916546ce624a1056b"
+    },
+    {
+      "path": "notes/gou_stats_methods_index.md",
+      "sha256": "0c44faa2027bb96093e047c0f843c8e2a58145149a38aa8b5330c5d0f5f4fa9c"
+    },
+    {
+      "path": "notes/qc_neuron_type_rule_validation_new_table.csv",
+      "sha256": "53e495d69f371ef464977655be2d6e117b13f41724a4689fc737b0427782d274"
+    }
+  ],
+  "manual_type_patch_ids": [
+    "112.swc",
+    "114.swc",
+    "422.swc",
+    "423.swc",
+    "439.swc",
+    "440.swc",
+    "444.swc",
+    "458.swc",
+    "459.swc",
+    "460.swc",
+    "461.swc",
+    "469.swc"
+  ],
+  "manual_type_patch_rows": [
+    {
+      "NeuronID": "112.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "R",
+      "n_terminals": 1,
+      "N_Ipsilateral": 1,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "114.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "R",
+      "n_terminals": 1,
+      "N_Ipsilateral": 1,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "422.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 8,
+      "N_Ipsilateral": 8,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "423.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 5,
+      "N_Ipsilateral": 5,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "439.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 4,
+      "N_Ipsilateral": 4,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "440.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 3,
+      "N_Ipsilateral": 3,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "444.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 3,
+      "N_Ipsilateral": 3,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "458.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 1,
+      "N_Ipsilateral": 1,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "459.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 1,
+      "N_Ipsilateral": 1,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "460.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 1,
+      "N_Ipsilateral": 1,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "461.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 1,
+      "N_Ipsilateral": 1,
+      "N_Contralateral": 0,
+      "match": false
+    },
+    {
+      "NeuronID": "469.swc",
+      "assigned_type": "Unclassified",
+      "predicted_type": "ITi",
+      "Soma_Side": "L",
+      "n_terminals": 2,
+      "N_Ipsilateral": 2,
+      "N_Contralateral": 0,
+      "match": false
+    }
+  ],
+  "interpretation": "Historical choices preserved; historical counts and statistical conclusions are not fresh acceptance."
+}

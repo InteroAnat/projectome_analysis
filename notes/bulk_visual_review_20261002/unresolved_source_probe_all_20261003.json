@@ -1,0 +1,1731 @@
+{
+  "captured_utc": "2026-10-03T03:39:56.354260+00:00",
+  "metadata_queue_size": 86,
+  "probed_identities": 86,
+  "prefix_bytes_read": 352256,
+  "records": [
+    {
+      "uid": "251730|226.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/226.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/4086705",
+      "prefix_sha256": "d877e6ab6cafe9482231bd2efe60d0120cd34305498b49913698081a25c56d1b",
+      "candidate_root_xyz": [
+        42971.83203125,
+        35652.1875,
+        38971.12890625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|227.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/227.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3640212",
+      "prefix_sha256": "284037afd2e20a2f7ae9736a3d89d37dda75e5ea849faba347315749b0b2a446",
+      "candidate_root_xyz": [
+        43072.15234375,
+        35548.921875,
+        39040.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|229.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/229.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3382359",
+      "prefix_sha256": "d42b6bd0aec43ffb6c87c19a84d4b552275fc3c2a68f5d8c2c5a4799979c5bcd",
+      "candidate_root_xyz": [
+        42609.80078125,
+        35551.32421875,
+        39118.6640625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|231.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/231.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2726624",
+      "prefix_sha256": "4329624b54cc75fecf8f8b6639b490251dcc18cf97ee68d5b0133a950f271288",
+      "candidate_root_xyz": [
+        42128.7734375,
+        35209.12109375,
+        38713.52734375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|232.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/232.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1711269",
+      "prefix_sha256": "a56ee817a3af14a11ce7fc56ebdaa3372242d8eba9d8ba576735cb3e52140d43",
+      "candidate_root_xyz": [
+        41816.7734375,
+        34730.90234375,
+        39022.66796875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|233.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/233.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3530508",
+      "prefix_sha256": "4a5c98c184d826573a91942bb558713496088d765bc1286a95f44f61ac1df605",
+      "candidate_root_xyz": [
+        42895.58203125,
+        35487.65625,
+        38938.2421875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|254.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/254.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3787481",
+      "prefix_sha256": "9f8d9fdf358e9d57488f274b0fb93b7344b7bada4ce20da7256521bf12d651c3",
+      "candidate_root_xyz": [
+        43772.9765625,
+        34142.4453125,
+        39838.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|255.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/255.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2513734",
+      "prefix_sha256": "bc5e361488a71fabe881e69c59346886b27a85c77191ef1b34eee0c3b898220c",
+      "candidate_root_xyz": [
+        43231.5390625,
+        34488.0234375,
+        39581.33203125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|256.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/256.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3850354",
+      "prefix_sha256": "69b15bba635b4117608bdee94aaced3fd64b38dc6c1d2195c6d4074b3a307e73",
+      "candidate_root_xyz": [
+        43111.57421875,
+        34209.8203125,
+        39476.10546875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|257.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/257.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2826368",
+      "prefix_sha256": "b6a60a4c9463fe07b6e4d7168c01d3d0bd3c2eb31296f1814232a0c51a8bec77",
+      "candidate_root_xyz": [
+        42698.16796875,
+        34889.7421875,
+        39481.234375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|258.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/258.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1170490",
+      "prefix_sha256": "15c634d7d29f6b5d23cb717d179bd776259dccc996d5de9eeaae64329241823d",
+      "candidate_root_xyz": [
+        42529.17578125,
+        34775.9765625,
+        39224.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|273.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/273.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/145426",
+      "prefix_sha256": "3eb7b0f986bb777198d38fc46e1a6502d817443a81e416cd3b688e255514459c",
+      "candidate_root_xyz": [
+        42200.88671875,
+        33216.46875,
+        38320.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|274.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/274.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/7718320",
+      "prefix_sha256": "479690928d0f49c90253fffb770ed771768377f7919ca0e6182cb52f9661a0fc",
+      "candidate_root_xyz": [
+        42294.5234375,
+        32752.6796875,
+        38530.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|295.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/295.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2151161",
+      "prefix_sha256": "ec4784ebbaee2941463a5fc1e21db5165bdf2775f129cb723ba48f7c1978568c",
+      "candidate_root_xyz": [
+        41654.23046875,
+        34056.90234375,
+        38797.79296875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|296.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/296.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3221078",
+      "prefix_sha256": "0f3687bd59fd2f0e81c4052ad498f0f8bc176156c2b8aa69921e7e16839e405b",
+      "candidate_root_xyz": [
+        41210.98046875,
+        34023.171875,
+        38736.33984375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|297.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/297.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2618005",
+      "prefix_sha256": "e5a894dfa8af63cf5954ac85db6280e5a7908f0311031e38c008fb3280f71251",
+      "candidate_root_xyz": [
+        41346.40234375,
+        33720.375,
+        38678.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|300.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/300.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3388572",
+      "prefix_sha256": "e071702d112a412914895b4f913c4f25264e8635ad413422788c01ce7fe84de6",
+      "candidate_root_xyz": [
+        41152.51953125,
+        33452.55078125,
+        38860.6875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|409.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/409.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2353724",
+      "prefix_sha256": "393836abb605252b41d9d3c026b348a45bc2c289ecd0f968b37a25d403543fb4",
+      "candidate_root_xyz": [
+        14676.0234375,
+        34609.9609375,
+        37638.796875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|452.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/452.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2003870",
+      "prefix_sha256": "954bc6d1b008ee9e4b07a8248c88bbcaecb939669c59dae0afc7122502f6b658",
+      "candidate_root_xyz": [
+        15174.1171875,
+        34175.375,
+        38783.0078125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|459.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/459.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2887443",
+      "prefix_sha256": "325d0cb88e6f4a9e47a9fda8df36a91edacd7590885546bea63412e210de87f5",
+      "candidate_root_xyz": [
+        15827.9921875,
+        34705.83984375,
+        38722.64453125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|460.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/460.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1957897",
+      "prefix_sha256": "75574ce38360eb2a0d40510ed5a15f3aa7bec914581cb60d0a9969056f42891a",
+      "candidate_root_xyz": [
+        15716.51953125,
+        34956.73046875,
+        38983.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|461.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/461.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1363335",
+      "prefix_sha256": "54b1da2c4009cd62c5173bd1e0596ae096a2e488fd7f2a4c6abd5c298d8d8e6f",
+      "candidate_root_xyz": [
+        15788.7265625,
+        35002.6171875,
+        38855.4453125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|462.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/462.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1835691",
+      "prefix_sha256": "3b29bc8c0e207358c061187fb8f53ce76f3d89e86be96482830ec13f38161e0a",
+      "candidate_root_xyz": [
+        16087.73828125,
+        34928.765625,
+        38998.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|463.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/463.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1337392",
+      "prefix_sha256": "f0a537da7cd4765f19d53b2fadbfbe5ecae9ab6e83403660ec0ee0d84c9485b9",
+      "candidate_root_xyz": [
+        16106.5,
+        34841.24609375,
+        38887.5390625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|464.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/464.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2180404",
+      "prefix_sha256": "a6be0debe5500ebaa87fd14c12c51e44eb0745d166fd3b9e1194d586cf5cc6f7",
+      "candidate_root_xyz": [
+        16218.47265625,
+        34663.55078125,
+        38911.265625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|469.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/469.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2066563",
+      "prefix_sha256": "cbbfcbb26540afa1d702f2d585e71110c27667e29a3d2c58112e6a7e1ee0023c",
+      "candidate_root_xyz": [
+        16939.34375,
+        34937.80859375,
+        38439.94921875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|471.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/471.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1932907",
+      "prefix_sha256": "eee37f54bfc1868f20ac0c7c479d5675f4ce9f70f8dbd15a60074bb10249552d",
+      "candidate_root_xyz": [
+        16872.34765625,
+        34697.72265625,
+        38560.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|479.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/479.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1198294",
+      "prefix_sha256": "02798636d34df4d326d615b9e5a9aee55f0c3c6a0581295df211ba305b38c8b9",
+      "candidate_root_xyz": [
+        16015.203125,
+        35436.3515625,
+        38539.609375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|487.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/487.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1203646",
+      "prefix_sha256": "7c39ad46f93b05f64434d4f1e80449cf38765e8a4f1568d119a37b64ce9b97b8",
+      "candidate_root_xyz": [
+        15744.74609375,
+        35321.3125,
+        38536.390625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|489.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/489.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1338974",
+      "prefix_sha256": "4bfd3e11effcd58fdb700e8f7f9949fc0afa92f27b347d12e64edd47f1066a2e",
+      "candidate_root_xyz": [
+        15459.14453125,
+        35032.0234375,
+        38501.26953125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|490.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/490.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/4065272",
+      "prefix_sha256": "4bddad7920a839a798d623392bd404f83a1fa44398956cf86efc82acbb5499b7",
+      "candidate_root_xyz": [
+        15591.15625,
+        34564.7265625,
+        39069.96484375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|497.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/497.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3041917",
+      "prefix_sha256": "005e9d9a0546b13cfaacab58bfb85a4ce08e651e1cd2c1bc48518336cbf25ad2",
+      "candidate_root_xyz": [
+        17257.35546875,
+        34640.140625,
+        38924.8046875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|498.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/498.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1112775",
+      "prefix_sha256": "cd02eac86f23a8c1de553520b41730eb0ae1bd9bfc8055c80f24bcd097765cd2",
+      "candidate_root_xyz": [
+        17521.39453125,
+        34467.640625,
+        38895.83203125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|499.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/499.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2735913",
+      "prefix_sha256": "e2400972e936c8e0ca617224a210f810bb4dd77781085d1989df86fb05d9c7c8",
+      "candidate_root_xyz": [
+        16745.8671875,
+        34099.078125,
+        39466.39453125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|500.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/500.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/707593",
+      "prefix_sha256": "102e1d7ac521cbe5b1a4567c034ee9579a10cd2798b27eb1d3b70cead37275d3",
+      "candidate_root_xyz": [
+        16554.5234375,
+        34301.19140625,
+        39583.98046875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|501.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/501.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1939189",
+      "prefix_sha256": "119bdbbb6fbe89b27881c628262c373b3751b95e13ea6acbad0ff269691cf011",
+      "candidate_root_xyz": [
+        16202.76953125,
+        33913.95703125,
+        39557.22265625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|502.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/502.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1998769",
+      "prefix_sha256": "2eea68682977f6eac39b17c5f53107cba7597627c7dec7529ea55365b3b2f305",
+      "candidate_root_xyz": [
+        16110.2265625,
+        33824.375,
+        39607.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|503.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/503.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2799947",
+      "prefix_sha256": "98c193a2ebbf0a5f95cf9c10b4a591df9d5115fdb37cf21288b9f40ccf3e7109",
+      "candidate_root_xyz": [
+        16441.30078125,
+        33732.7265625,
+        39698.9140625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|504.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/504.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2216651",
+      "prefix_sha256": "e939e71c4d337ce0ce5fa396bb54773fda8ec9bfb24395413897b157def2065c",
+      "candidate_root_xyz": [
+        15924.16015625,
+        33423.21484375,
+        39837.79296875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|505.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/505.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/334600",
+      "prefix_sha256": "f17b818eb38cf68c98b741f9f7b0e5f13789210b0a2786bcf9969295f4cb7911",
+      "candidate_root_xyz": [
+        15706.90234375,
+        33396.3515625,
+        39771.0
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|506.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/506.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2112242",
+      "prefix_sha256": "427316060e763301c1f4e43eb2ea35e614db2411b72e32788b15729b1d7fd80f",
+      "candidate_root_xyz": [
+        15730.421875,
+        33542.890625,
+        39816.71875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|507.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/507.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1462804",
+      "prefix_sha256": "f0af8001781e8e6aa97796e2a9ce30c8d2d4bd43999d5780decdccaaad824f6d",
+      "candidate_root_xyz": [
+        16100.4375,
+        33337.4375,
+        40094.26171875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|508.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/508.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2063723",
+      "prefix_sha256": "b1f142760a643363ca916d413d521587fa1a3f483e31498710368514291330ac",
+      "candidate_root_xyz": [
+        15847.1796875,
+        33108.7265625,
+        40012.7421875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|513.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/513.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2423357",
+      "prefix_sha256": "72e71b8ff59f3ad3c9836e5f9bd1c858ed1907cccbbd0f8c88e32a57852eca2c",
+      "candidate_root_xyz": [
+        16365.1796875,
+        32803.0390625,
+        40029.9375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|514.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/514.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1734712",
+      "prefix_sha256": "9a49e58d618f417ac58e9ba2275616df27d49d0ccc8e85bc1b66368c6854d1fb",
+      "candidate_root_xyz": [
+        16445.9765625,
+        32664.7734375,
+        39933.390625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|515.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/515.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/983605",
+      "prefix_sha256": "f51bc3fbdf854f0880304135af5b493db6fc992ca4d72c10ed26dc37d571c462",
+      "candidate_root_xyz": [
+        16588.1875,
+        32819.6015625,
+        40061.16796875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|516.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/516.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/837397",
+      "prefix_sha256": "91abe9f6f5ddd052902650f1d916a2b635a0fcf5d5eec4bf9d60307a6b933477",
+      "candidate_root_xyz": [
+        16597.078125,
+        32884.4765625,
+        40096.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|517.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/517.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1393074",
+      "prefix_sha256": "89e6d0d4ea493e0767c759b94912a4012c400b3f91cbcb662e1b2b450b8b910d",
+      "candidate_root_xyz": [
+        16543.39453125,
+        32784.4921875,
+        40284.19140625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|518.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/518.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1612169",
+      "prefix_sha256": "8bb00912fefd7f70546109916e7bcd152de3972533a3ab9bc5435d4011b72289",
+      "candidate_root_xyz": [
+        16551.9921875,
+        32693.875,
+        40112.29296875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|519.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/519.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/746758",
+      "prefix_sha256": "d7896c96a5bad0c9c850d6564fceecc808dff6df624395d8a248be255cbf021b",
+      "candidate_root_xyz": [
+        16770.2890625,
+        32744.30859375,
+        40073.78515625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|520.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/520.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/656603",
+      "prefix_sha256": "785cf3dbe4e8114417caa96e73ffb3323178de5a444428dc917f5ba7156bb3be",
+      "candidate_root_xyz": [
+        16743.0234375,
+        32838.32421875,
+        39951.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|521.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/521.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2569840",
+      "prefix_sha256": "97977aadb0b47ff58d356880eacae63edc26dcf13c52a1753539bac184e1f6bd",
+      "candidate_root_xyz": [
+        17067.92578125,
+        32533.82421875,
+        39943.734375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|522.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/522.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2775724",
+      "prefix_sha256": "a97c8213444b78e38a219685249f0badba5440ae603e38c62ec772a810379bc8",
+      "candidate_root_xyz": [
+        17113.21875,
+        32816.23046875,
+        39731.078125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|523.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/523.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/5225492",
+      "prefix_sha256": "1a25bde8c0ac1c02774fde13847c98f251e94768d070672a0ff277f37ba88f13",
+      "candidate_root_xyz": [
+        17168.1171875,
+        32903.87890625,
+        39686.84765625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|530.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/530.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1779315",
+      "prefix_sha256": "0cabed1a33dbf0e83bc03ce8902cf0e22a0041e1c9cd3144f254a08469488220",
+      "candidate_root_xyz": [
+        16206.26171875,
+        32493.83203125,
+        40480.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|532.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/532.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/287912",
+      "prefix_sha256": "33e0e385accf790735b6a4d47b15477a56f7f3d08df131346ce7b6a1b70d8650",
+      "candidate_root_xyz": [
+        16722.39453125,
+        32292.51953125,
+        40587.52734375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|533.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/533.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/608497",
+      "prefix_sha256": "8205b29977326b1205f2e054f30ef368a3acb3116052585035d27b411c513d75",
+      "candidate_root_xyz": [
+        16923.58984375,
+        32349.0234375,
+        40451.9375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|534.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/534.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2509760",
+      "prefix_sha256": "778ae2cc37523fa32b0505c460d023a10ee7528bff22835e20ec4e669ca92b5d",
+      "candidate_root_xyz": [
+        16992.5234375,
+        31992.6171875,
+        40407.2734375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|537.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/537.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/841644",
+      "prefix_sha256": "bf9e230b24ae803d10346302601ef7ef2aaa034b73eb6991b970c2a79ee50e0d",
+      "candidate_root_xyz": [
+        16857.296875,
+        32125.1015625,
+        40588.53515625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|538.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/538.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/263094",
+      "prefix_sha256": "7f5e51ff4001d3f9ee7b7d4fea185272f934c9931d6c7ebaceebe5b71bd0bcf5",
+      "candidate_root_xyz": [
+        17040.07421875,
+        31747.625,
+        40872.83203125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|539.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/539.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1878842",
+      "prefix_sha256": "d75de973219e46391f5e19951c9c5d07a86a17e57a5d9fa7d16cf1ad152b1862",
+      "candidate_root_xyz": [
+        16378.46484375,
+        31485.5859375,
+        41189.69140625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|544.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/544.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3040678",
+      "prefix_sha256": "5f3897ea2eb5c2e7d580db05d645c7e8aeddaa7f993e05fbf151c6bb18e4f341",
+      "candidate_root_xyz": [
+        17104.8671875,
+        33499.48046875,
+        39862.56640625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|545.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/545.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2408025",
+      "prefix_sha256": "3dcc5dd5359dfc81fc3d0c08cc2d9f49ff163852946d08e382cb4baab086ec39",
+      "candidate_root_xyz": [
+        17169.3359375,
+        33590.15625,
+        39511.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|546.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/546.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2317537",
+      "prefix_sha256": "1e09c8efb36559d0913f88e8e444cb91feabf9fc73d1c7b96a1c3c930d202562",
+      "candidate_root_xyz": [
+        17307.55078125,
+        33780.09765625,
+        39155.43359375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|547.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/547.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2615357",
+      "prefix_sha256": "7bcaf5d8444aec7faf52119a4f9e763cca4055cf6fe641e07c72e763ca7204da",
+      "candidate_root_xyz": [
+        17783.44140625,
+        33847.078125,
+        39127.31640625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|548.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/548.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1945966",
+      "prefix_sha256": "b9dfef34fb09a79e11bce963143f147ce022873de64f2f17ed408d0fff740e3a",
+      "candidate_root_xyz": [
+        17786.1640625,
+        33660.5703125,
+        38986.43359375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|549.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/549.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2222462",
+      "prefix_sha256": "3f21549f669a3091759e376a7f16508617462fafaef0803915fd104aa3d6753e",
+      "candidate_root_xyz": [
+        18098.296875,
+        33437.1953125,
+        38990.09375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|550.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/550.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/586393",
+      "prefix_sha256": "8e62b90f26448682328bcf0f801d3f224b4ba0c667fd0f507295dcf9201f80c4",
+      "candidate_root_xyz": [
+        16310.00390625,
+        33160.66796875,
+        39961.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|551.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/551.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2983558",
+      "prefix_sha256": "fd6ac6969573964beab66d6cbcbffcd5c7e396f698348613bf03a7296bbafee0",
+      "candidate_root_xyz": [
+        17771.27734375,
+        32473.45703125,
+        39823.53515625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|552.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/552.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2011300",
+      "prefix_sha256": "bbca411782d8bab5fb85e4874684fa4bb583a2b2ea876dc13879554dfe771362",
+      "candidate_root_xyz": [
+        18029.37109375,
+        32501.37109375,
+        39569.796875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|567.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/567.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2824525",
+      "prefix_sha256": "15c2de5325977ac45306f2c23ac729323f2ea5d1a1b69c327be149794f5f303a",
+      "candidate_root_xyz": [
+        48511.73046875,
+        19759.69140625,
+        24561.890625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|571.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/571.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1214499",
+      "prefix_sha256": "c9c8ab7d6520a2ae96d53788d6d034693b40daaad372d96433dcca37efab79ac",
+      "candidate_root_xyz": [
+        48206.55078125,
+        19572.37109375,
+        25166.5078125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|572.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/572.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1088923",
+      "prefix_sha256": "9f78a5fa0a5350834d81118d76dc95584601a9cb9e7845813fc6f3a966e8eb1d",
+      "candidate_root_xyz": [
+        47990.58984375,
+        19401.03515625,
+        25124.47265625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|573.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/573.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/230508",
+      "prefix_sha256": "beca63e912dcd45adae79e3cba929756634a7ea09624151325305ca0878d472c",
+      "candidate_root_xyz": [
+        47596.97265625,
+        19188.328125,
+        25036.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|609.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/609.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/969901",
+      "prefix_sha256": "49aee8c1ae6d0e3c61e4ffaab347808a86c99a7cc5209b99f34dc3f1ae7a97ee",
+      "candidate_root_xyz": [
+        44786.546875,
+        16363.015625,
+        26575.0625
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|611.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/611.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3036835",
+      "prefix_sha256": "d3940fdd4e750d7524f451123c2c56ea1974ed3c5e1164ce23a12b870b146a74",
+      "candidate_root_xyz": [
+        44160.94140625,
+        15569.80859375,
+        26551.41796875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|629.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/629.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1982164",
+      "prefix_sha256": "8f80be12d96ab3ad2d4b460cd8cd2b49c54d60fef93c004c8f7899b94efa6a20",
+      "candidate_root_xyz": [
+        44619.44921875,
+        16670.9609375,
+        27044.6484375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|638.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/638.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1211665",
+      "prefix_sha256": "ddc9c51d36c2ae064f46ee7678606eeda3461f1da51903f68bef9098df579678",
+      "candidate_root_xyz": [
+        35704.17578125,
+        8013.57421875,
+        31981.15234375
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|641.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/641.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1207624",
+      "prefix_sha256": "61e1b469eead6934785c78f60d0726470467c9f4dc23f05d21cf3b5387dcb8dd",
+      "candidate_root_xyz": [
+        35785.6171875,
+        8017.5234375,
+        31296.42578125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|655.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/655.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1862148",
+      "prefix_sha256": "9cfd2b32e32904c42f729f323cab571ba2630bd3e4e96a67749cffe8b42a5b89",
+      "candidate_root_xyz": [
+        36260.04296875,
+        8732.41015625,
+        30601.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|656.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/656.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/2884179",
+      "prefix_sha256": "dd84322747dc5cd10fc8d557780c8284bd277d389b3a8e4bee99a15816b9517f",
+      "candidate_root_xyz": [
+        36467.76171875,
+        8583.44140625,
+        30325.5
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|659.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/659.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/3172178",
+      "prefix_sha256": "2ef8428752550ec88412038d4ecd96c3d7296b5fe6c6fe6ecb676bb5d9c372f8",
+      "candidate_root_xyz": [
+        36877.08984375,
+        9267.41015625,
+        30741.8203125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|742.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/742.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1660959",
+      "prefix_sha256": "5d4eab4e0b8bb8439212c721152e62bed1a73c9b2b73de4055ce91f594f1127c",
+      "candidate_root_xyz": [
+        19475.1953125,
+        14806.49609375,
+        26148.91796875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "251730|743.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/743.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/216722",
+      "prefix_sha256": "ee0cb2bc89af3c2dde72532f735f52d31193091a28184c58372dd3729cf58e21",
+      "candidate_root_xyz": [
+        19680.96484375,
+        15237.43359375,
+        26232.5546875
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "252383|136.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/252383/swc_raw/136.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/514600",
+      "prefix_sha256": "a8abf46983da84fca784b1841dc660d3995b3aefb085fbc9529878610105dfc4",
+      "candidate_root_xyz": [
+        10287.5625,
+        16923.84375,
+        22659.36328125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    },
+    {
+      "uid": "252383|140.swc",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/252383/swc_raw/140.swc",
+      "requested_range": "bytes=0-4095",
+      "timeout_seconds": 8,
+      "maximum_prefix_bytes": 4096,
+      "http_status": 206,
+      "bytes_read": 4096,
+      "content_type": "application/octet-stream",
+      "content_range": "bytes 0-4095/1350508",
+      "prefix_sha256": "99bf788bba97560764a127f87fbcb21960775a035bad0298e497df9d3c5bf42b",
+      "candidate_root_xyz": [
+        32444.26953125,
+        5712.8203125,
+        27770.30078125
+      ],
+      "prefix_contains_root": true,
+      "full_graph_validated": false,
+      "coordinate_frame_calibrated": false
+    }
+  ],
+  "manifest_modified": false,
+  "image_requests": 0,
+  "scope": "Bounded raw prefixes only; no full SWC, graph, anatomical, or cohort acceptance"
+}

@@ -1,0 +1,1257 @@
+{
+  "started_at": "2026-10-04T08:13:31.068020+08:00",
+  "sample": "251637",
+  "workbooks": [
+    {
+      "path": "neuron_tables/251637_ACC.xlsx",
+      "sha256": "2061c980fa71d42a8e0eb617922e8fb525771699f40b931c5b49830bea173e28",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_FULL.xlsx",
+      "sha256": "9230890cb128942c6397e58e8853750b2693199bec6169206c82a8024e19281a",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "Unknown_0",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "Unknown_0",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_INS.xlsx",
+      "sha256": "9291e3c9e69d7f734dc1f3f1e7d0d05ebb905b676dd60d71239d6415336afd93",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_INS_corrected.xlsx",
+      "sha256": "b509828e0180f5d1aebf0bbf3a80655fd6a8ec8de9ff019a1bcbda6af1141d97",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables/251637_INS_HE.xlsx",
+      "sha256": "b27898e8c1e56b1616b211c7ce1852fea1c864aa04d77e9665f50dc7f596b419",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count",
+            "Layer"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "L-IDM",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 49,
+              "Layer": 3
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "L-IDD5",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 106,
+              "Layer": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_INS_HE_inferred.xlsx",
+      "sha256": "4af310cded1e2289dea2514a6e03a68bc3102891e0d60ef75523ad09d08c6b4f",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count",
+            "Layer"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "ITc",
+              "Soma_Region": "L-IDM",
+              "Soma_Side": "L",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 49,
+              "Layer": 3
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "ITc",
+              "Soma_Region": "L-IDD5",
+              "Soma_Side": "L",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 106,
+              "Layer": 3
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_laterality_projections.xlsx",
+      "sha256": "b2a0b519a026c924ed53f619ab1b5aaddd50a3a9621adb39b9881c5fc16e30db",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "Side",
+            "N_Neurons",
+            "Mean_Regions",
+            "Mean_Total_Length"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_M1.xlsx",
+      "sha256": "74d63d7021e3a045cb40fd1a6e444d335ff01463fed4bf2fd2a1f21ad6cefaea",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_Other.xlsx",
+      "sha256": "d0103cdeb5353edf56e9d8f670ca4638aa99ea89f82a2ff8817bcfb7942ea367",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_PrCO.xlsx",
+      "sha256": "3ef3cb74d974b7917625d653137f1c341fa13120b9300d2738f923828b001aa9",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_results.xlsx",
+      "sha256": "b1ed8d37cb2392e8f2f722b38bdacc852feb49eb1736920e24ce5833b4bf5275",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_results_clustered_k30_spearman_penalty.xlsx",
+      "sha256": "ffa8dd92676886cf6e31c1227dbc759b807225ad3d445b52102e0ca2748666a9",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables/251637_results_clustered_k5_spearman_penalty.xlsx",
+      "sha256": "646550b3658c093fe69e323275c21fd32a810777b2d6f39e3a376df9aeb8a7f3",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables/251637_results_clustered_k9_spearman_penalty.xlsx",
+      "sha256": "5a535170f48b395a07232657709a8f98cca1a34338f58f5de589ef7753ecedd4",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables/251637_subset.xlsx",
+      "sha256": "eff9eb548faf74b769d6759b0ee71c68977597401fae54460bb72b25483a793f",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "Unknown_0",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "Unknown_0",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_Unknown.xlsx",
+      "sha256": "7516a2dc3ddd7b8d4349d29ad04ab74c754b5c6f3a11efd39e457817c01b191a",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "Unknown_0",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "Unclassified",
+              "Soma_Region": "Unknown_0",
+              "Soma_Side": "Unknown",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 0,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 2,
+              "Laterality_Index": null,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables/251637_von_economo_candidates.xlsx",
+      "sha256": "67d6cf86e3d7969c1f0f582ca827cf6b88ad0f7cec93e0de77f9998f2b37f0ff",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables/251637_von_economo_check.xlsx",
+      "sha256": "3bd70f55e2e01f3764d835b0eb9a1e855ca288fe153090a4f06793ed2bebffb1",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables/251637_von_economo_user_confirmed.xlsx",
+      "sha256": "517cf8f5f0810f5e15e7099c6502287925381ea4f7a18ff07c56234658321d4f",
+      "sheets": []
+    },
+    {
+      "path": "neuron_tables_new/251637_ACC.xlsx",
+      "sha256": "c9041540ecf4d665a01f5ce97959e6ac68a777a808cd5e995188c31164865e02",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_FULL.xlsx",
+      "sha256": "a37bc2c8e0dadf1cd5becd895a8e5da2058227cf4b396f2828f87b57a83948ec",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDM",
+              "Soma_Side": "R",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDD5",
+              "Soma_Side": "R",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_INS.xlsx",
+      "sha256": "8b4fdae1895319772bee392166f8fe88938b4e9d3c6d016c78d90acc78a13ed6",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_INS_HE.xlsx",
+      "sha256": "b15d8d066ddf1954741189547b2ad8967f1e55a3b503c26517fae46635e7a638",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDM",
+              "Soma_Side": "R",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDD5",
+              "Soma_Side": "R",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_INS_HE_inferred.xlsx",
+      "sha256": "e230985cb218f78577d099a33801e4b68cf7d17f0eb3b055416788b11f7a6cc3",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDM",
+              "Soma_Side": "R",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDD5",
+              "Soma_Side": "R",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_M1.xlsx",
+      "sha256": "4f9e8b884bbec0633e37f7117cd908faa64b083c66a55ff04a57c94542dfe509",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_Other.xlsx",
+      "sha256": "42ad460d65cc1147b474337f59fef6cd06437f6b896c16490de2f5d67f465f0d",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_PrCO.xlsx",
+      "sha256": "d4b08ce8ced3966c3b6ad45a915da9d0e2f8a8eb3e0427dd7327f99a3d11173d",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_results.xlsx",
+      "sha256": "0eec01d5b2f8fdba34cb0a06165d27a78b884f2391c7fe4606616b4c796490e5",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": []
+        }
+      ]
+    },
+    {
+      "path": "neuron_tables_new/251637_Unknown.xlsx",
+      "sha256": "47fa87b1304063626b9677cd77e30532d8910fcea7b6afc14db10c0a66cb2fe9",
+      "sheets": [
+        {
+          "name": "Summary",
+          "columns": [
+            "SampleID",
+            "NeuronID",
+            "Neuron_Type",
+            "Soma_Region",
+            "Soma_Side",
+            "Soma_NII_X",
+            "Soma_NII_Y",
+            "Soma_NII_Z",
+            "Soma_Phys_X",
+            "Soma_Phys_Y",
+            "Soma_Phys_Z",
+            "Total_Length",
+            "Terminal_Count",
+            "N_Ipsilateral",
+            "N_Contralateral",
+            "N_Laterality_Unknown",
+            "Laterality_Index",
+            "Outlier_Count"
+          ],
+          "matched_rows": [
+            {
+              "SampleID": 251637,
+              "NeuronID": "112.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDM",
+              "Soma_Side": "R",
+              "Soma_NII_X": 211.5384,
+              "Soma_NII_Y": 178.426,
+              "Soma_NII_Z": 95.54,
+              "Soma_Phys_X": 52884.6,
+              "Soma_Phys_Y": 44606.5,
+              "Soma_Phys_Z": 23885.0,
+              "Total_Length": 237.6619999999977,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 49
+            },
+            {
+              "SampleID": 251637,
+              "NeuronID": "114.swc",
+              "Neuron_Type": "ITi",
+              "Soma_Region": "L-IDD5",
+              "Soma_Side": "R",
+              "Soma_NII_X": 209.5244,
+              "Soma_NII_Y": 185.2728,
+              "Soma_NII_Z": 97.744,
+              "Soma_Phys_X": 52381.1,
+              "Soma_Phys_Y": 46318.2,
+              "Soma_Phys_Z": 24436.0,
+              "Total_Length": 446.9519999999952,
+              "Terminal_Count": 2,
+              "N_Ipsilateral": 1,
+              "N_Contralateral": 0,
+              "N_Laterality_Unknown": 1,
+              "Laterality_Index": 0.0,
+              "Outlier_Count": 106
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "path": "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx",
+      "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+      "sheets": [
+        {
+          "name": "251637 mostly insula",
+          "columns": [
+            "Folder",
+            "SWC",
+            "Area",
+            "Layer",
+            "Unnamed: 4"
+          ],
+          "matched_rows": [
+            {
+              "Folder": "Region_Unknown_0",
+              "SWC": 112,
+              "Area": "L-IDM",
+              "Layer": 3.0,
+              "Unnamed: 4": null
+            },
+            {
+              "Folder": "Region_Unknown_0",
+              "SWC": 114,
+              "Area": "L-IDD5",
+              "Layer": 3.0,
+              "Unnamed: 4": null
+            },
+            {
+              "Folder": "Region_Unknown_0",
+              "SWC": 114,
+              "Area": "L-IDM",
+              "Layer": 3.0,
+              "Unnamed: 4": null
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "requests": [
+    {
+      "label": "sample_info",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSampleInfo",
+      "params": {
+        "project_id": "",
+        "fMOST_id": "251637"
+      },
+      "observed_at": "2026-10-04T08:13:32.402232+08:00",
+      "http_status": 200,
+      "bytes": 866,
+      "sha256": "1350d998d976ecb6917c96cc6616c33d4c33c849b4ced639cdf7a5a52571198c",
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/sample_info.json"
+    },
+    {
+      "label": "portal_somata",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSoma",
+      "params": {
+        "fMOST_id": "251637"
+      },
+      "observed_at": "2026-10-04T08:13:32.465241+08:00",
+      "http_status": 200,
+      "bytes": 71878,
+      "sha256": "0e0c83e63f9c6ca06dcfd2ff5c5cb41c95a5e2a33c6bd31e5092ba691d49e3f2",
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/portal_somata.json"
+    },
+    {
+      "label": "atlas_112",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSWC",
+      "params": {
+        "sampleid": "251637",
+        "neuronid": "112.swc"
+      },
+      "observed_at": "2026-10-04T08:13:32.496753+08:00",
+      "http_status": 200,
+      "bytes": 407861,
+      "sha256": "418ff7b32448e71023321672218339b5a6dc37dfc1442f559ecf611362fc9bac",
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/atlas_112.swc"
+    },
+    {
+      "label": "raw_112",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251637/swc_raw/112.swc",
+      "params": null,
+      "observed_at": "2026-10-04T08:13:32.731344+08:00",
+      "http_status": 200,
+      "bytes": 685363,
+      "sha256": "d80fc982cd7ba42e6b36ffc91fc296d9d7c589e02849759fe32e60aaba371298",
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/raw_112.swc"
+    },
+    {
+      "label": "atlas_114",
+      "url": "http://10.10.48.110/neuronbrowser/api/user/getSWC",
+      "params": {
+        "sampleid": "251637",
+        "neuronid": "114.swc"
+      },
+      "observed_at": "2026-10-04T08:13:36.992777+08:00",
+      "http_status": 200,
+      "bytes": 645376,
+      "sha256": "7beb8f314de649c6d310d7ec042b039ceeca197f456fe6f6384cac16856e2213",
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/atlas_114.swc"
+    },
+    {
+      "label": "raw_114",
+      "url": "http://10.10.31.31/swc/newswc/Monkey/251637/swc_raw/114.swc",
+      "params": null,
+      "observed_at": "2026-10-04T08:13:37.028591+08:00",
+      "http_status": 200,
+      "bytes": 1081646,
+      "sha256": "7d14337d8e47ce7bae90ed7c07571939f8fa7b48c1ff9ed24e9d80951427dc1d",
+      "path": "notes/region_analysis_review_20261004/case_112_114_20261004/raw_114.swc"
+    }
+  ],
+  "graphs": [
+    {
+      "NeuronID": "112.swc",
+      "frame": "atlas",
+      "nodes": 7474,
+      "root_xyz": [
+        52884.6,
+        44606.5,
+        23885.0
+      ],
+      "source_sha256": "418ff7b32448e71023321672218339b5a6dc37dfc1442f559ecf611362fc9bac",
+      "cached_numeric_graph_equal": true,
+      "cached_sha256": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99"
+    },
+    {
+      "NeuronID": "112.swc",
+      "frame": "raw",
+      "nodes": 7474,
+      "root_xyz": [
+        9413.76171875,
+        28645.63671875,
+        27356.71875
+      ],
+      "source_sha256": "d80fc982cd7ba42e6b36ffc91fc296d9d7c589e02849759fe32e60aaba371298"
+    },
+    {
+      "NeuronID": "114.swc",
+      "frame": "atlas",
+      "nodes": 11744,
+      "root_xyz": [
+        52381.1,
+        46318.2,
+        24436.0
+      ],
+      "source_sha256": "7beb8f314de649c6d310d7ec042b039ceeca197f456fe6f6384cac16856e2213",
+      "cached_numeric_graph_equal": true,
+      "cached_sha256": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602"
+    },
+    {
+      "NeuronID": "114.swc",
+      "frame": "raw",
+      "nodes": 11744,
+      "root_xyz": [
+        10131.99609375,
+        28915.56640625,
+        25740.93359375
+      ],
+      "source_sha256": "7d14337d8e47ce7bae90ed7c07571939f8fa7b48c1ff9ed24e9d80951427dc1d"
+    }
+  ],
+  "inputs_overwritten": false,
+  "exact_sample_info": [
+    {
+      "published": null,
+      "project_id": "Monkey",
+      "fMOST_id": "251637",
+      "sample_id": "ION2509004",
+      "spicies": null,
+      "gender": null,
+      "transgenic_line": null,
+      "generation_method": null,
+      "public_repository": null,
+      "public_repository_stock": null,
+      "repository_strain_name": null,
+      "age": null,
+      "injection_time": "2025-09-14T16:00:00.000Z",
+      "ample_delivery_time": null,
+      "injection_region": "",
+      "injection_structure": "Ial_42\r;PrCO_49\r;Iai_41\r;Ia/Id_228\r;;M1_79\r;F4_85\r;PMdc_82\r;area_24c_10\r;preSMA_88\r;area_3a/b_93\r;Ig_229\r;",
+      "injection_coordinates": null,
+      "injection_virus": null,
+      "injection_volume": null,
+      "injection_tamoxifen": null,
+      "putative_labeled_cell_number": null,
+      "tracing_cell_number": 562,
+      "lab_name": "\u5f90\u6625",
+      "author": "",
+      "injection_region_id": "undefined;",
+      "injection_structure_id": "undefined;undefined;undefined;undefined;undefined;undefined;undefined;undefined;undefined;undefined;undefined;"
+    }
+  ],
+  "status": "bounded_source_checks_finished",
+  "finished_at": "2026-10-04T08:13:37.643970+08:00"
+}

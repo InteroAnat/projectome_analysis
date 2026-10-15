@@ -1,0 +1,25 @@
+{
+  "observed_utc": "2026-10-03T12:10:30.168642+00:00",
+  "run_id": "d93cc551074743e291f4229543b0d888",
+  "uid": "252718|145.swc",
+  "retry_scope": "only dated own-sample root cube failure cleared; other observations retained",
+  "root_cube_xyz": [
+    195,
+    84,
+    96
+  ],
+  "status": "context_unavailable",
+  "source_observation": "HTTP Error 404: Not Found",
+  "usable_image_counted": false,
+  "missing_root_cubes": 1,
+  "unattempted_other_cubes": 323,
+  "requested_field_um_xyz": [
+    4000.0,
+    4000.0,
+    30.0
+  ],
+  "report_sha256": "88d0f7775219bd20c803a6f27e0c5e893d484b886073f396f4b3b3a87ce25f67",
+  "explicit_retry_record_sha256": "70647d95472110e6e28a8b9505e4bbd1201214990872dc209a4cfe2b65f17dd7",
+  "permanent_source_unavailability_established": false,
+  "anatomical_absence_established": false
+}

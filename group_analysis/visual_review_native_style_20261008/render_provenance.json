@@ -1,0 +1,217 @@
+{
+  "status": "rendered_pending_actual_inspection",
+  "toolkit_sha256": "c5758c95c3d01d00bd752ccba9d8e21df01f42cc8a15aff0af4f10d59a8f1fc3",
+  "renderer_sha256": "b810f4cdd473bc0ab89b872c6162a3b789af2ef2b311b53ed9187c42c802def6",
+  "source_manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "public_plot_methods": [
+    "plot_soma_block",
+    "plot_widefield_context"
+  ],
+  "style": "Original grayscale soma/cyan marker and green wide-field/red traces/white marker, both MIP",
+  "original_bulk_modified": false,
+  "coordinates_changed": false,
+  "records": [
+    {
+      "SampleID": "252384",
+      "NeuronID": "003.swc",
+      "display_label": "Unknown_0",
+      "label_role": "original step1 label; not an accepted correction",
+      "native_soma_xyz_um": [
+        46139.87109375,
+        18014.45703125,
+        37393.5
+      ],
+      "raw_swc": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252384\\003.swc",
+      "raw_swc_sha256": "b6d29b8535ed6305bc0a3e166305f1cc35020bd790b56cd8dcf2091f00da15db",
+      "outputs": [
+        {
+          "path": "252384/003/HighRes/Plots/252384_003.swc_Unknown_0_SomaBlock_Plot.png",
+          "sha256": "8ad6d605ce580ca075a91bd47bf7f88b0d5bf577c73210a7022fa11f7c72da88",
+          "kind": "soma",
+          "caption": "High-resolution soma MIP"
+        },
+        {
+          "path": "252384/003/LowRes/Plots/252384_003.swc_Unknown_0_WideField_Plot.png",
+          "sha256": "d5cca81561c9796b07f5f0a1de7a24f052e6b1e72d24b3ac7a64f3d361d96d3d",
+          "kind": "context",
+          "caption": "Copied low-resolution wide-field MIP; native-to-overview alignment unverified"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\003\\soma.nii.gz",
+          "sha256": "cde8e22f78976d4ae84b0180e519f54ce685f773eb9e063b0d75dd0ae267eca1",
+          "sidecar_sha256": "e96a97f7e510796088108bd7e7941133847035aaf003bfa69a369cca0d0330ed",
+          "origin_xyz_um": [
+            45864.0,
+            17550.0,
+            36990.0
+          ],
+          "spacing_xyz_um": [
+            0.65,
+            0.65,
+            3.0
+          ],
+          "complete": true
+        },
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\003\\context.nii.gz",
+          "sha256": "6897f4246bae5eee553d64667a2c859a5057b46e83e6cc7e24f89c579c8f34cd",
+          "sidecar_sha256": "5ddffc9b528c95a4bd81c3d9941c709af2a975ffe62c127103ece816da2428dc",
+          "origin_xyz_um": [
+            44135.0,
+            16010.0,
+            37377.0
+          ],
+          "spacing_xyz_um": [
+            5.0,
+            5.0,
+            3.0
+          ],
+          "complete": true
+        },
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252384\\003\\provenance.json",
+          "sha256": "5134d6d3d7516595647b1228b2b716d65050915196fd73db8b5e13d8686ec99d"
+        }
+      ],
+      "lowres_alignment_status": "not independently established",
+      "anatomical_acceptance": false
+    },
+    {
+      "SampleID": "252527",
+      "NeuronID": "058.swc",
+      "display_label": "CR_PrCO",
+      "label_role": "original step1 label; not an accepted correction",
+      "native_soma_xyz_um": [
+        16290.625,
+        30980.03515625,
+        18347.5546875
+      ],
+      "raw_swc": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252527\\058.swc",
+      "raw_swc_sha256": "16e93b2e9bd974dcd721a09a7edddb2724f3ab4a4f59c5eff3fad1f36e1dd7fb",
+      "outputs": [
+        {
+          "path": "252527/058/HighRes/Plots/252527_058.swc_CR_PrCO_SomaBlock_Plot.png",
+          "sha256": "1e337a9a6ae9c009eaa3e8cf466345ba5072000294845d2d00a102f672839eec",
+          "kind": "soma",
+          "caption": "High-resolution soma MIP"
+        },
+        {
+          "path": "252527/058/LowRes/Plots/252527_058.swc_CR_PrCO_WideField_Plot.png",
+          "sha256": "965242563e5f669966527fbad7e64f08a53d8c6ea064ad6033badb26cafb4be9",
+          "kind": "context",
+          "caption": "Copied low-resolution wide-field MIP; native-to-overview alignment unverified"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\058\\soma.nii.gz",
+          "sha256": "3e237dc1c5a6f8dcbd0766d0d66467d3874cd30507d4e36237ce82ac8aaf0aac",
+          "sidecar_sha256": "6b93c118eb4a3b504610f16c900bc40d7afa5b003a723a89b1671c70911e7ab6",
+          "origin_xyz_um": [
+            15912.0,
+            30654.0,
+            17820.0
+          ],
+          "spacing_xyz_um": [
+            0.65,
+            0.65,
+            3.0
+          ],
+          "complete": true
+        },
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\058\\context.nii.gz",
+          "sha256": "3bae19f026c6528fdc387bb20e7bc18e401e6863c36a9e264dd03c828cd72039",
+          "sidecar_sha256": "9a3eca4512446de7387890c2caf7f864473d523efaec4f369b417cabddb85e22",
+          "origin_xyz_um": [
+            14290.0,
+            28980.0,
+            18330.0
+          ],
+          "spacing_xyz_um": [
+            5.0,
+            5.0,
+            3.0
+          ],
+          "complete": true
+        },
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252527\\058\\provenance.json",
+          "sha256": "31ce88dbcd511c7e0e085e03cb804a1124a5b5571db9728b192206c40faef2d2"
+        }
+      ],
+      "lowres_alignment_status": "not independently established",
+      "anatomical_acceptance": false
+    },
+    {
+      "SampleID": "252383",
+      "NeuronID": "001.swc",
+      "display_label": "CR_F4",
+      "label_role": "original step1 label; not an accepted correction",
+      "native_soma_xyz_um": [
+        10890.42578125,
+        18461.25,
+        22954.03125
+      ],
+      "raw_swc": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252383\\001.swc",
+      "raw_swc_sha256": "807de628adc525d1d2dddbf07a067de5805c3606e76f5270d793087dec736c48",
+      "outputs": [
+        {
+          "path": "252383/001/HighRes/Plots/252383_001.swc_CR_F4_SomaBlock_Plot.png",
+          "sha256": "47734b2d4ceafed711cce27f3c5625a7ac3697d710006a13062442e89f1337cf",
+          "kind": "soma",
+          "caption": "High-resolution soma MIP"
+        },
+        {
+          "path": "252383/001/DerivedContext/Plots/252383_001.swc_CR_F4_DerivedContext_Plot.png",
+          "sha256": "55e4e6da8aaf552ec9ce7b015f5b27f00f984ddff49a8e8ef3571f0a040d25a6",
+          "kind": "context",
+          "caption": "Derived local context MIP; not a whole-section LowRes acquisition; PARTIAL source coverage"
+        }
+      ],
+      "inputs": [
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252383\\001\\soma.nii.gz",
+          "sha256": "e87dc829e802da5684bc37200210de782ba167859400f527800b4115c02f71cc",
+          "sidecar_sha256": "8808c38fff0f6c16c271cab8158e8269137144c52062c9b00f259a3d43d40155",
+          "origin_xyz_um": [
+            10530.0,
+            18018.0,
+            22680.0
+          ],
+          "spacing_xyz_um": [
+            0.65,
+            0.65,
+            3.0
+          ],
+          "complete": true
+        },
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252383\\001\\context.nii.gz",
+          "sha256": "5d8fdd3c3e7c55596069d717dcf95131f5eebf75ee43538b0ca466e7cb4f5ed7",
+          "sidecar_sha256": "fc2c64f1f6441a60f14948ae419691b55005d0a94cf41e822e067f5b1d440299",
+          "origin_xyz_um": [
+            8892.0,
+            16463.2,
+            22941.0
+          ],
+          "spacing_xyz_um": [
+            5.2,
+            5.2,
+            3.0
+          ],
+          "complete": false
+        },
+        {
+          "path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252383\\001\\provenance.json",
+          "sha256": "355d232d748723ef66748b4aa1c800cfe0c0a452d532d7cb2beb35e36f4e5ff3"
+        }
+      ],
+      "lowres_alignment_status": "not independently established",
+      "anatomical_acceptance": false
+    }
+  ],
+  "errors": []
+}

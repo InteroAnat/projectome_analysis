@@ -1,0 +1,48 @@
+{
+  "recorded_date": "2026-10-08",
+  "timezone": "Asia/Shanghai",
+  "sample_id": "252384",
+  "neuron_id": "003.swc",
+  "native_soma_xyz_um": [
+    46139.87109375,
+    18014.45703125,
+    37393.5
+  ],
+  "declared_lowres_spacing_xyz_um": [
+    5.0,
+    5.0,
+    3.0
+  ],
+  "predicted_lowres_pixel_xy": [
+    9227.97421875,
+    3602.89140625
+  ],
+  "predicted_section_index": 12464,
+  "display_soma_xy_at_downsample16": [
+    576.748388671875,
+    225.180712890625
+  ],
+  "saved_locator_box_xyxy": [
+    552,
+    200,
+    602,
+    250
+  ],
+  "original_toolkit_crop_origin_xy_um": [
+    44135.0,
+    16010.0
+  ],
+  "current_saved_crop_origin_xy_um": [
+    44135.0,
+    16010.0
+  ],
+  "new_xy_mapping_shift_detected": false,
+  "mapping_assumption": "raw SWC and copied low-resolution TIFF share XYZ origin, scale and axes; no independently verified mapping was recovered",
+  "placement_qc_status": "single-section locator unsuitable for anatomical review: source-section discontinuities; absolute native-to-overview alignment unresolved",
+  "anatomical_outside_brain_conclusion": false,
+  "source_gap_conclusion": "Source TIFFs 12461-12464 contain visibly displaced strips/seams; source cause unresolved. Ten-section MIP hides some defects and cannot establish mapping.",
+  "coordinate_correction_applied": false,
+  "newly_registered_or_moved_soma": false,
+  "scope": "Arithmetic comparison with original toolkit; not an anatomical registration pass",
+  "actual_visual_readback": "actual_visual_readback.json"
+}

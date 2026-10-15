@@ -1,0 +1,18 @@
+{
+  "observed_utc": "2026-10-03T03:48:17.0252073Z",
+  "suite": "python -B -m unittest discover -s tests",
+  "tests_passed": 103,
+  "test_log": "unresolved_candidate_tests_20261003.log",
+  "test_log_sha256": "8f27e15d31027624c5c3f2548af07468d40936ae69fbe42d1100cf30a7054570",
+  "source_sha256": {
+    "main_scripts/fmost_context_resources.py": "20099b0f64cba5256d008b303c17096b84bd858e23e9799638c83a79cd8f4968",
+    "group_analysis/scripts/regional_context_batch_20261003.py": "78402b6ceee535ac932074ec0fb3066cd2e62cffc8f4b7eb354441855425b04d",
+    "main_scripts/fmost_derived_context.py": "18eb701c309e6007691ce21a8cf64be5023d572eb78b3d1a6840070572900512",
+    "main_scripts/Visual_toolkit.py": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+    "group_analysis/scripts/visual_review_20261002.py": "483ac077eea2231b5ac2f995c2d0681bc1ae9506ad65681b14fffd70ae24b966",
+    "tests/test_fmost_context_batch.py": "64b01c1cb6df239c221a6cd1f218a8163accc3c57a1b5327ab29597df61f4435",
+    "tests/test_fmost_derived_context.py": "61f578fcc033764b214f74433aad155da63199b704062a48fe15fb43ae815757",
+    "tests/test_visual_review_manifest.py": "9c7625d60ff73bcc11678ffd555217440f614fae7d0b7850dd0248701f6ba4f5"
+  },
+  "production_manifest_activated": false
+}

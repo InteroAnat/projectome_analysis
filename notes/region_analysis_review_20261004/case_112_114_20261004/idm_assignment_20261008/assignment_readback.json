@@ -1,0 +1,28 @@
+{
+  "status": "passed",
+  "recorded_date": "2026-10-08",
+  "source_assignment_sha256": "c10dff6ff78d03b9ec5e20ef4cc1b1be2c61befacd1143bcfa088476d286d8b1",
+  "results_sha256": "8b3fbc3ab6384dfa1321096250db6b85625abf1d0fe070044896ac14915b918d",
+  "rows": [
+    {
+      "NeuronID": "112.swc",
+      "Soma_Region": "R-IDM",
+      "Soma_Side": "R",
+      "Soma_Side_Reference": "R",
+      "Soma_Side_Conflict": false,
+      "Neuron_Type": "ITi"
+    },
+    {
+      "NeuronID": "114.swc",
+      "Soma_Region": "R-IDM",
+      "Soma_Side": "R",
+      "Soma_Side_Reference": "R",
+      "Soma_Side_Conflict": false,
+      "Neuron_Type": "ITi"
+    }
+  ],
+  "original_workbook_unchanged": true,
+  "source_swcs_unchanged": true,
+  "existing_tables_replaced": false,
+  "verification_scope": "real two-neuron analysis and JSON readback; provisional parcel is a user decision, not a software-test anatomical conclusion"
+}

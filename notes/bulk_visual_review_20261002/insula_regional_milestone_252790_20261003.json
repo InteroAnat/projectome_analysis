@@ -1,0 +1,558 @@
+{
+  "captured_utc": "2026-10-03T02:54:30.6376003Z",
+  "sample": "252790",
+  "category": "INS",
+  "selected": 38,
+  "independently_checked": 38,
+  "manifest_sha256": "ca7b00a17aa53b64280239904d8259d22c7684b15b91208da953ff295b6c2632",
+  "outcomes": [
+    {
+      "Name": "derived_highres",
+      "Count": 4
+    },
+    {
+      "Name": "derived_partial",
+      "Count": 34
+    }
+  ],
+  "source_hash_checks_total": 11101.0,
+  "source_check_count_note": "Repeated shared cubes are counted per field, not as unique sources",
+  "mask_voxels_checked_total": 218838060.0,
+  "anatomical_acceptance": false,
+  "remaining_sample_candidates": 75,
+  "other_monkeys_remain_in_scope": true,
+  "records": [
+    {
+      "uid": "252790|014.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.7681433168572158,
+      "source_hash_checks": 249,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|015.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.7508932783866369,
+      "source_hash_checks": 233,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|016.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.8570111995887453,
+      "source_hash_checks": 267,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|017.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.8881630679060676,
+      "source_hash_checks": 281,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|018.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.8909343902850396,
+      "source_hash_checks": 281,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5929000,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|019.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9197207796929456,
+      "source_hash_checks": 290,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|020.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9137041502567805,
+      "source_hash_checks": 290,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|021.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9166059310641047,
+      "source_hash_checks": 296,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|022.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9300647151232496,
+      "source_hash_checks": 298,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|023.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.7783519711310012,
+      "source_hash_checks": 247,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|024.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9398438517250884,
+      "source_hash_checks": 298,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|025.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.8915415753078091,
+      "source_hash_checks": 281,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5929000,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|026.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9505007346359752,
+      "source_hash_checks": 304,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|033.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.7605286787596747,
+      "source_hash_checks": 235,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|034.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.7344752190286474,
+      "source_hash_checks": 226,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|048.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9788762602806816,
+      "source_hash_checks": 312,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|049.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9963203525426939,
+      "source_hash_checks": 317,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|050.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9493422162253331,
+      "source_hash_checks": 300,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5929000,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|051.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9395065272828602,
+      "source_hash_checks": 298,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|052.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9992754969347947,
+      "source_hash_checks": 323,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|053.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9992424255234958,
+      "source_hash_checks": 323,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|054.swc",
+      "status": "derived_highres",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 1.0,
+      "source_hash_checks": 324,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|055.swc",
+      "status": "derived_highres",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 1.0,
+      "source_hash_checks": 324,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|056.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9323966020975124,
+      "source_hash_checks": 300,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|057.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9332150750556767,
+      "source_hash_checks": 300,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|058.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9843093709264713,
+      "source_hash_checks": 328,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 2899820,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|059.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9998344958032864,
+      "source_hash_checks": 323,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|060.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9322783848141455,
+      "source_hash_checks": 300,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|061.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9843493041831926,
+      "source_hash_checks": 328,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 2894440,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|062.swc",
+      "status": "derived_highres",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 1.0,
+      "source_hash_checks": 324,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5929000,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|063.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.903940013172783,
+      "source_hash_checks": 292,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|064.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.9676897867799872,
+      "source_hash_checks": 308,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|111.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.868107636452184,
+      "source_hash_checks": 277,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|112.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.872644520628916,
+      "source_hash_checks": 290,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|113.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.8628426190194721,
+      "source_hash_checks": 269,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|118.swc",
+      "status": "derived_highres",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 1.0,
+      "source_hash_checks": 324,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5921300,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|119.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.974550232429937,
+      "source_hash_checks": 314,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    },
+    {
+      "uid": "252790|120.swc",
+      "status": "derived_partial",
+      "requested_field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "coverage_fraction": 0.7446720362012375,
+      "source_hash_checks": 227,
+      "sampled_pixel_checks": 9,
+      "mask_voxels_checked": 5913610,
+      "root_acquired": true
+    }
+  ]
+}

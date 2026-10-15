@@ -1,0 +1,21 @@
+# Visualization methods and style reconciliation
+
+Agent: Codex. Date: 2026-10-04. Branch: `codex/fmost-methods-review-20261002`.
+
+The intended native review remains a high-resolution soma view and a wider context with highlighted neuron traces. Original inputs and existing bulk outputs have not been replaced during the region/laterality audit.
+
+The GUI source has no changes relative to branch HEAD. Its shared `Visual_toolkit.py` backend has substantial changes: crop/axis geometry, NIfTI spacing and axis signs, volume-aware trace clipping, source validation, partial/missing-data behavior and provenance. These can affect numerical exports and displayed content. The GUI being unchanged does not make its behavior identical to the earlier backend. Public plotting interfaces and their principal styling remain present.
+
+| Output | Rendering method | Interpretation |
+| --- | --- | --- |
+| Public toolkit soma plot | `plot_soma_block`: grayscale MIP, cyan soma box/text | Original public soma style, current corrected geometry |
+| Public toolkit wide-field plot | `plot_widefield_context`: green signal, red clipped SWC edges, white soma marker and scale bar | Original public wide-field style, current corrected geometry |
+| October bulk `soma_trace.png` / `context_trace.png` | Custom batch panels in `visual_review_20261002.py`, using toolkit acquisition/geometry | New review derivatives; do not describe them as identical GUI/public-toolkit renders |
+| Atlas laterality sheets | Separate NMT/mask/root/endpoint renderer | Supplementary atlas-coordinate checks |
+| Native locator contact sheets | Existing full-section locator images arranged into labeled pages | Supplementary native relative-side checks; boxes mark crops, not individual soma boundaries |
+
+`toolkit_style_reference/` contains a concrete pair for **252385/050**, rendered through the existing public toolkit methods using saved own-source NIfTI crops and its raw SWC. Both images were actually viewed. Their provenance records source/output/toolkit hashes. The public methods project the supplied crop depth, whereas custom bulk panels can use a narrower local slab; these projections are not pixel-equivalent.
+
+The different black-and-white atlas/contact-sheet figures are checking figures. They do not replace the high-resolution and wide-field neuron review package. Native contact sheets inspected 299 available locators in four copied samples; the other five samples do not have full-section locators in the available copied source set. Visual relative-side agreement does not establish absolute anatomical orientation or fine region boundaries.
+
+Keep public-style neuron views and supplementary checking figures explicitly identified in future reports. Accepted images, annotations and cohort workbooks remain unchanged. Region changes have scoped rollback snapshots and a reverse-apply checked patch; the tracked toolkit changes remain reviewable in Git separately from this region patch.

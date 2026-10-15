@@ -1,0 +1,291 @@
+{
+  "observed_utc": "2026-10-03T04:26:48.247331+00:00",
+  "producer_ledger_path": "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\manifest\\regional_context_run_20261003.json",
+  "input_manifest_path": "notes\\bulk_visual_review_20261002\\identity_manifest_746_pre_extension_20261003.csv",
+  "artifact_scope": "Current output files for this ledger's selected identities; producer history retained separately",
+  "producer_pid": 812,
+  "producer_state": "running",
+  "terminal_record": null,
+  "selected_identities": 113,
+  "represented_samples": [
+    "252790"
+  ],
+  "manifest_uid_set_matches": true,
+  "manifest_sha256": "ca7b00a17aa53b64280239904d8259d22c7684b15b91208da953ff295b6c2632",
+  "already_checked": [
+    "252790|014.swc",
+    "252790|015.swc",
+    "252790|016.swc",
+    "252790|017.swc",
+    "252790|018.swc",
+    "252790|019.swc",
+    "252790|020.swc",
+    "252790|021.swc",
+    "252790|022.swc",
+    "252790|023.swc",
+    "252790|024.swc",
+    "252790|025.swc",
+    "252790|026.swc",
+    "252790|033.swc",
+    "252790|034.swc",
+    "252790|048.swc",
+    "252790|049.swc",
+    "252790|050.swc",
+    "252790|051.swc",
+    "252790|052.swc",
+    "252790|053.swc",
+    "252790|054.swc",
+    "252790|055.swc",
+    "252790|056.swc",
+    "252790|057.swc",
+    "252790|058.swc",
+    "252790|059.swc",
+    "252790|060.swc",
+    "252790|061.swc",
+    "252790|062.swc",
+    "252790|063.swc",
+    "252790|064.swc",
+    "252790|111.swc",
+    "252790|112.swc",
+    "252790|113.swc",
+    "252790|118.swc",
+    "252790|119.swc",
+    "252790|120.swc",
+    "252790|011.swc",
+    "252790|013.swc",
+    "252790|030.swc",
+    "252790|031.swc",
+    "252790|032.swc",
+    "252790|035.swc",
+    "252790|036.swc",
+    "252790|037.swc",
+    "252790|046.swc",
+    "252790|076.swc",
+    "252790|078.swc",
+    "252790|097.swc",
+    "252790|098.swc",
+    "252790|100.swc",
+    "252790|101.swc",
+    "252790|102.swc",
+    "252790|103.swc",
+    "252790|106.swc",
+    "252790|115.swc",
+    "252790|116.swc",
+    "252790|117.swc",
+    "252790|121.swc",
+    "252790|123.swc",
+    "252790|001.swc",
+    "252790|002.swc",
+    "252790|003.swc",
+    "252790|004.swc",
+    "252790|005.swc",
+    "252790|006.swc",
+    "252790|007.swc",
+    "252790|008.swc",
+    "252790|009.swc",
+    "252790|010.swc",
+    "252790|012.swc",
+    "252790|027.swc",
+    "252790|028.swc",
+    "252790|029.swc",
+    "252790|065.swc",
+    "252790|066.swc",
+    "252790|067.swc",
+    "252790|068.swc",
+    "252790|069.swc",
+    "252790|070.swc",
+    "252790|071.swc",
+    "252790|072.swc",
+    "252790|073.swc",
+    "252790|074.swc",
+    "252790|075.swc",
+    "252790|077.swc",
+    "252790|079.swc",
+    "252790|080.swc",
+    "252790|081.swc",
+    "252790|082.swc",
+    "252790|083.swc",
+    "252790|084.swc",
+    "252790|085.swc",
+    "252790|086.swc",
+    "252790|087.swc"
+  ],
+  "newly_checked": [
+    {
+      "uid": "252790|088.swc",
+      "sources": 253,
+      "pixel_checks": 9
+    },
+    {
+      "uid": "252790|089.swc",
+      "sources": 244,
+      "pixel_checks": 9
+    },
+    {
+      "uid": "252790|090.swc",
+      "sources": 263,
+      "pixel_checks": 9
+    }
+  ],
+  "new_masks_checked": [
+    {
+      "uid": "252790|088.swc",
+      "mask_voxels": 5913610
+    },
+    {
+      "uid": "252790|089.swc",
+      "mask_voxels": 5921300
+    },
+    {
+      "uid": "252790|090.swc",
+      "mask_voxels": 5929000
+    }
+  ],
+  "new_panels_checked": [
+    {
+      "uid": "252790|088.swc",
+      "pngs_decoded": 6,
+      "unmarked_pixels_checked": 591361,
+      "maximum_display_error_8bit": 0,
+      "constant_unmarked_display": false
+    },
+    {
+      "uid": "252790|089.swc",
+      "pngs_decoded": 6,
+      "unmarked_pixels_checked": 592130,
+      "maximum_display_error_8bit": 0,
+      "constant_unmarked_display": false
+    },
+    {
+      "uid": "252790|090.swc",
+      "pngs_decoded": 6,
+      "unmarked_pixels_checked": 592900,
+      "maximum_display_error_8bit": 0,
+      "constant_unmarked_display": false
+    }
+  ],
+  "smaller_verified_fields_pending_upgrade": [
+    {
+      "uid": "252790|058.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|061.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|037.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|078.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|098.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|002.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|008.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|029.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|069.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|071.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|075.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    },
+    {
+      "uid": "252790|084.swc",
+      "verified_current_field_um_xyz": [
+        2800.0,
+        2800.0,
+        30.0
+      ],
+      "preferred_field_um": 4000,
+      "required_action": "upgrade after current producer is terminal"
+    }
+  ],
+  "failures": [],
+  "anatomical_acceptance": false
+}

@@ -10,7 +10,7 @@ from numbers import Real
 import numpy as np
 import pandas as pd
 
-from region_labels import is_explicit_unknown_label, normalize_region_label
+from .labels import is_explicit_unknown_label, normalize_region_label
 
 
 def terminal_target_status(value) -> str:

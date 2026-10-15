@@ -1,0 +1,6 @@
+# Core analysis dependencies (install with uv into conda env projectome).
+#   uv pip install -r requirements.txt --python %CONDA_PREFIX%\python.exe
+#
+numpy<2
+-r environment-packages.txt
+-r requirements-projectome.txt

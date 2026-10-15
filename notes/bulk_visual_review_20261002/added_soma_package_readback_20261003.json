@@ -1,0 +1,3971 @@
+{
+  "observed_utc": "2026-10-03T11:51:38.181116+00:00",
+  "status": "passed",
+  "scope": "All 86 added packages: own raw hashes and roots, saved NIfTI geometry/headers, complete PNG decode, source identity and coverage accounting; source-pixel equivalence and anatomical acceptance remain separate final checks",
+  "checked_identities": 86,
+  "pngs_fully_decoded": 430,
+  "coverage_counts": {
+    "complete": 85,
+    "partial_neighbor": 1
+  },
+  "network_requests": 0,
+  "anatomical_acceptance": false,
+  "records": [
+    {
+      "uid": "251730|226.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "1ca5c3cf207e9ec4d4f1b49082b6a6f9d26f25e0536905d420e876e68b8790fc",
+      "provenance_sha256": "a458c98789a1d3e7dcbadf3d671d9ce37f29742fc1795231666e3f51bc93d570",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "3284d0e98122dd63268c65bc8693ad200290d53b5adfa9e1c49305579c5efbe4",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "1e2b8b844eec6b2edb63f2e931ccb62d906262b48db01645d067dad924ee0544",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "be756a8f75333978448577b5d0fa63808e60caccacc14b977c2b7d60fb05c087",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "ca30ebb5557b87354e29206da4a201bd3cb41afb8d88394e79a4cb88b40a39be",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "23a7eefc0313d3773bfac91e199dd99e75f3231adde6efda0cb483f342acb1ca",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|227.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "a3cd0da5c01df3774ab94547c838f4f9e7965ce4fe52fd736f9ab03a7ff1213b",
+      "provenance_sha256": "8a85b5464ec33ec8218205f3b1af3e3c26f672a0c8e43e5ea8c2e8ae426cc156",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "7a8b4636a0c12b0d7e4fc3a2d3d90c80b48e3e71a7f6e60cbef2b26d52bbda56",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "cde1eba9497dd49763155026a0634d068901eeadd0f6b639e686824bff39de02",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "eb87e32e0746f729bb85a22162228405e7a2e706ccc6db5c2931761c72d6f647",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "2c79d9c3cdc9ea8024c0d0f5dfc1502aff545844374b5b72dbc31726e618063a",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "27623284d11bc8211e32ffd9e9532249bc01f9e059ddee404f586bb2036a589a",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|229.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "b259f5f7576748b89b88735655f749427ff34f3257280facf594ae2ffcc64ddd",
+      "provenance_sha256": "d174de896715878541cbfb3e90e279ef216480f78a199e9c022a2c0a30dc67e8",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "8d3ca31b8423fad81688a6719985afaf2517cc64442d64f4781f60a07bfc035c",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "23419292647df26b08f7303886e8af987d38b9b0d935c38ce48f5d1ee62e483e",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "bf3f03819a120d4eb33bfcf96ccdca56cc0453a0af9e6a037ae2eddc39909d60",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "ec4cd5065e06561d4007ddddd57c8a9bd49c354627ec1ffeb50876234fa220e6",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "ce4cfed06187aab8952b87caffeaa2a922bc311c5201c4b28920a8e00bd7af96",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|231.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "a4c43295dbe4487aa14f4614e5b802f91746ee3372783102bce653d18aaad6e6",
+      "provenance_sha256": "c65e6fc796e9ab9df2e93000aca6e53b9c1524b3c49921c345abb7a909f3a5ad",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "07734bcf40b9dbb228010ab385dd8efe54cbffec3beedf31a57b07e0e52d8144",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "38553e0663ad873b1436866e7402b03e3bfa2828549cb7a5732ad8644bd89212",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "c62f26454b2a3aa59cfb753a876ed3321e8d3538805c3d4efa1e82185f420b41",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "a41c8c3358b3bf4773185b9609e535e8bec4164b1a8db22a056bd2fa60d18f27",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "a374f5ca496be26e6440904d33de29b747d7af821712ec8ab391ce44ca745255",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|232.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "a5cd4fdaf9f3e7178add3052c8a3e76e2cca1962e0495a0d68e9a691f7af8b02",
+      "provenance_sha256": "c9997bb3458bd04f2bf18f2d94453b5c9dabeaf8f3dfc4e3fda384ffe0ed88de",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "133c9ab78fbb60fe234374de729f62d075d097816b858a4d2930718445c74b39",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f04caa7051c986bb7b5fedb6120ea6b4b52e4589415952c5ad986146e11808ea",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "606e63569835a76257b6518f76ce85d7ebdf343670d72111b6a33099006a12ed",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "fd45d693472d529dc265e19083aaa842e3f94dca5bb321d0aa8673e551664900",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "8c335f949b3c69223be57c0c42308dcbbb8aa111f17f7d7254cdc5520c319390",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|233.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "054873d92a2c498eb324d5ca5aaae562d3b4687a651839954be0a5b028609c3c",
+      "provenance_sha256": "bf29b96b914b384520b34b464f8021dfec9c957173126871faa506c43a9c2b54",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "7245d686f9ca23cc3267543ac7f32caaf875ea928a152f3e99d555b14df64ab0",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "493ef1f5a6c4be7c6167a53cb5d9381d26837b8d387842ad1f4e0531eca79700",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "de6716bf48499f6907cf202b493094741412236b313f68b4a03bf5b84a7f3e68",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "fa3264d6530b449aa24dec4b6658396355e4304664d1e43325330f5e562dee4b",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "672c0f7c4ded070405196dbd3ade23163c9602f04469fedc0b760fc643645fde",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|254.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "36345d5e68c12870dcf3ce72da148b45eef103f9c7a18d826039580121502c67",
+      "provenance_sha256": "dd742aef84c7ef93c81a876621bc7f93eca3f9de047cab465afad9bce4f140c4",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "8718e4ef043d7161f63d5fccdca2589188d771404622d3db34e10c537510817f",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "92b39be630d1964c7ec55755a2830a4c59652c70a18c343891ca87bd87041581",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "4d2df60e4c4d1f9057b679dd379d8a296426f2256ea7566effc109d442beea9d",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "bca0715cd6ae7fc3177efcd66341f3a5219d680f9bae59320be375d3794a90ff",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "5b744c2613784d7f77cf59a9079e6468dd0cccb6183fc7ff05e8cc08ab3a3c45",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|255.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "21f9d18b7a6774208774c4eb5b5ccd0f0b71e3602d5247f26f1a0086dcbd1247",
+      "provenance_sha256": "d1e914f816b8ec37e1b1f250eefb6e0bc8b16d290ed188bfe9248bb7035c8156",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "6d44f384b78ad7f77c670358c47836fc9daeb0a0f6a7009f4a75cfd1fdc91a1a",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "2c8a58685de4726238ce9315d8771f672bd0f96cfbeff3c4c1464db59b87029e",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "0556e379ede6112105a545608a38817a5198bfc9778861cbd12c0363a06f4e97",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "b0b1a026b40f594bbf45a5ed3b55e07fa87bcc08208c85687da9c8f63dce958b",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "41363e346cf83c5f0ef8e281c2182c33cc6f28fc852786eaa81a74a84f26c958",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|256.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "df52ab587e48a489d52fd6dc8165a94ad1b692ae05cf80a19c7ae6ce37116db6",
+      "provenance_sha256": "9a25b73c333d4fa3ed55547a5f3ab27d1196ecbbe57de9d390b0c9a97276b090",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "87cc06c1ee2c96dc7cf14c4d79488cc14cb18d3a19864e3ca9c9047745136647",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "5053f50c95d18035a07c1aca6148df5ef3af4ec2e5d6bca161037cc14a98fa6b",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "28ac2c5268c1222d89cebb315cc48bca3e80a8d308e8afb0307e8f8fb2f3572a",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "c9fb77c40f7b48f3a3ac2f698bee04db872461856b34ff5c5c95e79a6433e1b7",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "0dfaa12f27b398269bb4e5482a0e987c7be09f8992ac7d7a4486224df8f98fdb",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|257.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "f4e56bd10f33957be755c8707a6f750a375a33e428a34f4046309b3e3390df7b",
+      "provenance_sha256": "5018b75237dce61f687b4393143d2bccdf48423435e85b45518752df059580c0",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "de6503095049dae7e0e0b10c972fcf1962a744232d84dcf98672d3d9757a570e",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "fa302f6cc67608a1488b880a5e97790545864226ec69e8b1847c5539181e8f68",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "69e60497e54d6c6d2098fb7c20d94fea6f50ef749e0a57f779b70ed31abbff52",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "07e90352861cfc695a0212a9639f5f427749c24188d91c710b1aea8d5fd4045b",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "0406e119556b778a7448f280fe62a51665836a13dfc2bc9eacd3a37c7455ca89",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|258.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "6ce09fbea98d21614ce7d86963e8ff29c042925a64a574e8847c4c44bd5dc513",
+      "provenance_sha256": "f290731dd7277e5093afc5d2db4db2a43c6544dfa05215ff2d797a07a0fe4a0c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "5fcfbcf40739ae88b3f0d4284a2f7266baf308cb5ada3c9bdf385620ec3b00de",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "8cffdff3f877eb0b0f7d16cf4c6e9bc30b78cb00845d32eaba81f767338d862c",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "ca62abe3670fadcc27a6c0859ac4315f1403e0679de95652e568b0ab725c40df",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "fba025e1f31cf158af55326de16174a47dcfd7f1fa121cfa3ae2a35ff8184052",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "1fc49862fcc79fd3162982fd853119e89133bfdf7ed78d1203ea5691e9365b11",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|273.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "01b65189f23d0e4d0f4d4ab8ecbe5b001f31583d7b4635461fe63f0f92d76ff8",
+      "provenance_sha256": "33c6c3ebe6fa53b96422a2c7b496d2f71dcc4ba37951f6ecc6728ee333b09b9e",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "b6d5f99c6c1612bb85c3bb9cafd788c906d3871ceea2853732c159c75ca6bb17",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "637a01299e937b73d2d439535a7ae54c43e9ae60026cabc9e9fdedb62af39966",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "368b416f611d28e8ea7f8de27a7df403d6d3a99d9ee6e04604ce0cfd8d567f1c",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "b61962c711693a956ed0332fd75b73926ddebc8a8fcc064e470f23f6b9416a99",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "3ac86e86cfa0b0f380616b0e1935b4b23991fd7718458aa43daca599636faa5d",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|274.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "3766098b04fd93b69431dca2607adc1987379e8277c467933b2839932f91bf8b",
+      "provenance_sha256": "d71864b5546b0bcf8c5060096974348fab8f07519e07489947cdefb382b5bd29",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "f8eb2bed538cfb488a00ad4a670501031dab7969699a3089bd0c5bb5c0825ca7",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "ad061fb20de3f72f48d7c7ab7c18a3225ab2a9afbd8d67cdd2e1aa8afcca433d",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "4220181babe5fb5b59fbd9c376b1ee1de1555064d28b9fb0c8706734bbf51dfb",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "d7b98c95c9236028bdf8e628e99ed2661ef7c5e6a7d478fcdf5c59a54c842973",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "1cde63bcb3fa2de1c03dc989b715b27e3d683fb47e87b2c6f9891e99fb7a46ac",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|295.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "a840f782482fad6fce01e3621b0d88a045e8905c29de2e05b18d499d93d42df5",
+      "provenance_sha256": "b3b4bb696afe2d8960e20a447f0a3c5377e3237f1130f34a75a5824ec557c74c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c6e96680bae8ce4430cd3fba1bc24b4a7dad3228222bc0f43a0efa60f82dd1c5",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "7b5e49538320af0a0f7b675c33183454daa939d1d2ddea9d06a7e0207dd62306",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "18f58d8bac2039f5b50d6ac3310a14ae4fa222daa6946108aebda04a99a9677b",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7d807bcd08782a2223b50a98c23d14ccda1cf286f318d8a98ff4e91f9ea04a96",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "047cb8bb871986b5b604721d1cf869abbb14c71cd153d2227f0b82f7b8dab623",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|296.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "caeabe1ce7d41a5b6ad17b277e365900909a20689d38e958b2a2cb738242e1c7",
+      "provenance_sha256": "70d049979685064e21c1ad5bf1997882805f391ff906e7a4db3d728eebf14f0b",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "4b1fb70de26c1d003f1861a283ce4ad4339f0f8a63c135de46acb508dceb18e5",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "8fa4f1b04c60560df6c6e773e426bc2405245c0511a9d44b2f288cbbdb3f4b70",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "cdfcc986c9d276309553abbcc2f9339f6e737ff664eb53297cbb2176a8b802dc",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "625cf8752e6e653dbef3e931e64f3149773599d4de04a39937419af33eaf76ea",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "9c83e83370a61d58b4aa516bde96bbe7d15d05ed7281e866e95e0cfb28382bfc",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|297.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "d27dc39271886d61e9d3f0a153e85fd818e0ef2201444dc135ab7ca94f6d990c",
+      "provenance_sha256": "3d2eb7ff6aa746d3e759d10d78c04abbd5e148508fc18d55a8624bf69853c32c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "07f0ea8d99664d1b65fc3424cc9c67a8282157a12f0c17e5437b2e584e67af4d",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f11c676ca82064b85f637c68a15b2ccc3924aecc4f59037baf7dde644c7e5d5d",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "101b87bbff0290fd4de4dbaf0ca0f6ab1c7e4a64fa147ed49ce294a779fef670",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "dbdbfcf0245fa794b393ffe341935b14b55a7deb28aa4f382aabb430b8851417",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "0549f60bb187a2ce4c9eaa33e61ea246d08635e4d4267b6605e1d8f54a1a30d5",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|300.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "e2b808d470cc9190d3be84bc77559600b1fc5ae2d82139c4fbfdb066359a195a",
+      "provenance_sha256": "c7eb294338df8a50d940d212d119d84233b384b9b32f310b83ee9b232d04fe4c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "e43913e0f3e1cb3e4a959886c81bed493f685159f91f7995d8f46be098c1c7cd",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "7c7aba9f4ced84496e5ccae9cfddca594b30699785fe28e460b0298e4dac9ae0",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "c647223473b4048ab33d2264f90a694938f6eb2256fe51283bdedf9d173bdeed",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "2510c4af46b8abb3be0a3cea0e689bc9d0fd475db60250b165d65cb4b5bd49d8",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "e23f540b4ddcc7dcbba92cf036e6d1969e924fbd9afbbfedeabd59983838c58a",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|409.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "04ad4335a21f8ae6e40319554a67ad4610a8cea1d83b6c9218f6be0c07f41355",
+      "provenance_sha256": "2f076b5ace896fa0ae1fa4bd82eb2f39b4cbecc3b6847d5788e07a30e8d8e353",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "3a34e276c843d61ec06ea0bc69534c83ba8132e131bb15f7ccde4cf3036b52af",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "44d1a2bcceb4f31c6243734904bc732d7a57393af1051a9341916ddbe2f19306",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "1c1140eac591e5a04cf8ee1a37ea8d4aaf436ee8279cab534661a77c6fd6cb38",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7a89aef689fd327437990e79f5399599f60f04e6fc0df2b8c118a92e5ca7fabf",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "cb527b08b51d34084d5a2d5110b3c9c8b92de2b688f2a53b92ede9ba220f5ce4",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|452.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "af25dd7438b2df612a6f19f62012f0f4eb68e4ac9212b2c2242c7a5b0147a51f",
+      "provenance_sha256": "942aef99ad73dfeaf0511a1dacaad86d6c00324ebae8b84b06eb85b95f3616ae",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "97ff9d9ff8d2da40a99d01d5aae53cffec92658366a5064ef1f66145dd4ecc4f",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "daffa1bbd5ae971d8ca5cb6241604e21acb50cf7570579d4534c3ef63bc3c52f",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "2a4c4bb1d226fe0cb2935588fa06500df84ba66180494c82d272785aa716f0d4",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "c8576553d97666188a1ae647757ad16a601bb51be60fe14edffd00c7abef2cce",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "9655ae6bca3d88e79d155ef2b277c7d9243267f11dcf5cf3a09a294c6f35f66a",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|459.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "fc4bc4520f37c03ca068db82520cb5f435fed9c7fa073bf80287ea618ceeee19",
+      "provenance_sha256": "b948bb22dc7b4624d957ab277944a6286392c8ec524e8825bb7f12d96c82f02c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "ecea93ffa099648e9dff52aaf1d1f49c60de1a2861992a16c86fc7ef4e40e20f",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "2945f972e56ddaa4d67fbec52a2f2d78237097c68c4c6b62aaa32bb76564fe0b",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "b6703c2e9505b19c33275a754b6419a875ef1dec531547ba4594467e79604e59",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7e83332f86561abd26b9d4dae2bdd13b18f0b7f0878762bfc6e324dc84e86952",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "3aaf52ba4703191aec68d75722cf969b7fece9e9b0d2f2228aa7fb3e5f2b9a53",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|460.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "8ddcbea1a12f548dbe7024ae917a5295888b7e0684c8dc02479ea78a04918b69",
+      "provenance_sha256": "3dfc224714970f68949a5e5f1ea56f5169e5f1efca10f8632c2da3d426c41913",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "f423d0dd1f336967e9dcd1cffb013d39796f966d13169df490e58fee26d054da",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "8c64601eea9017bde655d9b479b01d0129e399a704f8e7a995550a24b6434910",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "56cfbbdc0a98a2ec426dcef13b85528d619e21080203896d243e1b91567d218b",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "39b4f9adfc75f81d195473ea5822885f79f4535f729c02c45b7e8be0606e4be3",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "48999f45fae36d155c4613947c61eef9f8bb602911ffba1ddd9278d33351daf6",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|461.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "8cf92fe20bf85425d26c64abcacd21349569e4d64b07aac9b169ff0b182c9624",
+      "provenance_sha256": "7ae04692acb9f18e37525b01f456ca9fc8e7f42eec6fb802987ae6d8a5a8db00",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "be977fda8cd60f375d35549a711b6412e11d15e0c30e759cb0838824082b1404",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "c62a959c229595b0f6204c85b0c1759d265ded1b32bbc653658607ac1aa4e1d7",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "4b90e9064c2d6bc59fa2229f2ff32cd4c7b35d767e232933e37a267133c990ca",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "28007144702d88105e814f4b9bb1ba0231cb75c07a8b8cd15091ab48fbd0c0db",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "e8590e67519d360158113921ec669033756d4bfeb7769c49e1de1043f3b223a5",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|462.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "e16d6c7122cfc187a04fdeb3220221f9d5b2a77f926d9a41fbe945cb05e2d376",
+      "provenance_sha256": "74bbef85a1d7d384d93f63650d6437d83a525278d4a3aecb6b88ef661b3b49b8",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "6542ac19e0cef8f1ee406f60e774ab77548094fd8eeed762b48d66fa66aab275",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "30e03f1218840d1d1bb3759bb3c5d073fce07eeb50997a8b72157de2d43cbefb",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "594373746621601461d93fd365b4a2766d26f4c41a6056a14fc82b3e39493a2e",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "92ca88afebea73a20be036437e75f20a9a8c69390ea672b2a19fee6e7f167989",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "51249949f4bf02d3fe1dd3a44919795fc86327b531cf84d125bd0286088deb04",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|463.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "da2731005b13606f5e73b505fcbfa0d3124bd105ea800dd611ffe53820acbe6d",
+      "provenance_sha256": "cc6f89c872958b3f49fb37351f29c26aca3a992020cd381e90a99fa82b8eff39",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "b37525feaa60e62225df699da875db23cc46b981ad48af4a946d242a033e4591",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f9a1c2ed892085b47f6b727e718d43b875150f1faa045166ad3eb9ad841979fb",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "3d90f5a99fb6d72d5aa9857062e6d0cf9626e6cc3006d286bd3a94b39ab51742",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "a9e45851936731ea90ec2abe04e37f8f9afcbd06f68cd11b2c383238c83c42a2",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "2078dc4eb32234e4d791c04cf788168dee79aafcda7b71742947eb7477b90430",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|464.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "0baab55099aca3461574744ed0b3c213aa7271b661f7b5ece97819e21880bf91",
+      "provenance_sha256": "a42219af2b8983dc8e19dadfd2c0e958e8b97ef30c9d38554477a27f77736702",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "803bae037119bf7f2cf63275c8482d05bac8670b155d7b416fb1a364e62991d4",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "781f25c7f0f631874e424fa7b8c423db7fa6ab94ea8ca2f2e05b65604b42cfaa",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "7eb245b93fd12c5b101a0b5e123261a987bb573f016d41ffd9b3121b3eb011cf",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "bacc5a75752208a338fd902dba66bb409d8d2040dce313be8180c8dc26acac90",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "31f1d7ab313ae2e1a82c86279d25c0792c38888e90361f4415a3afe6be1d6ca4",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|469.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "10e8021079a95ad6aad9c3318598f82e0892bf20778fff729c5163a6e5d58489",
+      "provenance_sha256": "b25d4a043617b83a10f8d05fd870c9de7441aaa97fc6c48bc7090d37126700b0",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "4f098609ab9c903842d209eaea9e24e83c30402cec0aa8d884894e05ed92cf71",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "00a3b94df5ea2e3446672121e6487404baf2d44eb23d1ce107450aa61c368a2f",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "d360e7081ab6469c9c62a5a146d77998372945120337a8cd4fad2bb764db102a",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7418a55ba19701bc10e76d7c168f3fb0270588cf814b6a688a5e754b918841fd",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "9c50fad7f2a61ac58fe02e48e55d223a75a6c2ef88bfdaf233f4db0a49065646",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|471.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "15274f61c8312edc967488ccc97b115dd740d08df7d9ed2d0e324caca6644442",
+      "provenance_sha256": "3c83273faaff7a24a89d8fe57cbd9ed2c6cce6fee887f70682ad2ab21ffab3dc",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "8c4239f45746a5e4831a413ed1d145d6c96d5eb2a5de3e9ea687e05392909326",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "50132dd1da2a246f90e5f6d11ca75d96b58c5568b80ae5e7849bc544019ea1d6",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "ef74f49558e9e1cb38a8217b404e7e3577090aaaa6bdd9d50097d463b9714bbf",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "4f8e25c9df43f861a538d463344836f9477e4a5c668c59fae71e9248b0a895a8",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "d35cbe6862990e3e5d72a0e29ddd986151e05d1d73637df120a5b6a32837a03f",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|479.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "1e826e0358189746b5aeba027be65e7ab7d69e7a9e8dcc1d109c70340f6b4416",
+      "provenance_sha256": "6c7b1aff8b2ae387bee096f8e8c7cd9d379b30162dbb36792e720250dbc85347",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "8e63599b7d5516507d2ebea10867f33e348011af90a015108fe91b49d3d21cdc",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "c17ec8a46f8c1a03862a9e3c25e8039d534d0e17a9c3efe4bc02f6e9625c335c",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "c67f20aff3af05fbe5f90c879b6d031ce2ea1425c5eefc1f7dd1e86197fc119e",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "ded72e023328845584a79e873c5332fe18627cdd45ff104c35d8611f32eb3853",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "64be1b1568e0e2aa4d7388cdeea4fb4f48e4726e48506376b05aff3eb3eb7b70",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|487.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "8d46e08ab7db00d9dfc19ce01025fa781360f7db68e3e27154baa159ef6154a0",
+      "provenance_sha256": "7a7fab0522181bca1cadd60c8f1ebef751deb71cc3c04dfd9907f1abffc3792b",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "8ab5289e2d824818a5cdbf82ab8249e0a81b15a52b097424602191cc5b257988",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "735f9b0d3f063741d0d79e29c2ccb8041b6e9a28a956b39399af0f7f02050e32",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "a0b193b9d2a4d3578db08bfef1c2af61861d76066859cb63933f0b51583ffd75",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "1be69dc9cd071e46e2c242f114e8c7be01bed53d8de8fd3a297a5d5430aafd72",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "2cb4b2d267b9404e135605ebefded59be5e6bff3932b98d0e2ab6d818c9e18a1",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|489.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "c1f75c1a7644977525efd56473f7b2b9d308bb2bb915271b7ee861772cf46714",
+      "provenance_sha256": "4ec894babd8f5e8f1d0a63da41c09490fa88f464d1cceee88e5e5a3411478bd2",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c0809525f7aee3f07686f50f86c6ad1396cb0fc91aea99cd883baf4bf4be03ff",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "001bc8c7878e44a3ebd3993c95c9f5fac85c0a9b3cc9b5152a5b7df31f9891b6",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "d6b781b8359c9ba3535a714937e6866ed13413c3610cb28fb38f7c8985d7dfc0",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "cadaea93d67f2a3b8e0c23775d7883041539edf8d378e402174494689adaf59f",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "cffb8dc7910e83532232d348227b520a48b6e536becee8571d2ef05f2ce9672c",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|490.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "e41d10bda651f842674b3aaf7940379f885f7327cb8b154efd0dd1739c368f26",
+      "provenance_sha256": "d118698b128a418bdefc5b4bb15a3646ddcd0ae742e7b1c84af1f9fe36c5566e",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "a82b3d13faf23662ab0bc82870160474f50d61ba7b68635e2403c61971d5f393",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "570631f32af50c11667e47db15ac19aa6c1938cac206e81f4906620f895e657f",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "09d8d760ddcb193f143e4264d995dcba3915dfbd5e0f7643378b53d022d71d95",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "761ca6b1659dec27186f12dcb71a90ab051c2c3f2ae49415b88b352fdf1635f2",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "5482b9c75314c7d2fb63092816324b07ede2ce3a9cf050fe6c1251de18559026",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|497.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "50c0e0a57e72f1f7758a24356ec53661d62738223f13678c95954214d10857df",
+      "provenance_sha256": "61ed4c21ce50173a161c1e12eb132d898e5bce38d70567a67c04ddedf720d40c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "1816c5c231ec60e54c4a182c5d4376a908b5247aa77e4b1c3fd6ffb0043b2e12",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f2996e3f2cde29003358fc0ceb7dbb31c7c36d1882028082fc46e094fb372ee5",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "95e42acd14da9a59042d469758a5c07ca9e5e58732887fd4fbbd56bb6a9e242a",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "b7f74242b5841ddaca2a3fe86164f713dcdf99d737268b60ad6d87437d35c415",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "599380a8b1b58ca5b38b5505dd809bfc0fd809eaf7744888f44e798fc7e11e10",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|498.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "9568537e5cae19ed15effb95d3db8b142b97bb469e05243ee25d30c53deae856",
+      "provenance_sha256": "16c0d7e5e10b530a91abfc2736456acdeec443a8be27a41fd219ebb2962fc82a",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "4987ace850fd8ed69f5d3c9385acac02d4fb0924cc91a5b696ccafbcd262396e",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "79146e8e1df7436e3b9de05de3f9526fb2ac5ecd422864625a047452a352e019",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "c87433359fbbcf9c934c42606bcadbbcbb3dfe1f84be43c6c3503536dd0ce5e3",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "e369d033c3000b76f0ebb3842f032630b174f50050c59adaf513ce938e92b70b",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "f27ffcecb98ba10495db772cabf503cef795067d22ba08db246697cc811701e2",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|499.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "c6edef9b4796654c16abb82ae013da52c0a9dc78e9c1748a82f949f1470c4824",
+      "provenance_sha256": "d9511e946ae876e5c653a2f3d9a115c16277a4ba82768fb71ff8c4e1d545e0f7",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "747094c57ca7a1c1c4e9b9a46acdb87f8f285c1c5b6fee304462b6554ad420f1",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f68cd3922f26f41b98846cefc0580840984a05b5e361c842276ed2ad91f2cb67",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "652f7f6704fd1a0908ae5eb1e32a35a08258aef72067ed0d8160e17650b0b451",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "ade1b5d2d8cb7b280af2a2a0ceb4e7487cffbe4cda446c4faee51fc7dcbb9bf7",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "bdf994a81a3d2d2dc2e8f5ca87a64f19feb765f1ddd23ce582a6e455cc64560a",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|500.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "e3430636bb20360020cd9167a42e2f504f5a4223abb39e4522c6999eab8af5d2",
+      "provenance_sha256": "e9d431b0724d1d20399b36063e4cd33661bd00fed365e8f3d6afde9233e3d254",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "4ff8906cf585246641fac3fe7e02c799b6ae4225702f643569c2a57fffbbe7a2",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "71a56de51bcd8bcbfb01d8f1ec54c88638b4ee9c52bb4314efeca6e4cf29c1df",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "21d2f720521b3d2fcc250a6b5b3c55b0592d2acbb0c265c685e89b65ea0a5062",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "1b01c422eafea705e81d2ab4d73a20078140b3802d80b003027e2ad3457985d7",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "b0694578ef4f340708e0fbea9849d92a35de1dcb7583462f0301cb567ec0b794",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|501.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "c785602540c27dea2341978a018ea974449f9e4acdb685a9c96e180c30b7225c",
+      "provenance_sha256": "15500b1d2fd5dcc7e0f273f440e07e73de15c0a7a70eca1d94aaff82ffd73c79",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c776381baeeefd1350776c0144e328f4a95cef41f9e9510ec3a5984e5283278c",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "64e91d107aa8be9684c6a535812dec9c0586604ac03a8b0694e91e34f1860188",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "869ddf144548df30a2e6370003f775a4abdef288fe1b70c0b6eea05e39471a87",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "a66adcf71d1230bf57ec8bdd3b41076fbf3f7a322a06d727a54e2d6c12b10b3e",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "7143527afaac2b40e60093000d0e436c61c35cb9b205f6191162c6ceaf567df9",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|502.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "ec424203970677049fd16bbb290c6b3f8e2fe764e988742d3e9e8152b372444f",
+      "provenance_sha256": "717fbd46145b69793a49d7f102f1b960af61be8eadf57b1adadeda4de5bf16ef",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "f715388f31a5cc6f16306a60e6b0999b42c6c592f3e1b85fd6ddde4097a92ffa",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "44ffc9cfa99e4e1075f0753e5400d346110482d10c500e5ea2d96e147bebd187",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "a2779075e74f360ba7e7654649a9b2d80be3b938ab1cd5df6d08ab23ff584bd4",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "6b9166e31f8ab014f96b60645ad9bdc8ace831a7455427a5abc163e599b0cc50",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "5cedba21b8d93d33a1ad7a4b72a5ab03689063c027a37c383eb1e7940e08d805",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|503.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "0b151cdfcbc533988c11bb841458342b92bc0e9bcb957864914dc3e53654467b",
+      "provenance_sha256": "772db9eca9c7cdf240e673b152361f7c4161aec8a0e067b7f154840e1f1f8bdc",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "5171c201b5a25067432f127e99ba6e374d9d8ad59f74f23729377e2557796c5b",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "7dd99c8539bf9d6bee9864e800b2f2db01164e4088f329b37016e9be8b6585fc",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "bb55031ed0c29139442dcf8d467e71091ba6a6d4c30b555d110ab41c097c4389",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "ca434046101a959053075b082cc427a3d72b6f17106d85bb6a915602ac15b266",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "b8db02f5ef660ac4c4e0222d98d8cdcb9168cc6f40518367044e600ecdcd14e9",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|504.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "d984734b3b144f731faa68155ff31600bd08edcc4cec3810e67f4ccea6388996",
+      "provenance_sha256": "4f46052c46d7d6c9047d8fd2c292ee5a81a46035182ad42f65b9270de6bab7c2",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "993ac4b5dc890bf419ab18870b207e268f716b6294d382672f871d8f407785fa",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "043b082e2e13d8ddfca07a27a57c92d45d720b90442408b26bb680bde40da51c",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "00cfd4318c216208216b76ec37c6c0b0e656bc13dd636d3f830a69fae1bcc895",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "5686c2f04ca7c22d7ceadaf37bc9c2277cf88ab97a0bb081d06d2fafaeebc151",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "5ba4ed0df152cb22353f81f5869eaa9f4aacf0c43106ccb63e347a74a71daf12",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|505.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "28d17bb2c2e2b036269de56ac53ab9e98ef83c1e37bbb06ad00c21d33b1d7080",
+      "provenance_sha256": "f1f74c283eeaac7ecde6fef49500f5c74020351074c8649cffc444b48a571450",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "f554026338a6faaa1f6bcd12649d5184a568b551745e6097c89c750ceeeae1d3",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f3f02b6adec47b5fc40cff8c2ee9e29cf4ad8a77ea1c21e80cd6be8d8c4636c4",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "20512fa274e836a674c0cdd1b3b224bc720ff8f77f2247fa87986b9717f96318",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "723f3068dfa30bdf18642daeeb40ee477a6bdc92d5a4c28c4a53356685b107ca",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "bd8e3b48e4296aac3da64af23cd21dfbf13eafa80b7873d862e8474b6b91b55e",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|506.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "bdba126c918760b8f281054112419fd96d5067c69ed612c513af861ebbdf25c2",
+      "provenance_sha256": "9d4307274a31ae29e9956ecde5c904b098c8332041d4e6b9f9204db49c35a064",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "d77e3760cf0102d26d831a7108e91b208cf3b3084150beb9cb1319b68a7b1d2a",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "5e5c2247d033ae3704de77a4554957ace31672d2368084800b0633c40df694df",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "fbb8dd3b19f38bda954b271839ae91ebe71dcb31bee9413a2ef6cf20939814c6",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "76307189ba28118378d94eaf74e83e839dd9307353e7b4e23c6c119353dc47a4",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "7fa35c6deb1aa7436662d9d7753c8ddc08a532193e48112c76d03956a84c30d7",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|507.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "a2013089985e4c21b670fa3a7e717dc932da845bb3f1914f4e2efafa69ec204a",
+      "provenance_sha256": "ac90a46581a4e06ea943c7c244bcb668dceb878d0a8ade44362e5d788779b21c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "f95b3ec6c16dcc4453bb91122452d3cd7435d2c77d3a59f6c7983874881d68c5",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "79a3655914d00e99c5db9b5d3c8b9e1111209a2dc213ae2204e2d3b980fb85e2",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "a77e049ffcede9cd47c92c41dcf495250f0e8942354585f621399c7a18ffeaba",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "c2638c8723c15792830dadd3a8edf2c535ba97f5283177b06d470ddf2f9e245d",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "d35276e9731c4ea607bb05766ddededb8bd625bc51e2e1fc652f7dc15e84c5ab",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|508.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "dee12b5f904ebc06307a6b1a159793b0f485cdfcb5b538464581c8edb3ae4316",
+      "provenance_sha256": "c2385adabadfad70f725ac9bd80271b622ccbba7c80c08cd29c87a2c809e0257",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "19e03869d60e31a7b8c544afc229be9562928c3815914c6615b2126ed2325d16",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "8377d4b92ebc3cfabc215e96bae66cf7ae5474e0df382f4938511293a6639b69",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "f3bb34cfc08b9a795a4cd4f13052490617bdd742b9e8ec5d1ae15105cf0297bf",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "3f05560b0599a650a211fc69a4fa16a58300bf0052643abece9def5a0d54a718",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "d75a36e1b38c8e9f930f3bd1bf266da3697687cbad736e62c7a13da9b6dad2d6",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|513.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "df64488c01f7b69c94a3f17437b742d86bfd94ecf78cf5bf66f7d84a11bb61fb",
+      "provenance_sha256": "0191b9b3a33645075d20dca6564788b92e50b426f2ff2e9730117fea8315f298",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "386ecd0ab4d05fe8a87dee15abb7f5b1e85f2953a14996d63d34fab99146e634",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "3f16d660f1e346f19b13d6254b352a9ea577ffde2732e89270699f6d0ee8f38a",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "47f1ba3e8ccdff7ff2f852382692d8602d7b438cc9d0b9680b27baca8bcd78b1",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "6eef65b46c24b5383379ca27dddc00dfe1f418b2482167aeb0aab7a05a70e225",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "0edf717694d3801e4c3cf742a751d752160dfe6010937ecf818dffa448f7dcae",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|514.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "c2f86c12d21749684bfe1a35f54e8302970eef6aa63574d87fe6172de88f2181",
+      "provenance_sha256": "1d9906babb18ec9cd47424c7ced4dca0bca09ee8aa0e3234a7c3520e55ade036",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c67813e4c7ae0a6e2edce23dacb47f829ec88174135050ffe85d55fa8291eeb4",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "5e191c90b4e6dd40ed722278b543e2292aecc3a0a34916a77d19885211e54159",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "054ea99cdc9f7bafc664620a89e24837ba83b1ed990731a275466358e59bcac6",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "ffa91b157faa267180630a1a8e642f38c9b7dcd53521d09e119ab4f680b1b9be",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "9161414f411d061c0ec726e1288029a4d002958d5fcb4feaa2a28ed1e5366799",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|515.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "762ef84def0b18e3e6774908f47e725164a1aeb2e208c1a5b30d178ee6f255ba",
+      "provenance_sha256": "8245d8a822593617c85f4e63cb9a58ab5f38a609f575023ba6d2eed9ade82da2",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "2847524d15db60ea26f77aee023c41ae3de08c873a3c7382bc9a53ea2db752a8",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "50e84353e5baa39eba017069fb2d72ec6785fbf246238511399f944e63063aac",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "e03ea0db972687508f2ec5a3ce374ed409287bc3a48717ec82f8838582c8b0bf",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "8b5a7981f4a865eb78fcac5b2987d17a234344491e0c9178bd9e63b95526e6f5",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "c09a9d52e16050718e1612779c10aa6c76840de832a483095c6e359e00284b6c",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|516.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "417a12676ee148e6d671ba97d4a4389bff51e461028c61aacbca97b2e91e91ed",
+      "provenance_sha256": "59dafee65b68c6b9d611ea7412b4b392c6631170f1d00a6405f43ca4662da67e",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "9ea888d48c5453bceb305034574b8c6090487121d0c5944e1722c6d3171c4cc7",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "6d2f82a170869e4fadd1f9adb9643edf022ba995080862b051002cb1049f8df0",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "6c8533541e3ba0f405b1aeee7ac1ee85d7a003e29d6ee4a750b886167a65a4d2",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "41f5a443a969881d5b1fdc5a5bc451eb278e31e78f9499233b00c82f1676cefc",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "3692e38365283b06693628648d33df77eeb2b16f8402ad448e3f84a009b8205d",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|517.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "90654a708c8a03261aa45e9460bd99afd5fb3f7ec359fdf7b66cbb49c4349766",
+      "provenance_sha256": "3915f6e93e3a8f8c7cebc49332ee3fed3c7fc7c0129194eca7168f1ac3d6c2cf",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "1c167f85afc4a49fe663b21e5a788c5746e4a12f03913366efc3c05bc54243cb",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "913bf696f1eefaf0f0b77673953f89d8d0700208bb5d5306be049ba2acc87474",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "ae69a6653c94b6670bcd5109ac6cf54535d09a41d286b088e1300f2fb4967617",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "9a0fa0817dd41d6a28f29eb547dfacc406c0ad7b0855670aaeb1b1e1c8302b1a",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "a51ded9b25ba9e383da95f1b4a1aa36c6db151ab7cf28b961828586d9c5a8991",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|518.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "05cf2db04b9e0aa194eae58c8fe334f576b44e654ce49d86a410cfee41118e0f",
+      "provenance_sha256": "07c7faa59c720eee4556210b6f5730fc8145ef17cdc4a2632f27b76003243756",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "db80d82efaf625507708488af8db74f11e71eb052e728917d809bc50d7b0147f",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "0f2bd8abc110fc23b56fd1c5e977f3d285e263dd62f05549df2d595b18c3b1e5",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "f68bc69787c28b2e47db194ded0ab5f74db1ba5e5bed3010ea967b75b8e62352",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "0ee55b428d13a55b920514e472e6222a3075b3f29e56948632adee41b07321d5",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "69f48a66f8af9e8edb31b925e18d2b50724c18921d2cbbd299f03464462d1844",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|519.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "f37053075162ed295076afe666f8cef0053c976d1e24e38b29798584caaab431",
+      "provenance_sha256": "712cc45a98fb39dd20c75f8086d2901a5d83cdca5e598d2ebbb3fe63bab04608",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "530bdf09f1fb172f15d95b864f83f8f50d2b0c9c357db082af99e1cb6abc83f5",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "74c44c94a02fdbc4223cd2bad4f6b4f9a2356d2ad603263b90f6f2aa3d2135a6",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "8efaaa1c616db4fd33706111ade4f24791688c8eea80a2ad17c5b720f58b8dcd",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "8a7e9043df8f04459ab9dd15b1eaad1c4663f1c7b29a0ca9224034bb5b11f654",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "3ac0d2fc863a0153905016f184659d4b28810f184a27bdbe7f9b971f013502b3",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|520.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "6933d9277b4bdfd895f172c7cf2f2c0c489134db8defb2990a0cbccf88cbfc6c",
+      "provenance_sha256": "9a6f4ffb9b12aa59b3a85377c19203711dc5c2406e0e1418602cbacc56a1b687",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "55e517e75cd3e2c6767eab9071f33f9f98d1b169ef2b9032c3f90ee2c6b84157",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "ac4f268e8c39e1483f2f34599af6fdbbddd6cfa732316a56953de4f23a39bdd9",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "3807762ff2f2539535f141004b0bb088935c9be90b6768e9d12f970bae6c8a03",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "5e49d634304c758ed4b724247351cb3c7455ecbf2982fd0729160ce3761adc05",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "45e55489ba8536bee9d61f253eda60b919fbf676f321fa27fe71d8a03390af50",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|521.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "eba45cd69aaca930d16834429253fae88b650861da855d5a65d592cd2d399012",
+      "provenance_sha256": "c5642ff0df395b64cbf238113f810a1f7f3dcfdb2b397c8c5945a0ba3d3134b0",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "796c5199e0ec2f0d6295c07eed3dd3998051256876655a1e117508d8c2b0dd32",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "cb1ad3c2a1c1dd73a80fc5ed40c0aa040377567e69e35921d6ed633d720d8237",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "e2618dee1e93fed9ab6c87c617b7962b6a18d7619a848ed8a217d022ba0289ee",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "282fdeca01f9bfd3b5873fa2ed574abadf198099c6e5a4c21e7420b9dd9e9884",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "2f2a80203ff5cd9ef07e186a77e95f2743b985cee2dd6441e499992d84d26069",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|522.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "3f3d790063c28238dd169395b770ed398cca19b8c73c4bb4bf1729c9369f306f",
+      "provenance_sha256": "71942c1cdf41f5c689755ce3e6a9698cad61487b6b3777030080d335c5b98fc8",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "dc86e039740e6c1470eb097ca449aec684eb4e793fee084763d83d534b40fe8c",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "a15df24b36abe663a4e4a0cca55b2f1233d21edfcf000318e97fcdb1e4cc42fe",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "aaad8972d6db63100c7ec6b2441c0cee7c6e599707c558a756a12c4b78a4067c",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "de4d748271d3723247867cd1a353618c9678a0395073774862fa6714970ab9c9",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "dda83ceea9fd867d2852c74003ed466b50964f8da8e64297c1394774b78c8a8d",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|523.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "ad3aad7657ed803591313c3dc02c4d47691d0e95257dbf66c198e6ba53f3dfb4",
+      "provenance_sha256": "b01fb8b2dc5c871f4c2060ac1f271d257d6e8fc28f0bdab592d399252d43c489",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "b6f57ab4880d20c95ddabbc712d13848ad8d978167726df5b641c911c6541ec7",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "92d0949867bf7c7363796f74cacbe2d3d0d50001beed9a1866423ecabb4ceaac",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "7864654f6f4ad71c94ab0f04742bb91f8bebfdb71dc0e42de43a299e2563d8d5",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "d585d7d8830592df392e47faae9502e58b89502ee3410c18de2b498aabfd5c70",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "a583e3c5cd6678ca5d06ff2a7b5d5b0fe70330fbf33ddb8cf79e5bf7e6967420",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|530.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "5381b2f616a6a0986e1b2ba4036c4fd50e3728133708bb926c33ae698c788deb",
+      "provenance_sha256": "a833569b5548cbd1ae15ea45b10ecb163eb2af370aafa5d1e66ee5914c97c5ae",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "bb8c99644d08c868f6ec2dc661b829d0429f41715198142206fbb05a20b67cc1",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "1458485bba92b9884454c872531757b304361f7425ce8c9c10dee26057571e0b",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "f4026a488ca67a70e5efe9943acdb4d4bd8c0baf5e38d1f450a55ece6b779c6f",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "cda39a00976f2539e5852a946d98ac7212d7c4f5ada65a5bf190e8c32dd5a7ec",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "fe19ace52c672c45809c8c68c0d770a960c90d9c51f54d874977475144bd0e84",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|532.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "241ffe7eeba1842b68e06fc08a412f9065eaf6a624f2b236c36fc568834048e6",
+      "provenance_sha256": "826465ce974684360693febe0d5221f0a7a886bd5827094e9c69704b08c80223",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c44237bfc230236f032c77ce31424ba1db255b5fe76768eaf420e368731c666b",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "2c1c7053e235d5ab47a7d441eeb8f70595d15c9a887f0be86ef271c4a9409cf7",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "aecce13117519346c7e5078479cc78fa95e34693a73b4c450f4bff94787b97c6",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7b63b30b35c6db78cbce8124f4581514c9b903b0c41dd4abc20403eb4b63df23",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "d1646cb72262e1c9e49b69b2d7bac9d4c9f30eb5bbdf503068cce77c6003be37",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|533.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "85f5bb880d7152f20f8f5bd56dece819bbb8ba5e21dd6f09e41297a16b73e96f",
+      "provenance_sha256": "335ec2f37bfcf0c9acaf2431cadc88b6f51cb12f93aada8b80234b56f205543c",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "a81ba7a58a73df1efb9b0fc69d0c2c18590f679958e639b35df3b9e38a4a396d",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "4d1c5525764663841e3f5e26e4f8e25b97d12e1e3cb57d534533ccd88a3f14e5",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "8b230866ad609bb273cf8d341491fd6a271c4663c67e15441106642f891da539",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7f4383b526b54a8edb4524fb4aa2df0c20ad3e9d0abba1897a50e4acd2c5a8a1",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "3ba8b36acec8f2c19071e90b5dac3c9e57eb974075d8e255c831ebce4ef1df62",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|534.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "e0b52fe85a47dee48045fb1eb4dee5fce70dd059da59cb3f981456aebccab26d",
+      "provenance_sha256": "b79d9c89035bcfb32367ed566ad71f15cea67e9362fe9c421bc19943fb218396",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "066fd7eccc1fdc54ff93a08855fedf78bcfdf4b0e6bc4efc64e09e2552a0b292",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "10d272ee0915620a9e13418355600445b438f72993c6318876212c2a21256285",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "109a5fb174964dbd8a456898739af6ae4460816348ea6d56d430b298c51f3bc1",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "0c5b87fa7132a6bdcfce661323019c31215d014131212676cda34e19aa83b858",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "d757ffdebace84c95e69f43aabbb544b4dbb2fe6e0f2f43ca12a8ee8e0669bd3",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|537.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "8c01d5d99063d578611c93db4d9806b752f3fb3b79a68ab9a33cdd6af8f732c3",
+      "provenance_sha256": "4b30b5935731e6239b81d3774c4f8b2269544868e038f00b23305e1a6ddba10a",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "107589c04de56d4f10d5bc863909c64dd99b1b915bc714be7b26f1dcba37fddd",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "56e0dd238c8765bd4c8b5f480973a0d61bdcc7f5704160ac0cb335828fb39089",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "59c105c3406aaba72bab3eb4162ff32e7fb8cf47a95fe84c6ec1f85cbe7fd781",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "65f000501a9980488759874d3b1440a118ec6945860a279f940d7c0ad1f858ef",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "c5f25f3999d492ecf6b0f86d1fd845ded2be2736ee25be62fb070c3a0b8735d1",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|538.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "bd841703a6fcaf8210692b5fcd78b390732bcca1fe5fdee9b2afc68d6f50cdcd",
+      "provenance_sha256": "e29859b6f186ba78d6638e8bb19b7abccf78434233140b45d5163162c8751114",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "9a7a3016b29c05fa9c572fe3ba92c0a5f86025bb373bab400ca71e891b074345",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "e2e6e9e4c0bff0dbef559719b6b556fb6fdcd246db88b1582f43676133d74682",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "ae5ed8ebedd6ba10a89d4f1743d7b79626935aaac8a77cd864d10fdb633e63bd",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "d4f4f025dd00da900de1da6ee4f840f338649b9d3e5bfc2ffb8f1443161e98ff",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "cc3374c8c4c48dcd83bb81e55bcfe337bf370a3aa43b5c17ca8f31100a096a11",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|539.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "1d65f0df071a4cc2a2c73667b98476cab51daef25c0f79be290f8868db1ceb3b",
+      "provenance_sha256": "96bd3d065bf6db7114fd8fda511c37d9c8809958544023af37a29e283efe67d1",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "2b60d519eab82508d9fac461d8b7d24d6eb09f103bfab307cb59cda7088a8c60",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "2f391f890fa90117202d6f44cf986f69baa2b55573775c3d007d19e71718573c",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "914fb3d2914e17e56e48f949cb5d41980e501256aa574f4c83a17ce834a55940",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "01405f5cfda34e29e8055dedb23b733779c973d47b13d3a5be1997ec1243dc11",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "2fab9363485bbf46b1cd4d364bcd80e49e24d506925674e390928e06bbb39856",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|544.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "178155fea802ff0ca492b4feb4777bc296829cd7913468c213c200963b1c0fa5",
+      "provenance_sha256": "2540f0f21cd015c3655f03cde21b35de6f2458213a0d86f3c460ac4a9fa16e77",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "edd623f92ba85f9a8fdef181f94922e7427f09f317c9d7d0973b64580987490e",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "df6f854c85eac680e6994a24b75e5c3191db677ea2025e051bf8b9d3fcf7bc1c",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "353fe889056c3a7b6b7c9da248a5ba7e39f9546a74d98fb0571ca513567abea4",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "aa8d678104749e0c0c6504736b519e31e2683def547f213a65a70ceb45b96c97",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "df22f80c47319c9647e822c90e8f816a870916521c1ad2af7694347caf29ffad",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|545.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "397e6a50574a6cfcf351234dd0a615bc19e5359fecb3038d8a747130add59662",
+      "provenance_sha256": "37d6d0c82426071978cc1693951ed015da91a9519b2c7c0779d9dcc726c9f6a2",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "aa14821307b43c8299023a411bc63facabaf1ab8adcc622d07bc04f2bbd82e9a",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "db84ca7e9681f38fc0b044b1f8e3c0486339b988ccf7d363d7b1184534896986",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "dd07ac731c67f1da38e8dd33a9cfda8967b51560ea84e571ddaa30d4909d8596",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "4e96be569ad20327ee68375c05a8d7ef347112118ca704a1a84a5bbe7423a7f5",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "06f0f625b2f8d13a5c62df378e43fbe6f47f0e3a64d80ad9a4bbf0a2e89e33c4",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|546.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "2b70d26bed5b3579e0dd4ad13578d79eb56a5982d634f2435e7acbde51b3ec84",
+      "provenance_sha256": "695defec66dd080b66b3320afa92543b397ed835620dcf718c163e90347a7e74",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "578a9ca9ac59bc64a9426cfe51486a989e84d9658ccedbdebb3383ce05d73322",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "7639126ae7266a5de04c69ed32d4d07dd6bc398dc0df21c0413242124c24e411",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "b2c82d4e12b7b03958c31e04c111798346c3ad755f92816f57b064a5f644debe",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "b94dbc1cacbe4d64eca79f83382bbf447db6cb7bb4ed980e8452e09ba4f05bea",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "38771a384f4a493f54ef4c6e95da6f239f1371518891717b3768fba634aeb907",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|547.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "18d49f1232f1a934b2eafa2778fc91f73f12a5a8ac2c410c7520e14cc3455f29",
+      "provenance_sha256": "eb09e364f383d53d6fb5d072fbbfdcaa8f46f56f18eba3cd6aa99c5a57ec9ef5",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "b3b03a99073a801bc9c442262da40148d8801f92aefc1896e15ec99ccda6b9f0",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "d8baa7a25eab630d149b624d9e729df35015317eb451d014204ea087d44b1f2c",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "0506142ae415bf7ac860a06a21572343f13caab336fadf564f49f907c5bc4943",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "19e179fd18f9ebf203661abf344b2bf050952f45aab017602d10de903ee7aee3",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "8aeecf4c9bb4357d6d0c29eb825cf1bd7e1ae954a9f291b556ae8d711b122f29",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|548.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "570489780ca82b24f519486dbd97072ece379f64acf108503f66f8a13d3ed9d9",
+      "provenance_sha256": "d02c7e94c641936907ada7332cae6b87ff95f539b331a803351dff38212590ef",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "f195b013994d474eb05fa75f1b8997fe51adc50effaf04ef5a697dd965c27098",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "8a9d48b20246fdbcabe9f5ded6fbb1f40ce05605651b721a5fd86b4115f755cf",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "2fb8e4e9b5f3c13e26896668265d34d1d3ed8c69643e570a11a17ad3e478266d",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "64f732672f91a2acd810dedf9032330eed8606a442aa5a9ff0e8c47f023c263c",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "12a3d928078f588080540ecafcb4a52d727833d1e50bd16302cce158acdc3c4c",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|549.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "e0f94e2aa5132fb710423daf456589aa05d3ab17486ebd4193e77708cda9d283",
+      "provenance_sha256": "88eb7994aa3ebb500bcf0601a63d624c4766a84a4110a2698d464da65447ca9a",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "1c8f5ac3fea0d3e77aa3be84917e56570f2c3a0ea5471a1ddbe8bb69caed5050",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "c3066d918ccc32cac2986b93f0ce883551558e0aa0f5e561d4a44e6e88edc124",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "4256e0f8cb6b84865850b3d85221b2e0d8ce28e4f016c16c567eafa70da5c6b3",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "c7e41c91845fbb23eeeb90dc54d06cf887110aa8be8226a3684844e475628e9d",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "d228039e0f7ce46c60ae438b77c3fdaacc308672a2639fef72d5d54a48d8489a",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|550.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "5305902abe0d9762314ea8a744784992cb4b65eaba6f5a9386c870385e6ff041",
+      "provenance_sha256": "ca6d8ab75941d84f61123fda3e9a1fe73e585ecd3c4a0294f7ee00f526f4a1fd",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "499c81fd2a438d8060a31471a0f29e3f85ec3e3edd9bff33edaa051f0287c78d",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "69e6379f53caff663d96a333db54482598021b87f267963a6f0020fbfab6432a",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "0727488539ce54854969f37cc827d1323a4aefdb4b35016edd3ea8456e4b0ad6",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7cc2a5351fc09fc2cb9fe34932df4a0d2ef5dc5139908c16e1c498c4c657038c",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "ac51e25dd2fcdc75a3acf54cad3ccfbe1831ba73df671ba68b734988d2d42975",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|551.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "5cc31f0c04be7e9427dfc24e3a02318772c0d0a2a23fe940f4669f6aff8fb1e6",
+      "provenance_sha256": "1ee46a0cffb1a6a2cbbf01093852b3379e7f76ccaa1e28f9ff2f720c442295b6",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "2864cb395f9dc7093c09876ae096d7757bde139d179cae9cd6dfaaf164634d8f",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "6a69f6c5c843a3af41ca143c195c59b7f048517acf249cca084ec426b705cff9",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "65b299e432a54470719b52f975255468ff1ce032dcc82ba7b8fe0e1615924395",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "b6df3c057cff9439a7d18c31d8a6e381ca5523ecead6b9821219b86020239c1c",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "552e2d4b9828c6815f52c1013a239ba143b0aac1cac90941f2a5e2ff14683490",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|552.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "f5a3578aa6301c8461f6744e9b8663b6ba0725029a1edbc43cf45fc5bad3c68d",
+      "provenance_sha256": "1359303dbce76932ebcdeccfc50fd1f44f11925755274f53acb46a2fc064a52d",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "66cdb45a4fc29c4d6670a2684f5a3088c5da1aade5b65a0c673ae5dfbee03b25",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "cee657335da222630cec13a8d5e061deb7c9f154eaecf8757572cf980bf103c7",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "6d4a025bd419aa3fdd9ab76a1f35a0b0d1014726727e03fd64b6d856d91408ca",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "02a425cc9551a30a6ab95a56e0482f9be5391a15de9e130ae792eb63d359e1ac",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "46b60c9ff911de7638d37ab7312878ecd91eb956b03b7485fe7d5e96b39aaec0",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|567.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "6e6685e3a87e4d045d64470821d51801449d37622cfa85888df519315c25899d",
+      "provenance_sha256": "9929206003758504db7de2bb13ddaf0705907c0e417c751300ee0993908a48ef",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "2816bf81b52a4e12950355e2ad996338b34cf83c0534bb010e0be4aad0ec5f31",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "cc60084dde0ab095f8099d4e71bfdb00d967738caef6baea4b09e05877364ded",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "2ddc14250ddf61cb21d794f172afd78b865671712252e8c0d961917c2d8ecb68",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "328043041267a49ff614df3b05bf6db4c428e3ee53cfd2aad6d560e677214480",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "75730cad0c49ab5385d745628d3e1d9fbaab1cc9014a148d523c49ada8d2fe0c",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|571.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "1cc67657734387506f21b7758f2028b5ec882496a5ce907ffa9cb3d8d62d532d",
+      "provenance_sha256": "8f7654f56a38b1688d7a6d3a1f5fb8750265d6be7246680168dbfdd1cd76ab67",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "336485d55aefa9d2af43d8603066a231d979299511adab77890cc59d51ed8435",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "ab3a40fcfd362fd53601b2776b27ca5486b68dc951d6d215efc7ac7ba8de3a08",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "4f2d9b20fb66d4f117550d35d98bba49274ec1c22f9db4dbb7e894f3b37d1cd5",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "45546fb0811371fee15c45c806aa0a7670b6e4fc08a4102f60ed14bf0e36314e",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "ba0e45f6cd42733c38e80519ec8ae7452bb21d5c6c59087e64509581445d9ad1",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|572.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "5bdf88a4b19b6d3e77971ebc9a23544206dc25565fa5c774c819d3d5e7cbb11c",
+      "provenance_sha256": "e5ad54a5b288c2b96c3db003115fbd75c898c5c95282d782547874571f5d26dc",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c9db42622abbfafe4602b1326df8a03652221cd702597a2620ffa57966cb3eed",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "202f5c5a26d40b7d23b0887b4a5aad310413531571be0716d71b6ab2f67ba1bc",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "b3acecdb011d174b0ec0a959703edd3c72dfde148f982e2dbf2940799fee949f",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "1d73301117401bc275f47366d367e759744de0788da1a26afedfa5340ccb36e6",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "9b7da6e914d8478e02c988f3ed354f16b182fb4f5847ac9769868925bbb225a1",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|573.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "fb51974dc7edf8e694e58c944723f04a8565fe4928b7fb2135e86ffe84179863",
+      "provenance_sha256": "76f6e53b813a752154341423c1bbf87a49b22d3403bd30f228e49ad3fe41f741",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "3a1d49ca51a5db2f5b58a80e37e25c0dcb46b511e38d030726929ae915325c57",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "36fae629e13528b5cb7832061d4924dc39eb25aa727ca4b2d934cfb380ebc595",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "c20b879b6a3879341254faa303c2da9d6e820819d945b45a555c8fe53ed656fa",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "f1dd029d72a6604753f517aab26dea31b85c581f82cd99d397823691e8a610da",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "8f93ee44e1424388792faa42eab7da8f46fec47331a10100bd00024f69935cdc",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|609.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "d22370492d626729a853bb026060e7f8d03e9189943b74f67c9470a211d268c9",
+      "provenance_sha256": "4a366dcb3beeeb9cc7144a06c1854bfa1ad67d3b18525082fbe6d0dd0040e014",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "bb0b04451aafa0ddf013ef12d3f0f3fde067da615c7d4488e612cc9facb8fa35",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "9b79baad754dc5725d11b2893ab838855b30febbcd7b30e56b2e1e6cfae677c8",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "045a36748ebb2e9b4a7bf849f4302161c04daac108368d0a3389aa44f9d27af9",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "7c7b5b7bd44f16fc46cb06afb1151bf83e2f7a0e2f14cc253f32b9ba0c8eb397",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "529d667cba51e54970e54918de5137346b26fb3d62494a59f7c7771fac739eea",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|611.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "aba50dbc017b1dc1c2941aed0e4f4c524017e868e3b8376585944195f9b031b9",
+      "provenance_sha256": "15e588ecb24c6b8953e54343aaed14fbc13c4bd735364f4196bdcbff1764f57d",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "64b130c811d5d4d163f1d9f6310f4908cd1c7840e619ec75cff88cf88f78a74c",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "fa2699fdd752e15229299ffb44a9d8a15c0db2bd7f768b210441a537660d76aa",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "8cd72702738e174d6230362ac37533db15354b51a721a611ae798173534ee4fd",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "fafd04b4170b63861ea59a8799e8d38e8f3ee40dd8003baffeb94f5b68ed6dfc",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "9180613eef9f7099b837e3bad1969f9ce6fbbb803100caae0380da26be4eda85",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|629.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "d13989252f6e19ece3c8c10836944b197aeed082953a9c66df6fab08a99823a7",
+      "provenance_sha256": "85e5acdc72bb7d6e35bd5c5ca99c6be2b18f1d276711e10a097c0cfd80e6a10a",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "b0e34a7605d6700725618715b4d86fba5948b7b40e2c5a496b1f5df70c51de72",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "687ee24f69c8535eba4dd407e71b3b5347cd55e8b3ccc1b0118b2b4ccc6dc1f9",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "423de0cfefde7d5bae8b9440754d3bdb9e4232abd29cdace444549d007a92296",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "40db70617d5fb6717c689551ee34e3ee4ab22305e786fe6f349bf21663c6fd24",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "98fb0e74df0faefe7488a9522d645aa30ca7c9f47e7710f29d29266d8c8af6b6",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|638.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "c83fe4aebe3c79d9eb8b5ae80e08fe9381447db9cd1ef2b0ed621667d5660095",
+      "provenance_sha256": "26032c5ba23ae32b37536d6a3528481db7b3fd522c951aaf1355d646c741ac35",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "2d7a93e9c0e0e4247e980e18f23cb8f5c60a132fbbf0e54cded646e628726bab",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "85aaa0c0d7ca31e6200e66cd2a3c4ae82e0e2922e9bf94057f806b230dce31ac",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "e1d3e7f2c21b960759cac29b121f2835c980129253464f3a13f3e561ef8cdec6",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "82f988f3c0e88353d2727808a102171c4f206537260c092bb15e7070ddac72d8",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "21cd66a5aaf44616e3d513c980162b1671677f7d279aff34946b40fbf4b28393",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|641.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "0d3cd0009166cf5614885494366c7f4b226be6b688d514110fac024838994b34",
+      "provenance_sha256": "0225d6df8944e7afb2086dd654a898935d22afc6b7ff77f90d2562afc03e391a",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "86481c38a794ee003af18ae07b1bad2e856b5a3c1f0fbe37bff7bddde5707f89",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "8e98a22d676e7cb429c2f9909605aa915102b90a3102ca27072e8d399a1692f9",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "19a47b2a0f1612528ca2fee1bc8ad459443c28d5927ab2c379e1c106d26aaa08",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "8933927eefd269772b512c0ea802d9b97497614b213fe8d668ec49d7cba82d41",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "2b085cd55a01000aa4c607e2b6d1dc01d1701af0a476adf2a0dff3ed3fe9ba11",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|655.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 27,
+      "missing_cubes": 0,
+      "raw_sha256": "29415192088a55a7ab3748c646f3f9a8821d73e84d51bc51a2f1f0f3f432f23a",
+      "provenance_sha256": "786c6c7798f585ed2919c83de22063d2686fbe851725e0b3fc0447dc6df57719",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "c6da89fd9506c847ae876525ddfdf59b29befaa1067d6b824b780fcb3427a164",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "eba3b7f3abf1e453c335532c3855441fd2270dba5d28b62614793c6674f0f2e6",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "e51aded5e4989d2e1af405d0dc1feccb0ee2977049050704febf4592b39343e1",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "09be4043bd5676ab7bc54b78503aaeab35c6a21c41a653e136e9fdc0bc4cdccc",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "044af98004bd00e9d51fd70295fc26c09dcd40c572de8370cf5ed00aaf25b641",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|656.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "085fc88c294d9684ef57b8b4f1426bc13d628952f616f5d4d6ddd88266e3bfc2",
+      "provenance_sha256": "eb7dbc995d21a0ce6a2dc03245dfcd67e38d6ddb7bbe4ce81ba5fe9a3ef0a830",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "cb1dbf4b428c57626b7f3e24e2cf73f80ba79e3a159c7c8de6b33c2c3bc26b14",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "c1785eb1c2fc6af505ccd1750f3cd4cb33c834998380eb10d7bd707af42cfcb7",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "0e4943610b6ffff0d65bd9bb39dddea8a08aa4503c1395ac90718d7bbc24bcb9",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "c392fe26dfbb57dfeb4f212d97b4a01b5c7b5ac23d2d045b14be38cd0e46070b",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "e289c770f7727019c4c2e9339869ce22053575d7dd989a7c537c006d51a37750",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|659.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "593d098f32f93fc2e33fdda0387d78272759876d027e0105ea49a1ca764217a2",
+      "provenance_sha256": "6ede2a391a569bd13c1e39e4ab6146b08afe254efe71235a7b004248c85215af",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "4acd1d98871f627913b90cc47758563b102e08b0985f092584278f84b599931a",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "f383de466e7a99826d4865c4e78e51eeeb8a0ff96bd5189fa26a9139d9767a1e",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "4db71b482ce9a8f091ebb03b014953f2ca5a11cd9ebb3a35c7b41c8be596e17a",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "8a6b54a4a84bfd4575e06e22da728e016249ca6ba6b14e2b01a6899e6529acef",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "69a1217a77ab0cf9aca0f59724e4b529e0ea7aa58877471fb2d62e100ac35b38",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|742.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "bb4dc3253e45d40e2c4f2784ac06ca1b18b2ef42520d4f4a94c7baf9e6ffdd99",
+      "provenance_sha256": "c1ece6d9ae1f51ec2f4e0943dcb0d55458d6bf65dbc68b209d0068a562b046e8",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "33533933fe56bc1c35750ad2000f07386c1befaa028821e8e7c3f128785a566e",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "3ba743a0fea8ddfea21a14a2178e4b41c87dd4df2d9cde798ecb6dd594311ac4",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "daf9bd2d08bf503e6cd41d1b360db69c287b8055c8ed731612dc84426e77718d",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "fa17437e024f5eec485f61bec1b40365c18c276df1230cb129565e6f5ef0b734",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "b175fe8475ac87808ab28785627cace2066f3511ab90a24e9f6da40135bb33c4",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "251730|743.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "1e5c13c348856a222a3fd0de339ec2c6740e3dff88b3eea3d2e3d0a5eaa32135",
+      "provenance_sha256": "6d970b6122bbf43893fc634ccaf20102092ce064c7486614c17611e91c47b4bc",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "7da04b3dd53a41fd2a51609a6d7d8ff4b14a53934779d79603d44c3627a82029",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "2699fb1b838ee2518a95029ef19a3c03fce449f92e052f1dc805440397cde5e0",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "8b09c9e41b6dfaeef6284365984ee85db72f23d3f5cf21e9b10c1f79ae7b19e7",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "245e8254dc6b3838336eac53c35ba896f7c315059e9c4cf3e41369de92f08d44",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "16c316315ac695d7929deb2767d10c6bba29873cfd64bb12f17fc4cd3d3ff5a8",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "252383|136.swc",
+      "status": "partial",
+      "coverage": "partial_neighbor",
+      "loaded_cubes": 21,
+      "missing_cubes": 6,
+      "raw_sha256": "f9252b8c880e7bc0ea7277ecb5ea9f26323e7a5d085d05f464fbe6f963fdaa7b",
+      "provenance_sha256": "99d5b4939f70d002f82c2a3e6a37a0554fce70dbc9b350b5af891095c2432f74",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "ed38e555e77e906c2d58ff42606818e4f143b390fcb3e2c1bf3c66c135c5be98",
+          "size": [
+            1080,
+            1080
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "41efa79e47520f49404e31e6731730ebbe5f4d6844857aa43494e8344418af20",
+          "size": [
+            675,
+            728
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "2ba66ffbfa4ac6f474f59275b7f2d5a8813eed6e93affa68887d965c23dbab5d",
+          "size": [
+            675,
+            777
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "e5b13588701e49289fffcc24e428e3f3d651fecb781820d75c4b151ed88781b0",
+          "size": [
+            5424,
+            1096
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "f037f1a28488645e1670ed9711028a9b87f56b3be11fe7789ea5184da98afea9",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    },
+    {
+      "uid": "252383|140.swc",
+      "status": "soma_only",
+      "coverage": "complete",
+      "loaded_cubes": 1,
+      "missing_cubes": 0,
+      "raw_sha256": "19f5a200d5fac219a4a60c09c09f8a9a21c274a0af61cbcb2e6f00782b479326",
+      "provenance_sha256": "cf5c265599156f9f8d58077e37b26d9a91e2c4a73158d6959cef79c41ca8c090",
+      "panels": {
+        "soma_unmarked.png": {
+          "sha256": "25233e8b7ff255e32d0c164c7f266bd8fb1f33b110c56295edbe2ed9d0814c62",
+          "size": [
+            360,
+            360
+          ]
+        },
+        "soma_marked.png": {
+          "sha256": "0e043036202f727a7e81b887285c31ae19fd94152cd84c881fd8fef273a6a646",
+          "size": [
+            438,
+            413
+          ]
+        },
+        "soma_trace.png": {
+          "sha256": "0224e8aea9456dd237dd0bddc89b9771ad76e3f595b3958c9f3fbb69bb395280",
+          "size": [
+            438,
+            462
+          ]
+        },
+        "soma_stack.png": {
+          "sha256": "bddf91d7f667ad78842c2e777017be93df18c0ebe5e3ac19a0164df12c84bcf4",
+          "size": [
+            1824,
+            376
+          ]
+        },
+        "soma_ortho.png": {
+          "sha256": "8f77673a19509ed49a3db2d9e7d88cb5604eb2336a8939bc0984f2e4854de9af",
+          "size": [
+            1418,
+            595
+          ]
+        }
+      }
+    }
+  ]
+}

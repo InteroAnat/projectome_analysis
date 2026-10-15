@@ -1,0 +1,159 @@
+{
+  "status": "passed",
+  "manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "selected_identities": 3,
+  "scope": "Explicit diagnostic subset",
+  "network_requests": 0,
+  "server_source_pixel_equivalence_checked": false,
+  "anatomical_acceptance": false,
+  "records": [
+    {
+      "uid": "252385|025.swc",
+      "outcome": "complete",
+      "usable_context": true,
+      "loaded_sections": 10,
+      "missing_sections": 0,
+      "central_section": 8466,
+      "trace_source_sections": [
+        8464,
+        8465,
+        8466,
+        8467,
+        8468
+      ],
+      "saved_shape_xyz": [
+        800,
+        800,
+        10
+      ],
+      "sampled_extent_xyz_um": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "clipped_to_image_bounds": false,
+      "unmarked_pixels_checked": 640000,
+      "maximum_display_error_8bit": 0,
+      "pngs_fully_decoded": 5,
+      "panel_sizes": {
+        "context_unmarked.png": [
+          800,
+          800
+        ],
+        "context_marked.png": [
+          507,
+          559
+        ],
+        "context_trace.png": [
+          505,
+          590
+        ],
+        "context_stack.png": [
+          4024,
+          816
+        ],
+        "section_locator.png": [
+          1122,
+          716
+        ]
+      },
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\provenance.json": "a92d455ae7cb0e61731c2320dbaa64c7a68295792f1fe5ae64a474da588d8614",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\025.swc": "34a0b42a665e6ca81bb627e259ae2f635a1a6bb1c1cf1551d4c4a5d9242e7401",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\context.nii.gz": "04ba8e093906b2fd44d2fcb96a9d8aaf8a3138a8adb25bf2d907774e56ca03f1",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\context.nii.gz.json": "fe6b41277c655711ce491f60532bea3836994e70f6980be706eaf67222574d1f",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\context_unmarked.png": "47e5c0e71e7ddd2cd21bdfcd0474d4157f88bd64695236102eae435aeb8fcf60",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\context_marked.png": "a65b63418a74a43313d35b6d9e4d6bd4b6412d45488b8ec34ab6f1b7b534744b",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\context_trace.png": "63bd051b0de3ff44023a7546c0c25bc35e4f7e974690019d613e433b6d933ec7",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\context_stack.png": "644a43cb6b4a60528cff22be2336272361fa3cd5eb01f3a689dc3da694419f65",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\025\\section_locator.png": "31bfd4c5ab4fa399a2d96a9f7f59f0d96f1ac0318d9917544a1f64a0dcbbab1f"
+      },
+      "stable_during_read": true,
+      "server_source_pixel_equivalence_checked": false
+    },
+    {
+      "uid": "252385|088.swc",
+      "outcome": "complete",
+      "usable_context": true,
+      "loaded_sections": 10,
+      "missing_sections": 0,
+      "central_section": 14565,
+      "trace_source_sections": [
+        14563,
+        14564,
+        14565,
+        14566,
+        14567
+      ],
+      "saved_shape_xyz": [
+        800,
+        800,
+        10
+      ],
+      "sampled_extent_xyz_um": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "clipped_to_image_bounds": false,
+      "unmarked_pixels_checked": 640000,
+      "maximum_display_error_8bit": 0,
+      "pngs_fully_decoded": 5,
+      "panel_sizes": {
+        "context_unmarked.png": [
+          800,
+          800
+        ],
+        "context_marked.png": [
+          505,
+          559
+        ],
+        "context_trace.png": [
+          505,
+          590
+        ],
+        "context_stack.png": [
+          4024,
+          816
+        ],
+        "section_locator.png": [
+          1122,
+          716
+        ]
+      },
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\provenance.json": "c1aee413be35076192f887693f4ccf7acde59f95e442d62fba4296733092a2a5",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\swc_raw\\252385\\088.swc": "7cd050bbe3dba56d42d00ad56cc6b7ce22704af3922344fb64b26886be3ef3c8",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context.nii.gz": "ee51df9c64233a4e7abb7f8d6f8aedf39f8643ab4c1a6aca1121c3ccab952f06",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context.nii.gz.json": "9cc8e52a006075079651cc654e50c7dfea43923eb460a44f263adcebd3f5dcaa",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_unmarked.png": "305a2c0625d8e32f21b301fe6ff5009e9fc848ffddee991c4b89f41de61a2ead",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_marked.png": "593fd1207bd161086f6451fdc64d67792e5748efb88186ea5f79c41dbfd91b47",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_trace.png": "a0eb5dea5ab47c5797d29aab5b4cb2c66c3e54f92991ad837f21af224ef9945a",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\context_stack.png": "8afc45a7cc84702f39873ab6b278936b7b684da56099368d6dfe7824d58dad60",
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\088\\section_locator.png": "7c6614fbaeabddad97acb14fde89e1cc92191ba094e4220c20629d61952bf905"
+      },
+      "stable_during_read": true,
+      "server_source_pixel_equivalence_checked": false
+    },
+    {
+      "uid": "252385|d001.swc",
+      "outcome": "swc_unavailable",
+      "usable_context": false,
+      "artifact_hashes": {
+        "D:\\projectome_analysis\\group_analysis\\visual_review_20261002\\252385\\d001\\provenance.json": "4282e91344da55d458a7cd6d881b5933d53a2f563ba300451d0cd82a427df1e5"
+      },
+      "source_errors": [
+        "swc: raw SWC unavailable for 252385/d001.swc after 3 requests to http://10.10.31.31/swc/newswc/Monkey/252385/swc_raw/d001.swc; own-sample raw caches checked: ['D:\\\\projectome_analysis\\\\group_analysis\\\\visual_review_20261002\\\\swc_raw\\\\252385\\\\d001.swc', 'D:\\\\projectome_analysis\\\\resource\\\\swc_raw\\\\252385\\\\d001.swc', 'D:\\\\projectome_analysis\\\\neuron-vis\\\\resource\\\\swc_raw\\\\252385\\\\d001.swc']; processed SWC cache D:\\projectome_analysis\\neuron-vis\\resource\\swc\\252385\\d001.swc is present but not used; NMT coordinates were not used. HTTP Error 500: Internal Server Error"
+      ]
+    }
+  ],
+  "failures": [],
+  "observed_utc": "2026-10-03T14:06:41.984052+00:00",
+  "checked_identities": 3,
+  "outcome_counts": {
+    "complete": 2,
+    "swc_unavailable": 1
+  },
+  "pngs_fully_decoded": 10,
+  "unmarked_pixels_checked": 1280000
+}

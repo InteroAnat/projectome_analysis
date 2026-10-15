@@ -1,0 +1,60 @@
+============================================================
+REGION ANALYSIS REPORT - 251637
+============================================================
+Generated: 2026-10-04 07:12:07
+
+--- OVERVIEW ---
+Total neurons: 2
+
+--- Neuron Types ---
+  Unclassified: 2 (100.0%)
+
+--- Soma Regions (Top 10) ---
+  L-IDM: 1
+  L-IDD5: 1
+
+--- Laterality ---
+  Soma side Unknown: 2
+  Total ipsi terminals:   0
+  Total contra terminals: 0
+
+--- Projection Strength (Population) ---
+  Raw length: mean=163.41, median=163.41, max=192.55 mm
+  Log strength: mean=2.209, median=2.209, max=2.287
+
+--- Morphology ---
+Total length - Mean: 342.31, Std: 147.99
+Terminal count - Mean: 2.00, Max: 2
+
+--- Outliers ---
+Neurons with outliers: 2 (100.0%)
+Total outlier events: 155
+
+--- Hierarchy Columns Status ---
+  L1: OK
+  L2: OK
+  L3: OK
+  L4: OK
+  L5: OK
+  L6: OK
+
+--- Excel Workbook Contents ---
+  Sheet 1: Summary                    (scalar overview)
+  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)
+  Sheet 3: Terminal_Sites             (one row per terminal)
+  Sheet 4: Laterality                 (ipsi/contra scalars)
+  Sheet 5: Outliers                   (one row per outlier)
+
+  Projection Length Sheets (split by laterality):
+    Projection_Length_ipsi          (ipsilateral regions only)
+    Projection_Length_contra        (contralateral regions only)
+    Projection_Length_L{n}_ipsi     (level n, ipsilateral)
+    Projection_Length_L{n}_contra   (level n, contralateral)
+
+  Projection Strength Sheets (split by laterality):
+    Projection_Strength_ipsi        (ipsilateral regions, log10)
+    Projection_Strength_contra      (contralateral regions, log10)
+    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)
+    Projection_Strength_L{n}_contra (level n, contralateral, log10)
+
+============================================================

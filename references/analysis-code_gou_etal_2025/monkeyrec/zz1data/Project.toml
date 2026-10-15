@@ -1,0 +1,20 @@
+name = "zz1data"
+uuid = "48b45bb4-b80d-4971-84a6-2289501aa4d6"
+authors = ["GOU Lingfeng <goulf.3m@gmail.com>"]
+version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
+Distributions = "31c24e10-a181-5473-b8eb-7969acd0382f"
+GeometryBasics = "5c1252a2-5f33-56bf-86c9-59e7332b4326"
+HypothesisTests = "09f84164-cd44-5f33-b23f-e6b0d136a0d5"
+LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
+Optim = "429524aa-4258-5aef-a3af-852621145aeb"
+ProgressMeter = "92933f4c-e287-5a05-a399-4b506db050ca"
+Random = "9a3f8284-a2c9-5f02-9a11-845980a1fd5c"
+StaticArrays = "90137ffa-7385-5640-81b9-e52037218182"
+StatsBase = "2913bbd2-ae8a-5f71-8c99-4fb6c76f3a91"
+Gapr = "59672b9a-9d3e-4f6d-9aeb-c8db432f251b"
+zz0atlas = "a5902ff3-577d-4e0c-b305-57df2eb83698"
+
+[compat]

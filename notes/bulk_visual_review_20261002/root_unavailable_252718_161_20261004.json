@@ -1,0 +1,40 @@
+{
+  "status": "passed",
+  "observed_utc": "2026-10-03T21:21:06.7739475Z",
+  "uid": "252718|161.swc",
+  "run_id": "d93cc551074743e291f4229543b0d888",
+  "manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "report_sha256": "6db744a7e13639ab9fe042f08de4fae5e4dcbcaf9f36115d7c61d157ea00811f",
+  "earlier_reconciliation_sha256": "80dcc9f50aab5b4e34059739a4b8843a94347bfbbc0d3926b8d3bd0cf73d8598",
+  "own_raw_sha256": "a32e4867409296f6bbc869100075130fd0de072cd17f1af4a75560a3a5b87449",
+  "earlier_root_cube": [
+    225,
+    124,
+    80
+  ],
+  "current_root_cube": [
+    225,
+    124,
+    80
+  ],
+  "outcome": "context_unavailable",
+  "root_acquired": false,
+  "source_errors": [
+    {
+      "cube_xyz": [
+        225,
+        124,
+        80
+      ],
+      "reason": "HTTP Error 404: Not Found"
+    }
+  ],
+  "requested_tiles": 324,
+  "missing_tiles": 1,
+  "unattempted_nonroot_tiles": 323,
+  "root_recovered": false,
+  "server_requests_in_this_readback": 0,
+  "global_source_availability_reprobed": false,
+  "requires_terminal_reassessment": true,
+  "anatomical_acceptance": false
+}

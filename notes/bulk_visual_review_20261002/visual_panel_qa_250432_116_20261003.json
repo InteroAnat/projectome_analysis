@@ -1,0 +1,28 @@
+{
+  "observed_utc": "2026-10-03T05:21:09.8539776Z",
+  "uid": "250432|116.swc",
+  "method": "Direct visual inspection of persisted panels",
+  "panels": [
+    {
+      "path": "group_analysis\\visual_review_20261002\\250432\\116\\context_marked.png",
+      "sha256": "60b1ae6ec03fedd7e09bf7b67763bcc51554d3e4362a8163e391c27048244a91"
+    },
+    {
+      "path": "group_analysis\\visual_review_20261002\\250432\\116\\context_coverage.png",
+      "sha256": "05f558acd931d59ac177842000db8619b54b416e1c863cc9d74be1f9ecbcb852"
+    },
+    {
+      "path": "group_analysis\\visual_review_20261002\\250432\\116\\soma_marked.png",
+      "sha256": "ba4663e70292167f828515a99cc1366725a4e6bcda3859c95785305ea3d176ec"
+    }
+  ],
+  "findings": [
+    "Captions, native spacing and scale bars are readable.",
+    "The marked regional field shows tile-shaped gaps corresponding to the explicit coverage panel.",
+    "The cyan raw-root marker is visible in both the regional and soma panels.",
+    "The soma panel has visible fluorescence structure and an explicit one-cube acquisition caption."
+  ],
+  "scope": "Representative visual usability check; independent full source/pixel readback is recorded separately.",
+  "anatomical_acceptance": false,
+  "human_region_correction": null
+}

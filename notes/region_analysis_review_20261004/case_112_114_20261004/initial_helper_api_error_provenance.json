@@ -1,0 +1,52 @@
+{
+  "status": "rendered_pending_actual_inspection",
+  "started_at": "2026-10-04T08:14:48.146469+08:00",
+  "public_toolkit_sha256": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+  "neurons": [
+    {
+      "NeuronID": "112.swc",
+      "manual_label_comparison": "L-IDM",
+      "native_root_xyz_um": [
+        9413.76171875,
+        28645.63671875,
+        27356.71875
+      ],
+      "raw_sha256": "d80fc982cd7ba42e6b36ffc91fc296d9d7c589e02849759fe32e60aaba371298",
+      "acquisitions": [],
+      "errors": [
+        {
+          "kind": "context",
+          "error": "Visual_toolkit.export_data() got an unexpected keyword argument 'acquisition'"
+        },
+        {
+          "kind": "soma",
+          "error": "Visual_toolkit.export_data() got an unexpected keyword argument 'acquisition'"
+        }
+      ],
+      "outputs": []
+    },
+    {
+      "NeuronID": "114.swc",
+      "manual_label_comparison": "L-IDD5",
+      "native_root_xyz_um": [
+        10131.99609375,
+        28915.56640625,
+        25740.93359375
+      ],
+      "raw_sha256": "7d14337d8e47ce7bae90ed7c07571939f8fa7b48c1ff9ed24e9d80951427dc1d",
+      "acquisitions": [],
+      "errors": [
+        {
+          "kind": "context",
+          "error": "Visual_toolkit.export_data() got an unexpected keyword argument 'acquisition'"
+        },
+        {
+          "kind": "soma",
+          "error": "Visual_toolkit.export_data() got an unexpected keyword argument 'acquisition'"
+        }
+      ],
+      "outputs": []
+    }
+  ],
+  "finished_at": "2026-10-04T08:15:02.545857+08:00"
+}

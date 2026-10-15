@@ -1,0 +1,44 @@
+{
+  "captured_utc": "2026-10-03T03:17:15.5699011Z",
+  "tests": {
+    "failed": 0,
+    "command": "python -B -m unittest discover -s tests",
+    "passed": 101,
+    "elapsed_seconds": 4.076
+  },
+  "source_sha256": {
+    "main_scripts/fmost_context_resources.py": "20099b0f64cba5256d008b303c17096b84bd858e23e9799638c83a79cd8f4968",
+    "group_analysis/scripts/regional_context_batch_20261003.py": "f23fff8e1e851cb9f281f56e22cb6442135a4c2e2772e53dd8ba43aefc35cb3d",
+    "main_scripts/fmost_derived_context.py": "18eb701c309e6007691ce21a8cf64be5023d572eb78b3d1a6840070572900512",
+    "main_scripts/Visual_toolkit.py": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+    "group_analysis/scripts/visual_review_20261002.py": "6324deae8f457c8005ad5da203f5e72b86f1cfc04dc39985986506edc9966035",
+    "tests/test_fmost_context_batch.py": "64b01c1cb6df239c221a6cd1f218a8163accc3c57a1b5327ab29597df61f4435",
+    "tests/test_fmost_derived_context.py": "61f578fcc033764b214f74433aad155da63199b704062a48fe15fb43ae815757",
+    "tests/test_visual_review_manifest.py": "3c992ada1626fc5d631af86fcb1ef07424bce12640d3bee4175b417e3e52d6e9"
+  },
+  "preceding_snapshot": "terminal_ledger_validation_20261003.json",
+  "per_field_bounds": {
+    "max_source_bytes": 27917287424,
+    "max_cubes": 800,
+    "max_working_bytes": 134217728
+  },
+  "shared_limits_unchanged": {
+    "cache_bytes": 322122547200,
+    "request_attempts_upper_bound": 60000,
+    "max_seconds": 28800,
+    "minimum_free_bytes": 53687091200
+  },
+  "preflight": "full_field_preflight_20261003.json",
+  "live_worker": {
+    "smaller_fields_upgrade_after_terminal": true,
+    "pid": 812,
+    "loaded_driver_sha256": "593e15546a021f52edc5aa9d70d967b02e0383cba19a0189f96e08b49105387a",
+    "loaded_visual_script_sha256": "50cf60ca8d25ffb527a8a12da0fcd71ab289e2a9ec84f15cdee345123db450ec",
+    "restart_required": false
+  },
+  "limitations": [
+    "Planning admission is not source acquisition or anatomical acceptance",
+    "Current worker loaded the previous bounds; reduced fields remain pending upgrade",
+    "Raw source lattice, nominal calibration, and 5.2 x 5.2 x 3 um point sampling are unchanged"
+  ]
+}

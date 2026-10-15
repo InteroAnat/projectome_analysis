@@ -1,0 +1,49 @@
+{
+  "scope": "Seven scoped production edits; preserves earlier population edits and the inherited untracked regenerator",
+  "files": [
+    {
+      "path": "main_scripts/region_analysis/laterality.py",
+      "before_sha256_lf": "b88d197e78857462c7f06207ec0db383fcfe923867e255ad0a9b71e9143d2e4c",
+      "after_sha256_lf": "c48c0fbdc739af4fa168e01bb064a9d3d0a3d3777b7d44a76fac467e1ea6ee46",
+      "backup": "notes\\region_analysis_review_20261004\\rollback\\laterality.py"
+    },
+    {
+      "path": "main_scripts/region_analysis/classifier.py",
+      "before_sha256_lf": "076cadd54cf185e58dfea6b4746e18c8bdee8ec90bf40a104302a38465d153e1",
+      "after_sha256_lf": "6eaddadf5350121e087c7e41b327ebf8d9d5496a7e4cdde3f8137a0669eaedb9",
+      "backup": "notes\\region_analysis_review_20261004\\rollback\\classifier.py"
+    },
+    {
+      "path": "main_scripts/region_analysis/neuron_analysis.py",
+      "before_sha256_lf": "94e9571dd0b8a476378c5e8e42c0922aa5f97efafb6c057b6c46591a49753741",
+      "after_sha256_lf": "19a9c769ef0e827243e6ad5465aebcb42181484c4ff0fcdb30c0290716594123",
+      "backup": "notes\\region_analysis_review_20261004\\rollback\\neuron_analysis.py"
+    },
+    {
+      "path": "main_scripts/region_analysis/hierarchy.py",
+      "before_sha256_lf": "3f415c9f6350dc4ce61c96aae94cd156c45fde488a2e608d7a5393da4b29f02a",
+      "after_sha256_lf": "55f87d391db0995ff8cfc3f4026b1c1f694f9948cc53f7b1ce770958a50dcdf4",
+      "backup": "notes\\region_analysis_review_20261004\\rollback\\hierarchy.py"
+    },
+    {
+      "path": "main_scripts/region_analysis/population.py",
+      "before_sha256_lf": "ec88df9c755905765c58e4983f5041bfcdf82814ee4b6b38ed9dc8861c2a5ada",
+      "after_sha256_lf": "5dfa7535fc97034f70385514d51027cf3b1402259836b74a9e850d2bd7b62f61",
+      "backup": "notes\\region_analysis_review_20261004\\rollback\\population.py"
+    },
+    {
+      "path": "main_scripts/step1.run_region_analysis.py",
+      "backup": "notes/region_analysis_review_20261004/rollback/step1.run_region_analysis.py",
+      "before_sha256": "d899fc1f509f545ef5278e71ffe1d40dde6ea251aea198ce5dffa60925d4bc46",
+      "before_sha256_lf": "99cead952f990cd6fe4499ebda0ca22654489d7672df9bbdeda2c1e8107e1a4c",
+      "after_sha256_lf": "92f6cc5abf4e072d93c9dd4aa925a2e6e28635bd2de18846c8fb59c700530116"
+    },
+    {
+      "path": "main_scripts/recreate_neuron_tables_new.py",
+      "backup": "notes/region_analysis_review_20261004/rollback/recreate_neuron_tables_new.py",
+      "before_sha256": "e6e1c53fec4170b4905d240e9854084239594bf83f715609c9cf7688f474fe36",
+      "before_sha256_lf": "e6e1c53fec4170b4905d240e9854084239594bf83f715609c9cf7688f474fe36",
+      "after_sha256_lf": "ca9b51cdfa892270ceb8cf28b494c2cc6295fa7ae8ed91b72f0bcc6db0038aa2"
+    }
+  ]
+}

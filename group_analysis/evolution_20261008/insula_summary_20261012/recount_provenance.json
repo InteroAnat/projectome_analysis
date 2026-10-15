@@ -1,0 +1,60 @@
+{
+  "written_at": "2026-10-12T13:11:31.518799+08:00",
+  "progress_details_tab": "Progress Details",
+  "progress_details_tab_id": "BB08J2",
+  "progress_details_250432_row": {
+    "spreadsheet_row": 141,
+    "NO.": "20",
+    "\u6ce8\u5c04\u52a8\u7269_ID": "747",
+    "fMOST_ID": "250432",
+    "\u6ce8\u5c04\u8111\u533a": "L-CLA-1",
+    "\u8ffd\u8e2a\u8fdb\u5ea6": "completed",
+    "read_from": "open view-only grid, tab BB08J2, reconfirmed in this session"
+  },
+  "250432ch2_on_progress_details": false,
+  "manifest_neurons": 8746,
+  "samples_recounted": 47,
+  "anatomical_acceptance": false,
+  "added_to_462_ledger": false,
+  "rules": {
+    "ARM": "rint(soma_um/250) on ARM_in_NMT_v2.1_sym slice [..., 0, 5]; label 0 is unassigned, not white matter; SWC-root label preferred when present",
+    "spatial": "folded X = abs(Soma_NII_X-128); q0.005-q0.995 bounds times 0.25 mm; inclusive 2 mm pad",
+    "Henry": "existing selected-ledger flag, counted only for 251637 / 936",
+    "endpoint": "copied from the already computed reconciliation table when that sample has a value"
+  },
+  "crosscheck_250432": {
+    "neurons_screened": 234,
+    "ARM_insula_n": 8,
+    "spatial_only_n": 21,
+    "both_n": 2,
+    "union_n": 29,
+    "prior_expected": {
+      "screened": 234,
+      "ARM_insula": 8,
+      "spatial_only": 21,
+      "both": 2,
+      "union": 29
+    },
+    "union_ids_match_prior29": true,
+    "only_in_recount": [],
+    "only_in_prior29": [],
+    "stored_bbox_mismatches_n": 0,
+    "stored_bbox_mismatch_examples": [],
+    "prior_extra_screen_row": {
+      "neurons_screened": "234",
+      "ARM_insula_n": "8",
+      "spatial_only_n": "21",
+      "both_n": "2"
+    }
+  },
+  "ledger_endpoint_eligible_by_sample": {
+    "251637": 228,
+    "252383": 21,
+    "252384": 18,
+    "252385": 55,
+    "252527": 25,
+    "252714": 16,
+    "252718": 14,
+    "252790": 52
+  }
+}

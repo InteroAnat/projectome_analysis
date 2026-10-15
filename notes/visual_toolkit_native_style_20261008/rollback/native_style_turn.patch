@@ -1,0 +1,53 @@
+--- a/main_scripts/Visual_toolkit.py
++++ b/main_scripts/Visual_toolkit.py
+@@ -714,7 +714,7 @@
+         else:
+             title = f"{self.sample_id} | {neuron_id} | {suffix}\nFOV: {w*resolution[0]:.0f}x{h*resolution[1]:.0f} µm | Depth: {z_slices*resolution[2]:.0f} µm"
+         
+-        ax.set_title(title + '\nNative image XY; anatomical orientation unverified', color='white', fontsize=12)
++        ax.set_title(title, color='white', fontsize=12)
+         ax.axis('off')
+         
+         # Build filename with soma region (coordinates NOT in filename)
+--- a/docs/project_note.md
++++ b/docs/project_note.md
+@@ -21,6 +21,18 @@
+ 
+ **Related:** multimodal opto living note → `D:/multimodal_fmri/docs/project_note.md`  
+ **Env (cross-modal):** prefer `multimodal_ins_win` for new shared scripts; `projectome` env still OK for projectome-only work.
++
++### Native toolkit presentation and locator review (2026-10-08)
++
++The user prefers the original two primary views: grayscale high-resolution soma and green wide-field MIP with highlighted traces. Additional atlas, orthogonal and locator QC panels remain supplementary. The public toolkit's added orientation subtitle was removed to restore its original title; acquisition, crop geometry and coordinate fixes were retained. The GUI source was not changed. The new offline `main_scripts/render_cached_toolkit_pair.py` calls the existing public plot methods on saved own-source crops and writes to a separate, previously nonexistent output folder.
++
++Three actual pairs were rendered and all six PNGs visually inspected: **252384/003, 252527/058 and 252383/001**, in [the native-style preview gallery](../group_analysis/visual_review_native_style_20261008/index.html). The first two retain genuine copied LowRes context. For 252383/001, the wider field is explicitly `DerivedContext`, assembled from its own high-resolution tiles, with partial coverage clearly labelled. This optional batch fallback is not a new GUI control or a substitute whole-section acquisition; its nominal XY spacing is 5.2 um, and missing tiles remain explicit. The existing 832-identity bulk images were not overwritten or fully rerendered.
++
++For **252384/003**, original and current toolkit arithmetic produce the same XY crop origin and soma point; no new XY shift was detected. At identical coordinates, the single section 12464 appears nearly blank around the marker, while the MIP of the ten acquired sections 12459-12468 shows fluorescent structure there. The original-style local context MIP also shows fluorescent processes beneath the SWC overlay. This supports local correspondence and demonstrates a projection/source-content contribution to the apparent placement, but does not establish a tissue boundary, physical registration or anatomical laterality. The raw-SWC-to-overview shared-origin/axes assumption remains unverified. Earlier low-signal/source-gap explanations alone do not prove correct mapping; no soma coordinate was moved.
++
++The [supplementary comparison](../notes/visual_toolkit_native_style_20261008/sample-252384_neuron-003_desc-sectionVsMIP_alignmentQC.png) uses max pooling solely for diagnostic display and does not change the toolkit's primary style. Focused checks passed **17 image-loader and six export/provenance tests**. Preview inputs and outputs are hash-bound; scoped pre-edit copies and rollback metadata are under `notes/visual_toolkit_native_style_20261008/rollback/`. Original source crops, SWCs, annotations and cohort membership are preserved.
++
++**Subsequent individual-section inspection:** all ten recorded TIFFs were reread with matching whole-file hashes and shown at a shared display scale. **12461-12464 show abrupt strip displacement/seams**, including the locator's central section **12464**; 12459-12460 and 12465-12468 appear substantially more spatially continuous. The problematic structure is present in the TIFFs before plotting. The exact upstream stitching/resampling/export cause is unverified. The MIP hides some discontinuities and must not be treated as registration validation. The earlier inference from signal under its marker was too reassuring. **252384/003's single-section locator is unsuitable for anatomical placement review**, and its native-to-overview alignment remains unresolved. `context_complete=true` records that all requested files loaded, not valid stitching or tissue coverage. See [individual-section QC](../notes/visual_toolkit_native_style_20261008/sample-252384_neuron-003_desc-individualSections_alignmentQC.png). No source repair, coordinate shift, rescue acceptance or original bulk-image replacement was applied.
+ 
+ ### Provisional IDM assignment for 251637/114 (2026-10-08)
+ 
+--- a/notes/region_analysis_review_20261004/visual_methods_and_style.md
++++ b/notes/region_analysis_review_20261004/visual_methods_and_style.md
+@@ -3,6 +3,18 @@
+ Agent: Codex. Date: 2026-10-04. Branch: `codex/fmost-methods-review-20261002`.
+ 
+ The intended native review remains a high-resolution soma view and a wider context with highlighted neuron traces. Original inputs and existing bulk outputs have not been replaced during the region/laterality audit.
++
++### User-requested native-style previews (2026-10-08)
++
++The user explicitly prefers the original hi-res/low-res appearance and raised apparent out-of-brain placement in the locator. The added public-plot orientation subtitle was removed; other inherited backend geometry/source fixes were retained. `main_scripts/render_cached_toolkit_pair.py` renders saved crops through the original public soma and wide-field MIP methods, without downloads or overwriting existing bulk outputs. All six output PNGs for 252384/003, 252527/058 and 252383/001 were actually inspected. The gallery is `group_analysis/visual_review_native_style_20261008/index.html`; these are three previews, not a full 832-case regeneration.
++
++The optional derived context belongs to the batch workflow, not a new GUI control. It assembles a wider local field from the same sample's high-resolution tiles when copied 5-micron sections are unavailable. Derived outputs are labelled and stored separately from genuine LowRes views. For 252383/001, missing tiles remain conspicuous in the original-style green MIP; changing presentation does not repair source gaps. A local field cannot supply a whole-section locator.
++
++For 252384/003, native soma XY divided by nominal 5 um spacing yields the same point as the original toolkit. No new XY shift was found. Single-section 12464 is low-signal near that point, whereas the ten-section MIP (12459-12468) shows fluorescence beneath it. The original-style local MIP also shows fluorescent processes under the trace overlay. This is evidence for local image correspondence and a projection/source-content contribution; it is not anatomical registration or a verified tissue outline. Raw-to-overview shared origin/axes remain unverified, and no coordinates were corrected. The earlier source-gap explanation is insufficient to establish correct placement.
++
++The supplementary max-pooled whole-section comparison is `notes/visual_toolkit_native_style_20261008/sample-252384_neuron-003_desc-sectionVsMIP_alignmentQC.png`. Its display differs intentionally from the primary native toolkit plots. All original source crops and SWCs remain unchanged. Seventeen image-loader and six export/provenance tests pass. Exact pre-edit snapshots preserve inherited review edits and support scoped rollback under `notes/visual_toolkit_native_style_20261008/rollback/`.
++
++**Individual-section correction to that interpretation:** ten reread TIFFs match their prior whole-file hashes. At shared display scale, 12461-12464 have pronounced displaced strips/seams, whereas adjacent 12459-12460 and 12465-12468 are more continuous. The defect is in the source overview pixels before plotting; its upstream cause is not established. MIP fluorescence beneath the marker is insufficient evidence of valid mapping because projection can conceal these defects. The 12464-based locator for 252384/003 is unsuitable for anatomical review. Acquisition completeness means all requested files loaded and does not establish valid stitching. The exact source-section QC and hashes are preserved in `notes/visual_toolkit_native_style_20261008/individual_section_readback.json`; the ten-panel diagnostic was actually inspected. No coordinate or rescue decision was made.
+ 
+ The GUI source has no changes relative to branch HEAD. Its shared `Visual_toolkit.py` backend has substantial changes: crop/axis geometry, NIfTI spacing and axis signs, volume-aware trace clipping, source validation, partial/missing-data behavior and provenance. These can affect numerical exports and displayed content. The GUI being unchanged does not make its behavior identical to the earlier backend. Public plotting interfaces and their principal styling remain present.
+ 

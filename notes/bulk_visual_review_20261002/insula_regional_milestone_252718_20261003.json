@@ -1,0 +1,60 @@
+{
+  "observed_utc": "2026-10-03T06:05:13.724772+00:00",
+  "sample": "252718",
+  "selection": "INS review candidates, not accepted anatomy",
+  "selected": 4,
+  "all_selected_independently_verified": true,
+  "all_requested_xy_fields_at_least_4000_um": true,
+  "status_counts": {
+    "derived_partial": 4
+  },
+  "readback_path": "notes\\bulk_visual_review_20261002\\successor_regional_readback_20261003.json",
+  "readback_sha256": "1b01a23697047ef50a693cfdc3b95a3ef91aeaa021aa89f67324ef4f809519cb",
+  "fields": [
+    {
+      "uid": "252718|142.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5365910163165984,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "f3abc6d24ef2bb40b608bd74e44eb02dc6e6ac9d7f05ac193b8cacf3f1b9b485"
+    },
+    {
+      "uid": "252718|144.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.6299502334445457,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "38313120cf17cde6160067387611f657de25cb91b2aeb087106a39be71209d5d"
+    },
+    {
+      "uid": "252718|148.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.28644723287116003,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "7b6e3d4ae25368a449a8ca80de01513d762448d44d0d683f066742aa134a9b39"
+    },
+    {
+      "uid": "252718|163.swc",
+      "status": "derived_partial",
+      "coverage_fraction": 0.5559615869156065,
+      "field_um_xyz": [
+        4000.0,
+        4000.0,
+        30.0
+      ],
+      "report_sha256": "31ace9e9963fda81c6006055fa54155d2c59c6c4892fd5b9f3607675ec9d2713"
+    }
+  ],
+  "anatomical_acceptance": false
+}

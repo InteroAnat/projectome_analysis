@@ -1,0 +1,68 @@
+============================================================
+REGION ANALYSIS REPORT - 251730
+============================================================
+Generated: 2026-10-04 07:22:22
+
+--- OVERVIEW ---
+Total neurons: 117
+
+--- Neuron Types ---
+  ITi: 67 (57.3%)
+  Unclassified: 17 (14.5%)
+  CT: 11 (9.4%)
+  ITs: 11 (9.4%)
+  PT: 10 (8.5%)
+  ITc: 1 (0.9%)
+
+--- Soma Regions (Top 10) ---
+  Unknown_0: 84
+  CL_F4: 25
+  CR_F4: 8
+
+--- Laterality ---
+  Soma side R: 63
+  Soma side L: 54
+  Total ipsi terminal regions:   669
+  Total contra terminal regions: 8
+  Laterality Index - mean: 0.008, median: 0.000
+
+--- Projection Strength (Population) ---
+  Raw length: mean=100.01, median=31.14, max=2351.81 atlas voxels
+  Log strength: mean=1.509, median=1.507, max=3.372
+
+--- Morphology ---
+Total length - Mean: 866.61, Std: 616.26 atlas voxels
+Unique terminal-region count - Mean: 6.77, Max: 20
+
+--- Outliers ---
+Neurons with outliers: 115 (98.3%)
+Total outlier events: 11423
+
+--- Hierarchy Columns Status ---
+  L1: MISSING
+  L2: MISSING
+  L3: OK
+  L4: OK
+  L5: OK
+  L6: OK
+
+--- Excel Workbook Contents ---
+  Sheet 1: Summary                    (scalar overview)
+  Sheet 2: Soma_Hierarchy             (L1-L6 expanded)
+  Sheet 3: Terminal_Sites             (one row per unique terminal region)
+  Sheet 4: Laterality                 (ipsi/contra scalars)
+  Sheet 5: Outliers                   (one row per outlier)
+
+  Projection Length Sheets (split by laterality):
+    Projection_Length_ipsi          (ipsilateral regions only)
+    Projection_Length_contra        (contralateral regions only)
+    Projection_Length_L{n}_ipsi     (level n, ipsilateral)
+    Projection_Length_L{n}_contra   (level n, contralateral)
+
+  Projection Strength Sheets (split by laterality):
+    Projection_Strength_ipsi        (ipsilateral regions, log10)
+    Projection_Strength_contra      (contralateral regions, log10)
+    Projection_Strength_L{n}_ipsi   (level n, ipsilateral, log10)
+    Projection_Strength_L{n}_contra (level n, contralateral, log10)
+
+============================================================

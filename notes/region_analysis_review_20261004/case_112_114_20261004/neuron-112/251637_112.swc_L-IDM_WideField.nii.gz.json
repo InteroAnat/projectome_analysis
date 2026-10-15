@@ -1,0 +1,222 @@
+{
+  "sample_id": "251637",
+  "source": "exported native microscopy crop",
+  "coordinate_frame": "native microscopy acquisition XYZ; anatomical orientation and laterality unverified",
+  "coordinate_units": "micrometre",
+  "array_axis_order": "XYZ",
+  "center_xyz_um": [
+    9413.76171875,
+    28645.63671875,
+    27356.71875
+  ],
+  "origin_xyz_um": [
+    7410.0,
+    26645.0,
+    27339.0
+  ],
+  "spacing_xyz_um": [
+    5.0,
+    5.0,
+    3.0
+  ],
+  "spacing_status": "nominal repository configuration; not independently calibrated",
+  "shape_zyx": [
+    10,
+    800,
+    800
+  ],
+  "requested": [
+    9113,
+    9114,
+    9115,
+    9116,
+    9117,
+    9118,
+    9119,
+    9120,
+    9121,
+    9122
+  ],
+  "loaded": [
+    9113,
+    9114,
+    9115,
+    9116,
+    9117,
+    9118,
+    9119,
+    9120,
+    9121,
+    9122
+  ],
+  "missing": [],
+  "complete": true,
+  "source_paths": [
+    {
+      "z_index": 9113,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09113_CH1_resample.tif"
+    },
+    {
+      "z_index": 9114,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09114_CH1_resample.tif"
+    },
+    {
+      "z_index": 9115,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09115_CH1_resample.tif"
+    },
+    {
+      "z_index": 9116,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09116_CH1_resample.tif"
+    },
+    {
+      "z_index": 9117,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09117_CH1_resample.tif"
+    },
+    {
+      "z_index": 9118,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09118_CH1_resample.tif"
+    },
+    {
+      "z_index": 9119,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09119_CH1_resample.tif"
+    },
+    {
+      "z_index": 9120,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09120_CH1_resample.tif"
+    },
+    {
+      "z_index": 9121,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09121_CH1_resample.tif"
+    },
+    {
+      "z_index": 9122,
+      "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09122_CH1_resample.tif"
+    }
+  ],
+  "index_convention": "XYZ index=(native_um-origin_um)/spacing_um; Z section filename index maps to index*spacing_z; no axis flip",
+  "missing_data_policy": "reject missing central data; partial zero-filled gaps only with explicit allow_partial=True",
+  "source_array_axis_order": "ZYX",
+  "nifti_axis_order": "XYZ",
+  "shape_xyz": [
+    800,
+    800,
+    10
+  ],
+  "acquisition": {
+    "sample_id": "251637",
+    "source": "native resampled TIFF sections",
+    "coordinate_frame": "native microscopy acquisition XYZ; anatomical orientation and laterality unverified",
+    "coordinate_units": "micrometre",
+    "array_axis_order": "ZYX",
+    "center_xyz_um": [
+      9413.76171875,
+      28645.63671875,
+      27356.71875
+    ],
+    "origin_xyz_um": [
+      7410.0,
+      26645.0,
+      27339.0
+    ],
+    "spacing_xyz_um": [
+      5.0,
+      5.0,
+      3.0
+    ],
+    "spacing_status": "nominal repository configuration; not independently calibrated",
+    "shape_zyx": [
+      10,
+      800,
+      800
+    ],
+    "requested": [
+      9113,
+      9114,
+      9115,
+      9116,
+      9117,
+      9118,
+      9119,
+      9120,
+      9121,
+      9122
+    ],
+    "loaded": [
+      9113,
+      9114,
+      9115,
+      9116,
+      9117,
+      9118,
+      9119,
+      9120,
+      9121,
+      9122
+    ],
+    "missing": [],
+    "complete": true,
+    "source_paths": [
+      {
+        "z_index": 9113,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09113_CH1_resample.tif"
+      },
+      {
+        "z_index": 9114,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09114_CH1_resample.tif"
+      },
+      {
+        "z_index": 9115,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09115_CH1_resample.tif"
+      },
+      {
+        "z_index": 9116,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09116_CH1_resample.tif"
+      },
+      {
+        "z_index": 9117,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09117_CH1_resample.tif"
+      },
+      {
+        "z_index": 9118,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09118_CH1_resample.tif"
+      },
+      {
+        "z_index": 9119,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09119_CH1_resample.tif"
+      },
+      {
+        "z_index": 9120,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09120_CH1_resample.tif"
+      },
+      {
+        "z_index": 9121,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09121_CH1_resample.tif"
+      },
+      {
+        "z_index": 9122,
+        "path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09122_CH1_resample.tif"
+      }
+    ],
+    "index_convention": "XYZ index=(native_um-origin_um)/spacing_um; Z section filename index maps to index*spacing_z; no axis flip",
+    "missing_data_policy": "reject missing central data; partial zero-filled gaps only with explicit allow_partial=True",
+    "missing_errors": {},
+    "full_section_shape_yx": [
+      10120,
+      11711
+    ],
+    "requested_crop_bounds_xyz": [
+      [
+        1482,
+        5329,
+        9113
+      ],
+      [
+        2282,
+        6129,
+        9123
+      ]
+    ],
+    "crop_clipped_to_image_bounds": false
+  },
+  "output_file": "D:\\projectome_analysis\\notes\\region_analysis_review_20261004\\case_112_114_20261004\\neuron-112\\251637_112.swc_L-IDM_WideField.nii.gz"
+}

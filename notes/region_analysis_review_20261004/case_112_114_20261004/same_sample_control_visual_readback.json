@@ -1,0 +1,61 @@
+{
+  "status": "same_sample_control_visual_readback_passed",
+  "recorded_at": "2026-10-04T08:22:54.871781+08:00",
+  "producer_sha256": "21db0752c9cb7e2f7e3fb2193448a6d6de72bcc993bf2a70ea1572cee6bf786c",
+  "henry_source_sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6",
+  "mask_sha256": "29aab4477ffcf2db2a190b5572c92bbf224cc144628d9e89367eb1645aab8aea",
+  "controls": [
+    {
+      "NeuronID": "111.swc",
+      "manual_area": "R-IDD5",
+      "side": "R",
+      "native_root_xyz_um": [
+        9928.95703125,
+        28292.953125,
+        27001.5
+      ],
+      "native_section_index": 9000,
+      "source_path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09000_CH1_resample.tif",
+      "source_sha256": "1c615be92b98ee060df9ef1fc8c77b0c68dccf2deb8e1fc150e5cbf369640417",
+      "raw_sha256": "6f67410787a3e936e12ac61ea8bb6853efe3979d130bee8edbe8fca28822fb0e",
+      "figure": "notes/region_analysis_review_20261004/case_112_114_20261004/control_111_native_locator.png",
+      "figure_sha256": "e501bdf951756104193f0c9b2108a13d7c2c1da3816a8ab6aaaad6a49b51df32",
+      "verified_henry_row": 112,
+      "atlas_root_xyz_voxels": [
+        209.28879999999998,
+        179.288,
+        97.4112
+      ],
+      "atlas_source_sha256": "97d9e52ab7e67566628eb33c82369ad2e96df96707447d22a1a11357693560d5",
+      "actual_visual_inspection": true,
+      "observed_native_screen_side": "viewer-left"
+    },
+    {
+      "NeuronID": "422.swc",
+      "manual_area": "L-IDD5",
+      "side": "L",
+      "native_root_xyz_um": [
+        45990.3203125,
+        27255.234375,
+        28519.5
+      ],
+      "native_section_index": 9506,
+      "source_path": "\\\\10.102.8.200\\microscopy_data\\fMOST\\5micron_datasets\\251637-CH1_resample\\resample_5um\\251637_09506_CH1_resample.tif",
+      "source_sha256": "2b4a0a428489cca63b762d08a34133cad4896f428164d15f1742eccbacf9c0d1",
+      "raw_sha256": "2017dae49b6c7e3e52aae27e676a5e03f6fddd4c2473ceb699c26d6216a8a721",
+      "figure": "notes/region_analysis_review_20261004/case_112_114_20261004/control_422_native_locator.png",
+      "figure_sha256": "815d7ea1adfc24cad83d6f3654add4909eedf2d1bd437fd74148e1a7809d9005",
+      "verified_henry_row": 423,
+      "atlas_root_xyz_voxels": [
+        53.796,
+        171.0112,
+        97.3048
+      ],
+      "atlas_source_sha256": "886e7accbdc30ad272bc821aa5291b9b11b9a23db0928f7557b6fe1ac049ee1e",
+      "actual_visual_inspection": true,
+      "observed_native_screen_side": "viewer-right"
+    }
+  ],
+  "conclusion": "112/114 occupy the same displayed hemisphere as agreeing Henry-R control111; Henry-L control422 is on the opposite side.",
+  "acceptance_limit": "This is a same-sample check anchored to existing human annotations, not an independent acquisition-orientation certificate."
+}

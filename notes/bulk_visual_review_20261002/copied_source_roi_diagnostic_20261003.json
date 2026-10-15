@@ -1,0 +1,231 @@
+{
+  "status": "passed",
+  "network_requests": 0,
+  "server_reads": 0,
+  "source_verifier_sha256": "b887abede1ed1194a535d7a6c82157d4a3f60a3be55e5814428c9bef772df7e1",
+  "cases": [
+    {
+      "case": "uncompressed_strips",
+      "roi_xywh": [
+        0,
+        0,
+        3,
+        7
+      ],
+      "pixels_equal": 21,
+      "source_bytes_read": 2570
+    },
+    {
+      "case": "uncompressed_strips",
+      "roi_xywh": [
+        23,
+        19,
+        45,
+        39
+      ],
+      "pixels_equal": 1755,
+      "source_bytes_read": 11634
+    },
+    {
+      "case": "uncompressed_strips",
+      "roi_xywh": [
+        98,
+        75,
+        5,
+        4
+      ],
+      "pixels_equal": 20,
+      "source_bytes_read": 2982
+    },
+    {
+      "case": "uncompressed_strips",
+      "roi_xywh": [
+        0,
+        0,
+        103,
+        79
+      ],
+      "pixels_equal": 8137,
+      "source_bytes_read": 16578
+    },
+    {
+      "case": "lzw_strips",
+      "roi_xywh": [
+        0,
+        0,
+        3,
+        7
+      ],
+      "pixels_equal": 21,
+      "source_bytes_read": 3329
+    },
+    {
+      "case": "lzw_strips",
+      "roi_xywh": [
+        23,
+        19,
+        45,
+        39
+      ],
+      "pixels_equal": 1755,
+      "source_bytes_read": 15425
+    },
+    {
+      "case": "lzw_strips",
+      "roi_xywh": [
+        98,
+        75,
+        5,
+        4
+      ],
+      "pixels_equal": 20,
+      "source_bytes_read": 3817
+    },
+    {
+      "case": "lzw_strips",
+      "roi_xywh": [
+        0,
+        0,
+        103,
+        79
+      ],
+      "pixels_equal": 8137,
+      "source_bytes_read": 21963
+    },
+    {
+      "case": "lzw_predictor_strips",
+      "roi_xywh": [
+        0,
+        0,
+        3,
+        7
+      ],
+      "pixels_equal": 21,
+      "source_bytes_read": 459
+    },
+    {
+      "case": "lzw_predictor_strips",
+      "roi_xywh": [
+        23,
+        19,
+        45,
+        39
+      ],
+      "pixels_equal": 1755,
+      "source_bytes_read": 1020
+    },
+    {
+      "case": "lzw_predictor_strips",
+      "roi_xywh": [
+        98,
+        75,
+        5,
+        4
+      ],
+      "pixels_equal": 20,
+      "source_bytes_read": 512
+    },
+    {
+      "case": "lzw_predictor_strips",
+      "roi_xywh": [
+        0,
+        0,
+        103,
+        79
+      ],
+      "pixels_equal": 8137,
+      "source_bytes_read": 1351
+    },
+    {
+      "case": "deflate_tiles",
+      "roi_xywh": [
+        0,
+        0,
+        3,
+        7
+      ],
+      "pixels_equal": 21,
+      "source_bytes_read": 2395
+    },
+    {
+      "case": "deflate_tiles",
+      "roi_xywh": [
+        23,
+        19,
+        45,
+        39
+      ],
+      "pixels_equal": 1755,
+      "source_bytes_read": 12690
+    },
+    {
+      "case": "deflate_tiles",
+      "roi_xywh": [
+        98,
+        75,
+        5,
+        4
+      ],
+      "pixels_equal": 20,
+      "source_bytes_read": 615
+    },
+    {
+      "case": "deflate_tiles",
+      "roi_xywh": [
+        0,
+        0,
+        103,
+        79
+      ],
+      "pixels_equal": 8137,
+      "source_bytes_read": 17205
+    },
+    {
+      "case": "lzw_predictor_tiles",
+      "roi_xywh": [
+        0,
+        0,
+        3,
+        7
+      ],
+      "pixels_equal": 21,
+      "source_bytes_read": 543
+    },
+    {
+      "case": "lzw_predictor_tiles",
+      "roi_xywh": [
+        23,
+        19,
+        45,
+        39
+      ],
+      "pixels_equal": 1755,
+      "source_bytes_read": 1503
+    },
+    {
+      "case": "lzw_predictor_tiles",
+      "roi_xywh": [
+        98,
+        75,
+        5,
+        4
+      ],
+      "pixels_equal": 20,
+      "source_bytes_read": 535
+    },
+    {
+      "case": "lzw_predictor_tiles",
+      "roi_xywh": [
+        0,
+        0,
+        103,
+        79
+      ],
+      "pixels_equal": 8137,
+      "source_bytes_read": 2754
+    }
+  ],
+  "successful_roi_cases": 20,
+  "out_of_bounds_rejections": 5,
+  "active_source_producer_rejected_before_server_access": true
+}

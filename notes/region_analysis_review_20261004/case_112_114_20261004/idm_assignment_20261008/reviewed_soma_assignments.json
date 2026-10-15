@@ -1,0 +1,50 @@
+{
+  "record_type": "reviewed_soma_assignment",
+  "recorded_date": "2026-10-08",
+  "timezone": "Asia/Shanghai",
+  "recorded_by": "Codex",
+  "sample_id": "251637",
+  "user_instruction_verbatim": "make it IDM first,",
+  "hemisphere_evidence": "../human_laterality_confirmation_20261008.json",
+  "annotations": [
+    {
+      "NeuronID": "112.swc",
+      "Soma_Region": "R-IDM",
+      "Soma_Layer": 3,
+      "status": "hemisphere corrected by user NeuronView confirmation; supplied IDM retained",
+      "Original_Henry_Labels": [
+        "L-IDM"
+      ],
+      "Original_Excel_Rows": [
+        113
+      ]
+    },
+    {
+      "NeuronID": "114.swc",
+      "Soma_Region": "R-IDM",
+      "Soma_Layer": 3,
+      "status": "provisional IDM selected by user; anatomical parcel not independently verified",
+      "Original_Henry_Labels": [
+        "L-IDD5",
+        "L-IDM"
+      ],
+      "Original_Excel_Rows": [
+        115,
+        116
+      ]
+    }
+  ],
+  "original_henry_source": {
+    "path": "R_analysis/tables/somainfo_Henry_2026.04.03.xlsx",
+    "sha256": "2665d1f3cdd3fc19e0204a8dcc5bb45199c2f4db18d08e39273de4bf789bcae6"
+  },
+  "swc_source_dir": "main_scripts/processed_neurons/251637",
+  "swc_sha256": {
+    "112.swc": "1e0445c46c2d8f73bd77728699801d6358361b09d9ae80600ed58eb7d9a27a99",
+    "114.swc": "faae7837ebb2fce7f818191fcf18bfb3164ff330602e6b7634c2b78a909f0602"
+  },
+  "canonical_workbooks_overwritten": false,
+  "original_duplicate_rows_preserved": true,
+  "duplicate_annotation_reassigned_to_115": false,
+  "scope": "reviewed two-neuron assignment; no global cohort promotion or bulk workbook replacement"
+}

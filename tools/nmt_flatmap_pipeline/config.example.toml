@@ -1,0 +1,66 @@
+# Copy to config.toml and set paths for your machine.
+# Prefer forward slashes in TOML on Windows (e.g. D:/projectome_analysis/...).
+# Run order: run_depth_model.jl → run_depth_volume.jl → run_flatmap.jl → run_uvw_export.jl
+
+[paths]
+# Root of Gou et al. monkeyrec checkout (must contain 0-meshes.jl). If omitted, defaults to
+# <repo>/references/analysis-code_gou_etal_2025/monkeyrec relative to this package.
+# monkeyrec_root = "D:/projectome_analysis/references/analysis-code_gou_etal_2025/monkeyrec"
+
+[nmt]
+# Maps to NmtDat.essential_files in references/.../monkeyrec/zz0atlas/src/zz0atlas.jl
+cerebellum = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym/supplemental_masks/NMT_v2.0_sym_cerebellum_mask.nii.gz"
+charm      = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym/CHARM_in_NMT_v2.0_sym.nii.gz"
+charm_key  = "D:/projectome_analysis/atlas/ARM_key_all.txt"
+nmr        = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym/NMT_v2.0_sym_SS.nii.gz"
+sarm       = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym/SARM_in_NMT_v2.0_sym.nii.gz"
+sarm_key   = "D:/projectome_analysis/atlas/NMT_v2.0_sym/tables_SARM/SARM_key_all.txt"
+seg        = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym/NMT_v2.0_sym_segmentation.nii.gz"
+# Voxel size in microns (same as upstream zz0atlas NmtDat.load_images)
+res = [250.0, 250.0, 250.0]
+# Delimiter for charm_key / sarm_key tables (tab matches CHARM_key_all.txt upstream)
+key_delim = "\t"
+
+[surfaces]
+# Originally hardcoded in references/.../monkeyrec/1-unibrain.jl (depth) and 2-meshes.jl (flatmap mid)
+lh_gray  = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym_surfaces/lh.gray_surface.rsl.gii.obj"
+lh_mid   = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym_surfaces/lh.mid_surface.rsl.gii.obj"
+lh_white = "D:/projectome_analysis/atlas/NMT_v2.0_sym/NMT_v2.0_sym_surfaces/lh.white_surface.rsl.gii.obj"
+
+[outputs]
+interm_dir = "D:/projectome_analysis/atlas/flatmap_work/interm"
+depth_model_stem  = "depth-mapping-mac-model.jld2"
+depth_volume_stem = "depth-mapping-mac.jld2"
+flatmap_stem      = "flat-map-test.jld2"
+
+[depth_model]
+# references/.../monkeyrec/1-unibrain.jl uses 100*60 steps
+train_iters = 6000
+knn_inner = 8
+# Random vertex batch for loss (1024 in upstream)
+batch_vertices = 1024
+perface_sample = 128
+
+[depth_volume]
+# Downsamples CHARM like 1-unibrain.jl (ratio = 2)
+charm_resize_ratio = 2
+perface_sample = 48
+
+[flatmap]
+# test: no NmtDat; lefths | leftfrontal: load_images via LocalNmtDat (heavy)
+tag = "test"
+# Optional overrides; default empty uses [surfaces].lh_mid
+# mid_surface = "D:/projectome_analysis/atlas/.../lh.mid_surface.rsl.gii.obj"
+
+[uvw_export]
+soma_csv = "D:/projectome_analysis/R_analysis/tables/soma_ins_example.csv"
+output_csv = "D:/projectome_analysis/atlas/flatmap_work/somauv.csv"
+# Column names for physical XYZ in the same space as NMT / depth volume
+x_col = "Soma_NII_x"
+y_col = "Soma_NII_y"
+z_col = "Soma_NII_z"
+id_col = "cell_id"
+# Neighborhood search in xyz2dxyz (references/.../monkeyrec/1-unibrain.jl)
+nneighbor = 1
+# sample_mesh density for dxyz2uvw
+perface_uv = 64

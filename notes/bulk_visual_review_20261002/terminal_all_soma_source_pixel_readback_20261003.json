@@ -1,0 +1,21 @@
+{
+  "observed_utc": "2026-10-03T13:47:01.199337+00:00",
+  "status": "passed",
+  "checked_identities": 832,
+  "same_manifest_uid_order": true,
+  "outcome_counts": {
+    "complete": 782,
+    "partial_neighbor": 28,
+    "center_unavailable": 20,
+    "swc_unavailable": 2
+  },
+  "usable_soma_packages": 810,
+  "saved_voxels_checked": 104066208000,
+  "pngs_fully_decoded": 4050,
+  "manifest_sha256": "7a3b3b77f413220993716dfaab07cfdff2840ab8ccf03fb972348854966659de",
+  "audit_sha256": "bd3d68e63cb3ffb3879f687b617b8e9cdb190eaf16af8b95af01af2921816fc2",
+  "script_sha256": "8c9cd262f057786214169a45e91a3d9b65cda997c36428fdd9b5ca0bec2e840e",
+  "network_requests": 0,
+  "scope": "Terminal full-cohort soma/source-pixel audit readback; remaining regional production and scientific acceptance are separate",
+  "anatomical_acceptance": false
+}

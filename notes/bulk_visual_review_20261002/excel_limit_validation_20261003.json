@@ -1,0 +1,38 @@
+{
+  "observed_utc": "2026-10-03T09:04:20.6529635Z",
+  "issue": "Excel silently truncated a 34956-character context_source_errors cell at 32767 characters",
+  "resolution": "Oversized source-error lists use identical CSV/XLSX references to full hashed JSON sidecars; other oversized text fails before replacing either review table",
+  "tests_passed": 108,
+  "test_log": "notes/bulk_visual_review_20261002/excel_limit_tests_20261003.log",
+  "file_sha256": {
+    "group_analysis/scripts/visual_review_20261002.py": "5eddd6c90611a4b8d9761cca6bfb9a3633b5b8cefd6d2a9730c337c330834de4",
+    "tests/test_visual_review_manifest.py": "f406378dfdc80c5eeb6da94c47034d364770e60c4d6ec251cd2518dc63a88d52",
+    "notes/bulk_visual_review_20261002/refresh_review_artifacts_20261003.py": "bb5ac5245c8618d69adc3525dff30897b5180b3f7b091e2944fe4af6a7de3f02"
+  },
+  "producer_run_id": "f0a8ad4c5c034ebeb76924873ca1b630",
+  "producer_pid": 117764,
+  "watcher_pid": 85564,
+  "producer_restarted": false,
+  "anatomical_acceptance": false,
+  "live_readback": {
+    "status": "passed",
+    "rows": 746,
+    "independently_audited_fields": 177,
+    "human_fields_preserved": true,
+    "canonical_inputs_unchanged": true,
+    "lossless_diagnostic_sidecars": [
+      {
+        "uid": "252383|094.swc",
+        "detail_file": "tables/details/source_errors_8a1a1ef506a94dc94e3354b4eb538950f2fc0f6c5edd74897757f6c5196c22ce.json",
+        "sha256": "8a1a1ef506a94dc94e3354b4eb538950f2fc0f6c5edd74897757f6c5196c22ce",
+        "items": 366
+      },
+      {
+        "uid": "252383|095.swc",
+        "detail_file": "tables/details/source_errors_2079cde644608232cc3398d6bb050f9eeff1235883f8fbc265085edc944ec591.json",
+        "sha256": "2079cde644608232cc3398d6bb050f9eeff1235883f8fbc265085edc944ec591",
+        "items": 374
+      }
+    ]
+  }
+}

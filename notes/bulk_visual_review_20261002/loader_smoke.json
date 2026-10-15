@@ -1,0 +1,69 @@
+{
+  "agent": "Codex",
+  "date": "2026-10-02",
+  "timezone": "Asia/Shanghai",
+  "scope": "Read-only smoke of an existing cached real cube; artificial cube-centre coordinate, no soma/anatomical acceptance",
+  "cached_input": "D:\\projectome_analysis\\resource\\cubes\\252385\\high_res_http\\63\\220_135_63.tif",
+  "input_sha256": "7182116d32483a40b5bf12f313d81cebe7f3a120e8aa838804d899047e9974ac",
+  "shape_zyx": [
+    90,
+    360,
+    360
+  ],
+  "dtype": "uint16",
+  "min": 0,
+  "max": 61098,
+  "nonzero_fraction": 0.7201908436213992,
+  "geometry": {
+    "sample_id": "252385",
+    "source": "HTTP native cubes",
+    "coordinate_frame": "native microscopy acquisition XYZ; anatomical orientation and laterality unverified",
+    "coordinate_units": "micrometre",
+    "array_axis_order": "ZYX",
+    "center_xyz_um": [
+      51597.0,
+      31707.0,
+      17145.0
+    ],
+    "origin_xyz_um": [
+      51480.0,
+      31590.0,
+      17010.0
+    ],
+    "spacing_xyz_um": [
+      0.65,
+      0.65,
+      3.0
+    ],
+    "spacing_status": "nominal repository configuration; not independently calibrated",
+    "shape_zyx": [
+      90,
+      360,
+      360
+    ],
+    "requested": [
+      [
+        220,
+        135,
+        63
+      ]
+    ],
+    "loaded": [
+      [
+        220,
+        135,
+        63
+      ]
+    ],
+    "missing": [],
+    "complete": true,
+    "source_paths": [
+      "http://bap.cebsit.ac.cn/monkeydata/252385/cube/63/220_135_63.tif"
+    ],
+    "index_convention": "XYZ index=(native_um-origin_um)/spacing_um; Z section filename index maps to index*spacing_z; no axis flip",
+    "missing_data_policy": "reject missing central data; partial zero-filled gaps only with explicit allow_partial=True",
+    "missing_errors": {}
+  },
+  "focused_tests_passed": 12,
+  "new_network_fetch_requested": false
+}

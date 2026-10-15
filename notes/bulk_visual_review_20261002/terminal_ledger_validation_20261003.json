@@ -1,0 +1,29 @@
+{
+  "captured_utc": "2026-10-03T02:28:51.0241424Z",
+  "tests": {
+    "command": "python -B -m unittest discover -s tests",
+    "elapsed_seconds": 4.028,
+    "failed": 0,
+    "passed": 99
+  },
+  "source_sha256": {
+    "main_scripts/fmost_context_resources.py": "20099b0f64cba5256d008b303c17096b84bd858e23e9799638c83a79cd8f4968",
+    "group_analysis/scripts/regional_context_batch_20261003.py": "689c02ab31867229a3041ba29aa09fd8a9cc0cd842c861afc541007f045ec45f",
+    "main_scripts/fmost_derived_context.py": "18eb701c309e6007691ce21a8cf64be5023d572eb78b3d1a6840070572900512",
+    "main_scripts/Visual_toolkit.py": "0d95025925987906684958366bb5bcc5c7c12d04445869cc3000df4cc6095d2c",
+    "group_analysis/scripts/visual_review_20261002.py": "50cf60ca8d25ffb527a8a12da0fcd71ab289e2a9ec84f15cdee345123db450ec",
+    "tests/test_fmost_context_batch.py": "5c12754d3ca7f56945579119e25ac14458af40b46ce1505cfb0ead4d919001a9",
+    "tests/test_fmost_derived_context.py": "61f578fcc033764b214f74433aad155da63199b704062a48fe15fb43ae815757",
+    "tests/test_visual_review_manifest.py": "3c992ada1626fc5d631af86fcb1ef07424bce12640d3bee4175b417e3e52d6e9"
+  },
+  "preceding_snapshot": "regional_driver_validation_20261003.json",
+  "live_worker_loaded_preceding_driver": "593e15546a021f52edc5aa9d70d967b02e0383cba19a0189f96e08b49105387a",
+  "live_worker_pid": 812,
+  "terminal_record_checks": [
+    "successive runs preserve first terminal bytes",
+    "latest current ledger points to distinct persisted terminal record",
+    "gallery failure leaves terminal scope outcomes",
+    "budget stop preserves every selected UID"
+  ],
+  "scope": "Terminal provenance only; current producer remains running with preceding loaded source"
+}

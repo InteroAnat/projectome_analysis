@@ -1,0 +1,810 @@
+{
+  "agent": "Codex independent literature/methods subagent",
+  "date": "2026-10-03",
+  "timezone": "Asia/Shanghai",
+  "started_at": "2026-10-03T08:23:20.601363+08:00",
+  "scope": "One selected own-sample raw SWC and central high-resolution TIFF cube per overview-pending sample; no production cache or regional tiling",
+  "request_limits": {
+    "full_get_max": 10,
+    "file_bytes_max": 33554432,
+    "request_wall_seconds_max": 60,
+    "workers": 1,
+    "redirects": false,
+    "retries": 0
+  },
+  "nominal_spacing_xyz_um": [
+    0.65,
+    0.65,
+    3.0
+  ],
+  "nominal_cube_shape_xyz": [
+    360,
+    360,
+    90
+  ],
+  "coordinate_policy": "Existing unshifted raw microscopy coordinate declaration; floor XYZ voxel/cube indices, source arrays ZYX. No independent physical calibration or anatomical orientation established.",
+  "background_probe_exception": {
+    "sample": "251730",
+    "historical_neuron": "226.swc",
+    "historical_probe_selected": false,
+    "acquired": false,
+    "substitute_selected_uid": "251730|553.swc",
+    "authorization": "Parent explicitly authorized selected553 replacement before any GET"
+  },
+  "helper_sha256": {
+    "main_scripts\\Visual_toolkit.py": "2828848398a026b0bcdef8ffc02b88d874e08b8f12486c3eb3c00a76eaf08621",
+    "main_scripts\\swc_validation.py": "cb283dba174a1cd2b5dfe003732cbb859de4a112fd639bce72b1910bf2387d64",
+    "main_scripts\\fmost_image_geometry.py": "0777af591b1bcee1282bb14ca91036397cf836a64e6def61d78444b0788cf4ce"
+  },
+  "existing_evidence_reuse": "Prior independent full-pixel artifacts cover copied-overview samples, not these five selected pending-sample central cubes; no matching independent full-source hash/pixel proof identified in existing audit notes.",
+  "records": [
+    {
+      "UID": "252790|014.swc",
+      "manifest_selected": true,
+      "previous_probe": "014.swc",
+      "result": "passed_full_source_smoke",
+      "raw_swc": {
+        "url": "http://10.10.31.31/swc/newswc/Monkey/252790/swc_raw/014.swc",
+        "path": "252790\\014.swc",
+        "request_number": 1,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "application/octet-stream",
+        "content_length": "3618624",
+        "resolved_url": "http://10.10.31.31/swc/newswc/Monkey/252790/swc_raw/014.swc",
+        "status": "downloaded_full",
+        "bytes": 3618624,
+        "sha256": "0e0f9accc27c2ac0ef78fc719bfb7a81b658fb025ddfeede64ebcd8d294e558e",
+        "elapsed_seconds": 2.546
+      },
+      "swc_validation": {
+        "status": "passed_structural",
+        "node_count": 38732,
+        "root_id": 1,
+        "root_type": 1,
+        "root_xyz": [
+          40200.19921875,
+          31689.60546875,
+          19036.21875
+        ],
+        "root_count": 1,
+        "root_matches_historical_probe": true
+      },
+      "geometry": {
+        "voxel_index_xyz_floor": [
+          61846,
+          48753,
+          6345
+        ],
+        "cube_index_xyz": [
+          171,
+          135,
+          70
+        ],
+        "cube_origin_xyz_um_nominal": [
+          40014.0,
+          31590.0,
+          18900.0
+        ],
+        "root_local_xyz_float": [
+          286.46033653846155,
+          153.23918269230768,
+          45.40625
+        ],
+        "root_inside_nominal_cube": true,
+        "shift_xyz_um": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cube": {
+        "url": "http://bap.cebsit.ac.cn/monkeydata/252790/cube/70/171_135_70.tif",
+        "path": "252790\\171_135_70.tif",
+        "request_number": 2,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "image/tiff",
+        "content_length": "5057646",
+        "resolved_url": "http://bap.cebsit.ac.cn/monkeydata/252790/cube/70/171_135_70.tif",
+        "status": "downloaded_full",
+        "bytes": 5057646,
+        "sha256": "2312780c19dbc19677ef8209266aa4d150bd17a10f942e9e09d44481d1d8c9e0",
+        "elapsed_seconds": 0.469
+      },
+      "decoded_cube": {
+        "header_shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "header_dtype": "uint16",
+        "tiff_pages": 90,
+        "array_bytes": 23328000,
+        "volume_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 120.85190372085049,
+          "nonzero_fraction": 0.20043475651577503,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            3885.0
+          ]
+        },
+        "central_plane_k_floor": 45,
+        "central_plane_shape_yx": [
+          360,
+          360
+        ],
+        "central_plane_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 480.8274614197531,
+          "nonzero_fraction": 0.2574614197530864,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            40700.62500000058
+          ]
+        },
+        "root_pixel_xy_floor": [
+          286,
+          153
+        ],
+        "root_pixel_intensity": 65535,
+        "root_11x11_window_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 19664.685950413223,
+          "nonzero_fraction": 0.5867768595041323,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            8949.0,
+            65535.0
+          ]
+        },
+        "pixel_sha256_zyx": "a10a7b5393d481f282f42203e9082b555234a5c808116fb1fb6171e764c3fe2d",
+        "plane_sha256_yx": "8589e3a848aa53e3e1a260d1afdad160468112cac9d8c579a2ff299674b30f6e"
+      },
+      "preview": {
+        "path": "252790\\central_plane_unmarked.png",
+        "unmarked": true,
+        "source_plane_k": 45,
+        "array_order": "YX",
+        "contrast": "sqrt(percentile_normalize0.5,99.5), uint8",
+        "sha256": "8d14191f1ddff6d033adbd34e48d04e52a947c062abc9e4d4fe81021dd222fee"
+      }
+    },
+    {
+      "UID": "250432|116.swc",
+      "manifest_selected": true,
+      "previous_probe": "116.swc",
+      "result": "passed_full_source_smoke",
+      "raw_swc": {
+        "url": "http://10.10.31.31/swc/newswc/Monkey/250432/swc_raw/116.swc",
+        "path": "250432\\116.swc",
+        "request_number": 3,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "application/octet-stream",
+        "content_length": "534933",
+        "resolved_url": "http://10.10.31.31/swc/newswc/Monkey/250432/swc_raw/116.swc",
+        "status": "downloaded_full",
+        "bytes": 534933,
+        "sha256": "d32f79b5975b1b793839023fe98c6ee78a0042fbb29e50ba892d763f89813a22",
+        "elapsed_seconds": 0.609
+      },
+      "swc_validation": {
+        "status": "passed_structural",
+        "node_count": 5838,
+        "root_id": 1,
+        "root_type": 1,
+        "root_xyz": [
+          22327.015625,
+          23075.28515625,
+          25782.47265625
+        ],
+        "root_count": 1,
+        "root_matches_historical_probe": true
+      },
+      "geometry": {
+        "voxel_index_xyz_floor": [
+          34349,
+          35500,
+          8594
+        ],
+        "cube_index_xyz": [
+          95,
+          98,
+          95
+        ],
+        "cube_origin_xyz_um_nominal": [
+          22230.0,
+          22932.0,
+          25650.0
+        ],
+        "root_local_xyz_float": [
+          149.25480769230768,
+          220.4387019230769,
+          44.157552083333336
+        ],
+        "root_inside_nominal_cube": true,
+        "shift_xyz_um": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cube": {
+        "url": "http://bap.cebsit.ac.cn/monkeydata/250432/cube/95/95_98_95.tif",
+        "path": "250432\\95_98_95.tif",
+        "request_number": 4,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "image/tiff",
+        "content_length": "3925367",
+        "resolved_url": "http://bap.cebsit.ac.cn/monkeydata/250432/cube/95/95_98_95.tif",
+        "status": "downloaded_full",
+        "bytes": 3925367,
+        "sha256": "d3035f4721296e6f588b74a54d2c413e8d1da0d5fea7c7967172b884a9b4679d",
+        "elapsed_seconds": 0.437
+      },
+      "decoded_cube": {
+        "header_shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "header_dtype": "uint16",
+        "tiff_pages": 90,
+        "array_bytes": 23328000,
+        "volume_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 22.250986282578875,
+          "nonzero_fraction": 0.1594707647462277,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            639.0
+          ]
+        },
+        "central_plane_k_floor": 44,
+        "central_plane_shape_yx": [
+          360,
+          360
+        ],
+        "central_plane_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 71.98317901234567,
+          "nonzero_fraction": 0.16349537037037037,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            1366.0050000000047
+          ]
+        },
+        "root_pixel_xy_floor": [
+          149,
+          220
+        ],
+        "root_pixel_intensity": 27542,
+        "root_11x11_window_stats": {
+          "min": 0.0,
+          "max": 44638.0,
+          "mean": 20777.87603305785,
+          "nonzero_fraction": 0.859504132231405,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            23605.0,
+            41963.800000000025
+          ]
+        },
+        "pixel_sha256_zyx": "d3de0aacfb5fc24ef984f05be8292eaebc72690dd7290b761b4a07208e22f20a",
+        "plane_sha256_yx": "e5726687f117f6160bff057670992eb98c984c6ff43ad7167be894f4ad3c46dc"
+      },
+      "preview": {
+        "path": "250432\\central_plane_unmarked.png",
+        "unmarked": true,
+        "source_plane_k": 44,
+        "array_order": "YX",
+        "contrast": "sqrt(percentile_normalize0.5,99.5), uint8",
+        "sha256": "cd971f4c4d2b636e711a59555f6c4dbf65f4f5f1f8d0a3de7a6939705d7797f0"
+      }
+    },
+    {
+      "UID": "252383|018.swc",
+      "manifest_selected": true,
+      "previous_probe": "018.swc",
+      "result": "passed_full_source_smoke",
+      "raw_swc": {
+        "url": "http://10.10.31.31/swc/newswc/Monkey/252383/swc_raw/018.swc",
+        "path": "252383\\018.swc",
+        "request_number": 5,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "application/octet-stream",
+        "content_length": "822154",
+        "resolved_url": "http://10.10.31.31/swc/newswc/Monkey/252383/swc_raw/018.swc",
+        "status": "downloaded_full",
+        "bytes": 822154,
+        "sha256": "71b39380c9f82cfa36e0c766cb46ffb4c7c428fcf79708fa42df5572b5bfc69a",
+        "elapsed_seconds": 0.281
+      },
+      "swc_validation": {
+        "status": "passed_structural",
+        "node_count": 8960,
+        "root_id": 1,
+        "root_type": 1,
+        "root_xyz": [
+          18584.80078125,
+          19915.6171875,
+          30096.93359375
+        ],
+        "root_count": 1,
+        "root_matches_historical_probe": true
+      },
+      "geometry": {
+        "voxel_index_xyz_floor": [
+          28592,
+          30639,
+          10032
+        ],
+        "cube_index_xyz": [
+          79,
+          85,
+          111
+        ],
+        "cube_origin_xyz_um_nominal": [
+          18486.0,
+          19890.0,
+          29970.0
+        ],
+        "root_local_xyz_float": [
+          152.0012019230769,
+          39.41105769230769,
+          42.311197916666664
+        ],
+        "root_inside_nominal_cube": true,
+        "shift_xyz_um": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cube": {
+        "url": "http://bap.cebsit.ac.cn/monkeydata/252383/cube/111/79_85_111.tif",
+        "path": "252383\\79_85_111.tif",
+        "request_number": 6,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "image/tiff",
+        "content_length": "7647788",
+        "resolved_url": "http://bap.cebsit.ac.cn/monkeydata/252383/cube/111/79_85_111.tif",
+        "status": "downloaded_full",
+        "bytes": 7647788,
+        "sha256": "1db81a92cd547b4acd2a620b94199e8176199c5a7553a3dc620cd3c2e7044cfc",
+        "elapsed_seconds": 0.531
+      },
+      "decoded_cube": {
+        "header_shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "header_dtype": "uint16",
+        "tiff_pages": 90,
+        "array_bytes": 23328000,
+        "volume_stats": {
+          "min": 0.0,
+          "max": 58151.0,
+          "mean": 28.30819890260631,
+          "nonzero_fraction": 0.3817276234567901,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            439.0
+          ]
+        },
+        "central_plane_k_floor": 42,
+        "central_plane_shape_yx": [
+          360,
+          360
+        ],
+        "central_plane_stats": {
+          "min": 0.0,
+          "max": 58151.0,
+          "mean": 148.86810185185186,
+          "nonzero_fraction": 0.3358179012345679,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            2089.015000000014
+          ]
+        },
+        "root_pixel_xy_floor": [
+          152,
+          39
+        ],
+        "root_pixel_intensity": 54599,
+        "root_11x11_window_stats": {
+          "min": 0.0,
+          "max": 58151.0,
+          "mean": 36210.97520661157,
+          "nonzero_fraction": 0.859504132231405,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            45497.0,
+            58151.0
+          ]
+        },
+        "pixel_sha256_zyx": "c4b424db8608777689f7dd4f92bf9df12393a1debae888cbf2d629ff193d24b9",
+        "plane_sha256_yx": "489794cf7675ec5c457132eb8a280f955aaed71c182ed75ec7ea322b6a0fec39"
+      },
+      "preview": {
+        "path": "252383\\central_plane_unmarked.png",
+        "unmarked": true,
+        "source_plane_k": 42,
+        "array_order": "YX",
+        "contrast": "sqrt(percentile_normalize0.5,99.5), uint8",
+        "sha256": "6ed17eca948600cef59626f54ef86ed5a4890f4a373278b8877e46a650175f42"
+      }
+    },
+    {
+      "UID": "252718|142.swc",
+      "manifest_selected": true,
+      "previous_probe": "142.swc",
+      "result": "passed_full_source_smoke",
+      "raw_swc": {
+        "url": "http://10.10.31.31/swc/newswc/Monkey/252718/swc_raw/142.swc",
+        "path": "252718\\142.swc",
+        "request_number": 7,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "application/octet-stream",
+        "content_length": "3486673",
+        "resolved_url": "http://10.10.31.31/swc/newswc/Monkey/252718/swc_raw/142.swc",
+        "status": "downloaded_full",
+        "bytes": 3486673,
+        "sha256": "6893d3e146def92d50bc8e22712bf9dce709dc80dc45576d83e61adfc96a20a1",
+        "elapsed_seconds": 0.328
+      },
+      "swc_validation": {
+        "status": "passed_structural",
+        "node_count": 37329,
+        "root_id": 1,
+        "root_type": 1,
+        "root_xyz": [
+          48344.7265625,
+          20211.1015625,
+          27442.5
+        ],
+        "root_count": 1,
+        "root_matches_historical_probe": true
+      },
+      "geometry": {
+        "voxel_index_xyz_floor": [
+          74376,
+          31094,
+          9147
+        ],
+        "cube_index_xyz": [
+          206,
+          86,
+          101
+        ],
+        "cube_origin_xyz_um_nominal": [
+          48204.0,
+          20124.0,
+          27270.0
+        ],
+        "root_local_xyz_float": [
+          216.50240384615384,
+          134.00240384615384,
+          57.5
+        ],
+        "root_inside_nominal_cube": true,
+        "shift_xyz_um": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cube": {
+        "url": "http://bap.cebsit.ac.cn/monkeydata/252718/cube/101/206_86_101.tif",
+        "path": "252718\\206_86_101.tif",
+        "request_number": 8,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "image/tiff",
+        "content_length": "11529551",
+        "resolved_url": "http://bap.cebsit.ac.cn/monkeydata/252718/cube/101/206_86_101.tif",
+        "status": "downloaded_full",
+        "bytes": 11529551,
+        "sha256": "c426d7d1f3984e1ec1b3efdc6fbbbaa1aaa2e9ad9ff4425415b3834c73ea56bb",
+        "elapsed_seconds": 0.547
+      },
+      "decoded_cube": {
+        "header_shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "header_dtype": "uint16",
+        "tiff_pages": 90,
+        "array_bytes": 23328000,
+        "volume_stats": {
+          "min": 0.0,
+          "max": 23197.0,
+          "mean": 47.94375060013717,
+          "nonzero_fraction": 0.5975272633744856,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            16.0,
+            575.0
+          ]
+        },
+        "central_plane_k_floor": 57,
+        "central_plane_shape_yx": [
+          360,
+          360
+        ],
+        "central_plane_stats": {
+          "min": 0.0,
+          "max": 16175.0,
+          "mean": 95.43021604938272,
+          "nonzero_fraction": 0.7024305555555556,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            37.0,
+            2441.0800000000745
+          ]
+        },
+        "root_pixel_xy_floor": [
+          216,
+          134
+        ],
+        "root_pixel_intensity": 9086,
+        "root_11x11_window_stats": {
+          "min": 82.0,
+          "max": 14806.0,
+          "mean": 8071.322314049587,
+          "nonzero_fraction": 1.0,
+          "percentiles_0_5_50_99_5": [
+            129.4,
+            8366.0,
+            14804.2
+          ]
+        },
+        "pixel_sha256_zyx": "25f749e86a30ae1da3b406aace691ae59ad552aabac2e4cc3d7b53a2743a020f",
+        "plane_sha256_yx": "1fc9e4c6d828a4dc7c2e620b6f06a7d0fa7baa7b96c4d62931df92a86437d73f"
+      },
+      "preview": {
+        "path": "252718\\central_plane_unmarked.png",
+        "unmarked": true,
+        "source_plane_k": 57,
+        "array_order": "YX",
+        "contrast": "sqrt(percentile_normalize0.5,99.5), uint8",
+        "sha256": "eb48a377d61d7389bb51cce53b382f4d21b7df61554195a44c4bd997aeb8097f"
+      }
+    },
+    {
+      "UID": "251730|553.swc",
+      "manifest_selected": true,
+      "previous_probe": "226.swc",
+      "result": "passed_full_source_smoke",
+      "raw_swc": {
+        "url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/553.swc",
+        "path": "251730\\553.swc",
+        "request_number": 9,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "application/octet-stream",
+        "content_length": "5824607",
+        "resolved_url": "http://10.10.31.31/swc/newswc/Monkey/251730/swc_raw/553.swc",
+        "status": "downloaded_full",
+        "bytes": 5824607,
+        "sha256": "288c230e25ee513d9d369e4aac9b5d97f311b2c855e91c434b4fcda53a2bd992",
+        "elapsed_seconds": 0.5
+      },
+      "swc_validation": {
+        "status": "passed_structural",
+        "node_count": 62200,
+        "root_id": 1,
+        "root_type": 1,
+        "root_xyz": [
+          48415.57421875,
+          18714.51171875,
+          25353.7734375
+        ],
+        "root_count": 1,
+        "root_matches_historical_probe": null
+      },
+      "geometry": {
+        "voxel_index_xyz_floor": [
+          74485,
+          28791,
+          8451
+        ],
+        "cube_index_xyz": [
+          206,
+          79,
+          93
+        ],
+        "cube_origin_xyz_um_nominal": [
+          48204.0,
+          18486.0,
+          25110.0
+        ],
+        "root_local_xyz_float": [
+          325.49879807692304,
+          351.55649038461536,
+          81.2578125
+        ],
+        "root_inside_nominal_cube": true,
+        "shift_xyz_um": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "cube": {
+        "url": "http://bap.cebsit.ac.cn/monkeydata/251730/cube/93/206_79_93.tif",
+        "path": "251730\\206_79_93.tif",
+        "request_number": 10,
+        "max_bytes": 33554432,
+        "wall_seconds_max": 60,
+        "http_status": 200,
+        "content_type": "image/tiff",
+        "content_length": "3538423",
+        "resolved_url": "http://bap.cebsit.ac.cn/monkeydata/251730/cube/93/206_79_93.tif",
+        "status": "downloaded_full",
+        "bytes": 3538423,
+        "sha256": "1b1fccf1ae707c8c6f2c990bbe0dd93282e77095306d38a663736f1ff2d77573",
+        "elapsed_seconds": 0.5
+      },
+      "decoded_cube": {
+        "header_shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "shape_zyx": [
+          90,
+          360,
+          360
+        ],
+        "dtype": "uint16",
+        "header_dtype": "uint16",
+        "tiff_pages": 90,
+        "array_bytes": 23328000,
+        "volume_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 31.20851929012346,
+          "nonzero_fraction": 0.13973105281207132,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            810.0
+          ]
+        },
+        "central_plane_k_floor": 81,
+        "central_plane_shape_yx": [
+          360,
+          360
+        ],
+        "central_plane_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 238.50507716049384,
+          "nonzero_fraction": 0.1659104938271605,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            0.0,
+            9019.520000000484
+          ]
+        },
+        "root_pixel_xy_floor": [
+          325,
+          351
+        ],
+        "root_pixel_intensity": 28014,
+        "root_11x11_window_stats": {
+          "min": 0.0,
+          "max": 65535.0,
+          "mean": 36632.46280991736,
+          "nonzero_fraction": 0.8760330578512396,
+          "percentiles_0_5_50_99_5": [
+            0.0,
+            40910.0,
+            65535.0
+          ]
+        },
+        "pixel_sha256_zyx": "737eb2eaa856968a622b3b8fb7cd0c432a7d1a0973b49c8a7f8b254458da4982",
+        "plane_sha256_yx": "3ada8abcb3d49779187dc59ceb8c161099781c8447c28e65399037522fc308cb"
+      },
+      "preview": {
+        "path": "251730\\central_plane_unmarked.png",
+        "unmarked": true,
+        "source_plane_k": 81,
+        "array_order": "YX",
+        "contrast": "sqrt(percentile_normalize0.5,99.5), uint8",
+        "sha256": "e8ac8e6e844ca0f38f7f4aa81dcfdbe2d7d65e125a28040a1926063e8ed02a16"
+      }
+    }
+  ],
+  "limits": [
+    "Structural SWC validity is not tracing completeness or biology.",
+    "Nominal root containment is coordinate arithmetic, not visible soma confirmation.",
+    "One source pair per sample does not establish all candidate/source availability.",
+    "No low-resolution overview, tissue/PI channel, laterality, region, subregion, layer or atlas registration acceptance.",
+    "No coordinate shifts were fitted or applied."
+  ],
+  "full_get_attempts": 10,
+  "finished_at": "2026-10-03T08:23:28.964153+08:00",
+  "helper_hashes_unchanged": {
+    "main_scripts\\Visual_toolkit.py": true,
+    "main_scripts\\swc_validation.py": true,
+    "main_scripts\\fmost_image_geometry.py": true
+  },
+  "summary": {
+    "samples": 5,
+    "passed": 5,
+    "failed_or_incomplete": 0,
+    "full_get_attempts": 10,
+    "bytes_saved_full": 45985766
+  },
+  "independent_readback": {
+    "checked_at": "2026-10-03T08:25:00.574395+08:00",
+    "source_files_rehashed": 10,
+    "source_size_and_sha256_match": true,
+    "saved_previews_rehashed_and_decoded": 5,
+    "preview_shape_yx": [
+      360,
+      360
+    ],
+    "additional_gets": 0,
+    "helper_snapshot_hashes_unchanged": true
+  },
+  "observations_not_acceptance": [
+    "252790/014 central root pixel equals65535, the uint16 storage maximum; possible clipping warrants image review, not a source-smoke failure.",
+    "251730/553 root is nominally5.49um from the central cube positive-Y boundary; one central cube does not establish complete soma/proximal-neurite coverage.",
+    "All five central planes have nonzero pixels and nonconstant intensity; these are decoded-image checks, not verified soma or anatomical labels."
+  ]
+}

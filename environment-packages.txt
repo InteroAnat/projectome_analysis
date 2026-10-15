@@ -1,0 +1,18 @@
+# Conda packages for projectome (install via mamba after environment-minimal.yml).
+#   mamba install -n projectome -y -c conda-forge --file environment-packages.txt
+#
+numpy
+scipy
+pandas
+matplotlib
+seaborn
+scikit-learn
+scikit-image
+nibabel
+h5py
+openpyxl
+tifffile
+imageio
+requests
+tqdm
+paramiko

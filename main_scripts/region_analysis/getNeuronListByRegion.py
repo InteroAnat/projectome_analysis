@@ -2,8 +2,12 @@
 import sys, os, re
 import pandas as pd
 from typing import List, Union
-from region_labels import (CURATED_INSULA_LABELS, normalize_region_label,
-                           normalize_portal_region_label)
+try:
+    from .labels import (CURATED_INSULA_LABELS, normalize_region_label,
+                          normalize_portal_region_label)
+except ImportError:
+    from region_labels import (CURATED_INSULA_LABELS, normalize_region_label,
+                                normalize_portal_region_label)
 
 # ==============================================================================
 # CONFIGURATION
