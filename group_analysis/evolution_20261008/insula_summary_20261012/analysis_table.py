@@ -3,9 +3,9 @@
 The evolution recount in this folder writes ``per_animal_insula_summary.csv``
 and reads the 462-neuron ledger. This is the reader for that pair.
 ``recount_insula_summary.main`` should stay the only writer. After either
-file changes, refresh the progress overview with
-``group_analysis.data_progress.track.write_progress_overview``, which draws
-``group_analysis.data_progress.plot.plot_progress_table``.
+file changes, refresh the project overview with
+``group_analysis.project_overview.track.project_overview_plot``, which draws
+``group_analysis.project_overview.plot.plot_progress_table``.
 """
 from __future__ import annotations
 

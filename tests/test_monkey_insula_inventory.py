@@ -2,7 +2,7 @@
 import unittest
 import pandas as pd
 
-from group_analysis.data_progress.insula_inventory import build_monkey_view
+from group_analysis.project_overview.insula_inventory import build_monkey_view
 
 
 class MonkeyInventoryTests(unittest.TestCase):

@@ -10,6 +10,8 @@ Current soma-origin maps: [clearly titled source maps, all-462 evidence views an
 
 Review the work in development order using the [step-by-step insula audit](docs/insula_pipeline_development_audit_20261010.md), with evidence links, expected checks and separate computational/anatomical decisions.
 
+The project overview for every cohort group is one command: [tools/project_overview_plot.py](tools/project_overview_plot.py). It parses the live macaque_fMOST Progress Details table and writes [group_analysis/data_progress](group_analysis/data_progress/README.md). Usage is in [tools/README.md](tools/README.md).
+
 The [region/table audit](notes/region_analysis_review_20261009/README.md) records validated repairs, corrected diagnostic workbooks and scientific dependencies. Use the [measurement guide](docs/region_analysis_terminology.md), [primary ARM map index](group_analysis/evolution_20261008/arm_mapping_20261009/README.md), [six-level projection tables](notes/region_analysis_review_20261009/hierarchy_tables_20261009/README.md), [projection-profile clustering](notes/region_analysis_review_20261009/clustering_20261009/README.md) and [MSTIM integration record](notes/region_analysis_review_20261009/mstim_integration_20261009/README.md). Earlier display variants remain archived.
 
 ## Overview
@@ -33,9 +35,10 @@ This repository contains tools for processing and analyzing fMOST (fluorescence 
 
 2. Create and activate the conda environment:
    ```bash
-   conda env create -f deb_fmost.yml
-   conda activate deb_fmost
+   conda env create -f environment-minimal.yml
+   conda activate projectome
    ```
+   Then install the pinned packages with uv, as written at the top of `environment.yml`. `deb_fmost.yml` is an older export whose env name is `neuronVis`, not `deb_fmost`.
 
 3. Install additional dependencies (if needed):
    ```bash
@@ -74,7 +77,7 @@ The analysis workflow consists of 5 main steps:
 | Step | Script | Description | Output |
 |------|--------|-------------|--------|
 | 1 | `step1.run_region_analysis.py` | Population region analysis, hierarchy, laterality | `neuron_tables/*.xlsx` |
-| 2 | `step2.fnt-dist_pipeline.py` | SWC→FNT conversion, decimation, distance matrix | `*_joined.fnt`, `*_dist.txt` |
+| 2 | `step2_fnt-dist_pipeline.py` | SWC→FNT conversion, decimation, distance matrix | `*_joined.fnt`, `*_dist.txt` |
 | 3 | `step3.1.bulk_visual_data.py` | High/low resolution visualization | `.png`, `.nii.gz` |
 | 4 | R analysis scripts | Statistical analysis, clustering | `heatmap_LR_combined_split.pdf` |
 | 5.1 | `step3.2.run_brain_viz_meshRender.py` | 3D brain mesh rendering with regions | `brain_viz_*.png` |
@@ -88,7 +91,7 @@ See `main_scripts/PIPELINE_MINDMAP.md` for detailed flowcharts and dependencies.
 
 ## Main Components
 
-### 1. Visual Toolkit (`main_scripts/Visual_toolkit.py`)
+### 1. Visual Toolkit (`main_scripts/Visual_toolkit/`)
 
 A unified tool for retrieving and visualizing Macaque brain data from mixed sources.
 
@@ -282,9 +285,14 @@ python main_scripts/visualize_clustered_heatmap.py
 
 ```
 projectome_analysis/
+├── tools/                         # Commands: project overview, CH00DS NIfTI, NMT flatmap
+│   ├── project_overview_plot.py   # All-groups overview; writes group_analysis/data_progress
+│   ├── README.md
+│   ├── nrrd_to_orient_lps.py
+│   └── nmt_flatmap_pipeline/
 ├── main_scripts/                  # Core analysis scripts
 │   ├── step1.run_region_analysis.py      # Step 1: Region analysis
-│   ├── step2.fnt-dist_pipeline.py        # Step 2: FNT distance pipeline
+│   ├── step2_fnt-dist_pipeline.py        # Step 2: FNT distance pipeline
 │   ├── step3.1.bulk_visual_data.py       # Step 3: Bulk visualization
 │   ├── step3.2.run_brain_viz_meshRender.py  # Step 5.1: Brain mesh render
 │   ├── step3.3.neuronviewRender.py       # Step 5.2: NeuronView render
@@ -292,9 +300,9 @@ projectome_analysis/
 │   ├── monkey_atlas_mesh.py       # Import wrapper for monkey mesh renderer
 │   ├── mesh_from_atlas.py         # CLI wrapper around volume_to_mesh_mz3_MONKEY
 │   ├── visualize_clustered_heatmap.py    # Step 5.4: Clustered heatmap
-│   ├── Visual_toolkit.py          # Main visualization toolkit
+│   ├── Visual_toolkit/            # Visualization package (class Visual_toolkit)
 │   ├── Visual_toolkit_gui.py      # GUI for visualization
-│   ├── brain_viz.py               # Brain visualization class
+│   ├── brain_viz/                 # Brain visualization package
 │   ├── fnt_dist_clustering.py     # Clustering algorithms
 │   ├── fnt_tools.py               # FNT utility functions
 │   ├── region_analysis/           # Region analysis modules
@@ -316,7 +324,9 @@ projectome_analysis/
 ├── processed_neurons/         # Processed neuron files (gitignored)
 ├── brain_viz_output/          # Brain visualization outputs
 ├── figures_charts/            # Generated figures
-├── deb_fmost.yml              # Conda environment
+├── environment-minimal.yml    # Creates the projectome env
+├── environment.yml            # Install notes for that env
+├── deb_fmost.yml              # Older export; env name is neuronVis
 ├── main_scripts/PIPELINE_MINDMAP.md  # Detailed pipeline documentation
 └── README.md                  # This file
 ```
@@ -463,9 +473,14 @@ analysis paths; they were not rerun by this review.
 
 ---
 
-**Last Updated:** October 9, 2026
+**Last Updated:** October 15, 2026
 
 ## Changelog
+
+### October 2026
+- **Project overview for all cohort groups:** `tools/project_overview_plot.py` calls `project_overview_plot`. It parses the live macaque_fMOST Progress Details tab and writes `group_analysis/data_progress/`. Usage is in `tools/README.md`.
+- **Environment quick start** points at `environment-minimal.yml` and the `projectome` env. `deb_fmost.yml` remains an older `neuronVis` export.
+- **Directory tree** lists `tools/`, `main_scripts/Visual_toolkit/`, and `main_scripts/brain_viz/`. Step 2 script name is `step2_fnt-dist_pipeline.py`.
 
 ### August 2026
 - **Documented Step 5.3: Atlas mesh extraction**

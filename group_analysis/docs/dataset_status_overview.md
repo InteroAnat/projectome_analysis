@@ -1,16 +1,24 @@
 # Data progress track (insula multi-monkey)
 
+The all-groups figure is `python tools/project_overview_plot.py`. That command calls `project_overview_plot`, which parses the live table and the local sources, then refreshes the table and figure in [`../data_progress/`](../data_progress/README.md). Usage is [tools/README.md](../../tools/README.md).
+
+## Live table
+
+The live table is the Tencent Docs workbook **macaque_fMOST**, tab **Progress Details** (`BB08J2`):
+
+https://docs.qq.com/sheet/DQXFTS21ieUVGTEpJ?tab=BB08J2
+
+`project_overview_plot` parses that tab for animal name, fMOST id, injection sites, and tracing text. If the opendoc response is not the cell grid, the run uses `group_analysis/evolution_20261008/overview_sheet_20261012/progress_details_BB08J2.tsv` and records `tsv_fallback`. DEB lab `data_status` (`Completed` or `Pending`) stays the Monkey Data word in [`monkey_experiment_data_summary.xlsx`](monkey_experiment_data_summary.xlsx). The live tracing text is a separate column.
+
 **Manifest (edit by hand):** [`dataset_status_manifest.csv`](dataset_status_manifest.csv)
 
-After editing the manifest, rebuild the integrated progress table and figure:
+After editing the manifest, refresh the overview:
 
 ```bash
-python group_analysis/scripts/build_data_progress.py
+python tools/project_overview_plot.py
 ```
 
-Legacy wrapper (same output): `python group_analysis/scripts/plot_dataset_status_overview.py`
-
-Each run writes **timestamped** outputs and removes legacy unstamped files / old `dataset_status_*.png` figures.
+`python group_analysis/scripts/build_data_progress.py` calls the same function. The July timestamped CSV and PNG under `docs/` are older snapshots. This command does not delete them.
 
 ---
 
@@ -18,8 +26,11 @@ Each run writes **timestamped** outputs and removes legacy unstamped files / old
 
 | Piece | Path |
 |-------|------|
-| Package | `group_analysis/data_progress/` |
-| CLI | `group_analysis/scripts/build_data_progress.py` |
+| Function | `group_analysis/project_overview/track.py` → `project_overview_plot` |
+| Drawing | `group_analysis/project_overview/plot.py` → `plot_progress_table` |
+| CLI | `tools/project_overview_plot.py` |
+| Output folder | `group_analysis/data_progress/` |
+| Live table | macaque_fMOST, tab Progress Details (`BB08J2`) |
 | Manifest source | `docs/dataset_status_manifest.csv` |
 | Combined insula counts | `combined/multi_monkey_INS_combined.xlsx` |
 | Step1 auto-insula | latest `step1_results/{fmost}_*/tables/*_results_*.xlsx` |
@@ -30,10 +41,12 @@ Each run writes **timestamped** outputs and removes legacy unstamped files / old
 
 | File | Description |
 |------|-------------|
-| `docs/data_progress_table_YYYYMMDD_HHMM.csv` | One row per plan monkey **plus a TOTAL row** — counts, distributions, 5 µm, pipeline stage, `generated_at` |
-| `docs/figures/data_progress_table_YYYYMMDD_HHMM.png` | Summary figure for the same run |
+| `data_progress/data_progress_table.csv` | One row per kept animal **plus a TOTAL row** |
+| `data_progress/data_progress_table.xlsx` | Same rows, injection plan, and totals. The PNG is drawn from this workbook. |
+| `data_progress/data_progress_table.png` | Bars, DEB lab injection grid, and the all-groups table |
+| `data_progress/provenance.json` | Loader paths and the live-table fetch |
 
-Example: `data_progress_table_20260701_1405.csv` / `.png`
+Older example, not rewritten by the current command: `data_progress_table_20260701_1416.csv`.
 
 ---
 

@@ -1,3 +1,103 @@
+## 2026-10-15 | Agent Cursor | 252385 CH00DS test shift is 260 px left and 301 px down from plane 419
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+The v1 sibling (`331_252385_ch00ds_shift12527.nrrd`, NRRD axis 0 -= 33 and axis 1 += 39 from plane 419) was the wrong scale. It is still on disk. This test does not replace its LPS NIfTI.
+
+Header of `X:\fMOST\ch00ds_100x100x90\331_252385_ch00ds.nrrd`: sizes 898 573 693, directions (100, 0, 0) (0, 100, 0) (0, 0, 100) µm, endian little, encoding gzip. XY is 100 µm, so the 5 µm offset left 5201 / down 6017 is round(5201×5/100)=260 and round(6017×5/100)=301. Header Z is also 100 µm. The cut stays at plane 419 because section 12526 matched plane 418; the header Z was not used to recompute that index. Planes 0–418 are identical to the original. The 5 µm TIFF stack was not opened.
+
+Test NRRD: `X:\fMOST\ch00ds_100x100x90\331_252385_ch00ds_shift12527_test.nrrd` (713172296 bytes, encoding raw). LPS: `X:\fMOST\ch00ds_100x100x90\nifti\ins_monkey_datasets\331_252385_shift12527_test\331_252385_ch00ds_orient-LPS.nii`, shape 898×693×573, zooms 0.1, 0.1, 0.1 mm, nibabel LPS. Original NRRD (222364408 bytes) and `331_252385_ch00ds_100x100x100_orient-LPS.nii` were not overwritten.
+
+Montages: [ch00ds_252385_test_montage_before.png](../notes/slice_shift_252385_20261015/ch00ds_252385_test_montage_before.png), [ch00ds_252385_test_montage_after.png](../notes/slice_shift_252385_20261015/ch00ds_252385_test_montage_after.png). Plane j=418 is unchanged. From j=419 through 692 the block is one rigid move (in-frame LPS voxels match at j=419, 500, and 680). The sagittal step, the empty axial posterior to the red line, and the separated red/green overlay show that jump. About 0.515 of bright tail voxels leave the frame, so the posterior block is not seated on the anterior one.
+
+## 2026-10-15 | Agent Cursor | 252385 CH00DS block from plane 419 is a shifted NRRD sibling, then LPS
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Monkey 331 / 252385. Original `X:\fMOST\ch00ds_100x100x90\331_252385_ch00ds.nrrd` (222364408 bytes, sizes 898 573 693, directions 100, 100, 100 µm) was not overwritten. The sibling is `331_252385_ch00ds_shift12527.nrrd` (225739189 bytes, same header). LPS copy: `X:\fMOST\ch00ds_100x100x90\nifti\ins_monkey_datasets\331_252385_shift12527\331_252385_ch00ds_orient-LPS.nii`, shape 898×693×573, zooms 0.1, 0.1, 0.1 mm, nibabel LPS. The existing `331_252385_ch00ds_100x100x100_orient-LPS.nii` was left in place.
+
+Index convention is 0-based on NRRD axis 2 (the size-693 axis; it becomes NIfTI axis j). Plane 418 matched unshifted 5 µm section 12526 and was not moved. The shift starts at plane 419 and runs through 692. Header XY is 100 µm, so the 5 µm move (left 653, down 782) is 33 px left and 39 px down. On the LPS array, row-k_col+i means the 5 µm row increases as k decreases and the 5 µm column increases with i. The LPS script leaves NIfTI i equal to NRRD axis 0 and sets NIfTI k to reversed NRRD axis 1, so the NRRD move is −33 on axis 0 and +39 on axis 1. Other `*_ch00ds_corrected.nrrd` files, the 5 µm TIFFs, and `main_scripts/Visual_toolkit` were not touched.
+
+## 2026-10-15 | Agent Cursor | 252385 cut neurons plotted with Visual_toolkit widefield + SWC
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Public methods only: `get_low_res_widefield` then `plot_widefield_context`. Toolkit source was not edited. Original TIFFs were not written. Neurons 024, 088, and 089, each centered on the SWC passage nearest the soma on plane z = 12527 × 3 = 37581 µm. Field 10000 × 10000 × 102 µm, sections 12510–12543, both sides of the cut. Same SWC on raw `resample_5um` and `resample_5um_z12527_aligned`. PNGs: `notes/slice_shift_252385_20261015/toolkit_views/toolkit_neuron_{024,088,089}_{before,after}.png`. The in-slab trace is short (024 about 0.7 mm in XY; 089 about 0.07 mm). Neuron 088’s other cut crossing is ~26 mm away and outside this field. In the 088 pair, the bright folded tissue on the left of BEFORE sits lower and mostly outside the field AFTER.
+
+## 2026-10-15 | Agent Cursor | CH00DS montage labels read data_progress_table.xlsx: total is selected_n, atlas is ARM_insula_n, eight DEB rows list injection_plan sites; 747 total is an em dash and has no DEB plan.
+
+## 2026-10-15 | Agent Cursor | Project overview command is project_overview_plot
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+The function is `project_overview_plot` in `group_analysis/project_overview/track.py`. The command is `tools/project_overview_plot.py`. It parses the live table (Tencent workbook macaque_fMOST, tab Progress Details, `BB08J2`, https://docs.qq.com/sheet/DQXFTS21ieUVGTEpJ?tab=BB08J2), Monkey Data, and `load_analysis_neuron_table`, then refreshes the table and figure. `group_analysis/data_progress/` is that output folder. The parser moved from `group_analysis/data_progress/` to `group_analysis/project_overview/`. Descriptions that name the live table: [tools/README.md](../tools/README.md), [data_progress/README.md](../group_analysis/data_progress/README.md), and [dataset_status_overview.md](../group_analysis/docs/dataset_status_overview.md). One run wrote [data_progress_table.csv](../group_analysis/data_progress/data_progress_table.csv), the xlsx, and the png at 2026-10-15 15:56. The opendoc call returned HTTP 401, so rows came from [progress_details_BB08J2.tsv](../group_analysis/evolution_20261008/overview_sheet_20261012/progress_details_BB08J2.tsv) and `provenance.json` records `tsv_fallback`. DEB lab status on that table is 936 Completed, 605 Pending, 331 Completed, 900 Pending, 948 Completed, 945 Pending, 797 Pending, 631 Pending. `tools/progress_plot.py` was removed. The only command is `tools/project_overview_plot.py`.
+
+## 2026-10-15 | Agent Cursor | 250432 uses a hardcoded i/j swap in tools/nrrd_to_orient_lps.py (no 747.txt); temp NIfTI matched the trusted LPS affine and voxels.
+
+## 2026-10-15 | Agent Cursor | Montage labels are from group_analysis/evolution_20261008/overview_legacy_plot_20261012/data_progress_table.xlsx: atlas is ARM_insula_n, added is selected_n minus that; 747 selected_n is empty so added is blank.
+
+## 2026-10-15 | Agent Cursor | Montage labels: atlas = atlas_INS, added = selected minus atlas; 747 atlas 8 and added 21 from the extra-screen CSV.
+
+## 2026-10-15 | Agent Cursor | Raw CH00DS cardinal spacing then LPS matched 9/9 known-good NIfTIs (747 only via 747.txt); renamed files are in X:\fMOST\ch00ds_100x100x90\nifti\ins_monkey_datasets.
+
+## 2026-10-15 | Agent Cursor | 250432 record is group_analysis/evolution_20261008/overview_legacy_plot_20261012/neuron_record_250432.csv (added, not in the 462 ledger).
+
+## 2026-10-15 | Agent Cursor | 747 is 747.txt snap plus sagittal reorder and cardinal LPS (no net coronal 180). Nine fixed NIfTIs are in nifti/ins_monkey_datasets. Laterality is the shared LPS/RAI header only, not visually confirmed: 936 had one coronal 180 and 747 has none, so left-right was not matched. Labels are 462 atlas_INS regions plus potential_INS_candidate; 747 is absent there, so ARM 8 and summary union potential 29.
+
+## 2026-10-15 | Agent Cursor | 747 uses 747.txt then cardinal LPS.
+
+## 2026-10-15 | Agent Cursor | 747 coronal 180 only, then cardinal LPS.
+
+## 2026-10-15 | Agent Cursor | 252385 native cubes with a portal source are being rewritten
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Of the post-cut cubes touched by local 252385 SWCs, 588 hosts are on the portal and 371 also have the shifted source cube. Four were rewritten and checked: `213_87_156`, `215_85_155`, `215_85_158`, `215_86_159`. Raw planes are sparse; the shifted source brings in the neurites that belong on that grid. Output cache: `notes/slice_shift_252385_20261015/native_aligned_cache`. Portal cubes are not overwritten. The cube that contains the cut for SWC 088, `207_128_139`, still has no source cube on the portal.
+
+## 2026-10-15 | Agent Cursor | 252385 native cube at the cut has no shifted-source cubes on the portal
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+SWC 088 crosses section 12527. Its native cube `207_128_139` downloaded (90×360×360, cut at local plane 17). The pixels that belong there after a left-5021 / down-6017 move would come from cubes around `220_111_139`. Those return HTTP 404, as do the three opposite-sign offsets. The portal cube was not overwritten. The 5 µm aligned copy is the dataset that can be rewritten locally.
+
+## 2026-10-15 | Agent Cursor | 252385 section block from 12527 is copied, shifted, and checked on the TIFFs
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Monkey 331 / 252385 has one block jump at section 12527. The stated native move is left 5021 px and down 6017 px on the 0.65 µm grid. The same physical move on the 5 µm sections is 653 px left and 782 px down. Applying 5021 and 6017 directly on the 5 µm images pushes the brain off the canvas.
+
+Originals in `X:\fMOST\5micron_datasets\252385-CH1_resample\resample_5um` are not overwritten. The copy is `resample_5um_z12527_aligned`. Sections before 12527 are hard-linked. From 12527 on, each section is shifted left 653 and down 782. A red/green overlay of 12526 against raw 12527 shows the later section up and to the right. The same overlay against the shifted 12527 is yellow, and the sulci match. Fiji ImageJ and Temurin 21 are installed. The visual toolkit source was not changed. The tail through section 20788 was still being written when this note was added. Native 0.65 µm cubes are not copied yet.
+
+## 2026-10-15 | Agent Cursor | CH00DS montage titles are Frontal, Superior, Posterior, Inferior, Coronal.
+
+## 2026-10-15 | Agent Cursor | 747/250432 LPS: original and Z=90 sibling made the same NIfTI; left/superior were swapped, now +posterior then +left then +superior like 936.
+
+## 2026-10-15 | Agent Cursor | CH00DS 9×5 volume montage: X:\fMOST\ch00ds_100x100x90\nifti\ins_monkeys\ch00ds_9brain_5view_montage.png
+
+## 2026-10-15 | Agent Cursor | 605/252383 original CH00DS NRRD converted with tools/nrrd_to_orient_lps.py into nifti/ins_monkeys (599x686x480, zooms 0.1, 0.08956, 0.1 mm, nibabel LPS).
+
+## 2026-10-15 | Agent Cursor | 605/252383 portal ch00ds.nrrd is local
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Portal `http://bap.cebsit.ac.cn/monkeydata/252383/ch00ds.nrrd` is saved at `X:\fMOST\ch00ds_100x100x90\605_252383_ch00ds.nrrd`, 394477730 bytes. The rechecked HEAD Content-Length was 394477730, the same as the earlier HEAD. Header: NRRD0004, Nrrd_Writer, type uint16, encoding raw, endian big, sizes 599 480 686, space directions (99.99999999999999, 0, 0) (0, 99.99999999999999, 0) (0, 0, 89.56268221574344), space units microns. No corrected sibling. The inch-spacing CH1 file remains `605_252383_CH1_100x100x90.nrrd` (130617833 bytes) and is not ready. Directions are 100 µm class, so 605 is in the ready set (8 of 8). Z spacing is 89.56 µm, not integer 90.
+
+## 2026-10-15 | Agent Cursor | `tools/nrrd_to_orient_lps.py` visual check passed on the original NRRDs; 631 matches the accepted LPS NIfTI; copies remain in `nifti/ins_monkeys/script_test/`.
+
+## 2026-10-15 | Agent Cursor | Progress plot command is tools/progress_plot.py
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+`tools/progress_plot.py` is the command for the progress figure of every cohort group. It calls `write_progress_overview`. Drawing stays in `group_analysis/data_progress/plot.py`. Usage is [tools/README.md](../tools/README.md). The root README now points at that command and at the `projectome` env. No overview folder was regenerated.
+
+## 2026-10-15 | Agent Cursor | 605/252383 internal CH1 NRRD is not the 100 µm CH00DS grid
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+`http://10.10.31.31/ch2/252383/` listed one file. It is stored at `X:\fMOST\ch00ds_100x100x90\605_252383_CH1_100x100x90.nrrd`, 130617833 bytes. Header: uint16, encoding raw, endian big, sizes 598 479 228, space directions about (6.0569, 0, 0) (0, 6.0569, 0) (0, 0, 3.6288), space units inch. The `605_252383_ch00ds.nrrd` filename was not kept. The portal `ch00ds.nrrd` (394477730 bytes) was not downloaded. This file is not a ready 100×100×90 µm CH00DS.
+
+## 2026-10-15 | Agent Cursor | CH00DS NRRD→NIfTI script: `tools/nrrd_to_orient_lps.py` (sagittal reorder, coronal 180, nibabel LPS / ITK-SNAP RAI).
+
 ## 2026-10-15 | Agent Cursor | CH00DS coronal 180: ins_monkeys NIfTIs flip voxel axes i (L–R) and k (S–I); affine stays nibabel LPS (−1,−1,+1), ITK-SNAP RAI.
 
 ## 2026-10-15 | Agent Cursor | CH00DS cause: `X:/fMOST/ch00ds_100x100x90/nifti/transform_from_corrected.txt` is an X flip plus Y/Z swap of the corrected LPS volumes (the Z=1→90 edit only changed magnitude on an axis that was not superior). Original NRRDs were reordered that way, then nibabel LPS / ITK-SNAP RAI, in `nifti/ins_monkeys/`.

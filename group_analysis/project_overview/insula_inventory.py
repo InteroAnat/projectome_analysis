@@ -199,7 +199,7 @@ def main():
     render_overview(frame, args.output / "per_monkey_insula_overview.png")
     artifacts = {p.name: sha(p) for p in args.output.iterdir()}
     receipt = {"status": "legacy_overview_reconciled", "generated_at": now.isoformat(),
-               "legacy_function": "group_analysis.data_progress.table.build_progress_table",
+               "legacy_function": "group_analysis.project_overview.table.build_progress_table",
                "legacy_cleanup_runner_invoked": False, "network_requests": 0,
                "monkeys": len(frame), "selected_neurons": int(frame.selected_projectome_n.sum()),
                "all_catalog_sample_identities_retained_in_parent_inventory": 49,

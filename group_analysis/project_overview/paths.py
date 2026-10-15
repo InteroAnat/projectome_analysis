@@ -6,6 +6,8 @@ PROJECT = Path(__file__).resolve().parents[2]
 GROUP = PROJECT / "group_analysis"
 DOCS = GROUP / "docs"
 FIGURES = DOCS / "figures"
+# Refreshed table, workbook, figure, and provenance. This folder is outputs only.
+OVERVIEW_OUTPUT = GROUP / "data_progress"
 MANIFEST = DOCS / "dataset_status_manifest.csv"
 STEP1_DIR = GROUP / "step1_results"
 COMBINED_XLSX = GROUP / "combined" / "multi_monkey_INS_combined.xlsx"

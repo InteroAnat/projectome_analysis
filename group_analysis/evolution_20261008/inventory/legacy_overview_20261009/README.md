@@ -2,7 +2,7 @@
 
 Agent: Codex | Processing date: 2026-10-09 (Asia/Shanghai)
 
-This eight-monkey view uses the original **Monkey Data** overview workbook and the existing `group_analysis.data_progress.table.build_progress_table` function, then reconciles their exact animal/fMOST identities with the saved inventory and selected ledger. The original overview, manifest and combined workbook are preserved. No legacy cleanup runner, network request, image download or anatomical relabelling is performed.
+This eight-monkey view uses the original **Monkey Data** overview workbook and the existing `group_analysis.project_overview.table.build_progress_table` function, then reconciles their exact animal/fMOST identities with the saved inventory and selected ledger. The original overview, manifest and combined workbook are preserved. No legacy cleanup runner, network request, image download or anatomical relabelling is performed.
 
 - [Per-monkey table](per_monkey_insula_inventory.csv): injection/source claims, reconstruction counts, separate INS evidence, selected-neuron counts, dataset status and review priority.
 - [Readable overview](per_monkey_insula_overview.png): all eight monkeys in the established overview order; actually inspected for readable headers, rows and notes.

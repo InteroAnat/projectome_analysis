@@ -11,7 +11,16 @@ from openpyxl import Workbook
 from openpyxl.styles import Alignment, Font, PatternFill
 
 from .insula_inventory import read_experiment_overview
-from .paths import DOCS, FIGURES, GROUP, LEGACY_FIGURE_GLOBS, LEGACY_TABLE_NAMES, PLAN_INSULA_EXPECTED, stamped_outputs
+from .online_sheet import DEFAULT_SHEET_URL, TAB_ID, TAB_NAME
+from .paths import (
+    DOCS,
+    FIGURES,
+    GROUP,
+    LEGACY_FIGURE_GLOBS,
+    LEGACY_TABLE_NAMES,
+    OVERVIEW_OUTPUT,
+    PLAN_INSULA_EXPECTED,
+)
 from .plot import _PLAN_BODY, plot_progress_table
 from .sheet_overview import LEGACY_EIGHT
 from .table import append_total_row, build_progress_table
@@ -251,20 +260,25 @@ def _totals_from_workbook(path: Path) -> tuple[pd.DataFrame, dict]:
     return display, totals
 
 
-def write_progress_overview(
-    output_dir: Path,
+def project_overview_plot(
+    output_dir: Path | None = None,
     include_online_sheet: bool = True,
     write_figure: bool = True,
 ) -> dict:
-    """Parse Monkey Data and Progress Details, save the table, then plot that file.
+    """Parse the live table and the local sources, save a new table, then plot it.
 
-    Insula counts and cohort membership come from
-    ``analysis_table.load_analysis_neuron_table`` (462-neuron ledger plus the
-    saved recount). A change to that table must be passed through this
-    function so ``plot_progress_table`` redraws it. The July combined
-    workbook is not the reality-bar source.
+    The live table is the Tencent workbook macaque_fMOST, tab Progress Details
+    (BB08J2). That read supplies animal name, fMOST id, injection sites, and
+    tracing text. DEB lab ``data_status`` still comes from the Monkey Data
+    workbook. Insula counts come from ``analysis_table.load_analysis_neuron_table``.
+    A change to that table must be passed through this function so
+    ``plot_progress_table`` redraws it. The July combined workbook is not the
+    reality-bar source.
+
+    With ``output_dir`` omitted, files are written to ``group_analysis/data_progress``.
+    That folder is the output of this function.
     """
-    output = Path(output_dir)
+    output = OVERVIEW_OUTPUT if output_dir is None else Path(output_dir)
     if output.exists() and not output.is_dir():
         raise FileExistsError(output)
     blocked = [
@@ -391,8 +405,15 @@ def write_progress_overview(
             .values.tolist()
         )
     receipt = {
-        "pipeline": "group_analysis.data_progress.track.write_progress_overview",
-        "plot_function": "group_analysis.data_progress.plot.plot_progress_table",
+        "pipeline": "group_analysis.project_overview.track.project_overview_plot",
+        "plot_function": "group_analysis.project_overview.plot.plot_progress_table",
+        "live_table": {
+            "workbook": "macaque_fMOST",
+            "url": (sheet_meta or {}).get("url") or DEFAULT_SHEET_URL,
+            "tab_id": (sheet_meta or {}).get("tab_id") or TAB_ID,
+            "tab_name": (sheet_meta or {}).get("tab_name") or TAB_NAME,
+            "fetch": (sheet_meta or {}).get("fetch", ""),
+        },
         "figure_title": "Data progress — insula multi-monkey cohort",
         "include_online_sheet": include_online_sheet,
         "online_sheet": sheet_meta,
@@ -453,80 +474,52 @@ def run(
     include_online_sheet: bool | None = None,
     output_dir: Path | None = None,
 ) -> dict:
-    """Build the progress table and figure.
+    """Refresh the project overview by calling ``project_overview_plot``.
 
-    With ``output_dir``, this calls ``write_progress_overview`` (workbook, online
-    sheet, saved insula counts, then ``plot_progress_table``). That path reads
-    the online sheet unless ``include_online_sheet`` is False. Without
-    ``output_dir``, the historical eight-monkey writer stays offline and does
-    not touch the overview folder or the July CSV.
+    Omitted ``output_dir`` writes ``group_analysis/data_progress``. The live
+    table is read unless ``include_online_sheet`` is False. ``cleanup_legacy``
+    is unused: this path does not delete the July files under ``group_analysis/docs``.
     """
-    if output_dir is not None:
-        online = True if include_online_sheet is None else include_online_sheet
-        return write_progress_overview(
-            output_dir,
-            include_online_sheet=online,
-            write_figure=write_figure,
-        )
-    progress, totals = build_progress_table(include_online_sheet=bool(include_online_sheet))
-    display = append_total_row(progress, totals)
-
-    out_table, out_figure = stamped_outputs(totals["file_stamp"])
-
-    out_table.parent.mkdir(parents=True, exist_ok=True)
-    display.to_csv(out_table, index=False, encoding="utf-8-sig")
-
-    if write_figure:
-        out_figure.parent.mkdir(parents=True, exist_ok=True)
-        plot_progress_table(display, totals, out_figure)
-
-    removed = remove_legacy_outputs() if cleanup_legacy else []
-
-    return {
-        "table": out_table,
-        "figure": out_figure if write_figure else None,
-        "totals_dict": totals,
-        "removed_legacy": removed,
-    }
+    del cleanup_legacy
+    online = True if include_online_sheet is None else include_online_sheet
+    return project_overview_plot(
+        output_dir,
+        include_online_sheet=online,
+        write_figure=write_figure,
+    )
 
 
 def main(argv: list[str] | None = None) -> None:
-    parser = argparse.ArgumentParser(description="Build the data progress overview.")
-    parser.add_argument("--output", type=Path, default=None, help="Fresh folder for the progress overview.")
-    parser.add_argument("--offline", action="store_true", help="Skip the online sheet and the saved TSV.")
-    args = parser.parse_args(argv)
-    if args.output is not None:
-        result = run(
-            write_figure=True,
-            cleanup_legacy=False,
-            include_online_sheet=not args.offline,
-            output_dir=args.output,
-        )
-        sheet = result.get("online_sheet") or {}
-        print("Progress overview written:")
-        print(f"  table:  {result['table']}")
-        print(f"  xlsx:   {result['workbook']}")
-        print(f"  figure: {result['figure']}")
-        print(f"  sheet:  {sheet.get('fetch', 'offline')}")
-        if sheet.get("snapshot"):
-            print(f"  snapshot: {sheet['snapshot']}")
-        return
-    result = run(write_figure=True)
-    t = result["totals_dict"]
-    print("Data progress track updated:")
-    print(f"  table:  {result['table']}")
-    print(f"  figure: {result['figure']}")
-    if result["removed_legacy"]:
-        print("  removed legacy outputs:")
-        for path in result["removed_legacy"]:
-            print(f"    - {path}")
-    print(
-        f"  summary @ {t['generated_at']}: "
-        f"insula {t['insula_corrected']}/{t['insula_expected_plan']} corrected; "
-        f"ION {t['ion_traced']}/{t['analysis_expected']}; "
-        f"combined {t['insula_in_combined']}; "
-        f"5µm {t['five_um_ready']}/{t['monkeys']}"
+    parser = argparse.ArgumentParser(
+        description="Refresh the project overview from the live table and local parsers."
     )
+    parser.add_argument(
+        "--output",
+        type=Path,
+        default=None,
+        help="Output folder. Default: group_analysis/data_progress",
+    )
+    parser.add_argument(
+        "--offline",
+        action="store_true",
+        help="Skip the live table and the saved Progress Details extract.",
+    )
+    args = parser.parse_args(argv)
+    result = project_overview_plot(
+        args.output,
+        include_online_sheet=not args.offline,
+        write_figure=True,
+    )
+    sheet = result.get("online_sheet") or {}
+    print("Project overview written:")
+    print(f"  table:  {result['table']}")
+    print(f"  xlsx:   {result['workbook']}")
+    print(f"  figure: {result['figure']}")
+    print(f"  live table: {sheet.get('fetch', 'offline')}")
+    if sheet.get("url"):
+        print(f"  url: {sheet['url']}")
+    if sheet.get("snapshot"):
+        print(f"  snapshot: {sheet['snapshot']}")
 
 
 if __name__ == "__main__":

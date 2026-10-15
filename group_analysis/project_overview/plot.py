@@ -1,3 +1,10 @@
+"""Draw the insula progress overview.
+
+The command for every cohort group is ``tools/project_overview_plot.py``.
+See ``tools/README.md``. ``project_overview_plot`` parses the live table
+and the local sources, saves the table, then calls ``plot_progress_table``
+on that workbook.
+"""
 from __future__ import annotations
 
 from pathlib import Path
@@ -317,12 +324,12 @@ def _plot_injection_plan(ax) -> None:
 
 
 def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = None) -> None:
-    """Draw the progress overview from a table already saved by write_progress_overview.
+    """Draw the overview from a table already saved by project_overview_plot.
 
     Insula counts and the insula-eight cohort flag must already be on ``display``.
     They come from ``analysis_table.load_analysis_neuron_table`` (462-neuron
     ledger plus per_animal_insula_summary.csv). A change to that table has
-    to be passed through write_progress_overview before this plot is redrawn.
+    to be passed through project_overview_plot before this plot is redrawn.
     This function does not read the July combined workbook.
     """
     if out is None:

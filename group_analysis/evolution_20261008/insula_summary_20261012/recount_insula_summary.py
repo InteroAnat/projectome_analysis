@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT))
 sys.path.insert(0, str(ROOT / "group_analysis/evolution_20261008/extra_insula_screen_20261012"))
 sys.path.insert(0, str(ROOT / "group_analysis/scripts"))
 import screen_extra_insula as screen  # noqa: E402
-from group_analysis.data_progress.sheet_overview import parse_progress_details_tsv  # noqa: E402
+from group_analysis.project_overview.sheet_overview import parse_progress_details_tsv  # noqa: E402
 
 OUT = Path(__file__).resolve().parent
 SHEET_TSV = ROOT / "group_analysis/evolution_20261008/overview_sheet_20261012/progress_details_BB08J2.tsv"
@@ -310,7 +310,7 @@ def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
     fieldnames = list(rows[0])
     # This write is what analysis_table.load_analysis_neuron_table reads.
-    # After it changes, refresh write_progress_overview / plot_progress_table.
+    # After it changes, refresh project_overview_plot / plot_progress_table.
     csv_path = OUT / "per_animal_insula_summary.csv"
     with csv_path.open("w", encoding="utf-8", newline="") as handle:
         writer = csv.DictWriter(handle, fieldnames=fieldnames)

@@ -15,8 +15,8 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
 
-from group_analysis.data_progress import table
-from group_analysis.data_progress.sheet_overview import (
+from group_analysis.project_overview import table
+from group_analysis.project_overview.sheet_overview import (
     LEGACY_EIGHT,
     SHEET_HEADERS,
     assert_overview,
