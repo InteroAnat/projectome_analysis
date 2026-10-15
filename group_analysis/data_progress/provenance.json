@@ -33,6 +33,113 @@
     "plan_target_unchanged": 2400
   },
   "insula_neuron_rule": "ARM_insula_n > 0 or Henry_coarse_INS_n > 0; spatial-only is not enough",
+  "full_neuron_region_table": "D:\\projectome_analysis\\group_analysis\\evolution_20261008\\classification\\coarse_insula_review_20261009\\distance_priority_v2_20261009\\all_neuron_review_manifest_distance_corrected.csv",
+  "selected_ledger": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\neuron_summary.csv",
+  "potential_insula_auto": {
+    "rule": "Added = Selected minus atlas insula. Potential insula (auto rule based) = added and own SWC-root soma within 2 mm of an ARM insula voxel (ARM_in_NMT_v2.1_sym level 6, insula label set, 0.25 mm distance transform). Not anatomical acceptance.",
+    "per_neuron_table": "selected_neuron_potential_insula.csv",
+    "added_n": 161,
+    "potential_insula_auto_n": 153,
+    "arm_atlas": "D:\\projectome_analysis\\atlas\\NMT_v2.1_sym\\NMT_v2.1_sym\\ARM_in_NMT_v2.1_sym.nii.gz",
+    "added_by_selection_reason": {
+      "Candidate": 63,
+      "HumanINS": 48,
+      "G_exploratory": 24,
+      "OriginCandidate": 15,
+      "NearINS": 11
+    },
+    "added_not_potential": [
+      {
+        "AnimalID": "631",
+        "neuron_id": "031.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CR_G",
+        "ARM_insula_distance_mm": 2.487
+      },
+      {
+        "AnimalID": "631",
+        "neuron_id": "034.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CR_G",
+        "ARM_insula_distance_mm": 2.016
+      },
+      {
+        "AnimalID": "631",
+        "neuron_id": "086.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CL_G",
+        "ARM_insula_distance_mm": 2.136
+      },
+      {
+        "AnimalID": "631",
+        "neuron_id": "136.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CL_G",
+        "ARM_insula_distance_mm": 2.121
+      },
+      {
+        "AnimalID": "900",
+        "neuron_id": "077.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CR_G",
+        "ARM_insula_distance_mm": 2.194
+      },
+      {
+        "AnimalID": "900",
+        "neuron_id": "090.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CL_G",
+        "ARM_insula_distance_mm": 2.179
+      },
+      {
+        "AnimalID": "900",
+        "neuron_id": "139.swc",
+        "selection_reason": "G_exploratory",
+        "soma_ARM_label": "CL_G",
+        "ARM_insula_distance_mm": 2.136
+      },
+      {
+        "AnimalID": "797",
+        "neuron_id": "074.swc",
+        "selection_reason": "Candidate",
+        "soma_ARM_label": "CR_SII",
+        "ARM_insula_distance_mm": 2.586
+      }
+    ]
+  },
+  "selection_reasons": {
+    "HumanINS": "Henry visual insula annotation",
+    "AtlasINS": "ARM atlas insula label",
+    "Candidate": "spatial candidate (folded 251637 box)",
+    "G_exploratory": "gustatory G label, exploratory",
+    "OriginCandidate": "insula at one soma-origin lookup only",
+    "NearINS": "non-insula label, same-sample insula neuron within 2 mm"
+  },
+  "selected_by_reason": {
+    "HumanINS": 260,
+    "AtlasINS": 89,
+    "Candidate": 63,
+    "G_exploratory": 24,
+    "OriginCandidate": 15,
+    "NearINS": 11
+  },
+  "projection_strength": {
+    "legacy_combined_workbook": "D:\\projectome_analysis\\group_analysis\\combined\\multi_monkey_INS_combined.xlsx",
+    "legacy_strength_sheets": [
+      "Projection_Strength_ipsi",
+      "Projection_Strength_contra",
+      "Projection_Strength_L3_ipsi",
+      "Projection_Strength_L3_contra"
+    ],
+    "legacy_strength_neuron_n": 306,
+    "legacy_strength_missing_n": 156,
+    "arm_hierarchy_workbook": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\arm_projection_hierarchy_tables.xlsx",
+    "arm_regional_measures_csv": "D:\\projectome_analysis\\notes\\region_analysis_review_20261009\\hierarchy_tables_20261009\\combined_arm_projection_tables_462\\per_neuron_regional_measures.csv",
+    "arm_regional_rows": 16726,
+    "arm_regional_neuron_n": 429,
+    "arm_regional_missing_n": 33,
+    "metric_notes": "Legacy Projection_Strength_* = log10(retained length + 1) from the harmonized multi_monkey_INS_combined workbook (L6 finest columns; L3 grouped columns). ARM per_neuron_regional_measures = six actual ARM levels with CandidateEndpointCount and AxonTemplateLengthMm for all 462 Selected neurons."
+  },
   "progress_table_animals": 9,
   "dropped_no_insula_neuron": [
     {

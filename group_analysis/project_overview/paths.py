@@ -8,6 +8,31 @@ DOCS = GROUP / "docs"
 FIGURES = DOCS / "figures"
 # Refreshed table, workbook, figure, and provenance. This folder is outputs only.
 OVERVIEW_OUTPUT = GROUP / "data_progress"
+# Newest full neuron region table: 8746 neurons, every sample, atlas labels,
+# folded-box screen, and same-sample insula anchor distances.
+FULL_NEURON_REGION_TABLE = (
+    GROUP
+    / "evolution_20261008/classification/coarse_insula_review_20261009"
+    / "distance_priority_v2_20261009/all_neuron_review_manifest_distance_corrected.csv"
+)
+SELECTED_LEDGER = (
+    PROJECT
+    / "notes/region_analysis_review_20261009/hierarchy_tables_20261009"
+    / "combined_arm_projection_tables_462/neuron_summary.csv"
+)
+ARM_PROJECTION_HIERARCHY_XLSX = (
+    PROJECT
+    / "notes/region_analysis_review_20261009/hierarchy_tables_20261009"
+    / "combined_arm_projection_tables_462/arm_projection_hierarchy_tables.xlsx"
+)
+PER_NEURON_REGIONAL_MEASURES = (
+    PROJECT
+    / "notes/region_analysis_review_20261009/hierarchy_tables_20261009"
+    / "combined_arm_projection_tables_462/per_neuron_regional_measures.csv"
+)
+SCRIPTS = GROUP / "scripts"
+ARM_ATLAS = PROJECT / "atlas/NMT_v2.1_sym/NMT_v2.1_sym/ARM_in_NMT_v2.1_sym.nii.gz"
+ARM_KEY = PROJECT / "atlas/ARM_key_all.txt"
 MANIFEST = DOCS / "dataset_status_manifest.csv"
 STEP1_DIR = GROUP / "step1_results"
 COMBINED_XLSX = GROUP / "combined" / "multi_monkey_INS_combined.xlsx"

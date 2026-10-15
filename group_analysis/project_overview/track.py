@@ -12,6 +12,8 @@ from openpyxl.styles import Alignment, Font, PatternFill
 
 from .insula_inventory import read_experiment_overview
 from .online_sheet import DEFAULT_SHEET_URL, TAB_ID, TAB_NAME
+from .potential_insula import PER_NEURON_COLUMNS, potential_insula_table
+from .projection_strength import append_projection_sheets, load_projection_strength_tables
 from .paths import (
     DOCS,
     FIGURES,
@@ -35,6 +37,11 @@ COUNT_COLUMNS = [
     "both_n",
     "Henry_coarse_INS_n",
 ]
+# Selected = ARM insula + added. Potential insula (auto rule based) is a subset of added.
+POTENTIAL_COLUMNS = ["added_n", "potential_insula_auto_n"]
+# Text column, one per animal: counts of the ledger EvidenceStratum.
+REASON_COLUMN = "selected_by_reason"
+PER_NEURON_CSV = "selected_neuron_potential_insula.csv"
 COMPLETED_FILL = PatternFill("solid", fgColor="C6EFCE")
 PENDING_FILL = PatternFill("solid", fgColor="B8CCE4")
 HEADER_FILL = PatternFill("solid", fgColor="1A1A1A")
@@ -89,6 +96,30 @@ def _attach_checked_counts(progress: pd.DataFrame, analysis: dict) -> pd.DataFra
             record["neuron_screen_status"] = analysis["loader"]
         rows.append(record)
     return pd.DataFrame(rows)
+
+
+def _attach_potential_insula(progress: pd.DataFrame, potential: dict) -> pd.DataFrame:
+    """Add per-animal Added and Potential insula (auto rule based) from the Selected ledger.
+
+    Animals outside the 462 ledger (747) stay blank.
+    """
+    out = progress.copy()
+    for column in (*POTENTIAL_COLUMNS, REASON_COLUMN):
+        values = []
+        for record in out.to_dict("records"):
+            if str(record.get("monkey_id")) == "TOTAL":
+                values.append("")
+                continue
+            key = _join_key(record.get("monkey_id", ""), record.get("fmost_id", ""))
+            hit = potential["counts"].get(key)
+            if hit is None:
+                values.append("")
+            elif column == REASON_COLUMN:
+                values.append(hit[column])
+            else:
+                values.append(str(int(hit[column])))
+        out[column] = values
+    return out
 
 
 def _apply_workbook_status(progress: pd.DataFrame, overview: pd.DataFrame) -> pd.DataFrame:
@@ -206,7 +237,13 @@ def _require_saved_747(frame: pd.DataFrame) -> dict:
     return {column: str(row[column]) for column in ("monkey_id", "fmost_id", *COUNT_COLUMNS, "data_status")}
 
 
-def _write_table(display: pd.DataFrame, totals: dict, folder: Path) -> tuple[Path, Path]:
+def _write_table(
+    display: pd.DataFrame,
+    totals: dict,
+    folder: Path,
+    neurons: pd.DataFrame,
+    projection: dict,
+) -> tuple[Path, Path]:
     csv_path = folder / "data_progress_table.csv"
     xlsx_path = folder / "data_progress_table.xlsx"
     display.to_csv(csv_path, index=False, encoding="utf-8-sig")
@@ -240,12 +277,22 @@ def _write_table(display: pd.DataFrame, totals: dict, folder: Path) -> tuple[Pat
     for row in _PLAN_BODY:
         plan.append(row)
     plan.append(["source", "attached plan image 2026-10-12; 747 is not on this sheet"])
+    selected = book.create_sheet("selected_neurons")
+    selected.append(list(neurons.columns))
+    for cell in selected[1]:
+        cell.fill = HEADER_FILL
+        cell.font = Font(bold=True, color="FFFFFF")
+    for record in neurons.itertuples(index=False):
+        selected.append(list(record))
+    selected.freeze_panes = "A2"
+    selected.auto_filter.ref = selected.dimensions
     meta = book.create_sheet("totals")
     meta.append(["key", "value"])
     for key, value in totals.items():
         if isinstance(value, (dict, list)):
             value = json.dumps(value, ensure_ascii=False)
         meta.append([key, "" if value is None else str(value)])
+    append_projection_sheets(book, projection)
     book.save(xlsx_path)
     return csv_path, xlsx_path
 
@@ -304,6 +351,10 @@ def project_overview_plot(
     # Insula counts and cohort membership: evolution loader, not the July combined workbook.
     analysis = _load_analysis_table()
     progress = _attach_checked_counts(progress, analysis)
+    potential = potential_insula_table()
+    projection = load_projection_strength_tables()
+    progress = _attach_potential_insula(progress, potential)
+    neurons = pd.DataFrame(potential["rows"], columns=PER_NEURON_COLUMNS)
     animal_747 = _require_saved_747(progress) if include_online_sheet else {}
     if not include_online_sheet and (progress["monkey_id"].astype(str) == "747").any():
         raise ValueError("Offline progress overview invented animal 747")
@@ -362,16 +413,21 @@ def project_overview_plot(
     display.loc[total_at, "five_um_folder"] = ""
     # Table total is the sum of the rows on this sheet, including Other lab 747.
     # The DEB lab bars stay on the eight only and are not rewritten here.
-    for column in ("selected_n", *COUNT_COLUMNS):
+    for column in ("selected_n", *COUNT_COLUMNS, *POTENTIAL_COLUMNS):
         # both_n is the ARM-and-spatial intersection and is already inside ARM_insula_n.
         if column == "both_n":
             display.loc[total_at, column] = "—"
             continue
         display.loc[total_at, column] = str(int(pd.to_numeric(progress[column], errors="coerce").fillna(0).sum()))
+    display.loc[total_at, REASON_COLUMN] = "; ".join(
+        f"{name} {int(count)}" for name, count in neurons["selection_reason"].value_counts().items()
+    )
     display.loc[total_at, "insula_8_cohort"] = "Table total"
     display.loc[total_at, "data_status"] = f"Table total, {len(progress)} animals"
     display.loc[total_at, "notes"] = (
         f"Selected is the 462-neuron ledger. 747 is not in that ledger and is not added to Selected. "
+        "Added is Selected minus ARM insula. Potential insula (auto rule based) is the part of Added "
+        "whose soma is within 2 mm of an ARM insula voxel; see selected_neuron_potential_insula.csv. "
         "ARM and spatial is the intersection already inside ARM insula and is not added again. "
         "DEB lab summary is separate: 8 monkeys, screened "
         f"{int(plan_totals['ion_traced'])}, ARM insula {int(plan_totals['insula_corrected'])}, plan target 2400."
@@ -387,11 +443,27 @@ def project_overview_plot(
     plan_totals["workbook"] = str(WORKBOOK)
     plan_totals["insula_summary"] = analysis["summary_path"]
     plan_totals["progress_details_source"] = source_label
+    plan_totals["full_neuron_region_table"] = potential["full_neuron_region_table"]
+    plan_totals["potential_insula_rule"] = potential["rule"]
+    plan_totals["projection_strength"] = {
+        "legacy_combined_workbook": projection["legacy_combined_path"],
+        "legacy_strength_sheets": projection["legacy_strength_sheets"],
+        "legacy_strength_neuron_n": projection["legacy_strength_neuron_n"],
+        "legacy_strength_missing_n": projection["legacy_strength_missing_n"],
+        "arm_hierarchy_workbook": projection["arm_hierarchy_workbook"],
+        "arm_regional_measures_csv": projection["arm_regional_measures_path"],
+        "arm_regional_rows": int(len(projection["arm_regional_long"])),
+        "arm_regional_neuron_n": projection["arm_regional_neuron_n"],
+        "arm_regional_missing_n": projection["arm_regional_missing_n"],
+        "metric_notes": projection["metric_notes"],
+    }
 
     output.mkdir(parents=True, exist_ok=True)
-    for name in ("data_progress_table.csv", "data_progress_table.xlsx", "data_progress_table.png", "provenance.json"):
+    outputs = ("data_progress_table.csv", "data_progress_table.xlsx", "data_progress_table.png", "provenance.json", PER_NEURON_CSV)
+    for name in outputs:
         (output / name).unlink(missing_ok=True)
-    csv_path, xlsx_path = _write_table(display, plan_totals, output)
+    csv_path, xlsx_path = _write_table(display, plan_totals, output, neurons, projection)
+    neurons.to_csv(output / PER_NEURON_CSV, index=False, encoding="utf-8-sig")
     figure = output / "data_progress_table.png"
     if write_figure:
         saved, saved_totals = _totals_from_workbook(xlsx_path)
@@ -431,6 +503,34 @@ def project_overview_plot(
             "plan_target_unchanged": int(plan_totals["insula_expected_plan"]),
         },
         "insula_neuron_rule": "ARM_insula_n > 0 or Henry_coarse_INS_n > 0; spatial-only is not enough",
+        "full_neuron_region_table": potential["full_neuron_region_table"],
+        "selected_ledger": potential["selected_ledger"],
+        "potential_insula_auto": {
+            "rule": potential["rule"],
+            "per_neuron_table": PER_NEURON_CSV,
+            "added_n": int(neurons["added"].sum()),
+            "potential_insula_auto_n": int(neurons["potential_insula_auto"].sum()),
+            "arm_atlas": potential["arm_atlas"],
+            "added_by_selection_reason": neurons.loc[neurons["added"], "selection_reason"].value_counts().to_dict(),
+            "added_not_potential": neurons.loc[
+                neurons["added"] & ~neurons["potential_insula_auto"],
+                ["AnimalID", "neuron_id", "selection_reason", "soma_ARM_label", "ARM_insula_distance_mm"],
+            ].to_dict("records"),
+        },
+        "selection_reasons": potential["selection_reasons"],
+        "selected_by_reason": neurons["selection_reason"].value_counts().to_dict(),
+        "projection_strength": {
+            "legacy_combined_workbook": projection["legacy_combined_path"],
+            "legacy_strength_sheets": projection["legacy_strength_sheets"],
+            "legacy_strength_neuron_n": projection["legacy_strength_neuron_n"],
+            "legacy_strength_missing_n": projection["legacy_strength_missing_n"],
+            "arm_hierarchy_workbook": projection["arm_hierarchy_workbook"],
+            "arm_regional_measures_csv": projection["arm_regional_measures_path"],
+            "arm_regional_rows": int(len(projection["arm_regional_long"])),
+            "arm_regional_neuron_n": projection["arm_regional_neuron_n"],
+            "arm_regional_missing_n": projection["arm_regional_missing_n"],
+            "metric_notes": projection["metric_notes"],
+        },
         "progress_table_animals": int(len(progress)),
         "dropped_no_insula_neuron": dropped_no_insula,
         "status_changes_from_july_manifest": status_changes,

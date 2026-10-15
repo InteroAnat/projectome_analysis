@@ -55,10 +55,13 @@ OVERVIEW_COLS = [
     ("fmost_id", "fMOST", "meta"),
     ("insula_8_cohort", "Cohort", "meta"),
     ("selected_n", "Selected", "counts"),
-    ("neurons_screened", "Screened", "counts"),
-    ("ARM_insula_n", "ARM insula", "counts"),
-    ("spatial_only_n", "Spatial only", "counts"),
-    ("both_n", "ARM and spatial", "counts"),
+    ("neurons_screened", "Screened\n(monkey all region)", "counts"),
+    ("ARM_insula_n", "ARM\ninsula", "counts"),
+    ("added_n", "Added", "counts"),
+    ("potential_insula_auto_n", "Potential insula\n(auto rule based)", "counts"),
+    ("selected_by_reason", "Selected by", "meta"),
+    ("spatial_only_n", "Spatial\nonly", "counts"),
+    ("both_n", "ARM and\nspatial", "counts"),
     ("Henry_coarse_INS_n", "Henry", "counts"),
     ("five_um_local", "5 µm", "meta"),
     ("data_status", "Status", "meta"),
@@ -101,6 +104,36 @@ def _fmt(val) -> str:
     if isinstance(val, float) and val.is_integer():
         return str(int(val))
     return str(val)
+
+
+# Ledger EvidenceStratum -> short figure label. Full text is in selected_neuron_potential_insula.csv.
+REASON_SHORT = {
+    "HumanINS": "Henry",
+    "AtlasINS": "Atlas",
+    "Candidate": "Box",
+    "G_exploratory": "G",
+    "OriginCandidate": "Origin",
+    "NearINS": "Near",
+}
+REASON_KEY = (
+    "Selected by: Henry = Henry visual insula; Atlas = ARM insula label; Box = folded 251637 box; "
+    "G = gustatory, exploratory; Origin = insula at one soma-origin lookup;\n"
+    "Near = same-sample insula neuron within 2 mm. "
+    "Added = Selected minus ARM insula. Potential insula (auto rule based) = added soma within 2 mm of an ARM insula voxel."
+)
+
+
+def _short_reasons(value) -> str:
+    text = str(value).strip()
+    if not text or text.lower() == "nan":
+        return "—"
+    parts = []
+    for part in text.split("; "):
+        name, _, count = part.partition(" ")
+        parts.append(f"{REASON_SHORT.get(name, name)} {count}".strip())
+    if len(parts) > 4:
+        return " · ".join(parts[:3]) + "\n" + " · ".join(parts[3:])
+    return " · ".join(parts)
 
 
 def _cohort_mark(value) -> str:
@@ -338,16 +371,16 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
     columns = _columns_for(view)
     _use_cjk_font()
     n = len(view)
-    chart_h, plan_h, row_h = 5.2, 7.4, 0.55
-    fig_h = chart_h + plan_h + row_h * n + 1.2
-    fig_w = 20
+    chart_h, plan_h, row_h = 4.8, 6.2, 1.05
+    fig_h = chart_h + plan_h + row_h * n + 2.0
+    fig_w = 28
     fig = plt.figure(figsize=(fig_w, fig_h), facecolor="white")
     gs = fig.add_gridspec(
         3, 2,
         height_ratios=[chart_h, plan_h, row_h * n],
         width_ratios=[1.05, 1],
-        hspace=0.42,
-        wspace=0.28,
+        hspace=0.38,
+        wspace=0.22,
     )
     _plot_totals(fig.add_subplot(gs[0, 0]), totals)
     _plot_distribution(fig.add_subplot(gs[0, 1]), view[view["monkey_id"] != "TOTAL"])
@@ -362,10 +395,18 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
     for _, record in view.iterrows():
         shown = []
         for key, _, _ in columns:
-            shown.append(_cohort_mark(record[key]) if key == "insula_8_cohort" else _fmt(record[key]))
+            if key == "insula_8_cohort":
+                shown.append(_cohort_mark(record[key]))
+            elif key == "selected_by_reason":
+                shown.append(_short_reasons(record[key]))
+            else:
+                shown.append(_fmt(record[key]))
         rows.append(shown)
     if columns is OVERVIEW_COLS:
-        widths = [0.06, 0.08, 0.08, 0.08, 0.07, 0.07, 0.08, 0.12, 0.06, 0.10, 0.20]
+        widths = [
+            0.048, 0.054, 0.058, 0.052, 0.078, 0.054, 0.050, 0.092,
+            0.178, 0.052, 0.058, 0.046, 0.072, 0.108,
+        ]
     else:
         widths = [0.06, 0.07, 0.08, 0.05, 0.05, 0.06, 0.32, 0.06, 0.08]
 
@@ -375,30 +416,47 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
         loc="upper center",
         cellLoc="center",
         colLoc="center",
-        bbox=[0.01, 0.05, 0.98, 0.9],
+        bbox=[0.005, 0.18, 0.99, 0.80],
         colWidths=widths,
     )
     tbl.auto_set_font_size(False)
+    tbl.scale(1.0, 2.35)
     header_index = {label: index for index, label in enumerate(headers)}
     dist_i = header_index.get("Insula distribution")
     ins_i = header_index.get("Ins QC")
     status_i = header_index.get("Status")
     five_i = header_index.get("5 µm")
     cohort_i = header_index.get("Cohort")
+    reason_i = header_index.get("Selected by")
     animal_i = header_index.get("Animal", header_index.get("Monkey"))
+
+    body_height = tbl.get_celld()[(1, 0)].get_height()
+    row_heights: list[float] = []
+    for row_idx, row_cells in enumerate(rows):
+        reason_text = ""
+        if reason_i is not None and reason_i < len(row_cells):
+            reason_text = str(row_cells[reason_i])
+        scale = 1.25 if "\n" in reason_text else 1.0
+        if view.iloc[row_idx]["monkey_id"] == "TOTAL":
+            scale = max(scale, 1.1)
+        row_heights.append(scale)
 
     for (row, col), cell in tbl.get_celld().items():
         cell.set_edgecolor("#bdbdbd")
         if row == 0:
+            # Two-line headers such as "Potential insula (auto rule based)" need a taller row.
+            cell.set_height(body_height * 2.4)
             cell.set_facecolor(C_HEADER)
-            cell.set_text_props(color="white", fontweight="bold", fontsize=13)
+            cell.set_text_props(color="white", fontweight="bold", fontsize=11)
             continue
         data = view.iloc[row - 1]
         is_total = data["monkey_id"] == "TOTAL"
+        rscale = row_heights[row - 1]
+        cell.set_height(body_height * rscale)
         group = col_groups[col]
         cell.set_facecolor(_group_cell_color(group, row, is_total))
         if is_total:
-            cell.set_text_props(fontweight="bold", fontsize=13)
+            cell.set_text_props(fontweight="bold", fontsize=12)
         elif dist_i is not None and col == dist_i:
             cell.get_text().set_ha("left")
             cell.get_text().set_fontsize(11)
@@ -422,7 +480,12 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
                 cell.set_facecolor(paint)
             cell.set_text_props(fontsize=13)
         else:
-            cell.set_text_props(fontsize=13)
+            cell.set_text_props(fontsize=12)
+        if reason_i is not None and col == reason_i:
+            cell.get_text().set_wrap(True)
+            cell.set_text_props(fontsize=9 if is_total else 10, linespacing=1.35)
+    if reason_i is not None:
+        ax.text(0.005, 0.01, REASON_KEY, transform=ax.transAxes, fontsize=9.5, color="#424242", va="bottom")
 
     ts = totals.get("generated_at", "")
     fig.suptitle(
@@ -432,5 +495,5 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
         y=0.985,
     )
     out.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(out, dpi=120, facecolor="white", pad_inches=0.45)
+    fig.savefig(out, dpi=130, facecolor="white", pad_inches=0.5)
     plt.close(fig)

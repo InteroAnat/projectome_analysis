@@ -1,3 +1,107 @@
+## 2026-10-15 | Agent Cursor | Progress workbook embeds multi-level projection strength
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+`project_overview_plot` now attaches legacy L3/L6 `Projection_Strength_*` sheets (from [multi_monkey_INS_combined.xlsx](../group_analysis/combined/multi_monkey_INS_combined.xlsx), 306/462 Selected neurons) and the long `ARM_regional_measures` sheet (L1–L6 from [per_neuron_regional_measures.csv](../notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/per_neuron_regional_measures.csv), 429 neurons with sparse rows; 33 endpoint-ineligible omissions). Code: [projection_strength.py](../group_analysis/project_overview/projection_strength.py). Full matrices remain in [arm_projection_hierarchy_tables.xlsx](../notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/arm_projection_hierarchy_tables.xlsx). [data_progress_table.xlsx](../group_analysis/data_progress/data_progress_table.xlsx) and [provenance.json](../group_analysis/data_progress/provenance.json) refreshed; figure layout widened in [plot.py](../group_analysis/project_overview/plot.py). Branch: `codex/insula-pipeline-evolution-20261008`.
+
+## 2026-10-15 | Agent Cursor | Codex finishing 252385 5 µm aligned copy; scratch scripts removed
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Codex is finishing the 252385 5 µm aligned copy with [tools/align_252385_section_block.py](../tools/align_252385_section_block.py) `--complete --workers 16` (shift left 653, down 782 from section 12527). PID 57352 was still that command after the cleanup and was left running. Originals in `resample_5um` were not overwritten. The 100 µm CH00DS volume was measured and has no block shift at planes 418–420. The aligned copy is still being written.
+
+Agent scratch scripts removed: `notes/slice_shift_252385_20261015/render_seam.py`, `render_neuron_widefield.py`, `check_seam.ijm`, `check_three.ijm`, and `tools/align_252385_native_cubes.py`. `_check_12526_12527_overlay.py` and `_residual_12526_12527.py` were already absent. PNG/JSON evidence and `shift_record.json` were left in place.
+
+## 2026-10-15 | Agent Cursor | 252385 5 µm copy is 653/782 and still short of section 20788
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+The 100 µm CH00DS volume stays unshifted. Planes j=419 and j=420 already match j=418 at (0, 0), r≈0.70. The 33/39 px and 260/301 px candidates stay rejected. No new NRRD and no new NIfTI were written.
+
+The 5 µm script [tools/align_252385_section_block.py](../tools/align_252385_section_block.py) has `LOW_LEFT=653` and `LOW_DOWN=782` (`round(5021×0.65/5)`, `round(6017×0.65/5)`). The plain range path raises if those two numbers change. Originals in `X:\fMOST\5micron_datasets\252385-CH1_resample\resample_5um` were left in place. `main_scripts/Visual_toolkit` was not edited.
+
+Aligned copy: `X:\fMOST\5micron_datasets\252385-CH1_resample\resample_5um_z12527_aligned`. At 16:43 the folder held 16386 `252385_*_CH1_resample.tif` files, z 1–19926. Sections before 12527 were all present (12526 files). Post-cut sections present: 3860 of 8262 (12527–20788). z=12527 was present. z=20788 was absent, and it was still absent at 16:48, so the stack is not finished. At 16:43 the missing post-cut spans were 13654–14999, 15903–17000, 17905–19000, and 19927–20788. At 16:48, z=14999, 17000, 19000, and 20788 were still missing.
+
+z=1 and z=12526 share the source file id (hardlinks). Aligned z=12527 is a different file. Every retained pixel equals the original 12527 moved left 653 and down 782, and the new top and right borders are zero.
+
+Overlay of original 12526 (red) and aligned 12527 (green): [overlay_12526_vs_aligned12527.png](../notes/slice_shift_252385_20261015/overlay_12526_vs_aligned12527.png). The sulci and the midline lie on top of each other (yellow). The brain stays in the frame, with empty space on the right where the block moved left. Whole-section edge correlation, downsampled by 8, peaks at (0, 0). Writing was left running.
+
+A 653/782 writer was already active, so no second writer was started. Range jobs that exited at 16:45 last logged `shifted through 13720`, `15979`, `17980`, and `20000`. Resume jobs for 13721–14999, 15980–17000, 17981–19000, and 20001–20788 then exited within about two minutes (no new log line; partial `*.tif.part` files left at 13735, 15983, 17986, and 20016). Still running at 16:50: PID 57352, `align_252385_section_block.py --complete --workers 16`, started 16:45. Its record (`shift_record.json`, procedure `Codex exhaustive shift/readback v1`) says shift [653, 782], `originals_overwritten` false, state `running`, pre-cut verified 12526, post-cut verified 300 (`existing_exact`, z 12527–12830), failures 0. That job had not reached the tail gaps yet.
+
+## 2026-10-15 | Agent Codex | Neuron 024's three cut crossings support the corrected 5 µm image–SWC alignment
+
+Focused QC is complete and the actual [024 XY/XZ comparison](../notes/slice_shift_252385_20261015/qc/neuron024_cut_alignment.png) was inspected. All three crossings of native section 12527 were tested against the unchanged own-sample raw SWC (`f207618cf712323232718e0fd0d584ace6a934389c9e79f0b4b93ffe179dee1b`). The shifted post-cut fluorescence is substantially stronger at the same SWC coordinates: original→corrected mean intensities are 3.48→87.94, 1.19→34.68 and 2.01→54.45. Nearby corrected spatial controls average 9.72, 13.36 and 6.22 at matched Z. These are descriptive dependent image samples, not an independent statistical test or anatomical acceptance threshold. Actual narrow XY and XZ views support improved alignment at nominal 5 µm resolution; individual fine-axon identity remains an acquisition-resolution proofreading question.
+
+The 5021-versus-5201 discrepancy was additionally tested directly on identical original-pixel/SWC sample positions. Native left 5021 (5 µm left 653) gives the above corrected means; native left 5201 (5 µm left 676) gives only 10.21, 8.04 and 8.72. Thus 5021 is better supported for image–SWC correspondence, although Xiaofei's intended typed value remains unconfirmed. No SWC translation, registration fit, label reassignment or cohort change was made. Source fingerprints, exact support, clipped edges, XY/XZ physical pixel-center conventions and candidate measurements are in the existing shared QC manifest.
+
+QC efficiency improvement: bounded nearby compressed TIFF segments are read as one span, retaining identical segment hashes and decoded coverage; sparse/tiled cases fall back to individual reads. Real original-LZW and corrected-Deflate ROIs matched independent full TIFF decoding. Synthetic sparse tiled LZW/Deflate/uncompressed cases also matched exact arrays with the fallback. All 17 existing fMOST loader tests and 27 existing visual-review tests pass (44 total). The tests write only temporary fixtures and preserve production review artifacts.
+
+Full-stack completion/readback remains active, with 2,300 post-cut sections verified and zero failures at this milestone; all 12,526 pre-cut sections are verified unchanged. A dependent guarded job will run all 103 previous review identities only after `shift_record.json` reaches `complete_verified`. All 55 selected identities are within that 103-identity scope. Fresh bounded raw-source retries for d001/d002 each returned HTTP 500 after three requests; processed caches were explicitly not substituted. The [review guide](../notes/slice_shift_252385_20261015/README.md) now prioritizes the focused 024 evidence while full-stack verification and the bulk rerun remain pending.
+
+## 2026-10-15 | Agent Codex | Complete the 5 µm correction and rerun source-bound bulkvisual QC (in progress)
+
+User explicitly requested completion of the original fMOST 5 µm stack correction and bulkvisual QC, especially native neuron 024 across section 12527. Source confirmed again with the user: `X:\fMOST\5micron_datasets\252385-CH1_resample\resample_5um`, 20,788 originals, observed 11451×17941 uint16 TIFF arrays, nominal XYZ spacing 5×5×3 µm. Starting destination inventory had 16,418 files and 4,370 missing. Four old Deflate-compression workers were active; their incomplete range records were not evidence of stack completion.
+
+Efficiency refinement: reuse the same derivative, preserve completed valid files, encode missing sections with lossless LZW, and verify the complete post-cut array against original retained pixels plus zero-padding. A representative 256-row benchmark encoded LZW in 0.094 s versus Deflate level 6 in 0.297 s, with comparable byte sizes. Took over the four identified old jobs and removed only their unfinished TIFF temporary files after they stopped. No original or SWC is overwritten. The candidate remains native left 5021/down 6017 → 5 µm left 653/down 782; the earlier textual 5201 discrepancy remains scientifically unresolved.
+
+`tools/align_252385_section_block.py --complete --workers 16` is active. All 12,526 pre-cut files passed unchanged-file-object or exact-byte verification; the first 600 post-cut sections passed full pixel checks with zero failures at this milestone. Each verified post-cut record binds original/output SHA256 and source/output fingerprints. The single full-stack source/result record is the existing aligned-folder `shift_record.json`; its state remains running until all 8,262 post-cut sections pass and all 20,788 outputs are present. No completion is yet claimed.
+
+Neuronal QC scope: all 103 previous own-sample review identities, with 55 selected identities kept distinct from additional review candidates. The local raw-source inventory has 21 post-cut somata, eight cut-spanning neurons, and two missing raw SWCs (d001/d002, being re-probed through the existing bounded fetcher). Neuron 024 has three graph-edge crossings of section 12527, with edge lengths about 13.4, 5.3 and 12.3 µm. Focused XY/XZ before/after views are being generated at all three crossings, with original SWCs held fixed and image/trace support matched; broad 4 mm context and thin-slab trace QC will follow completed-stack verification. Existing human annotations and historical review products remain preserved.
+
+Module change log (local, unreleased): extended the existing alignment command with resumable completion/readback and bounded concurrency, and the existing QC command with `--focus-024` and `--bulk-qc`. The latter reuses original TIFF segment decoding and bulk-visual `trace_slab`, writing one gallery panel per usable identity and one consolidated result record instead of duplicate full volumes. Syntax checks pass; live data verification is in progress. Main review entry remains [252385 guide](../notes/slice_shift_252385_20261015/README.md). Pending: terminal stack verification, bulk rerender/readback, direct image–SWC review and scientific acceptance.
+
+## 2026-10-15 | Agent Cursor | 252385 planes 419 and 420 already match plane 418; no shift volume written
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Original LPS `X:\fMOST\ch00ds_100x100x90\nifti\ins_monkey_datasets\331_252385_ch00ds_100x100x100_orient-LPS.nii` (898×693×573, 0.1 mm, plane axis j). Masked Pearson correlation on voxels above the black border (threshold 12, about 0.65 of each plane). Search window ±80 px. The reported shift is the integer move applied to the later coronal display: positive d_row is image down, positive di_col is +i (image right).
+
+j=419 vs j=418 peaks at (d_row, di_col) = (0, 0). Correlation at zero shift and at the peak is 0.701. It falls to 0.517 at +10 px along the row and to 0.184 at the +80 px edge. j=420 vs j=418 also peaks at (0, 0), r = 0.697. Voxels above 100 stay at (1, 0) or (0, 0). Voxels above 400 (about 0.06 of the plane) peak at (1, 0) for j=419 and (3, −2) for j=420. Those are within a few pixels. No shift larger than about 5 px, so no new NRRD and no new NIfTI were written. The 260 px / 301 px test was not repeated.
+
+Montage: [ch00ds_252385_measured_montage.png](../notes/slice_shift_252385_20261015/ch00ds_252385_measured_montage.png). Numbers: [ch00ds_252385_measured_shift.json](../notes/slice_shift_252385_20261015/ch00ds_252385_measured_shift.json). The 418 red / 419 green panel is yellow across the section, with a small red patch near the midline. That patch is not a translated block. This does not say a seam was repaired. Planes other than 418, 419, and 420 were not measured. Original NRRD, the source LPS NIfTI, `331_252385_shift12527`, and `331_252385_shift12527_test` were left in place. The 5 µm TIFF stack and `main_scripts/Visual_toolkit` were not edited.
+
+## 2026-10-15 | Agent Cursor | Screened header says monkey all region
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+The figure header for `neurons_screened` is now `Screened (monkey all region)`. The number is every neuron of that monkey in the full region table, not the 462 Selected set and not the insula subset. The csv column name is still `neurons_screened`. Figure redrawn from the existing workbook. Counts are unchanged.
+
+## 2026-10-15 | Agent Cursor | Potential insula now uses the ARM insula label; selection reasons on the table
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+This replaces the box-or-anchor rule in the entry below. **Potential insula (auto rule based)** is now: an added neuron (Selected, not atlas insula) whose own SWC-root soma is within 2 mm of an ARM insula voxel. Atlas: `ARM_in_NMT_v2.1_sym` level 6. Labels: Ia/Id, Iai, Ial, Iam/Iapm, Iapl, Ig, Pi, both sides (14 labels). Distance is a Euclidean distance transform at 0.25 mm. The rule is applied to every added neuron, unknown or labelled. The folded box and anchor distance stay as reference columns.
+
+Of the 161 added neurons, 153 pass. The 8 that do not lie 2.02–2.59 mm from insula: 631 031, 034, 086, 136 (G); 900 077, 090, 139 (G); 797 074 (SII, Candidate). All 15 of 605's added neurons are 0.25–0.5 mm from ARM insula. Per animal, Added / Potential: 936 49/49, 605 15/15, 331 37/37, 900 10/7, 948 13/13, 945 11/11, 797 14/13, 631 12/8.
+
+Selection reason per neuron is the ledger `EvidenceStratum`: HumanINS 260, AtlasINS 89, Candidate 63, G_exploratory 24, OriginCandidate 15, NearINS 11. 605's 21 are AtlasINS 6, OriginCandidate 9, NearINS 6. The progress table has `selected_by_reason` per animal, shown on the figure as "Selected by" with a key. The per-neuron file and the `selected_neurons` xlsx sheet have `selection_reason`, `selection_reason_text`, `soma_ARM_label`, and `ARM_insula_distance_mm`. The overview now needs nibabel and scipy; run `conda run -n projectome python tools/project_overview_plot.py`. Figure regenerated 17:03. Not committed yet. This is a rule flag, not anatomical acceptance.
+
+## 2026-10-15 | Agent Cursor | Overview adds Added and Potential insula (auto rule based)
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+`project_overview_plot` now writes two more columns. **Added** is Selected minus ARM insula. **Potential insula (auto rule based)** is the part of Added that passes the position rule from `build_coarse_insula_review.py`: folded 251637 box plus 2 mm, or an uncertain atlas label (blank, Unknown, PrCO, `Unknown_0`) with a same-sample atlas or Henry insula neuron within 2 mm. Numeric-ID neighbours were not used. A labelled non-insula cortex such as G is not promoted by distance. This is a rule flag, not a human label and not anatomical acceptance.
+
+Each of the 462 Selected neurons was checked. Of 161 Added, 137 pass: 111 by the box, 26 by anchor distance. 24 do not: 19 labelled non-insula, and 5 labelled non-insula that are within 2 mm (distance not used). Per animal, Added / Potential: 936 49/49, 605 15/15, 331 37/34, 900 10/1, 948 13/13, 945 11/11, 797 14/14, 631 12/0. 747 is not in the 462 and stays blank.
+
+605's 15 added neurons (036, 090, 094, 095, 096, 097, 117, 118, 119, 120, 121, 123, 124, 126, 127) all have no portal region and soma label `Unknown_0`. None hit the box: their somas are at Z about 30.4–31.2 mm, and the 251637 boxes end near Z 26.4 mm with padding. Each is 0.29–1.90 mm from a 605 atlas-insula neuron, so all 15 are potential insula by the distance part of the rule.
+
+Newest full neuron region table, now linked from [data_progress/README.md](../group_analysis/data_progress/README.md) and `provenance.json`: [all_neuron_review_manifest_distance_corrected.csv](../group_analysis/evolution_20261008/classification/coarse_insula_review_20261009/distance_priority_v2_20261009/all_neuron_review_manifest_distance_corrected.csv) (8,746 neurons). The 2026-10-12 recount reads it. Per-neuron output: [selected_neuron_potential_insula.csv](../group_analysis/data_progress/selected_neuron_potential_insula.csv), also the `selected_neurons` sheet of the xlsx. Code: `group_analysis/project_overview/potential_insula.py`. Figure: [data_progress_table.png](../group_analysis/data_progress/data_progress_table.png), regenerated 16:51. Not committed yet.
+
+## 2026-10-15 | Agent Cursor | One project overview command writes group_analysis/data_progress
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+The only plot command is [tools/project_overview_plot.py](../tools/project_overview_plot.py). It calls `project_overview_plot` in [group_analysis/project_overview/track.py](../group_analysis/project_overview/track.py). `tools/progress_plot.py` was removed and was not committed. `write_progress_overview` is no longer the name of that function. Drawing stays `plot_progress_table` in [group_analysis/project_overview/plot.py](../group_analysis/project_overview/plot.py).
+
+The parser moved out of `group_analysis/data_progress/`. That folder is only the refreshed output of this command: [data_progress_table.csv](../group_analysis/data_progress/data_progress_table.csv), [data_progress_table.xlsx](../group_analysis/data_progress/data_progress_table.xlsx), [data_progress_table.png](../group_analysis/data_progress/data_progress_table.png), [provenance.json](../group_analysis/data_progress/provenance.json), and [README.md](../group_analysis/data_progress/README.md). The same live-table description is in [tools/README.md](../tools/README.md) and [dataset_status_overview.md](../group_analysis/docs/dataset_status_overview.md).
+
+The live table is the Tencent workbook macaque_fMOST, tab Progress Details (`BB08J2`): https://docs.qq.com/sheet/DQXFTS21ieUVGTEpJ?tab=BB08J2. The 15:56 run parsed that link, Monkey Data (`group_analysis/docs/monkey_experiment_data_summary.xlsx`), and `load_analysis_neuron_table`. The opendoc call returned HTTP 401, so animal rows came from [progress_details_BB08J2.tsv](../group_analysis/evolution_20261008/overview_sheet_20261012/progress_details_BB08J2.tsv). `provenance.json` records `tsv_fallback` and `animal_rows` 40. The function did not invent animals.
+
+DEB lab `data_status` on the refreshed table, in row order: 936/251637 Completed, 605/252383 Pending, 331/252385 Completed, 900/252718 Pending, 948/252384 Completed, 945/252527 Pending, 797/252790 Pending, 631/252714 Pending. Those words are the Monkey Data cells. The live tab's tracing text stays in `sheet_tracing_status`. Nine animals are on the figure (the eight plus 747/250432). Table total: screened 1732, ARM insula 309, Selected 462. DEB lab bars stay on the eight: screened 1498, ARM insula 301. 797's 5 µm cell is Yes, folder `252790-CH1_resample`. This is not anatomical acceptance.
+
+Commit `bbc4b3a4` is on `codex/insula-pipeline-evolution-20261008` and was pushed (`744793fb..bbc4b3a4`). The other untracked tools (`nrrd_to_orient_lps.py`, the 252385 align scripts, `ch00ds_5view_montage.py`, `qc_252385_shift.py`) were not in that commit.
+
 ## 2026-10-15 | Agent Cursor | 252385 CH00DS test shift is 260 px left and 301 px down from plane 419
 
 **Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
@@ -9,6 +113,20 @@ Header of `X:\fMOST\ch00ds_100x100x90\331_252385_ch00ds.nrrd`: sizes 898 573 693
 Test NRRD: `X:\fMOST\ch00ds_100x100x90\331_252385_ch00ds_shift12527_test.nrrd` (713172296 bytes, encoding raw). LPS: `X:\fMOST\ch00ds_100x100x90\nifti\ins_monkey_datasets\331_252385_shift12527_test\331_252385_ch00ds_orient-LPS.nii`, shape 898×693×573, zooms 0.1, 0.1, 0.1 mm, nibabel LPS. Original NRRD (222364408 bytes) and `331_252385_ch00ds_100x100x100_orient-LPS.nii` were not overwritten.
 
 Montages: [ch00ds_252385_test_montage_before.png](../notes/slice_shift_252385_20261015/ch00ds_252385_test_montage_before.png), [ch00ds_252385_test_montage_after.png](../notes/slice_shift_252385_20261015/ch00ds_252385_test_montage_after.png). Plane j=418 is unchanged. From j=419 through 692 the block is one rigid move (in-frame LPS voxels match at j=419, 500, and 680). The sagittal step, the empty axial posterior to the red line, and the separated red/green overlay show that jump. About 0.515 of bright tail voxels leave the frame, so the posterior block is not seated on the anterior one.
+
+## 2026-10-15 | Agent Codex | Independent 252385 correction supersedes the j419 candidate
+
+User requested independent correction, previous bulk-visual QC methods, and 3D rendering. Starting state: heavily dirty Cursor checkout and multiple existing shifted products. Scope was refined to one separate CH00DS derivative, one consolidated QC manifest/review entry, and bounded original-source TIFF/SWC checks; no whole-resolution duplication, source overwrite, SWC relabeling, or cohort changes.
+
+**Correction of the earlier Cursor claim below:** whole-volume adjacent-plane audit identifies a transient displacement at zero-based NIfTI j417 and the persistent jump at j435, rather than j419. Original j418–434 is already aligned. The new candidate shifts only j417 and j435–692 by array (-33,0,-39), using the original `331_252385_ch00ds_100x100x100_orient-LPS.nii`. All 259 changed planes and the saved affine pass exact full-voxel readback; other planes are bit-identical. Independent original-NRRD/input-NIfTI comparison confirms every voxel after transpose/reversal. Original header remains nominal 100×100×100 µm despite the parent folder's 90 µm name. Native section-to-coarse-plane mapping is unresolved; the correction uses observed coarse discontinuities rather than an inferred filename/spacing formula.
+
+Current candidate: `X:\fMOST\ch00ds_100x100x90\nifti\ins_monkey_datasets\331_252385_shift_corrected_v01\images\331_252385_ch00ds_100x100x100_orient-LPS_desc-shiftcorr_v01.nii`. Main review entry: [252385 review guide](../notes/slice_shift_252385_20261015/README.md); [shared manifest](../notes/slice_shift_252385_20261015/qc/manifest.json). Fixed-camera five-view original/corrected renders and full-resolution boundary images were actually inspected. Main jump feature correlation improves −0.1943 to 0.9733 with residual 1.4 px; j417 improves only to 0.6407 and retains source damage. Unrelated original j104 anomaly is preserved. No global clean-volume/anatomical acceptance is claimed.
+
+Native QC reused original TIFF compressed-segment decoding/fingerprints and existing bulk-visual five-section `trace_slab`, with own raw SWCs, 4 mm XY / 15 µm slabs, explicit source coverage and raw/log comparisons. All 55 selected graphs validate, all selected roots precede the native cut, and only selected 024 spans it. Additional 088/089 are diagnostic, not added cohort members. Six available sampled shifted-TIFF ROIs and all three seam example stacks exactly match translated original source pixels. Local seam correlations remain weak, so thin-axon continuity/SWC identity remains unverified.
+
+Original `X:\fMOST\5micron_datasets\252385-CH1_resample\resample_5um` has 20,788 sections. During QC the aligned copy had 15,781 with 5,007 missing; this is a live nonterminal observation, not a terminal failure. Four existing alignment jobs were observed and preserved. Whole-section seam comparisons favour native left 5021 over 5201, but Xiaofei's discrepancy remains unconfirmed. Technical CH00DS correction/readback and bounded QC are complete; aligned-stack completion/full readback, native-resolution tracing, scale/orientation/calibration, damaged source planes and user scientific/visual acceptance remain pending.
+
+Module log: added `tools/qc_252385_shift.py` (uncommitted, not released), reusing the existing montage renderer and bounded bulk-visual pixel/trace functions. Audit, repair and native-qc modes were executed; source/code/software hashes and parameters are in the manifest. See the review guide for next steps, reproducibility and the compact output tree. Existing Cursor results remain historical and are not overwritten or endorsed.
 
 ## 2026-10-15 | Agent Cursor | 252385 CH00DS block from plane 419 is a shifted NRRD sibling, then LPS
 

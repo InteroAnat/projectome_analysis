@@ -6,6 +6,7 @@ Small commands that sit next to the analysis packages. The drawing and table cod
 |------|---------|----------------|
 | Project overview, all cohort groups | `python tools/project_overview_plot.py` | `group_analysis/data_progress/`: CSV, xlsx, PNG, `provenance.json` |
 | CH00DS NRRD to LPS NIfTI | `python tools/nrrd_to_orient_lps.py` | One cardinal NIfTI. See the script docstring. |
+| 252385 shift audit/correction | `python tools/qc_252385_shift.py` | [QC and review guide](../notes/slice_shift_252385_20261015/README.md); `--repair` creates a separate candidate; `--native-qc` checks bounded source pixels and same-slab traces. |
 | NMT flatmap | `julia --project=tools/nmt_flatmap_pipeline` | Depth model, flatmap, UVW. See [nmt_flatmap_pipeline/README.md](nmt_flatmap_pipeline/README.md). |
 
 ## Project overview
@@ -44,6 +45,8 @@ An animal is kept when `ARM_insula_n` > 0 or `Henry_coarse_INS_n` > 0. Spatial-o
 
 The last all-groups run (2026-10-12) drew 9 animals: table total screened 1732, ARM insula 309, Selected 462. The DEB lab bars stay on the eight only: screened 1498, ARM insula 301, ION expected 2429, insula cell target 2400. Those bars are not a second group plot.
 
+Added is Selected minus ARM insula. Potential insula (auto rule based) is the part of Added whose soma is within 2 mm of an ARM insula voxel. Selected by gives each animal's count per selection reason (ledger `EvidenceStratum`). The per-neuron check is `selected_neuron_potential_insula.csv`. The ARM check needs nibabel and scipy, so run it in the `projectome` environment. The full neuron region table is linked in [data_progress/README.md](../group_analysis/data_progress/README.md).
+
 Counts come from `load_analysis_neuron_table` (the 462-neuron ledger plus `per_animal_insula_summary.csv`). The 5 µm column is Yes only when `X:\fMOST\5micron_datasets` has that sample folder. This figure is not anatomical acceptance.
 
 ### Outputs
@@ -55,6 +58,7 @@ Written under `group_analysis/data_progress/` unless `--output` names another fo
 | `data_progress_table.csv` | One row per kept animal, plus TOTAL |
 | `data_progress_table.xlsx` | Same rows, an `injection_plan` sheet, and a `totals` sheet. The PNG is redrawn from this workbook. |
 | `data_progress_table.png` | Bars, DEB lab injection grid, and the all-groups table |
-| `provenance.json` | Loader paths, reality-bar numbers, dropped animals, live-table fetch |
+| `selected_neuron_potential_insula.csv` | One row per Selected neuron with the position-rule check |
+| `provenance.json` | Loader paths, reality-bar numbers, dropped animals, live-table fetch, potential-insula rule |
 
 `python group_analysis/scripts/build_data_progress.py` is the same function. Use `tools/project_overview_plot.py` for the all-groups figure.
