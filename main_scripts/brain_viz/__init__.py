@@ -1,9 +1,13 @@
-"""Step 3.2 core. BrainViz loads from core.py on first use."""
+"""Step 3.2 core.
 
-def __getattr__(name):
-    from . import core
-    if hasattr(core, name):
-        value = getattr(core, name)
-        globals()[name] = value
-        return value
-    raise AttributeError(f"module {__name__!r} has no attribute {name!r}")
+Importing this package returns core.py. Mesh wrappers in this folder stay
+importable as submodules.
+"""
+import sys
+from pathlib import Path
+
+from . import core as _core
+
+_core.__path__ = [str(Path(__file__).resolve().parent)]
+_core.__package__ = __package__ or "brain_viz"
+sys.modules[__name__] = _core

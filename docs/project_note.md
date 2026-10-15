@@ -20,6 +20,12 @@ Composition: 436 main (260 Henry coarse INS, 89 atlas-only INS, 63 folded candid
 
 Ledger: [neuron_summary.csv](../notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/neuron_summary.csv). Defining note: [evolution_status_20261009.md](../group_analysis/evolution_20261008/reports/evolution_status_20261009.md), commit `6baef3dd`. This record does not edit the ledger and is not anatomical acceptance.
 
+## 2026-10-15 | Agent Cursor | Step cores moved into main_scripts packages
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Step scripts were left as they are. Core code now sits in `main_scripts/region_analysis/` (labels included; the old monolith is `legacy.py`), `main_scripts/Visual_toolkit/`, `main_scripts/fnt/`, and `main_scripts/brain_viz/`. Old import names remain as thin wrappers. `python -m unittest discover -s tests -p test_*.py` in the `projectome` env: 413 tests, OK. The step files have an empty diff.
+
 ## 2026-10-12 | Agent Cursor | Pipeline layout after the Codex evolution
 
 **Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
