@@ -1,3 +1,5 @@
+## 2026-10-15 | Agent Cursor | CH00DS NIfTI in `X:/fMOST/ch00ds_100x100x90/nifti/`: ITK-SNAP RAI = nibabel LPS [-1,-1,+1] via `nii_reorientation.build_cardinal_affine`; each NRRD header spacing kept, no resample.
+
 ## 2026-10-15 | Agent Cursor | CH00DS volumes saved on X:
 
 **Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
