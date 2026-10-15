@@ -1,3 +1,13 @@
+## 2026-10-15 | Agent Cursor | CH00DS volumes saved on X:
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+Twenty-six portal CH00DS NRRDs are in `X:\fMOST\ch00ds_100x100x90`. Each file is `http://bap.cebsit.ac.cn/monkeydata/{sample}/ch00ds.nrrd`, the `location=ch00ds.nrrd` field of catalog section `[CH00DS]`. That catalog direction is 100 × 100 × 90 µm. This is not the 5 µm CH1 tree.
+
+Requested brains with a NRRD: 251637, 252385, 252714, 252790, 252718, 252527, 252384, 250432. 252383 has a `[CH00DS]` section whose location is `ch00-mip.webm` (direction 65 × 65 × 60), so no NRRD was saved. Portal samples without a `[CH00DS]` section: 221747, 231623, 232717, 233001, 234162. Their `ch2` catalogs returned HTTP 404.
+
+Original downloads were not overwritten. A `*_ch00ds_corrected.nrrd` sibling was written only when the stored header was (100, 100, 1) and the grid matched the catalog size; Z was set to 90 and the gzip payload was copied unchanged. Headers left as stored: files already (100, 100, 90); 252385 at (100, 100, 100), grid 898 × 573 × 693 against catalog 892 × 573 × 693; 251636 at (100, 100, 1), grid 976 × 533 × 711 against catalog 586 × 506 × 692; and 234197, 240025, 240901, 241334, 241349, whose headers are 5, 13, 13, 7, and 17.85 µm in plane.
+
 ## 2026-10-15 | Agent Cursor | Analysis selection remains the verified 462
 
 **Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
