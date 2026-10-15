@@ -47,11 +47,13 @@ OVERVIEW_COLS = [
     ("monkey_id", "Animal", "meta"),
     ("fmost_id", "fMOST", "meta"),
     ("insula_8_cohort", "Cohort", "meta"),
+    ("selected_n", "Selected", "counts"),
     ("neurons_screened", "Screened", "counts"),
     ("ARM_insula_n", "ARM insula", "counts"),
     ("spatial_only_n", "Spatial only", "counts"),
-    ("both_n", "Both", "counts"),
+    ("both_n", "ARM and spatial", "counts"),
     ("Henry_coarse_INS_n", "Henry", "counts"),
+    ("five_um_local", "5 µm", "meta"),
     ("data_status", "Status", "meta"),
 ]
 
@@ -356,7 +358,7 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
             shown.append(_cohort_mark(record[key]) if key == "insula_8_cohort" else _fmt(record[key]))
         rows.append(shown)
     if columns is OVERVIEW_COLS:
-        widths = [0.07, 0.10, 0.11, 0.08, 0.09, 0.09, 0.07, 0.07, 0.32]
+        widths = [0.06, 0.08, 0.08, 0.08, 0.07, 0.07, 0.08, 0.12, 0.06, 0.10, 0.20]
     else:
         widths = [0.06, 0.07, 0.08, 0.05, 0.05, 0.06, 0.32, 0.06, 0.08]
 
@@ -374,6 +376,7 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
     dist_i = header_index.get("Insula distribution")
     ins_i = header_index.get("Ins QC")
     status_i = header_index.get("Status")
+    five_i = header_index.get("5 µm")
     cohort_i = header_index.get("Cohort")
     animal_i = header_index.get("Animal", header_index.get("Monkey"))
 
@@ -402,6 +405,10 @@ def plot_progress_table(display: pd.DataFrame, totals: dict, out: Path | None = 
             cell.set_edgecolor(COHORT_EDGE)
             cell.set_linewidth(1.8)
             cell.set_text_props(fontsize=13, fontweight="bold")
+        elif five_i is not None and col == five_i and not is_total:
+            if str(data.get("five_um_local", "")).strip() == "Yes":
+                cell.set_facecolor("#C8E6C9")
+            cell.set_text_props(fontsize=13)
         elif status_i is not None and col == status_i and not is_total:
             paint = _status_bg(data["data_status"])
             if paint:

@@ -1,3 +1,55 @@
+## 2026-10-15 | Agent Cursor | Analysis selection remains the verified 462
+
+**Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
+
+The current analysis selection is 462 unique `SampleID::NeuronID`, DEB lab eight only. Dataset 250432 / animal 747 is outside it. The list was verified on 2026-10-12 and rechecked later. The 12 October screen did not replace this selection.
+
+| Animal | Dataset | Selected |
+|---|---|---:|
+| 936 | 251637 | 261 |
+| 331 | 252385 | 55 |
+| 797 | 252790 | 52 |
+| 945 | 252527 | 25 |
+| 605 | 252383 | 21 |
+| 948 | 252384 | 18 |
+| 631 | 252714 | 16 |
+| 900 | 252718 | 14 |
+| Total | | 462 |
+
+Composition: 436 main (260 Henry coarse INS, 89 atlas-only INS, 63 folded candidates, 24 G) plus 26 preview (15 OriginCandidate, 11 NearINS). July 353 all retained. September 420 keeps 412; the 8 left out are 250432 neurons 116, 117, 123, 126, 128, 131, 184, and 188. Inside the 462: ARM insula 301, Henry 260, ARM or Henry 349, other candidates 113.
+
+Ledger: [neuron_summary.csv](../notes/region_analysis_review_20261009/hierarchy_tables_20261009/combined_arm_projection_tables_462/neuron_summary.csv). Defining note: [evolution_status_20261009.md](../group_analysis/evolution_20261008/reports/evolution_status_20261009.md), commit `6baef3dd`. This record does not edit the ledger and is not anatomical acceptance.
+
+## 2026-10-12 | Agent Cursor | Pipeline layout after the Codex evolution
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+Branch `codex/insula-pipeline-evolution-20261008` at `07120438`, base `78008cb`. Codex edited the old step pipeline in place (69 files, `git diff -w` on the R primary script is 51 insertions and 35 deletions) and added 24 drivers under `group_analysis/scripts/` plus 11 modules in `main_scripts/`. The working-tree weight is the review products: `group_analysis/visual_review_20261002/` is 353.2 GB and 83,491 files, of which `cache/` is 292.7 GB of TIFF. That folder has 0 tracked files and is absent from `.gitignore`. `main_scripts/processed_neurons/` is 3.0 GB and already ignored. Proposed layout is code in git, image products on a data path, numbered steps kept as the editable surface. No files were moved.
+
+## 2026-10-12 | Agent Cursor | Selected total is the 462 ledger
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The progress table now has a Selected column from the 462-neuron ledger. The table total is 462. 747/250432 is not in that ledger, so its 234 screened neurons are not added. ARM insula stays its own column (309 on the nine rows; 301 on the DEB eight). ARM or Henry support on the 462 is 349.
+
+## 2026-10-12 | Agent Cursor | Both is the ARM and spatial intersection
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The nine Both values match `both_n` in the 2026-10-12 recount. The column header is now `ARM and spatial`. The table total no longer sums that intersection on top of ARM insula. Screened stays 1732 and ARM insula stays 309.
+
+## 2026-10-12 | Agent Cursor | Progress table total matches the nine rows
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The progress-table TOTAL row now sums the nine visible animals, including Other lab 747: screened 1732, ARM insula 309. It is labeled table total. The DEB lab summary stays the eight only: screened 1498, ARM insula 301, plan target 2400.
+
+## 2026-10-12 | Agent Cursor | 5 µm column from the local dataset folder
+
+**Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**
+
+The progress overview 5 µm column is a local-copy check of `X:\fMOST\5micron_datasets`. Yes only where that folder has the sample: 251637, 252384, 252385, 252527, and 252714. The other four animals on the table have no local copy there. Absence is not proof the data are unavailable elsewhere.
+
 ## 2026-10-12 | Agent Cursor | Cohort label is Other lab
 
 **Agent: Cursor | Date: 2026-10-12 (Asia/Shanghai)**

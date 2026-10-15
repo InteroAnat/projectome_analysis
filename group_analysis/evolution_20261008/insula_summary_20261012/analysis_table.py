@@ -55,6 +55,15 @@ def load_analysis_neuron_table() -> dict:
     if len(ledger) != 462:
         raise ValueError(f"Analysis ledger has {len(ledger)} rows, expected 462")
     eight_pairs = {(animal, sample) for animal, sample in EIGHT.items()}
+    selected_by_pair: dict[tuple[str, str], int] = {}
+    arm_or_henry = 0
+    for neuron in ledger:
+        pair = (str(neuron.get("AnimalID", "")).strip(), str(neuron.get("SampleID", "")).strip())
+        selected_by_pair[pair] = selected_by_pair.get(pair, 0) + 1
+        arm_hit = str(neuron.get("atlas_INS", "")).strip().lower() in {"true", "1", "yes"}
+        henry_hit = str(neuron.get("Henry_coarse_INS_visual_evidence", "")).strip().lower() in {"true", "1", "yes"}
+        if arm_hit or henry_hit:
+            arm_or_henry += 1
     screened = 0
     arm = 0
     rows = []
@@ -64,6 +73,8 @@ def load_analysis_neuron_table() -> dict:
         in_eight = (animal, sample) in eight_pairs and str(record.get("channel_variant", "")) != "yes"
         copied = dict(record)
         copied["insula_8_cohort"] = "DEB lab" if in_eight else "Other lab"
+        # Selected count is ledger membership. 747 is not in the 462, so this stays blank.
+        copied["selected_n"] = str(selected_by_pair[(animal, sample)]) if (animal, sample) in selected_by_pair else ""
         if in_eight:
             screened += int(copied["neurons_screened"])
             arm += int(copied["ARM_insula_n"])
@@ -78,4 +89,6 @@ def load_analysis_neuron_table() -> dict:
         "rows": rows,
         "eight_screened": screened,
         "eight_arm_insula": arm,
+        "eight_selected": sum(selected_by_pair.values()),
+        "arm_or_henry_n": arm_or_henry,
     }

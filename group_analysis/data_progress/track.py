@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -15,6 +16,7 @@ from .plot import _PLAN_BODY, plot_progress_table
 from .sheet_overview import LEGACY_EIGHT
 from .table import append_total_row, build_progress_table
 
+FIVE_UM_ROOT = Path(r"X:\fMOST\5micron_datasets")
 WORKBOOK = DOCS / "monkey_experiment_data_summary.xlsx"
 INSULA_SUMMARY = GROUP / "evolution_20261008" / "insula_summary_20261012" / "per_animal_insula_summary.csv"
 COUNT_COLUMNS = [
@@ -69,6 +71,7 @@ def _attach_checked_counts(progress: pd.DataFrame, analysis: dict) -> pd.DataFra
         hit = index.get(key)
         for column in COUNT_COLUMNS:
             record[column] = "" if hit is None else str(hit.get(column, ""))
+        record["selected_n"] = "" if hit is None else str(hit.get("selected_n") or "")
         in_eight = bool(hit) and str(hit.get("insula_8_cohort", "")) == "DEB lab"
         record["insula_8_cohort"] = "DEB lab" if in_eight else "Other lab"
         record["cohort_bar_n"] = str(hit.get("ARM_insula_n", "")) if in_eight else ""
@@ -131,6 +134,37 @@ def _keep_insula_animals(progress: pd.DataFrame) -> tuple[pd.DataFrame, list[dic
     if not kept:
         raise ValueError("Insula filter removed every animal")
     return pd.DataFrame(kept), dropped
+
+
+def _match_five_um(progress: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
+    """Yes only when a folder for that fMOST sample is in the 5 µm directory."""
+    out = progress.copy()
+    meta = {"root": str(FIVE_UM_ROOT), "readable": False, "folders": []}
+    try:
+        if not FIVE_UM_ROOT.is_dir():
+            raise FileNotFoundError(str(FIVE_UM_ROOT))
+        folders = sorted(path.name for path in FIVE_UM_ROOT.iterdir() if path.is_dir())
+    except OSError as exc:
+        out["five_um_local"] = "unreadable"
+        out["five_um_folder"] = ""
+        meta["error"] = str(exc)
+        return out, meta
+    meta["readable"] = True
+    meta["folders"] = folders
+    by_sample: dict[str, str] = {}
+    for name in folders:
+        for token in re.findall(r"\d{6}", name):
+            if token in by_sample and by_sample[token] != name:
+                raise ValueError(f"Sample {token} is in two 5 µm folders: {by_sample[token]} and {name}")
+            by_sample[token] = name
+    labels, names = [], []
+    for sample in out["fmost_id"].astype(str):
+        folder = by_sample.get(sample, "")
+        labels.append("Yes" if folder else "no local copy")
+        names.append(folder)
+    out["five_um_local"] = labels
+    out["five_um_folder"] = names
+    return out, meta
 
 
 def _require_eight(frame: pd.DataFrame, label: str) -> None:
@@ -269,6 +303,7 @@ def write_progress_overview(
         (progress["monkey_id"].astype(str) == "747") & (progress["fmost_id"].astype(str) == "250432")
     ).any():
         raise ValueError("Insula filter dropped 747/250432")
+    progress, five_um_meta = _match_five_um(progress)
 
     july = pd.read_csv(JULY_PROGRESS, dtype=str, keep_default_na=False)
     july_total = july.loc[july["monkey_id"] == "TOTAL"].iloc[0]
@@ -307,14 +342,26 @@ def write_progress_overview(
                 "source": "Monkey Data workbook",
             })
     display = append_total_row(progress, plan_totals)
-    extras = progress[progress.get("in_legacy_eight", pd.Series("yes", index=progress.index)).astype(str) == "no"]
-    if len(extras):
-        total_at = display.index[display["monkey_id"] == "TOTAL"][0]
-        display.loc[total_at, "data_status"] = f"8 plan + {len(extras)} outside"
-        display.loc[total_at, "notes"] = (
-            str(display.loc[total_at, "notes"])
-            + f"; {len(extras)} animals outside the DEB lab eight remain after dropping rows with no insula neuron"
-        )
+    total_at = display.index[display["monkey_id"] == "TOTAL"][0]
+    yes_n = int((progress["five_um_local"] == "Yes").sum())
+    display.loc[total_at, "five_um_local"] = f"{yes_n}/{len(progress)}"
+    display.loc[total_at, "five_um_folder"] = ""
+    # Table total is the sum of the rows on this sheet, including Other lab 747.
+    # The DEB lab bars stay on the eight only and are not rewritten here.
+    for column in ("selected_n", *COUNT_COLUMNS):
+        # both_n is the ARM-and-spatial intersection and is already inside ARM_insula_n.
+        if column == "both_n":
+            display.loc[total_at, column] = "—"
+            continue
+        display.loc[total_at, column] = str(int(pd.to_numeric(progress[column], errors="coerce").fillna(0).sum()))
+    display.loc[total_at, "insula_8_cohort"] = "Table total"
+    display.loc[total_at, "data_status"] = f"Table total, {len(progress)} animals"
+    display.loc[total_at, "notes"] = (
+        f"Selected is the 462-neuron ledger. 747 is not in that ledger and is not added to Selected. "
+        "ARM and spatial is the intersection already inside ARM insula and is not added again. "
+        "DEB lab summary is separate: 8 monkeys, screened "
+        f"{int(plan_totals['ion_traced'])}, ARM insula {int(plan_totals['insula_corrected'])}, plan target 2400."
+    )
 
     sheet_meta = totals.get("online_sheet") or {"fetch": "offline", "fetch_error": "", "snapshot": ""}
     source_label = sheet_meta.get("fetch") or "offline"
