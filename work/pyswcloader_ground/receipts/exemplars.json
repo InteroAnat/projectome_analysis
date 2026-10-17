@@ -1,0 +1,168 @@
+{
+  "tool": "tools/pyswcloader_ground.py",
+  "version": "0.1.0",
+  "settings": {
+    "package": "pyswcloader",
+    "pinned_version": "1.1.1",
+    "reference_tool": "NeuroM",
+    "reference_study": "Liu et al. 2026 Nature Cell Biology, DOI 10.1038/s41556-026-02009-4",
+    "reference_bridge": "external/ven_validation/scripts/morph_features.py",
+    "r_local_um": 800.0,
+    "allen_dimension_um": [
+      13200.0,
+      8000.0,
+      11400.0
+    ],
+    "allen_flip_z_default": true,
+    "modes": [
+      "inspect",
+      "compare",
+      "preprocess-risk",
+      "distance"
+    ],
+    "mode": "compare",
+    "flip_z": true,
+    "dry_run": false
+  },
+  "neurom_available": true,
+  "neurom_version": "4.0.5",
+  "output": "work/pyswcloader_ground/receipts/exemplars.json",
+  "cases": [
+    "processed_neurons/251637/007.swc",
+    "external/liu2026/swc/VENL/unSM1114.swc"
+  ],
+  "pyswcloader_version": "1.1.1",
+  "results": [
+    {
+      "path": "processed_neurons/251637/007.swc",
+      "soma_xyz_um": [
+        47541.4,
+        54080.1,
+        20557.8
+      ],
+      "cables_um": {
+        "n_nodes": 11947,
+        "axon": 93812.27101251697,
+        "basal": 16068.976152904459,
+        "apical": 0.0,
+        "other": 0.0,
+        "pyswc_nondendrite_rule": 93812.27101251697
+      },
+      "pyswcloader_total_length_um": 93812.27101251697,
+      "pyswcloader_matches_nondendrite_rule": true,
+      "neurom": {
+        "backend": "neurom-4.0.5",
+        "r_local_um": 800.0,
+        "complete_morph_labels": false,
+        "n_dendrite_neurites": 9,
+        "total_dendrite_length": 14811.852106153965,
+        "basal_length": 8349.900919914246,
+        "apical_length": 6461.951186239719,
+        "basal_max_path": 884.7406730651855,
+        "apical_max_path": 879.1586042046547,
+        "max_radial_distance_dend": 799.9984130859375,
+        "n_bifurcations_dend": 49,
+        "basal_gt_500": true,
+        "available": true,
+        "version": "4.0.5"
+      },
+      "allen_preprocess": {
+        "first_row_xyz_um": [
+          47541.4,
+          54080.1,
+          20557.8
+        ],
+        "preprocessed_first_row_xyz_um": [
+          13199.0,
+          7999.0,
+          -9157.8
+        ],
+        "z_flipped": true,
+        "axes_changed": [
+          "x",
+          "y"
+        ],
+        "negative_coordinate": true,
+        "dimension_um": [
+          13200.0,
+          8000.0,
+          11400.0
+        ],
+        "flip_requested": true,
+        "package_messages": [
+          "X axis exceeds boundary.",
+          "Y axis exceeds boundary."
+        ]
+      },
+      "questions": {
+        "pyswcloader_total_length": "Sum of edges whose child and parent types are both outside SWC types 3 and 4. This keeps axon and soma links.",
+        "neurom_liu_bridge": "Dendritic cable and path inside a 800 \u00b5m soma ball after the axon is removed, using NeuroM on a MorphIO crop.",
+        "same_measurement": false,
+        "reason": "pyswcloader total_length is 93812.271 \u00b5m. Full dendritic cable is 16068.976 \u00b5m."
+      }
+    },
+    {
+      "path": "external/liu2026/swc/VENL/unSM1114.swc",
+      "soma_xyz_um": [
+        -0.8228,
+        -0.6776,
+        0.0
+      ],
+      "cables_um": {
+        "n_nodes": 17153,
+        "axon": 878.1155551102954,
+        "basal": 7700.2248138530285,
+        "apical": 6461.160155699057,
+        "other": 0.0,
+        "pyswc_nondendrite_rule": 878.1155551102954
+      },
+      "pyswcloader_total_length_um": 878.1155551102954,
+      "pyswcloader_matches_nondendrite_rule": true,
+      "neurom": {
+        "backend": "neurom-4.0.5",
+        "r_local_um": 800.0,
+        "complete_morph_labels": true,
+        "n_dendrite_neurites": 4,
+        "total_dendrite_length": 13122.832277715206,
+        "basal_length": 7471.672699391842,
+        "apical_length": 5651.159578323364,
+        "basal_max_path": 939.907732963562,
+        "apical_max_path": 900.4634265899658,
+        "max_radial_distance_dend": 800.0,
+        "n_bifurcations_dend": 46,
+        "basal_gt_500": true,
+        "available": true,
+        "version": "4.0.5"
+      },
+      "allen_preprocess": {
+        "first_row_xyz_um": [
+          -0.8228,
+          -0.6776,
+          0.0
+        ],
+        "preprocessed_first_row_xyz_um": [
+          -0.8228,
+          -0.6776,
+          0.0
+        ],
+        "z_flipped": false,
+        "axes_changed": [],
+        "negative_coordinate": true,
+        "dimension_um": [
+          13200.0,
+          8000.0,
+          11400.0
+        ],
+        "flip_requested": true,
+        "package_messages": []
+      },
+      "questions": {
+        "pyswcloader_total_length": "Sum of edges whose child and parent types are both outside SWC types 3 and 4. This keeps axon and soma links.",
+        "neurom_liu_bridge": "Dendritic cable and path inside a 800 \u00b5m soma ball after the axon is removed, using NeuroM on a MorphIO crop.",
+        "same_measurement": false,
+        "reason": "pyswcloader total_length is 878.116 \u00b5m. Full dendritic cable is 14161.385 \u00b5m."
+      }
+    }
+  ],
+  "writes_files": true
+}

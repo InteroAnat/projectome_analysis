@@ -27,6 +27,9 @@ resource/
 # hashes, QC summaries and reproduction workflow are published separately.
 group_analysis/evolution_20261008/**/leaf_records.jsonl
 
+# Local install of the pinned ION pyswcloader wheel used by the testing ground.
+work/pyswcloader_ground/vendor/
+
 # Cache directories
 __pycache__/
 *.py[cod]
