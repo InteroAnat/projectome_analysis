@@ -1,4 +1,9 @@
-"""Run the original toolkit demo: python -m Visual_toolkit"""
+"""Run the original toolkit demo: python -m Visual_toolkit
+
+Version: 1.8.0 (local/unreleased; package version)
+Last updated: 2026-10-17
+Change history: CHANGELOG.md (this folder)
+"""
 from .toolkit import Visual_toolkit
 
 toolkit = Visual_toolkit("251637")
@@ -24,6 +29,6 @@ if tree:
         soma_xyz, width_um=8000, height_um=8000, depth_um=30)
     toolkit.plot_widefield_context(
         low_res_volume, low_res_origin, low_res_resolution, soma_xyz, NEURON,
-        bg_intensity=2.0, swc_tree=tree, soma_region=test_region)
+        swc_tree=tree, soma_region=test_region)
 
 toolkit.close()

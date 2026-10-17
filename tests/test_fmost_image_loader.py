@@ -6,6 +6,7 @@ import sys
 import tempfile
 import types
 import unittest
+import json
 from unittest import mock
 
 import matplotlib
@@ -175,13 +176,25 @@ class LoaderTests(unittest.TestCase):
             '252527': '252527_CH1_resample',
             '252714': '252714-CH1_resample',
         }
-        for sample, folder in expected.items():
-            toolkit = visual.Visual_toolkit(sample, cache_dir=str(self.root / sample), low_res_slice_cache_limit=1)
-            self.assertIn(folder, toolkit.low_res_share_base)
-            self.assertNotIn('251637', toolkit.low_res_share_base)
-            self.assertIsNone(toolkit.low_res_ssh_base)
+        verified = {'state': 'complete_verified', 'sample_id': '252385',
+                    'low_res_shift_left_down_px': [653, 782], 'first_section': 12527,
+                    'precut': [None] * 12526, 'sections': {str(z): {} for z in range(12527, 20789)},
+                    'failures': [], 'missing_files': [], 'unexpected_files': []}
+        # Source routing is an offline unit test; live source readback is a separate QC.
+        with mock.patch.object(visual.Path, 'read_bytes', return_value=json.dumps(verified).encode()):
+            for sample, folder in expected.items():
+                toolkit = visual.Visual_toolkit(sample, cache_dir=str(self.root / sample), low_res_slice_cache_limit=1)
+                self.assertIn(folder, toolkit.low_res_share_base)
+                self.assertNotIn('251637', toolkit.low_res_share_base)
+                self.assertIsNone(toolkit.low_res_ssh_base)
+                if sample == '252385':
+                    self.assertTrue(toolkit.low_res_share_base.endswith('resample_5um_z12527_aligned'))
         pending = visual.Visual_toolkit('252790', cache_dir=str(self.root / 'pending'), low_res_slice_cache_limit=0)
-        self.assertIsNone(pending.low_res_share_base)
+        # 252790 now has a 5 um folder in Visual_toolkit/visual_toolkit_config.yaml; use it and
+        # never borrow another animal's source.
+        self.assertIsNotNone(pending.low_res_share_base)
+        self.assertIn('252790', pending.low_res_share_base)
+        self.assertNotIn('251637', pending.low_res_share_base)
         self.assertIsNone(pending.low_res_ssh_base)
         self.assertTrue(all('252790' in path and '251637' not in path for path in pending.low_res_share_candidates))
 
@@ -222,6 +235,31 @@ class LoaderTests(unittest.TestCase):
             self.assertIs(self.toolkit._read_cached_section(self.toolkit._get_low_res_slice_path(11)), second)
         self.assertEqual(reader.call_count, 2)
         self.assertEqual(len(self.toolkit._section_cache), 1)
+
+    def test_corrected_source_does_not_read_original_cached_slices(self):
+        corrected = self.root / 'resample_5um_z12527_aligned'; corrected.mkdir()
+        record = {'state': 'complete_verified', 'sample_id': '252385',
+                  'low_res_shift_left_down_px': [653, 782], 'first_section': 12527,
+                  'precut': [None] * 12526, 'sections': {str(z): {} for z in range(12527, 20789)},
+                  'failures': [], 'missing_files': []}
+        (corrected / 'shift_record.json').write_text(json.dumps(record))
+        original_cache = self.root / 'cubes/252385/low_res_ssh'; original_cache.mkdir(parents=True)
+        name = '252385_12527_CH1_resample.tif'
+        tifffile.imwrite(original_cache / name, np.full((6, 8), 99, np.uint16))
+        toolkit = visual.Visual_toolkit('252385', cache_dir=str(self.root), low_res_dir=str(corrected))
+        self.assertIsNone(toolkit._get_low_res_slice_path(12527))
+        self.assertNotEqual(Path(toolkit.cache_ssh_dir), original_cache)
+        expected = np.full((6, 8), 21, np.uint16); tifffile.imwrite(corrected / name, expected)
+        actual_path = toolkit._get_low_res_slice_path(12527)
+        self.assertEqual(Path(actual_path), corrected / name)
+        np.testing.assert_equal(toolkit._read_cached_section(actual_path), expected)
+        self.assertEqual(toolkit.low_res_correction['shift_left_down_px'], [653, 782])
+
+    def test_incomplete_corrected_source_is_rejected(self):
+        corrected = self.root / 'resample_5um_z12527_aligned'; corrected.mkdir()
+        (corrected / 'shift_record.json').write_text(json.dumps({'state': 'running'}))
+        with self.assertRaisesRegex(ValueError, 'complete_verified'):
+            visual.Visual_toolkit('252385', cache_dir=str(self.root), low_res_dir=str(corrected))
 
 
 if __name__ == '__main__':

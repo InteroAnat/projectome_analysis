@@ -1,0 +1,99 @@
+# Dataset links for the fMOST / projectome plotting pipeline.
+#
+# Every path may be absolute (UNC or drive letter), start with ~, or be relative
+# to the repository root. `null` means "not available for this sample": the
+# pipeline reports it and still renders every panel whose inputs exist.
+#
+# Operator check:  cd main_scripts; python -m Visual_toolkit.dataset_config --check
+# Override file:   set PROJECTOME_DATASETS=<path to another yaml>
+#
+# Provenance: ds00_processed paths and sha256 values are the sources recorded in
+# each sample's N4 run manifest under work/ds_preprocessing/. resample_5um is
+# relative to defaults.resample_5um_root; swc_cache is relative to
+# defaults.swc_cache_root.
+
+version: 1
+
+defaults:
+  ds00_root: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets'
+  resample_5um_root: '\\10.102.8.200\microscopy_data\fMOST\5micron_datasets'
+  swc_cache_root: 'group_analysis/visual_review_20261002/swc_raw'
+
+# GUI defaults (also editable in the window). `output_root` is where renders are
+# written and where "Reload figures" looks for existing panels; paths are
+# repo-relative unless absolute.
+visual_toolkit:
+  output_root: 'work/visual_gui'
+  auto_reload: true
+
+samples:
+
+  '250432':
+    monkey: '747'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\747_250432_ch00ds_100x100x90_orient-LPS.nii'
+    ds00_sha256: 'e789fd1318d3617462ea2d113f65fbbf827e7ce5bfe00509ccaf2f0e6c26b43b'
+    resample_5um: null
+    swc_cache: '250432'
+
+  '251637':
+    monkey: '936'
+    ds00_processed: null          # pilot source; see its own N4 run manifest
+    ds00_sha256: null
+    resample_5um: '251637-CH1_resample/resample_5um'
+    swc_cache: '251637'
+
+  '251730':
+    monkey: '746'                 # progress-only animal; no DS00 / 5 um dataset registered
+    ds00_processed: null
+    ds00_sha256: null
+    resample_5um: null
+    swc_cache: '251730'
+
+  '252383':
+    monkey: '605'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\605_252383_ch00ds_100x100x89.56_orient-LPS.nii'
+    ds00_sha256: '393107733999e38532870fec8ccc91bf956b732e928c356b84c44a3bf8adf147'
+    resample_5um: null
+    swc_cache: '252383'
+
+  '252384':
+    monkey: '948'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\948_252384_ch00ds_100x100x90_orient-LPS.nii'
+    ds00_sha256: '98a6ce771bc403d16ce696f0b0b76adc3dab1de94defe3e49ae5c155a34f3f1d'
+    resample_5um: '252384_CH1_resample/resample_5um'
+    swc_cache: '252384'
+
+  '252385':
+    monkey: '331'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\archive\intermediate_20261016\aligned_nii\331_252385_ch00ds_100x100x100_orient-LPS_desc-shiftcorr_v03_aligned.nii'
+    ds00_sha256: '48c021689a9ddf4324f749d33400c53ebdff0381f13d304c0ae496fdec8edad1'
+    resample_5um: '252385-CH1_resample/resample_5um_z12527_aligned'
+    swc_cache: '252385'
+
+  '252527':
+    monkey: '945'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\945_252527_ch00ds_100x100x90_orient-LPS.nii'
+    ds00_sha256: '27887f56e5fffc415821a0c0c79d80925ee93e56c8af1d756f51e4ed093f7f89'
+    resample_5um: '252527_CH1_resample/resample_5um'
+    swc_cache: '252527'
+
+  '252714':
+    monkey: '631'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\631_252714_ch00ds_100x100x90_orient-LPS.nii'
+    ds00_sha256: '7006fd90ea5786ff405f9a22f72c6c25621c18aa975b74c2097683708d399413'
+    resample_5um: '252714-CH1_resample/resample_5um'
+    swc_cache: '252714'
+
+  '252718':
+    monkey: '900'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\900_252718_ch00ds_100x100x90_orient-LPS.nii'
+    ds00_sha256: 'f5169d356de7afd05d82856f4c0b084aae269b11e0345e7204bb0816c81418a1'
+    resample_5um: null
+    swc_cache: '252718'
+
+  '252790':
+    monkey: '797'
+    ds00_processed: '\\10.102.8.200\microscopy_data\fMOST\CH00DS_datasets\processed_nii\797_252790_ch00ds_100x100x90_orient-LPS.nii'
+    ds00_sha256: 'aad63119f6d26b4f8c0e4a1e5616f7801077f3ca1411747d654de7dfce150678'
+    resample_5um: '252790-CH1_resample/resample_5um'
+    swc_cache: '252790'
