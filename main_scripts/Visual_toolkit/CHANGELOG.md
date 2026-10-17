@@ -23,7 +23,7 @@ tree but has not been committed or published; dates are Asia/Shanghai.
 All modules move with the package version until a released tag exists; an
 unreleased change never claims a release.
 
-## 1.9.0 — 2026-10-17 (local/unreleased)
+## 1.9.0 — 2026-10-17 (released 636197c)
 
 Package integration
 - Moved the DS00 five-view cohort montage implementation into
@@ -42,7 +42,7 @@ Validation
 - The combined seven-module suite passes **74 tests**, including five offline montage
   checks for camera geometry, label CLI, streamed hashing and legacy-wrapper import.
 
-## 1.8.0 — 2026-10-17 (local/unreleased)
+## 1.8.0 — 2026-10-17 (released c817ee19)
 
 Operator release
 - Publishes the consolidated VisualToolkit package: config-backed datasets, shared SWC

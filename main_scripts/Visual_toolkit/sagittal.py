@@ -1,6 +1,6 @@
 """Render a raw-SWC soma plane on its candidate native CH00DS image frame.
 
-Version: 1.9.0 (local/unreleased; package version)
+Version: 1.9.0 (released 636197c; package version)
 Last updated: 2026-10-17
 Change history: CHANGELOG.md (this folder)
 Status: candidate (A/B SWC mapping unresolved)
