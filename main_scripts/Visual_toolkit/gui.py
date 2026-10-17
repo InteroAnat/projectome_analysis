@@ -1,7 +1,7 @@
 """
 Visual_toolkit_gui.py - GUI for NeuroVis Visual Toolkit
 
-Version: 1.9.0 (released 636197c; package version)
+Version: 1.9.1 (local/unreleased; package version)
 Last updated: 2026-10-17
 Change history: CHANGELOG.md (this folder)
 Status: candidate (visual review pending)
@@ -787,7 +787,7 @@ class NeuroVisGUI:
         neuron = self.neuron_id.get().strip().removesuffix('.swc')
         C = self.COLORS
         try:
-            from .sagittal import SAMPLE_PATHS, resolve_swc_path
+            from .toolkit import SAMPLE_PATHS, resolve_swc_path
             if sample not in SAMPLE_PATHS:
                 ok, text = False, f"Sagittal: no processed-DS source registered for {sample}"
             else:
@@ -1425,7 +1425,7 @@ class NeuroVisGUI:
             swc_tree=tree, output_dir=target)
 
     def _render_sagittal(self, toolkit, request, target):
-        from .sagittal import SAMPLE_PATHS, resolve_swc_path
+        from .toolkit import SAMPLE_PATHS, resolve_swc_path
         neuron = request.neuron_id.removesuffix('.swc')
         swc, _ = resolve_swc_path(request.sample_id, neuron,
                                   SAMPLE_PATHS.get(request.sample_id) or {})

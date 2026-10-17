@@ -1,7 +1,7 @@
 """
 bulk_visual_multi_monkey.py
 
-Version: 1.9.0 (released 636197c; VisualToolkit package wrapper)
+Version: 1.9.1 (local/unreleased; VisualToolkit package wrapper)
 Last updated: 2026-10-17
 Change history: main_scripts/Visual_toolkit/CHANGELOG.md (package changes) + notes below
 
@@ -25,7 +25,7 @@ runner/default paths remain unchanged; high-resolution gamma is unchanged.
 Visual_toolkit legacy panel style (same black-background style as the Soma and
 Widefield plots) and each neuron also gets one tri-plot review PNG combining
 Soma, WideField and Sagittal with a single shared legend. The previous PIL
-sagittal renderer stays available in main_scripts/Visual_toolkit/sagittal.py as the
+sagittal renderer stays available in main_scripts/Visual_toolkit/toolkit.py as the
 historical full-plane product. A/B raw-SWC mapping candidates remain unresolved.
 
 2026-10-17 Codex (local, unreleased): an unavailable Context panel (a sample with
@@ -279,7 +279,7 @@ def ensure_refined_targets_empty(sample_root: str, cohorts: list[str]) -> None:
 
 def native_ds_swc_path(sample_id: str, neuron_id: str):
     """Resolve the sagittal raw SWC: registered cache first, then the legacy cache."""
-    from Visual_toolkit.sagittal import SAMPLE_PATHS, resolve_swc_path
+    from Visual_toolkit.toolkit import SAMPLE_PATHS, resolve_swc_path
 
     sample_id = str(sample_id)
     if sample_id not in SAMPLE_PATHS:
@@ -305,7 +305,7 @@ def load_registered_ds_swc(sample_id: str, neuron_id: str):
 def prepare_native_sagittal_panel(sample_id: str, neuron_id: str, tree, source=None,
                                   crop_half_width_mm: float | None = None) -> dict:
     """Prepare the native DS sagittal panel for the shared legacy review style."""
-    from Visual_toolkit.sagittal import prepare_sagittal_panel
+    from Visual_toolkit.toolkit import prepare_sagittal_panel
 
     bare_id = str(neuron_id).removesuffix(".swc")
     swc_path = native_ds_swc_path(sample_id, neuron_id)
@@ -414,7 +414,7 @@ def write_refined_run_manifest(run_id: str, run_stamp: str, meta: dict,
             "context": f"Visual_toolkit.plot_widefield_context; gain {REVIEW_SETTINGS['widefield']['gain']:g} and threshold {REVIEW_SETTINGS['widefield']['threshold']:g} via REVIEW_SETTINGS['widefield']; {REVIEW_SETTINGS['context']['width_um']}x{REVIEW_SETTINGS['context']['height_um']}x{REVIEW_SETTINGS['context']['depth_um']} um display crop only",
             "context_volumes": "not exported",
             "marker": "one cyan/turquoise open box plus a cross through the exact point in every panel (REVIEW_SETTINGS['marker']); the drawn size is enlarged for visibility and is not to scale",
-            "sagittal": "Visual_toolkit.sagittal.prepare_sagittal_panel + Visual_toolkit.plot_sagittal_context; whole constant-i plane, legacy panel style, A/B candidate traces",
+            "sagittal": "Visual_toolkit.toolkit.prepare_sagittal_panel + VisualToolkit.plot_sagittal_context; whole constant-i plane, legacy panel style, A/B candidate traces",
             "tri_plot": "Visual_toolkit.plot_tri_plot; one combined review PNG per neuron (Soma | Context | Sagittal), legend off by default; suffix TriPlot for three panels, PairPlot when one panel's source is unavailable (named per neuron under panel_errors)",
         },
         "samples": sample_records,
@@ -725,7 +725,7 @@ def process_selected_cohorts(sample_ids: list[str] | None, cohorts: list[str],
             raise ValueError(f"Samples absent from the active selected workbook: {absent}")
         requested = sample_ids
     if context_sagittal:
-        from Visual_toolkit.sagittal import SAMPLE_PATHS
+        from Visual_toolkit.toolkit import SAMPLE_PATHS
         unsupported = sorted(set(requested).difference(SAMPLE_PATHS))
         if unsupported:
             raise ValueError(
@@ -738,7 +738,7 @@ def process_selected_cohorts(sample_ids: list[str] | None, cohorts: list[str],
         sagittal_trees = {}
         sagittal_failures = {}
         if context_sagittal and not dry_run:
-            from Visual_toolkit.sagittal import prepare_sagittal_source
+            from Visual_toolkit.toolkit import prepare_sagittal_source
 
             for neuron_id in sample_rows["NeuronID"].astype(str):
                 if not neuron_id.endswith(".swc"):

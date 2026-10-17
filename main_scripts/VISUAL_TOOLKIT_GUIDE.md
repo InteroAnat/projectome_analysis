@@ -12,8 +12,7 @@ The Visual Toolkit GUI is a Tkinter-based interface for acquiring and visualizin
 main_scripts/
 ├── Visual_toolkit/
 │   ├── gui.py                 # Tkinter GUI (this guide)
-│   ├── toolkit.py             # Core backend + REVIEW_SETTINGS
-│   ├── sagittal.py            # Processed-DS sagittal panel + raw-SWC resolver
+│   ├── toolkit.py             # Core backend, sagittal renderer + REVIEW_SETTINGS
 │   ├── montage.py             # Nine-sample DS00 five-view cohort montage
 │   ├── dataset_config.py      # Dataset-link loader/checker
 │   ├── visual_toolkit_config.yaml  # Per-sample DS00 / 5 µm / SWC links
@@ -46,7 +45,7 @@ coordinates after about half a second (this step needs portal access; editing th
 sample or neuron clears the coordinates until the next load). `python -m Visual_toolkit`
 runs the headless demo instead — it is not the GUI.
 
-Layout (v1.9.0, Binavi-style):
+Layout (v1.9.1, Binavi-style):
 
 - Left column: `Sample` and `Target soma (µm)` cards, then `Soma Plot` (window in
   cubes), `Context Plot` (width/height/depth), the `Plotting` lane and the `Saving` lane.
@@ -95,12 +94,13 @@ re-render when anything differs. Package change history is in
 ## Package layout and dataset links
 
 Everything the review figures need lives in `main_scripts/Visual_toolkit/`:
-`toolkit.py` (drawing, `REVIEW_SETTINGS`, soma/context/sagittal renderers), `gui.py`,
-`sagittal.py` (processed-DS panel preparation), `montage.py` (nine-sample DS00
+`toolkit.py` (drawing, `REVIEW_SETTINGS`, Soma/Context/Sagittal setup and
+processed-DS panel implementation), `gui.py`, `montage.py` (nine-sample DS00
 five-view cohort QC), `dataset_config.py` and `visual_toolkit_config.yaml`
 (per-sample DS00 processed volume, 5 µm resample folder and raw-SWC cache). The bulk
-wrappers in `group_analysis/scripts/` import `Visual_toolkit.sagittal`, and the old
-`tools/ch00ds_5view_montage.py` path is only a compatibility wrapper.
+wrappers in `group_analysis/scripts/` import the sagittal helpers from
+`Visual_toolkit.toolkit`, and the old `tools/ch00ds_5view_montage.py` path is only a
+compatibility wrapper.
 
 The DS00 cohort montage is independent of the per-neuron GUI. Run it from
 `main_scripts` with the packaged module:
@@ -431,7 +431,7 @@ is the single implementation; `tests/test_visual_toolkit_panel_render.py` checks
 rendered pixels for the box and the cross in each panel type.
 
 **Review settings (single source).** `Visual_toolkit.toolkit.REVIEW_SETTINGS` holds the
-values the GUI, the bulk runners and the sagittal adapter share, so they cannot
+values the GUI, the bulk runners and the sagittal renderer share, so they cannot
 disagree: `marker` (colour, minimum box size, cross arms, label), `soma_window`
 (target window in cubes plus the descending centred alternatives), `context`
 (8,000 × 8,000 × 30 µm crop), `widefield` (gain 2.0 / threshold 100),

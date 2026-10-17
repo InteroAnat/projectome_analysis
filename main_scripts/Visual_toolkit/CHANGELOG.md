@@ -1,9 +1,9 @@
 # VisualToolkit change log
 
-One consolidated history for the package (`toolkit.py`, `gui.py`, `sagittal.py`,
-`dataset_config.py`, `visual_toolkit_config.yaml`). `VISUAL_TOOLKIT_GUIDE.md` is the operator
-guide; per-module headers carry `Version:` / `Last updated:` / `Change history:` and
-point here.
+One consolidated history for the package (`toolkit.py`, `gui.py`, `montage.py`,
+`dataset_config.py`, `visual_toolkit_config.yaml`). `VISUAL_TOOLKIT_GUIDE.md` is the
+operator guide; per-module headers carry `Version:` / `Last updated:` / `Change
+history:` and point here.
 
 Entries are newest first. "Local/unreleased" means the change is in the working
 tree but has not been committed or published; dates are Asia/Shanghai.
@@ -12,16 +12,33 @@ tree but has not been committed or published; dates are Asia/Shanghai.
 
 | Module | Version | Role |
 |--------|---------|------|
-| `gui.py` | 1.9.0 | Tkinter operator window |
-| `toolkit.py` | 1.9.0 | rendering, `REVIEW_SETTINGS`, acquisition |
-| `sagittal.py` | 1.9.0 | processed-DS panel + raw-SWC resolver |
-| `montage.py` | 1.9.0 | nine-sample DS00 five-view cohort montage |
-| `dataset_config.py` | 1.9.0 | dataset links / operator check |
+| `gui.py` | 1.9.1 | Tkinter operator window |
+| `toolkit.py` | 1.9.1 | rendering, acquisition, sagittal setup + `REVIEW_SETTINGS` |
+| `montage.py` | 1.9.1 | nine-sample DS00 five-view cohort montage |
+| `dataset_config.py` | 1.9.1 | dataset links / operator check |
 | `visual_toolkit_config.yaml` | schema 1 | per-sample DS00, 5 µm, SWC cache, GUI output root |
-| `run_bulk_visual_sample.py`, `bulk_visual_multi_monkey.py` | 1.9.0 | bulk wrappers (outside the package) |
+| `run_bulk_visual_sample.py`, `bulk_visual_multi_monkey.py` | 1.9.1 | bulk wrappers (outside the package) |
 
 All modules move with the package version until a released tag exists; an
 unreleased change never claims a release.
+
+## 1.9.1 — 2026-10-17 (local/unreleased)
+
+Sagittal consolidation
+- Merged all processed-DS sagittal code from `sagittal.py` into `toolkit.py`: source
+  manifest verification, raw-SWC resolution, sagittal plane extraction, candidate A/B
+  mappings, legacy PIL rendering, shared review-panel preparation and source prefetch.
+- Removed `sagittal.py`; the GUI and both bulk wrappers now import `SAMPLE_PATHS`,
+  `resolve_swc_path`, `prepare_sagittal_source` and `prepare_sagittal_panel` directly
+  from `VisualToolkit.toolkit`.
+- The Review settings marker is now read directly rather than through a cross-module
+  fallback, preserving the single shared visual style.
+
+Validation
+- Package, GUI and bulk-wrapper syntax checks pass.
+- The combined suite passes **77 tests**, including three integration checks that
+  verify the sagittal functions are owned by `toolkit.py`, the separate module is gone,
+  and the shared marker settings remain identical.
 
 ## 1.9.0 — 2026-10-17 (released 636197c)
 

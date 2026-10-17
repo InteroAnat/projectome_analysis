@@ -1,6 +1,6 @@
 """Run the bulk Soma/Context visual QC for one fMOST sample.
 
-Version: 1.9.0 (released 636197c; VisualToolkit package wrapper)
+Version: 1.9.1 (local/unreleased; VisualToolkit package wrapper)
 Last updated: 2026-10-17
 Change history: main_scripts/Visual_toolkit/CHANGELOG.md (package changes) + notes below
 
@@ -228,7 +228,7 @@ def run(args: argparse.Namespace) -> dict:
     if args.context_sagittal:
         if not args.cohort:
             raise ValueError("--context-sagittal requires --cohort")
-        from Visual_toolkit.sagittal import SAMPLE_PATHS
+        from Visual_toolkit.toolkit import SAMPLE_PATHS
         if args.sample not in SAMPLE_PATHS:
             raise ValueError(f"No processed DS sagittal source is registered for {args.sample}")
     if args.smoke:
@@ -284,7 +284,7 @@ def run(args: argparse.Namespace) -> dict:
     sagittal_source = None
     sagittal_trees = {}
     if args.context_sagittal:
-        from Visual_toolkit.sagittal import prepare_sagittal_source
+        from Visual_toolkit.toolkit import prepare_sagittal_source
         for value in neurons["NeuronID"].astype(str):
             neuron_id = value if value.endswith(".swc") else f"{value}.swc"
             try:
