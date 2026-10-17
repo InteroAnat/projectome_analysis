@@ -1,6 +1,6 @@
 """Resolve dataset links for the VisualToolkit from visual_toolkit_config.yaml.
 
-Version: 1.9.1 (local/unreleased; package version)
+Version: 1.9.1 (released 2867eef; package version)
 Last updated: 2026-10-17
 Change history: CHANGELOG.md (this folder)
 

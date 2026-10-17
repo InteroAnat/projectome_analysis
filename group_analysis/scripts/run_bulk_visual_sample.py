@@ -1,6 +1,6 @@
 """Run the bulk Soma/Context visual QC for one fMOST sample.
 
-Version: 1.9.1 (local/unreleased; VisualToolkit package wrapper)
+Version: 1.9.1 (released 2867eef; VisualToolkit package wrapper)
 Last updated: 2026-10-17
 Change history: main_scripts/Visual_toolkit/CHANGELOG.md (package changes) + notes below
 

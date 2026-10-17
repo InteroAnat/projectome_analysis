@@ -3,7 +3,7 @@
 Labels come from the progress workbook, not from hardcoded region lines.
 NIfTI files are read only. This script does not rewrite voxels.
 
-Version: 1.9.1 (local/unreleased; package version)
+Version: 1.9.1 (released 2867eef; package version)
 Last updated: 2026-10-17
 Change history: CHANGELOG.md (this folder)
 Status: candidate (display QC only; anatomical acceptance unresolved)

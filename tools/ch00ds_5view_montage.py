@@ -1,6 +1,6 @@
 """Compatibility wrapper for the packaged DS00 montage renderer.
 
-Version: 1.9.1 (local/unreleased; VisualToolkit package wrapper)
+Version: 1.9.1 (released 2867eef; VisualToolkit package wrapper)
 Last updated: 2026-10-17
 Change history: main_scripts/Visual_toolkit/CHANGELOG.md
 

@@ -22,7 +22,7 @@ tree but has not been committed or published; dates are Asia/Shanghai.
 All modules move with the package version until a released tag exists; an
 unreleased change never claims a release.
 
-## 1.9.1 — 2026-10-17 (local/unreleased)
+## 1.9.1 — 2026-10-17 (released 2867eef)
 
 Sagittal consolidation
 - Merged all processed-DS sagittal code from `sagittal.py` into `toolkit.py`: source
