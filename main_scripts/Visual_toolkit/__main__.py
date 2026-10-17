@@ -1,6 +1,6 @@
 """Run the original toolkit demo: python -m Visual_toolkit
 
-Version: 1.8.0 (local/unreleased; package version)
+Version: 1.9.0 (local/unreleased; package version)
 Last updated: 2026-10-17
 Change history: CHANGELOG.md (this folder)
 """

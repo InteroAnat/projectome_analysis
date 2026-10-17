@@ -14,6 +14,7 @@ main_scripts/
 │   ├── gui.py                 # Tkinter GUI (this guide)
 │   ├── toolkit.py             # Core backend + REVIEW_SETTINGS
 │   ├── sagittal.py            # Processed-DS sagittal panel + raw-SWC resolver
+│   ├── montage.py             # Nine-sample DS00 five-view cohort montage
 │   ├── dataset_config.py      # Dataset-link loader/checker
 │   ├── visual_toolkit_config.yaml  # Per-sample DS00 / 5 µm / SWC links
 │   ├── derived_context.py     # Per-sample context helpers
@@ -45,7 +46,7 @@ coordinates after about half a second (this step needs portal access; editing th
 sample or neuron clears the coordinates until the next load). `python -m Visual_toolkit`
 runs the headless demo instead — it is not the GUI.
 
-Layout (v1.7.0, Binavi-style):
+Layout (v1.9.0, Binavi-style):
 
 - Left column: `Sample` and `Target soma (µm)` cards, then `Soma Plot` (window in
   cubes), `Context Plot` (width/height/depth), the `Plotting` lane and the `Saving` lane.
@@ -95,10 +96,26 @@ re-render when anything differs. Package change history is in
 
 Everything the review figures need lives in `main_scripts/Visual_toolkit/`:
 `toolkit.py` (drawing, `REVIEW_SETTINGS`, soma/context/sagittal renderers), `gui.py`,
-`sagittal.py` (processed-DS panel preparation), `dataset_config.py` and
-`visual_toolkit_config.yaml` (per-sample DS00 processed volume, 5 µm resample folder and raw-SWC
-cache). The bulk wrappers in `group_analysis/scripts/` import
-`Visual_toolkit.sagittal`, so there is no tool-specific copy under `tools/` any more.
+`sagittal.py` (processed-DS panel preparation), `montage.py` (nine-sample DS00
+five-view cohort QC), `dataset_config.py` and `visual_toolkit_config.yaml`
+(per-sample DS00 processed volume, 5 µm resample folder and raw-SWC cache). The bulk
+wrappers in `group_analysis/scripts/` import `Visual_toolkit.sagittal`, and the old
+`tools/ch00ds_5view_montage.py` path is only a compatibility wrapper.
+
+The DS00 cohort montage is independent of the per-neuron GUI. Run it from
+`main_scripts` with the packaged module:
+
+```powershell
+python -m Visual_toolkit.montage labels
+python -m Visual_toolkit.montage --output D:\path\to\fresh_montage.png
+python -m Visual_toolkit.montage --cohort-manifest ..\work\ds_preprocessing\cohort_manifest.json --output D:\path\to\cohort_montage.png
+python -m Visual_toolkit.montage --original-sources --output D:\path\to\original_montage.png
+```
+
+The module verifies source hashes, renders nine rows × five LPS views and writes a JSON
+receipt beside the PNG. It refuses to overwrite an existing montage/receipt. Use
+`--source-root` and `--workbook` for another dataset root or progress workbook. Display
+rendering never establishes anatomical or registration acceptance.
 
 Check or edit the dataset links with:
 

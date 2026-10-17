@@ -12,15 +12,35 @@ tree but has not been committed or published; dates are Asia/Shanghai.
 
 | Module | Version | Role |
 |--------|---------|------|
-| `gui.py` | 1.8.0 | Tkinter operator window |
-| `toolkit.py` | 1.8.0 | rendering, `REVIEW_SETTINGS`, acquisition |
-| `sagittal.py` | 1.8.0 | processed-DS panel + raw-SWC resolver |
-| `dataset_config.py` | 1.8.0 | dataset links / operator check |
+| `gui.py` | 1.9.0 | Tkinter operator window |
+| `toolkit.py` | 1.9.0 | rendering, `REVIEW_SETTINGS`, acquisition |
+| `sagittal.py` | 1.9.0 | processed-DS panel + raw-SWC resolver |
+| `montage.py` | 1.9.0 | nine-sample DS00 five-view cohort montage |
+| `dataset_config.py` | 1.9.0 | dataset links / operator check |
 | `visual_toolkit_config.yaml` | schema 1 | per-sample DS00, 5 µm, SWC cache, GUI output root |
-| `run_bulk_visual_sample.py`, `bulk_visual_multi_monkey.py` | 1.8.0 | bulk wrappers (outside the package) |
+| `run_bulk_visual_sample.py`, `bulk_visual_multi_monkey.py` | 1.9.0 | bulk wrappers (outside the package) |
 
 All modules move with the package version until a released tag exists; an
 unreleased change never claims a release.
+
+## 1.9.0 — 2026-10-17 (local/unreleased)
+
+Package integration
+- Moved the DS00 five-view cohort montage implementation into
+  `Visual_toolkit/montage.py`; it is now available as
+  `python -m Visual_toolkit.montage`. The previous
+  `tools/ch00ds_5view_montage.py` path remains a compatibility wrapper.
+- Added `--source-root` and `--workbook` path overrides while preserving the existing
+  source-hash checks, output-overwrite refusal, five-view cameras and JSON receipt.
+- Confirmed the processed-DS sagittal renderer remains package-owned in
+  `Visual_toolkit/sagittal.py` and continues to back the GUI and bulk wrappers.
+- Added an offline montage regression module covering camera basis, label CLI,
+  streamed hashing and the legacy wrapper import.
+
+Validation
+- Package and wrapper syntax checks pass.
+- The combined seven-module suite passes **74 tests**, including five offline montage
+  checks for camera geometry, label CLI, streamed hashing and legacy-wrapper import.
 
 ## 1.8.0 — 2026-10-17 (local/unreleased)
 

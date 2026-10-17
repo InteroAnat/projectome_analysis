@@ -1,7 +1,7 @@
 """
 bulk_visual_multi_monkey.py
 
-Version: 1.8.0 (local/unreleased; VisualToolkit package wrapper)
+Version: 1.9.0 (local/unreleased; VisualToolkit package wrapper)
 Last updated: 2026-10-17
 Change history: main_scripts/Visual_toolkit/CHANGELOG.md (package changes) + notes below
 
