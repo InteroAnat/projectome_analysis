@@ -1,3 +1,5 @@
+> **Agent Codex | 2026-11-17T21:20:04+08:00 (Asia/Shanghai).** VisPa and ReMAP software milestones are consolidated in the [VisPa project note](https://github.com/bylaikaby/VisPa/blob/main/docs/project_note.md). This journal continues to hold the Projectome research record and historical software entries.
+
 ## 2026-10-15 | Agent Cursor | Progress workbook embeds multi-level projection strength
 
 **Agent: Cursor | Date: 2026-10-15 (Asia/Shanghai)**
